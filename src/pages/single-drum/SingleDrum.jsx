@@ -1,4 +1,5 @@
 import React from 'react';
+import ChordsList from '../../components/chordsList/ChordsList';
 import Drum from '../../components/drum/Drum';
 import { createIntervalMap } from './helpers/intervals';
 import { sortScaleForDisplay } from './helpers/noteOrder';
@@ -13,6 +14,7 @@ const SingleDrum = () => {
   return (
     <SingleDrumContainer>
       <Drum scale={scale} />
+      <ChordsList scale={scale} />
     </SingleDrumContainer>
   );
 };
