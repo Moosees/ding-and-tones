@@ -46,6 +46,5 @@ export const createIntervalMap = scale => {
   const scaleWithValues = addNoteValues(scale);
   const scaleWithIntervalMap = addIntervalMap(scaleWithValues);
 
-  console.log({ scaleWithIntervalMap });
   return scaleWithIntervalMap;
 };

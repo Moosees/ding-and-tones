@@ -3,13 +3,12 @@ import { majorTriad } from './chords.data';
 import { findChords } from './chords.helpers';
 
 const ChordsList = ({ scale }) => {
-  const [chords, setChords] = useState([findChords(scale, majorTriad)]);
-  console.log({chords});
+  const [chords, setChords] = useState(findChords(scale, majorTriad));
 
   return (
     <ul>
-      {chords.map(chord => (
-        <li key={chord.name}>{chord.name}</li>
+      {chords.map((chord, i) => (
+        <li key={i}>{chord.name}</li>
       ))}
     </ul>
   );

@@ -7,11 +7,11 @@ const Drum = ({ scale }) => {
     const pos = (360 / (scale.length - 1)) * (i - 1);
     return (
       <Tonefield
-        key={note.note}
+        key={note.currentNote}
         note={note}
         isDing={i === 0}
         position={pos}
-        color={scale[0].intervalsList[i].color}
+        color={scale[0].intervalMap[i].color}
       />
     );
   });
