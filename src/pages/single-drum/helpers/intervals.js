@@ -3,7 +3,8 @@ import { absNoteValues, intervals } from './intervals.data';
 const addNoteValues = scale => {
   return scale.map(note => {
     return {
-      note,
+      currentNote: note,
+      currentNoteShort: note.replace(/[0-9]/g, ''),
       noteValue: absNoteValues[note]
     };
   });
@@ -18,33 +19,33 @@ const calcInterval = (note, relativeNote) => {
         : Math.floor(noteValueDifference / 12)
       : 0;
 
-  // helpful logs for tweaking the design of the interval map
-  // console.log({
-  //   note: relativeNote.note,
-  //   val: note.noteValue,
-  //   rel: relativeNote.noteValue,
-  //   octaveDifference
-  // });
-
   const intervalValue =
     relativeNote.noteValue - note.noteValue - 12 * octaveDifference;
 
-  // console.log(intervals[intervalValue]);
-  // console.log('----------------');
+  return {
+    ...intervals[intervalValue],
+    note: relativeNote.currentNote,
+    noteShort: relativeNote.currentNoteShort
+  };
+};
 
-  return { ...intervals[intervalValue], note: relativeNote.note };
+const addIntervalMap = scaleWithValues => {
+  return scaleWithValues.map(note => {
+    const intervalList = [];
+    const intervalMap = [];
+    scaleWithValues.forEach(relativeNote => {
+      const currentInterval = calcInterval(note, relativeNote);
+      intervalList.push(currentInterval.halfsteps);
+      intervalMap.push(currentInterval);
+    });
+    return { ...note, intervalList, intervalMap };
+  });
 };
 
 export const createIntervalMap = scale => {
   const scaleWithValues = addNoteValues(scale);
-  const intervalMap = scaleWithValues.map(note => {
-    const intervalsList = [];
-    scaleWithValues.forEach(relativeNote => {
-      intervalsList.push(calcInterval(note, relativeNote));
-    });
-    // console.log('***************');
-    return { ...note, intervalsList };
-  });
+  const scaleWithIntervalMap = addIntervalMap(scaleWithValues);
 
-  return intervalMap;
+  console.log({ scaleWithIntervalMap });
+  return scaleWithIntervalMap;
 };

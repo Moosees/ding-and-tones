@@ -91,136 +91,161 @@ export const intervals = {
   0: {
     name: 'Perfect Unison',
     shortName: 'P1',
-    color: '#000'
+    color: '#000',
+    halfsteps: 0
   },
   1: {
     name: 'Minor Second',
     shortName: 'm2',
-    color: '#5D00FC'
+    color: '#5D00FC',
+    halfsteps: 1
   },
   2: {
     name: 'Major Second',
     shortName: 'M2',
-    color: '#006CFC'
+    color: '#006CFC',
+    halfsteps: 2
   },
   3: {
     name: 'Minor Third',
     shortName: 'm3',
-    color: '#FECB00'
+    color: '#FECB00',
+    halfsteps: 3
   },
   4: {
     name: 'Major Third',
     shortName: 'M3',
-    color: '#FE4C02'
+    color: '#FE4C02',
+    halfsteps: 4
   },
   5: {
     name: 'Perfect Fourth',
     shortName: 'P4',
-    color: '#02FFFF'
+    color: '#02FFFF',
+    halfsteps: 5
   },
   6: {
     name: 'Tritone',
     shortName: 'TT',
-    color: '#CAFE00'
+    color: '#CAFE00',
+    halfsteps: 6
   },
   7: {
     name: 'Perfect Fifth',
     shortName: 'P5',
-    color: '#FD1601'
+    color: '#FD1601',
+    halfsteps: 7
   },
   8: {
     name: 'Minor Sixth',
     shortName: 'm6',
-    color: '#FEFF02'
+    color: '#FEFF02',
+    halfsteps: 8
   },
   9: {
     name: 'Major Sixth',
     shortName: 'M6',
-    color: '#FEA300'
+    color: '#FEA300',
+    halfsteps: 9
   },
   10: {
     name: 'Minor Seventh',
     shortName: 'm7',
-    color: '#010FFF'
+    color: '#010FFF',
+    halfsteps: 10
   },
   11: {
     name: 'Major Seventh',
     shortName: 'M7',
-    color: '#BB00FF'
+    color: '#BB00FF',
+    halfsteps: 11
   },
   12: {
     name: 'Perfect Octave',
     shortName: 'P8',
-    color: '#FF0000'
+    color: '#FF0000',
+    halfsteps: 12
   },
   13: {
     name: 'Minor Ninth',
     shortName: 'm9',
-    color: '#E100EE'
+    color: '#E100EE',
+    halfsteps: 13
   },
   14: {
     name: 'Major Ninth',
     shortName: 'M9',
-    color: '#0000FE'
+    color: '#0000FE',
+    halfsteps: 14
   },
   15: {
     name: 'Minor Tenth',
     shortName: 'm10',
-    color: '#7EFD03'
+    color: '#7EFD03',
+    halfsteps: 15
   },
   16: {
     name: 'Major Tenth',
     shortName: 'M10',
-    color: '#FEFF02'
+    color: '#FEFF02',
+    halfsteps: 16
   },
   17: {
     name: 'Perfect Eleventh',
     shortName: 'P11',
-    color: '#1DFF00'
+    color: '#1DFF00',
+    halfsteps: 17
   },
   18: {
     name: 'Augmented Eleventh',
     shortName: 'A11',
-    color: '#00FD8A'
+    color: '#00FD8A',
+    halfsteps: 18
   },
   19: {
     name: 'Perfect Twelfth',
     shortName: 'P12',
-    color: '#00FE00'
+    color: '#00FE00',
+    halfsteps: 19
   },
   20: {
     name: 'Minor Thirteenth',
     shortName: 'm13',
-    color: '#01FEE9'
+    color: '#01FEE9',
+    halfsteps: 20
   },
   21: {
     name: 'Major Thirteenth',
     shortName: 'M13',
-    color: '#01A2FD'
+    color: '#01A2FD',
+    halfsteps: 21
   },
   22: {
     name: 'Minor Fourteenth',
     shortName: 'm14',
-    color: '#9C00FD'
+    color: '#9C00FD',
+    halfsteps: 22
   },
   23: {
     name: 'Major Fourteenth',
     shortName: 'M14',
-    color: '#4000FD'
+    color: '#4000FD',
+    halfsteps: 23
   },
   24: {
     name: 'Second Octave',
     shortname: 'P15',
-    color: '#FF0028'
-  },
-  other: {
-    name: 'Other',
-    shortName: 'X',
-    color: '#FF00FF'
-  },
-  bass: {
-    name: 'Lower',
-    shortName: 'Sub',
-    color: '#CC004A'
+    color: '#FF0028',
+    halfsteps: 24
   }
+  // other: {
+  //   name: 'Other',
+  //   shortName: 'X',
+  //   color: '#FF00FF'
+  // },
+  // bass: {
+  //   name: 'Lower',
+  //   shortName: 'Sub',
+  //   color: '#CC004A'
+  // }
 };
