@@ -1,14 +1,23 @@
 import React from 'react';
 
-const Tonefield = ({ color = 'black', note, isDing, position }) => (
-  <circle
+const Tonefield = ({ color = '#000', text = '', note, isDing, position }) => (
+  <g
     onClick={() => console.log({ note })}
-    r={isDing ? '2.5' : '2'}
     cx="0"
     cy="0"
-    fill={color}
-    transform={isDing ? '' : `rotate(90) rotate(${position}) translate(7)`}
-  />
+    transform={isDing ? '' : `rotate(${position + 90}) translate(7)`}
+    style={{ fontSize: isDing ? '0.35rem' : '0.25rem', cursor: 'pointer' }}
+  >
+    <circle r={isDing ? '2.5' : '2'} fill={color} />
+    <text
+      textAnchor="middle"
+      dy="0.3em"
+      fill="#ccc"
+      transform={isDing ? '' : `rotate(-${position + 90})`}
+    >
+      {text}
+    </text>
+  </g>
 );
 
 export default Tonefield;
