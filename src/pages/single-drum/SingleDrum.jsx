@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ChordsList from '../../components/chordsList/ChordsList';
 import Drum from '../../components/drum/Drum';
-import { createIntervalMap } from './helpers/intervals';
-import { sortScaleForDisplay } from './helpers/noteOrder';
+import { createIntervalMap } from '../../helpers/intervals.helpers';
+import { sortScaleForDisplay } from '../../helpers/noteOrder';
 import { SingleDrumContainer } from './singleDrum.styles';
 
 // dummy data

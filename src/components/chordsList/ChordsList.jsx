@@ -1,6 +1,6 @@
 import React from 'react';
-import { majorTriad } from './chords.data';
-import { findChords } from './chords.helpers';
+import { majorTriad } from '../../helpers/chords.data';
+import { findChords } from '../../helpers/chords.helpers';
 
 const ChordsList = ({ scale, setChordFocus }) => {
   const chords = findChords(scale, majorTriad);

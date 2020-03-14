@@ -1,11 +1,11 @@
-import { absNoteValues, intervals } from './intervals.data';
+import { noteNameToValue, intervals } from './intervals.data';
 
 const addNoteValues = scale => {
   return scale.map(note => {
     return {
       note,
       noteShort: note.replace(/[0-9]/g, ''),
-      noteValue: absNoteValues[note]
+      noteValue: noteNameToValue[note]
     };
   });
 };
