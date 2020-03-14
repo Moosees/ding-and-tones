@@ -3,8 +3,8 @@ import Tonefield from '../tonefield/Tonefield';
 import { DrumContainer } from './drum.styles';
 
 const Drum = ({ scale, chordFocus }) => {
-  console.log(chordFocus);
-  console.log({ scale });
+  // console.log(chordFocus);
+  // console.log({ scale });
 
   const tonefields = scale.map((note, i) => {
     const pos = (360 / (scale.length - 1)) * (i - 1);

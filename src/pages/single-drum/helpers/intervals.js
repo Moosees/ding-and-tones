@@ -24,8 +24,8 @@ const calcInterval = (note, relativeNote) => {
 
   return {
     ...intervals[intervalValue],
-    note: relativeNote.currentNote,
-    noteShort: relativeNote.currentNoteShort
+    note: relativeNote.note,
+    noteShort: relativeNote.noteShort
   };
 };
 
