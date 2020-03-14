@@ -3,8 +3,8 @@ import { absNoteValues, intervals } from './intervals.data';
 const addNoteValues = scale => {
   return scale.map(note => {
     return {
-      currentNote: note,
-      currentNoteShort: note.replace(/[0-9]/g, ''),
+      note,
+      noteShort: note.replace(/[0-9]/g, ''),
       noteValue: absNoteValues[note]
     };
   });

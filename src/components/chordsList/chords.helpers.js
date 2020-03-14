@@ -1,5 +1,6 @@
 // Function needs a way to tie chords to scale instead of just arbitrary intervals.
 // Also a better way to handle scales over several octaves.
+// Displaytests show we need to change the chord objects for easier display.
 const checkIntervals = (note, chord) => {
   let chordExists = true;
 
@@ -10,7 +11,7 @@ const checkIntervals = (note, chord) => {
   return chordExists
     ? {
         intervals: chord.intervals,
-        name: `${note.currentNoteShort} ${chord.name}`
+        name: `${note.noteShort} ${chord.name}`
       }
     : undefined;
 };
@@ -18,9 +19,11 @@ const checkIntervals = (note, chord) => {
 // Needs to handle duplicates of the same chord in some way.
 export const findChords = (scale, chord) => {
   const foundChords = [];
-  scale.forEach(note => {
+  scale.forEach((note, i) => {
     const found = checkIntervals(note, chord);
-    if (found) foundChords.push(found);
+    if (found) {
+      foundChords.push({ ...found, scaleIndex: i });
+    }
   });
   return foundChords;
 };

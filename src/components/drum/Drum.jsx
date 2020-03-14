@@ -2,17 +2,21 @@ import React from 'react';
 import Tonefield from '../tonefield/Tonefield';
 import { DrumContainer } from './drum.styles';
 
-const Drum = ({ scale, focus }) => {
+const Drum = ({ scale, chordFocus }) => {
+  console.log(chordFocus);
+  console.log({ scale });
+
   const tonefields = scale.map((note, i) => {
     const pos = (360 / (scale.length - 1)) * (i - 1);
+
     return (
       <Tonefield
-        key={note.currentNote}
+        key={note.note}
         note={note}
         isDing={i === 0}
         position={pos}
-        text={focus ? focus : note.currentNote}
-        color={focus ? focus : '#222'}
+        text={chordFocus ? 'Chord' : note.note}
+        color={chordFocus ? '#F00' : '#222'}
       />
     );
   });
