@@ -21,7 +21,10 @@ const getAllChords = (scale, chord) => {
 
   scale.forEach(note => {
     if (!noteCache.includes(note.noteShort)) {
-      allChords.push(getChordNotes(note.note, chord.intervals));
+      allChords.push({
+        notes: getChordNotes(note.note, chord.intervals),
+        intervals: chord.intervals
+      });
       noteCache.push(note.noteShort);
     }
   });
@@ -29,29 +32,30 @@ const getAllChords = (scale, chord) => {
   return allChords;
 };
 
-// Change result to be intervals instead of note objects?
 const chordExists = (scale, chord, name) => {
   let chordExists = true;
-  const result = [];
+  const foundNotes = [];
 
-  chord.forEach(chordNote => {
+  chord.notes.forEach((chordNote, i) => {
     let noteExists = false;
-    scale.forEach((note, i) => {
+    scale.forEach(note => {
       if (chordNote.split('-').includes(note.noteShort)) {
-        result.push(note);
+        foundNotes.push({ [note.note]: chord.intervals[i] });
         noteExists = true;
       }
     });
     if (!noteExists) chordExists = false;
   });
 
-  return chordExists ? { result, chord, name: `${chord[0]} ${name}` } : null;
+  return chordExists
+    ? { foundNotes, chord, name: `${chord.notes[0]} ${name}` }
+    : null;
 };
 
 export const findChords = (scale, chord) => {
   const chordsToCheck = getAllChords(scale, chord);
   const foundChords = [];
-  
+
   chordsToCheck.forEach(currentChord => {
     const foundChord = chordExists(scale, currentChord, chord.name);
     if (foundChord) {
