@@ -1,5 +1,6 @@
 import { noteNameToValue, intervals } from './intervals.data';
 
+// Remove all the unused information from scales?
 const addNoteValues = scale => {
   return scale.map(note => {
     return {

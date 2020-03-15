@@ -156,7 +156,7 @@ export const intervals = {
   0: {
     name: 'Perfect Unison',
     shortName: 'P1',
-    color: '#000',
+    color: '#F00',
     halfsteps: 0
   },
   1: {
@@ -180,7 +180,7 @@ export const intervals = {
   4: {
     name: 'Major Third',
     shortName: 'M3',
-    color: '#FE4C02',
+    color: '#FA4C12',
     halfsteps: 4
   },
   5: {
@@ -198,7 +198,7 @@ export const intervals = {
   7: {
     name: 'Perfect Fifth',
     shortName: 'P5',
-    color: '#FD1601',
+    color: '#FC3311',
     halfsteps: 7
   },
   8: {
@@ -228,7 +228,7 @@ export const intervals = {
   12: {
     name: 'Perfect Octave',
     shortName: 'P8',
-    color: '#FF0000',
+    color: '#F02',
     halfsteps: 12
   },
   13: {
@@ -300,7 +300,7 @@ export const intervals = {
   24: {
     name: 'Second Octave',
     shortname: 'P15',
-    color: '#FF0028',
+    color: '#FF0033',
     halfsteps: 24
   }
   // other: {

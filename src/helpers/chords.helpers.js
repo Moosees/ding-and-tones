@@ -34,13 +34,13 @@ const getAllChords = (scale, chord) => {
 
 const chordExists = (scale, chord, name) => {
   let chordExists = true;
-  const foundNotes = [];
+  const foundNotes = {};
 
   chord.notes.forEach((chordNote, i) => {
     let noteExists = false;
     scale.forEach(note => {
       if (chordNote.split('-').includes(note.noteShort)) {
-        foundNotes.push({ [note.note]: chord.intervals[i] });
+        foundNotes[note.note] = chord.intervals[i];
         noteExists = true;
       }
     });
