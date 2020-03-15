@@ -1,29 +1,63 @@
-// Function needs a way to tie chords to scale instead of just arbitrary intervals.
-// Also a better way to handle scales over several octaves.
-// Displaytests show we need to change the chord objects for easier display.
-const checkIntervals = (note, chord) => {
-  let chordExists = true;
+import { noteNameToValue, noteValueToName } from './intervals.data';
 
-  chord.intervals.forEach(interval => {
-    if (!note.intervalList.includes(interval)) chordExists = false;
+const getChordNotes = (rootNote, intervals) => {
+  const rootNoteValue = noteNameToValue[rootNote];
+  const chordNotes = [];
+
+  intervals.forEach(interval => {
+    const note = noteValueToName[rootNoteValue + interval].replace(
+      /[0-9]/g,
+      ''
+    );
+    chordNotes.push(note);
   });
 
-  return chordExists
-    ? {
-        intervals: chord.intervals,
-        name: `${note.noteShort} ${chord.name}`
-      }
-    : undefined;
+  return chordNotes;
 };
 
-// Needs to handle duplicates of the same chord in some way.
-export const findChords = (scale, chord) => {
-  const foundChords = [];
-  scale.forEach((note, i) => {
-    const found = checkIntervals(note, chord);
-    if (found) {
-      foundChords.push({ ...found, scaleIndex: i });
+const getAllChords = (scale, chord) => {
+  const allChords = [];
+  const noteCache = [];
+
+  scale.forEach(note => {
+    if (!noteCache.includes(note.noteShort)) {
+      allChords.push(getChordNotes(note.note, chord.intervals));
+      noteCache.push(note.noteShort);
     }
   });
+
+  return allChords;
+};
+
+// Change result to be intervals instead of note objects?
+const chordExists = (scale, chord, name) => {
+  let chordExists = true;
+  const result = [];
+
+  chord.forEach(chordNote => {
+    let noteExists = false;
+    scale.forEach((note, i) => {
+      if (chordNote.split('-').includes(note.noteShort)) {
+        result.push(note);
+        noteExists = true;
+      }
+    });
+    if (!noteExists) chordExists = false;
+  });
+
+  return chordExists ? { result, chord, name: `${chord[0]} ${name}` } : null;
+};
+
+export const findChords = (scale, chord) => {
+  const chordsToCheck = getAllChords(scale, chord);
+  const foundChords = [];
+  
+  chordsToCheck.forEach(currentChord => {
+    const foundChord = chordExists(scale, currentChord, chord.name);
+    if (foundChord) {
+      foundChords.push(foundChord);
+    }
+  });
+
   return foundChords;
 };
