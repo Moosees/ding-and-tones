@@ -1,9 +1,9 @@
 import React from 'react';
-import { majorTriad } from '../../helpers/chords.data';
-import { findChords } from '../../helpers/chords.helpers';
+import { chordList } from '../../helpers/chords.data';
+import { findAllChords } from '../../helpers/chords.helpers';
 
 const ChordsList = ({ scale, setChordFocus }) => {
-  const chords = findChords(scale, majorTriad);
+  const chords = findAllChords(scale, chordList);
 
   return (
     <ul>
@@ -16,4 +16,4 @@ const ChordsList = ({ scale, setChordFocus }) => {
   );
 };
 
-export default ChordsList;
+export default React.memo(ChordsList);

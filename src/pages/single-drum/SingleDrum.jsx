@@ -9,7 +9,6 @@ import { SingleDrumContainer } from './singleDrum.styles';
 const testScale = ['A2', 'C3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'E4'];
 const scale = sortScaleForDisplay(createIntervalMap(testScale));
 
-// TODO: Prevent re-render of ChordsList when selecting a chord
 const SingleDrum = () => {
   const [chordFocus, setChordFocus] = useState(null);
 

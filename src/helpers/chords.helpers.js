@@ -52,7 +52,7 @@ const chordExists = (scale, chord, name) => {
     : null;
 };
 
-export const findChords = (scale, chord) => {
+export const findOneChord = (scale, chord) => {
   const chordsToCheck = getAllChords(scale, chord);
   const foundChords = [];
 
@@ -65,3 +65,16 @@ export const findChords = (scale, chord) => {
 
   return foundChords;
 };
+
+export const findAllChords = (scale, chordAry) => {
+  const foundChords = [];
+
+  chordAry.forEach(chord => {
+    const found = findOneChord(scale, chord);
+    if (found.length) foundChords.push(...found);
+  });
+
+  return foundChords;
+};
+
+// Maybe change names to make their function more clear.
