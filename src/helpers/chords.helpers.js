@@ -1,6 +1,6 @@
 import { noteNameToValue, noteValueToName } from './intervals.data';
 
-const getChordNotes = (rootNote, intervals) => {
+const getNotesFromIntervals = (rootNote, intervals) => {
   const rootNoteValue = noteNameToValue[rootNote];
   const chordNotes = [];
 
@@ -15,14 +15,14 @@ const getChordNotes = (rootNote, intervals) => {
   return chordNotes;
 };
 
-const getAllChords = (scale, chord) => {
+const getChordsFromScale = (scale, chord) => {
   const allChords = [];
   const noteCache = [];
 
   scale.forEach(note => {
     if (!noteCache.includes(note.noteShort)) {
       allChords.push({
-        notes: getChordNotes(note.note, chord.intervals),
+        notes: getNotesFromIntervals(note.note, chord.intervals),
         intervals: chord.intervals
       });
       noteCache.push(note.noteShort);
@@ -32,7 +32,7 @@ const getAllChords = (scale, chord) => {
   return allChords;
 };
 
-const chordExists = (scale, chord, name) => {
+const chordExists = (scale, chord) => {
   let chordExists = true;
   const foundNotes = {};
 
@@ -47,19 +47,25 @@ const chordExists = (scale, chord, name) => {
     if (!noteExists) chordExists = false;
   });
 
-  return chordExists
-    ? { foundNotes, chord, name: `${chord.notes[0]} ${name}` }
-    : null;
+  return chordExists ? foundNotes : null;
 };
 
 export const findOneChord = (scale, chord) => {
-  const chordsToCheck = getAllChords(scale, chord);
+  const chordsToCheck = getChordsFromScale(scale, chord);
   const foundChords = [];
 
   chordsToCheck.forEach(currentChord => {
-    const foundChord = chordExists(scale, currentChord, chord.name);
+    const foundChord = chordExists(scale, currentChord);
     if (foundChord) {
-      foundChords.push(foundChord);
+      const name = `${currentChord.notes[0]} ${chord.name}`;
+      const nameShort = `${currentChord.notes[0]}${chord.nameShort}`;
+      foundChords.push({
+        name,
+        nameShort,
+        intervals: currentChord.intervals,
+        notes: currentChord.notes,
+        notesInScale: foundChord
+      });
     }
   });
 
@@ -73,8 +79,6 @@ export const findAllChords = (scale, chordAry) => {
     const found = findOneChord(scale, chord);
     if (found.length) foundChords.push(...found);
   });
-
+  
   return foundChords;
 };
-
-// Maybe change names to make their function more clear.
