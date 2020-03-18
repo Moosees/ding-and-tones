@@ -1,5 +1,11 @@
 import { noteNameToValue, noteValueToName } from './intervals.data';
-
+/**
+ * Get the notes that builds a specific chord
+ *
+ * @param {*} rootNote root note of chord
+ * @param {*} intervals chord interval array
+ * @returns an array of notes in a chord
+ */
 const getNotesFromIntervals = (rootNote, intervals) => {
   const rootNoteValue = noteNameToValue[rootNote];
   const chordNotes = [];
@@ -14,7 +20,13 @@ const getNotesFromIntervals = (rootNote, intervals) => {
 
   return chordNotes;
 };
-
+/**
+ * Builds chords with root notes derived for each of the notes in the scale
+ *
+ * @param {*} scale scale to use for bulding chords
+ * @param {*} chord chord to use for building chords
+ * @returns array of chords with root notes from all notes in scale
+ */
 const getChordsFromScale = (scale, chord) => {
   const allChords = [];
   const noteCache = [];
@@ -31,7 +43,13 @@ const getChordsFromScale = (scale, chord) => {
 
   return allChords;
 };
-
+/**
+ * Search a scale for a specific chord with a specific root note
+ *
+ * @param {*} scale the scale where we want to find the chord
+ * @param {*} chord the chord we want to find
+ * @returns the chord we found, else null
+ */
 const chordExists = (scale, chord) => {
   let chordExists = true;
   const foundNotes = {};
@@ -49,8 +67,14 @@ const chordExists = (scale, chord) => {
 
   return chordExists ? foundNotes : null;
 };
-
-export const findOneChord = (scale, chord) => {
+/**
+ * Search a scale for a specific chord no matter the root note
+ *
+ * @param {*} scale the scale where we want to find the chords
+ * @param {*} chord the chord we want to find
+ * @returns an array of found chords or an empty array
+ */
+const findOneChord = (scale, chord) => {
   const chordsToCheck = getChordsFromScale(scale, chord);
   const foundChords = [];
 
@@ -72,6 +96,18 @@ export const findOneChord = (scale, chord) => {
   return foundChords;
 };
 
+// sort based on root note of scale?
+const sortChords = chords => {
+  return chords.sort((a, b) => a.name.localeCompare(b.name));
+};
+
+/**
+ * Searches the scale provided for matches on any of the chords provided
+ *
+ * @param {*} scale the scale where we want to find the chords
+ * @param {*} chordAry an array of chords we wish to search for
+ * @returns an array of found chords, or an empty array
+ */
 export const findAllChords = (scale, chordAry) => {
   const foundChords = [];
 
@@ -79,6 +115,6 @@ export const findAllChords = (scale, chordAry) => {
     const found = findOneChord(scale, chord);
     if (found.length) foundChords.push(...found);
   });
-  
-  return foundChords;
+
+  return sortChords(foundChords);
 };
