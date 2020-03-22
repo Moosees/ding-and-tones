@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ChordsList from '../../components/chordsList/ChordsList';
 import Drum from '../../components/drum/Drum';
+import PatternView from '../../components/patternView/PatternView';
 import { createIntervalMap } from '../../helpers/intervals.helpers';
 import { sortScaleForDisplay } from '../../helpers/noteOrder';
 import { SingleDrumContainer } from './singleDrum.styles';
@@ -16,6 +17,7 @@ const SingleDrum = () => {
     <SingleDrumContainer>
       <Drum scale={scale} chordFocus={chordFocus} />
       <ChordsList scale={scale} setChordFocus={setChordFocus} />
+      <PatternView />
     </SingleDrumContainer>
   );
 };
