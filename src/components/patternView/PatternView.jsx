@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PatternBar from '../patternBar/PatternBar';
 import PatternControls from '../patternControls/PatternControls';
+import { BarsContainer } from './PatternView.styles';
 
 const PatternView = () => {
   const [bpm, setBpm] = useState(90);
-  const [timeSignature, setTimeSignature] = useState('4/4');
+  const [timeSignature, setTimeSignature] = useState('3/4');
 
   return (
     <div>
@@ -14,7 +15,10 @@ const PatternView = () => {
         timeSignature={timeSignature}
         setTimeSignature={setTimeSignature}
       />
-      <PatternBar bpm={bpm} timeSignature={timeSignature} />
+      <BarsContainer>
+        <PatternBar timeSignature={timeSignature} />
+        <PatternBar timeSignature={timeSignature} />
+      </BarsContainer>
     </div>
   );
 };
