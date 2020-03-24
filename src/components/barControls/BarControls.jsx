@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PatternControls = ({
+const BarControls = ({
   bpm,
   setBpm,
   timeSignature,
@@ -40,4 +40,4 @@ const PatternControls = ({
   </div>
 );
 
-export default PatternControls;
+export default BarControls;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Bar = styled.div`
+export const BarContainer = styled.div`
   align-items: center;
   border: 1px solid #000;
   border-radius: 1px;
