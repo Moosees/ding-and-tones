@@ -5,12 +5,17 @@ import { BarsContainer } from './song.styles';
 
 const createBarsFromSong = song => {
   const { timeSignature, gridValue } = song;
-  return song.bars.map(bar => (
-    <Bar timeSignature={timeSignature} gridValue={gridValue} bar={bar} />
+  return song.bars.map((bar, i) => (
+    <Bar
+      key={i}
+      timeSignature={timeSignature}
+      gridValue={gridValue}
+      bar={bar}
+    />
   ));
 };
 
-const PatternView = ({ song }) => {
+const Song = ({ song }) => {
   const [bpm, setBpm] = useState(song ? song.bpm : 90);
   const [timeSignature, setTimeSignature] = useState(
     song ? song.timeSignature : '3/4'
@@ -38,4 +43,4 @@ const PatternView = ({ song }) => {
   );
 };
 
-export default PatternView;
+export default Song;
