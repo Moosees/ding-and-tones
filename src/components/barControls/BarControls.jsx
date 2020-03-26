@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setBpm } from '../../redux/song/song.actions';
 
 const BarControls = ({
   bpm,
@@ -40,4 +42,8 @@ const BarControls = ({
   </div>
 );
 
-export default BarControls;
+const mapStateToProps = ({ song }) => ({
+  bpm: song.bpm
+});
+
+export default connect(mapStateToProps, { setBpm })(BarControls);

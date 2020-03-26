@@ -16,7 +16,6 @@ const createBarsFromSong = song => {
 };
 
 const Song = ({ song }) => {
-  const [bpm, setBpm] = useState(song ? song.bpm : 90);
   const [timeSignature, setTimeSignature] = useState(
     song ? song.timeSignature : '3/4'
   );
@@ -25,8 +24,6 @@ const Song = ({ song }) => {
   return (
     <div>
       <BarControls
-        bpm={bpm}
-        setBpm={setBpm}
         timeSignature={timeSignature}
         setTimeSignature={setTimeSignature}
         gridValue={gridValue}
