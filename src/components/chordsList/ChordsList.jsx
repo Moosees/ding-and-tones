@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { connect } from 'react-redux';
 import { chordList } from '../../helpers/chords.data';
 import { findAllChords } from '../../helpers/chords.helpers';
 
-const ChordsList = ({ scale, setChordFocus }) => {
+const ChordsList = memo(({ scale, setChordFocus }) => {
   const chords = findAllChords(scale, chordList);
 
   return (
@@ -14,6 +15,10 @@ const ChordsList = ({ scale, setChordFocus }) => {
       ))}
     </ul>
   );
-};
+});
 
-export default React.memo(ChordsList);
+const mapStateToProps = ({ scale }) => ({
+  scale: scale.scaleFull
+});
+
+export default connect(mapStateToProps)(ChordsList);

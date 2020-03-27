@@ -1,25 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Tonefield from '../tonefield/Tonefield';
-import { DrumContainer } from './drum.styles';
-import { intervals } from '../../helpers/intervals.data';
-
-const getTonefieldText = (note, chordFocus) => {
-  if (!chordFocus || chordFocus.notes.includes(note.noteShort)) {
-    return note.note;
-  } else {
-    return '';
-  }
-};
-
-const getTonefieldColor = (note, chordFocus) => {
-  if (!chordFocus) return '#222';
-  if (chordFocus.notes.includes(note.noteShort)) {
-    const interval = intervals[chordFocus.notesInScale[note.note]];
-    return interval.color;
-  } else {
-    return '#666';
-  }
-};
+import { DrumSvg } from './drum.styles';
+import { getTonefieldColor, getTonefieldText } from './drum.utils';
 
 const Drum = ({ scale, chordFocus }) => {
   const tonefields = scale.map((note, i) => {
@@ -38,10 +21,15 @@ const Drum = ({ scale, chordFocus }) => {
   });
 
   return (
-    <DrumContainer viewBox="-10 -10 20 20">
+    <DrumSvg viewBox="-10 -10 20 20">
       <circle r="10" cx="0" cy="0" fill="grey" />
       {tonefields}
-    </DrumContainer>
+    </DrumSvg>
   );
 };
-export default Drum;
+
+const mapStateToProps = ({ scale }) => ({
+  scale: scale.scaleFull
+});
+
+export default connect(mapStateToProps)(Drum);

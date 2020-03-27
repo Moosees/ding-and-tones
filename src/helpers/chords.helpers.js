@@ -1,4 +1,4 @@
-import { noteNameToValue, noteValueToName } from './intervals.data';
+import { noteNameToValue, noteValueToName } from '../intervals.data';
 /**
  * Get the notes that builds a specific chord
  *
