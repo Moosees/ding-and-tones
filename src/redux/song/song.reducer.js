@@ -1,7 +1,19 @@
 import SongActionTypes from './song.types';
 
 const INITIAL_STATE = {
-  bpm: 90
+  bpm: 100,
+  bars: [
+    {
+      timeSignature: '4/4',
+      gridValue: 8,
+      pattern: ['1', '', '', '', '1', '', '', '']
+    },
+    {
+      timeSignature: '4/4',
+      gridValue: 8,
+      pattern: ['1', '', '', '', '1', '', '1', '']
+    }
+  ]
 };
 
 const songReducer = (state = INITIAL_STATE, action) => {
