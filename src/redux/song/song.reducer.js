@@ -1,4 +1,4 @@
-import SongActionTypes from './song.types';
+import actionTypes from './song.types';
 
 const INITIAL_STATE = {
   bpm: 100,
@@ -18,7 +18,7 @@ const INITIAL_STATE = {
 
 const songReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SongActionTypes.SET_BPM:
+    case actionTypes.SET_BPM:
       return {
         ...state,
         bpm: action.payload
