@@ -1,24 +1,24 @@
 import React from 'react';
-import { BarContainer, Beat } from './bar.styles';
+import { Beats, Beat } from './bar.styles';
 
-const createBar = (timeSignature, gridValue, bar) => {
-  const [beats, value] = timeSignature.split('/');
-  const totalBeats = beats * (gridValue / value);
-  if (bar) {
-    return bar.map((beat, i) => <Beat key={i}>{beat}</Beat>);
+const displayBeats = ({ timeSignature, gridValue, pattern }) => {
+  if (pattern) {
+    // Display the beats in the pattern
+    return pattern.map((beat, i) => <Beat key={i}>{beat}</Beat>);
   } else {
-    const bar = [];
+    // Create an empty pattern
+    const [beats, value] = timeSignature.split('/');
+    const totalBeats = beats * (gridValue / value);
+    const emptyPattern = [];
     for (let i = 0; i < totalBeats; ++i) {
-      bar.push(<Beat key={i + 1} />);
+      emptyPattern.push(<Beat key={i + 1} />);
     }
-    return bar;
+    return emptyPattern;
   }
 };
 
-const Bar = ({ timeSignature, gridValue, bar }) => {
-  return (
-    <BarContainer>{createBar(timeSignature, gridValue, bar)}</BarContainer>
-  );
+const Bar = ({ bar }) => {
+  return <Beats>{displayBeats(bar)}</Beats>;
 };
 
 export default Bar;

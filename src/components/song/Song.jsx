@@ -1,43 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import Bar from '../bar/Bar';
 import BarControls from '../barControls/BarControls';
-import { BarsContainer } from './song.styles';
+import { Bars } from './song.styles';
 
-const createBarsFromSong = song => {
-  const { timeSignature, gridValue } = song;
-  return song.bars.map((bar, i) => (
-    <Bar
-      key={i}
-      timeSignature={timeSignature}
-      gridValue={gridValue}
-      bar={bar}
-    />
-  ));
-};
-
-const Song = ({ song }) => {
-  const [timeSignature, setTimeSignature] = useState(
-    song ? song.timeSignature : '3/4'
-  );
-  const [gridValue, setGridValue] = useState(song ? song.gridValue : 4);
-
+const Song = ({ bars }) => {
   return (
     <div>
-      <BarControls
-        timeSignature={timeSignature}
-        setTimeSignature={setTimeSignature}
-        gridValue={gridValue}
-        setGridValue={setGridValue}
-      />
-      <BarsContainer>
-        {song ? (
-          createBarsFromSong(song)
-        ) : (
-          <Bar timeSignature={timeSignature} gridValue={gridValue} />
-        )}
-      </BarsContainer>
+      <BarControls />
+      <Bars>
+        {bars.map((bar, i) => (
+          <Bar key={i} bar={bar} />
+        ))}
+      </Bars>
     </div>
   );
 };
 
-export default Song;
+const mapStateToProps = ({ song }) => ({
+  bars: song.bars
+});
+
+export default connect(mapStateToProps)(Song);
