@@ -1,5 +1,6 @@
-import React from 'react';
-import { Beats, Beat } from './bar.styles';
+import React, { useState } from 'react';
+import BarControls from '../barControls/BarControls';
+import { Beat, Beats } from './bar.styles';
 
 const displayBeats = ({ timeSignature, gridValue, pattern }) => {
   if (pattern) {
@@ -18,7 +19,21 @@ const displayBeats = ({ timeSignature, gridValue, pattern }) => {
 };
 
 const Bar = ({ bar }) => {
-  return <Beats>{displayBeats(bar)}</Beats>;
+  const [controlsOpen, setControlsOpen] = useState(false);
+
+  const toggleControls = () => {
+    setControlsOpen(!controlsOpen);
+  };
+
+  return (
+    <div>
+      <div>
+        <span onClick={toggleControls}>+</span>
+        {controlsOpen && <BarControls />}
+      </div>
+      <Beats>{displayBeats(bar)}</Beats>
+    </div>
+  );
 };
 
 export default Bar;
