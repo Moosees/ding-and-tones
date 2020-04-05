@@ -1,22 +1,6 @@
-const dummySong = {
-  bpm: 120,
-  bars: [
-    {
-      timeSignature: '4/4',
-      gridValue: 8,
-      pattern: ['1', '', '1', '', '1', '', '1', '']
-    },
-    {
-      timeSignature: '3/4',
-      gridValue: 16,
-      pattern: ['1', '', '', '', '1', '', '', '', '1', '', '1', '']
-    }
-  ]
-};
-
 const playBeat = (beat, timeout) =>
   new Promise(resolve => {
-    console.log({ beat });
+    if (beat === '1') new Audio('audio/rav/test.wav').play();
     setTimeout(() => {
       resolve();
     }, timeout);
@@ -32,10 +16,8 @@ const playBar = async (bar, bpm) => {
   }
 };
 
-const playSong = async song => {
+export const playSong = async song => {
   for (let bar of song.bars) {
     await playBar(bar, song.bpm);
   }
 };
-
-playSong(dummySong);

@@ -5,13 +5,13 @@ const INITIAL_STATE = {
   bars: [
     {
       timeSignature: '4/4',
-      gridValue: 8,
-      pattern: ['1', '', '', '', '1', '', '', '']
+      gridValue: 4,
+      pattern: ['1', '', '1', '']
     },
     {
       timeSignature: '4/4',
       gridValue: 8,
-      pattern: ['1', '', '', '', '1', '', '1', '']
+      pattern: ['1', '', '', '1', '', '1', '', '1']
     }
   ]
 };
