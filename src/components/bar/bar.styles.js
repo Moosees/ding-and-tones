@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Beats = styled.div`
   align-items: center;
-  border: 1px solid #000;
+  border: ${({ isPlaying }) => (isPlaying ? '2px' : '1px')} solid #000;
   border-radius: 1px;
   display: flex;
   justify-content: center;
@@ -11,7 +11,7 @@ export const Beats = styled.div`
 `;
 
 export const Beat = styled.span`
-  border: 1px solid #555;
+  border: ${({ isPlaying }) => (isPlaying ? '2px' : '1px')} solid #555;
   border-radius: 100%;
   height: 3rem;
   line-height: 3rem;
