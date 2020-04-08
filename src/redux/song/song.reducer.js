@@ -11,8 +11,8 @@ const INITIAL_STATE = {
         { id: 'aa', tone: '1' },
         { id: 'ab', tone: '0' },
         { id: 'ac', tone: '1' },
-        { id: 'ad', tone: '0' }
-      ]
+        { id: 'ad', tone: '0' },
+      ],
     },
     {
       id: 'bar_b',
@@ -22,12 +22,13 @@ const INITIAL_STATE = {
         { id: 'ba', tone: '1' },
         { id: 'bb', tone: '0' },
         { id: 'bc', tone: '1' },
-        { id: 'bd', tone: '1' }
-      ]
-    }
+        { id: 'bd', tone: '1' },
+      ],
+    },
   ],
   currentBar: null,
-  currentBeat: null
+  currentBeat: null,
+  isPlaying: false,
 };
 
 const songReducer = (state = INITIAL_STATE, action) => {
@@ -35,20 +36,23 @@ const songReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.SET_BPM:
       return {
         ...state,
-        bpm: action.payload
+        bpm: action.payload,
       };
 
     case actionTypes.SET_CURRENT_BAR:
       return {
         ...state,
-        currentBar: action.payload
+        currentBar: action.payload,
       };
 
     case actionTypes.SET_CURRENT_BEAT:
       return {
         ...state,
-        currentBeat: action.payload
+        currentBeat: action.payload,
       };
+
+    case actionTypes.UPDATE_BEAT:
+      return { ...state };
 
     default:
       return state;
