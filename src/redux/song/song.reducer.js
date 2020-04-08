@@ -1,31 +1,13 @@
 import actionTypes from './song.types';
 
 const INITIAL_STATE = {
-  bpm: 100,
   bars: [
-    {
-      id: 'bar_a',
-      timeSignature: '4/4',
-      gridValue: 4,
-      pattern: [
-        { id: 'aa', tone: '1' },
-        { id: 'ab', tone: '0' },
-        { id: 'ac', tone: '1' },
-        { id: 'ad', tone: '0' },
-      ],
-    },
-    {
-      id: 'bar_b',
-      timeSignature: '4/4',
-      gridValue: 4,
-      pattern: [
-        { id: 'ba', tone: '1' },
-        { id: 'bb', tone: '0' },
-        { id: 'bc', tone: '1' },
-        { id: 'bd', tone: '1' },
-      ],
-    },
+    { bar: 'bar_a', id: 'bar_1' },
+    { bar: 'bar_a', id: 'bar_2' },
+    { bar: 'bar_a', id: 'bar_3' },
+    { bar: 'bar_b', id: 'bar_4' },
   ],
+  bpm: 100,
   currentBar: null,
   currentBeat: null,
   isPlaying: false,

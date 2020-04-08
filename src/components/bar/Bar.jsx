@@ -5,6 +5,7 @@ import BarControls from '../barControls/BarControls';
 import Beat from '../beat/Beat';
 import { Beats } from './bar.styles';
 
+// move to parent?
 const createNewBar = (timeSignature = '4/4', gridValue = 8) => {
   const [beats, value] = timeSignature.split('/');
   const totalBeats = beats * (gridValue / value);
@@ -14,23 +15,25 @@ const createNewBar = (timeSignature = '4/4', gridValue = 8) => {
     emptyPattern.push(<Beat key={uuid()} />);
   }
 
+  // create a bar in state from id and empty bar
   return emptyPattern;
 };
 
-const displayBeats = (pattern) =>
-  pattern.map((beat) => <Beat key={beat.id} beat={beat} />);
+const displayBeats = (barId, updateId, pattern) =>
+  pattern.map((beat) => (
+    <Beat key={beat.id} barId={barId} updateId={updateId} beat={beat} />
+  ));
 
-const Bar = ({ bar, currentBar }) => {
+const Bar = ({ bar, bars, currentBar }) => {
   const [controlsOpen, setControlsOpen] = useState(false);
 
   const toggleControls = () => {
     setControlsOpen(!controlsOpen);
   };
 
-  const id = bar ? bar.id : uuid();
-  const beats = bar ? displayBeats(bar.pattern) : createNewBar();
+  const { pattern } = bars[bar.bar];
 
-  // create a bar in state from id and empty bar
+  const beats = bar ? displayBeats(bar.id, bar.bar, pattern) : createNewBar();
 
   return (
     <div>
@@ -38,12 +41,13 @@ const Bar = ({ bar, currentBar }) => {
         <span onClick={toggleControls}>+</span>
         {controlsOpen && <BarControls />}
       </div>
-      <Beats isPlaying={id === currentBar}>{beats}</Beats>
+      <Beats isPlaying={bar.id === currentBar}>{beats}</Beats>
     </div>
   );
 };
 
-const mapStateToProps = ({ song }) => ({
+const mapStateToProps = ({ bars, song }) => ({
+  bars,
   currentBar: song.currentBar,
 });
 

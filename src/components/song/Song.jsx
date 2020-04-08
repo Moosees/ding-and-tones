@@ -9,8 +9,8 @@ const Song = ({ bars }) => {
     <div>
       <SongControls />
       <Bars>
-        {bars.map((bar, i) => (
-          <Bar key={i} bar={bar} />
+        {bars.map((bar) => (
+          <Bar key={bar.id} bar={bar} />
         ))}
       </Bars>
     </div>

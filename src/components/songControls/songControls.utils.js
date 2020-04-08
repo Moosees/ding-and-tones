@@ -19,16 +19,18 @@ const playBar = async (bar, bpm) => {
   // add swing in the future?
   const timeout = 60000 / bpm / timeoutMultiplier;
 
-  store.dispatch(setCurrentBar(bar.id));
-
   for (let beat of bar.pattern) {
     await playBeat(beat, timeout);
   }
 };
 
-export const playSong = async (song) => {
-  for (let bar of song.bars) {
-    await playBar(bar, song.bpm);
+export const playSong = async () => {
+  const { bars, song } = store.getState();
+
+  for (let { bar, id } of song.bars) {
+    const nextBar = bars[bar];
+    store.dispatch(setCurrentBar(id));
+    await playBar(nextBar, song.bpm);
   }
   store.dispatch(setCurrentBeat(null));
   store.dispatch(setCurrentBar(null));

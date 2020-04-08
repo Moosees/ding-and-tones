@@ -14,8 +14,3 @@ export const setCurrentBeat = (beatId) => ({
   type: actionTypes.SET_CURRENT_BEAT,
   payload: beatId,
 });
-
-export const updateBeat = (barId, beatId) => ({
-  type: actionTypes.UPDATE_BEAT,
-  payload: { barId, beatId },
-});
