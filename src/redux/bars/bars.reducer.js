@@ -25,26 +25,15 @@ const INITIAL_STATE = {
 
 const barsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case actionTypes.SET_BPM:
-      return {
-        ...state,
-        bpm: action.payload,
-      };
-
-    case actionTypes.SET_CURRENT_BAR:
-      return {
-        ...state,
-        currentBar: action.payload,
-      };
-
-    case actionTypes.SET_CURRENT_BEAT:
-      return {
-        ...state,
-        currentBeat: action.payload,
-      };
-
     case actionTypes.UPDATE_BEAT:
-      return { ...state };
+      const barToUpdate = { ...state[action.payload.barId] };
+      barToUpdate.pattern = barToUpdate.pattern.map((beat) =>
+        beat.id === action.payload.beatId
+          ? { ...beat, tone: action.payload.value }
+          : beat
+      );
+
+      return { ...state, [action.payload.barId]: barToUpdate };
 
     default:
       return state;

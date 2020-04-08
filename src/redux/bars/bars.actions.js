@@ -1,6 +1,6 @@
 import actionTypes from './bars.types';
 
-export const updateBeat = (barId, beatId) => ({
+export const updateBeat = (barId, beatId, value) => ({
   type: actionTypes.UPDATE_BEAT,
-  payload: { barId, beatId },
+  payload: { barId, beatId, value },
 });
