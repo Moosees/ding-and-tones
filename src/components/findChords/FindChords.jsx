@@ -12,9 +12,9 @@ const FindChords = ({ scale, chordList, findChordsInScale }) => {
 
 const mapStateToProps = ({ chords, scale }) => ({
   chordList: chords.chordList,
-  scale: scale.scaleFull
+  scale: scale.scaleFull,
 });
 
 export default connect(mapStateToProps, {
-  findChordsInScale
+  findChordsInScale,
 })(FindChords);

@@ -6,7 +6,7 @@ import songReducer from './song/song.reducer';
 const rootReducer = combineReducers({
   chords: chordsReducer,
   scale: scaleReducer,
-  song: songReducer
+  song: songReducer,
 });
 
 export default rootReducer;

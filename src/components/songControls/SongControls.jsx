@@ -13,7 +13,7 @@ const SongControls = ({ setBpm, song }) => (
         min="50"
         max="160"
         value={song.bpm}
-        onChange={e => setBpm(Number(e.target.value))}
+        onChange={(e) => setBpm(Number(e.target.value))}
       />
     </label>
     <button onClick={() => playSong(song)}>Play</button>
@@ -21,7 +21,7 @@ const SongControls = ({ setBpm, song }) => (
 );
 
 const mapStateToProps = ({ song }) => ({
-  song
+  song,
 });
 
 export default connect(mapStateToProps, { setBpm })(SongControls);

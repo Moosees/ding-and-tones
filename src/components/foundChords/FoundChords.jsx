@@ -15,9 +15,9 @@ const FoundChords = memo(({ displayChordOnDrum, foundChords }) => {
 });
 
 const mapStateToProps = ({ chords }) => ({
-  foundChords: chords.foundChords
+  foundChords: chords.foundChords,
 });
 
 export default connect(mapStateToProps, {
-  displayChordOnDrum
+  displayChordOnDrum,
 })(FoundChords);

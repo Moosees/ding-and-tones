@@ -10,7 +10,7 @@ const getNotesFromIntervals = (rootNote, intervals) => {
   const rootNoteValue = noteNameToValue[rootNote];
   const chordNotes = [];
 
-  intervals.forEach(interval => {
+  intervals.forEach((interval) => {
     const note = noteValueToName[rootNoteValue + interval].replace(
       /[0-9]/g,
       ''
@@ -31,11 +31,11 @@ const getChordsFromScale = (scale, chord) => {
   const allChords = [];
   const noteCache = [];
 
-  scale.forEach(note => {
+  scale.forEach((note) => {
     if (!noteCache.includes(note.noteShort)) {
       allChords.push({
         notes: getNotesFromIntervals(note.note, chord.intervals),
-        intervals: chord.intervals
+        intervals: chord.intervals,
       });
       noteCache.push(note.noteShort);
     }
@@ -56,7 +56,7 @@ const chordExists = (scale, chord) => {
 
   chord.notes.forEach((chordNote, i) => {
     let noteExists = false;
-    scale.forEach(note => {
+    scale.forEach((note) => {
       if (chordNote.split('-').includes(note.noteShort)) {
         foundNotes[note.note] = chord.intervals[i];
         noteExists = true;
@@ -78,7 +78,7 @@ const findOneChord = (scale, chord) => {
   const chordsToCheck = getChordsFromScale(scale, chord);
   const foundChords = [];
 
-  chordsToCheck.forEach(currentChord => {
+  chordsToCheck.forEach((currentChord) => {
     const foundChord = chordExists(scale, currentChord);
     if (foundChord) {
       const name = `${currentChord.notes[0]} ${chord.name}`;
@@ -88,7 +88,7 @@ const findOneChord = (scale, chord) => {
         nameShort,
         intervals: currentChord.intervals,
         notes: currentChord.notes,
-        notesInScale: foundChord
+        notesInScale: foundChord,
       });
     }
   });
@@ -97,7 +97,7 @@ const findOneChord = (scale, chord) => {
 };
 
 // sort based on root note of scale?
-const sortChords = chords => {
+const sortChords = (chords) => {
   return chords.sort((a, b) => a.name.localeCompare(b.name));
 };
 
@@ -111,7 +111,7 @@ const sortChords = chords => {
 export const findAllChords = (scale, chordAry) => {
   const foundChords = [];
 
-  chordAry.forEach(chord => {
+  chordAry.forEach((chord) => {
     const found = findOneChord(scale, chord);
     if (found.length) foundChords.push(...found);
   });

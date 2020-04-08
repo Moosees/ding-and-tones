@@ -23,7 +23,7 @@ const SingleDrum = ({ scale, saveScale }) => {
 };
 
 const mapStateToProps = ({ scale }) => ({
-  scale: scale.scaleSimple
+  scale: scale.scaleSimple,
 });
 
 export default connect(mapStateToProps, { saveScale })(SingleDrum);

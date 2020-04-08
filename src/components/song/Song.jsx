@@ -18,7 +18,7 @@ const Song = ({ bars }) => {
 };
 
 const mapStateToProps = ({ song }) => ({
-  bars: song.bars
+  bars: song.bars,
 });
 
 export default connect(mapStateToProps)(Song);

@@ -10,5 +10,5 @@ export const chordList = [
   { name: 'minor 7th', nameShort: 'm7', intervals: [0, 3, 7, 10] },
   { name: 'min-maj 7th', nameShort: 'mM7', intervals: [0, 3, 7, 11] },
   { name: 'diminished', nameShort: 'dim', intervals: [0, 3, 6] },
-  { name: 'diminished 7th', nameShort: 'dim7', intervals: [0, 3, 6, 9] }
+  { name: 'diminished 7th', nameShort: 'dim7', intervals: [0, 3, 6, 9] },
 ];

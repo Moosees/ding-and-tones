@@ -13,7 +13,7 @@ const createNewBar = (timeSignature = '4/4', gridValue = 8) => {
   for (let i = 0; i < totalBeats; ++i) {
     emptyPattern.push(<Beat key={uuid()} />);
   }
-  
+
   return emptyPattern;
 };
 

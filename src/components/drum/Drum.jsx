@@ -30,7 +30,7 @@ const Drum = ({ scale, displayedChord }) => {
 
 const mapStateToProps = ({ chords, scale }) => ({
   displayedChord: chords.displayedChord,
-  scale: scale.scaleFull
+  scale: scale.scaleFull,
 });
 
 export default connect(mapStateToProps)(Drum);

@@ -5,7 +5,7 @@ import { findAllChords } from './chords.utils';
 const INITIAL_STATE = {
   chordList,
   displayedChord: null,
-  foundChords: []
+  foundChords: [],
 };
 
 const chordsReducer = (state = INITIAL_STATE, action) => {
