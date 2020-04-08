@@ -10,27 +10,27 @@ const INITIAL_STATE = {
   bpm: 100,
   currentBar: null,
   currentBeat: null,
-  isPlaying: false,
+  isSongPlaying: false,
 };
 
-const songReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
+const songReducer = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
     case actionTypes.SET_BPM:
       return {
         ...state,
-        bpm: action.payload,
+        bpm: payload,
       };
 
     case actionTypes.SET_CURRENT_BAR:
       return {
         ...state,
-        currentBar: action.payload,
+        currentBar: payload,
       };
 
     case actionTypes.SET_CURRENT_BEAT:
       return {
         ...state,
-        currentBeat: action.payload,
+        currentBeat: payload,
       };
 
     case actionTypes.UPDATE_BEAT:

@@ -8,16 +8,16 @@ const INITIAL_STATE = {
   foundChords: [],
 };
 
-const chordsReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
+const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
     case actionTypes.DISPLAY_CHORD:
-      return { ...state, displayedChord: action.payload };
+      return { ...state, displayedChord: payload };
 
     case actionTypes.CLEAR_CHORD:
       return { ...state, displayedChord: null };
 
     case actionTypes.FIND_CHORDS:
-      const { scale, chords } = action.payload;
+      const { scale, chords } = payload;
       const foundChords = findAllChords(scale, chords);
       return { ...state, foundChords };
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setBpm } from '../../redux/song/song.actions';
 import { playSong } from './songControls.utils';
 
-const SongControls = ({ setBpm, bpm, isPlaying }) => (
+const SongControls = ({ setBpm, bpm, isSongPlaying }) => (
   <div>
     <label>
       BPM:
@@ -17,13 +17,15 @@ const SongControls = ({ setBpm, bpm, isPlaying }) => (
       />
     </label>
     {/* Add pause button if possible */}
-    <button onClick={() => playSong()}>{isPlaying ? 'Pause' : 'Play'}</button>
+    <button onClick={() => playSong()}>
+      {isSongPlaying ? 'Pause' : 'Play'}
+    </button>
   </div>
 );
 
 const mapStateToProps = ({ song }) => ({
   bpm: song.bpm,
-  isPlaying: song.isPlaying,
+  isSongPlaying: song.isSongPlaying,
 });
 
 export default connect(mapStateToProps, { setBpm })(SongControls);

@@ -9,10 +9,12 @@ const Beat = ({
   beat,
   currentBar,
   currentBeat,
+  isSongPlaying,
   updateBeat,
 }) => {
   const handleChange = (evt) => {
     // add debounce
+    // chords needs updated logic
     updateBeat(updateId, beat.id, Number(evt.target.value));
   };
 
@@ -24,6 +26,7 @@ const Beat = ({
         size="2"
         value={beat.tone}
         onChange={handleChange}
+        disabled={isSongPlaying}
       />
     </BeatContainer>
   );
@@ -32,6 +35,7 @@ const Beat = ({
 const mapStateToProps = ({ song }) => ({
   currentBar: song.currentBar,
   currentBeat: song.currentBeat,
+  isSongPlaying: song.isSongPlaying,
 });
 
 export default connect(mapStateToProps, { updateBeat })(Beat);

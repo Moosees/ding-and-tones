@@ -6,11 +6,11 @@ const INITIAL_STATE = {
   scaleFull: [],
 };
 
-const scaleReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
+const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
     case actionTypes.SAVE_SCALE:
-      const scaleFull = createFullScale(action.payload);
-      return { ...state, scaleSimple: action.payload, scaleFull };
+      const scaleFull = createFullScale(payload);
+      return { ...state, scaleSimple: payload, scaleFull };
 
     default:
       return state;

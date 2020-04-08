@@ -23,17 +23,15 @@ const INITIAL_STATE = {
   },
 };
 
-const barsReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
+const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
     case actionTypes.UPDATE_BEAT:
-      const barToUpdate = { ...state[action.payload.barId] };
+      const barToUpdate = { ...state[payload.barId] };
       barToUpdate.pattern = barToUpdate.pattern.map((beat) =>
-        beat.id === action.payload.beatId
-          ? { ...beat, tone: action.payload.value }
-          : beat
+        beat.id === payload.beatId ? { ...beat, tone: payload.value } : beat
       );
 
-      return { ...state, [action.payload.barId]: barToUpdate };
+      return { ...state, [payload.barId]: barToUpdate };
 
     default:
       return state;
