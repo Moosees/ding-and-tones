@@ -33,8 +33,11 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
         currentBeat: payload,
       };
 
-    case actionTypes.UPDATE_BEAT:
-      return { ...state };
+    case actionTypes.SET_IS_SONG_PLAYING:
+      return {
+        ...state,
+        isSongPlaying: payload,
+      };
 
     default:
       return state;

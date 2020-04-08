@@ -14,3 +14,8 @@ export const setCurrentBeat = (beatId) => ({
   type: actionTypes.SET_CURRENT_BEAT,
   payload: beatId,
 });
+
+export const setIsSongPlaying = (isSongPlaying) => ({
+  type: actionTypes.SET_IS_SONG_PLAYING,
+  payload: isSongPlaying,
+});
