@@ -23,7 +23,7 @@ const getNotesFromIntervals = (rootNote, intervals) => {
 /**
  * Builds chords with root notes derived for each of the notes in the scale
  *
- * @param {*} scale scale to use for bulding chords
+ * @param {*} scale scale to use for building chords
  * @param {*} chord chord to use for building chords
  * @returns array of chords with root notes from all notes in scale
  */
@@ -96,7 +96,6 @@ const findOneChord = (scale, chord) => {
   return foundChords;
 };
 
-// sort based on root note of scale?
 const sortChords = (chords) => {
   return chords.sort((a, b) => a.name.localeCompare(b.name));
 };

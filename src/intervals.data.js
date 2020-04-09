@@ -299,7 +299,7 @@ export const intervals = {
   },
   24: {
     name: 'Second Octave',
-    shortname: 'P15',
+    shortName: 'P15',
     color: '#FF0033',
     halfsteps: 24,
   },

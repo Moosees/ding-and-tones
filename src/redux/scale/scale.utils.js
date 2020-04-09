@@ -1,10 +1,10 @@
 import { intervals, noteNameToValue } from '../../intervals.data';
 
 /**
- * Sorts the notes of the scale for easy display around a drumshaped pattern.
+ * Sorts the notes of the scale for easy display around a drum svg.
  *
  * @param {*} scale unsorted scale with notes in ascending musical order.
- * @returns sorted sclae with notes in circular order around the drum.
+ * @returns sorted scale with notes in circular order around the drum.
  */
 export const sortScaleForDrum = (scale) => {
   const sortedScale = [];

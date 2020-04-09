@@ -5,7 +5,7 @@ import BarControls from '../barControls/BarControls';
 import Beat from '../beat/Beat';
 import { Beats } from './bar.styles';
 
-// move to parent?
+// move to parent or somewhere else?
 const createNewBar = (timeSignature = '4/4', gridValue = 8) => {
   const [beats, value] = timeSignature.split('/');
   const totalBeats = beats * (gridValue / value);
@@ -15,7 +15,6 @@ const createNewBar = (timeSignature = '4/4', gridValue = 8) => {
     emptyPattern.push(<Beat key={uuid()} />);
   }
 
-  // create a bar in state from id and empty bar
   return emptyPattern;
 };
 

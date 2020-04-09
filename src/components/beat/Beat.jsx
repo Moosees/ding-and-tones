@@ -13,8 +13,6 @@ const Beat = ({
   updateBeat,
 }) => {
   const handleChange = (evt) => {
-    // add debounce
-    // chords needs updated logic
     updateBeat(updateId, beat.id, Number(evt.target.value));
   };
 

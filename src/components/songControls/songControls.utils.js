@@ -7,7 +7,6 @@ const playBeat = (beat, timeout) =>
 
     store.dispatch(setCurrentBeat(beat.id));
 
-    // add logic for playing different tones
     if (beat.tone === '1') new Audio('audio/rav/test.wav').play();
 
     setTimeout(() => {
@@ -18,7 +17,6 @@ const playBeat = (beat, timeout) =>
 const playBar = async (bar, bpm) => {
   const [, value] = bar.timeSignature.split('/');
   const timeoutMultiplier = bar.gridValue / value;
-  // add swing in the future?
   const timeout = 60000 / bpm / timeoutMultiplier;
 
   for (let beat of bar.pattern) {
