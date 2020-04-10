@@ -11,6 +11,7 @@ const SongControls = ({ setBpm, bpm, isSongPlaying, setIsSongPlaying }) => {
 
   return (
     <div>
+      <button onClick={handleClick}>{isSongPlaying ? 'Pause' : 'Play'}</button>
       <label>
         BPM:
         <input
@@ -21,7 +22,21 @@ const SongControls = ({ setBpm, bpm, isSongPlaying, setIsSongPlaying }) => {
           onChange={(e) => setBpm(Number(e.target.value))}
         />
       </label>
-      <button onClick={handleClick}>{isSongPlaying ? 'Pause' : 'Play'}</button>
+      <label>
+        Time signature:
+        <select value={'3/4'} onChange={(e) => console.log(e.target.value)}>
+          <option value={'4/4'}>4/4</option>
+          <option value={'3/4'}>3/4</option>
+        </select>
+      </label>
+      <label>
+        Grid value:
+        <select value={8} onChange={(e) => console.log(e.target.value)}>
+          <option value={4}>4</option>
+          <option value={8}>8</option>
+          <option value={16}>16</option>
+        </select>
+      </label>
     </div>
   );
 };

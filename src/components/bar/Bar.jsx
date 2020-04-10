@@ -32,10 +32,6 @@ const displayBeats = (barId, updateId, pattern, options) =>
 const Bar = ({ bar, bars, currentBar, options }) => {
   const [controlsOpen, setControlsOpen] = useState(false);
 
-  const toggleControls = () => {
-    setControlsOpen(!controlsOpen);
-  };
-
   const { pattern } = bars[bar.bar];
 
   const beats = bar
@@ -45,7 +41,9 @@ const Bar = ({ bar, bars, currentBar, options }) => {
   return (
     <div>
       <div>
-        <span onClick={toggleControls}>+</span>
+        <button onClick={() => setControlsOpen(!controlsOpen)}>
+          {`${controlsOpen ? 'Hide' : 'Show'} bar controls`}
+        </button>
         {controlsOpen && <BarControls />}
       </div>
       <Beats isPlaying={bar.id === currentBar}>{beats}</Beats>
