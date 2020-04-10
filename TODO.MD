@@ -21,6 +21,8 @@
 * Modify time signature and grid values
 * Differentiate fourths, eights and sixteenths
 * Song specific default values for time signature and grid value
+* What happens when you change to a scale with less notes than pattern needs?
+* Build custom component instead of html select
 
 ## Chords
 

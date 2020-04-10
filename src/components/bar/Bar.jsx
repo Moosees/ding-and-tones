@@ -18,12 +18,18 @@ const createNewBar = (timeSignature = '4/4', gridValue = 8) => {
   return emptyPattern;
 };
 
-const displayBeats = (barId, updateId, pattern) =>
+const displayBeats = (barId, updateId, pattern, options) =>
   pattern.map((beat) => (
-    <Beat key={beat.id} barId={barId} updateId={updateId} beat={beat} />
+    <Beat
+      key={beat.id}
+      barId={barId}
+      updateId={updateId}
+      beat={beat}
+      options={options}
+    />
   ));
 
-const Bar = ({ bar, bars, currentBar }) => {
+const Bar = ({ bar, bars, currentBar, options }) => {
   const [controlsOpen, setControlsOpen] = useState(false);
 
   const toggleControls = () => {
@@ -32,7 +38,9 @@ const Bar = ({ bar, bars, currentBar }) => {
 
   const { pattern } = bars[bar.bar];
 
-  const beats = bar ? displayBeats(bar.id, bar.bar, pattern) : createNewBar();
+  const beats = bar
+    ? displayBeats(bar.id, bar.bar, pattern, options)
+    : createNewBar();
 
   return (
     <div>

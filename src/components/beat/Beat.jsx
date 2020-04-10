@@ -11,6 +11,7 @@ const Beat = ({
   currentBeat,
   isSongPlaying,
   updateBeat,
+  options,
 }) => {
   const handleChange = (evt) => {
     updateBeat(updateId, beat.id, Number(evt.target.value));
@@ -18,14 +19,13 @@ const Beat = ({
 
   return (
     <BeatContainer isPlaying={barId === currentBar && beat.id === currentBeat}>
-      <input
-        type="text"
-        maxLength="2"
-        size="2"
+      <select
         value={beat.tone}
-        onChange={handleChange}
         disabled={isSongPlaying}
-      />
+        onChange={handleChange}
+      >
+        {options}
+      </select>
     </BeatContainer>
   );
 };
