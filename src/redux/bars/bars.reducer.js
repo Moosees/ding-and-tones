@@ -26,12 +26,24 @@ const INITIAL_STATE = {
 const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case actionTypes.UPDATE_BEAT:
-      const barToUpdate = { ...state[payload.barId] };
-      barToUpdate.pattern = barToUpdate.pattern.map((beat) =>
+      const barToUpdateBeatIn = { ...state[payload.barId] };
+      barToUpdateBeatIn.pattern = barToUpdateBeatIn.pattern.map((beat) =>
         beat.id === payload.beatId ? { ...beat, tone: payload.value } : beat
       );
 
-      return { ...state, [payload.barId]: barToUpdate };
+      return { ...state, [payload.barId]: barToUpdateBeatIn };
+
+    case actionTypes.SET_BAR_TIME:
+      const barToChangeTimeIn = { ...state[payload.barId] };
+      barToChangeTimeIn.timeSignature = payload.timeSignature;
+
+      return { ...state, [payload.barId]: barToChangeTimeIn };
+
+    case actionTypes.SET_BAR_GRID:
+      const barToChangeGridIn = { ...state[payload.barId] };
+      barToChangeGridIn.gridValue = payload.gridValue;
+
+      return { ...state, [payload.barId]: barToChangeGridIn };
 
     default:
       return state;

@@ -8,6 +8,8 @@ const INITIAL_STATE = {
     { bar: 'bar_b', id: 'bar_4' },
   ],
   bpm: 100,
+  timeSignature: '4/4',
+  gridValue: 4,
   currentBar: null,
   currentBeat: null,
   isSongPlaying: false,
@@ -19,6 +21,18 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         bpm: payload,
+      };
+
+    case actionTypes.SET_SONG_TIME:
+      return {
+        ...state,
+        timeSignature: payload,
+      };
+
+    case actionTypes.SET_SONG_GRID:
+      return {
+        ...state,
+        gridValue: payload,
       };
 
     case actionTypes.SET_CURRENT_BAR:

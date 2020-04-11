@@ -5,6 +5,16 @@ export const setBpm = (bpm) => ({
   payload: bpm,
 });
 
+export const setSongTime = (timeSignature) => ({
+  type: actionTypes.SET_SONG_TIME,
+  payload: timeSignature,
+});
+
+export const setSongGrid = (gridValue) => ({
+  type: actionTypes.SET_SONG_GRID,
+  payload: gridValue,
+});
+
 export const setCurrentBar = (barId) => ({
   type: actionTypes.SET_CURRENT_BAR,
   payload: barId,
