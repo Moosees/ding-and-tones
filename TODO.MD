@@ -22,7 +22,6 @@
 * Move or delete patterns (delete one, delete all linked)
 * Modify time signature and grid values
 * Differentiate fourths, eights and sixteenths visually
-* Song specific default values for time signature and grid value
 * What happens when you change to a scale with less notes than pattern needs?
 * Edit mode with on/off button for moving patterns?
 * Dry up code if song and bar controls share markup
@@ -53,6 +52,7 @@
 * Select drum type
 * Web worker?
 * Use strings across app for patterns and what sound to play?
+* Loop or pause when song ends
 
 ## State/Redux
 

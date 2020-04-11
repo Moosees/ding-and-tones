@@ -44,7 +44,7 @@ const Bar = ({ bar, bars, currentBar, options }) => {
         <button onClick={() => setControlsOpen(!controlsOpen)}>
           {`${controlsOpen ? 'Hide' : 'Show'} bar controls`}
         </button>
-        {controlsOpen && <BarControls />}
+        {controlsOpen && <BarControls barId={bar.bar} />}
       </div>
       <Beats isPlaying={bar.id === currentBar}>{beats}</Beats>
     </div>

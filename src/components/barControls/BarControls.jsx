@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setBpm } from '../../redux/song/song.actions';
+import { setBarGrid, setBarTime } from '../../redux/bars/bars.actions';
 
-const BarControls = () => {
+const BarControls = ({ barId, bars, setBarGrid, setBarTime }) => {
   const [customTime, setCustomTime] = useState(false);
   const [customGrid, setCustomGrid] = useState(false);
+
+  const { gridValue, timeSignature } = bars[barId];
 
   return (
     <div>
@@ -14,7 +16,10 @@ const BarControls = () => {
       {customTime && (
         <label>
           Time signature:
-          <select value={'3/4'} onChange={(e) => console.log(e.target.value)}>
+          <select
+            value={timeSignature}
+            onChange={(e) => setBarTime(barId, e.target.value)}
+          >
             <option value={'4/4'}>4/4</option>
             <option value={'3/4'}>3/4</option>
           </select>
@@ -26,7 +31,10 @@ const BarControls = () => {
       {customGrid && (
         <label>
           Grid value:
-          <select value={8} onChange={(e) => console.log(e.target.value)}>
+          <select
+            value={gridValue}
+            onChange={(e) => setBarGrid(barId, e.target.value)}
+          >
             <option value={4}>4</option>
             <option value={8}>8</option>
             <option value={16}>16</option>
@@ -39,8 +47,10 @@ const BarControls = () => {
     </div>
   );
 };
-const mapStateToProps = ({ song }) => ({
-  bpm: song.bpm,
+const mapStateToProps = ({ bars }) => ({
+  bars,
 });
 
-export default connect(mapStateToProps, { setBpm })(BarControls);
+export default connect(mapStateToProps, { setBarGrid, setBarTime })(
+  BarControls
+);
