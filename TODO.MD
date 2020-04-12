@@ -12,22 +12,30 @@
 
 ## Pattern builder
 
-* Debounce on input - not needed for select tags, just for bpm?
-* Input validation - not needed for select tags, just for bpm?
 * Chords
 * Triplets, flams, etc.
-* Copy patterns
-* Link/unlink patterns
-* Move or delete patterns (delete one, delete all linked)
-* Modify time signature and grid values
-* Only allow changing global time signature and grid value on new song?
-* Song-info component to show song name, time signature and grid value
 * Differentiate fourths, eights and sixteenths visually
 * What happens when you change to a scale with less notes than pattern needs?
-* Edit mode with on/off button for moving patterns?
-* Dry up code if song and bar controls share markup
+
+## Bar controls
+
+* Modify time signature and grid values
+* Move or delete patterns (delete one, delete all linked)
+* Copy patterns - to end or to next, to new bar or to linked bar
+* Link/unlink patterns
+
+## Song info
+
+* Song-info component to show song name, time signature and grid value
 * Difficulty for current song?
+* Only allow changing global time signature and grid value on new song?
+
+## Song controls
+
+* Debounce and validate bpm
+* Edit mode with on/off button for moving patterns?
 * Refactor song control buttons to new component?
+* Dry up code if song and bar controls share markup
 
 ## Chords
 
@@ -45,8 +53,11 @@
 * Show intervals on drum
 * Show legend for colors
 * Show played note on drum
-* Drum controls, play/intervals mode
-* Drum controls, edit scale, save scale, etc.
+
+## Drum controls
+
+* Play/intervals mode
+* Edit scale, save/load scale, etc.
 
 ## Sound player
 
@@ -63,6 +74,7 @@
 
 * Clean up scaleFull array
 * Figure out chord sorting
+* Persist data through local storage?
 
 ## Exporting
   
