@@ -21,6 +21,7 @@
 * Move or delete patterns (delete one, delete all linked)
 * Modify time signature and grid values
 * Only allow changing global time signature and grid value on new song?
+* Song-info component to show song name, time signature and grid value
 * Differentiate fourths, eights and sixteenths visually
 * What happens when you change to a scale with less notes than pattern needs?
 * Edit mode with on/off button for moving patterns?
@@ -34,6 +35,7 @@
 * Select chords from list
 * Merge triads and 7s/9s?
 * Display notes in chord
+* Play chords
 
 ## Drum
 
@@ -43,6 +45,8 @@
 * Show intervals on drum
 * Show legend for colors
 * Show played note on drum
+* Drum controls, play/intervals mode
+* Drum controls, edit scale, save scale, etc.
 
 ## Sound player
 
@@ -57,8 +61,13 @@
 
 ## State/Redux
 
-* Clean up scale
+* Clean up scaleFull array
 * Figure out chord sorting
+
+## Exporting
+  
+* Printing, format?
+* Save to .pdf?
 
 ## Backend
 
