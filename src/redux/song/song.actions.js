@@ -29,3 +29,8 @@ export const setIsSongPlaying = (isSongPlaying) => ({
   type: actionTypes.SET_IS_SONG_PLAYING,
   payload: isSongPlaying,
 });
+
+export const addBarToSong = (bar) => ({
+  type: actionTypes.ADD_BAR_TO_SONG,
+  payload: bar,
+});

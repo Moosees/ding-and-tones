@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { addNewBar } from '../../redux/bars/bars.actions';
 import {
+  addBarToSong,
   setBpm,
   setIsSongPlaying,
   setSongGrid,
@@ -24,6 +25,7 @@ const createNewBar = (timeSignature, gridValue) => {
 
 const SongControls = ({
   addNewBar,
+  addBarToSong,
   bpm,
   setBpm,
   isSongPlaying,
@@ -39,6 +41,7 @@ const SongControls = ({
   };
 
   const handleNewBar = (timeSignature, gridValue) => {
+    const songId = uuid();
     const barId = uuid();
     const pattern = createNewBar(timeSignature, gridValue);
 
@@ -49,6 +52,8 @@ const SongControls = ({
         pattern,
       },
     });
+
+    addBarToSong({ bar: barId, id: songId });
   };
 
   return (
@@ -109,6 +114,7 @@ const mapStateToProps = ({ song }) => ({
 
 export default connect(mapStateToProps, {
   addNewBar,
+  addBarToSong,
   setBpm,
   setIsSongPlaying,
   setSongGrid,

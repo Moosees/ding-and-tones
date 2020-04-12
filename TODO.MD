@@ -12,15 +12,15 @@
 
 ## Pattern builder
 
-* Create new bar
 * Debounce on input - not needed for select tags, just for bpm?
 * Input validation - not needed for select tags, just for bpm?
 * Chords
-* Triplets
+* Triplets, flams, etc.
 * Copy patterns
 * Link/unlink patterns
 * Move or delete patterns (delete one, delete all linked)
 * Modify time signature and grid values
+* Only allow changing global time signature and grid value on new song?
 * Differentiate fourths, eights and sixteenths visually
 * What happens when you change to a scale with less notes than pattern needs?
 * Edit mode with on/off button for moving patterns?

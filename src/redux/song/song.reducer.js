@@ -53,6 +53,12 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
         isSongPlaying: payload,
       };
 
+    case actionTypes.ADD_BAR_TO_SONG:
+      return {
+        ...state,
+        bars: [...state.bars, payload],
+      };
+
     default:
       return state;
   }

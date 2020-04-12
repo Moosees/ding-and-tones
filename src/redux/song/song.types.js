@@ -5,6 +5,7 @@ const actionTypes = {
   SET_CURRENT_BAR: 'SET_CURRENT_BAR',
   SET_CURRENT_BEAT: 'SET_CURRENT_BEAT',
   SET_IS_SONG_PLAYING: 'SET_IS_SONG_PLAYING',
+  ADD_BAR_TO_SONG: 'ADD_BAR_TO_SONG',
 };
 
 export default actionTypes;
