@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuid } from 'uuid';
+import { addNewBar } from '../../redux/bars/bars.actions';
 import {
   setBpm,
   setIsSongPlaying,
@@ -8,7 +10,20 @@ import {
 } from '../../redux/song/song.actions';
 import { playSong } from './songControls.utils';
 
+const createNewBar = (timeSignature, gridValue) => {
+  const [beats, value] = timeSignature.split('/');
+  const totalBeats = beats * (gridValue / value);
+  const newPattern = [];
+
+  for (let i = 0; i < totalBeats; ++i) {
+    newPattern.push({ id: uuid(), tone: '' });
+  }
+
+  return newPattern;
+};
+
 const SongControls = ({
+  addNewBar,
   bpm,
   setBpm,
   isSongPlaying,
@@ -18,14 +33,35 @@ const SongControls = ({
   timeSignature,
   setSongTime,
 }) => {
-  const handleClick = () => {
+  const handlePlayPause = () => {
     setIsSongPlaying(!isSongPlaying);
     if (!isSongPlaying) playSong();
   };
 
+  const handleNewBar = (timeSignature, gridValue) => {
+    const barId = uuid();
+    const pattern = createNewBar(timeSignature, gridValue);
+
+    addNewBar({
+      [barId]: {
+        timeSignature,
+        gridValue,
+        pattern,
+      },
+    });
+  };
+
   return (
     <div>
-      <button onClick={handleClick}>{isSongPlaying ? 'Pause' : 'Play'}</button>
+      <button onClick={handlePlayPause}>
+        {isSongPlaying ? 'Pause' : 'Play'}
+      </button>
+      <button
+        disabled={isSongPlaying}
+        onClick={() => handleNewBar(timeSignature, gridValue)}
+      >
+        Add empty bar
+      </button>
       <label>
         BPM:
         <input
@@ -33,6 +69,7 @@ const SongControls = ({
           min="50"
           max="160"
           value={bpm}
+          disabled={isSongPlaying}
           onChange={(e) => setBpm(Number(e.target.value))}
         />
       </label>
@@ -40,6 +77,7 @@ const SongControls = ({
         Time signature:
         <select
           value={timeSignature}
+          disabled={isSongPlaying}
           onChange={(e) => setSongTime(e.target.value)}
         >
           <option value={'4/4'}>4/4</option>
@@ -50,6 +88,7 @@ const SongControls = ({
         Grid value:
         <select
           value={gridValue}
+          disabled={isSongPlaying}
           onChange={(e) => setSongGrid(Number(e.target.value))}
         >
           <option value={4}>4</option>
@@ -69,6 +108,7 @@ const mapStateToProps = ({ song }) => ({
 });
 
 export default connect(mapStateToProps, {
+  addNewBar,
   setBpm,
   setIsSongPlaying,
   setSongGrid,

@@ -26,6 +26,7 @@
 * Edit mode with on/off button for moving patterns?
 * Dry up code if song and bar controls share markup
 * Difficulty for current song?
+* Refactor song control buttons to new component?
 
 ## Chords
 

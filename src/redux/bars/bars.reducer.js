@@ -45,6 +45,9 @@ const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return { ...state, [payload.barId]: barToChangeGridIn };
 
+    case actionTypes.ADD_NEW_BAR:
+      return { ...state, ...payload };
+
     default:
       return state;
   }

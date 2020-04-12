@@ -14,3 +14,8 @@ export const setBarGrid = (barId, gridValue) => ({
   type: actionTypes.SET_BAR_GRID,
   payload: { barId, gridValue },
 });
+
+export const addNewBar = (newBar) => ({
+  type: actionTypes.ADD_NEW_BAR,
+  payload: newBar,
+});
