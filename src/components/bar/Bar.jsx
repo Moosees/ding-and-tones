@@ -4,12 +4,12 @@ import BarControls from '../barControls/BarControls';
 import Beat from '../beat/Beat';
 import { Beats } from './bar.styles';
 
-const displayBeats = (barId, updateId, pattern, options) =>
+const displayBeats = (arrangementId, barId, pattern, options) =>
   pattern.map((beat) => (
     <Beat
-      key={beat.id}
+      key={beat.beatId}
+      arrangementId={arrangementId}
       barId={barId}
-      updateId={updateId}
       beat={beat}
       options={options}
     />
@@ -17,10 +17,10 @@ const displayBeats = (barId, updateId, pattern, options) =>
 
 const Bar = ({ bar, bars, currentBar, options }) => {
   const [controlsOpen, setControlsOpen] = useState(false);
+  const { barId, arrangementId } = bar;
+  const { pattern } = bars[barId];
 
-  const { pattern } = bars[bar.bar];
-
-  const beats = displayBeats(bar.id, bar.bar, pattern, options);
+  const beats = displayBeats(arrangementId, barId, pattern, options);
 
   return (
     <div>
@@ -28,9 +28,9 @@ const Bar = ({ bar, bars, currentBar, options }) => {
         <button onClick={() => setControlsOpen(!controlsOpen)}>
           {`${controlsOpen ? 'Hide' : 'Show'} bar controls`}
         </button>
-        {controlsOpen && <BarControls barId={bar.bar} />}
+        {controlsOpen && <BarControls bar={bar} />}
       </div>
-      <Beats isPlaying={bar.id === currentBar}>{beats}</Beats>
+      <Beats isPlaying={arrangementId === currentBar}>{beats}</Beats>
     </div>
   );
 };

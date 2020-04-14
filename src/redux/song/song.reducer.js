@@ -1,11 +1,11 @@
 import actionTypes from './song.types';
 
 const INITIAL_STATE = {
-  bars: [
-    { bar: 'bar_a', id: 'bar_1' },
-    { bar: 'bar_a', id: 'bar_2' },
-    { bar: 'bar_a', id: 'bar_3' },
-    { bar: 'bar_b', id: 'bar_4' },
+  arrangement: [
+    { barId: 'bar_a', arrangementId: 'bar_1' },
+    { barId: 'bar_a', arrangementId: 'bar_2' },
+    { barId: 'bar_a', arrangementId: 'bar_3' },
+    { barId: 'bar_b', arrangementId: 'bar_4' },
   ],
   bpm: 100,
   timeSignature: '4/4',
@@ -56,8 +56,14 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
     case actionTypes.ADD_BAR_TO_SONG:
       return {
         ...state,
-        bars: [...state.bars, payload],
+        arrangement: [...state.arrangement, payload],
       };
+
+    case actionTypes.DELETE_BAR_FROM_SONG:
+      const updatedBars = state.arrangement.filter(
+        (bar) => bar.arrangementId !== payload
+      );
+      return { ...state, arrangement: updatedBars };
 
     default:
       return state;

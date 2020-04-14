@@ -5,9 +5,9 @@ const playBeat = (beat, timeout) =>
   new Promise((resolve, reject) => {
     if (!store.getState().song.isSongPlaying) return reject();
 
-    store.dispatch(setCurrentBeat(beat.id));
+    store.dispatch(setCurrentBeat(beat.beatId));
 
-    if (beat.tone === '1') new Audio('audio/rav/test.wav').play();
+    if (beat.sound === '1') new Audio('audio/rav/test.wav').play();
 
     setTimeout(() => {
       return resolve();
@@ -31,9 +31,9 @@ const playBar = async (bar, bpm) => {
 export const playSong = async () => {
   const { bars, song } = store.getState();
 
-  for (let { bar, id } of song.bars) {
-    const nextBar = bars[bar];
-    store.dispatch(setCurrentBar(id));
+  for (let { barId, arrangementId } of song.arrangement) {
+    const nextBar = bars[barId];
+    store.dispatch(setCurrentBar(arrangementId));
 
     await playBar(nextBar, song.bpm);
   }

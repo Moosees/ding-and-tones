@@ -5,20 +5,20 @@ const INITIAL_STATE = {
     timeSignature: '4/4',
     gridValue: 4,
     pattern: [
-      { id: 'aa', tone: '1' },
-      { id: 'ab', tone: '0' },
-      { id: 'ac', tone: '1' },
-      { id: 'ad', tone: '0' },
+      { beatId: 'aa', sound: '1' },
+      { beatId: 'ab', sound: '0' },
+      { beatId: 'ac', sound: '1' },
+      { beatId: 'ad', sound: '0' },
     ],
   },
   bar_b: {
     timeSignature: '4/4',
     gridValue: 4,
     pattern: [
-      { id: 'ba', tone: '1' },
-      { id: 'bb', tone: '0' },
-      { id: 'bc', tone: '1' },
-      { id: 'bd', tone: '1' },
+      { beatId: 'ba', sound: '1' },
+      { beatId: 'bb', sound: '0' },
+      { beatId: 'bc', sound: '1' },
+      { beatId: 'bd', sound: '1' },
     ],
   },
 };
@@ -28,7 +28,7 @@ const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
     case actionTypes.UPDATE_BEAT:
       const barToUpdateBeatIn = { ...state[payload.barId] };
       barToUpdateBeatIn.pattern = barToUpdateBeatIn.pattern.map((beat) =>
-        beat.id === payload.beatId ? { ...beat, tone: payload.value } : beat
+        beat.beatId === payload.beatId ? { ...beat, sound: payload.value } : beat
       );
 
       return { ...state, [payload.barId]: barToUpdateBeatIn };

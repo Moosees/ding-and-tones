@@ -17,7 +17,7 @@ const createNewBar = (timeSignature, gridValue) => {
   const newPattern = [];
 
   for (let i = 0; i < totalBeats; ++i) {
-    newPattern.push({ id: uuid(), tone: '' });
+    newPattern.push({ beatId: uuid(), sound: '' });
   }
 
   return newPattern;
@@ -41,7 +41,7 @@ const SongControls = ({
   };
 
   const handleNewBar = (timeSignature, gridValue) => {
-    const songId = uuid();
+    const arrangementId = uuid();
     const barId = uuid();
     const pattern = createNewBar(timeSignature, gridValue);
 
@@ -53,7 +53,7 @@ const SongControls = ({
       },
     });
 
-    addBarToSong({ bar: barId, id: songId });
+    addBarToSong({ barId, arrangementId });
   };
 
   return (

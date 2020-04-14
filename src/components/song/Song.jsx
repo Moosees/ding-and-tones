@@ -4,11 +4,19 @@ import Bar from '../bar/Bar';
 import SongControls from '../songControls/SongControls';
 import { Bars } from './song.styles';
 
+// All possible sounds available on current scale
 const createOptions = (scale) => {
-  const options = [];
+  const options = [
+    <option key={'X'} value={''}>
+      Pause
+    </option>,
+    <option key={'T'} value={'T'}>
+      Tak
+    </option>,
+  ];
   for (let i = 0; i < scale.length; ++i) {
     options.push(
-      <option key={i} value={i}>
+      <option key={`${i}`} value={i}>
         {`${i}-${scale[i]}`}
       </option>
     );
@@ -16,9 +24,9 @@ const createOptions = (scale) => {
   return options;
 };
 
-const Song = ({ bars, scale }) => {
+const Song = ({ arrangement, scale }) => {
   const [options, setOptions] = useState([]);
-  
+
   useEffect(() => {
     setOptions(createOptions(scale));
   }, [scale]);
@@ -27,8 +35,8 @@ const Song = ({ bars, scale }) => {
     <div>
       <SongControls />
       <Bars>
-        {bars.map((bar) => (
-          <Bar key={bar.id} bar={bar} options={options} />
+        {arrangement.map((bar) => (
+          <Bar key={bar.arrangementId} bar={bar} options={options} />
         ))}
       </Bars>
     </div>
@@ -37,7 +45,7 @@ const Song = ({ bars, scale }) => {
 
 const mapStateToProps = ({ scale, song }) => ({
   scale: scale.scaleSimple,
-  bars: song.bars,
+  arrangement: song.arrangement,
 });
 
 export default connect(mapStateToProps)(Song);

@@ -4,8 +4,8 @@ import { updateBeat } from '../../redux/bars/bars.actions';
 import { BeatContainer } from './beat.styles';
 
 const Beat = ({
+  arrangementId,
   barId,
-  updateId,
   beat,
   currentBar,
   currentBeat,
@@ -14,13 +14,15 @@ const Beat = ({
   options,
 }) => {
   const handleChange = (evt) => {
-    updateBeat(updateId, beat.id, Number(evt.target.value));
+    updateBeat(barId, beat.beatId, evt.target.value);
   };
 
   return (
-    <BeatContainer isPlaying={barId === currentBar && beat.id === currentBeat}>
+    <BeatContainer
+      isPlaying={arrangementId === currentBar && beat.beatId === currentBeat}
+    >
       <select
-        value={beat.tone}
+        value={beat.sound}
         disabled={isSongPlaying}
         onChange={handleChange}
       >

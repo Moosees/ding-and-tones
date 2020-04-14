@@ -1,23 +1,23 @@
 import actionTypes from './song.types';
 
-export const setBpm = (bpm) => ({
+export const setBpm = (newBpm) => ({
   type: actionTypes.SET_BPM,
-  payload: bpm,
+  payload: newBpm,
 });
 
-export const setSongTime = (timeSignature) => ({
+export const setSongTime = (newTimeSignature) => ({
   type: actionTypes.SET_SONG_TIME,
-  payload: timeSignature,
+  payload: newTimeSignature,
 });
 
-export const setSongGrid = (gridValue) => ({
+export const setSongGrid = (newGridValue) => ({
   type: actionTypes.SET_SONG_GRID,
-  payload: gridValue,
+  payload: newGridValue,
 });
 
-export const setCurrentBar = (barId) => ({
+export const setCurrentBar = (arrangementId) => ({
   type: actionTypes.SET_CURRENT_BAR,
-  payload: barId,
+  payload: arrangementId,
 });
 
 export const setCurrentBeat = (beatId) => ({
@@ -30,7 +30,12 @@ export const setIsSongPlaying = (isSongPlaying) => ({
   payload: isSongPlaying,
 });
 
-export const addBarToSong = (bar) => ({
+export const addBarToSong = (barObject) => ({
   type: actionTypes.ADD_BAR_TO_SONG,
-  payload: bar,
+  payload: barObject,
+});
+
+export const deleteBarFromSong = (arrangementId) => ({
+  type: actionTypes.DELETE_BAR_FROM_SONG,
+  payload: arrangementId,
 });
