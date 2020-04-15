@@ -6,22 +6,10 @@ import {
   addBarToSong,
   setBpm,
   setIsSongPlaying,
-  setSongGrid,
+  setSongSubdivision,
   setSongTime,
 } from '../../redux/song/song.actions';
-import { playSong } from './songControls.utils';
-
-const createNewBar = (timeSignature, gridValue) => {
-  const [beats, value] = timeSignature.split('/');
-  const totalBeats = beats * (gridValue / value);
-  const newPattern = [];
-
-  for (let i = 0; i < totalBeats; ++i) {
-    newPattern.push({ beatId: uuid(), sound: '' });
-  }
-
-  return newPattern;
-};
+import { createNewBar, playSong } from './songControls.utils';
 
 const SongControls = ({
   addNewBar,
@@ -30,8 +18,8 @@ const SongControls = ({
   setBpm,
   isSongPlaying,
   setIsSongPlaying,
-  gridValue,
-  setSongGrid,
+  subdivision,
+  setSongSubdivision,
   timeSignature,
   setSongTime,
 }) => {
@@ -40,16 +28,16 @@ const SongControls = ({
     if (!isSongPlaying) playSong();
   };
 
-  const handleNewBar = (timeSignature, gridValue) => {
+  const handleNewBar = (timeSignature, subdivision) => {
     const arrangementId = uuid();
     const barId = uuid();
-    const pattern = createNewBar(timeSignature, gridValue);
+    const measure = createNewBar(timeSignature, subdivision);
 
     addNewBar({
       [barId]: {
         timeSignature,
-        gridValue,
-        pattern,
+        subdivision,
+        measure,
       },
     });
 
@@ -63,7 +51,7 @@ const SongControls = ({
       </button>
       <button
         disabled={isSongPlaying}
-        onClick={() => handleNewBar(timeSignature, gridValue)}
+        onClick={() => handleNewBar(timeSignature, subdivision)}
       >
         Add empty bar
       </button>
@@ -90,15 +78,15 @@ const SongControls = ({
         </select>
       </label>
       <label>
-        Grid value:
+        Beat subdivision:
         <select
-          value={gridValue}
+          value={subdivision}
           disabled={isSongPlaying}
-          onChange={(e) => setSongGrid(Number(e.target.value))}
+          onChange={(e) => setSongSubdivision(Number(e.target.value))}
         >
-          <option value={4}>4</option>
-          <option value={8}>8</option>
-          <option value={16}>16</option>
+          <option value={4}>4ths</option>
+          <option value={8}>8ths</option>
+          <option value={16}>16ths</option>
         </select>
       </label>
     </div>
@@ -108,7 +96,7 @@ const SongControls = ({
 const mapStateToProps = ({ song }) => ({
   bpm: song.bpm,
   isSongPlaying: song.isSongPlaying,
-  gridValue: song.gridValue,
+  subdivision: song.subdivision,
   timeSignature: song.timeSignature,
 });
 
@@ -117,6 +105,6 @@ export default connect(mapStateToProps, {
   addBarToSong,
   setBpm,
   setIsSongPlaying,
-  setSongGrid,
+  setSongSubdivision,
   setSongTime,
 })(SongControls);

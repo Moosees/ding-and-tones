@@ -10,9 +10,9 @@ export const setSongTime = (newTimeSignature) => ({
   payload: newTimeSignature,
 });
 
-export const setSongGrid = (newGridValue) => ({
-  type: actionTypes.SET_SONG_GRID,
-  payload: newGridValue,
+export const setSongSubdivision = (newSubdivision) => ({
+  type: actionTypes.SET_SONG_SUBDIVISION,
+  payload: newSubdivision,
 });
 
 export const setCurrentBar = (arrangementId) => ({

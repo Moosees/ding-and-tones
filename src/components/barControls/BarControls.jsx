@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setBarGrid, setBarTime } from '../../redux/bars/bars.actions';
+import { setBarSubdivision, setBarTime } from '../../redux/bars/bars.actions';
 import { deleteBarFromSong } from '../../redux/song/song.actions';
 
 const BarControls = ({
   bar,
   bars,
-  setBarGrid,
+  setBarSubdivision,
   setBarTime,
   deleteBarFromSong,
 }) => {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
   const { barId, arrangementId } = bar;
-  const { gridValue, timeSignature } = bars[barId];
+  const { subdivision, timeSignature } = bars[barId];
 
   const handleDelete = () => {
-    deleteBarFromSong(arrangementId)
+    deleteBarFromSong(arrangementId);
   };
 
   return (
@@ -41,14 +41,14 @@ const BarControls = ({
             </select>
           </label>
           <label>
-            Grid value:
+            Beat subdivision:
             <select
-              value={gridValue}
-              onChange={(e) => setBarGrid(barId, e.target.value)}
+              value={subdivision}
+              onChange={(e) => setBarSubdivision(barId, e.target.value)}
             >
-              <option value={4}>4</option>
-              <option value={8}>8</option>
-              <option value={16}>16</option>
+              <option value={4}>4ths</option>
+              <option value={8}>8ths</option>
+              <option value={16}>16ths</option>
             </select>
           </label>
         </>
@@ -61,7 +61,7 @@ const mapStateToProps = ({ bars }) => ({
 });
 
 export default connect(mapStateToProps, {
-  setBarGrid,
+  setBarSubdivision,
   setBarTime,
   deleteBarFromSong,
 })(BarControls);

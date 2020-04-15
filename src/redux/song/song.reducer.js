@@ -3,13 +3,13 @@ import actionTypes from './song.types';
 const INITIAL_STATE = {
   arrangement: [
     { barId: 'bar_a', arrangementId: 'bar_1' },
-    { barId: 'bar_a', arrangementId: 'bar_2' },
+    { barId: 'bar_b', arrangementId: 'bar_2' },
     { barId: 'bar_a', arrangementId: 'bar_3' },
     { barId: 'bar_b', arrangementId: 'bar_4' },
   ],
   bpm: 100,
   timeSignature: '4/4',
-  gridValue: 4,
+  subdivision: 4,
   currentBar: null,
   currentBeat: null,
   isSongPlaying: false,
@@ -29,10 +29,10 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
         timeSignature: payload,
       };
 
-    case actionTypes.SET_SONG_GRID:
+    case actionTypes.SET_SONG_SUBDIVISION:
       return {
         ...state,
-        gridValue: payload,
+        subdivision: payload,
       };
 
     case actionTypes.SET_CURRENT_BAR:

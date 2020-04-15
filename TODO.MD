@@ -10,25 +10,26 @@
 * Build custom component instead of html select?
 * Popup for bar controls?
 
-## Pattern builder
+## Song builder
 
 * Chords
 * Triplets, flams, etc.
-* Differentiate fourths, eights and sixteenths visually
 * What happens when you change to a scale with less notes than pattern needs?
+* Subdivide measures unevenly (4/4 could be 3-3-2 eight notes)
+* Verify that subdivision is not less than time signature demands
 
 ## Bar controls
 
-* Modify time signature and grid values
+* Modify time signature and subdivision
 * Rearrange arrangement
 * Copy patterns - to end or to next, to new bar or to linked bar
 * Link/unlink patterns
 
 ## Song info
 
-* Song-info component to show song name, time signature and grid value
+* Song-info component to show song name, time signature and subdivision
 * Difficulty for current song?
-* Only allow changing global time signature and grid value on new song?
+* Only allow changing global time signature and subdivision on new song?
 
 ## Song controls
 

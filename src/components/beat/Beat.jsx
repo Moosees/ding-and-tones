@@ -7,19 +7,22 @@ const Beat = ({
   arrangementId,
   barId,
   beat,
+  beatIndex,
   currentBar,
   currentBeat,
   isSongPlaying,
   updateBeat,
   options,
+  isAccented,
 }) => {
   const handleChange = (evt) => {
-    updateBeat(barId, beat.beatId, evt.target.value);
+    updateBeat(barId, beat.beatId, beatIndex, evt.target.value);
   };
 
   return (
     <BeatContainer
       isPlaying={arrangementId === currentBar && beat.beatId === currentBeat}
+      isAccented={isAccented}
     >
       <select
         value={beat.sound}

@@ -3,22 +3,30 @@ import actionTypes from './bars.types';
 const INITIAL_STATE = {
   bar_a: {
     timeSignature: '4/4',
-    gridValue: 4,
-    pattern: [
-      { beatId: 'aa', sound: '1' },
-      { beatId: 'ab', sound: '0' },
-      { beatId: 'ac', sound: '1' },
-      { beatId: 'ad', sound: '0' },
+    subdivision: 4,
+    measure: [
+      [{ beatId: 'aa', sound: '1' }],
+      [{ beatId: 'ab', sound: '1' }],
+      [{ beatId: 'ac', sound: '1' }],
+      [{ beatId: 'ad', sound: '1' }],
     ],
   },
   bar_b: {
-    timeSignature: '4/4',
-    gridValue: 4,
-    pattern: [
-      { beatId: 'ba', sound: '1' },
-      { beatId: 'bb', sound: '0' },
-      { beatId: 'bc', sound: '1' },
-      { beatId: 'bd', sound: '1' },
+    timeSignature: '3/4',
+    subdivision: 8,
+    measure: [
+      [
+        { beatId: 'ba', sound: '0' },
+        { beatId: 'bb', sound: '1' },
+      ],
+      [
+        { beatId: 'bc', sound: '1' },
+        { beatId: 'bd', sound: '0' },
+      ],
+      [
+        { beatId: 'be', sound: '1' },
+        { beatId: 'bf', sound: '1' },
+      ],
     ],
   },
 };
@@ -27,8 +35,12 @@ const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case actionTypes.UPDATE_BEAT:
       const barToUpdateBeatIn = { ...state[payload.barId] };
-      barToUpdateBeatIn.pattern = barToUpdateBeatIn.pattern.map((beat) =>
-        beat.beatId === payload.beatId ? { ...beat, sound: payload.value } : beat
+      barToUpdateBeatIn.measure[payload.beatIndex] = barToUpdateBeatIn.measure[
+        payload.beatIndex
+      ].map((part) =>
+        part.beatId === payload.beatId
+          ? { ...part, sound: payload.newSound }
+          : part
       );
 
       return { ...state, [payload.barId]: barToUpdateBeatIn };
@@ -39,9 +51,9 @@ const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return { ...state, [payload.barId]: barToChangeTimeIn };
 
-    case actionTypes.SET_BAR_GRID:
+    case actionTypes.SET_BAR_SUBDIVISION:
       const barToChangeGridIn = { ...state[payload.barId] };
-      barToChangeGridIn.gridValue = payload.gridValue;
+      barToChangeGridIn.subdivision = payload.subdivision;
 
       return { ...state, [payload.barId]: barToChangeGridIn };
 
