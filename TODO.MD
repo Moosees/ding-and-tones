@@ -69,7 +69,6 @@
 * Select drum type
 * Web worker?
 * Use strings across app for patterns and what sound to play?
-* Loop or pause when song ends
 
 ## State/Redux
 
@@ -97,3 +96,4 @@
 
 * Multiple drums for chords, songs etc.
 * Comparing scales using tables or other presentations
+* Ability to loop songs

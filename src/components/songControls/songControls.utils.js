@@ -1,5 +1,9 @@
 import { v4 as uuid } from 'uuid';
-import { setCurrentBar, setCurrentBeat } from '../../redux/song/song.actions';
+import {
+  setCurrentBar,
+  setCurrentBeat,
+  setIsSongPlaying,
+} from '../../redux/song/song.actions';
 import { store } from '../../redux/store';
 
 // Playing songs
@@ -20,8 +24,9 @@ const playBar = async (bar, bpm) => {
   const [, value] = bar.timeSignature.split('/');
   const timeoutMultiplier = bar.subdivision / value;
   const timeout = 60000 / bpm / timeoutMultiplier;
+  const beats = bar.measure.flat();
 
-  for (let beat of bar.measure) {
+  for (let beat of beats) {
     try {
       await playBeat(beat, timeout);
     } catch (e) {
@@ -41,6 +46,7 @@ export const playSong = async () => {
   }
   store.dispatch(setCurrentBeat(null));
   store.dispatch(setCurrentBar(null));
+  store.dispatch(setIsSongPlaying(false));
 };
 
 // Creating empty beats
