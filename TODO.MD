@@ -20,7 +20,7 @@
 ## Bar controls
 
 * Modify time signature and grid values
-* Move or delete patterns (delete one, delete all linked)
+* Rearrange arrangement
 * Copy patterns - to end or to next, to new bar or to linked bar
 * Link/unlink patterns
 
@@ -91,3 +91,8 @@
 * GDPR
 * Extra features - comments?
 * Share song through link?
+
+## Future goals
+
+* Multiple drums for chords, songs etc.
+* Comparing scales using tables or other presentations
