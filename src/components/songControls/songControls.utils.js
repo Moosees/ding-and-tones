@@ -21,8 +21,8 @@ const playBeat = (beat, timeout) =>
   });
 
 const playBar = async (bar, bpm) => {
-  const [, value] = bar.timeSignature.split('/');
-  const timeoutMultiplier = bar.subdivision / value;
+  const [, beatValue] = bar.timeSignature.split('/');
+  const timeoutMultiplier = bar.subdivision / beatValue;
   const timeout = 60000 / bpm / timeoutMultiplier;
   const beats = bar.measure.flat();
 
@@ -61,8 +61,8 @@ const createNewBeat = (partsPerBeat) => {
 };
 
 export const createNewBar = (timeSignature, subdivision) => {
-  const [beats, value] = timeSignature.split('/');
-  const partsPerBeat = subdivision / value;
+  const [beats, beatValue] = timeSignature.split('/');
+  const partsPerBeat = subdivision / beatValue;
   const newMeasure = [];
 
   for (let i = 0; i < beats; ++i) {

@@ -6,7 +6,7 @@
 * Menu
 * Responsible design
 * Logo
-* Better .svgs
+* Better .svgs, rotate base svg instead of each tonefield?
 * Build custom component instead of html select?
 * Popup for bar controls?
 
@@ -17,6 +17,7 @@
 * What happens when you change to a scale with less notes than pattern needs?
 * Subdivide measures unevenly (4/4 could be 3-3-2 eight notes)
 * Verify that subdivision is not less than time signature demands
+* Dropdown list all dyads and ding combinations
 
 ## Bar controls
 
