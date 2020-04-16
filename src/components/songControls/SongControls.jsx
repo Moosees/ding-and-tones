@@ -9,6 +9,7 @@ import {
   setSongSubdivision,
   setSongTime,
 } from '../../redux/song/song.actions';
+import MetreControls from '../metreControls/MetreControls';
 import { createNewBar, playSong } from './songControls.utils';
 
 const SongControls = ({
@@ -66,29 +67,13 @@ const SongControls = ({
           onChange={(e) => setBpm(Number(e.target.value))}
         />
       </label>
-      <label>
-        Time signature:
-        <select
-          value={timeSignature}
-          disabled={isSongPlaying}
-          onChange={(e) => setSongTime(e.target.value)}
-        >
-          <option value={'4/4'}>4/4</option>
-          <option value={'3/4'}>3/4</option>
-        </select>
-      </label>
-      <label>
-        Beat subdivision:
-        <select
-          value={subdivision}
-          disabled={isSongPlaying}
-          onChange={(e) => setSongSubdivision(Number(e.target.value))}
-        >
-          <option value={4}>4ths</option>
-          <option value={8}>8ths</option>
-          <option value={16}>16ths</option>
-        </select>
-      </label>
+      <MetreControls
+        timeSignature={timeSignature}
+        subdivision={subdivision}
+        setTimeSignature={setSongTime}
+        setSubdivision={setSongSubdivision}
+        disabled={isSongPlaying}
+      />
     </div>
   );
 };

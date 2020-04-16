@@ -16,12 +16,11 @@
 * Triplets, flams, etc.
 * What happens when you change to a scale with less notes than pattern needs?
 * Subdivide measures unevenly (4/4 could be 3-3-2 eight notes)
-* Verify that subdivision is not less than time signature demands
 * Dropdown list all dyads and ding combinations
 
 ## Bar controls
 
-* Modify time signature and subdivision
+* Modify time signature and subdivision on existing bars
 * Rearrange arrangement
 * Copy patterns - to end or to next, to new bar or to linked bar
 * Link/unlink patterns
@@ -63,11 +62,12 @@
 
 ## Sound player
 
+* Fix tempo for compound metre
 * Keyboard shortcuts
 * Swing?
 * Play the correct note
 * Taks or other sounds
-* Select drum type
+* Select drum type - pan or tongue
 * Web worker?
 * Use strings across app for patterns and what sound to play?
 
