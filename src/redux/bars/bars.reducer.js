@@ -6,10 +6,10 @@ const INITIAL_STATE = {
     subdivision: 4,
     lengthInBeats: 4,
     measure: [
-      [{ beatId: 'aa', sound: '1' }],
-      [{ beatId: 'ab', sound: '1' }],
-      [{ beatId: 'ac', sound: '1' }],
-      [{ beatId: 'ad', sound: '1' }],
+      [{ beatId: 'aa', sound: '0' }],
+      [{ beatId: 'ab', sound: '0' }],
+      [{ beatId: 'ac', sound: '0' }],
+      [{ beatId: 'ad', sound: '0' }],
     ],
   },
   bar_b: {
@@ -18,16 +18,16 @@ const INITIAL_STATE = {
     lengthInBeats: 3,
     measure: [
       [
-        { beatId: 'ba', sound: '0' },
-        { beatId: 'bb', sound: '1' },
+        { beatId: 'ba', sound: '' },
+        { beatId: 'bb', sound: '0' },
       ],
       [
-        { beatId: 'bc', sound: '1' },
-        { beatId: 'bd', sound: '0' },
+        { beatId: 'bc', sound: '0' },
+        { beatId: 'bd', sound: '' },
       ],
       [
-        { beatId: 'be', sound: '1' },
-        { beatId: 'bf', sound: '1' },
+        { beatId: 'be', sound: '0' },
+        { beatId: 'bf', sound: '0' },
       ],
     ],
   },
@@ -37,18 +37,18 @@ const INITIAL_STATE = {
     lengthInBeats: 4,
     measure: [
       [
-        { beatId: 'ca', sound: '1' },
-        { beatId: 'cb', sound: '0' },
-        { beatId: 'cc', sound: '0' },
+        { beatId: 'ca', sound: '0' },
+        { beatId: 'cb', sound: '' },
+        { beatId: 'cc', sound: '' },
       ],
       [
-        { beatId: 'cd', sound: '1' },
-        { beatId: 'ce', sound: '0' },
-        { beatId: 'cf', sound: '0' },
+        { beatId: 'cd', sound: '0' },
+        { beatId: 'ce', sound: '' },
+        { beatId: 'cf', sound: '' },
       ],
       [
-        { beatId: 'cg', sound: '1' },
-        { beatId: 'ch', sound: '0' },
+        { beatId: 'cg', sound: '0' },
+        { beatId: 'ch', sound: '' },
       ],
     ],
   },
@@ -58,14 +58,14 @@ const INITIAL_STATE = {
     lengthInBeats: 3,
     measure: [
       [
-        { beatId: 'da', sound: '1' },
-        { beatId: 'db', sound: '0' },
-        { beatId: 'dc', sound: '0' },
+        { beatId: 'da', sound: '0' },
+        { beatId: 'db', sound: '' },
+        { beatId: 'dc', sound: '' },
       ],
       [
-        { beatId: 'dd', sound: '1' },
-        { beatId: 'de', sound: '0' },
-        { beatId: 'df', sound: '0' },
+        { beatId: 'dd', sound: '0' },
+        { beatId: 'de', sound: '' },
+        { beatId: 'df', sound: '' },
       ],
     ],
   },

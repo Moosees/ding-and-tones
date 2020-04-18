@@ -1,11 +1,11 @@
 import { v4 as uuid } from 'uuid';
+import { metreList } from '../../meter.data';
 import {
   setCurrentBar,
   setCurrentBeat,
   setIsSongPlaying,
 } from '../../redux/song/song.actions';
 import { store } from '../../redux/store';
-import { metreList } from '../../meter.data';
 
 // Playing songs
 const playBeat = (beat, timeout) =>
@@ -14,7 +14,7 @@ const playBeat = (beat, timeout) =>
 
     store.dispatch(setCurrentBeat(beat.beatId));
 
-    if (beat.sound === '1') new Audio('audio/rav/test.wav').play();
+    if (beat.sound === '0') new Audio('audio/rav/test.wav').play();
 
     setTimeout(() => {
       return resolve();
@@ -22,25 +22,10 @@ const playBeat = (beat, timeout) =>
   });
 
 const playBar = async (bar, bpm) => {
-  // This is something we need
-  const beatLengthInMs = 60000 / bpm;
-
-  // this is the fishy stuff that only works for simple metre
-  const [, beatValue] = bar.timeSignature.split('/');
-  const timeoutMultiplier = bar.subdivision / beatValue;
-  const timeout = beatLengthInMs / timeoutMultiplier;
-
-  // Save total length of the bar as variable
-  // Or just beat value separate?
-  // or 'bar is 3.5 beats long'
-  console.log({ timeoutMultiplier });
-  console.log(bar.measure.length, 'Beats');
-
-  // this is where the magic happens
   const beats = bar.measure.flat();
-  console.log(beats.length, 'Total events');
+  const barLength = (60000 / bpm) * bar.lengthInBeats;
+  const timeout = barLength / beats.length;
 
-  // bpm always counts quarter notes = best solution?
   for (let beat of beats) {
     try {
       await playBeat(beat, timeout);
@@ -50,6 +35,7 @@ const playBar = async (bar, bpm) => {
   }
 };
 
+// bpm always counts quarter notes right now
 export const playSong = async () => {
   const { bars, song } = store.getState();
 

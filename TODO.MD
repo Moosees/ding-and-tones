@@ -4,7 +4,7 @@
 
 * Everything
 * Menu
-* Responsible design
+* Responsive design
 * Logo
 * Better .svgs, rotate base svg instead of each tonefield?
 * Build custom component instead of html select?
@@ -15,8 +15,8 @@
 * Chords
 * Triplets, flams, etc.
 * What happens when you change to a scale with less notes than pattern needs?
-* Subdivide measures unevenly (4/4 could be 3-3-2 eight notes)
 * Dropdown list all dyads and ding combinations
+* Custom metres?
 
 ## Bar controls
 
@@ -36,7 +36,6 @@
 * Debounce and validate bpm
 * Edit mode with on/off button for moving patterns?
 * Refactor song control buttons to new component?
-* Dry up code if song and bar controls share markup
 
 ## Chords
 
@@ -62,20 +61,19 @@
 
 ## Sound player
 
-* Fix tempo for compound metre
 * Keyboard shortcuts
 * Swing?
 * Play the correct note
 * Taks or other sounds
 * Select drum type - pan or tongue
 * Web worker?
-* Use strings across app for patterns and what sound to play?
 
 ## State/Redux
 
 * Clean up scaleFull array
 * Figure out chord sorting
 * Persist data through local storage?
+* Delete bars from bar state or use them as a bank or undo?
 
 ## Exporting
   
@@ -98,3 +96,4 @@
 * Multiple drums for chords, songs etc.
 * Comparing scales using tables or other presentations
 * Ability to loop songs
+* Rework app and data structuring?

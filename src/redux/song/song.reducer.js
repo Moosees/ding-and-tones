@@ -1,12 +1,7 @@
 import actionTypes from './song.types';
 
 const INITIAL_STATE = {
-  arrangement: [
-    { barId: 'bar_a', arrangementId: 'bar_1' },
-    { barId: 'bar_b', arrangementId: 'bar_2' },
-    { barId: 'bar_a', arrangementId: 'bar_3' },
-    { barId: 'bar_b', arrangementId: 'bar_4' },
-  ],
+  arrangement: [{ barId: 'bar_a', arrangementId: 'bar_1' }],
   bpm: 100,
   metre: 's44',
   subdivision: 4,
