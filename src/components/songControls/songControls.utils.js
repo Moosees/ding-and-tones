@@ -5,6 +5,7 @@ import {
   setIsSongPlaying,
 } from '../../redux/song/song.actions';
 import { store } from '../../redux/store';
+import { metreList } from '../../meter.data';
 
 // Playing songs
 const playBeat = (beat, timeout) =>
@@ -68,20 +69,19 @@ const createNewBeat = (partsPerBeat) => {
   const newBeat = [];
 
   for (let i = 0; i < partsPerBeat; ++i) {
-    newBeat.push({ beatId: uuid(), sound: '' });
+    newBeat.push({ beatId: uuid(), sound: i === 0 ? '0' : '' });
   }
 
   return newBeat;
 };
 
-export const createNewBar = (timeSignature, subdivision) => {
-  const [beats, beatValue] = timeSignature.split('/');
-  const partsPerBeat = subdivision / beatValue;
+export const createNewBar = (metre, subdivision) => {
+  const { template, minSubdivision } = metreList[metre];
   const newMeasure = [];
 
-  for (let i = 0; i < beats; ++i) {
+  template.forEach((defaultParts) => {
+    const partsPerBeat = defaultParts * (subdivision / minSubdivision);
     newMeasure.push(createNewBeat(partsPerBeat));
-  }
-
+  });
   return newMeasure;
 };
