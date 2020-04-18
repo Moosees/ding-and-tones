@@ -5,14 +5,14 @@ export const updateBeat = (barId, beatId, beatIndex, newSound) => ({
   payload: { barId, beatId, beatIndex, newSound },
 });
 
-export const setBarTime = (barId, timeSignature) => ({
-  type: actionTypes.SET_BAR_TIME,
-  payload: { barId, timeSignature },
+export const setBarMetre = (barId, newMetre, newLengthInBeats) => ({
+  type: actionTypes.SET_BAR_METRE,
+  payload: { barId, newMetre, newLengthInBeats },
 });
 
-export const setBarSubdivision = (barId, subdivision) => ({
+export const setBarSubdivision = (barId, newSubdivision) => ({
   type: actionTypes.SET_BAR_SUBDIVISION,
-  payload: { barId, subdivision },
+  payload: { barId, newSubdivision },
 });
 
 export const addNewBar = (newBar) => ({

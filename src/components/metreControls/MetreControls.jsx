@@ -1,21 +1,22 @@
 import React from 'react';
+import { metreList } from './metreControls.data';
 
 const MetreControls = ({
-  timeSignature,
+  metre,
   subdivision,
-  setTimeSignature,
+  setMetre,
   setSubdivision,
   disabled = false,
 }) => {
-  const [, beatValue] = timeSignature.split('/');
+  const { minSubdivision } = metreList[metre];
 
   const handleTimeChange = (e) => {
-    const [, newBeatValue] = e.target.value.split('/');
+    const { minSubdivision, lengthInBeats } = metreList[e.target.value];
 
-    setTimeSignature(e.target.value);
+    setMetre(e.target.value, lengthInBeats);
 
-    if (newBeatValue > subdivision) {
-      setSubdivision(newBeatValue);
+    if (minSubdivision > subdivision) {
+      setSubdivision(minSubdivision);
     }
   };
 
@@ -23,11 +24,7 @@ const MetreControls = ({
     <>
       <label>
         Time signature:
-        <select
-          value={timeSignature}
-          disabled={disabled}
-          onChange={handleTimeChange}
-        >
+        <select value={metre} disabled={disabled} onChange={handleTimeChange}>
           <optgroup label="Simple metre">
             <option value={'s24'}>2/4</option>
             <option value={'s34'}>3/4</option>
@@ -36,10 +33,10 @@ const MetreControls = ({
           </optgroup>
           <optgroup label="Compound metre">
             <option value={'c68'}>6/8</option>
-            <option value={'c96'}>9/8</option>
+            <option value={'c98'}>9/8</option>
             <option value={'c128'}>12/8</option>
           </optgroup>
-          <optgroup label="Complex">
+          <optgroup label="Complex metre">
             <option value={'x223'}>7/8 - 2-2-3</option>
             <option value={'x232'}>7/8 - 2-3-2</option>
             <option value={'x322'}>7/8 - 3-2-2</option>
@@ -56,13 +53,13 @@ const MetreControls = ({
           disabled={disabled}
           onChange={(e) => setSubdivision(e.target.value)}
         >
-          <option value={4} disabled={beatValue > 4}>
+          <option value={4} disabled={minSubdivision > 4}>
             4ths
           </option>
-          <option value={8} disabled={beatValue > 8}>
+          <option value={8} disabled={minSubdivision > 8}>
             8ths
           </option>
-          <option value={16} disabled={beatValue > 16}>
+          <option value={16} disabled={minSubdivision > 16}>
             16ths
           </option>
         </select>

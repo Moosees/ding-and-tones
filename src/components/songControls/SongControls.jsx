@@ -6,8 +6,8 @@ import {
   addBarToSong,
   setBpm,
   setIsSongPlaying,
+  setSongMetre,
   setSongSubdivision,
-  setSongTime,
 } from '../../redux/song/song.actions';
 import MetreControls from '../metreControls/MetreControls';
 import { createNewBar, playSong } from './songControls.utils';
@@ -21,22 +21,22 @@ const SongControls = ({
   setIsSongPlaying,
   subdivision,
   setSongSubdivision,
-  timeSignature,
-  setSongTime,
+  metre,
+  setSongMetre,
 }) => {
   const handlePlayPause = () => {
     setIsSongPlaying(!isSongPlaying);
     if (!isSongPlaying) playSong();
   };
 
-  const handleNewBar = (timeSignature, subdivision) => {
+  const handleNewBar = (metre, subdivision) => {
     const arrangementId = uuid();
     const barId = uuid();
-    const measure = createNewBar(timeSignature, subdivision);
+    const measure = createNewBar(metre, subdivision);
 
     addNewBar({
       [barId]: {
-        timeSignature,
+        metre,
         subdivision,
         measure,
       },
@@ -52,7 +52,7 @@ const SongControls = ({
       </button>
       <button
         disabled={isSongPlaying}
-        onClick={() => handleNewBar(timeSignature, subdivision)}
+        onClick={() => handleNewBar(metre, subdivision)}
       >
         Add empty bar
       </button>
@@ -68,9 +68,9 @@ const SongControls = ({
         />
       </label>
       <MetreControls
-        timeSignature={timeSignature}
+        metre={metre}
         subdivision={subdivision}
-        setTimeSignature={setSongTime}
+        setMetre={setSongMetre}
         setSubdivision={setSongSubdivision}
         disabled={isSongPlaying}
       />
@@ -82,7 +82,7 @@ const mapStateToProps = ({ song }) => ({
   bpm: song.bpm,
   isSongPlaying: song.isSongPlaying,
   subdivision: song.subdivision,
-  timeSignature: song.timeSignature,
+  metre: song.metre,
 });
 
 export default connect(mapStateToProps, {
@@ -91,5 +91,5 @@ export default connect(mapStateToProps, {
   setBpm,
   setIsSongPlaying,
   setSongSubdivision,
-  setSongTime,
+  setSongMetre,
 })(SongControls);

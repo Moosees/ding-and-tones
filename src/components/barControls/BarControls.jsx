@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setBarSubdivision, setBarTime } from '../../redux/bars/bars.actions';
+import { setBarSubdivision, setBarMetre } from '../../redux/bars/bars.actions';
 import { deleteBarFromSong } from '../../redux/song/song.actions';
 import MetreControls from '../metreControls/MetreControls';
 
@@ -8,12 +8,12 @@ const BarControls = ({
   bar,
   bars,
   setBarSubdivision,
-  setBarTime,
+  setBarMetre,
   deleteBarFromSong,
 }) => {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
   const { barId, arrangementId } = bar;
-  const { subdivision, timeSignature } = bars[barId];
+  const { subdivision, metre } = bars[barId];
 
   return (
     <div>
@@ -29,9 +29,11 @@ const BarControls = ({
       </button>
       {isAdvancedOpen && (
         <MetreControls
-          timeSignature={timeSignature}
+          metre={metre}
           subdivision={subdivision}
-          setTimeSignature={(timeSignature) => setBarTime(barId, timeSignature)}
+          setMetre={(metre, lengthInBars) =>
+            setBarMetre(barId, metre, lengthInBars)
+          }
           setSubdivision={(subdivision) =>
             setBarSubdivision(barId, subdivision)
           }
@@ -46,6 +48,6 @@ const mapStateToProps = ({ bars }) => ({
 
 export default connect(mapStateToProps, {
   setBarSubdivision,
-  setBarTime,
+  setBarMetre,
   deleteBarFromSong,
 })(BarControls);

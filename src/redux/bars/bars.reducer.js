@@ -2,7 +2,7 @@ import actionTypes from './bars.types';
 
 const INITIAL_STATE = {
   bar_a: {
-    timeSignature: '4/4',
+    metre: 's44',
     subdivision: 4,
     lengthInBeats: 4,
     measure: [
@@ -13,7 +13,7 @@ const INITIAL_STATE = {
     ],
   },
   bar_b: {
-    timeSignature: '3/4',
+    metre: 's34',
     subdivision: 8,
     lengthInBeats: 3,
     measure: [
@@ -32,7 +32,7 @@ const INITIAL_STATE = {
     ],
   },
   bar_c: {
-    timeSignature: '8/8',
+    metre: 'x332',
     subdivision: 8,
     lengthInBeats: 4,
     measure: [
@@ -53,7 +53,7 @@ const INITIAL_STATE = {
     ],
   },
   bar_d: {
-    timeSignature: '6/8',
+    metre: 'c68',
     subdivision: 8,
     lengthInBeats: 3,
     measure: [
@@ -85,15 +85,16 @@ const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return { ...state, [payload.barId]: barToUpdateBeatIn };
 
-    case actionTypes.SET_BAR_TIME:
-      const barToChangeTimeIn = { ...state[payload.barId] };
-      barToChangeTimeIn.timeSignature = payload.timeSignature;
+    case actionTypes.SET_BAR_METRE:
+      const barToChangeMetreIn = { ...state[payload.barId] };
+      barToChangeMetreIn.metre = payload.newMetre;
+      barToChangeMetreIn.lengthInBeats = payload.newLengthInBeats;
 
-      return { ...state, [payload.barId]: barToChangeTimeIn };
+      return { ...state, [payload.barId]: barToChangeMetreIn };
 
     case actionTypes.SET_BAR_SUBDIVISION:
       const barToChangeGridIn = { ...state[payload.barId] };
-      barToChangeGridIn.subdivision = payload.subdivision;
+      barToChangeGridIn.subdivision = payload.newSubdivision;
 
       return { ...state, [payload.barId]: barToChangeGridIn };
 

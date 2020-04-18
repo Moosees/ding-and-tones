@@ -1,4 +1,4 @@
-export const metre = {
+export const metreList = {
   s24: {
     group: 'Simple metre',
     name: '2/4',
@@ -27,7 +27,6 @@ export const metre = {
     lengthInBeats: 5,
     minSubdivision: 4,
   },
-
   c68: {
     group: 'Compound metre',
     name: '6/8',

@@ -5,9 +5,9 @@ export const setBpm = (newBpm) => ({
   payload: newBpm,
 });
 
-export const setSongTime = (newTimeSignature) => ({
-  type: actionTypes.SET_SONG_TIME,
-  payload: newTimeSignature,
+export const setSongMetre = (newMetre) => ({
+  type: actionTypes.SET_SONG_METRE,
+  payload: newMetre,
 });
 
 export const setSongSubdivision = (newSubdivision) => ({
