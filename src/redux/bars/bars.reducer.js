@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   bar_a: {
     timeSignature: '4/4',
     subdivision: 4,
+    lengthInBeats: 4,
     measure: [
       [{ beatId: 'aa', sound: '1' }],
       [{ beatId: 'ab', sound: '1' }],
@@ -14,6 +15,7 @@ const INITIAL_STATE = {
   bar_b: {
     timeSignature: '3/4',
     subdivision: 8,
+    lengthInBeats: 3,
     measure: [
       [
         { beatId: 'ba', sound: '0' },
@@ -26,6 +28,44 @@ const INITIAL_STATE = {
       [
         { beatId: 'be', sound: '1' },
         { beatId: 'bf', sound: '1' },
+      ],
+    ],
+  },
+  bar_c: {
+    timeSignature: '8/8',
+    subdivision: 8,
+    lengthInBeats: 4,
+    measure: [
+      [
+        { beatId: 'ca', sound: '1' },
+        { beatId: 'cb', sound: '0' },
+        { beatId: 'cc', sound: '0' },
+      ],
+      [
+        { beatId: 'cd', sound: '1' },
+        { beatId: 'ce', sound: '0' },
+        { beatId: 'cf', sound: '0' },
+      ],
+      [
+        { beatId: 'cg', sound: '1' },
+        { beatId: 'ch', sound: '0' },
+      ],
+    ],
+  },
+  bar_d: {
+    timeSignature: '6/8',
+    subdivision: 8,
+    lengthInBeats: 3,
+    measure: [
+      [
+        { beatId: 'da', sound: '1' },
+        { beatId: 'db', sound: '0' },
+        { beatId: 'dc', sound: '0' },
+      ],
+      [
+        { beatId: 'dd', sound: '1' },
+        { beatId: 'de', sound: '0' },
+        { beatId: 'df', sound: '0' },
       ],
     ],
   },

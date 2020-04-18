@@ -21,11 +21,25 @@ const playBeat = (beat, timeout) =>
   });
 
 const playBar = async (bar, bpm) => {
+  // This is something we need
+  const beatLengthInMs = 60000 / bpm;
+
+  // this is the fishy stuff that only works for simple metre
   const [, beatValue] = bar.timeSignature.split('/');
   const timeoutMultiplier = bar.subdivision / beatValue;
-  const timeout = 60000 / bpm / timeoutMultiplier;
-  const beats = bar.measure.flat();
+  const timeout = beatLengthInMs / timeoutMultiplier;
 
+  // Save total length of the bar as variable
+  // Or just beat value separate?
+  // or 'bar is 3.5 beats long'
+  console.log({ timeoutMultiplier });
+  console.log(bar.measure.length, 'Beats');
+
+  // this is where the magic happens
+  const beats = bar.measure.flat();
+  console.log(beats.length, 'Total events');
+
+  // bpm always counts quarter notes = best solution?
   for (let beat of beats) {
     try {
       await playBeat(beat, timeout);

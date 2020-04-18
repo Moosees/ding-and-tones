@@ -29,16 +29,22 @@ const MetreControls = ({
           onChange={handleTimeChange}
         >
           <optgroup label="Simple metre">
-            <option value={'2/4'}>2/4</option>
-            <option value={'3/4'}>3/4</option>
-            <option value={'4/4'}>4/4</option>
-            <option value={'5/4'}>5/4</option>
-            <option value={'7/8'}>7/8</option>
+            <option value={'s2/4'}>2/4</option>
+            <option value={'s3/4'}>3/4</option>
+            <option value={'s4/4'}>4/4</option>
+            <option value={'s5/4'}>5/4</option>
           </optgroup>
           <optgroup label="Compound metre">
             <option value={'c6/8'}>6/8</option>
-            <option value={'c9/8'}>9/8</option>
+            <option value={'c9/6'}>9/8</option>
             <option value={'c12/8'}>12/8</option>
+          </optgroup>
+          <optgroup label="Complex">
+            <option value={'x223'}>7/8 - 2-2-3</option>
+            <option value={'x232'}>7/8 - 2-3-2</option>
+            <option value={'x322'}>7/8 - 3-2-2</option>
+            <option value={'x233'}>8/8 - 2-3-3</option>
+            <option value={'x332'}>8/8 - 3-3-2</option>
           </optgroup>
         </select>
       </label>
