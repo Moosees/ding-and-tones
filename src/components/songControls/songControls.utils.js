@@ -69,5 +69,11 @@ export const createNewBar = (metre, subdivision) => {
     const partsPerBeat = defaultParts * (subdivision / minSubdivision);
     newMeasure.push(createNewBeat(partsPerBeat));
   });
-  return newMeasure;
+
+  return {
+    metre,
+    subdivision,
+    lengthInBeats: metreList[metre].lengthInBeats,
+    measure: newMeasure,
+  };
 };

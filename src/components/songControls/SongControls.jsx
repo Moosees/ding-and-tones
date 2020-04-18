@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { metreList } from '../../meter.data';
 import { addNewBar } from '../../redux/bars/bars.actions';
 import {
   addBarToSong,
@@ -33,16 +32,9 @@ const SongControls = ({
   const handleNewBar = (metre, subdivision) => {
     const arrangementId = uuid();
     const barId = uuid();
+    const newBar = createNewBar(metre, subdivision);
 
-    addNewBar({
-      [barId]: {
-        metre,
-        subdivision,
-        lengthInBeats: metreList[metre].lengthInBeats,
-        measure: createNewBar(metre, subdivision),
-      },
-    });
-
+    addNewBar({ [barId]: newBar });
     addBarToSong({ barId, arrangementId });
   };
 
