@@ -1,5 +1,7 @@
 const actionTypes = {
   SAVE_SCALE: 'SAVE_SCALE',
+  TOGGLE_IS_EDITING: 'TOGGLE_IS_EDITING',
+  TOGGLE_SHOW_INTERVALS: 'TOGGLE_SHOW_INTERVALS',
 };
 
 export default actionTypes;

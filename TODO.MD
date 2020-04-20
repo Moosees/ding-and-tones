@@ -26,7 +26,6 @@
 
 ## Song info
 
-* Song-info component to show song name, time signature and subdivision
 * Difficulty for current song?
 * Only allow changing global time signature and subdivision on new song?
 

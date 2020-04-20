@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Drum from '../../components/drum/Drum';
+import DrumInfo from '../../components/drumInfo/DrumInfo';
 import FindChords from '../../components/findChords/FindChords';
 import FoundChords from '../../components/foundChords/FoundChords';
 import Song from '../../components/song/Song';
@@ -13,7 +14,10 @@ const SingleDrum = ({ scale, saveScale }) => {
 
   return (
     <SingleDrumContainer>
-      <Drum />
+      <div>
+        <DrumInfo />
+        <Drum />
+      </div>
       <div>
         <FindChords />
         <FoundChords />
