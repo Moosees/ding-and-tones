@@ -1,47 +1,13 @@
-# TODO
+# DING AND TONES TODO LIST
 
-## Design
+## DRUM
 
-* Everything
-* Menu
-* Responsive design
-* Logo
-* Better .svgs, rotate base svg instead of each tonefield?
-* Build custom component instead of html select?
+### Drum controls
 
-## Song builder
+* Play/intervals mode
+* Edit scale, save/load scale, etc.
 
-* Chords
-* Triplets, flams, etc.
-* What happens when you change to a scale with less notes than pattern needs?
-* Dropdown list all dyads and ding combinations
-
-## Bar controls
-
-* Modify time signature and subdivision on existing bars
-* Rearrange arrangement
-* Copy patterns - to end or to next, to new bar or to linked bar
-* Link/unlink patterns
-
-## Song info
-
-* Metre is just informational and default for new bars?
-* Only use subdivision for individual bars?
-
-## Song controls
-
-* Debounce and validate bpm
-* Refactor song control buttons to new component?
-
-## Chords
-
-* Custom chord inputs
-* Select chords from list
-* Merge triads and 7s/9s?
-* Display notes in chord
-* Play chords
-
-## Drum
+### Drum view
 
 * Handle double dings
 * Handle double high notes
@@ -50,12 +16,48 @@
 * Show legend for colors
 * Show played note on drum
 
-## Drum controls
+## CHORDS
 
-* Play/intervals mode
-* Edit scale, save/load scale, etc.
+### Chords controls
 
-## Sound player
+* Custom chord inputs
+* Select chords from list
+
+### Chords view
+
+* Merge triads and 7s/9s?
+* Display notes in chord
+* Play chords
+
+## SONG / BARS
+
+### Song info
+
+* Metre is just informational and default for new bars?
+* Only use subdivision for individual bars?
+
+### Song controls
+
+* Debounce and validate bpm
+* Refactor song control buttons to new component?
+
+### Bar controls
+
+* Modify time signature and subdivision on existing bars
+* Rearrange arrangement
+* Copy patterns - to end or to next, to new bar or to linked bar
+* Link/unlink patterns
+
+### Bars / arrangement view
+
+* Chords
+* Triplets, flams, etc.
+* What happens when you change to a scale with less notes than pattern needs?
+* Dropdown list all dyads and ding combinations
+
+## LOGIC
+
+### Sound player
 
 * Keyboard shortcuts
 * Swing?
@@ -64,19 +66,19 @@
 * Select drum type - pan or tongue
 * Web worker?
 
-## State/Redux
+### State/Redux
 
 * Clean up scaleFull array
 * Figure out chord sorting
 * Persist data through local storage?
 * Delete bars from bar state or use them as a bank or undo?
 
-## Exporting
+### Exporting
   
 * Printing, format?
 * Save to .pdf?
 
-## Backend
+### Backend
 
 * Everything
 * Analytics
@@ -87,7 +89,18 @@
 * Extra features - comments?
 * Share song through link?
 
-## Future goals
+## DESIGN / OTHER
+
+### Design
+
+* Everything
+* Menu
+* Responsive design
+* Logo
+* Better .svgs, rotate base svg instead of each tonefield?
+* Build custom component instead of html select?
+
+### Future goals
 
 * Multiple drums for chords, songs etc.
 * Comparing scales using tables or other presentations
