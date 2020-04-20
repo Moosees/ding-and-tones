@@ -1,6 +1,7 @@
 import actionTypes from './song.types';
 
 const INITIAL_STATE = {
+  name: 'This is a song',
   arrangement: [{ barId: 'bar_a', arrangementId: 'bar_1' }],
   bpm: 100,
   metre: 's44',

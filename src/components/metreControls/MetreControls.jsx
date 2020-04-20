@@ -1,5 +1,5 @@
 import React from 'react';
-import { metreList } from '../../meter.data';
+import { metreList } from '../../metre.data';
 
 const MetreControls = ({
   metre,

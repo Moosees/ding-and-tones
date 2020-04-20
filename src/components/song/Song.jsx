@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Bar from '../bar/Bar';
-import SongControls from '../songControls/SongControls';
 import { Bars } from './song.styles';
 
 // All possible sounds available on current scale
@@ -33,7 +32,6 @@ const Song = ({ arrangement, scale }) => {
 
   return (
     <div>
-      <SongControls />
       <Bars>
         {arrangement.map((bar) => (
           <Bar key={bar.arrangementId} bar={bar} options={options} />

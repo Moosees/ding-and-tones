@@ -4,6 +4,7 @@ import Drum from '../../components/drum/Drum';
 import FindChords from '../../components/findChords/FindChords';
 import FoundChords from '../../components/foundChords/FoundChords';
 import Song from '../../components/song/Song';
+import SongInfo from '../../components/songInfo/SongInfo';
 import { saveScale } from '../../redux/scale/scale.actions';
 import { SingleDrumContainer } from './singleDrum.styles';
 
@@ -17,7 +18,10 @@ const SingleDrum = ({ scale, saveScale }) => {
         <FindChords />
         <FoundChords />
       </div>
-      <Song />
+      <div>
+        <SongInfo />
+        <Song />
+      </div>
     </SingleDrumContainer>
   );
 };

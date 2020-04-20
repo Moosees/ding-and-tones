@@ -16,7 +16,6 @@
 * Triplets, flams, etc.
 * What happens when you change to a scale with less notes than pattern needs?
 * Dropdown list all dyads and ding combinations
-* Custom metres?
 
 ## Bar controls
 
@@ -97,3 +96,4 @@
 * Comparing scales using tables or other presentations
 * Ability to loop songs
 * Rework app and data structuring?
+* Custom metres

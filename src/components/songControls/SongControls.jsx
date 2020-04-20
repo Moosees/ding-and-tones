@@ -5,12 +5,11 @@ import { addNewBar } from '../../redux/bars/bars.actions';
 import {
   addBarToSong,
   setBpm,
-  setIsSongPlaying,
   setSongMetre,
   setSongSubdivision,
 } from '../../redux/song/song.actions';
 import MetreControls from '../metreControls/MetreControls';
-import { createNewBar, playSong } from './songControls.utils';
+import { createNewBar } from './songControls.utils';
 
 const SongControls = ({
   addNewBar,
@@ -18,17 +17,11 @@ const SongControls = ({
   bpm,
   setBpm,
   isSongPlaying,
-  setIsSongPlaying,
   subdivision,
   setSongSubdivision,
   metre,
   setSongMetre,
 }) => {
-  const handlePlayPause = () => {
-    setIsSongPlaying(!isSongPlaying);
-    if (!isSongPlaying) playSong();
-  };
-
   const handleNewBar = (metre, subdivision) => {
     const arrangementId = uuid();
     const barId = uuid();
@@ -40,9 +33,6 @@ const SongControls = ({
 
   return (
     <div>
-      <button onClick={handlePlayPause}>
-        {isSongPlaying ? 'Pause' : 'Play'}
-      </button>
       <button
         disabled={isSongPlaying}
         onClick={() => handleNewBar(metre, subdivision)}
@@ -82,7 +72,6 @@ export default connect(mapStateToProps, {
   addNewBar,
   addBarToSong,
   setBpm,
-  setIsSongPlaying,
   setSongSubdivision,
   setSongMetre,
 })(SongControls);
