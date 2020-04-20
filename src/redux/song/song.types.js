@@ -7,6 +7,7 @@ const actionTypes = {
   SET_IS_SONG_PLAYING: 'SET_IS_SONG_PLAYING',
   ADD_BAR_TO_SONG: 'ADD_BAR_TO_SONG',
   DELETE_BAR_FROM_SONG: 'DELETE_BAR_FROM_SONG',
+  TOGGLE_EDIT_SONG: 'TOGGLE_EDIT_SONG',
 };
 
 export default actionTypes;

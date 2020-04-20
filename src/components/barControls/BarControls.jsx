@@ -16,17 +16,19 @@ const BarControls = ({
   const { subdivision, metre } = bars[barId];
 
   return (
-    <div>
-      <button>Copy to next</button>
-      <button>Copy to end</button>
-      {/* disable if bar is not linked */}
-      <button disabled={true}>Unlink bar</button>
-      <button onClick={() => deleteBarFromSong(arrangementId)}>
-        Delete bar
-      </button>
-      <button onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}>
-        Custom bar values
-      </button>
+    <>
+      <div>
+        <button>Copy to next</button>
+        <button>Copy to end</button>
+        {/* disable if bar is not linked */}
+        <button disabled={true}>Unlink bar</button>
+        <button onClick={() => deleteBarFromSong(arrangementId)}>
+          Delete bar
+        </button>
+        <button onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}>
+          Custom bar values
+        </button>
+      </div>
       {isAdvancedOpen && (
         <MetreControls
           metre={metre}
@@ -39,7 +41,7 @@ const BarControls = ({
           }
         />
       )}
-    </div>
+    </>
   );
 };
 const mapStateToProps = ({ bars }) => ({

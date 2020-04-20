@@ -24,6 +24,7 @@ const SingleDrum = ({ scale, saveScale }) => {
       </div>
       <div>
         <SongInfo />
+        <div style={{ height: '1rem' }}></div>
         <Song />
       </div>
     </SingleDrumContainer>

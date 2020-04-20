@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
   isSongPlaying: false,
+  isEditing: false,
 };
 
 const songReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -60,6 +61,12 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
         (bar) => bar.arrangementId !== payload
       );
       return { ...state, arrangement: updatedBars };
+
+    case actionTypes.TOGGLE_EDIT_SONG:
+      return {
+        ...state,
+        isEditing: !state.isEditing,
+      };
 
     default:
       return state;

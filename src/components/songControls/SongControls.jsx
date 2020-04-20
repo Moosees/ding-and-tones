@@ -32,24 +32,26 @@ const SongControls = ({
   };
 
   return (
-    <div>
-      <button
-        disabled={isSongPlaying}
-        onClick={() => handleNewBar(metre, subdivision)}
-      >
-        Add empty bar
-      </button>
-      <label>
-        BPM:
-        <input
-          type="number"
-          min="50"
-          max="160"
-          value={bpm}
+    <>
+      <div>
+        <button
           disabled={isSongPlaying}
-          onChange={(e) => setBpm(Number(e.target.value))}
-        />
-      </label>
+          onClick={() => handleNewBar(metre, subdivision)}
+        >
+          Add empty bar
+        </button>
+        <label>
+          BPM:
+          <input
+            type="number"
+            min="50"
+            max="160"
+            value={bpm}
+            disabled={isSongPlaying}
+            onChange={(e) => setBpm(Number(e.target.value))}
+          />
+        </label>
+      </div>
       <MetreControls
         metre={metre}
         subdivision={subdivision}
@@ -57,7 +59,7 @@ const SongControls = ({
         setSubdivision={setSongSubdivision}
         disabled={isSongPlaying}
       />
-    </div>
+    </>
   );
 };
 

@@ -8,7 +8,6 @@
 * Logo
 * Better .svgs, rotate base svg instead of each tonefield?
 * Build custom component instead of html select?
-* Popup for bar controls?
 
 ## Song builder
 
@@ -26,13 +25,12 @@
 
 ## Song info
 
-* Difficulty for current song?
-* Only allow changing global time signature and subdivision on new song?
+* Metre is just informational and default for new bars?
+* Only use subdivision for individual bars?
 
 ## Song controls
 
 * Debounce and validate bpm
-* Edit mode with on/off button for moving patterns?
 * Refactor song control buttons to new component?
 
 ## Chords

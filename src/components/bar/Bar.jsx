@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import BarControls from '../barControls/BarControls';
 import Beat from '../beat/Beat';
@@ -27,8 +27,7 @@ const displayBeats = (arrangementId, barId, measure, options) => {
   return beats;
 };
 
-const Bar = ({ bar, bars, currentBar, options }) => {
-  const [controlsOpen, setControlsOpen] = useState(false);
+const Bar = ({ bar, bars, currentBar, options, isEditing }) => {
   const { barId, arrangementId } = bar;
   const { measure } = bars[barId];
 
@@ -36,12 +35,7 @@ const Bar = ({ bar, bars, currentBar, options }) => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => setControlsOpen(!controlsOpen)}>
-          {`${controlsOpen ? 'Hide' : 'Show'} bar controls`}
-        </button>
-        {controlsOpen && <BarControls bar={bar} />}
-      </div>
+      {isEditing && <BarControls bar={bar} />}
       <Beats isPlaying={arrangementId === currentBar}>{beats}</Beats>
     </div>
   );
@@ -50,6 +44,7 @@ const Bar = ({ bar, bars, currentBar, options }) => {
 const mapStateToProps = ({ bars, song }) => ({
   bars,
   currentBar: song.currentBar,
+  isEditing: song.isEditing,
 });
 
 export default connect(mapStateToProps)(Bar);

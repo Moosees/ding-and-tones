@@ -39,3 +39,7 @@ export const deleteBarFromSong = (arrangementId) => ({
   type: actionTypes.DELETE_BAR_FROM_SONG,
   payload: arrangementId,
 });
+
+export const toggleEditSong = () => ({
+  type: actionTypes.TOGGLE_EDIT_SONG,
+});

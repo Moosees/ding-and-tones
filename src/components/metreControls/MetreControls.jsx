@@ -21,7 +21,7 @@ const MetreControls = ({
   };
 
   return (
-    <>
+    <div>
       <label>
         Time signature:
         <select value={metre} disabled={disabled} onChange={handleTimeChange}>
@@ -64,7 +64,7 @@ const MetreControls = ({
           </option>
         </select>
       </label>
-    </>
+    </div>
   );
 };
 
