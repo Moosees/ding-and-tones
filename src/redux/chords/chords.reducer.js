@@ -11,7 +11,10 @@ const INITIAL_STATE = {
 const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case actionTypes.DISPLAY_CHORD:
-      return { ...state, displayedChord: payload };
+      return {
+        ...state,
+        displayedChord: state.displayedChord === payload ? null : payload,
+      };
 
     case actionTypes.CLEAR_CHORD:
       return { ...state, displayedChord: null };

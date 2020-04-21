@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ChordControls from '../../components/chordControls/ChordControls';
+import ChordList from '../../components/chordList/ChordList';
 import Drum from '../../components/drum/Drum';
 import DrumInfo from '../../components/drumInfo/DrumInfo';
-import FindChords from '../../components/findChords/FindChords';
-import FoundChords from '../../components/foundChords/FoundChords';
 import Song from '../../components/song/Song';
 import SongInfo from '../../components/songInfo/SongInfo';
 import { saveScale } from '../../redux/scale/scale.actions';
@@ -19,8 +19,8 @@ const SingleDrum = ({ scale, saveScale }) => {
         <Drum />
       </div>
       <div>
-        <FindChords />
-        <FoundChords />
+        <ChordControls />
+        <ChordList />
       </div>
       <div>
         <SongInfo />

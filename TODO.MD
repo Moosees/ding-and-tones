@@ -20,13 +20,11 @@
 
 ### Chords controls
 
-* Custom chord inputs
 * Select chords from list
+* Chords is a part of drum controls?
 
 ### Chords view
 
-* Merge triads and 7s/9s?
-* Display notes in chord
 * Play chords
 
 ## SONG / BARS
@@ -100,10 +98,12 @@
 * Better .svgs, rotate base svg instead of each tonefield?
 * Build custom component instead of html select?
 
-### Future goals
+### Low priority
 
 * Multiple drums for chords, songs etc.
 * Comparing scales using tables or other presentations
 * Ability to loop songs
 * Rework app and data structuring?
 * Custom metres
+* Custom chord inputs
+* ID and cache chords?

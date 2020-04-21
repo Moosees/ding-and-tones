@@ -2,12 +2,12 @@ import React, { memo } from 'react';
 import { connect } from 'react-redux';
 import { displayChordOnDrum } from '../../redux/chords/chords.actions';
 
-const FoundChords = memo(({ displayChordOnDrum, foundChords }) => {
+const ChordList = memo(({ displayChordOnDrum, foundChords }) => {
   return (
     <ul>
       {foundChords.map((chord, i) => (
         <li key={i} onClick={() => displayChordOnDrum(chord)}>
-          {chord.name}
+          {chord.name} ({chord.notes.join('-')})
         </li>
       ))}
     </ul>
@@ -20,4 +20,4 @@ const mapStateToProps = ({ chords }) => ({
 
 export default connect(mapStateToProps, {
   displayChordOnDrum,
-})(FoundChords);
+})(ChordList);

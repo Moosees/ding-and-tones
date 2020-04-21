@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { findChordsInScale } from '../../redux/chords/chords.actions';
 
-const FindChords = ({ scale, chordList, findChordsInScale }) => {
+const ChordControls = ({ scale, chordList, findChordsInScale }) => {
   return (
     <button onClick={() => findChordsInScale(scale, chordList)}>
-      Find Chords
+      Find chords
     </button>
   );
 };
@@ -17,4 +17,4 @@ const mapStateToProps = ({ chords, scale }) => ({
 
 export default connect(mapStateToProps, {
   findChordsInScale,
-})(FindChords);
+})(ChordControls);
