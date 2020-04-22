@@ -1,5 +1,9 @@
-import { v4 as uuid } from 'uuid';
 import actionTypes from './song.types';
+import {
+  copyToEndOfArrangement,
+  copyToNextInArrangement,
+  deleteFromArrangement,
+} from './song.utils';
 
 const INITIAL_STATE = {
   name: 'This is a song',
@@ -21,25 +25,18 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case actionTypes.COPY_BAR_TO_END:
-      const arrangementWithEndCopy = [
-        ...state.arrangement,
-        { barId: payload, arrangementId: uuid() },
-      ];
+      const arrangementWithEndCopy = copyToEndOfArrangement(
+        payload,
+        state.arrangement
+      );
       return { ...state, arrangement: arrangementWithEndCopy };
 
     case actionTypes.COPY_BAR_TO_NEXT:
-      const previousIndex = state.arrangement.findIndex(
-        (bar) => bar.arrangementId === payload.previousId
+      const arrangementWithNextCopy = copyToNextInArrangement(
+        payload.barId,
+        payload.previousId,
+        state.arrangement
       );
-
-      const arrangementWithNextCopy = [
-        ...state.arrangement.slice(0, previousIndex + 1),
-        {
-          barId: payload.barId,
-          arrangementId: uuid(),
-        },
-        ...state.arrangement.slice(previousIndex + 1),
-      ];
 
       return {
         ...state,
@@ -47,9 +44,8 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case actionTypes.DELETE_BAR_FROM_SONG:
-      const updatedBars = state.arrangement.filter(
-        (bar) => bar.arrangementId !== payload
-      );
+      const updatedBars = deleteFromArrangement(payload, state.arrangement);
+
       return { ...state, arrangement: updatedBars };
 
     case actionTypes.SET_BPM:

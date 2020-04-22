@@ -37,7 +37,6 @@
 ### Song controls
 
 * Debounce and validate bpm
-* Refactor song control buttons to new component?
 
 ### Bar controls
 
@@ -50,7 +49,7 @@
 * Chords
 * Triplets, flams, etc.
 * What happens when you change to a scale with less notes than pattern needs?
-* Dropdown list all dyads and ding combinations
+* Dropdown list show all dyads and ding + note combinations?
 
 ## LOGIC
 
