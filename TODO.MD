@@ -43,8 +43,7 @@
 
 * Modify time signature and subdivision on existing bars
 * Rearrange arrangement
-* Copy patterns - to end or to next, to new bar or to linked bar
-* Link/unlink patterns
+* Unlink patterns
 
 ### Bars / arrangement view
 

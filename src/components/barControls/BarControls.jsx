@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setBarSubdivision, setBarMetre } from '../../redux/bars/bars.actions';
-import { deleteBarFromSong } from '../../redux/song/song.actions';
+import { setBarMetre, setBarSubdivision } from '../../redux/bars/bars.actions';
+import {
+  copyBarToEnd,
+  copyBarToNext,
+  deleteBarFromSong,
+} from '../../redux/song/song.actions';
 import MetreControls from '../metreControls/MetreControls';
 
 const BarControls = ({
@@ -9,6 +13,8 @@ const BarControls = ({
   bars,
   setBarSubdivision,
   setBarMetre,
+  copyBarToEnd,
+  copyBarToNext,
   deleteBarFromSong,
 }) => {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
@@ -18,8 +24,10 @@ const BarControls = ({
   return (
     <>
       <div>
-        <button>Copy to next</button>
-        <button>Copy to end</button>
+        <button onClick={() => copyBarToNext(barId, arrangementId)}>
+          Copy to next
+        </button>
+        <button onClick={() => copyBarToEnd(barId)}>Copy to end</button>
         {/* disable if bar is not linked */}
         <button disabled={true}>Unlink bar</button>
         <button onClick={() => deleteBarFromSong(arrangementId)}>
@@ -51,5 +59,7 @@ const mapStateToProps = ({ bars }) => ({
 export default connect(mapStateToProps, {
   setBarSubdivision,
   setBarMetre,
+  copyBarToEnd,
+  copyBarToNext,
   deleteBarFromSong,
 })(BarControls);

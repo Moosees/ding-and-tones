@@ -43,3 +43,13 @@ export const deleteBarFromSong = (arrangementId) => ({
 export const toggleEditSong = () => ({
   type: actionTypes.TOGGLE_EDIT_SONG,
 });
+
+export const copyBarToNext = (barId, previousId) => ({
+  type: actionTypes.COPY_BAR_TO_NEXT,
+  payload: { barId, previousId },
+});
+
+export const copyBarToEnd = (barId) => ({
+  type: actionTypes.COPY_BAR_TO_END,
+  payload: barId,
+});
