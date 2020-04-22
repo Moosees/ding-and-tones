@@ -2,12 +2,12 @@ import {
   setCurrentBar,
   setCurrentBeat,
   setIsSongPlaying,
-} from '../../redux/song/song.actions';
+} from '../../redux/ui/ui.actions';
 import { store } from '../../redux/store';
 
 const playBeat = (beat, timeout) =>
   new Promise((resolve, reject) => {
-    if (!store.getState().song.isSongPlaying) return reject();
+    if (!store.getState().ui.isSongPlaying) return reject();
 
     store.dispatch(setCurrentBeat(beat.beatId));
 

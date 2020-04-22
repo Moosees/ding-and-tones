@@ -27,7 +27,7 @@ const displayBeats = (arrangementId, barId, measure, options) => {
   return beats;
 };
 
-const Bar = ({ bar, bars, currentBar, options, isEditing }) => {
+const Bar = ({ bar, bars, currentBar, options, isEditingSong }) => {
   const { barId, arrangementId } = bar;
   const { measure } = bars[barId];
 
@@ -35,16 +35,16 @@ const Bar = ({ bar, bars, currentBar, options, isEditing }) => {
 
   return (
     <div>
-      {isEditing && <BarControls bar={bar} />}
+      {isEditingSong && <BarControls bar={bar} />}
       <Beats isPlaying={arrangementId === currentBar}>{beats}</Beats>
     </div>
   );
 };
 
-const mapStateToProps = ({ bars, song }) => ({
+const mapStateToProps = ({ bars, ui }) => ({
   bars,
-  currentBar: song.currentBar,
-  isEditing: song.isEditing,
+  currentBar: ui.currentBar,
+  isEditingSong: ui.isEditingSong,
 });
 
 export default connect(mapStateToProps)(Bar);

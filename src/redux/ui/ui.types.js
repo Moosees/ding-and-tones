@@ -1,0 +1,8 @@
+const actionTypes = {
+  SET_CURRENT_BAR: 'SET_CURRENT_BAR',
+  SET_CURRENT_BEAT: 'SET_CURRENT_BEAT',
+  SET_IS_SONG_PLAYING: 'SET_IS_SONG_PLAYING',
+  TOGGLE_EDIT_SONG: 'TOGGLE_EDIT_SONG',
+};
+
+export default actionTypes;

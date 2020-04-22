@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { metreList } from '../../metre.data';
-import { toggleEditSong } from '../../redux/song/song.actions';
+import { toggleEditSong } from '../../redux/ui/ui.actions';
 import PlayButton from '../playButton/PlayButton';
 import SongControls from '../songControls/SongControls';
 
-const SongInfo = ({ name, metre, bpm, isEditing, toggleEditSong }) => {
+const SongInfo = ({ name, metre, bpm, isEditingSong, toggleEditSong }) => {
   return (
     <div>
       <h2>{name}</h2>
@@ -14,16 +14,16 @@ const SongInfo = ({ name, metre, bpm, isEditing, toggleEditSong }) => {
         <button onClick={toggleEditSong}>Edit</button>
         <PlayButton />
       </div>
-      {isEditing && <SongControls />}
+      {isEditingSong && <SongControls />}
     </div>
   );
 };
 
-const mapStateToProps = ({ song }) => ({
+const mapStateToProps = ({ song, ui }) => ({
   name: song.name,
   metre: song.metre,
   bpm: song.bpm,
-  isEditing: song.isEditing,
+  isEditingSong: ui.isEditingSong,
 });
 
 export default connect(mapStateToProps, { toggleEditSong })(SongInfo);

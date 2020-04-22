@@ -10,14 +10,14 @@ const Beat = ({
   beatIndex,
   currentBar,
   currentBeat,
-  isSongPlaying,
-  isEditing,
-  updateBeat,
-  options,
   isAccented,
+  isSongPlaying,
+  isEditingSong,
+  options,
+  updateBeat,
 }) => {
-  const handleChange = (evt) => {
-    updateBeat(barId, beat.beatId, beatIndex, evt.target.value);
+  const handleChange = (e) => {
+    updateBeat(barId, beat.beatId, beatIndex, e.target.value);
   };
 
   return (
@@ -25,7 +25,7 @@ const Beat = ({
       isPlaying={arrangementId === currentBar && beat.beatId === currentBeat}
       isAccented={isAccented}
     >
-      {isEditing ? (
+      {isEditingSong ? (
         <select
           value={beat.sound}
           disabled={isSongPlaying}
@@ -40,11 +40,11 @@ const Beat = ({
   );
 };
 
-const mapStateToProps = ({ song }) => ({
-  currentBar: song.currentBar,
-  currentBeat: song.currentBeat,
-  isSongPlaying: song.isSongPlaying,
-  isEditing: song.isEditing,
+const mapStateToProps = ({ ui }) => ({
+  currentBar: ui.currentBar,
+  currentBeat: ui.currentBeat,
+  isSongPlaying: ui.isSongPlaying,
+  isEditingSong: ui.isEditingSong,
 });
 
 export default connect(mapStateToProps, { updateBeat })(Beat);

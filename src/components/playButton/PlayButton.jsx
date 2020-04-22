@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setIsSongPlaying } from '../../redux/song/song.actions';
+import { setIsSongPlaying } from '../../redux/ui/ui.actions';
 import { playSong } from './playButton.utils';
 
 const PlayButton = ({ isSongPlaying, setIsSongPlaying }) => {
@@ -16,8 +16,8 @@ const PlayButton = ({ isSongPlaying, setIsSongPlaying }) => {
   );
 };
 
-const mapStateToProps = ({ song }) => ({
-  isSongPlaying: song.isSongPlaying,
+const mapStateToProps = ({ ui }) => ({
+  isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps, { setIsSongPlaying })(PlayButton);
