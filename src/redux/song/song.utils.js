@@ -22,3 +22,13 @@ export const copyToNextInArrangement = (barId, previousId, arrangement) => {
 export const deleteFromArrangement = (arrangementId, arrangement) => {
   return arrangement.filter((bar) => bar.arrangementId !== arrangementId);
 };
+
+export const updateBarInArrangement = (
+  arrangementId,
+  newBarId,
+  arrangement
+) => {
+  return arrangement.map((bar) =>
+    bar.arrangementId === arrangementId ? { ...bar, barId: newBarId } : bar
+  );
+};

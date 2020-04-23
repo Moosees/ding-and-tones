@@ -42,7 +42,6 @@
 
 * Modify time signature and subdivision on existing bars
 * Rearrange arrangement
-* Unlink patterns
 
 ### Bars / arrangement view
 
@@ -106,3 +105,5 @@
 * Custom metres
 * Custom chord inputs
 * ID and cache chords?
+* Rethink interval colors, color blindness safe
+* Logic for figuring out if a note is a sharp or flat

@@ -7,6 +7,7 @@ import {
   deleteBarFromSong,
 } from '../../redux/song/song.actions';
 import MetreControls from '../metreControls/MetreControls';
+import { unlinkBar } from './barControls.utils';
 
 const BarControls = ({
   bar,
@@ -29,7 +30,12 @@ const BarControls = ({
         </button>
         <button onClick={() => copyBarToEnd(barId)}>Copy to end</button>
         {/* disable if bar is not linked */}
-        <button disabled={true}>Unlink bar</button>
+        <button
+          disabled={false}
+          onClick={() => unlinkBar(barId, arrangementId)}
+        >
+          Unlink bar
+        </button>
         <button onClick={() => deleteBarFromSong(arrangementId)}>
           Delete bar
         </button>

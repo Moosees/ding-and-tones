@@ -5,6 +5,11 @@ export const addBarToSong = (barObject) => ({
   payload: barObject,
 });
 
+export const changeBarInPlace = (arrangementId, newBarId) => ({
+  type: actionTypes.CHANGE_BAR_IN_PLACE,
+  payload: { arrangementId, newBarId },
+});
+
 export const copyBarToEnd = (barId) => ({
   type: actionTypes.COPY_BAR_TO_END,
   payload: barId,

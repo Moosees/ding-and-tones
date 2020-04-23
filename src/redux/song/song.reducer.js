@@ -3,6 +3,7 @@ import {
   copyToEndOfArrangement,
   copyToNextInArrangement,
   deleteFromArrangement,
+  updateBarInArrangement,
 } from './song.utils';
 
 const INITIAL_STATE = {
@@ -23,6 +24,15 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         arrangement: [...state.arrangement, payload],
       };
+
+    case actionTypes.CHANGE_BAR_IN_PLACE:
+      const updatedArrangement = updateBarInArrangement(
+        payload.arrangementId,
+        payload.newBarId,
+        state.arrangement
+      );
+
+      return { ...state, arrangement: updatedArrangement };
 
     case actionTypes.COPY_BAR_TO_END:
       const arrangementWithEndCopy = copyToEndOfArrangement(
