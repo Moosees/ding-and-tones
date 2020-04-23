@@ -50,6 +50,7 @@
 * Triplets, flams, etc.
 * What happens when you change to a scale with less notes than pattern needs?
 * Dropdown list show all dyads and ding + note combinations?
+* How do we know if bars are linked?
 
 ## LOGIC
 

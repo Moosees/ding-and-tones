@@ -1,12 +1,12 @@
 import actionTypes from './chords.types';
 
+export const clearChordDisplay = () => ({
+  type: actionTypes.CLEAR_CHORD,
+});
+
 export const displayChordOnDrum = (chord) => ({
   type: actionTypes.DISPLAY_CHORD,
   payload: chord,
-});
-
-export const clearChordDisplay = () => ({
-  type: actionTypes.CLEAR_CHORD,
 });
 
 export const findChordsInScale = (scale, chords) => ({

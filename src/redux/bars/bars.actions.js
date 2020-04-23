@@ -1,8 +1,8 @@
 import actionTypes from './bars.types';
 
-export const updateBeat = (barId, beatId, beatIndex, newSound) => ({
-  type: actionTypes.UPDATE_BEAT,
-  payload: { barId, beatId, beatIndex, newSound },
+export const addNewBar = (newBar) => ({
+  type: actionTypes.ADD_NEW_BAR,
+  payload: newBar,
 });
 
 export const setBarMetre = (barId, newMetre, newLengthInBeats) => ({
@@ -15,7 +15,7 @@ export const setBarSubdivision = (barId, newSubdivision) => ({
   payload: { barId, newSubdivision },
 });
 
-export const addNewBar = (newBar) => ({
-  type: actionTypes.ADD_NEW_BAR,
-  payload: newBar,
+export const updateBeat = (barId, beatId, beatIndex, newSound) => ({
+  type: actionTypes.UPDATE_BEAT,
+  payload: { barId, beatId, beatIndex, newSound },
 });
