@@ -4,18 +4,18 @@ import Tonefield from '../tonefield/Tonefield';
 import { DrumSvg } from './drum.styles';
 import { getTonefieldColor, getTonefieldText } from './drum.utils';
 
-const Drum = ({ scale, displayedChord }) => {
+const Drum = ({ scale, displayedChord, displayedNote }) => {
   const tonefields = scale.map((note, i) => {
     const pos = (360 / (scale.length - 1)) * (i - 1);
 
     return (
       <Tonefield
-        key={note.note}
+        key={`${note.note}${i}`}
         note={note}
         isDing={i === 0}
         position={pos}
-        text={getTonefieldText(note, displayedChord)}
-        color={getTonefieldColor(note, displayedChord)}
+        text={getTonefieldText(note, displayedChord, displayedNote)}
+        color={getTonefieldColor(note, displayedChord, displayedNote)}
       />
     );
   });
@@ -28,8 +28,8 @@ const Drum = ({ scale, displayedChord }) => {
   );
 };
 
-const mapStateToProps = ({ chords, scale }) => ({
-  displayedChord: chords.displayedChord,
+const mapStateToProps = ({ drum, scale }) => ({
+  displayedChord: drum.displayedChord,
   scale: scale.scaleFull,
 });
 

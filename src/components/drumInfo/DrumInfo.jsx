@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   toggleIsEditing,
   toggleShowIntervals,
-} from '../../redux/scale/scale.actions';
+} from '../../redux/drum/drum.actions';
 
 const DrumInfo = ({
   name,
@@ -29,10 +29,10 @@ const DrumInfo = ({
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
+const mapStateToProps = ({ drum, scale }) => ({
+  isEditing: drum.isEditing,
+  showIntervals: drum.showIntervals,
   name: scale.name,
-  isEditing: scale.isEditing,
-  showIntervals: scale.showIntervals,
 });
 
 export default connect(mapStateToProps, {
