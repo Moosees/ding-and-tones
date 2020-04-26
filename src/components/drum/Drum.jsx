@@ -16,10 +16,9 @@ const Drum = ({ scale, displayedChord, displayedNote, showIntervals }) => {
     return (
       <Tonefield
         key={`${note.note}${i}`}
-        note={i}
+        noteIndex={i}
         isDing={i === 0}
         position={pos}
-        // Use later for displaying current focus
         hasFocus={!displayedChord && i === displayedNote}
         text={
           displayedChord

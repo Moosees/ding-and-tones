@@ -5,16 +5,15 @@
 ### Drum controls
 
 * Edit scale, save/load scale, etc.
-* Display focused note in intervals mode
+* Add note, remove note and layouts instead of sorting and editing scale in place?
 
 ### Drum view
 
 * Handle double dings
 * Handle double high notes
 * Handle extra/bottom notes
-* Show intervals on drum
-* Show legend for colors
-* Show played note on drum
+* Show legend for colors and interval names
+* Show played note on drum?
 
 ## CHORDS
 
