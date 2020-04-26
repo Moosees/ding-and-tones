@@ -2,7 +2,7 @@ import actionTypes from './drum.types';
 
 const INITIAL_STATE = {
   displayedChord: null,
-  displayedNote: null,
+  displayedNote: 0,
   isEditing: false,
   showIntervals: false,
 };

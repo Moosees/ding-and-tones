@@ -1,9 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setDisplayedNote } from '../../redux/drum/drum.actions';
 
-const Tonefield = ({ color = '#000', text = '', note, isDing, position }) => {
+const Tonefield = ({
+  color = '#000',
+  text = '',
+  note,
+  isDing,
+  position,
+  showIntervals,
+  setDisplayedNote,
+}) => {
+  const handlePlay = () => {
+    new Audio('audio/rav/test.wav').play();
+  };
+
+  const handleIntervals = () => {
+    setDisplayedNote(note);
+  };
+
   return (
     <g
-      onClick={() => new Audio('audio/rav/test.wav').play()}
+      onClick={showIntervals ? handleIntervals : handlePlay}
       cx="0"
       cy="0"
       transform={isDing ? '' : `rotate(${position + 90}) translate(7)`}
@@ -22,4 +40,8 @@ const Tonefield = ({ color = '#000', text = '', note, isDing, position }) => {
   );
 };
 
-export default Tonefield;
+const mapStateToProps = ({ drum }) => ({
+  showIntervals: drum.showIntervals,
+});
+
+export default connect(mapStateToProps, { setDisplayedNote })(Tonefield);

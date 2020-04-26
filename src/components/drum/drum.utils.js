@@ -1,19 +1,24 @@
 import { intervals } from '../../intervals.data';
 
-export const getTonefieldText = (note, chordFocus) => {
-  if (!chordFocus || chordFocus.notes.includes(note.noteShort)) {
-    return note.note;
-  } else {
-    return '';
-  }
-};
-
-export const getTonefieldColor = (note, chordFocus) => {
-  if (!chordFocus) return '#222';
+export const getChordColor = (note, chordFocus) => {
   if (chordFocus.notes.includes(note.noteShort)) {
     const interval = intervals[chordFocus.notesInScale[note.note]];
     return interval.color;
   } else {
     return '#666';
   }
+};
+
+export const getChordText = (note, chordFocus) => {
+  return chordFocus.notes.includes(note.noteShort) ? note.note : '';
+};
+
+export const getNoteColor = (noteIndex, intervalMap) => {
+  return intervalMap[noteIndex].color;
+};
+
+export const getNoteText = (noteIndex, intervalMap, showIntervals) => {
+  return showIntervals
+    ? intervalMap[noteIndex].shortName
+    : intervalMap[noteIndex].note;
 };

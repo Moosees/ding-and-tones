@@ -4,8 +4,8 @@
 
 ### Drum controls
 
-* Play/intervals mode
 * Edit scale, save/load scale, etc.
+* Display focused note in intervals mode
 
 ### Drum view
 
