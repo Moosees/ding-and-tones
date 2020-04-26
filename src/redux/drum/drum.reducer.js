@@ -13,6 +13,7 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         displayedChord: state.displayedChord === payload ? null : payload,
+        showIntervals: false,
       };
 
     case actionTypes.SET_DISPLAYED_NOTE:

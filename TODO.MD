@@ -106,3 +106,4 @@
 * ID and cache chords?
 * Rethink interval colors, color blindness safe
 * Logic for figuring out if a note is a sharp or flat
+* Show intervals for chords
