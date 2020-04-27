@@ -5,15 +5,15 @@
 ### Drum controls
 
 * Edit scale, save/load scale, etc.
-* Add note, remove note and layouts instead of sorting and editing scale in place?
 
 ### Drum view
 
-* Handle double dings
-* Handle double high notes
+* Handle non round layouts
 * Handle extra/bottom notes
 * Show legend for colors and interval names
 * Show played note on drum?
+* useEffect for layout to stop recalculating
+* Move logic from Tonefield to drum layout?
 
 ## CHORDS
 
@@ -63,7 +63,7 @@
 
 ### State/Redux
 
-* Clean up scaleFull array
+* Clean up scaleFull array?
 * Figure out chord sorting
 * Persist data through local storage?
 * Delete bars from bar state or use them as a bank or undo?

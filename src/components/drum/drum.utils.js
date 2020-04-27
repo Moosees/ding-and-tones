@@ -22,3 +22,20 @@ export const getNoteText = (noteIndex, intervalMap, showIntervals) => {
     ? intervalMap[noteIndex].shortName
     : intervalMap[noteIndex].note;
 };
+
+const createRoundLayout = (numTones) => {
+  const positionMap = [0, 0];
+  const spread = 360 / (numTones - 1);
+  let startMarker = 1;
+  let endMarker = numTones - 2;
+
+  while (startMarker <= endMarker) {
+    positionMap.push(spread * startMarker++, spread * endMarker--);
+  }
+
+  return positionMap;
+};
+
+export const getPositionMap = (layout, numTones) => {
+  if (layout === 'round') return createRoundLayout(numTones);
+};

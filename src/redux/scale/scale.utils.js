@@ -1,30 +1,5 @@
 import { intervals, noteNameToValue } from '../../intervals.data';
 
-/**
- * Sorts the notes of the scale for easy display around a drum svg.
- *
- * @param {*} scale unsorted scale with notes in ascending musical order.
- * @returns sorted scale with notes in circular order around the drum.
- */
-export const sortScaleForDrum = (scale) => {
-  const sortedScale = [];
-  const tempScale = [...scale];
-  tempScale.forEach((tone, i) => {
-    if (i < 2 || i % 2 === 0) {
-      sortedScale.push(tone);
-      tempScale[i] = undefined;
-    }
-  });
-  tempScale.reverse();
-  tempScale.forEach((tone) => {
-    if (tone) {
-      sortedScale.push(tone);
-    }
-  });
-  return sortedScale;
-};
-
-// Remove all the unused information from scales?
 const addNoteValues = (scale) => {
   return scale.map((note) => {
     return {
@@ -69,7 +44,7 @@ const addIntervalMap = (scaleWithValues) => {
 
 export const createFullScale = (scale) => {
   const scaleWithValues = addNoteValues(scale);
-  const scaleWithIntervalMap = addIntervalMap(scaleWithValues);
+  const scaleFull = addIntervalMap(scaleWithValues);
 
-  return sortScaleForDrum(scaleWithIntervalMap);
+  return scaleFull;
 };

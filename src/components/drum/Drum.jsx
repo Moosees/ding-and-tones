@@ -7,35 +7,39 @@ import {
   getChordText,
   getNoteColor,
   getNoteText,
+  getPositionMap,
 } from './drum.utils';
 
-const Drum = ({ scale, displayedChord, displayedNote, showIntervals }) => {
-  const tonefields = scale.map((note, i) => {
-    const pos = (360 / (scale.length - 1)) * (i - 1);
-
-    return (
-      <Tonefield
-        key={`${note.note}${i}`}
-        noteIndex={i}
-        isDing={i === 0}
-        position={pos}
-        hasFocus={!displayedChord && i === displayedNote}
-        text={
-          displayedChord
-            ? getChordText(note, displayedChord)
-            : getNoteText(i, scale[displayedNote].intervalMap, showIntervals)
-        }
-        color={
-          displayedChord
-            ? getChordColor(note, displayedChord)
-            : getNoteColor(i, scale[displayedNote].intervalMap)
-        }
-      />
-    );
-  });
+const Drum = ({
+  layout,
+  scale,
+  displayedChord,
+  displayedNote,
+  showIntervals,
+}) => {
+  const positionMap = getPositionMap(layout, scale.length);
+  const tonefields = scale.map((note, i) => (
+    <Tonefield
+      key={`${note.note}${i}`}
+      noteIndex={i}
+      isDing={i === 0}
+      position={positionMap[i]}
+      hasFocus={!displayedChord && i === displayedNote}
+      text={
+        displayedChord
+          ? getChordText(note, displayedChord)
+          : getNoteText(i, scale[displayedNote].intervalMap, showIntervals)
+      }
+      color={
+        displayedChord
+          ? getChordColor(note, displayedChord)
+          : getNoteColor(i, scale[displayedNote].intervalMap)
+      }
+    />
+  ));
 
   return (
-    <DrumSvg viewBox="-10 -10 20 20">
+    <DrumSvg viewBox="-10 -10 20 20" transform="rotate(90)">
       <circle r="10" cx="0" cy="0" fill="grey" />
       {tonefields}
     </DrumSvg>
@@ -46,6 +50,7 @@ const mapStateToProps = ({ drum, scale }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   showIntervals: drum.showIntervals,
+  layout: scale.layout,
   scale: scale.scaleFull,
 });
 

@@ -25,7 +25,7 @@ const Tonefield = ({
       onClick={showIntervals ? handleIntervals : handlePlay}
       cx="0"
       cy="0"
-      transform={isDing ? '' : `rotate(${position + 90}) translate(7)`}
+      transform={isDing ? '' : `rotate(${position}) translate(7)`}
       style={{
         fontSize: isDing ? '0.35rem' : '0.25rem',
         cursor: 'pointer',
@@ -41,7 +41,7 @@ const Tonefield = ({
         textAnchor="middle"
         dy="0.3em"
         fill="#ccc"
-        transform={isDing ? '' : `rotate(-${position + 90})`}
+        transform={`rotate(-${position + 90})`}
       >
         {text}
       </text>
