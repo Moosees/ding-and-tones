@@ -24,15 +24,19 @@ export const getNoteText = (noteIndex, intervalMap, showIntervals) => {
 };
 
 const createRoundLayout = (numTones) => {
-  const positionMap = [0, 0];
+  const positionMap = [
+    { rotate: 0, translate: 0 },
+    { rotate: 0, translate: 7 },
+  ];
   const spread = 360 / (numTones - 1);
   let startMarker = 1;
   let endMarker = numTones - 2;
 
   while (startMarker <= endMarker) {
-    positionMap.push(spread * startMarker++, spread * endMarker--);
+    positionMap.push({ rotate: spread * startMarker++, translate: 7 });
+    if (startMarker < endMarker)
+      positionMap.push({ rotate: spread * endMarker--, translate: 7 });
   }
-
   return positionMap;
 };
 

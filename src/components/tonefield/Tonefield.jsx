@@ -12,6 +12,8 @@ const Tonefield = ({
   showIntervals,
   setDisplayedNote,
 }) => {
+  const { rotate, translate } = position;
+
   const handlePlay = () => {
     new Audio('audio/rav/test.wav').play();
   };
@@ -25,7 +27,7 @@ const Tonefield = ({
       onClick={showIntervals ? handleIntervals : handlePlay}
       cx="0"
       cy="0"
-      transform={isDing ? '' : `rotate(${position}) translate(7)`}
+      transform={`rotate(${rotate}) translate(${translate})`}
       style={{
         fontSize: isDing ? '0.35rem' : '0.25rem',
         cursor: 'pointer',
@@ -41,7 +43,7 @@ const Tonefield = ({
         textAnchor="middle"
         dy="0.3em"
         fill="#ccc"
-        transform={`rotate(-${position + 90})`}
+        transform={`rotate(-${rotate + 90})`}
       >
         {text}
       </text>

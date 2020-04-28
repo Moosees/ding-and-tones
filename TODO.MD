@@ -12,8 +12,6 @@
 * Handle extra/bottom notes
 * Show legend for colors and interval names
 * Show played note on drum?
-* useEffect for layout to stop recalculating
-* Move logic from Tonefield to drum layout?
 
 ## CHORDS
 
