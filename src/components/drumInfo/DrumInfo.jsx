@@ -4,6 +4,7 @@ import {
   toggleIsEditing,
   toggleShowIntervals,
 } from '../../redux/drum/drum.actions';
+import EditScale from '../editScale/EditScale';
 
 const DrumInfo = ({
   name,
@@ -21,7 +22,9 @@ const DrumInfo = ({
           <button onClick={toggleIsEditing}>
             {isEditing ? 'Stop editing' : 'Edit scale'}
           </button>
-          {!isEditing && (
+          {isEditing ? (
+            <EditScale />
+          ) : (
             <button onClick={toggleShowIntervals}>
               {showIntervals ? 'Show notes' : 'Show intervals'}
             </button>

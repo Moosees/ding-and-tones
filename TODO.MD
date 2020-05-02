@@ -4,14 +4,14 @@
 
 ### Drum controls
 
-* Edit scale, save/load scale, etc.
+* Save/load scale
+* Check for duplicate notes
 
 ### Drum view
 
 * Handle non round layouts
 * Handle extra/bottom notes
 * Show legend for colors and interval names
-* Show played note on drum?
 
 ## CHORDS
 
@@ -105,3 +105,4 @@
 * Rethink interval colors, color blindness safe
 * Logic for figuring out if a note is a sharp or flat
 * Show intervals for chords
+* Show played note on drum?
