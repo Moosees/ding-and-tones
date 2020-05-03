@@ -5,7 +5,7 @@
 ### Drum controls
 
 * Save/load scale
-* Check for duplicate notes
+* Check for duplicate notes - not needed?
 
 ### Drum view
 
@@ -23,6 +23,7 @@
 ### Chords view
 
 * Play chords
+* Chords show both sharps and flats
 
 ## SONG / BARS
 
@@ -47,6 +48,7 @@
 * What happens when you change to a scale with less notes than pattern needs?
 * Dropdown list show all dyads and ding + note combinations?
 * How do we know if bars are linked?
+* Repeats instead of linked bars?
 
 ## LOGIC
 
@@ -58,6 +60,7 @@
 * Taks or other sounds
 * Select drum type - pan or tongue
 * Web worker?
+* Pre-load sounds as needed
 
 ### State/Redux
 
