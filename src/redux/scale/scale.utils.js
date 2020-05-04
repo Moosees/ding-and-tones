@@ -60,6 +60,10 @@ export const removeSharps = (scale) => {
   });
 };
 
+export const removeDuplicateNotes = (scale) => {
+  return [...new Set(scale)];
+};
+
 export const sortScale = (scale) => {
   return scale.sort((a, b) => noteNameToValue[a] - noteNameToValue[b]);
 };

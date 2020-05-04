@@ -1,9 +1,14 @@
 import actionTypes from './scale.types';
-import { createFullScale, removeSharps, sortScale } from './scale.utils';
+import {
+  createFullScale,
+  removeDuplicateNotes,
+  removeSharps,
+  sortScale,
+} from './scale.utils';
 
 const INITIAL_STATE = {
-  name: 'A Integral',
-  layout: 'round',
+  name: '',
+  layout: '',
   scaleSimple: [],
   scaleFull: [],
 };
@@ -30,10 +35,18 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case actionTypes.SAVE_SCALE:
-      const scaleSimple = removeSharps(payload);
+      const scaleFlat = removeSharps(payload.scaleAry);
+      const scaleTrimmed = removeDuplicateNotes(scaleFlat);
+      const scaleSimple = sortScale(scaleTrimmed);
       const scaleFull = createFullScale(scaleSimple);
 
-      return { ...state, scaleSimple, scaleFull };
+      return {
+        ...state,
+        name: payload.name,
+        layout: payload.layout,
+        scaleSimple,
+        scaleFull,
+      };
 
     default:
       return state;

@@ -5,7 +5,8 @@
 ### Drum controls
 
 * Save/load scale
-* Check for duplicate notes - not needed?
+* Create scale from name and string
+* Constants for layouts?
 
 ### Drum view
 
@@ -23,7 +24,6 @@
 ### Chords view
 
 * Play chords, also play them as arpeggios?
-* Chords show both sharps and flats - fix!
 
 ## SONG / BARS
 
@@ -64,7 +64,6 @@
 
 ### State/Redux
 
-* Clean up scaleFull array?
 * Figure out chord sorting
 * Persist data through local storage?
 * Delete bars from bar state or use them as a bank or undo?
@@ -109,3 +108,4 @@
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Show intervals for chords
 * Show played note on drum?
+* Clean up scaleFull array?

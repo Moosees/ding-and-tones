@@ -10,7 +10,7 @@ export const removeNoteFromScale = (noteToRemove) => ({
   payload: noteToRemove,
 });
 
-export const saveScale = (scale) => ({
+export const saveScale = (name, layout, scaleAry) => ({
   type: actionTypes.SAVE_SCALE,
-  payload: scale,
+  payload: { name, layout, scaleAry },
 });
