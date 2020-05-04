@@ -1,4 +1,8 @@
-import { intervals, noteNameToValue } from '../../intervals.data';
+import {
+  intervals,
+  noteNameToValue,
+  noteValueToName,
+} from '../../intervals.data';
 
 const addNoteValues = (scale) => {
   return scale.map((note) => {
@@ -47,6 +51,13 @@ export const createFullScale = (scale) => {
   const scaleFull = addIntervalMap(scaleWithValues);
 
   return scaleFull;
+};
+
+export const removeSharps = (scale) => {
+  return scale.map((note) => {
+    const noteValue = noteNameToValue[note];
+    return noteValueToName[noteValue];
+  });
 };
 
 export const sortScale = (scale) => {

@@ -9,21 +9,19 @@ import { useMemo } from 'react';
 import { Note, NoteContainer } from './editScale.styles';
 
 const getNotes = (scale, fnAdd, fnRemove) => {
-  const scaleStr = scale.join('');
   const notes = [];
   // c2 to c5
   for (let i = 24; i <= 60; ++i) {
-    const noteName = noteValueToName[i].split('-');
-    const isNoteInScale =
-      scaleStr.includes(noteName[0]) || scaleStr.includes(noteName[1]);
+    const noteName = noteValueToName[i];
+    const isNoteInScale = scale.includes(noteName);
 
     const handleClick = isNoteInScale
-      ? () => fnRemove(noteName[0])
-      : () => fnAdd(noteName[0]);
+      ? () => fnRemove(noteName)
+      : () => fnAdd(noteName);
 
     notes.push(
       <Note key={i} inScale={isNoteInScale} onClick={handleClick}>
-        {noteName[0]}
+        {noteName}
       </Note>
     );
   }

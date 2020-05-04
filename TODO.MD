@@ -22,8 +22,8 @@
 
 ### Chords view
 
-* Play chords
-* Chords show both sharps and flats
+* Play chords, also play them as arpeggios?
+* Chords show both sharps and flats - fix!
 
 ## SONG / BARS
 
@@ -105,7 +105,7 @@
 * Custom metres
 * Custom chord inputs
 * ID and cache chords?
-* Rethink interval colors, color blindness safe
-* Logic for figuring out if a note is a sharp or flat
+* Rethink interval colors, color blindness safe and better bigger intervals
+* Logic for figuring out if a note is a sharp or flat - only flats for now
 * Show intervals for chords
 * Show played note on drum?

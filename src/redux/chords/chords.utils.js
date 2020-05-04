@@ -57,7 +57,7 @@ const chordExists = (scale, chord) => {
   chord.notes.forEach((chordNote, i) => {
     let noteExists = false;
     scale.forEach((note) => {
-      if (chordNote.split('-').includes(note.noteShort)) {
+      if (chordNote === note.noteShort) {
         foundNotes[note.note] = chord.intervals[i];
         noteExists = true;
       }

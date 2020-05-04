@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ChordControls from '../../components/chordControls/ChordControls';
 import ChordList from '../../components/chordList/ChordList';
@@ -9,8 +9,12 @@ import SongInfo from '../../components/songInfo/SongInfo';
 import { saveScale } from '../../redux/scale/scale.actions';
 import { SingleDrumContainer } from './singleDrum.styles';
 
-const SingleDrum = ({ scale, saveScale }) => {
-  saveScale(scale);
+// this page is just a placeholder
+const SingleDrum = ({ saveScale }) => {
+  useEffect(
+    () => saveScale(['A2', 'C3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'E4']),
+    [saveScale]
+  );
 
   return (
     <SingleDrumContainer>
@@ -31,8 +35,4 @@ const SingleDrum = ({ scale, saveScale }) => {
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
-  scale: scale.scaleSimple,
-});
-
-export default connect(mapStateToProps, { saveScale })(SingleDrum);
+export default connect(null, { saveScale })(SingleDrum);
