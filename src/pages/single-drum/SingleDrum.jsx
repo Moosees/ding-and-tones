@@ -14,7 +14,9 @@ const dummyScale = ['A2', 'C3', 'E3', 'C3', 'F3', 'G3', 'A3', 'B3', 'E4', 'C4'];
 
 // this page is just a placeholder
 const SingleDrum = ({ saveScale }) => {
-  useEffect(() => saveScale('A Integral', 'round', dummyScale), [saveScale]);
+  useEffect(() => {
+    saveScale('A Integral', 'round', dummyScale);
+  }, [saveScale]);
 
   return (
     <SingleDrumContainer>

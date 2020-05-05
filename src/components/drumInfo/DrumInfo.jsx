@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
   toggleIsEditing,
   toggleShowIntervals,
 } from '../../redux/drum/drum.actions';
 import EditScale from '../editScale/EditScale';
+import Legend from '../legend/Legend';
 
 const DrumInfo = ({
   name,
@@ -14,9 +15,13 @@ const DrumInfo = ({
   toggleIsEditing,
   toggleShowIntervals,
 }) => {
+  const [legendOpen, setLegendOpen] = useState(false);
+
+  // this is a mess!
   return (
     <div>
       <h2>{name}</h2>
+      <button onClick={() => setLegendOpen(!legendOpen)}>Show legend</button>
       {!displayedChord && (
         <div>
           <button onClick={toggleIsEditing}>
@@ -31,6 +36,7 @@ const DrumInfo = ({
           )}
         </div>
       )}
+      {legendOpen && <Legend />}
     </div>
   );
 };

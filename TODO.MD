@@ -7,6 +7,8 @@
 * Save/load scale
 * Create scale from name and string
 * Constants for layouts?
+* Fix the drumInfo mess!
+* Make Legend work with chords
 
 ### Drum view
 
@@ -20,6 +22,7 @@
 
 * Select chords from list
 * Chords is a part of drum controls?
+* Chords change displayedNote to root of chord?
 
 ### Chords view
 
@@ -106,6 +109,5 @@
 * ID and cache chords?
 * Rethink interval colors, color blindness safe and better bigger intervals
 * Logic for figuring out if a note is a sharp or flat - only flats for now
-* Show intervals for chords
 * Show played note on drum?
 * Clean up scaleFull array?
