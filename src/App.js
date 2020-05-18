@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -6,8 +7,8 @@ import {
   Switch,
 } from 'react-router-dom';
 import {
-  MainContent,
   MainContainer,
+  MainContent,
   SecondaryContent,
   Viewport,
 } from './app.styles';
@@ -18,8 +19,16 @@ import FindSongs from './containers/findSongs/FindSongs';
 import Nav from './containers/nav/Nav';
 import Scale from './containers/scale/Scale';
 import Songwriter from './containers/songwriter/Songwriter';
+import { saveScale } from './redux/scale/scale.actions';
 
-const App = () => {
+// const dummyScale = ['A2', 'C3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'E4'];
+const dummyScale = ['A2', 'C3', 'E3', 'C3', 'F3', 'G3', 'A3', 'B3', 'E4', 'C4'];
+
+const App = ({ saveScale }) => {
+  useEffect(() => {
+    saveScale('A Integral', 'round', dummyScale);
+  }, [saveScale]);
+
   return (
     <Router>
       <Viewport>
@@ -54,4 +63,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default connect(null, { saveScale })(App);

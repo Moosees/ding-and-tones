@@ -3,16 +3,23 @@ import { connect } from 'react-redux';
 import { toggleShowIntervals } from '../../redux/drum/drum.actions';
 import Intervals from '../intervals/Intervals';
 import User from '../user/User';
+import {
+  ButtonsContainer,
+  ControlsContainer,
+  InfoContainer,
+} from './controls.styles';
 
 const Controls = ({ showIntervals, toggleShowIntervals }) => {
   return (
-    <div>
-      <div>
-        <button onClick={() => toggleShowIntervals(false)}>Controls</button>
+    <ControlsContainer>
+      <ButtonsContainer>
+        <button onClick={() => toggleShowIntervals(false)}>
+          Controls/Play
+        </button>
         <button onClick={() => toggleShowIntervals(true)}>Intervals</button>
-      </div>
-      {showIntervals ? <Intervals /> : <User />}
-    </div>
+      </ButtonsContainer>
+      <InfoContainer>{showIntervals ? <Intervals /> : <User />}</InfoContainer>
+    </ControlsContainer>
   );
 };
 

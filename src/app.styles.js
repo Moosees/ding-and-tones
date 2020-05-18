@@ -11,7 +11,6 @@ export const SecondaryContent = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
-  width: 25vw;
 `;
 
 export const MainContent = styled.div`
