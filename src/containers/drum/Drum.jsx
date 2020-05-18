@@ -47,9 +47,9 @@ const Drum = ({
       <DrumSvg viewBox="-10 -10 20 20" transform="rotate(90)">
         <defs>
           <radialGradient id="drumGradient">
-            <stop offset="0%" stop-color="#8998aa" />
-            <stop offset="98%" stop-color="#626280" />
-            <stop offset="100%" stop-color="#222" />
+            <stop offset="0%" stopColor="#8998aa" />
+            <stop offset="98%" stopColor="#626280" />
+            <stop offset="100%" stopColor="#222" />
           </radialGradient>
         </defs>
         <circle r="10" cx="0" cy="0" fill="url(#drumGradient)" />
