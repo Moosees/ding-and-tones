@@ -70,6 +70,7 @@
 * Figure out chord sorting
 * Persist data through local storage?
 * Delete bars from bar state or use them as a bank or undo?
+* Rename and refactor toggle_show_intervals
 
 ### Exporting
   
@@ -91,7 +92,6 @@
 
 ### Design
 
-* Everything
 * Menu
 * Responsive design
 * Logo

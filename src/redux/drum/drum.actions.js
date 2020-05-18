@@ -14,6 +14,7 @@ export const toggleIsEditing = () => ({
   type: actionTypes.TOGGLE_IS_EDITING,
 });
 
-export const toggleShowIntervals = () => ({
+export const toggleShowIntervals = (showIntervals) => ({
   type: actionTypes.TOGGLE_SHOW_INTERVALS,
+  payload: showIntervals,
 });

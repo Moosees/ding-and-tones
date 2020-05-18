@@ -32,8 +32,8 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
     case actionTypes.TOGGLE_SHOW_INTERVALS:
       return {
         ...state,
-        showIntervals: !state.showIntervals,
-        displayedNote: state.showIntervals ? 0 : state.displayedNote,
+        showIntervals: payload,
+        displayedNote: payload ? state.displayedNote : 0,
       };
 
     default:
