@@ -9,7 +9,8 @@ export const ControlsContainer = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
   flex: 1 0 auto;
 `;
 

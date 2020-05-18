@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const DrumContainer = styled.div`
-  height: 25vw;
-  width: 25vw;
+  height: 30vw;
+  margin-bottom: 6rem;
+  width: 30vw;
 `;
 
 export const DrumSvg = styled.svg`

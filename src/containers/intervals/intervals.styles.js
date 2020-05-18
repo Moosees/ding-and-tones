@@ -6,10 +6,10 @@ export const IntervalContainer = styled.div`
 `;
 
 export const Interval = styled.span`
-  border: 3px solid ${({ color }) => color};
-  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 5px solid ${({ color }) => color};
+  border-radius: 5px;
   height: 2.5rem;
-  margin-top: 2px;
-  padding-left: 2px;
-  min-width: 10rem;
+  margin-top: 4px;
+  text-align: center;
 `;

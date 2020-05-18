@@ -5,6 +5,7 @@ const User = () => {
     <div>
       Avatar
       <div>
+        {/* PlayButton component?? */}
         <div>Play</div>
         <div>Sound</div>
         <div>Print</div>
