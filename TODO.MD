@@ -92,10 +92,8 @@
 
 ### Design
 
-* Menu
 * Responsive design
 * Logo
-* Better .svgs, rotate base svg instead of each tonefield?
 * Build custom component instead of html select?
 
 ### Low priority

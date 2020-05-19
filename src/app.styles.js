@@ -25,7 +25,9 @@ export const MainContent = styled.div`
 `;
 
 export const MainContainer = styled.div`
+  border: 3px solid #000;
   background-color: rgba(0, 0, 0, 0.03);
   border-radius: 5px;
   flex: 1 0 auto;
+  z-index: 5;
 `;

@@ -10,8 +10,10 @@ export const ControlsContainer = styled.div`
 
 export const InfoContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.03);
+  border: 3px solid #000;
   border-radius: 5px;
   flex: 1 0 auto;
+  z-index: 5;
 `;
 
 export const ButtonsContainer = styled.div`
