@@ -51,8 +51,22 @@ const Drum = ({
             <stop offset="98%" stopColor="#626280" />
             <stop offset="100%" stopColor="#222" />
           </radialGradient>
+          <filter id="drumShadow">
+            <feDropShadow
+              dx="0.5"
+              dy="0"
+              stdDeviation="0.25"
+              floodOpacity="0.25"
+            />
+          </filter>
         </defs>
-        <circle r="10" cx="0" cy="0" fill="url(#drumGradient)" />
+        <circle
+          r="9.2"
+          cx="0"
+          cy="0"
+          fill="url(#drumGradient)"
+          filter="url(#drumShadow)"
+        />
         {tonefields}
       </DrumSvg>
     </DrumContainer>

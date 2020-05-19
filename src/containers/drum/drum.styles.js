@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const DrumContainer = styled.div`
   height: 30vw;
-  margin-bottom: 6rem;
+  margin: -1.5rem 0 2rem;
+  max-height: 30rem;
+  max-width: 30rem;
   width: 30vw;
 `;
 

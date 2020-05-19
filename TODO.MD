@@ -7,21 +7,18 @@
 * Save/load scale
 * Create scale from name and string
 * Constants for layouts?
-* Fix the drumInfo mess!
 * Make Legend work with chords
 
 ### Drum view
 
 * Handle non round layouts
 * Handle extra/bottom notes
-* Show legend for colors and interval names
 
 ## CHORDS
 
 ### Chords controls
 
 * Select chords from list
-* Chords is a part of drum controls?
 * Chords change displayedNote to root of chord?
 
 ### Chords view
@@ -92,8 +89,8 @@
 
 ### Design
 
+* Colors, fonts and stuff
 * Responsive design
-* Logo
 * Build custom component instead of html select?
 
 ### Low priority
@@ -101,7 +98,6 @@
 * Multiple drums for chords, songs etc.
 * Comparing scales using tables or other presentations
 * Ability to loop songs
-* Rework app and data structuring?
 * Custom metres
 * Custom chord inputs
 * ID and cache chords?
