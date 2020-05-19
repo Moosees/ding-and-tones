@@ -1,98 +1,90 @@
 # DING AND TONES TODO LIST
 
-## DRUM
+## SIDEBAR
 
-### Drum controls
+### Drum
+
+* Play the correct note
+* Handle non round layouts
+* Handle extra/bottom notes
+* Keyboard shortcuts?
+
+### Controls
+
+* Design control panel
+* Select drum type - pan or tongue, etc.
+* Connect to backend
+* Printing, format?
+* Save to .pdf?
+* Web worker?
+* Pre-load sounds when loading scale or playing song?
+
+### Intervals
+
+* Make Legend work with chords
+* Indicate currently focused interval and ability to switch focus
+
+## MAIN CONTENT
+
+### Scale
 
 * Save/load scale
 * Create scale from name and string
 * Constants for layouts?
-* Make Legend work with chords
-* Indicate currently focused interval and ability to switch focus
+* What happens when you change to a scale with less notes than pattern needs?
 
-### Drum view
-
-* Handle non round layouts
-* Handle extra/bottom notes
-
-## CHORDS
-
-### Chords controls
+### Chords
 
 * Select chords from list
 * Chords change displayedNote to root of chord?
-
-### Chords view
-
 * Play chords, also play them as arpeggios?
 
-## SONG / BARS
-
-### Song info
+### Songwriter
 
 * Metre is just informational and default for new bars?
 * Only use subdivision for individual bars?
-
-### Song controls
-
 * Debounce and validate bpm
-
-### Bar controls
-
-* Modify time signature and subdivision on existing bars
 * Rearrange arrangement
-
-### Bars / arrangement view
-
+* Build custom component instead of html select?
+* Modify time signature and subdivision on existing bars
 * Chords
-* Triplets, flams, etc.
-* What happens when you change to a scale with less notes than pattern needs?
 * Dropdown list show all dyads and ding + note combinations?
 * How do we know if bars are linked?
 * Repeats instead of linked bars?
 
-## LOGIC
+### Find songs
 
-### Sound player
+* Sorting/searching
+* Likes and/or comments?
+* Share song through link?
 
-* Keyboard shortcuts
-* Swing?
-* Play the correct note
-* Taks or other sounds
-* Select drum type - pan or tongue
-* Web worker?
-* Pre-load sounds as needed
+## OTHER
 
 ### State/Redux
 
 * Figure out chord sorting
-* Persist data through local storage?
-* Delete bars from bar state or use them as a bank or undo?
+* Persist working state through local storage?
+* Delete bars from bar state or use them as a bank or undo functionality?
 * Rename and refactor toggle_show_intervals
-
-### Exporting
-  
-* Printing, format?
-* Save to .pdf?
 
 ### Backend
 
-* Everything
-* Analytics
-* Hosting
-* Database
-* Auth/Users
+* Server - express?
+* Database - mongoDB?
+* Auth/Users - only if you want to save?
 * GDPR
-* Extra features - comments?
-* Share song through link?
+* Analytics?
+* Hosting
 
-## DESIGN / OTHER
+### Sound
+
+* Taks or other sounds
+* More drum alternatives?
 
 ### Design
 
 * Colors, fonts and stuff
 * Responsive design
-* Build custom component instead of html select?
 
 ### Low priority
 
@@ -106,3 +98,5 @@
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Show played note on drum?
 * Clean up scaleFull array?
+* Triplets, flams, etc.
+* Swing?
