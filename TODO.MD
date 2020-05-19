@@ -8,6 +8,7 @@
 * Create scale from name and string
 * Constants for layouts?
 * Make Legend work with chords
+* Indicate currently focused interval and ability to switch focus
 
 ### Drum view
 

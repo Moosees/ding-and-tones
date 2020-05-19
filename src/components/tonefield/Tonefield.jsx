@@ -29,12 +29,12 @@ const Tonefield = ({
       cy="0"
       transform={`rotate(${rotate}) translate(${translate})`}
       style={{
-        fontSize: isDing ? '0.35rem' : '0.25rem',
+        fontSize: isDing ? '0.23rem' : '0.16rem',
         cursor: 'pointer',
       }}
     >
       <circle
-        r={isDing ? '2.5' : '2'}
+        r={isDing ? '2.5' : '1.7'}
         stroke={color}
         strokeWidth={hasFocus ? '0.5' : '0.2'}
         fill="#333"

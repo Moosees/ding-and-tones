@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { intervals } from '../../intervals.data';
-import { Interval, IntervalContainer } from './intervals.styles';
+import { Interval, IntervalContainer, IntervalList } from './intervals.styles';
 
 const getLegend = (note, scale) => {
   const intervalList = [];
@@ -11,9 +11,10 @@ const getLegend = (note, scale) => {
   for (let i = 0; i <= 24; ++i) {
     if (currentIntervals.includes(i))
       intervalList.push(
-        <Interval key={i} color={intervals[i].color}>
-          {intervals[i].name}
-        </Interval>
+        <IntervalContainer key={i}>
+          <Interval color={intervals[i].color} /> - {intervals[i].name} (
+          {intervals[i].halfsteps} semitones)
+        </IntervalContainer>
       );
   }
 
@@ -22,9 +23,9 @@ const getLegend = (note, scale) => {
 
 const Intervals = ({ displayedNote, scale }) => {
   return (
-    <IntervalContainer>
+    <IntervalList>
       {scale.length && getLegend(displayedNote, scale)}
-    </IntervalContainer>
+    </IntervalList>
   );
 };
 
