@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
+import { noteValueToName } from '../../intervals.data';
 import {
   addNoteToScale,
   removeNoteFromScale,
 } from '../../redux/scale/scale.actions';
-import { noteValueToName } from '../../intervals.data';
-import { useMemo } from 'react';
-import { Note, NoteContainer } from './editScale.styles';
+import { Note, NoteContainer } from './scaleEdit.styles';
 
 const getNotes = (scale, fnAdd, fnRemove) => {
   const notes = [];
@@ -25,11 +24,10 @@ const getNotes = (scale, fnAdd, fnRemove) => {
       </Note>
     );
   }
-  console.log({ notes });
   return notes;
 };
 
-const EditScale = ({ scale, addNoteToScale, removeNoteFromScale }) => {
+const ScaleEdit = ({ scale, addNoteToScale, removeNoteFromScale }) => {
   const notes = useMemo(
     () => getNotes(scale, addNoteToScale, removeNoteFromScale),
     [scale, addNoteToScale, removeNoteFromScale]
@@ -45,4 +43,4 @@ const mapStateToProps = ({ scale }) => ({
 export default connect(mapStateToProps, {
   addNoteToScale,
   removeNoteFromScale,
-})(EditScale);
+})(ScaleEdit);
