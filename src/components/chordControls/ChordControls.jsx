@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { findChordsInScale } from '../../redux/chords/chords.actions';
+import styled from 'styled-components';
+
+const ControlsContainer = styled.div`
+  margin-bottom: 3rem;
+`;
 
 const ChordControls = ({ scale, chordList, findChordsInScale }) => {
   return (
-    <button onClick={() => findChordsInScale(scale, chordList)}>
-      Find chords
-    </button>
+    <ControlsContainer>
+      <button onClick={() => findChordsInScale(scale, chordList)}>
+        Find chords
+      </button>
+    </ControlsContainer>
   );
 };
 
