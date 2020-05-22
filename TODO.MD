@@ -31,6 +31,8 @@
 
 * Save/load scale
 * Create scale from name and string
+* Debounce inputs?
+* Transpose up/down
 * Constants for layouts?
 * What happens when you change to a scale with less notes than pattern needs?
 

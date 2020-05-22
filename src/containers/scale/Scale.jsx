@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import DividerLine from '../../components/dividerLine/DividerLine';
 import ScaleEdit from '../../components/scaleEdit/ScaleEdit';
 import ScaleInfo from '../../components/scaleInfo/ScaleInfo';
+import ScaleSearch from '../../components/scaleSearch/ScaleSearch';
 
 const ScaleContainer = styled.div`
   align-items: center;
@@ -13,10 +14,19 @@ const ScaleContainer = styled.div`
   padding: 3rem;
 `;
 
+const TopSection = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+`;
+
 const Scale = () => {
   return (
     <ScaleContainer>
-      <ScaleInfo />
+      <TopSection>
+        <ScaleInfo />
+        <ScaleSearch />
+      </TopSection>
       <DividerLine />
       <ScaleEdit />
     </ScaleContainer>

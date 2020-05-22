@@ -17,5 +17,11 @@ export const Note = styled.span`
   height: 2.8rem;
   margin: 3px;
   text-align: center;
+  transition: border 0.15s ease-in;
   width: 2.8rem;
+
+  &:hover {
+    border: ${({ inScale }) =>
+      inScale ? '2px solid #800' : '1px solid rgba(0,200,0,0.6)'};
+  }
 `;

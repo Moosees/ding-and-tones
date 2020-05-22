@@ -48,6 +48,12 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
         scaleFull,
       };
 
+    case actionTypes.SET_NAME:
+      return {
+        ...state,
+        name: payload,
+      };
+
     default:
       return state;
   }

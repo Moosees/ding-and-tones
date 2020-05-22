@@ -14,3 +14,8 @@ export const saveScale = (name, layout, scaleAry) => ({
   type: actionTypes.SAVE_SCALE,
   payload: { name, layout, scaleAry },
 });
+
+export const setScaleName = (name) => ({
+  type: actionTypes.SET_NAME,
+  payload: name,
+});
