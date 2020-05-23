@@ -32,17 +32,19 @@ const ListItem = styled.li`
 const ChordList = memo(({ displayedChord, setDisplayedChord, foundChords }) => {
   return (
     <ListContainer>
-      {foundChords.map((chord, i) => (
-        <ListItem
-          key={i}
-          isDisplayed={
-            displayedChord && chord.nameShort === displayedChord.nameShort
-          }
-          onClick={() => setDisplayedChord(chord)}
-        >
-          {chord.name} ({chord.notes.join('-')})
-        </ListItem>
-      ))}
+      {foundChords.map((chord, i) => {
+        const isDisplayed =
+          displayedChord && chord.nameShort === displayedChord.nameShort;
+        return (
+          <ListItem
+            key={i}
+            isDisplayed={isDisplayed}
+            onClick={() => setDisplayedChord(isDisplayed ? null : chord)}
+          >
+            {chord.name} ({chord.notes.join('-')})
+          </ListItem>
+        );
+      })}
     </ListContainer>
   );
 });

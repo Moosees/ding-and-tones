@@ -52,13 +52,13 @@ const getChordsFromScale = (scale, chord) => {
  */
 const chordExists = (scale, chord) => {
   let chordExists = true;
-  const foundNotes = {};
+  const foundNotes = [];
 
   chord.notes.forEach((chordNote, i) => {
     let noteExists = false;
     scale.forEach((note) => {
       if (chordNote === note.noteShort) {
-        foundNotes[note.note] = chord.intervals[i];
+        foundNotes.push({ [note.note]: chord.intervals[i] });
         noteExists = true;
       }
     });
@@ -83,12 +83,16 @@ const findOneChord = (scale, chord) => {
     if (foundChord) {
       const name = `${currentChord.notes[0]} ${chord.name}`;
       const nameShort = `${currentChord.notes[0]}${chord.nameShort}`;
+      const rootInScale = scale.findIndex(
+        (el) => el.note === Object.keys(foundChord[0])[0]
+      );
       foundChords.push({
         name,
         nameShort,
         intervals: currentChord.intervals,
         notes: currentChord.notes,
-        notesInScale: foundChord,
+        notesInScale: foundChord, // flatten to simple object?
+        rootInScale,
       });
     }
   });

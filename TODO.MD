@@ -21,7 +21,7 @@
 
 ### Intervals
 
-* Make Legend work with chords
+* Only show intervals for notes in current chord, use same intervals on drum
 * Indicate currently focused interval and ability to switch focus
 * Indicate scrolling or resize for smaller screens?
 
@@ -39,8 +39,8 @@
 ### Chords
 
 * Select chords from list
-* Chords change displayedNote to root of chord?
 * Play chords, also play them as arpeggios?
+* Clear or recalculate chords when scale changes
 
 ### Songwriter
 
@@ -69,7 +69,6 @@
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * Delete bars from bar state or use them as a bank or undo functionality?
-* Rename and refactor toggle_show_intervals
 * useRouter might not be best solution for navigation?
 
 ### Backend

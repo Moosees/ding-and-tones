@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '../../components/button/Button';
-import { toggleShowIntervals } from '../../redux/drum/drum.actions';
+import { setShowIntervals } from '../../redux/drum/drum.actions';
 import Intervals from '../intervals/Intervals';
 import User from '../user/User';
 import {
@@ -10,7 +10,7 @@ import {
   InfoContainer,
 } from './controls.styles';
 
-const Controls = ({ showIntervals, toggleShowIntervals }) => {
+const Controls = ({ showIntervals, setShowIntervals }) => {
   return (
     <ControlsContainer>
       <ButtonsContainer>
@@ -18,13 +18,13 @@ const Controls = ({ showIntervals, toggleShowIntervals }) => {
           isSmall
           isActive={!showIntervals}
           label="Controls"
-          onClick={() => toggleShowIntervals(false)}
+          onClick={() => setShowIntervals(false)}
         />
         <Button
           isSmall
           isActive={showIntervals}
           label="Intervals"
-          onClick={() => toggleShowIntervals(true)}
+          onClick={() => setShowIntervals(true)}
         />
       </ButtonsContainer>
       <InfoContainer>{showIntervals ? <Intervals /> : <User />}</InfoContainer>
@@ -36,4 +36,4 @@ const mapStateToProps = ({ drum }) => ({
   showIntervals: drum.showIntervals,
 });
 
-export default connect(mapStateToProps, { toggleShowIntervals })(Controls);
+export default connect(mapStateToProps, { setShowIntervals })(Controls);

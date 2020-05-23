@@ -10,7 +10,7 @@ export const setDisplayedNote = (note) => ({
   payload: note,
 });
 
-export const toggleShowIntervals = (showIntervals) => ({
-  type: actionTypes.TOGGLE_SHOW_INTERVALS,
+export const setShowIntervals = (showIntervals) => ({
+  type: actionTypes.SET_SHOW_INTERVALS,
   payload: showIntervals,
 });

@@ -2,13 +2,7 @@ import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import Tonefield from '../../components/tonefield/Tonefield';
 import { DrumContainer, DrumSvg } from './drum.styles';
-import {
-  getChordColor,
-  getChordText,
-  getNoteColor,
-  getNoteText,
-  getPositionMap,
-} from './drum.utils';
+import { getNoteColor, getNoteText, getPositionMap } from './drum.utils';
 
 const Drum = ({
   layout,
@@ -22,25 +16,27 @@ const Drum = ({
     scale,
   ]);
 
-  const tonefields = scale.map((note, i) => (
-    <Tonefield
-      key={`${note.note}${i}`}
-      noteIndex={i}
-      isDing={i === 0}
-      position={positionMap[i]}
-      hasFocus={!displayedChord && i === displayedNote}
-      text={
-        displayedChord
-          ? getChordText(note, displayedChord)
-          : getNoteText(i, scale[displayedNote].intervalMap, showIntervals)
-      }
-      color={
-        displayedChord
-          ? getChordColor(note, displayedChord)
-          : getNoteColor(i, scale[displayedNote].intervalMap)
-      }
-    />
-  ));
+  const tonefields = scale.map((note, i) => {
+    const showNote =
+      !displayedChord || displayedChord.notes.includes(note.noteShort);
+    return (
+      <Tonefield
+        key={`${note.note}${i}`}
+        noteIndex={i}
+        isDing={i === 0}
+        position={positionMap[i]}
+        hasFocus={i === displayedNote}
+        text={
+          showNote
+            ? getNoteText(i, scale[displayedNote].intervalMap, showIntervals)
+            : ''
+        }
+        color={
+          showNote ? getNoteColor(i, scale[displayedNote].intervalMap) : '#666'
+        }
+      />
+    );
+  });
 
   return (
     <DrumContainer>
