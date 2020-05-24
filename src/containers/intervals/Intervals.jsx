@@ -3,7 +3,16 @@ import { connect } from 'react-redux';
 import { intervals } from '../../intervals.data';
 import { Interval, IntervalContainer, IntervalList } from './intervals.styles';
 
-const getLegend = (note, scale) => {
+const getChordLegend = (intervalList) => {
+  return intervalList.map((interval) => (
+    <IntervalContainer key={interval}>
+      <Interval color={intervals[interval].color} /> -{' '}
+      {intervals[interval].name} ({intervals[interval].halfsteps} semitones)
+    </IntervalContainer>
+  ));
+};
+
+const getScaleLegend = (note, scale) => {
   const intervalList = [];
   const currentIntervals = scale[note].intervalList;
 
@@ -21,15 +30,18 @@ const getLegend = (note, scale) => {
   return intervalList;
 };
 
-const Intervals = ({ displayedNote, scale }) => {
+const Intervals = ({ displayedChord, displayedNote, scale }) => {
   return (
     <IntervalList>
-      {scale.length && getLegend(displayedNote, scale)}
+      {scale.length && displayedChord
+        ? getChordLegend(displayedChord.intervals)
+        : getScaleLegend(displayedNote, scale)}
     </IntervalList>
   );
 };
 
 const mapStateToProps = ({ scale, drum }) => ({
+  displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   scale: scale.scaleFull,
 });

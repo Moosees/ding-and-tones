@@ -21,7 +21,6 @@
 
 ### Intervals
 
-* Only show intervals for notes in current chord, use same intervals on drum
 * Indicate currently focused interval and ability to switch focus
 * Indicate scrolling or resize for smaller screens?
 
@@ -41,6 +40,7 @@
 * Select chords from list
 * Play chords, also play them as arpeggios?
 * Clear or recalculate chords when scale changes
+* Figure out chord sorting and display, table view? Multiple views?
 
 ### Songwriter
 
@@ -65,7 +65,6 @@
 
 ### State/Routes
 
-* Figure out chord sorting
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * Delete bars from bar state or use them as a bank or undo functionality?
@@ -106,3 +105,4 @@
 * Clean up scaleFull array?
 * Triplets, flams, etc.
 * Swing?
+* Refactor Intervals.jsx

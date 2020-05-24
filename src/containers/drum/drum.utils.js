@@ -1,19 +1,28 @@
 import { intervals } from '../../intervals.data';
 
-// Use alternative interval map for chords
-export const getChordColor = (note, chordFocus) => {
-  const interval = intervals[chordFocus.notesInScale[note.note]];
-  return interval.color;
+export const getChordColor = (note, notesInScale) => {
+  return intervals[notesInScale[note]].color;
 };
 
 export const getNoteColor = (noteIndex, intervalMap) => {
   return intervalMap[noteIndex].color;
 };
 
-export const getNoteText = (noteIndex, intervalMap, showIntervals) => {
-  return showIntervals
-    ? intervalMap[noteIndex].shortName
-    : intervalMap[noteIndex].note;
+export const getNoteText = (
+  note,
+  noteIndex,
+  intervalMap,
+  showIntervals,
+  displayedChord
+) => {
+  // note names
+  if (!showIntervals) return intervalMap[noteIndex].note;
+
+  // color for scale notes
+  if (!displayedChord) return intervalMap[noteIndex].shortName;
+
+  // color for chord notes
+  return intervals[displayedChord.notesInScale[note]].shortName;
 };
 
 const TRANSLATE_BASE = 6.6;

@@ -2,7 +2,12 @@ import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import Tonefield from '../../components/tonefield/Tonefield';
 import { DrumContainer, DrumSvg } from './drum.styles';
-import { getNoteColor, getNoteText, getPositionMap } from './drum.utils';
+import {
+  getChordColor,
+  getNoteColor,
+  getNoteText,
+  getPositionMap,
+} from './drum.utils';
 
 const Drum = ({
   layout,
@@ -28,11 +33,21 @@ const Drum = ({
         hasFocus={i === displayedNote}
         text={
           showNote
-            ? getNoteText(i, scale[displayedNote].intervalMap, showIntervals)
+            ? getNoteText(
+                note.note,
+                i,
+                scale[displayedNote].intervalMap,
+                showIntervals,
+                displayedChord
+              )
             : ''
         }
         color={
-          showNote ? getNoteColor(i, scale[displayedNote].intervalMap) : '#666'
+          showNote
+            ? displayedChord
+              ? getChordColor(note.note, displayedChord.notesInScale)
+              : getNoteColor(i, scale[displayedNote].intervalMap)
+            : '#666'
         }
       />
     );

@@ -52,20 +52,22 @@ const getChordsFromScale = (scale, chord) => {
  */
 const chordExists = (scale, chord) => {
   let chordExists = true;
-  const foundNotes = [];
+  const foundNotes = {};
+  const rootAry = [];
 
   chord.notes.forEach((chordNote, i) => {
     let noteExists = false;
     scale.forEach((note) => {
       if (chordNote === note.noteShort) {
-        foundNotes.push({ [note.note]: chord.intervals[i] });
+        rootAry.push({ [note.note]: chord.intervals[i] });
+        foundNotes[note.note] = chord.intervals[i];
         noteExists = true;
       }
     });
     if (!noteExists) chordExists = false;
   });
 
-  return chordExists ? foundNotes : null;
+  return chordExists ? { rootAry, foundNotes } : null;
 };
 /**
  * Search a scale for a specific chord no matter the root note
@@ -81,17 +83,18 @@ const findOneChord = (scale, chord) => {
   chordsToCheck.forEach((currentChord) => {
     const foundChord = chordExists(scale, currentChord);
     if (foundChord) {
+      const { rootAry, foundNotes } = foundChord;
       const name = `${currentChord.notes[0]} ${chord.name}`;
       const nameShort = `${currentChord.notes[0]}${chord.nameShort}`;
       const rootInScale = scale.findIndex(
-        (el) => el.note === Object.keys(foundChord[0])[0]
+        (el) => el.note === Object.keys(rootAry[0])[0]
       );
       foundChords.push({
         name,
         nameShort,
         intervals: currentChord.intervals,
         notes: currentChord.notes,
-        notesInScale: foundChord, // flatten to simple object?
+        notesInScale: foundNotes,
         rootInScale,
       });
     }
