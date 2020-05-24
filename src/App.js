@@ -7,13 +7,15 @@ import {
   Switch,
 } from 'react-router-dom';
 import {
-  MainContainer,
-  MainContent,
-  SecondaryContent,
+  BorderContainer,
+  Column,
+  FlexContainer,
+  Section,
   Viewport,
 } from './app.styles';
 import Chords from './containers/chords/Chords';
 import Controls from './containers/controls/Controls';
+import ControlsNav from './containers/controls/ControlsNav';
 import Drum from './containers/drum/Drum';
 import FindSongs from './containers/findSongs/FindSongs';
 import Nav from './containers/nav/Nav';
@@ -32,32 +34,41 @@ const App = ({ saveScale }) => {
   return (
     <Router>
       <Viewport>
-        <SecondaryContent>
+        <Column>
           <Drum />
-          <Controls />
-        </SecondaryContent>
-        <MainContent>
-          <Nav />
-          <MainContainer>
-            <Switch>
-              <Route path="/scale">
-                <Scale />
-              </Route>
-              <Route path="/chords">
-                <Chords />
-              </Route>
-              <Route path="/song">
-                <Songwriter />
-              </Route>
-              <Route path="/find">
-                <FindSongs />
-              </Route>
-              <Route path="/">
-                <Redirect to="/scale" />
-              </Route>
-            </Switch>
-          </MainContainer>
-        </MainContent>
+          <Section>
+            <ControlsNav />
+            <BorderContainer>
+              <Controls />
+            </BorderContainer>
+          </Section>
+        </Column>
+        <Column>
+          <Section>
+            <Nav />
+            <BorderContainer>
+              <FlexContainer>
+                <Switch>
+                  <Route path="/scale">
+                    <Scale />
+                  </Route>
+                  <Route path="/chords">
+                    <Chords />
+                  </Route>
+                  <Route path="/song">
+                    <Songwriter />
+                  </Route>
+                  <Route path="/find">
+                    <FindSongs />
+                  </Route>
+                  <Route path="/">
+                    <Redirect to="/scale" />
+                  </Route>
+                </Switch>
+              </FlexContainer>
+            </BorderContainer>
+          </Section>
+        </Column>
       </Viewport>
     </Router>
   );

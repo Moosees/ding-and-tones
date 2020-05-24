@@ -4,7 +4,7 @@ export const NoteContainer = styled.div`
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
-  max-width: 60%;
+  max-width: 40rem;
 `;
 
 export const Note = styled.span`

@@ -1,8 +1,14 @@
 import React from 'react';
+import Song from '../../components/song/Song';
+import SongInfo from '../../components/songInfo/SongInfo';
 
 const Songwriter = () => {
-  // SongInfo and Song components
-  return <div>Songwriter</div>;
+  return (
+    <>
+      <SongInfo />
+      <Song />
+    </>
+  );
 };
 
 export default Songwriter;
