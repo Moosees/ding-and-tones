@@ -9,6 +9,7 @@ const Tonefield = ({
   isDing,
   hasFocus,
   position,
+  displayedChord,
   showIntervals,
   setDisplayedNote,
 }) => {
@@ -24,7 +25,9 @@ const Tonefield = ({
 
   return (
     <g
-      onClick={showIntervals ? handleIntervals : handlePlay}
+      onClick={
+        !showIntervals ? handlePlay : displayedChord ? null : handleIntervals
+      }
       cx="0"
       cy="0"
       transform={`rotate(${rotate}) translate(${translate})`}
@@ -52,6 +55,7 @@ const Tonefield = ({
 };
 
 const mapStateToProps = ({ drum }) => ({
+  displayedChord: drum.displayedChord,
   showIntervals: drum.showIntervals,
 });
 

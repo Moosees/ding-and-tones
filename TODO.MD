@@ -8,6 +8,7 @@
 * Handle non round layouts
 * Handle extra/bottom notes
 * Keyboard shortcuts?
+* Only show cursor: pointer for clickable tonefields
 
 ### Controls
 
