@@ -4,14 +4,15 @@ import { setDisplayedNote } from '../../redux/drum/drum.actions';
 
 const Tonefield = ({
   color,
-  text,
-  noteIndex,
-  isDing,
-  hasFocus,
-  position,
   displayedChord,
-  showIntervals,
+  hasFocus,
+  isDing,
+  noteIndex,
+  position,
   setDisplayedNote,
+  showIntervals,
+  showNote,
+  text,
 }) => {
   const { rotate, translate } = position;
 
@@ -33,7 +34,10 @@ const Tonefield = ({
       transform={`rotate(${rotate}) translate(${translate})`}
       style={{
         fontSize: isDing ? '0.23rem' : '0.16rem',
-        cursor: 'pointer',
+        cursor:
+          showNote && !(displayedChord && showIntervals)
+            ? 'pointer'
+            : 'default',
       }}
     >
       <circle

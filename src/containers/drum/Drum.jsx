@@ -10,10 +10,10 @@ import {
 } from './drum.utils';
 
 const Drum = ({
-  layout,
-  scale,
   displayedChord,
   displayedNote,
+  layout,
+  scale,
   showIntervals,
 }) => {
   const positionMap = useMemo(() => getPositionMap(layout, scale.length), [
@@ -27,10 +27,11 @@ const Drum = ({
     return (
       <Tonefield
         key={`${note.note}${i}`}
-        noteIndex={i}
-        isDing={i === 0}
-        position={positionMap[i]}
         hasFocus={i === displayedNote}
+        isDing={i === 0}
+        noteIndex={i}
+        showNote={showNote}
+        position={positionMap[i]}
         text={
           showNote
             ? getNoteText(
