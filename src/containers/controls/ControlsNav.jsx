@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from '../../components/button/Button';
+import NavButton from '../../components/button/NavButton';
 import { setShowIntervals } from '../../redux/drum/drum.actions';
 import styled from 'styled-components';
 
@@ -11,13 +11,13 @@ export const ButtonsContainer = styled.div`
 const ControlsNav = ({ showIntervals, setShowIntervals }) => {
   return (
     <ButtonsContainer>
-      <Button
+      <NavButton
         isSmall
         isActive={!showIntervals}
         label="Controls"
         onClick={() => setShowIntervals(false)}
       />
-      <Button
+      <NavButton
         isSmall
         isActive={showIntervals}
         label="Intervals"

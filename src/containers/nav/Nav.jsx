@@ -1,28 +1,28 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Button from '../../components/button/Button';
+import NavButton from '../../components/button/NavButton';
 
 const Nav = ({ history, location }) => {
   const { pathname } = location;
 
   return (
     <nav>
-      <Button
+      <NavButton
         isActive={pathname === '/scale'}
         label="Scale"
         onClick={() => history.push('/scale')}
       />
-      <Button
+      <NavButton
         isActive={pathname === '/chords'}
         label="Chords"
         onClick={() => history.push('/chords')}
       />
-      <Button
+      <NavButton
         isActive={pathname === '/song'}
         label="Songwriter"
         onClick={() => history.push('/song')}
       />
-      <Button
+      <NavButton
         isActive={pathname === '/find'}
         label="Find Songs"
         onClick={() => history.push('/find')}

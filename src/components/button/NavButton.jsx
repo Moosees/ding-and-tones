@@ -26,7 +26,7 @@ const Btn = styled.button`
   }
 `;
 
-const Button = ({ isActive, label, onClick, isSmall }) => {
+const NavButton = ({ isActive, label, onClick, isSmall }) => {
   return (
     <Btn isActive={isActive} isSmall={isSmall} onClick={onClick}>
       {label}
@@ -34,4 +34,4 @@ const Button = ({ isActive, label, onClick, isSmall }) => {
   );
 };
 
-export default Button;
+export default NavButton;
