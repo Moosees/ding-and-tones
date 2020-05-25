@@ -6,8 +6,8 @@
 
 * Play the correct note
 * Handle non round layouts
-* Handle extra/bottom notes
 * Keyboard shortcuts?
+* Rethink negative and big intervals?
 
 ### Controls
 
@@ -20,8 +20,7 @@
 
 ### Intervals
 
-* Indicate currently focused interval and ability to switch focus
-* Indicate scrolling or resize for smaller screens?
+* Indicate currently focused interval and ability to switch focus?
 
 ## MAIN CONTENT
 
@@ -33,14 +32,14 @@
 * Transpose up/down
 * Constants for layouts?
 * What happens when you change to a scale with less notes than pattern needs?
+* Intervals and root instead of absolute notes for scaleSimple?
 
 ### Chords
 
-* Select chords from list
-* Clear or recalculate chords when scale changes
-
+* Add logic for checkboxes
 * Play chords, also play them as arpeggios?
-* Figure out chord sorting and display, table view? Multiple views?
+* Sort chords by type?
+* ID and cache chords?
 
 ### Songwriter
 
@@ -82,7 +81,6 @@
 ### Sound
 
 * Taks or other sounds
-* More drum alternatives?
 
 ### Design
 
@@ -90,19 +88,22 @@
 * Responsive design
 * Favicon
 * Loading spinners?
+* Rethink interval colors, color blindness safe
 
 ### Low priority
 
-* Multiple drums for chords, songs etc.
-* Comparing scales using tables or other presentations
-* Ability to loop songs
+* Triplets, flams, etc.
+* Show played note on drum?
+* Handle extra/bottom notes
 * Custom metres
 * Custom chord inputs
-* ID and cache chords?
-* Rethink interval colors, color blindness safe and better bigger intervals
+
+### Even lower priority
+
+* Ability to loop songs
+* Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now
-* Show played note on drum?
-* Clean up scaleFull array?
-* Triplets, flams, etc.
+* Multiple drums for chords, songs etc.
 * Swing?
-* Refactor Intervals.jsx
+* Clean up scaleFull array?
+* More drum alternatives?

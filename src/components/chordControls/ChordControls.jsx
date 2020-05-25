@@ -16,7 +16,7 @@ const ChordControls = ({ chordList, scale, findChordsInScale }) => {
 
   useEffect(() => {
     if (allChords) findChordsInScale(scale, chordList);
-  }, [allChords, findChordsInScale, scale]);
+  }, [allChords, chordList, findChordsInScale, scale]);
 
   return <ControlsContainer>{allChords}</ControlsContainer>;
 };

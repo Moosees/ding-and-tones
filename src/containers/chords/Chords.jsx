@@ -1,8 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 import ChordControls from '../../components/chordControls/ChordControls';
 import ChordList from '../../components/chordList/ChordList';
 import DividerLine from '../../components/dividerLine/DividerLine';
-import styled from 'styled-components';
 
 const ChordsContainer = styled.div`
   align-items: center;

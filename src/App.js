@@ -6,13 +6,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import {
-  BorderContainer,
-  Column,
-  FlexContainer,
-  Section,
-  Viewport,
-} from './app.styles';
+import { BorderContainer, Column, Section, Viewport } from './app.styles';
 import Chords from './containers/chords/Chords';
 import Controls from './containers/controls/Controls';
 import ControlsNav from './containers/controls/ControlsNav';

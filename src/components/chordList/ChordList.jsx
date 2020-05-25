@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { connect } from 'react-redux';
-import { setDisplayedChord } from '../../redux/drum/drum.actions';
 import styled from 'styled-components';
+import { setDisplayedChord } from '../../redux/drum/drum.actions';
 
 const ListContainer = styled.ul`
   display: flex;
