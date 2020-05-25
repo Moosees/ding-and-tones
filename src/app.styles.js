@@ -36,13 +36,3 @@ export const BorderContainer = styled.div`
   overflow: auto;
   z-index: 5;
 `;
-
-export const FlexContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-evenly;
-  padding: 3rem;
-  overflow: auto;
-`;

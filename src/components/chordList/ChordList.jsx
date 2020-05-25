@@ -4,11 +4,9 @@ import { setDisplayedChord } from '../../redux/drum/drum.actions';
 import styled from 'styled-components';
 
 const ListContainer = styled.ul`
-  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 3rem;
 `;
 
 const ListItem = styled.li`

@@ -37,8 +37,9 @@
 ### Chords
 
 * Select chords from list
-* Play chords, also play them as arpeggios?
 * Clear or recalculate chords when scale changes
+
+* Play chords, also play them as arpeggios?
 * Figure out chord sorting and display, table view? Multiple views?
 
 ### Songwriter

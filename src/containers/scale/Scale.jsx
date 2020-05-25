@@ -12,16 +12,26 @@ const TopSection = styled.div`
   width: 100%;
 `;
 
+const ScaleContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  padding: 3rem;
+  overflow: auto;
+`;
+
 const Scale = () => {
   return (
-    <>
+    <ScaleContainer>
       <TopSection>
         <ScaleInfo />
         <ScaleSearch />
       </TopSection>
       <DividerLine />
       <ScaleEdit />
-    </>
+    </ScaleContainer>
   );
 };
 
