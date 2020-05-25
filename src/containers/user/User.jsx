@@ -1,33 +1,21 @@
 import React from 'react';
-import DividerLine from '../../components/dividerLine/DividerLine';
-import styled from 'styled-components';
 import ControlsButton from '../../components/button/ControlsButton';
-
-const UserContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  padding: 0.5rem;
-`;
-
-const Buttons = styled.div`
-  align-items: center;
-  display: flex;
-`;
-
-const ButtonGroup = styled.div`
-  align-items: ${({ flexEnd }) => (flexEnd ? 'flex-end' : 'flex-start')};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
+import DividerLine from '../../components/dividerLine/DividerLine';
+import {
+  AvatarContainer,
+  ButtonGroup,
+  Buttons,
+  UserContainer,
+} from './user.styles';
 
 const User = () => {
   return (
     <UserContainer>
-      Avatar
+      <AvatarContainer>
+        <i className="material-icons" style={{ fontSize: 'inherit' }}>
+          face
+        </i>
+      </AvatarContainer>
       <Buttons>
         <ButtonGroup flexEnd>
           {/* PlayButton component?? */}

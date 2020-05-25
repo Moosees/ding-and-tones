@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const IntervalList = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 0.4rem;
+  padding: 0.5rem;
 `;
 
 export const IntervalContainer = styled.div`

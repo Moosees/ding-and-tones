@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const Viewport = styled.div`
-  background-color: #e6e6ed;
+  align-items: center;
   column-gap: 6rem;
   display: grid;
-  grid-template-columns: 25vw 1fr;
+  grid-template-columns: 22vw 1fr;
   height: 100vh;
+  margin: 0 auto;
+  max-width: 140rem;
   padding: 6rem;
   width: 100vw;
 `;
@@ -15,6 +17,7 @@ export const Column = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
+  max-height: 75rem;
 `;
 
 export const Section = styled.div`

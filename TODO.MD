@@ -11,7 +11,6 @@
 
 ### Controls
 
-* Design control panel
 * Select drum type - pan or tongue, etc.
 * Connect to backend
 * Printing, format?

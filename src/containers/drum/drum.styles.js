@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const DrumContainer = styled.div`
-  height: 30vw;
+  height: 25vw;
   margin: -1.5rem 0 2rem;
-  max-height: 30rem;
-  max-width: 30rem;
-  width: 30vw;
+  max-height: 35rem;
+  max-width: 35rem;
+  width: 25vw;
 `;
 
 export const DrumSvg = styled.svg`

@@ -5,7 +5,7 @@ const BtnContainer = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-  padding: 2px;
+  padding: 0.5rem;
   transition: color 0.1s ease-in;
 
   &:hover {

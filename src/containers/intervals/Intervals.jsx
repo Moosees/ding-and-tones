@@ -6,8 +6,9 @@ import { Interval, IntervalContainer, IntervalList } from './intervals.styles';
 const getChordLegend = (intervalList) => {
   return intervalList.map((interval) => (
     <IntervalContainer key={interval}>
-      <Interval color={intervals[interval].color} /> -{' '}
+      <Interval color={intervals[interval].color} />
       {intervals[interval].name} ({intervals[interval].halfsteps} semitones)
+      <Interval color={intervals[interval].color} />
     </IntervalContainer>
   ));
 };
@@ -21,8 +22,9 @@ const getScaleLegend = (note, scale) => {
     if (currentIntervals.includes(i))
       intervalList.push(
         <IntervalContainer key={i}>
-          <Interval color={intervals[i].color} /> - {intervals[i].name} (
-          {intervals[i].halfsteps} semitones)
+          <Interval color={intervals[i].color} />
+          {intervals[i].name} ({intervals[i].halfsteps} semitones)
+          <Interval color={intervals[i].color} />
         </IntervalContainer>
       );
   }
