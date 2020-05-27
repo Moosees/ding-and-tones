@@ -1,13 +1,13 @@
 import React from 'react';
+import { CheckboxLabel, CheckboxInput } from './checkbox.styles';
 
 const Checkbox = ({ label }) => {
   return (
-    <div>
-      <label>
-        <input type="checkbox" />
-        {label}
-      </label>
-    </div>
+    <CheckboxLabel>
+      <input type="checkbox" />
+      <CheckboxInput />
+      {label}
+    </CheckboxLabel>
   );
 };
 
