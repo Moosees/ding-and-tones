@@ -124,3 +124,9 @@ export const findAllChords = (scale, chordAry) => {
 
   return sortChords(foundChords);
 };
+
+export const updateIsSelected = (chordList, id) => {
+  return chordList.map((chord) =>
+    id === chord.id ? { ...chord, isSelected: !chord.isSelected } : chord
+  );
+};

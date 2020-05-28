@@ -36,7 +36,6 @@
 
 ### Chords
 
-* Add logic for checkboxes
 * Play chords, also play them as arpeggios?
 * Sort chords by type?
 * ID and cache chords?
@@ -97,6 +96,7 @@
 * Handle extra/bottom notes
 * Custom metres
 * Custom chord inputs
+* Select all, select no chords
 
 ### Even lower priority
 

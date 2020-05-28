@@ -1,6 +1,6 @@
 import actionTypes from './chords.types';
 
-export const findChordsInScale = (scale, chords) => ({
-  type: actionTypes.FIND_CHORDS,
-  payload: { scale, chords },
+export const toggleChordIsSelected = (id, scale) => ({
+  type: actionTypes.SELECT_CHORD,
+  payload: { id, scale },
 });

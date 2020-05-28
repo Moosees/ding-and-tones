@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { findChordsInScale } from '../../redux/chords/chords.actions';
+import { toggleChordIsSelected } from '../../redux/chords/chords.actions';
 import Checkbox from '../checkbox/Checkbox';
 
 const ControlsContainer = styled.div`
@@ -9,14 +9,20 @@ const ControlsContainer = styled.div`
   flex-direction: column;
 `;
 
-const ChordControls = ({ chordList, scale, findChordsInScale }) => {
-  const allChords = chordList.map((chord, i) => (
-    <Checkbox key={i} label={chord.name} />
-  ));
-
+const ChordControls = ({ chordList, scale, toggleChordIsSelected }) => {
   useEffect(() => {
-    if (allChords) findChordsInScale(scale, chordList);
-  }, [allChords, chordList, findChordsInScale, scale]);
+    toggleChordIsSelected(null, scale);
+  }, [toggleChordIsSelected, scale]);
+
+  const allChords = chordList.map((chord) => (
+    <Checkbox
+      key={chord.id}
+      id={chord.id}
+      label={chord.name}
+      isSelected={chord.isSelected}
+      handleChange={(e) => toggleChordIsSelected(e.target.name, scale)}
+    />
+  ));
 
   return <ControlsContainer>{allChords}</ControlsContainer>;
 };
@@ -27,5 +33,5 @@ const mapStateToProps = ({ chords, scale }) => ({
 });
 
 export default connect(mapStateToProps, {
-  findChordsInScale,
+  toggleChordIsSelected,
 })(ChordControls);

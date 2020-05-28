@@ -1,4 +1,6 @@
-export const chordList = [
+import { v4 as uuid } from 'uuid';
+
+const chords = [
   { name: 'major', nameShort: '', intervals: [0, 4, 7] },
   { name: 'major 6th', nameShort: '6', intervals: [0, 4, 7, 9] },
   { name: 'dominant 7th', nameShort: '7', intervals: [0, 4, 7, 10] },
@@ -12,3 +14,9 @@ export const chordList = [
   { name: 'diminished', nameShort: 'dim', intervals: [0, 3, 6] },
   { name: 'diminished 7th', nameShort: 'dim7', intervals: [0, 3, 6, 9] },
 ];
+
+export const chordList = chords.map((chord) => ({
+  ...chord,
+  id: uuid(),
+  isSelected: true,
+}));

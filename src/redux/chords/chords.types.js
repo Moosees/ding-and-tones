@@ -1,5 +1,5 @@
 const actionTypes = {
-  FIND_CHORDS: 'FIND_CHORDS',
+  SELECT_CHORD: 'SELECT_CHORD',
 };
 
 export default actionTypes;

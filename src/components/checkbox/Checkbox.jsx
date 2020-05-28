@@ -1,10 +1,15 @@
 import React from 'react';
-import { CheckboxLabel, CheckboxInput } from './checkbox.styles';
+import { CheckboxInput, CheckboxLabel } from './checkbox.styles';
 
-const Checkbox = ({ label }) => {
+const Checkbox = ({ label, id, isSelected, handleChange }) => {
   return (
     <CheckboxLabel>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        name={id}
+        checked={isSelected}
+        onChange={handleChange}
+      />
       <CheckboxInput />
       {label}
     </CheckboxLabel>
