@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const InfoContainer = styled.div`
+  align-self: stretch;
   display: flex;
-  flex: 1 0 33%;
   flex-direction: column;
   font-size: 1.2rem;
 `;

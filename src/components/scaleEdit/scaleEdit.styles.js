@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const NoteContainer = styled.div`
-  cursor: pointer;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   max-width: 40rem;
 `;
 
@@ -14,6 +14,7 @@ export const Note = styled.span`
   border-radius: 100px;
   box-shadow: ${({ inScale }) =>
     inScale ? '0px 2px 5px 2px rgba(0, 0, 0, 0.25)' : '0'};
+  cursor: pointer;
   height: 2.8rem;
   margin: 3px;
   text-align: center;

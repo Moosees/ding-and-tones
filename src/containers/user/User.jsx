@@ -24,7 +24,7 @@ const User = () => {
           <ControlsButton label="Sound" icon="hearing" />
           <ControlsButton label="Print" icon="print" />
         </ButtonGroup>
-        <DividerLine vertical />
+        <DividerLine vertical isSmall />
         <ButtonGroup>
           <ControlsButton reverse label="Help" icon="help_outline" />
           <ControlsButton reverse label="Account" icon="person_outline" />
