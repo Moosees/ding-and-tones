@@ -1,13 +1,31 @@
 import React from 'react';
-import Song from '../../components/song/Song';
+import DividerLine from '../../components/dividerLine/DividerLine';
+import SongArrangement from '../../components/songArrangement/SongArrangement';
+import SongControls from '../../components/songControls/SongControls';
 import SongInfo from '../../components/songInfo/SongInfo';
+import {
+  BottomSection,
+  SongContainer,
+  TopPart,
+  TopSection,
+} from './songwriter.styles';
 
 const Songwriter = () => {
   return (
-    <>
-      <SongInfo />
-      <Song />
-    </>
+    <SongContainer>
+      <TopSection>
+        <TopPart>
+          <SongInfo />
+        </TopPart>
+        <TopPart>
+          <SongControls />
+        </TopPart>
+      </TopSection>
+      <DividerLine />
+      <BottomSection>
+        <SongArrangement />
+      </BottomSection>
+    </SongContainer>
   );
 };
 

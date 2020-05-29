@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setScaleName } from '../../redux/scale/scale.actions';
+import ButtonMain from '../button/ButtonMain';
+import InfoField from '../infoField/InfoField';
 import TextInput from '../textInput/TextInput';
-import { Button, Buttons, InfoContainer, InfoField } from './scaleInfo.styles';
+import { Buttons, InfoContainer } from './scaleInfo.styles';
 
 const ScaleInfo = ({ name, layout, scale }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -10,12 +12,12 @@ const ScaleInfo = ({ name, layout, scale }) => {
   return (
     <>
       <InfoContainer>
-        <InfoField>{name}</InfoField>
-        <InfoField>{scale.join(', ')}</InfoField>
-        <InfoField>{layout}</InfoField>
+        <InfoField label={name} />
+        <InfoField label={scale.join(', ')} />
+        <InfoField label={layout} />
         <Buttons>
-          <Button onClick={() => setIsEditing(true)}>Edit Info</Button>
-          <Button>Save Scale</Button>
+          <ButtonMain label="Edit Info" onClick={() => setIsEditing(true)} />
+          <ButtonMain label="Save Scale" />
         </Buttons>
       </InfoContainer>
       {isEditing && (
@@ -23,7 +25,7 @@ const ScaleInfo = ({ name, layout, scale }) => {
           <TextInput value={name} setValue={setScaleName} />
           <TextInput value={scale} disabled />
           <TextInput value={layout} disabled />
-          <button onClick={() => setIsEditing(false)}>Confirm</button>
+          <ButtonMain label="Confirm" onClick={() => setIsEditing(false)} />
         </div>
       )}
     </>
