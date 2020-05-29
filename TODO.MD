@@ -5,7 +5,7 @@
 ### Drum
 
 * Play the correct note
-* Handle non round layouts
+* Handle non round layouts - separate drum notes from extra notes
 * Keyboard shortcuts?
 * Rethink negative and big intervals?
 
@@ -36,8 +36,7 @@
 
 ### Chords
 
-* Play chords, also play them as arpeggios?
-* Sort chords by type?
+* Select all or clear chords
 * ID and cache chords?
 
 ### Songwriter
@@ -96,7 +95,8 @@
 * Handle extra/bottom notes
 * Custom metres
 * Custom chord inputs
-* Select all, select no chords
+* Play chords, also play them as arpeggios?
+* Sort chords by type?
 
 ### Even lower priority
 

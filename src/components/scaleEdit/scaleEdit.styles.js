@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
-export const NoteContainer = styled.div`
+export const EditContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Notes = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 40rem;
+  max-width: 30rem;
 `;
 
 export const Note = styled.span`
@@ -25,4 +31,8 @@ export const Note = styled.span`
     border: ${({ inScale }) =>
       inScale ? '2px solid #800' : '1px solid rgba(0,200,0,0.6)'};
   }
+`;
+
+export const Buttons = styled.div`
+  margin-top: 1rem;
 `;

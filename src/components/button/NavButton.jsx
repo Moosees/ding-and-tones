@@ -8,10 +8,10 @@ const Btn = styled.button`
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   cursor: pointer;
-  font-size: ${({ isSmall }) => (isSmall ? '1.5rem' : '1.8rem')};
+  font-size: ${({ small }) => (small ? '1.5rem' : '1.8rem')};
   font-weight: 500;
   margin: -3px 1rem 0 0.75rem;
-  padding: ${({ isSmall }) => (isSmall ? '0.4rem' : '0.4rem 1rem')};
+  padding: ${({ small }) => (small ? '0.4rem' : '0.4rem 1rem')};
   position: relative;
   top: 3px;
   transition: transform 0.1s ease-in;
@@ -26,9 +26,9 @@ const Btn = styled.button`
   }
 `;
 
-const NavButton = ({ isActive, label, onClick, isSmall }) => {
+const NavButton = ({ isActive, label, onClick, small }) => {
   return (
-    <Btn isActive={isActive} isSmall={isSmall} onClick={onClick}>
+    <Btn isActive={isActive} small={small} onClick={onClick}>
       {label}
     </Btn>
   );

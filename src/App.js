@@ -30,7 +30,7 @@ const App = ({ saveScale }) => {
       <Viewport>
         <Column>
           <Drum />
-          <Section>
+          <Section maxWidth="35rem">
             <ControlsNav />
             <BorderContainer>
               <Controls />

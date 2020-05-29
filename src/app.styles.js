@@ -24,6 +24,7 @@ export const Section = styled.div`
   display: flex;
   flex: 1 0;
   flex-direction: column;
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'unset')};
   width: 100%;
 `;
 

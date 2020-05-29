@@ -13,6 +13,7 @@ export const ButtonGroup = styled.div`
   align-items: ${({ flexEnd }) => (flexEnd ? 'flex-end' : 'flex-start')};
   display: flex;
   flex-direction: column;
+  font-size: 1.8rem;
   justify-content: center;
 `;
 

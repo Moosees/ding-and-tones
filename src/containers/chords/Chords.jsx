@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ChordControls from '../../components/chordControls/ChordControls';
+import ChordFilter from '../../components/chordFilter/ChordFilter';
 import ChordsFound from '../../components/chordsFound/ChordsFound';
 import DividerLine from '../../components/dividerLine/DividerLine';
 
@@ -15,7 +15,7 @@ const ChordsContainer = styled.div`
 const Chords = () => {
   return (
     <ChordsContainer>
-      <ChordControls />
+      <ChordFilter />
       <DividerLine vertical />
       <ChordsFound />
     </ChordsContainer>

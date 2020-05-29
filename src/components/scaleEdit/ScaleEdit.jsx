@@ -5,7 +5,8 @@ import {
   addNoteToScale,
   removeNoteFromScale,
 } from '../../redux/scale/scale.actions';
-import { Note, NoteContainer } from './scaleEdit.styles';
+import ButtonMain from '../button/ButtonMain';
+import { Buttons, EditContainer, Note, Notes } from './scaleEdit.styles';
 
 const getNotes = (scale, fnAdd, fnRemove) => {
   const notes = [];
@@ -33,7 +34,15 @@ const ScaleEdit = ({ scale, addNoteToScale, removeNoteFromScale }) => {
     [scale, addNoteToScale, removeNoteFromScale]
   );
 
-  return <NoteContainer>{notes}</NoteContainer>;
+  return (
+    <EditContainer>
+      <Notes>{notes}</Notes>
+      <Buttons>
+        <ButtonMain label="Up" light />
+        <ButtonMain label="Down" light />
+      </Buttons>
+    </EditContainer>
+  );
 };
 
 const mapStateToProps = ({ scale }) => ({

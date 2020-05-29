@@ -12,13 +12,13 @@ const ControlsNav = ({ showIntervals, setShowIntervals }) => {
   return (
     <ButtonsContainer>
       <NavButton
-        isSmall
+        small
         isActive={!showIntervals}
         label="Controls"
         onClick={() => setShowIntervals(false)}
       />
       <NavButton
-        isSmall
+        small
         isActive={showIntervals}
         label="Intervals"
         onClick={() => setShowIntervals(true)}
