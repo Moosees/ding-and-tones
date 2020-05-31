@@ -87,7 +87,6 @@
 * Responsive design
 * Favicon
 * Loading spinners?
-* Rethink interval colors, color blindness safe
 
 ### Low priority
 
