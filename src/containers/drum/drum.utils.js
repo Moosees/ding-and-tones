@@ -19,10 +19,10 @@ export const getNoteText = (
   if (!showIntervals) return intervalMap[noteIndex].note;
 
   // color for scale notes
-  if (!displayedChord) return intervalMap[noteIndex].shortName;
+  if (!displayedChord) return intervalMap[noteIndex].nameShort;
 
   // color for chord notes
-  return intervals[displayedChord.notesInScale[note]].shortName;
+  return intervals[displayedChord.notesInScale[note]].nameShort;
 };
 
 const TRANSLATE_BASE = 6.6;

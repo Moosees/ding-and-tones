@@ -7,7 +7,7 @@ const getChordLegend = (intervalList) => {
   return intervalList.map((interval) => (
     <IntervalContainer key={interval}>
       <Interval color={intervals[interval].color} />
-      {intervals[interval].name} ({intervals[interval].halfsteps} semitones)
+      {intervals[interval].name} ({intervals[interval].semitones} semitones)
       <Interval color={intervals[interval].color} />
     </IntervalContainer>
   ));
@@ -23,7 +23,7 @@ const getScaleLegend = (note, scale) => {
       intervalList.push(
         <IntervalContainer key={i}>
           <Interval color={intervals[i].color} />
-          {intervals[i].name} ({intervals[i].halfsteps} semitones)
+          {intervals[i].name} ({intervals[i].semitones} semitones)
           <Interval color={intervals[i].color} />
         </IntervalContainer>
       );

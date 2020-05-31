@@ -21,6 +21,7 @@
 ### Intervals
 
 * Indicate currently focused interval and ability to switch focus?
+* Toggle between big intervals and compound intervals?
 
 ## MAIN CONTENT
 
