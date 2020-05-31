@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { toggleChordIsSelected } from '../../redux/chords/chords.actions';
-import Checkbox from '../checkbox/Checkbox';
+import {
+  setAllChordFiltersTo,
+  toggleChordIsSelected,
+} from '../../redux/chords/chords.actions';
 import ButtonMain from '../button/ButtonMain';
+import Checkbox from '../checkbox/Checkbox';
 import DividerLine from '../dividerLine/DividerLine';
 
 const ControlsContainer = styled.div`
@@ -17,7 +20,12 @@ const CheckBoxes = styled.div`
   flex-direction: column;
 `;
 
-const ChordFilter = ({ chordList, scale, toggleChordIsSelected }) => {
+const ChordFilter = ({
+  chordList,
+  scale,
+  setAllChordFiltersTo,
+  toggleChordIsSelected,
+}) => {
   useEffect(() => {
     toggleChordIsSelected(null, scale);
   }, [toggleChordIsSelected, scale]);
@@ -35,8 +43,16 @@ const ChordFilter = ({ chordList, scale, toggleChordIsSelected }) => {
   return (
     <ControlsContainer>
       <div>
-        <ButtonMain label="Show all" light />
-        <ButtonMain label="Clear" light />
+        <ButtonMain
+          label="Show all"
+          light
+          onClick={() => setAllChordFiltersTo(true, scale)}
+        />
+        <ButtonMain
+          label="Clear"
+          light
+          onClick={() => setAllChordFiltersTo(false, scale)}
+        />
       </div>
       <DividerLine small />
       <CheckBoxes>{allChords}</CheckBoxes>
@@ -50,5 +66,6 @@ const mapStateToProps = ({ chords, scale }) => ({
 });
 
 export default connect(mapStateToProps, {
+  setAllChordFiltersTo,
   toggleChordIsSelected,
 })(ChordFilter);

@@ -130,3 +130,7 @@ export const updateIsSelected = (chordList, id) => {
     id === chord.id ? { ...chord, isSelected: !chord.isSelected } : chord
   );
 };
+
+export const setAllIsSelected = (chordList, value) => {
+  return chordList.map((chord) => ({ ...chord, isSelected: value }));
+};

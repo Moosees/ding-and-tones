@@ -37,7 +37,6 @@
 
 ### Chords
 
-* Select all or clear chords
 * ID and cache chords?
 
 ### Songwriter
@@ -67,6 +66,7 @@
 * Prevent transition away from page if data isn't saved?
 * Delete bars from bar state or use them as a bank or undo functionality?
 * useRouter might not be best solution for navigation?
+* Refactor update found chord in chords reducer to new function
 
 ### Backend
 
