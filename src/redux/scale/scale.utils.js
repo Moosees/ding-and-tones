@@ -65,11 +65,12 @@ export const createFullScaleFromNames = (scale) => {
 };
 
 export const transposeScale = (scale, destination = 0) => {
-  console.log({ scale });
-  return scale.map((note) => {
-    const newValue = noteNameToValue[note] + destination;
-    return noteValueToName[newValue];
-  });
+  return scale
+    .map((note) => {
+      const newValue = noteNameToValue[note] + destination;
+      return noteValueToName[newValue];
+    })
+    .filter((note) => note);
 };
 
 export const removeSharps = (scale) => {
