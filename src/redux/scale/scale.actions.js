@@ -19,3 +19,8 @@ export const setScaleName = (name) => ({
   type: actionTypes.SET_NAME,
   payload: name,
 });
+
+export const transposeScale = (destination) => ({
+  type: actionTypes.TRANSPOSE_SCALE,
+  payload: destination,
+});

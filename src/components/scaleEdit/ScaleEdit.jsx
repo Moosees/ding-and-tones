@@ -4,6 +4,7 @@ import { noteValueToName } from '../../intervals.data';
 import {
   addNoteToScale,
   removeNoteFromScale,
+  transposeScale,
 } from '../../redux/scale/scale.actions';
 import ButtonMain from '../button/ButtonMain';
 import { Buttons, EditContainer, Note, Notes } from './scaleEdit.styles';
@@ -28,7 +29,12 @@ const getNotes = (scale, fnAdd, fnRemove) => {
   return notes;
 };
 
-const ScaleEdit = ({ scale, addNoteToScale, removeNoteFromScale }) => {
+const ScaleEdit = ({
+  scale,
+  addNoteToScale,
+  removeNoteFromScale,
+  transposeScale,
+}) => {
   const notes = useMemo(
     () => getNotes(scale, addNoteToScale, removeNoteFromScale),
     [scale, addNoteToScale, removeNoteFromScale]
@@ -38,8 +44,8 @@ const ScaleEdit = ({ scale, addNoteToScale, removeNoteFromScale }) => {
     <EditContainer>
       <Notes>{notes}</Notes>
       <Buttons>
-        <ButtonMain label="Up" light />
-        <ButtonMain label="Down" light />
+        <ButtonMain label="Up" light onClick={() => transposeScale(1)} />
+        <ButtonMain label="Down" light onClick={() => transposeScale(-1)} />
       </Buttons>
     </EditContainer>
   );
@@ -52,4 +58,5 @@ const mapStateToProps = ({ scale }) => ({
 export default connect(mapStateToProps, {
   addNoteToScale,
   removeNoteFromScale,
+  transposeScale,
 })(ScaleEdit);

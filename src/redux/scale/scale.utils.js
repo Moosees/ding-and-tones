@@ -4,7 +4,18 @@ import {
   noteValueToName,
 } from '../../intervals.data';
 
-const addNoteValues = (scale) => {
+// const addNoteNamesFromValues = (scale) => {
+//   return scale.map((noteValue) => {
+//     const note = noteValueToName(noteValue);
+//     return {
+//       note,
+//       noteShort: note.replace(/[0-9]/g, ''),
+//       noteValue,
+//     };
+//   });
+// };
+
+const addNoteValuesFromNames = (scale) => {
   return scale.map((note) => {
     return {
       note,
@@ -46,11 +57,19 @@ const addIntervalMap = (scaleWithValues) => {
   });
 };
 
-export const createFullScale = (scale) => {
-  const scaleWithValues = addNoteValues(scale);
+export const createFullScaleFromNames = (scale) => {
+  const scaleWithValues = addNoteValuesFromNames(scale);
   const scaleFull = addIntervalMap(scaleWithValues);
 
   return scaleFull;
+};
+
+export const transposeScale = (scale, destination = 0) => {
+  console.log({ scale });
+  return scale.map((note) => {
+    const newValue = noteNameToValue[note] + destination;
+    return noteValueToName[newValue];
+  });
 };
 
 export const removeSharps = (scale) => {
