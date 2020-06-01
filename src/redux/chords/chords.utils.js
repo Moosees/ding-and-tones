@@ -32,7 +32,12 @@ const getChordsFromScale = (scale, chord) => {
   const noteCache = [];
 
   scale.forEach((note) => {
-    if (!noteCache.includes(note.noteShort)) {
+    const noteIsInRange =
+      noteNameToValue[note.note] +
+        chord.intervals[chord.intervals.length - 1] <=
+      60;
+      
+    if (!noteCache.includes(note.noteShort) && noteIsInRange) {
       allChords.push({
         notes: getNotesFromIntervals(note.note, chord.intervals),
         intervals: chord.intervals,

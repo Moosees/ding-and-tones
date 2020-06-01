@@ -27,7 +27,6 @@
 
 ### Scale
 
-* Prevent transpose from going outside af note range
 * Save/load scale
 * Create scale from name and string
 * Debounce inputs?
@@ -59,6 +58,10 @@
 * Share song through link?
 
 ## OTHER
+
+### Bugs
+
+* Note range should be hardwired to prevent chords or scales from trying to go outside it. Temporary(?) solution in chords.utils line 35
 
 ### State/Routes
 
