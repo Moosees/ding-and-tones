@@ -17,6 +17,7 @@ const Songwriter = () => {
         <TopPart>
           <SongInfo />
         </TopPart>
+        <DividerLine vertical small />
         <TopPart>
           <SongControls />
         </TopPart>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { metreList } from '../../metre.data';
 import { toggleEditSong } from '../../redux/ui/ui.actions';
 import ButtonMain from '../button/ButtonMain';
 import InfoField from '../infoField/InfoField';
@@ -19,13 +18,11 @@ const Buttons = styled.div`
   display: flex;
 `;
 
-const SongInfo = ({ name, metre, bpm, isEditingSong, toggleEditSong }) => {
-  const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
-
+const SongInfo = ({ name, isEditingSong, toggleEditSong }) => {
   return (
     <InfoContainer>
-      <InfoField as="h2" label={name} />
-      <InfoField label={metreAndBpm} />
+      <InfoField label={'Title: ' + name} />
+      <InfoField label="Difficulty: Beginner" />
       <Buttons>
         <PlayButton />
         <ButtonMain
@@ -39,8 +36,6 @@ const SongInfo = ({ name, metre, bpm, isEditingSong, toggleEditSong }) => {
 
 const mapStateToProps = ({ song, ui }) => ({
   name: song.name,
-  metre: song.metre,
-  bpm: song.bpm,
   isEditingSong: ui.isEditingSong,
 });
 

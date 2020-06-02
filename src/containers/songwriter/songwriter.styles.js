@@ -10,6 +10,7 @@ export const SongContainer = styled.div`
 `;
 
 export const TopSection = styled.div`
+  align-items: center;
   display: flex;
   flex: 1 0;
   max-width: 80rem;
