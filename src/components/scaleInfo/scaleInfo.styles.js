@@ -4,7 +4,6 @@ export const InfoContainer = styled.div`
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  font-size: 1.2rem;
 `;
 
 export const Buttons = styled.div`

@@ -1,4 +1,27 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyles = createGlobalStyle`
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+
+  body {
+    background-color: #e6e6ed;
+    color: rgb(0, 0, 0, 0.8);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+`;
 
 export const Viewport = styled.div`
   align-items: center;

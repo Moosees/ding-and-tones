@@ -29,7 +29,6 @@
 
 * Save/load scale
 * Create scale from name and string
-* Debounce inputs?
 * Constants for layouts?
 * What happens when you change to a scale with less notes than pattern needs?
 * Intervals and root instead of absolute notes for scaleSimple?
@@ -61,7 +60,8 @@
 
 ### Bugs
 
-* Note range should be hardwired to prevent chords or scales from trying to go outside it. Temporary(?) solution in chords.utils line 35
+* Note range should be hardwired to prevent chords or scales from trying to go outside it. Temporary(?) solution in chords.utils line 35 fix and bring back full range in intervals.data
+* Debounce inputs?
 
 ### State/Routes
 

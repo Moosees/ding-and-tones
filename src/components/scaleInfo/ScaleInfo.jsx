@@ -12,9 +12,9 @@ const ScaleInfo = ({ name, layout, scale }) => {
   return (
     <>
       <InfoContainer>
-        <InfoField label={name} />
+        <InfoField label={'Name: ' + name} />
         <InfoField label={scale.join(', ')} />
-        <InfoField label={layout} />
+        <InfoField label={'Layout: ' + layout} />
         <Buttons>
           <ButtonMain label="Edit Info" onClick={() => setIsEditing(true)} />
           <ButtonMain label="Save Scale" />
