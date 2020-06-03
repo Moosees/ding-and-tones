@@ -13,12 +13,13 @@ export const TopSection = styled.div`
   align-items: center;
   display: flex;
   flex: 1 0;
+  justify-content: space-around;
   max-width: 80rem;
   width: 100%;
 `;
 
 export const TopPart = styled.div`
-  width: 50%;
+  width: 48%;
 `;
 
 export const BottomSection = styled.div`

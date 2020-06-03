@@ -1,5 +1,3 @@
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuid } from 'uuid';
@@ -7,20 +5,20 @@ import { metreList } from '../../metre.data';
 import { addNewBar } from '../../redux/bars/bars.actions';
 import {
   addBarToSong,
-  setBpm,
   setSongMetre,
   setSongSubdivision,
 } from '../../redux/song/song.actions';
+import BpmSlider from '../bpmSlider/BpmSlider';
 import ButtonMain from '../button/ButtonMain';
 import InfoField from '../infoField/InfoField';
 import MetreControls from '../metreControls/MetreControls';
+import { Buttons, ControlsContainer } from './songControls.styles';
 import { createNewBar } from './songControls.utils';
 
 const SongControls = ({
   addNewBar,
   addBarToSong,
   bpm,
-  setBpm,
   isSongPlaying,
   subdivision,
   setSongSubdivision,
@@ -40,37 +38,26 @@ const SongControls = ({
   };
 
   return (
-    <>
-      {/* <label>
-          BPM:
-          <input
-            type="number"
-            min="50"
-            max="160"
-            value={bpm}
-            disabled={isSongPlaying}
-            onChange={(e) => setBpm(Number(e.target.value))}
-          />
-        </label> */}
-
+    <ControlsContainer>
       <InfoField label={metreAndBpm} onEdit={() => setMetreOpen(true)} />
-      <InfoField label={<Slider />} />
-      <ButtonMain
-        label="Add bar"
-        disabled={isSongPlaying}
-        onClick={() => handleNewBar(metre, subdivision)}
-      />
+      <InfoField label={<BpmSlider />} />
+      <Buttons>
+        <ButtonMain
+          label="Add bar"
+          disabled={isSongPlaying}
+          onClick={() => handleNewBar(metre, subdivision)}
+        />
+      </Buttons>
       {metreOpen && (
         <MetreControls
           metre={metre}
           subdivision={subdivision}
           setMetre={setSongMetre}
           setSubdivision={setSongSubdivision}
-          disabled={isSongPlaying}
           onClick={() => handleNewBar(metre, subdivision)}
         />
       )}
-    </>
+    </ControlsContainer>
   );
 };
 
@@ -84,7 +71,6 @@ const mapStateToProps = ({ song }) => ({
 export default connect(mapStateToProps, {
   addNewBar,
   addBarToSong,
-  setBpm,
   setSongSubdivision,
   setSongMetre,
 })(SongControls);

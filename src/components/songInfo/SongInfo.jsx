@@ -9,7 +9,7 @@ import PlayButton from '../playButton/PlayButton';
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   width: 100%;
 `;
 
