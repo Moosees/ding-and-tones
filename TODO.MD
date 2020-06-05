@@ -5,9 +5,10 @@
 ### Drum
 
 * Play the correct note
+* Taks or other sounds
 * Handle non round layouts - separate drum notes from extra notes
 * Keyboard shortcuts?
-* Rethink negative and big intervals?
+* Rethink negative and big intervals? Start with small intervals only?
 
 ### Controls
 
@@ -41,7 +42,7 @@
 
 * Metre is just informational and default for new bars?
 * Only use subdivision for individual bars?
-* Debounce and validate bpm
+* Debounce and validate bpm - validate length on inputs
 * Rearrange arrangement
 * Build custom component instead of html select?
 * Modify time signature and subdivision on existing bars
@@ -79,10 +80,6 @@
 * GDPR
 * Analytics?
 * Hosting
-
-### Sound
-
-* Taks or other sounds
 
 ### Design
 

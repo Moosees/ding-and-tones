@@ -23,7 +23,7 @@ const MetreControls = ({
   return (
     <div>
       <label>
-        Time signature:
+        Metre:
         <select value={metre} disabled={disabled} onChange={handleTimeChange}>
           <optgroup label="Simple metre">
             <option value={'s24'}>2/4</option>
@@ -47,7 +47,7 @@ const MetreControls = ({
         </select>
       </label>
       <label>
-        Beat subdivision:
+        Subdivision:
         <select
           value={subdivision}
           disabled={disabled}

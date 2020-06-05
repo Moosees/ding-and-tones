@@ -12,13 +12,11 @@ const SongArrangement = ({ arrangement, scale }) => {
   }, [scale]);
 
   return (
-    <>
-      <Bars>
-        {arrangement.map((bar) => (
-          <Bar key={bar.arrangementId} bar={bar} options={options} />
-        ))}
-      </Bars>
-    </>
+    <Bars>
+      {arrangement.map((bar) => (
+        <Bar key={bar.arrangementId} bar={bar} options={options} />
+      ))}
+    </Bars>
   );
 };
 

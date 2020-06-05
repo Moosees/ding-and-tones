@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { toggleEditSong } from '../../redux/ui/ui.actions';
 import ButtonMain from '../button/ButtonMain';
 import InfoField from '../infoField/InfoField';
 import PlayButton from '../playButton/PlayButton';
@@ -17,17 +16,14 @@ const Buttons = styled.div`
   display: flex;
 `;
 
-const SongInfo = ({ name, isEditingSong, toggleEditSong }) => {
+const SongInfo = ({ name }) => {
   return (
     <InfoContainer>
-      <InfoField label={'Title: ' + name} />
-      <InfoField label="Difficulty: Beginner" />
+      <InfoField label={'Title: ' + name} onEdit={true} />
+      <InfoField label="Difficulty: Beginner" onEdit={true} />
       <Buttons>
         <PlayButton />
-        <ButtonMain
-          label={isEditingSong ? 'Lock' : 'Unlock'}
-          onClick={toggleEditSong}
-        />
+        <ButtonMain label="Save" />
       </Buttons>
     </InfoContainer>
   );
@@ -35,7 +31,6 @@ const SongInfo = ({ name, isEditingSong, toggleEditSong }) => {
 
 const mapStateToProps = ({ song, ui }) => ({
   name: song.name,
-  isEditingSong: ui.isEditingSong,
 });
 
-export default connect(mapStateToProps, { toggleEditSong })(SongInfo);
+export default connect(mapStateToProps)(SongInfo);

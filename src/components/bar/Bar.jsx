@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BarControls from '../barControls/BarControls';
+import BarMetre from '../barMetre/BarMetre';
 import Beat from '../beat/Beat';
-import { Beats } from './bar.styles';
+import { BarContainer, Beats } from './bar.styles';
 
 const displayBeat = (arrangementId, barId, beat, beatIndex, options) =>
   beat.map((beat, i) => (
@@ -34,10 +35,11 @@ const Bar = ({ bar, bars, currentBar, options, isEditingSong }) => {
   const beats = displayBeats(arrangementId, barId, measure, options);
 
   return (
-    <div>
+    <BarContainer>
       {isEditingSong && <BarControls bar={bar} />}
       <Beats isPlaying={arrangementId === currentBar}>{beats}</Beats>
-    </div>
+      {isEditingSong && <BarMetre bar={bar} />}
+    </BarContainer>
   );
 };
 

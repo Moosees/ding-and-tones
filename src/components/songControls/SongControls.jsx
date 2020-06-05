@@ -8,6 +8,7 @@ import {
   setSongMetre,
   setSongSubdivision,
 } from '../../redux/song/song.actions';
+import { toggleEditSong } from '../../redux/ui/ui.actions';
 import BpmSlider from '../bpmSlider/BpmSlider';
 import ButtonMain from '../button/ButtonMain';
 import InfoField from '../infoField/InfoField';
@@ -19,11 +20,13 @@ const SongControls = ({
   addNewBar,
   addBarToSong,
   bpm,
-  isSongPlaying,
-  subdivision,
-  setSongSubdivision,
   metre,
+  isEditingSong,
+  isSongPlaying,
+  setSongSubdivision,
   setSongMetre,
+  subdivision,
+  toggleEditSong,
 }) => {
   const [metreOpen, setMetreOpen] = useState(false);
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
@@ -39,13 +42,21 @@ const SongControls = ({
 
   return (
     <ControlsContainer>
-      <InfoField label={metreAndBpm} onEdit={() => setMetreOpen(true)} />
+      <InfoField
+        label={metreAndBpm}
+        reverse
+        onEdit={() => setMetreOpen(true)}
+      />
       <InfoField label={<BpmSlider />} />
       <Buttons>
         <ButtonMain
           label="Add bar"
           disabled={isSongPlaying}
           onClick={() => handleNewBar(metre, subdivision)}
+        />
+        <ButtonMain
+          label={isEditingSong ? 'Lock' : 'Unlock'}
+          onClick={toggleEditSong}
         />
       </Buttons>
       {metreOpen && (
@@ -61,11 +72,12 @@ const SongControls = ({
   );
 };
 
-const mapStateToProps = ({ song }) => ({
+const mapStateToProps = ({ song, ui }) => ({
   bpm: song.bpm,
   isSongPlaying: song.isSongPlaying,
   subdivision: song.subdivision,
   metre: song.metre,
+  isEditingSong: ui.isEditingSong,
 });
 
 export default connect(mapStateToProps, {
@@ -73,4 +85,5 @@ export default connect(mapStateToProps, {
   addBarToSong,
   setSongSubdivision,
   setSongMetre,
+  toggleEditSong,
 })(SongControls);

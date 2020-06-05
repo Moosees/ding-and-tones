@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
   isSongPlaying: false,
-  isEditingSong: false,
+  isEditingSong: true,
 };
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {

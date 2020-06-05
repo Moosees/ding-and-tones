@@ -24,4 +24,5 @@ export const TopPart = styled.div`
 
 export const BottomSection = styled.div`
   flex: 5 0;
+  width: 100%;
 `;
