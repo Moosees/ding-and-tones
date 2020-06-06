@@ -40,6 +40,7 @@
 
 ### Songwriter
 
+* Start in scale mode - only write songs after new song is clicked!
 * Metre is just informational and default for new bars?
 * Only use subdivision for individual bars?
 * Debounce and validate bpm - validate length on inputs

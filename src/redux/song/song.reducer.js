@@ -7,14 +7,15 @@ import {
 } from './song.utils';
 
 const INITIAL_STATE = {
-  name: 'This is a song',
   arrangement: [
     { barId: 'bar_a', arrangementId: 'bar_1' },
     { barId: 'bar_a', arrangementId: 'bar_2' },
   ],
   bpm: 100,
+  difficulty: 'Beginner',
   metre: 's44',
   subdivision: 4,
+  title: 'This is a song',
 };
 
 const songReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -58,6 +59,12 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return { ...state, arrangement: updatedBars };
 
+    case actionTypes.SET_SONG_DIFFICULTY:
+      return {
+        ...state,
+        difficulty: payload,
+      };
+
     case actionTypes.SET_BPM:
       return {
         ...state,
@@ -74,6 +81,12 @@ const songReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         subdivision: payload,
+      };
+
+    case actionTypes.SET_SONG_TITLE:
+      return {
+        ...state,
+        title: payload,
       };
 
     default:

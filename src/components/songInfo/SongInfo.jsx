@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import ButtonMain from '../button/ButtonMain';
 import InfoField from '../infoField/InfoField';
 import PlayButton from '../playButton/PlayButton';
+import SongNewPopup from '../songNewPopup/SongNewPopup';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -16,21 +17,27 @@ const Buttons = styled.div`
   display: flex;
 `;
 
-const SongInfo = ({ name }) => {
+const SongInfo = ({ title }) => {
+  const [newOpen, setNewOpen] = useState(false);
+
   return (
-    <InfoContainer>
-      <InfoField label={'Title: ' + name} onEdit={true} />
-      <InfoField label="Difficulty: Beginner" onEdit={true} />
-      <Buttons>
-        <PlayButton />
-        <ButtonMain label="Save" />
-      </Buttons>
-    </InfoContainer>
+    <>
+      <InfoContainer>
+        <InfoField label={'Title: ' + title} onEdit={true} />
+        <InfoField label="Difficulty: Beginner" onEdit={true} />
+        <Buttons>
+          <PlayButton />
+          <ButtonMain label="New Song" onClick={() => setNewOpen(true)} />
+          <ButtonMain label="Save Song" />
+        </Buttons>
+      </InfoContainer>
+      {newOpen && <SongNewPopup onClose={() => setNewOpen(false)} />}
+    </>
   );
 };
 
 const mapStateToProps = ({ song, ui }) => ({
-  name: song.name,
+  title: song.title,
 });
 
 export default connect(mapStateToProps)(SongInfo);

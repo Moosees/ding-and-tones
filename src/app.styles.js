@@ -58,5 +58,5 @@ export const BorderContainer = styled.div`
   box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.25);
   flex: 1 0 10vh;
   overflow: auto;
-  z-index: 5;
+  position: relative;
 `;

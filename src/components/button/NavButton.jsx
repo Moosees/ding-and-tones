@@ -15,7 +15,7 @@ const Btn = styled.button`
   position: relative;
   top: 3px;
   transition: transform 0.1s ease-in;
-  z-index: ${({ isActive }) => (isActive ? '10' : '1')};
+  ${({ isActive }) => (isActive ? 'z-index: 10;' : '')}
 
   &:focus:not(.focus-visible) {
     outline: none;

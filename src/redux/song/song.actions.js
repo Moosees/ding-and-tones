@@ -30,6 +30,11 @@ export const setBpm = (newBpm) => ({
   payload: newBpm,
 });
 
+export const setSongDifficulty = (newDifficulty) => ({
+  type: actionTypes.SET_SONG_DIFFICULTY,
+  payload: newDifficulty,
+});
+
 export const setSongMetre = (newMetre) => ({
   type: actionTypes.SET_SONG_METRE,
   payload: newMetre,
@@ -38,4 +43,9 @@ export const setSongMetre = (newMetre) => ({
 export const setSongSubdivision = (newSubdivision) => ({
   type: actionTypes.SET_SONG_SUBDIVISION,
   payload: newSubdivision,
+});
+
+export const setSongTitle = (newTitle) => ({
+  type: actionTypes.SET_SONG_TITLE,
+  payload: newTitle,
 });
