@@ -9,7 +9,7 @@ const BtnContainer = styled.div`
   transition: color 0.1s ease-in;
 
   &:hover {
-    color: rgba(0, 150, 0, 0.9);
+    color: ${({ theme }) => theme.colorBtnConfirm};
   }
 `;
 

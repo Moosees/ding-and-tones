@@ -18,16 +18,17 @@ export const CheckboxLabel = styled.label`
   }
 
   &:hover input ~ span {
-    background-color: rgba(0, 200, 0, 0.3);
+    background-color: ${({ theme }) => theme.colorBtnHeavy};
   }
 
   &:hover input:checked ~ span::after {
-      border-color: rgba(200, 0, 0, 1);
+    background-color: ${({ theme }) => theme.colorBtnHeavy};
+    border-color: ${({ theme }) => theme.colorBtnClear};
   }
 `;
 
 export const CheckboxInput = styled.span`
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: ${({ theme }) => theme.colorBtnLight};
   border-radius: 100px;
   height: 2.5rem;
   left: 0;
@@ -36,8 +37,8 @@ export const CheckboxInput = styled.span`
   width: 2.5rem;
 
   &::after {
-    background-color: rgba(0, 255, 0, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: ${({ theme }) => theme.colorCheckbox};
+    border: ${({ theme }) => theme.borderLight};
     border-radius: 100px;
     content: '';
     display: none;

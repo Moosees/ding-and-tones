@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Overlay = styled.div`
   align-items: center;
-  background-color: rgba(0, 0, 30, 0.4);
+  background-color: rgba(20, 20, 20, 0.5);
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -15,7 +15,7 @@ const Overlay = styled.div`
 `;
 
 const Background = styled.div`
-  background-color: #ccc;
+  background-color: ${({ theme }) => theme.colorBox};
   border-radius: 3px;
   min-height: 20rem;
   min-width: 20rem;

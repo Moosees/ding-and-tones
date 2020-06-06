@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const InfoContainer = styled.div`
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.1);
+  border: ${({ theme }) => theme.borderLight};
+  background-color: ${({ theme }) => theme.colorBtnHeavy};
   border-radius: 3px;
   display: flex;
   flex: 1 0 3rem;
@@ -15,6 +15,7 @@ const InfoContainer = styled.div`
   padding: 0 0.5rem;
 `;
 
+// change to icon
 const Edit = styled.span`
   border: 1px solid #000;
   border-radius: 100px;

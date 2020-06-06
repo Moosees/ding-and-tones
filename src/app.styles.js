@@ -15,8 +15,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: #e6e6ed;
-    color: rgb(0, 0, 0, 0.8);
+    background-color: ${({ theme }) => theme.colorBg};
+    color: ${({ theme }) => theme.colorText};
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
     line-height: 1.6;
@@ -52,10 +52,10 @@ export const Section = styled.div`
 `;
 
 export const BorderContainer = styled.div`
-  background-color: rgba(0, 0, 0, 0.03);
-  border: 3px solid #000;
+  background-color: ${({ theme }) => theme.colorBox};
+  border: ${({ theme }) => theme.borderHeavyDark};
   border-radius: 5px;
-  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ theme }) => theme.shadowHeavy};
   flex: 1 0 10vh;
   overflow: auto;
   position: relative;

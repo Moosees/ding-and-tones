@@ -7,19 +7,19 @@ export const ListContainer = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  background-color: rgba(0, 0, 0, 0.03);
-  border: ${({ isDisplayed }) =>
-    isDisplayed ? '1px solid #0f0' : '1px solid rgba(200,0,0,0.2)'};
+  background-color: ${({ theme }) => theme.colorBtnLight};
+  border: 1px solid
+    ${({ isDisplayed, theme }) =>
+      isDisplayed ? theme.colorCheckbox : theme.colorBtnClear};
   border-radius: 3px;
-  box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
   cursor: pointer;
   list-style: none;
   margin: 0.5rem;
   padding: 0.5rem;
-  transition: border 0.15s ease-in;
+  transition: transform 0.15s ease-in;
 
   &:hover {
-    border: ${({ isDisplayed }) =>
-      isDisplayed ? '1px solid #800' : '1px solid rgba(0,200,0,0.6)'};
+    transform: scale(1.05);
   }
 `;

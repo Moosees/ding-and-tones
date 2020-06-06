@@ -6,7 +6,7 @@ import { setBpm } from '../../redux/song/song.actions';
 import styled from 'styled-components';
 
 const Mark = styled.span`
-  color: rgba(0, 0, 0, 0.8);
+  color: ${({ theme }) => theme.colorText};
   font-size: 1rem;
   position: relative;
   top: -7px;

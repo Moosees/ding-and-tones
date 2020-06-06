@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Btn = styled.button`
-  background-color: rgba(0, 0, 0, 0.03);
-  border: 3px solid ${({ isActive }) => (isActive ? '#000' : '#777')};
-  border-bottom-color: ${({ isActive }) => (isActive ? '#ddd' : '#000')};
+  background-color: ${({ theme }) => theme.colorBox};
+  border: ${({ isActive, theme }) =>
+    isActive ? theme.borderHeavyDark : theme.borderHeavyLight};
+  border-bottom-color: ${({ isActive, theme }) =>
+    isActive ? theme.colorBox : theme.colorNavBorder};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   cursor: pointer;

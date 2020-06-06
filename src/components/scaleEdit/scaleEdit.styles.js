@@ -10,26 +10,28 @@ export const Notes = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 30rem;
+  max-width: 34rem;
 `;
 
 export const Note = styled.span`
-  background-color: rgba(0, 0, 0, 0.06);
-  border: ${({ inScale }) =>
-    inScale ? '2px solid #00ff00' : '1px solid rgba(200,0,0,0.2)'};
+  background-color: rgba(0, 0, 0, 0.05);
+  border: ${({ inScale, theme }) =>
+    inScale
+      ? '2px solid ' + theme.colorCheckbox
+      : '1px solid ' + theme.colorBtnClear};
   border-radius: 100px;
-  box-shadow: ${({ inScale }) =>
-    inScale ? '0px 2px 5px 2px rgba(0, 0, 0, 0.25)' : '0'};
+  box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
   cursor: pointer;
-  height: 2.8rem;
-  margin: 3px;
+  font-size: 1.3rem;
+  height: 3rem;
+  margin: 4px;
+  padding-top: ${({ inScale }) => (inScale ? '2px' : '3px')};
   text-align: center;
-  transition: border 0.15s ease-in;
-  width: 2.8rem;
+  transition: transform 0.1s ease;
+  width: 3rem;
 
   &:hover {
-    border: ${({ inScale }) =>
-      inScale ? '2px solid #800' : '1px solid rgba(0,200,0,0.6)'};
+    transform: scale(1.1);
   }
 `;
 
