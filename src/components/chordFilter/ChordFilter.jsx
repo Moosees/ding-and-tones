@@ -5,6 +5,7 @@ import {
   setAllChordFiltersTo,
   toggleChordIsSelected,
 } from '../../redux/chords/chords.actions';
+import { setDisplayedChord } from '../../redux/drum/drum.actions';
 import ButtonMain from '../button/ButtonMain';
 import Checkbox from '../checkbox/Checkbox';
 import DividerLine from '../dividerLine/DividerLine';
@@ -24,11 +25,17 @@ const ChordFilter = ({
   chordList,
   scale,
   setAllChordFiltersTo,
+  setDisplayedChord,
   toggleChordIsSelected,
 }) => {
   useEffect(() => {
     toggleChordIsSelected(null, scale);
   }, [toggleChordIsSelected, scale]);
+
+  const handleClear = () => {
+    setAllChordFiltersTo(false, scale);
+    setDisplayedChord(null);
+  };
 
   const allChords = chordList.map((chord) => (
     <Checkbox
@@ -48,11 +55,7 @@ const ChordFilter = ({
           light
           onClick={() => setAllChordFiltersTo(true, scale)}
         />
-        <ButtonMain
-          label="Clear"
-          light
-          onClick={() => setAllChordFiltersTo(false, scale)}
-        />
+        <ButtonMain label="Clear" light onClick={handleClear} />
       </div>
       <DividerLine small />
       <CheckBoxes>{allChords}</CheckBoxes>
@@ -67,5 +70,6 @@ const mapStateToProps = ({ chords, scale }) => ({
 
 export default connect(mapStateToProps, {
   setAllChordFiltersTo,
+  setDisplayedChord,
   toggleChordIsSelected,
 })(ChordFilter);
