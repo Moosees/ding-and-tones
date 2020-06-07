@@ -22,7 +22,7 @@ const getNotes = (scale, fnAdd, fnRemove) => {
 
     notes.push(
       <Note key={i} inScale={isNoteInScale} onClick={handleClick}>
-        {noteName}
+        <span>{noteName}</span>
       </Note>
     );
   }

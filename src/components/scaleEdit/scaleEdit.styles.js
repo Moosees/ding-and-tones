@@ -14,6 +14,7 @@ export const Notes = styled.div`
 `;
 
 export const Note = styled.span`
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.05);
   border: ${({ inScale, theme }) =>
     inScale
@@ -22,11 +23,11 @@ export const Note = styled.span`
   border-radius: 100px;
   box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
   cursor: pointer;
-  font-size: 1.3rem;
+  display: flex;
+  font-size: ${({ theme }) => theme.fzSmall};
   height: 3rem;
+  justify-content: center;
   margin: 4px;
-  padding-top: ${({ inScale }) => (inScale ? '2px' : '3px')};
-  text-align: center;
   transition: transform 0.1s ease;
   width: 3rem;
 

@@ -10,7 +10,7 @@ const Btn = styled.button`
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   cursor: pointer;
-  font-size: ${({ small }) => (small ? '1.5rem' : '1.8rem')};
+  font-size: ${({ small, theme }) => (small ? theme.fzNormal : theme.fzLarge)};
   font-weight: 500;
   margin: -3px 1rem 0 0.75rem;
   padding: ${({ small }) => (small ? '0.4rem' : '0.4rem 1rem')};

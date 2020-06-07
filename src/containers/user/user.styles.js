@@ -10,10 +10,10 @@ export const Buttons = styled.div`
 `;
 
 export const ButtonGroup = styled.div`
-  align-items: ${({ flexEnd }) => (flexEnd ? 'flex-end' : 'flex-start')};
+  align-items: ${({ reverse }) => (reverse ? 'flex-end' : 'flex-start')};
   display: flex;
   flex-direction: column;
-  font-size: 1.8rem;
+  font-size: ${({ theme }) => theme.fzLarge};
   justify-content: center;
 `;
 

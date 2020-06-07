@@ -17,7 +17,7 @@ export const ListItem = styled.li`
   list-style: none;
   margin: 0.5rem;
   padding: 0.5rem;
-  transition: transform 0.15s ease-in;
+  transition: transform 0.1s ease;
 
   &:hover {
     transform: scale(1.05);

@@ -9,7 +9,7 @@ export const IntervalList = styled.div`
 
 export const IntervalContainer = styled.div`
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: ${({ theme }) => theme.borderLight};
   display: flex;
 
   &:last-child {

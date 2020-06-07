@@ -19,10 +19,10 @@ export const TopSection = styled.div`
 `;
 
 export const TopPart = styled.div`
-  width: 48%;
+  flex: 1 0;
 `;
 
 export const BottomSection = styled.div`
-  flex: 5 0;
+  flex: 10 0;
   width: 100%;
 `;

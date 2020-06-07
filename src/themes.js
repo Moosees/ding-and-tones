@@ -16,4 +16,7 @@ export const mainTheme = {
   shadowHeavy: '0px 5px 10px 1px rgba(0, 0, 0, 0.25)',
   shadowBtnLight: '0px 2px 5px -1px rgba(0, 0, 0, 0.1)',
   shadowBtnHeavy: '0px 2px 5px -1px rgba(0, 0, 0, 0.2)',
+  fzSmall: '1.2rem',
+  fzMedium: '1.4rem',
+  fzLarge: '1.8rem',
 };

@@ -17,7 +17,7 @@ const User = () => {
         </i>
       </AvatarContainer>
       <Buttons>
-        <ButtonGroup flexEnd>
+        <ButtonGroup reverse>
           {/* PlayButton component?? */}
           <ControlsButton label="Play" icon="play_arrow" />
           {/* <ControlsButton label="Play" icon="pause" /> */}
