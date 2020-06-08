@@ -3,7 +3,7 @@ import React from 'react';
 // All possible sounds available on current scale
 export const createOptions = (scale) => {
   const options = [
-    <option key={'X'} value={''}>
+    <option key={'P'} value={'P'}>
       Pause
     </option>,
     <option key={'T'} value={'T'}>

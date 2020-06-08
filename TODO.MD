@@ -4,7 +4,6 @@
 
 ### Drum
 
-* Play the correct note
 * Taks or other sounds
 * Handle non round layouts - separate drum notes from extra notes
 * Rethink negative and big intervals? Start with small intervals only?
