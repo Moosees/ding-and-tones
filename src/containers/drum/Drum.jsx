@@ -40,6 +40,7 @@ const Drum = ({
         key={`${note.note}${i}`}
         hasFocus={i === displayedNote}
         isDing={i === 0}
+        note={note.note}
         noteIndex={i}
         showNote={showNote}
         position={positionMap[i]}

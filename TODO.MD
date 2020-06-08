@@ -30,7 +30,6 @@
 * Create scale from name and string
 * Constants for layouts?
 * What happens when you change to a scale with less notes than pattern needs?
-* Intervals and root instead of absolute notes for scaleSimple?
 
 ### Chords
 

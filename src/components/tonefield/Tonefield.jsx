@@ -7,6 +7,7 @@ const Tonefield = ({
   displayedChord,
   hasFocus,
   isDing,
+  note,
   noteIndex,
   position,
   setDisplayedNote,
@@ -17,7 +18,7 @@ const Tonefield = ({
   const { rotate, translate } = position;
 
   const handlePlay = () => {
-    new Audio('audio/rav/test.wav').play();
+    new Audio(`audio/pan/low/${note}.mp3`).play();
   };
 
   const handleIntervals = () => {
