@@ -1,8 +1,10 @@
-export default {
-  bar_a: {
+export default [
+  {
+    barId: 'bar_a',
     metre: 's44',
     subdivision: 4,
     lengthInBeats: 4,
+    repeats: 1,
     measure: [
       [{ beatId: 'aa', sound: '0' }],
       [{ beatId: 'ab', sound: '0' }],
@@ -10,18 +12,20 @@ export default {
       [{ beatId: 'ad', sound: '0' }],
     ],
   },
-  bar_b: {
+  {
+    barId: 'bar_b',
     metre: 's34',
     subdivision: 8,
     lengthInBeats: 3,
+    repeats: 1,
     measure: [
       [
-        { beatId: 'ba', sound: '' },
+        { beatId: 'ba', sound: 'P' },
         { beatId: 'bb', sound: '0' },
       ],
       [
         { beatId: 'bc', sound: '0' },
-        { beatId: 'bd', sound: '' },
+        { beatId: 'bd', sound: 'P' },
       ],
       [
         { beatId: 'be', sound: '0' },
@@ -29,42 +33,46 @@ export default {
       ],
     ],
   },
-  bar_c: {
+  {
+    barId: 'bar_c',
     metre: 'x332',
     subdivision: 8,
     lengthInBeats: 4,
+    repeats: 1,
     measure: [
       [
         { beatId: 'ca', sound: '0' },
-        { beatId: 'cb', sound: '' },
-        { beatId: 'cc', sound: '' },
+        { beatId: 'cb', sound: 'P' },
+        { beatId: 'cc', sound: 'P' },
       ],
       [
         { beatId: 'cd', sound: '0' },
-        { beatId: 'ce', sound: '' },
-        { beatId: 'cf', sound: '' },
+        { beatId: 'ce', sound: 'P' },
+        { beatId: 'cf', sound: 'P' },
       ],
       [
         { beatId: 'cg', sound: '0' },
-        { beatId: 'ch', sound: '' },
+        { beatId: 'ch', sound: 'P' },
       ],
     ],
   },
-  bar_d: {
+  {
+    barId: 'bar_d',
     metre: 'c68',
     subdivision: 8,
     lengthInBeats: 3,
+    repeats: 1,
     measure: [
       [
         { beatId: 'da', sound: '0' },
-        { beatId: 'db', sound: '' },
-        { beatId: 'dc', sound: '' },
+        { beatId: 'db', sound: 'P' },
+        { beatId: 'dc', sound: 'P' },
       ],
       [
         { beatId: 'dd', sound: '0' },
-        { beatId: 'de', sound: '' },
-        { beatId: 'df', sound: '' },
+        { beatId: 'de', sound: 'P' },
+        { beatId: 'df', sound: 'P' },
       ],
     ],
   },
-};
+];

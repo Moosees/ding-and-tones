@@ -42,11 +42,10 @@ export const playSong = async () => {
 
   const audio = setupAudio(scale.scaleSimple);
 
-  for (let { barId, arrangementId } of song.arrangement) {
-    const nextBar = bars[barId];
-    store.dispatch(setCurrentBar(arrangementId));
+  for (let bar of bars) {
+    store.dispatch(setCurrentBar(bar.barId));
 
-    await playBar(nextBar, song.bpm, audio);
+    await playBar(bar, song.bpm, audio);
   }
   store.dispatch(setCurrentBeat(null));
   store.dispatch(setCurrentBar(null));

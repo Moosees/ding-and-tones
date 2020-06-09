@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { setBarMetre, setBarSubdivision } from '../../redux/bars/bars.actions';
 import MetreControls from '../metreControls/MetreControls';
 
-const BarMetre = ({ bar, bars, setBarSubdivision, setBarMetre }) => {
-  const { barId } = bar;
-  const { subdivision, metre } = bars[barId];
+const BarMetre = ({ bar, setBarSubdivision, setBarMetre }) => {
+  const { barId, metre, subdivision } = bar;
 
   return (
     <MetreControls
@@ -19,11 +18,7 @@ const BarMetre = ({ bar, bars, setBarSubdivision, setBarMetre }) => {
   );
 };
 
-const mapStateToProps = ({ bars }) => ({
-  bars,
-});
-
-export default connect(mapStateToProps, {
+export default connect(null, {
   setBarSubdivision,
   setBarMetre,
 })(BarMetre);

@@ -38,16 +38,13 @@
 ### Songwriter
 
 * Start in scale mode - only write songs after new song is clicked!
-* Metre is just informational and default for new bars?
 * Only use subdivision for individual bars?
 * Validate length on inputs
 * Rearrange arrangement - drag handle?
-* Build custom component instead of html select
 * Modify time signature and subdivision on existing bars
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
-* How do we know if bars are linked?
-* Repeats instead of linked bars?
+* Add back copyBarToNext?
 
 ### Find songs
 
@@ -60,13 +57,12 @@
 ### Bugs
 
 * Note range should be hardwired to prevent chords or scales from trying to go outside it. Temporary(?) solution in chords.utils line 35 fix and bring back full range in intervals.data
+* Bug when changing scale after a chord has been selected. Can't replicate, maybe be sure to clear displayedChord before changing scale? drum.utils nameShort (or color) returns undefined
 
 ### State/Routes
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
-* Delete bars from bar state or use them as a bank or undo functionality?
-* or merge arrangement and bars?
 * useRouter might not be best solution for navigation?
 * Refactor update found chord in chords reducer to new function
 
@@ -83,7 +79,7 @@
 
 * Colors, fonts and stuff
 * Responsive design
-* Favicon
+* Favicon - drum smiley?
 * Loading spinners?
 
 ### Low priority

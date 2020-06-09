@@ -1,45 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setBarMetre, setBarSubdivision } from '../../redux/bars/bars.actions';
-import {
-  copyBarToEnd,
-  copyBarToNext,
-  deleteBarFromSong,
-} from '../../redux/song/song.actions';
-import { unlinkBar } from './barControls.utils';
+import { copyBarToEnd, deleteBar } from '../../redux/bars/bars.actions';
 
-const BarControls = ({
-  bar,
-  copyBarToEnd,
-  copyBarToNext,
-  deleteBarFromSong,
-}) => {
-  const { barId, arrangementId } = bar;
+const BarControls = ({ bar, copyBarToEnd, deleteBar }) => {
+  const { barId } = bar;
 
   return (
     <div>
-      <button onClick={() => copyBarToNext(barId, arrangementId)}>
-        Copy to next
-      </button>
-      <button onClick={() => copyBarToEnd(barId)}>Copy to end</button>
-      {/* disable if bar is not linked */}
-      <button disabled={false} onClick={() => unlinkBar(barId, arrangementId)}>
-        Unlink bar
-      </button>
-      <button onClick={() => deleteBarFromSong(arrangementId)}>
-        Delete bar
-      </button>
+      <button onClick={() => copyBarToEnd(barId)}>Duplicate</button>
+      <button onClick={() => deleteBar(barId)}>Delete</button>
     </div>
   );
 };
-const mapStateToProps = ({ bars }) => ({
-  bars,
-});
 
-export default connect(mapStateToProps, {
-  setBarSubdivision,
-  setBarMetre,
+export default connect(null, {
   copyBarToEnd,
-  copyBarToNext,
-  deleteBarFromSong,
+  deleteBar,
 })(BarControls);

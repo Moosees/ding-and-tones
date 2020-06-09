@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { v4 as uuid } from 'uuid';
 import { metreList } from '../../metre.data';
 import { addNewBar } from '../../redux/bars/bars.actions';
 import {
-  addBarToSong,
   setSongMetre,
   setSongSubdivision,
 } from '../../redux/song/song.actions';
@@ -18,7 +16,6 @@ import { createNewBar } from './songControls.utils';
 
 const SongControls = ({
   addNewBar,
-  addBarToSong,
   bpm,
   metre,
   isEditingSong,
@@ -32,12 +29,9 @@ const SongControls = ({
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
 
   const handleNewBar = (metre, subdivision) => {
-    const arrangementId = uuid();
-    const barId = uuid();
     const newBar = createNewBar(metre, subdivision);
 
-    addNewBar({ [barId]: newBar });
-    addBarToSong({ barId, arrangementId });
+    addNewBar(newBar);
   };
 
   return (
@@ -82,7 +76,6 @@ const mapStateToProps = ({ song, ui }) => ({
 
 export default connect(mapStateToProps, {
   addNewBar,
-  addBarToSong,
   setSongSubdivision,
   setSongMetre,
   toggleEditSong,

@@ -5,46 +5,42 @@ import BarMetre from '../barMetre/BarMetre';
 import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
 
-const displayBeat = (arrangementId, barId, beat, beatIndex, options) =>
+const displayBeat = (barId, beat, beatIndex) =>
   beat.map((beat, i) => (
     <Beat
       key={beat.beatId}
-      arrangementId={arrangementId}
       barId={barId}
       beat={beat}
-      options={options}
       isAccented={i === 0}
       beatIndex={beatIndex}
     />
   ));
 
-const displayBeats = (arrangementId, barId, measure, options) => {
+const displayBeats = (barId, measure) => {
   const beats = [];
 
   measure.forEach((beat, beatIndex) => {
-    beats.push(...displayBeat(arrangementId, barId, beat, beatIndex, options));
+    beats.push(...displayBeat(barId, beat, beatIndex));
   });
 
   return beats;
 };
 
-const Bar = ({ bar, bars, currentBar, options, isEditingSong }) => {
-  const { barId, arrangementId } = bar;
-  const { measure } = bars[barId];
+const Bar = ({ bar, currentBar, options, isEditingSong }) => {
+  const { barId, measure } = bar;
 
-  const beats = displayBeats(arrangementId, barId, measure, options);
+  const beats = displayBeats(barId, measure, options);
 
   return (
     <BarContainer>
       {isEditingSong && <BarControls bar={bar} />}
-      <Beats isPlaying={arrangementId === currentBar}>{beats}</Beats>
+      <Beats isPlaying={barId === currentBar}>{beats}</Beats>
       {isEditingSong && <BarMetre bar={bar} />}
     </BarContainer>
   );
 };
 
-const mapStateToProps = ({ bars, ui }) => ({
-  bars,
+const mapStateToProps = ({ ui }) => ({
   currentBar: ui.currentBar,
   isEditingSong: ui.isEditingSong,
 });

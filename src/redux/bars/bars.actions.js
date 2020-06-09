@@ -5,6 +5,21 @@ export const addNewBar = (newBar) => ({
   payload: newBar,
 });
 
+export const copyBarToEnd = (barId) => ({
+  type: actionTypes.COPY_BAR_TO_END,
+  payload: barId,
+});
+
+export const copyBarToNext = (barId, previousId) => ({
+  type: actionTypes.COPY_BAR_TO_NEXT,
+  payload: { barId, previousId },
+});
+
+export const deleteBar = (barId) => ({
+  type: actionTypes.DELETE_BAR,
+  payload: barId,
+});
+
 export const setBarMetre = (barId, newMetre, newLengthInBeats) => ({
   type: actionTypes.SET_BAR_METRE,
   payload: { barId, newMetre, newLengthInBeats },

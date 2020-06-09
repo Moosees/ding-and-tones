@@ -1,8 +1,8 @@
 import actionTypes from './ui.types';
 
-export const setCurrentBar = (arrangementId) => ({
+export const setCurrentBar = (barId) => ({
   type: actionTypes.SET_CURRENT_BAR,
-  payload: arrangementId,
+  payload: barId,
 });
 
 export const setCurrentBeat = (beatId) => ({
@@ -13,6 +13,11 @@ export const setCurrentBeat = (beatId) => ({
 export const setIsSongPlaying = (isSongPlaying) => ({
   type: actionTypes.SET_IS_SONG_PLAYING,
   payload: isSongPlaying,
+});
+
+export const setOptions = (options) => ({
+  type: actionTypes.SET_OPTIONS,
+  payload: options,
 });
 
 export const toggleEditSong = () => ({

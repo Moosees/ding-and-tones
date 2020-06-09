@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { setOptions } from '../../redux/ui/ui.actions';
 import Bar from '../bar/Bar';
 import { Bars } from './songArrangement.styles';
 import { createOptions } from './songArrangement.utils';
 
-const SongArrangement = ({ arrangement, scale }) => {
-  const [options, setOptions] = useState([]);
-
+const SongArrangement = ({ bars, scale, setOptions }) => {
   useEffect(() => {
     setOptions(createOptions(scale));
-  }, [scale]);
+  }, [scale, setOptions]);
 
   return (
     <Bars>
-      {arrangement.map((bar) => (
-        <Bar key={bar.arrangementId} bar={bar} options={options} />
+      {bars.map((bar) => (
+        <Bar key={bar.barId} bar={bar} />
       ))}
     </Bars>
   );
 };
 
-const mapStateToProps = ({ scale, song }) => ({
+const mapStateToProps = ({ scale, bars }) => ({
   scale: scale.scaleSimple,
-  arrangement: song.arrangement,
+  bars,
 });
 
-export default connect(mapStateToProps)(SongArrangement);
+export default connect(mapStateToProps, { setOptions })(SongArrangement);

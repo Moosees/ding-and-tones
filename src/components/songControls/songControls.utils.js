@@ -5,7 +5,7 @@ const createNewBeat = (partsPerBeat) => {
   const newBeat = [];
 
   for (let i = 0; i < partsPerBeat; ++i) {
-    newBeat.push({ beatId: uuid(), sound: i === 0 ? '0' : '' });
+    newBeat.push({ beatId: uuid(), sound: i === 0 ? '0' : 'P' });
   }
 
   return newBeat;
@@ -21,8 +21,10 @@ export const createNewBar = (metre, subdivision) => {
   });
 
   return {
+    barId: uuid(),
     metre,
     subdivision,
+    repeats: 1,
     lengthInBeats: metreList[metre].lengthInBeats,
     measure: newMeasure,
   };
