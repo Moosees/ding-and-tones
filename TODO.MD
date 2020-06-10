@@ -1,12 +1,17 @@
 # DING AND TONES TODO LIST
 
+## Current task
+
+* Intervals.jsx should display correct interval
+* drum.utils should work with more than two octaves
+
 ## SIDEBAR
 
 ### Drum
 
 * Taks or other sounds
 * Handle non round layouts - separate drum notes from extra notes
-* Rethink negative and big intervals? Start with small intervals only?
+* Colors are small intervals and names big intervals for now
 
 ### Controls
 
@@ -100,5 +105,4 @@
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.
 * Swing?
-* Clean up scaleFull array?
 * More drum alternatives?

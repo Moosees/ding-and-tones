@@ -3,7 +3,7 @@ import {
   createFullScaleFromNames,
   removeDuplicateNotes,
   removeSharps,
-  sortScale,
+  sortScaleByFreq,
   transposeScale,
 } from './scale.utils';
 
@@ -17,7 +17,7 @@ const INITIAL_STATE = {
 const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_NOTE:
-      const newScaleSorted = sortScale([...state.scaleSimple, payload]);
+      const newScaleSorted = sortScaleByFreq([...state.scaleSimple, payload]);
 
       return {
         ...state,
@@ -39,7 +39,7 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
     case actionTypes.SAVE_SCALE:
       const scaleFlat = removeSharps(payload.scaleAry);
       const scaleTrimmed = removeDuplicateNotes(scaleFlat);
-      const scaleSimple = sortScale(scaleTrimmed);
+      const scaleSimple = sortScaleByFreq(scaleTrimmed);
 
       return {
         ...state,

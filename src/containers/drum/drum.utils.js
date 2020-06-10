@@ -5,7 +5,22 @@ export const getChordColor = (note, notesInScale) => {
 };
 
 export const getNoteColor = (noteIndex, intervalMap) => {
-  return intervalMap[noteIndex].color;
+  const currentNote = intervalMap[noteIndex];
+
+  // currently only uses compound interval colors
+  const currentInterval = currentNote.compound;
+
+  return currentNote.semitones < 0
+    ? intervals[currentInterval].colorInverted
+    : intervals[currentInterval].color;
+};
+
+const getScaleNoteText = (interval) => {
+  const { compound, semitones } = interval;
+
+  return semitones < 0
+    ? intervals[compound].invertedShort
+    : intervals[semitones].nameShort;
 };
 
 export const getNoteText = (
@@ -18,10 +33,10 @@ export const getNoteText = (
   // note names
   if (!showIntervals) return intervalMap[noteIndex].note;
 
-  // color for scale notes
-  if (!displayedChord) return intervalMap[noteIndex].nameShort;
+  // interval name for scale notes
+  if (!displayedChord) return getScaleNoteText(intervalMap[noteIndex]);
 
-  // color for chord notes
+  // interval name for chord notes
   return intervals[displayedChord.notesInScale[note]].nameShort;
 };
 

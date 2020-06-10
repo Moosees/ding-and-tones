@@ -1,10 +1,6 @@
-import {
-  intervals,
-  noteNameToValue,
-  noteValueToName,
-} from '../../intervals.data';
+import { noteNameToValue, noteValueToName } from '../../intervals.data';
 
-// const addNoteNamesFromValues = (scale) => {
+// const addNoteNameFromValue = (scale) => {
 //   return scale.map((noteValue) => {
 //     const note = noteValueToName(noteValue);
 //     return {
@@ -15,7 +11,7 @@ import {
 //   });
 // };
 
-const addNoteValuesFromNames = (scale) => {
+const addNoteValueFromName = (scale) => {
   return scale.map((note) => {
     return {
       note,
@@ -25,20 +21,15 @@ const addNoteValuesFromNames = (scale) => {
   });
 };
 
-const calcInterval = (note, relativeNote) => {
+const addIntervalData = (note, relativeNote) => {
   const noteValueDifference = relativeNote.noteValue - note.noteValue;
-  const octaveDifference =
-    noteValueDifference < 0 || noteValueDifference > 24
-      ? noteValueDifference % 12 === 0
-        ? noteValueDifference / 12 - 1
-        : Math.floor(noteValueDifference / 12)
-      : 0;
-
-  const intervalValue =
-    relativeNote.noteValue - note.noteValue - 12 * octaveDifference;
+  const octaveDifference = Math.floor(noteValueDifference / 12);
+  const intervalValue = noteValueDifference - octaveDifference * 12;
 
   return {
-    ...intervals[intervalValue],
+    semitones: noteValueDifference,
+    octaves: octaveDifference,
+    compound: intervalValue,
     note: relativeNote.note,
     noteShort: relativeNote.noteShort,
   };
@@ -48,17 +39,19 @@ const addIntervalMap = (scaleWithValues) => {
   return scaleWithValues.map((note) => {
     const intervalList = [];
     const intervalMap = [];
+
     scaleWithValues.forEach((relativeNote) => {
-      const currentInterval = calcInterval(note, relativeNote);
+      const currentInterval = addIntervalData(note, relativeNote);
       intervalList.push(currentInterval.semitones);
       intervalMap.push(currentInterval);
     });
+
     return { ...note, intervalList, intervalMap };
   });
 };
 
 export const createFullScaleFromNames = (scale) => {
-  const scaleWithValues = addNoteValuesFromNames(scale);
+  const scaleWithValues = addNoteValueFromName(scale);
   const scaleFull = addIntervalMap(scaleWithValues);
 
   return scaleFull;
@@ -84,6 +77,6 @@ export const removeDuplicateNotes = (scale) => {
   return [...new Set(scale)];
 };
 
-export const sortScale = (scale) => {
+export const sortScaleByFreq = (scale) => {
   return scale.sort((a, b) => noteNameToValue[a] - noteNameToValue[b]);
 };
