@@ -60,8 +60,6 @@
 
 ### Bugs
 
-* Transpose can move notes outside of constants
-
 ### State/Routes
 
 * Persist working state through local storage?

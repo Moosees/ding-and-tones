@@ -1,4 +1,5 @@
 import { noteNameToValue, noteValueToName } from '../../intervals.data';
+import { MIN_NOTE_VALUE, MAX_NOTE_VALUE } from '../../constants';
 
 // const addNoteNameFromValue = (scale) => {
 //   return scale.map((noteValue) => {
@@ -61,7 +62,9 @@ export const transposeScale = (scale, destination = 0) => {
   return scale
     .map((note) => {
       const newValue = noteNameToValue[note] + destination;
-      return noteValueToName[newValue];
+      return newValue >= MIN_NOTE_VALUE && newValue <= MAX_NOTE_VALUE
+        ? noteValueToName[newValue]
+        : null;
     })
     .filter((note) => note);
 };
