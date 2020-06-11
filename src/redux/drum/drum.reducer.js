@@ -8,6 +8,13 @@ const INITIAL_STATE = {
 
 const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+    case actionTypes.FLUSH_DRUM_STATE:
+      return {
+        ...state,
+        displayedChord: null,
+        displayedNote: 0,
+      };
+
     case actionTypes.SET_DISPLAYED_CHORD:
       return {
         ...state,

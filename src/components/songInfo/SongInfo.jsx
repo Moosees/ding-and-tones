@@ -36,7 +36,7 @@ const SongInfo = ({ title }) => {
   );
 };
 
-const mapStateToProps = ({ song, ui }) => ({
+const mapStateToProps = ({ song }) => ({
   title: song.title,
 });
 

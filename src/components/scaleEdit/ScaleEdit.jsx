@@ -1,6 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../constants';
 import { noteValueToName } from '../../intervals.data';
+import { flushDrumState } from '../../redux/drum/drum.actions';
 import {
   addNoteToScale,
   removeNoteFromScale,
@@ -11,8 +13,8 @@ import { Buttons, EditContainer, Note, Notes } from './scaleEdit.styles';
 
 const getNotes = (scale, fnAdd, fnRemove) => {
   const notes = [];
-  // c2 to c5
-  for (let i = 24; i <= 60; ++i) {
+
+  for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
     const noteName = noteValueToName[i];
     const isNoteInScale = scale.includes(noteName);
 
@@ -32,20 +34,33 @@ const getNotes = (scale, fnAdd, fnRemove) => {
 const ScaleEdit = ({
   scale,
   addNoteToScale,
+  flushDrumState,
   removeNoteFromScale,
   transposeScale,
 }) => {
-  const notes = useMemo(
-    () => getNotes(scale, addNoteToScale, removeNoteFromScale),
-    [scale, addNoteToScale, removeNoteFromScale]
-  );
+  const handleAdd = (note) => {
+    flushDrumState();
+    addNoteToScale(note);
+  };
+
+  const handleRemove = (note) => {
+    flushDrumState();
+    removeNoteFromScale(note);
+  };
+
+  const handleTranspose = (destination) => {
+    flushDrumState();
+    transposeScale(destination);
+  };
+
+  const notes = getNotes(scale, handleAdd, handleRemove);
 
   return (
     <EditContainer>
       <Notes>{notes}</Notes>
       <Buttons>
-        <ButtonMain label="Up" light onClick={() => transposeScale(1)} />
-        <ButtonMain label="Down" light onClick={() => transposeScale(-1)} />
+        <ButtonMain label="Up" light onClick={() => handleTranspose(1)} />
+        <ButtonMain label="Down" light onClick={() => handleTranspose(-1)} />
       </Buttons>
     </EditContainer>
   );
@@ -57,6 +72,7 @@ const mapStateToProps = ({ scale }) => ({
 
 export default connect(mapStateToProps, {
   addNoteToScale,
+  flushDrumState,
   removeNoteFromScale,
   transposeScale,
 })(ScaleEdit);

@@ -60,9 +60,7 @@
 
 ### Bugs
 
-* Note range should be hardwired to prevent chords or scales from trying to go outside it. Temporary(?) solution in chords.utils line 35 fix and bring back full range in intervals.data
-* Bug when changing scale after a chord has been selected. Can't replicate, maybe be sure to clear displayedChord before changing scale? drum.utils nameShort (or color) returns undefined
-* Gather constants in one place?
+* Transpose can move notes outside of constants
 
 ### State/Routes
 

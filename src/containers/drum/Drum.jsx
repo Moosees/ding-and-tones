@@ -1,10 +1,6 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import Tonefield from '../../components/tonefield/Tonefield';
-import {
-  setDisplayedChord,
-  setDisplayedNote,
-} from '../../redux/drum/drum.actions';
 import { DrumContainer, DrumSvg } from './drum.styles';
 import {
   getChordColor,
@@ -16,17 +12,10 @@ import {
 const Drum = ({
   displayedChord,
   displayedNote,
-  setDisplayedChord,
-  setDisplayedNote,
   layout,
   scale,
   showIntervals,
 }) => {
-  useEffect(() => {
-    setDisplayedChord(null);
-    setDisplayedNote(0);
-  }, [setDisplayedChord, setDisplayedNote, scale]);
-
   const positionMap = useMemo(() => getPositionMap(layout, scale.length), [
     layout,
     scale,
@@ -105,7 +94,4 @@ const mapStateToProps = ({ drum, scale }) => ({
   scale: scale.scaleFull,
 });
 
-export default connect(mapStateToProps, {
-  setDisplayedChord,
-  setDisplayedNote,
-})(Drum);
+export default connect(mapStateToProps)(Drum);

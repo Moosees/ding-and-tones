@@ -1,3 +1,4 @@
+import { TRANSLATE_BASE } from '../../constants';
 import { intervals } from '../../intervals.data';
 
 export const getChordColor = (note, notesInScale) => {
@@ -43,8 +44,6 @@ export const getNoteText = (
   // interval name for chord notes
   return intervals[displayedChord.notesInScale[note]].nameShort;
 };
-
-const TRANSLATE_BASE = 6.6;
 
 const createRoundLayout = (numTones) => {
   const positionMap = [

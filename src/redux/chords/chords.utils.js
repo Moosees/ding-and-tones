@@ -1,4 +1,6 @@
+import { MAX_NOTE_VALUE } from '../../constants';
 import { noteNameToValue, noteValueToName } from '../../intervals.data';
+
 /**
  * Get the notes that builds a specific chord
  *
@@ -35,8 +37,8 @@ const getChordsFromScale = (scale, chord) => {
     const noteIsInRange =
       noteNameToValue[note.note] +
         chord.intervals[chord.intervals.length - 1] <=
-      60;
-      
+      MAX_NOTE_VALUE;
+
     if (!noteCache.includes(note.noteShort) && noteIsInRange) {
       allChords.push({
         notes: getNotesFromIntervals(note.note, chord.intervals),

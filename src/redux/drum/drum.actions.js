@@ -1,5 +1,9 @@
 import actionTypes from './drum.types';
 
+export const flushDrumState = () => ({
+  type: actionTypes.FLUSH_DRUM_STATE,
+});
+
 export const setDisplayedChord = (chord) => ({
   type: actionTypes.SET_DISPLAYED_CHORD,
   payload: chord,
