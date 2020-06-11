@@ -18,6 +18,10 @@ export const getNoteColor = (noteIndex, intervalMap) => {
 const getScaleNoteText = (interval) => {
   const { compound, semitones } = interval;
 
+  if (semitones > 24) return `${intervals[compound].nameShort}+`;
+
+  if (semitones < -12) return `${intervals[compound].invertedShort}-`;
+
   return semitones < 0
     ? intervals[compound].invertedShort
     : intervals[semitones].nameShort;
