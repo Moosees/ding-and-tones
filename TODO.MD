@@ -2,8 +2,6 @@
 
 ## Current task
 
-* Intervals.jsx should display correct interval
-
 ## SIDEBAR
 
 ### Drum
@@ -22,9 +20,6 @@
 * Pre-load sounds when loading scale or playing song?
 
 ### Intervals
-
-* Indicate currently focused interval and ability to switch focus?
-* Toggle between big intervals and compound intervals?
 
 ## MAIN CONTENT
 

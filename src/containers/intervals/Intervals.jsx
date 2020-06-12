@@ -14,22 +14,27 @@ const getChordLegend = (intervalList) => {
 };
 
 const getScaleLegend = (note, scale) => {
-  const intervalList = [];
-  const currentIntervals = scale[note].intervalList;
+  const currentIntervals = scale[note].intervalMap;
 
-  // two octaves
-  for (let i = 0; i <= 24; ++i) {
-    if (currentIntervals.includes(i))
-      intervalList.push(
-        <IntervalContainer key={i}>
-          <Interval color={intervals[i].color} />
-          {intervals[i].name} ({intervals[i].semitones} semitones)
-          <Interval color={intervals[i].color} />
-        </IntervalContainer>
-      );
-  }
+  return currentIntervals.map(({ semitones, compound, note }, i) => {
+    const isInverted = semitones < 0;
+    const isCompound = semitones < 0 || semitones > 24;
+    const isBig = semitones < -12 || semitones > 24;
+    const interval = intervals[isCompound ? compound : semitones];
+    const color = isInverted ? interval.colorInverted : interval.color;
+    const name = isInverted ? interval.inverted : interval.name;
+    const modifier = isBig ? (isInverted ? '-' : '+') : '';
 
-  return intervalList;
+    return (
+      <IntervalContainer key={i}>
+        <Interval color={color} />
+        {semitones === 0
+          ? 'Current focus - P1'
+          : `${note} - ${name}${modifier} (${semitones} steps)`}
+        <Interval color={color} />
+      </IntervalContainer>
+    );
+  });
 };
 
 const Intervals = ({ displayedChord, displayedNote, scale }) => {
