@@ -1,8 +1,8 @@
 import actionTypes from './bars.types';
 
-export const addNewBar = (newBar) => ({
+export const addNewBar = ({ barId, data, measure }) => ({
   type: actionTypes.ADD_NEW_BAR,
-  payload: newBar,
+  payload: { barId, data, measure },
 });
 
 export const copyBarToEnd = (barId) => ({
@@ -10,10 +10,10 @@ export const copyBarToEnd = (barId) => ({
   payload: barId,
 });
 
-export const copyBarToNext = (barId, previousId) => ({
-  type: actionTypes.COPY_BAR_TO_NEXT,
-  payload: { barId, previousId },
-});
+// export const copyBarToNext = (barId, previousId) => ({
+//   type: actionTypes.COPY_BAR_TO_NEXT,
+//   payload: { barId, previousId },
+// });
 
 export const deleteBar = (barId) => ({
   type: actionTypes.DELETE_BAR,

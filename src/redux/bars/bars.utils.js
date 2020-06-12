@@ -1,20 +1,19 @@
 import { v4 as uuid } from 'uuid';
 
-const updateBeatIds = (measure) => {
-  return measure.map((beat) =>
-    beat.map((part) => ({ ...part, beatId: uuid() }))
-  );
+const copyBeats = (measure) => {
+  return measure.map((beat) => ({ ...beat, beatId: uuid() }));
 };
 
-export const copyBarToEnd = (barId, bars) => {
-  const barToCopy = bars.find((bar) => bar.barId === barId);
-  const barCopy = {
-    ...barToCopy,
-    barId: uuid(),
-    measure: updateBeatIds(barToCopy.measure),
+export const copyBarToEnd = (barId, state) => {
+  const newId = uuid();
+  const newOrder = [...state.order, newId];
+  const newData = { ...state.data, [newId]: { ...state.data[barId] } };
+  const newMeasure = {
+    ...state.measure,
+    [newId]: copyBeats(state.measure[barId]),
   };
 
-  return barCopy;
+  return { newOrder, newData, newMeasure };
 };
 
 // export const copyToNextInArrangement = (barId, previousId, arrangement) => {

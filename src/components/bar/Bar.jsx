@@ -5,36 +5,31 @@ import BarMetre from '../barMetre/BarMetre';
 import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
 
-const displayBeat = (barId, beat, beatIndex) =>
-  beat.map((beat, i) => (
-    <Beat
-      key={beat.beatId}
-      barId={barId}
-      beat={beat}
-      isAccented={i === 0}
-      beatIndex={beatIndex}
-    />
-  ));
-
-const displayBeats = (barId, measure) => {
+const displayBeats = (barId, subdivision, measure) => {
   const beats = [];
 
-  measure.forEach((beat, beatIndex) => {
-    beats.push(...displayBeat(barId, beat, beatIndex));
+  measure.forEach((beat) => {
+    if (beat.value <= subdivision)
+      beats.push(
+        <Beat
+          key={beat.beatId}
+          barId={barId}
+          beat={beat}
+          isAccented={beat.value === 4}
+        />
+      );
   });
 
   return beats;
 };
 
-const Bar = ({ bar, currentBar, options, isEditingSong }) => {
-  const { barId, measure } = bar;
-
-  const beats = displayBeats(barId, measure, options);
+const Bar = ({ bar, measure, currentBar, isEditingSong, subdivision }) => {
+  const beats = displayBeats(bar, subdivision, measure);
 
   return (
     <BarContainer>
       {isEditingSong && <BarControls bar={bar} />}
-      <Beats isPlaying={barId === currentBar}>{beats}</Beats>
+      <Beats isPlaying={bar === currentBar}>{beats}</Beats>
       {isEditingSong && <BarMetre bar={bar} />}
     </BarContainer>
   );

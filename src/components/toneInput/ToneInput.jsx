@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useState } from 'react';
-import { Dropdown } from './toneInput.styles';
+import { Dropdown, InputContainer } from './toneInput.styles';
 
 //disabled if song is playing
-const ToneInput = ({ handleChange, isSongPlaying, options, selected }) => {
+const ToneInput = ({ isSongPlaying, options, sound, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleClick = (value) => {
+    onChange(value);
+    setIsOpen(false);
+  };
+
   return (
-    <div onClick={() => setIsOpen(true)}>
-      <span>{selected}</span>
-      {isOpen && <Dropdown>dropdown</Dropdown>}
-    </div>
+    <>
+      <InputContainer
+        isOpen={isOpen}
+        onClick={() => (isSongPlaying ? null : setIsOpen(true))}
+      >
+        <span>{sound}</span>
+      </InputContainer>
+      {isOpen && !isSongPlaying && (
+        <Dropdown>
+          {options.single &&
+            options.single.map(({ label, value }, i) => (
+              <div key={i} onClick={() => handleClick(value)}>
+                {label}
+              </div>
+            ))}
+        </Dropdown>
+      )}
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ const MetreControls = ({
   subdivision,
   setMetre,
   setSubdivision,
-  disabled = false,
+  disabled,
 }) => {
   const { minSubdivision } = metreList[metre];
 

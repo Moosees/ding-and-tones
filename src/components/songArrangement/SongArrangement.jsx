@@ -5,15 +5,20 @@ import Bar from '../bar/Bar';
 import { Bars } from './songArrangement.styles';
 import { createOptions } from './songArrangement.utils';
 
-const SongArrangement = ({ bars, scale, setOptions }) => {
+const SongArrangement = ({ arrangement, bars, barData, scale, setOptions }) => {
   useEffect(() => {
     setOptions(createOptions(scale));
   }, [scale, setOptions]);
 
   return (
     <Bars>
-      {bars.map((bar) => (
-        <Bar key={bar.barId} bar={bar} />
+      {arrangement.map((bar) => (
+        <Bar
+          key={bar}
+          bar={bar}
+          measure={bars[bar]}
+          subdivision={barData[bar].subdivision}
+        />
       ))}
     </Bars>
   );
@@ -21,7 +26,9 @@ const SongArrangement = ({ bars, scale, setOptions }) => {
 
 const mapStateToProps = ({ scale, bars }) => ({
   scale: scale.scaleSimple,
-  bars,
+  arrangement: bars.order,
+  bars: bars.measure,
+  barData: bars.data,
 });
 
 export default connect(mapStateToProps, { setOptions })(SongArrangement);

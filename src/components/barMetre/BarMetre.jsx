@@ -3,22 +3,24 @@ import { connect } from 'react-redux';
 import { setBarMetre, setBarSubdivision } from '../../redux/bars/bars.actions';
 import MetreControls from '../metreControls/MetreControls';
 
-const BarMetre = ({ bar, setBarSubdivision, setBarMetre }) => {
-  const { barId, metre, subdivision } = bar;
+const BarMetre = ({ bar, barData, setBarSubdivision, setBarMetre }) => {
+  const { metre, subdivision } = barData[bar];
 
   return (
     <MetreControls
       metre={metre}
       subdivision={subdivision}
-      setMetre={(metre, lengthInBars) =>
-        setBarMetre(barId, metre, lengthInBars)
-      }
-      setSubdivision={(subdivision) => setBarSubdivision(barId, subdivision)}
+      setMetre={(metre, lengthInBars) => setBarMetre(bar, metre, lengthInBars)}
+      setSubdivision={(subdivision) => setBarSubdivision(bar, subdivision)}
     />
   );
 };
 
-export default connect(null, {
+const mapStateToProps = ({ bars }) => ({
+  barData: bars.data,
+});
+
+export default connect(mapStateToProps, {
   setBarSubdivision,
   setBarMetre,
 })(BarMetre);

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateBeat } from '../../redux/bars/bars.actions';
 import ToneInput from '../toneInput/ToneInput';
-import { BeatContainer } from './beat.styles';
+import { BeatContainer, BeatText } from './beat.styles';
 
 const Beat = ({
   barId,
@@ -14,19 +14,20 @@ const Beat = ({
   isEditingSong,
   updateBeat,
 }) => {
-  const handleChange = (e) => {
-    updateBeat(barId, beat.beatId, beatIndex, e.target.value);
-  };
-
   return (
     <BeatContainer
       isPlaying={barId === currentBar && beat.beatId === currentBeat}
       isAccented={isAccented}
     >
       {isEditingSong ? (
-        <ToneInput selected={beat.sound} onChange={handleChange} />
+        <ToneInput
+          sound={beat.sound}
+          onChange={(value) => updateBeat(barId, beat.beatId, beatIndex, value)}
+        />
       ) : (
-        <span>{beat.sound}</span>
+        <BeatText>
+          <span>{beat.sound}</span>
+        </BeatText>
       )}
     </BeatContainer>
   );

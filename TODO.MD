@@ -2,13 +2,18 @@
 
 ## Current task
 
+* Bars reducer set metre and subdivision
+* Bars reducer update beat
+* Dropdown update when beat updates
+* Play song with new state
+* Add 16ths to metre and everywhere
+
 ## SIDEBAR
 
 ### Drum
 
 * Taks or other sounds
 * Handle non round layouts - separate drum notes from extra notes
-* Colors are small intervals and names big intervals for now
 
 ### Controls
 
@@ -20,6 +25,8 @@
 * Pre-load sounds when loading scale or playing song?
 
 ### Intervals
+
+* Interval colors for compound intervals
 
 ## MAIN CONTENT
 
@@ -36,11 +43,9 @@
 
 ### Songwriter
 
-* Start in scale mode - only write songs after new song is clicked!
-* Only use subdivision for individual bars?
+* Scale mode? Only on controls play button?
 * Validate length on inputs
 * Rearrange arrangement - drag handle?
-* Modify time signature and subdivision on existing bars
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
 * Add back copyBarToNext?
@@ -54,6 +59,8 @@
 ## OTHER
 
 ### Bugs
+
+* What to do with deleted bars?
 
 ### State/Routes
 

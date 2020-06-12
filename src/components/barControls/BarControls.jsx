@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { copyBarToEnd, deleteBar } from '../../redux/bars/bars.actions';
 
 const BarControls = ({ bar, copyBarToEnd, deleteBar }) => {
-  const { barId } = bar;
-
   return (
     <div>
-      <button onClick={() => copyBarToEnd(barId)}>Duplicate</button>
-      <button onClick={() => deleteBar(barId)}>Delete</button>
+      <button onClick={() => copyBarToEnd(bar)}>Duplicate</button>
+      <button onClick={() => deleteBar(bar)}>Delete</button>
     </div>
   );
 };
