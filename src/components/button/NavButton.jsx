@@ -7,12 +7,12 @@ const Btn = styled.button`
     isActive ? theme.borderHeavyDark : theme.borderHeavyLight};
   border-bottom-color: ${({ isActive, theme }) =>
     isActive ? theme.colorBox : theme.colorNavBorder};
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   cursor: pointer;
   font-size: ${({ small, theme }) => (small ? theme.fzNormal : theme.fzLarge)};
   font-weight: 500;
-  margin: -3px 1rem 0 0.75rem;
+  margin: -3px 2px 0;
   padding: ${({ small }) => (small ? '0.4rem' : '0.4rem 1rem')};
   position: relative;
   top: 3px;

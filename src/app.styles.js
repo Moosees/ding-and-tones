@@ -54,7 +54,7 @@ export const Section = styled.div`
 export const BorderContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBox};
   border: ${({ theme }) => theme.borderHeavyDark};
-  border-radius: 5px;
+  border-radius: ${({ small }) => (small ? '50' : '100')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   flex: 1 0 10vh;
   overflow: auto;

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 export const ButtonsContainer = styled.div`
   display: flex;
+  margin-left: 5rem;
 `;
 
 const ControlsNav = ({ showIntervals, setShowIntervals }) => {
