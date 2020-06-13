@@ -3,20 +3,26 @@ import { metreList } from '../../metre.data';
 
 export const createNewBar = (metre, subdivision) => {
   const { template, minSubdivision } = metreList[metre];
-  const newMeasure = template.map((value) => ({
-    beatId: uuid(),
-    sound: value === 4 ? '0' : 'P',
-    value,
-  }));
+  const barId = uuid();
+  const measure = [];
+  const beats = {};
 
-  return {
-    barId: uuid(),
-    data: {
-      metre,
-      subdivision: Math.max(subdivision, minSubdivision),
-      repeats: 1,
-      lengthInBeats: metreList[metre].lengthInBeats,
-    },
-    measure: newMeasure,
+  template.forEach((value) => {
+    const beatId = uuid();
+    measure.push(beatId);
+    beats[beatId] = {
+      sound: value === 4 ? '0' : 'P',
+      value,
+    };
+  });
+
+  const barData = {
+    metre,
+    subdivision: Math.max(subdivision, minSubdivision),
+    repeats: 1,
+    lengthInBeats: metreList[metre].lengthInBeats,
+    measure,
   };
+
+  return { barId, barData, beats };
 };

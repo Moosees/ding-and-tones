@@ -29,9 +29,7 @@ const SongControls = ({
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
 
   const handleNewBar = (metre, subdivision) => {
-    const newBar = createNewBar(metre, subdivision);
-
-    addNewBar(newBar);
+    addNewBar(createNewBar(metre, subdivision));
   };
 
   return (

@@ -2,8 +2,7 @@
 
 ## Current task
 
-* Play song works
-* Create bar works
+* New song should reset the song instead of just changing metre
 
 ## SIDEBAR
 
@@ -19,7 +18,6 @@
 * Printing, format?
 * Save to .pdf?
 * Web worker?
-* Pre-load sounds when loading scale or playing song?
 
 ### Intervals
 
@@ -58,13 +56,16 @@
 
 ### Bugs
 
+* Play song logic should be moved somewhere else?
+* Preloading audio needs testing
+
 ### State/Routes
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * useRouter might not be best solution for navigation?
 * Refactor update found chord in chords reducer to new function
-* What to do with deleted bars?
+* What to do with deleted bars? Save song only gathers bars "in use"?
 * Create selectors and use them for copying bars etc.
 
 ### Backend
@@ -96,7 +97,7 @@
 
 ### Even lower priority
 
-* Ability to loop songs
+* Ability to loop songs or repeat bars
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.
