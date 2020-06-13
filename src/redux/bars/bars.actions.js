@@ -5,15 +5,10 @@ export const addNewBar = ({ barId, barData, beats }) => ({
   payload: { barId, barData, beats },
 });
 
-export const copyBarToEnd = (oldBarId, newBarId) => ({
-  type: actionTypes.COPY_BAR_TO_END,
-  payload: { oldBarId, newBarId },
+export const duplicateBar = ({ oldBarId, newBarId, newMeasure, newBeats }) => ({
+  type: actionTypes.DUPLICATE_BAR,
+  payload: { oldBarId, newBarId, newMeasure, newBeats },
 });
-
-// export const copyBarToNext = (barId, previousId) => ({
-//   type: actionTypes.COPY_BAR_TO_NEXT,
-//   payload: { barId, previousId },
-// });
 
 export const deleteBar = (barId) => ({
   type: actionTypes.DELETE_BAR,

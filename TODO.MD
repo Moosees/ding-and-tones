@@ -4,7 +4,6 @@
 
 * Play song works
 * Create bar works
-* Copy bar works
 
 ## SIDEBAR
 
@@ -59,14 +58,14 @@
 
 ### Bugs
 
-* What to do with deleted bars?
-
 ### State/Routes
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * useRouter might not be best solution for navigation?
 * Refactor update found chord in chords reducer to new function
+* What to do with deleted bars?
+* Create selectors and use them for copying bars etc.
 
 ### Backend
 
