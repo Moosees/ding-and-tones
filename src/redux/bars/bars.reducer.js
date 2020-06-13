@@ -1,63 +1,80 @@
-import INITIAL_STATE from './bars.initialState';
+import { combineReducers } from 'redux';
+import {
+  arrangementState,
+  barsDataState,
+  beatsState,
+} from './bars.initialState';
 import actionTypes from './bars.types';
-import { copyBarToEnd, updateBeat } from './bars.utils';
+import { copyBarToEnd, copyBeats } from './bars.utils';
 
-const barsReducer = (state = INITIAL_STATE, { type, payload }) => {
+const arrangementReducer = (state = arrangementState, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_NEW_BAR:
-      const { barId, data, measure } = payload;
-      return {
-        order: [...state.order, barId],
-        data: { ...state.data, [barId]: data },
-        measure: { ...state.measure, [barId]: measure },
-      };
+      return [...state, payload.barId];
 
     case actionTypes.COPY_BAR_TO_END:
-      const barCopy = copyBarToEnd(payload, state);
-      return {
-        order: barCopy.newOrder,
-        data: barCopy.newData,
-        measure: barCopy.newMeasure,
-      };
+      return [...state, payload.newBarId];
 
     case actionTypes.DELETE_BAR:
-      const barDeleteCopy = state.order.filter((bar) => bar !== payload);
-
-      return { ...state, order: barDeleteCopy };
-
-    case actionTypes.SET_BAR_METRE:
-      const barMetreCopy = state.map((bar) =>
-        bar.barId === payload.barId
-          ? {
-              ...bar,
-              metre: payload.newMetre,
-              lengthInBeats: payload.newLengthInBeats,
-            }
-          : bar
-      );
-
-      return barMetreCopy;
-
-    case actionTypes.SET_BAR_SUBDIVISION:
-      const barSubdivisionCopy = state.map((bar) =>
-        bar.barId === payload.barId
-          ? {
-              ...bar,
-              subdivision: payload.newSubdivision,
-            }
-          : bar
-      );
-
-      return barSubdivisionCopy;
-
-    case actionTypes.UPDATE_BEAT:
-      const barBeatCopy = [...updateBeat(payload, state)];
-
-      return barBeatCopy;
+      const arrFiltered = state.filter((bar) => bar !== payload);
+      return arrFiltered;
 
     default:
       return state;
   }
 };
 
-export default barsReducer;
+const barsDataReducer = (state = barsDataState, { type, payload }) => {
+  switch (type) {
+    case actionTypes.ADD_NEW_BAR:
+      return { ...state, [payload.barId]: payload.barData };
+
+    case actionTypes.COPY_BAR_TO_END:
+      const barCopy = copyBarToEnd(payload.oldBarId, state);
+      return { ...state, [payload.newBarId]: barCopy };
+
+    case actionTypes.DELETE_BAR:
+      return { ...state };
+
+    case actionTypes.SET_BAR_SUBDIVISION:
+      return {
+        ...state,
+        [payload.barId]: {
+          ...state[payload.barId],
+          subdivision: payload.newSubdivision,
+        },
+      };
+
+    default:
+      return state;
+  }
+};
+
+const beatsReducer = (state = beatsState, { type, payload }) => {
+  switch (type) {
+    case actionTypes.ADD_NEW_BAR:
+      return { ...state, ...payload.beats };
+
+    case actionTypes.COPY_BAR_TO_END:
+      const newBeats = copyBeats(payload.oldBarId, state);
+      return { ...state, ...newBeats };
+
+    case actionTypes.DELETE_BAR:
+      return { ...state };
+
+    case actionTypes.UPDATE_BEAT:
+      return {
+        ...state,
+        [payload.beatId]: { ...state[payload.beatId], sound: payload.newSound },
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  arrangement: arrangementReducer,
+  bars: barsDataReducer,
+  beats: beatsReducer,
+});

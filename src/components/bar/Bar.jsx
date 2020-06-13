@@ -5,37 +5,35 @@ import BarMetre from '../barMetre/BarMetre';
 import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
 
-const displayBeats = (barId, subdivision, measure) => {
-  const beats = [];
+const displayBeats = (measure, beats, barSubdivision) => {
+  const filteredBeats = [];
 
   measure.forEach((beat) => {
-    if (beat.value <= subdivision)
-      beats.push(
-        <Beat
-          key={beat.beatId}
-          barId={barId}
-          beat={beat}
-          isAccented={beat.value === 4}
-        />
-      );
+    const { value } = beats[beat];
+
+    if (value <= barSubdivision)
+      filteredBeats.push(<Beat key={beat} beatId={beat} />);
   });
 
-  return beats;
+  return filteredBeats;
 };
 
-const Bar = ({ bar, measure, currentBar, isEditingSong, subdivision }) => {
-  const beats = displayBeats(bar, subdivision, measure);
+const Bar = ({ barId, bars, beats, currentBar, isEditingSong }) => {
+  const { measure, subdivision } = bars[barId];
+  const filteredBeats = displayBeats(measure, beats, subdivision);
 
   return (
     <BarContainer>
-      {isEditingSong && <BarControls bar={bar} />}
-      <Beats isPlaying={bar === currentBar}>{beats}</Beats>
-      {isEditingSong && <BarMetre bar={bar} />}
+      {isEditingSong && <BarControls barId={barId} />}
+      <Beats isPlaying={barId === currentBar}>{filteredBeats}</Beats>
+      {isEditingSong && <BarMetre barId={barId} />}
     </BarContainer>
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
+const mapStateToProps = ({ bars, ui }) => ({
+  bars: bars.bars,
+  beats: bars.beats,
   currentBar: ui.currentBar,
   isEditingSong: ui.isEditingSong,
 });

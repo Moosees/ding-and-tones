@@ -1,13 +1,13 @@
 import actionTypes from './bars.types';
 
-export const addNewBar = ({ barId, data, measure }) => ({
+export const addNewBar = ({ barId, barData, beats }) => ({
   type: actionTypes.ADD_NEW_BAR,
-  payload: { barId, data, measure },
+  payload: { barId, barData, beats },
 });
 
-export const copyBarToEnd = (barId) => ({
+export const copyBarToEnd = (oldBarId, newBarId) => ({
   type: actionTypes.COPY_BAR_TO_END,
-  payload: barId,
+  payload: { oldBarId, newBarId },
 });
 
 // export const copyBarToNext = (barId, previousId) => ({
@@ -20,17 +20,17 @@ export const deleteBar = (barId) => ({
   payload: barId,
 });
 
-export const setBarMetre = (barId, newMetre, newLengthInBeats) => ({
-  type: actionTypes.SET_BAR_METRE,
-  payload: { barId, newMetre, newLengthInBeats },
-});
+// export const setBarMetre = (barId, newMetre, newLengthInBeats) => ({
+//   type: actionTypes.SET_BAR_METRE,
+//   payload: { barId, newMetre, newLengthInBeats },
+// });
 
 export const setBarSubdivision = (barId, newSubdivision) => ({
   type: actionTypes.SET_BAR_SUBDIVISION,
   payload: { barId, newSubdivision },
 });
 
-export const updateBeat = (barId, beatId, beatIndex, newSound) => ({
+export const updateBeat = (beatId, newSound) => ({
   type: actionTypes.UPDATE_BEAT,
-  payload: { barId, beatId, beatIndex, newSound },
+  payload: { beatId, newSound },
 });

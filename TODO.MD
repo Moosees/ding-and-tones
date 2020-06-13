@@ -2,11 +2,9 @@
 
 ## Current task
 
-* Bars reducer set metre and subdivision
-* Bars reducer update beat
-* Dropdown update when beat updates
-* Play song with new state
-* Add 16ths to metre and everywhere
+* Play song works
+* Create bar works
+* Copy bar works
 
 ## SIDEBAR
 
@@ -49,6 +47,7 @@
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
 * Add back copyBarToNext?
+* Add back 16ths subdivision
 
 ### Find songs
 

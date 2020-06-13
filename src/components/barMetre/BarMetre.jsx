@@ -1,26 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setBarMetre, setBarSubdivision } from '../../redux/bars/bars.actions';
+import { setBarSubdivision } from '../../redux/bars/bars.actions';
 import MetreControls from '../metreControls/MetreControls';
 
-const BarMetre = ({ bar, barData, setBarSubdivision, setBarMetre }) => {
-  const { metre, subdivision } = barData[bar];
+const BarMetre = ({ barId, bars, setBarSubdivision }) => {
+  const { metre, subdivision } = bars[barId];
 
   return (
     <MetreControls
       metre={metre}
       subdivision={subdivision}
-      setMetre={(metre, lengthInBars) => setBarMetre(bar, metre, lengthInBars)}
-      setSubdivision={(subdivision) => setBarSubdivision(bar, subdivision)}
+      setSubdivision={(subdivision) => setBarSubdivision(barId, subdivision)}
     />
   );
 };
 
 const mapStateToProps = ({ bars }) => ({
-  barData: bars.data,
+  bars: bars.bars,
 });
 
 export default connect(mapStateToProps, {
   setBarSubdivision,
-  setBarMetre,
 })(BarMetre);

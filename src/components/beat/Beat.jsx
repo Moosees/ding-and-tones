@@ -4,37 +4,27 @@ import { updateBeat } from '../../redux/bars/bars.actions';
 import ToneInput from '../toneInput/ToneInput';
 import { BeatContainer, BeatText } from './beat.styles';
 
-const Beat = ({
-  barId,
-  beat,
-  beatIndex,
-  currentBar,
-  currentBeat,
-  isAccented,
-  isEditingSong,
-  updateBeat,
-}) => {
+const Beat = ({ beatId, beats, currentBeat, isEditingSong, updateBeat }) => {
+  const { value, sound } = beats[beatId];
+
   return (
-    <BeatContainer
-      isPlaying={barId === currentBar && beat.beatId === currentBeat}
-      isAccented={isAccented}
-    >
+    <BeatContainer isPlaying={beatId === currentBeat} isAccented={value === 4}>
       {isEditingSong ? (
         <ToneInput
-          sound={beat.sound}
-          onChange={(value) => updateBeat(barId, beat.beatId, beatIndex, value)}
+          sound={sound}
+          onChange={(newSound) => updateBeat(beatId, newSound)}
         />
       ) : (
         <BeatText>
-          <span>{beat.sound}</span>
+          <span>{sound}</span>
         </BeatText>
       )}
     </BeatContainer>
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
-  currentBar: ui.currentBar,
+const mapStateToProps = ({ bars, ui }) => ({
+  beats: bars.beats,
   currentBeat: ui.currentBeat,
   currentDropdown: ui.currentDropdown,
   isEditingSong: ui.isEditingSong,
