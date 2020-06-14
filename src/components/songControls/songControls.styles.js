@@ -5,8 +5,3 @@ export const ControlsContainer = styled.div`
   flex-direction: column;
   width: 100%;
 `;
-
-export const Buttons = styled.div`
-  align-self: flex-start;
-  display: flex;
-`;

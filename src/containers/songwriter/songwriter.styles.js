@@ -5,7 +5,7 @@ export const SongContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 4rem;
+  padding: 2rem;
   overflow: auto;
 `;
 
@@ -15,6 +15,7 @@ export const TopSection = styled.div`
   flex: 1 0;
   justify-content: space-around;
   max-width: 80rem;
+  padding: 2rem 2rem 0;
   width: 100%;
 `;
 

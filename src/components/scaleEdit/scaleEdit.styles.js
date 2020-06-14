@@ -11,6 +11,7 @@ export const Notes = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   max-width: 34rem;
+  margin-bottom: 1rem;
 `;
 
 export const Note = styled.span`
@@ -34,8 +35,4 @@ export const Note = styled.span`
   &:hover {
     transform: scale(1.1);
   }
-`;
-
-export const Buttons = styled.div`
-  margin-top: 1rem;
 `;

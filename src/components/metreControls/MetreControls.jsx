@@ -1,5 +1,10 @@
 import React from 'react';
 import { metreList } from '../../metre.data';
+import {
+  MetreContainer,
+  MetreLabel,
+  MetreSelect,
+} from './metreControls.styles';
 
 const MetreControls = ({
   metre,
@@ -21,11 +26,15 @@ const MetreControls = ({
   };
 
   return (
-    <div>
+    <MetreContainer>
       {setMetre && (
-        <label>
-          Metre:
-          <select value={metre} disabled={disabled} onChange={handleTimeChange}>
+        <MetreLabel>
+          <span>Metre:</span>
+          <MetreSelect
+            value={metre}
+            disabled={disabled}
+            onChange={handleTimeChange}
+          >
             <optgroup label="Simple metre">
               <option value={'s24'}>2/4</option>
               <option value={'s34'}>3/4</option>
@@ -45,13 +54,13 @@ const MetreControls = ({
               <option value={'x323'}>8/8 - 3-2-3</option>
               <option value={'x332'}>8/8 - 3-3-2</option>
             </optgroup>
-          </select>
-        </label>
+          </MetreSelect>
+        </MetreLabel>
       )}
       {setSubdivision && (
-        <label>
-          Subdivision:
-          <select
+        <MetreLabel>
+          <span>Subdivision:</span>
+          <MetreSelect
             value={subdivision}
             disabled={disabled}
             onChange={(e) => setSubdivision(e.target.value)}
@@ -65,10 +74,10 @@ const MetreControls = ({
             <option value={16} disabled={minSubdivision > 16 || true}>
               16ths
             </option>
-          </select>
-        </label>
+          </MetreSelect>
+        </MetreLabel>
       )}
-    </div>
+    </MetreContainer>
   );
 };
 

@@ -1,9 +1,12 @@
 # DING AND TONES TODO LIST
 
-## Current task
+## Current tasks
 
 * Inputs for title, etc. Validation
-* Style popup
+* Fix edit song metre popup
+* Style bars and beats in songwriter, add drag handle, fix subdivision select
+* Disable lots of stuff when song is playing
+* Add play scale button
 
 ## SIDEBAR
 
@@ -39,8 +42,7 @@
 
 ### Songwriter
 
-* Scale mode? Only on controls play button?
-* Rearrange arrangement - drag handle?
+* Rearrange arrangement
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
 * Add back copyBarToNext?
@@ -84,6 +86,8 @@
 * Responsive design
 * Favicon - drum smiley?
 * Loading spinners?
+* Move popups to center of main window?
+* Distinct confirm and cancel buttons
 
 ### Low priority
 
@@ -94,6 +98,7 @@
 * Play chords, also play them as arpeggios?
 * Sort chords by type?
 * Ability to loop songs or repeat bars
+* Link drum and songwriter
 
 ### Even lower priority
 

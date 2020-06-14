@@ -4,7 +4,7 @@ import DividerLine from '../../components/dividerLine/DividerLine';
 import {
   AvatarContainer,
   ButtonGroup,
-  Buttons,
+  ControlButtons,
   UserContainer,
 } from './user.styles';
 
@@ -16,7 +16,7 @@ const User = () => {
           face
         </i>
       </AvatarContainer>
-      <Buttons>
+      <ControlButtons>
         <ButtonGroup reverse>
           {/* PlayButton component?? */}
           <BtnControls label="Play" icon="play_arrow" />
@@ -30,7 +30,7 @@ const User = () => {
           <BtnControls reverse label="Account" icon="person_outline" />
           <BtnControls reverse label="Sign Out" icon="directions_run" />
         </ButtonGroup>
-      </Buttons>
+      </ControlButtons>
     </UserContainer>
   );
 };

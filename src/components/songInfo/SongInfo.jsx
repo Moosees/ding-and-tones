@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoField from '../infoField/InfoField';
 import PlayButton from '../playButton/PlayButton';
@@ -10,11 +11,6 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-`;
-
-const Buttons = styled.div`
-  align-self: flex-end;
-  display: flex;
 `;
 
 const SongInfo = ({ title }) => {

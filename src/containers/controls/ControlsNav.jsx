@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import BtnNav from '../../components/button/Nav';
 import { setShowIntervals } from '../../redux/drum/drum.actions';
 
-export const ButtonsContainer = styled.div`
+export const NavButtons = styled.div`
   display: flex;
   margin-left: 5rem;
 `;
 
 const ControlsNav = ({ showIntervals, setShowIntervals }) => {
   return (
-    <ButtonsContainer>
+    <NavButtons>
       <BtnNav
         small
         isActive={!showIntervals}
@@ -24,7 +24,7 @@ const ControlsNav = ({ showIntervals, setShowIntervals }) => {
         label="Intervals"
         onClick={() => setShowIntervals(true)}
       />
-    </ButtonsContainer>
+    </NavButtons>
   );
 };
 

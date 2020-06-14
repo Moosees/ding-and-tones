@@ -8,7 +8,7 @@ const InfoContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBtnHeavy};
   border-radius: 3px;
   display: flex;
-  flex: 1 0 3rem;
+  flex: 0 0;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   justify-content: space-between;
   margin: 0.5rem;

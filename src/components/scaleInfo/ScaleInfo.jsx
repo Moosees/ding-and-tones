@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoField from '../infoField/InfoField';
-import { Buttons, InfoContainer } from './scaleInfo.styles';
+import { InfoContainer } from './scaleInfo.styles';
 
 const ScaleInfo = ({ name, layout, scale }) => {
   return (

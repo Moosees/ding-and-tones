@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
@@ -16,14 +17,15 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
   return (
     <Popup onClose={onClose}>
       <MetreControls
-        column
         metre={metre}
         subdivision={subdivision}
         setMetre={setMetre}
         setSubdivision={setSubdivision}
       />
-      <BtnPrimary label="Confirm" onClick={handleConfirm} />
-      <BtnPrimary label="Cancel" onClick={onClose} />
+      <Buttons position="center">
+        <BtnPrimary label="Confirm" onClick={handleConfirm} />
+        <BtnPrimary label="Cancel" onClick={onClose} />
+      </Buttons>
     </Popup>
   );
 };

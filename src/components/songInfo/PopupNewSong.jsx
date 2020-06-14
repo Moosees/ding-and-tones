@@ -7,6 +7,7 @@ import {
   setSongSubdivision,
   setSongTitle,
 } from '../../redux/song/song.actions';
+import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoField from '../infoField/InfoField';
 import MetreControls from '../metreControls/MetreControls';
@@ -44,8 +45,10 @@ const PopupNewSong = ({
         setMetre={setMetre}
         setSubdivision={setSubdivision}
       />
-      <BtnPrimary label="Confirm" onClick={handleConfirm} />
-      <BtnPrimary label="Cancel" onClick={onClose} />
+      <Buttons position="center">
+        <BtnPrimary label="Confirm" onClick={handleConfirm} />
+        <BtnPrimary label="Cancel" onClick={onClose} />
+      </Buttons>
     </Popup>
   );
 };

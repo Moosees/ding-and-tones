@@ -16,9 +16,12 @@ const Overlay = styled.div`
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colorBox};
-  border-radius: 3px;
-  min-height: 20rem;
-  min-width: 20rem;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 30rem;
+  padding: 3rem;
 `;
 
 const Popup = ({ children, onClose }) => {

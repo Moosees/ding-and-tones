@@ -8,8 +8,9 @@ import {
   removeNoteFromScale,
   transposeScale,
 } from '../../redux/scale/scale.actions';
+import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
-import { Buttons, EditContainer, Note, Notes } from './scaleEdit.styles';
+import { EditContainer, Note, Notes } from './scaleEdit.styles';
 
 const getNotes = (scale, fnAdd, fnRemove) => {
   const notes = [];
@@ -58,7 +59,7 @@ const ScaleEdit = ({
   return (
     <EditContainer>
       <Notes>{notes}</Notes>
-      <Buttons>
+      <Buttons position="center">
         <BtnPrimary label="Up" light onClick={() => handleTranspose(1)} />
         <BtnPrimary label="Down" light onClick={() => handleTranspose(-1)} />
       </Buttons>
