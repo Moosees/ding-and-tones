@@ -5,6 +5,10 @@ export const addNewBar = ({ barId, barData, beats }) => ({
   payload: { barId, barData, beats },
 });
 
+export const clearSong = () => ({
+  type: actionTypes.CLEAR_SONG,
+});
+
 export const duplicateBar = ({ oldBarId, newBarId, newMeasure, newBeats }) => ({
   type: actionTypes.DUPLICATE_BAR,
   payload: { oldBarId, newBarId, newMeasure, newBeats },

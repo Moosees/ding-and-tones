@@ -11,6 +11,9 @@ const arrangementReducer = (state = arrangementState, { type, payload }) => {
     case actionTypes.ADD_NEW_BAR:
       return [...state, payload.barId];
 
+    case actionTypes.CLEAR_SONG:
+      return [];
+
     case actionTypes.DUPLICATE_BAR:
       return [...state, payload.newBarId];
 

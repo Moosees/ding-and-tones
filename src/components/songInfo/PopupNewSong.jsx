@@ -6,13 +6,15 @@ import {
   setSongMetre,
   setSongSubdivision,
 } from '../../redux/song/song.actions';
+import { clearSong } from '../../redux/bars/bars.actions';
 import InfoField from '../infoField/InfoField';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 import ButtonMain from '../button/ButtonMain';
 import { useState } from 'react';
 
-const SongNewPopup = ({
+const PopupNewSong = ({
+  clearSong,
   onClose,
   setSongDifficulty,
   setSongMetre,
@@ -29,6 +31,7 @@ const SongNewPopup = ({
     setSongMetre(metre);
     setSongSubdivision(subdivision);
     setSongTitle(title);
+    clearSong();
     onClose();
   };
 
@@ -49,8 +52,9 @@ const SongNewPopup = ({
 };
 
 export default connect(null, {
+  clearSong,
   setSongDifficulty,
   setSongSubdivision,
   setSongMetre,
   setSongTitle,
-})(SongNewPopup);
+})(PopupNewSong);

@@ -10,9 +10,10 @@ import { toggleEditSong } from '../../redux/ui/ui.actions';
 import BpmSlider from '../bpmSlider/BpmSlider';
 import ButtonMain from '../button/ButtonMain';
 import InfoField from '../infoField/InfoField';
-import MetreControls from '../metreControls/MetreControls';
 import { Buttons, ControlsContainer } from './songControls.styles';
 import { createNewBar } from './songControls.utils';
+import PopupNewBar from './PopupNewBar';
+import PopupSongMetre from './PopupSongMetre';
 
 const SongControls = ({
   addNewBar,
@@ -26,6 +27,7 @@ const SongControls = ({
   toggleEditSong,
 }) => {
   const [metreOpen, setMetreOpen] = useState(false);
+  const [newBarOpen, setNewBarOpen] = useState(false);
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
 
   const handleNewBar = (metre, subdivision) => {
@@ -47,19 +49,18 @@ const SongControls = ({
           onClick={() => handleNewBar(metre, subdivision)}
         />
         <ButtonMain
+          label="Add Custom Bar"
+          disabled={isSongPlaying}
+          onClick={() => setNewBarOpen(true)}
+          handleNewBar={handleNewBar}
+        />
+        <ButtonMain
           label={isEditingSong ? 'Lock' : 'Unlock'}
           onClick={toggleEditSong}
         />
       </Buttons>
-      {metreOpen && (
-        <MetreControls
-          metre={metre}
-          subdivision={subdivision}
-          setMetre={setSongMetre}
-          setSubdivision={setSongSubdivision}
-          onClick={() => handleNewBar(metre, subdivision)}
-        />
-      )}
+      {metreOpen && <PopupSongMetre />}
+      {newBarOpen && <PopupNewBar />}
     </ControlsContainer>
   );
 };

@@ -2,7 +2,8 @@
 
 ## Current task
 
-* New song should reset the song instead of just changing metre
+* Inputs for title, etc. Validation
+* Style popup
 
 ## SIDEBAR
 
@@ -39,7 +40,6 @@
 ### Songwriter
 
 * Scale mode? Only on controls play button?
-* Validate length on inputs
 * Rearrange arrangement - drag handle?
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
@@ -87,17 +87,17 @@
 ### Low priority
 
 * Keyboard shortcuts?
-* Triplets, flams, etc.
 * Show played note on drum?
 * Handle extra/bottom notes
-* Custom metres
 * Custom chord inputs
 * Play chords, also play them as arpeggios?
 * Sort chords by type?
+* Ability to loop songs or repeat bars
 
 ### Even lower priority
 
-* Ability to loop songs or repeat bars
+* Triplets, flams, etc.
+* Custom metres
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.

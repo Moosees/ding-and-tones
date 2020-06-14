@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ButtonMain from '../button/ButtonMain';
 import InfoField from '../infoField/InfoField';
 import PlayButton from '../playButton/PlayButton';
-import SongNewPopup from '../songNewPopup/SongNewPopup';
+import PopupNewSong from './PopupNewSong';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const SongInfo = ({ title }) => {
           <ButtonMain label="Save Song" />
         </Buttons>
       </InfoContainer>
-      {newOpen && <SongNewPopup onClose={() => setNewOpen(false)} />}
+      {newOpen && <PopupNewSong onClose={() => setNewOpen(false)} />}
     </>
   );
 };
