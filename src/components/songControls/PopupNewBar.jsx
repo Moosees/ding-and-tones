@@ -1,41 +1,36 @@
-import React from 'react';
-import MetreControls from '../metreControls/MetreControls';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addNewBar } from '../../redux/bars/bars.actions';
-import {
-  setSongMetre,
-  setSongSubdivision,
-} from '../../redux/song/song.actions';
+import BtnPrimary from '../button/Primary';
+import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 
-const PopupNewBar = ({
-  handleNewBar,
-  metre,
-  onClose,
-  subdivision,
-  setSongMetre,
-  setSongSubdivision,
-}) => {
+const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
+  const [metre, setMetre] = useState(songMetre);
+  const [subdivision, setSubdivision] = useState(songSubdivision);
+
+  const handleConfirm = () => {
+    handleNewBar(metre, subdivision);
+    onClose();
+  };
+
   return (
     <Popup onClose={onClose}>
       <MetreControls
+        column
         metre={metre}
         subdivision={subdivision}
-        setMetre={setSongMetre}
-        setSubdivision={setSongSubdivision}
-        onClick={() => handleNewBar(metre, subdivision)}
+        setMetre={setMetre}
+        setSubdivision={setSubdivision}
       />
+      <BtnPrimary label="Confirm" onClick={handleConfirm} />
+      <BtnPrimary label="Cancel" onClick={onClose} />
     </Popup>
   );
 };
 
 const mapStateToProps = ({ song }) => ({
-  subdivision: song.subdivision,
-  metre: song.metre,
+  songSubdivision: song.subdivision,
+  songMetre: song.metre,
 });
 
-export default connect(mapStateToProps, {
-  addNewBar,
-  setSongSubdivision,
-  setSongMetre,
-})(PopupNewBar);
+export default connect(mapStateToProps)(PopupNewBar);

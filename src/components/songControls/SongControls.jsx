@@ -35,33 +35,40 @@ const SongControls = ({
   };
 
   return (
-    <ControlsContainer>
-      <InfoField
-        label={metreAndBpm}
-        reverse
-        onEdit={() => setMetreOpen(true)}
-      />
-      <InfoField label={<BpmSlider />} />
-      <Buttons>
-        <BtnPrimary
-          label="Add bar"
-          disabled={isSongPlaying}
-          onClick={() => handleNewBar(metre, subdivision)}
+    <>
+      <ControlsContainer>
+        <InfoField
+          label={metreAndBpm}
+          reverse
+          onEdit={() => setMetreOpen(true)}
         />
-        <BtnPrimary
-          label="Add Custom Bar"
-          disabled={isSongPlaying}
-          onClick={() => setNewBarOpen(true)}
+        <InfoField label={<BpmSlider />} />
+        <Buttons>
+          <BtnPrimary
+            label="Add bar"
+            disabled={isSongPlaying}
+            onClick={() => handleNewBar(metre, subdivision)}
+          />
+          <BtnPrimary
+            label="Add Custom Bar"
+            disabled={isSongPlaying}
+            onClick={() => setNewBarOpen(true)}
+            handleNewBar={handleNewBar}
+          />
+          <BtnPrimary
+            label={isEditingSong ? 'Lock' : 'Unlock'}
+            onClick={toggleEditSong}
+          />
+        </Buttons>
+      </ControlsContainer>
+      {metreOpen && <PopupSongMetre onClose={() => setMetreOpen(false)} />}
+      {newBarOpen && (
+        <PopupNewBar
+          onClose={() => setNewBarOpen(false)}
           handleNewBar={handleNewBar}
         />
-        <BtnPrimary
-          label={isEditingSong ? 'Lock' : 'Unlock'}
-          onClick={toggleEditSong}
-        />
-      </Buttons>
-      {metreOpen && <PopupSongMetre />}
-      {newBarOpen && <PopupNewBar />}
-    </ControlsContainer>
+      )}
+    </>
   );
 };
 
