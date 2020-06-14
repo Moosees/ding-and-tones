@@ -6,7 +6,7 @@ import {
   toggleChordIsSelected,
 } from '../../redux/chords/chords.actions';
 import { setDisplayedChord } from '../../redux/drum/drum.actions';
-import ButtonMain from '../button/ButtonMain';
+import BtnPrimary from '../button/Primary';
 import Checkbox from '../checkbox/Checkbox';
 import DividerLine from '../dividerLine/DividerLine';
 
@@ -50,12 +50,12 @@ const ChordFilter = ({
   return (
     <ControlsContainer>
       <div>
-        <ButtonMain
+        <BtnPrimary
           label="Show all"
           light
           onClick={() => setAllChordFiltersTo(true, scale)}
         />
-        <ButtonMain label="Clear" light onClick={handleClear} />
+        <BtnPrimary label="Clear" light onClick={handleClear} />
       </div>
       <DividerLine small />
       <CheckBoxes>{allChords}</CheckBoxes>

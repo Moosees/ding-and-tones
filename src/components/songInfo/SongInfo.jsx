@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import ButtonMain from '../button/ButtonMain';
+import BtnPrimary from '../button/Primary';
 import InfoField from '../infoField/InfoField';
 import PlayButton from '../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
@@ -27,8 +27,8 @@ const SongInfo = ({ title }) => {
         <InfoField label="Difficulty: Beginner" onEdit={true} />
         <Buttons>
           <PlayButton />
-          <ButtonMain label="New Song" onClick={() => setNewOpen(true)} />
-          <ButtonMain label="Save Song" />
+          <BtnPrimary label="New Song" onClick={() => setNewOpen(true)} />
+          <BtnPrimary label="Save Song" />
         </Buttons>
       </InfoContainer>
       {newOpen && <PopupNewSong onClose={() => setNewOpen(false)} />}

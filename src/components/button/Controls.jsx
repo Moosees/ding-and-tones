@@ -6,6 +6,7 @@ const BtnContainer = styled.div`
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   padding: 0.5rem;
+  text-shadow: ${({ theme }) => theme.textShadowLight};
   transition: color 0.1s ease-in;
 
   &:hover {
@@ -18,7 +19,7 @@ const Label = styled.span`
   padding-right: ${({ reverse }) => (reverse ? '0px' : '5px')};
 `;
 
-const ControlsButton = ({ label, icon, reverse, onClick }) => {
+const BtnControls = ({ label, icon, reverse, onClick }) => {
   return (
     <BtnContainer reverse={reverse} onClick={onClick}>
       <Label reverse={reverse}>{label}</Label>
@@ -27,4 +28,4 @@ const ControlsButton = ({ label, icon, reverse, onClick }) => {
   );
 };
 
-export default ControlsButton;
+export default BtnControls;

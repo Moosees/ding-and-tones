@@ -22,8 +22,7 @@ export const CheckboxLabel = styled.label`
   }
 
   &:hover input:checked ~ span::after {
-    background-color: ${({ theme }) => theme.colorBtnHeavy};
-    border-color: ${({ theme }) => theme.colorBtnClear};
+    background-color: ${({ theme }) => theme.colorBtnConfirm};
   }
 `;
 

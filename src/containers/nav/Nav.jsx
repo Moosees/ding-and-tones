@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavButton from '../../components/button/NavButton';
 import styled from 'styled-components';
+import BtnNav from '../../components/button/Nav';
 
 const Navbar = styled.nav`
   display: flex;
@@ -13,22 +13,22 @@ const Nav = ({ history, location }) => {
 
   return (
     <Navbar>
-      <NavButton
+      <BtnNav
         isActive={pathname === '/scale'}
         label="Scale"
         onClick={() => history.push('/scale')}
       />
-      <NavButton
+      <BtnNav
         isActive={pathname === '/chords'}
         label="Chords"
         onClick={() => history.push('/chords')}
       />
-      <NavButton
+      <BtnNav
         isActive={pathname === '/song'}
         label="Songwriter"
         onClick={() => history.push('/song')}
       />
-      <NavButton
+      <BtnNav
         isActive={pathname === '/find'}
         label="Find Songs"
         onClick={() => history.push('/find')}

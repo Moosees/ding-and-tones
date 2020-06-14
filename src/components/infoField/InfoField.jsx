@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const InfoContainer = styled.div`
   align-items: center;
   border: ${({ theme }) => theme.borderLight};
+  box-shadow: ${({ theme }) => theme.shadowBtnLight};
   background-color: ${({ theme }) => theme.colorBtnHeavy};
   border-radius: 3px;
   display: flex;

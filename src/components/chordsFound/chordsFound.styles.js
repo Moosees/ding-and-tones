@@ -8,7 +8,7 @@ export const ListContainer = styled.ul`
 
 export const ListItem = styled.li`
   background-color: ${({ theme }) => theme.colorBtnLight};
-  border: 1px solid
+  border: 2px solid
     ${({ isDisplayed, theme }) =>
       isDisplayed ? theme.colorCheckbox : theme.colorBtnClear};
   border-radius: 3px;

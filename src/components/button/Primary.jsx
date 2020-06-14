@@ -19,10 +19,10 @@ const Btn = styled.button`
   }
 `;
 
-const ButtonMain = ({ label, light, onClick }) => (
+const BtnPrimary = ({ label, light, onClick }) => (
   <Btn light={light} onClick={onClick}>
     {label}
   </Btn>
 );
 
-export default ButtonMain;
+export default BtnPrimary;

@@ -10,7 +10,7 @@ const Btn = styled.button`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   cursor: pointer;
-  font-size: ${({ small, theme }) => (small ? theme.fzNormal : theme.fzLarge)};
+  font-size: ${({ small, theme }) => (small ? theme.fzMedium : theme.fzLarge)};
   font-weight: 500;
   margin: -3px 2px 0;
   padding: ${({ small }) => (small ? '0.4rem' : '0.4rem 1rem')};
@@ -28,7 +28,7 @@ const Btn = styled.button`
   }
 `;
 
-const NavButton = ({ isActive, label, onClick, small }) => {
+const BtnNav = ({ isActive, label, onClick, small }) => {
   return (
     <Btn isActive={isActive} small={small} onClick={onClick}>
       {label}
@@ -36,4 +36,4 @@ const NavButton = ({ isActive, label, onClick, small }) => {
   );
 };
 
-export default NavButton;
+export default BtnNav;

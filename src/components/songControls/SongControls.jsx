@@ -8,12 +8,12 @@ import {
 } from '../../redux/song/song.actions';
 import { toggleEditSong } from '../../redux/ui/ui.actions';
 import BpmSlider from '../bpmSlider/BpmSlider';
-import ButtonMain from '../button/ButtonMain';
+import BtnPrimary from '../button/Primary';
 import InfoField from '../infoField/InfoField';
-import { Buttons, ControlsContainer } from './songControls.styles';
-import { createNewBar } from './songControls.utils';
 import PopupNewBar from './PopupNewBar';
 import PopupSongMetre from './PopupSongMetre';
+import { Buttons, ControlsContainer } from './songControls.styles';
+import { createNewBar } from './songControls.utils';
 
 const SongControls = ({
   addNewBar,
@@ -43,18 +43,18 @@ const SongControls = ({
       />
       <InfoField label={<BpmSlider />} />
       <Buttons>
-        <ButtonMain
+        <BtnPrimary
           label="Add bar"
           disabled={isSongPlaying}
           onClick={() => handleNewBar(metre, subdivision)}
         />
-        <ButtonMain
+        <BtnPrimary
           label="Add Custom Bar"
           disabled={isSongPlaying}
           onClick={() => setNewBarOpen(true)}
           handleNewBar={handleNewBar}
         />
-        <ButtonMain
+        <BtnPrimary
           label={isEditingSong ? 'Lock' : 'Unlock'}
           onClick={toggleEditSong}
         />

@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { clearSong } from '../../redux/bars/bars.actions';
 import {
   setSongDifficulty,
-  setSongTitle,
   setSongMetre,
   setSongSubdivision,
+  setSongTitle,
 } from '../../redux/song/song.actions';
-import { clearSong } from '../../redux/bars/bars.actions';
+import BtnPrimary from '../button/Primary';
 import InfoField from '../infoField/InfoField';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
-import ButtonMain from '../button/ButtonMain';
-import { useState } from 'react';
 
 const PopupNewSong = ({
   clearSong,
@@ -45,8 +44,8 @@ const PopupNewSong = ({
         setMetre={setMetre}
         setSubdivision={setSubdivision}
       />
-      <ButtonMain label="Confirm" onClick={handleConfirm} />
-      <ButtonMain label="Cancel" onClick={onClose} />
+      <BtnPrimary label="Confirm" onClick={handleConfirm} />
+      <BtnPrimary label="Cancel" onClick={onClose} />
     </Popup>
   );
 };

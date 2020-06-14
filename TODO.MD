@@ -45,6 +45,7 @@
 * Dropdown list show all dyads and ding + note combinations?
 * Add back copyBarToNext?
 * Add back 16ths subdivision
+* Plus and minus one for bpm
 
 ### Find songs
 

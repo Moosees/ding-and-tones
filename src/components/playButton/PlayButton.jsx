@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setIsSongPlaying } from '../../redux/ui/ui.actions';
-import ButtonMain from '../button/ButtonMain';
+import BtnPrimary from '../button/Primary';
 import { playSong } from './playButton.utils';
 
 const PlayButton = ({ isSongPlaying, setIsSongPlaying }) => {
@@ -11,7 +11,7 @@ const PlayButton = ({ isSongPlaying, setIsSongPlaying }) => {
   };
 
   return (
-    <ButtonMain
+    <BtnPrimary
       onClick={handlePlayPause}
       label={isSongPlaying ? 'Stop' : 'Play'}
     />

@@ -1,5 +1,5 @@
 import React from 'react';
-import ControlsButton from '../../components/button/ControlsButton';
+import BtnControls from '../../components/button/Controls';
 import DividerLine from '../../components/dividerLine/DividerLine';
 import {
   AvatarContainer,
@@ -19,16 +19,16 @@ const User = () => {
       <Buttons>
         <ButtonGroup reverse>
           {/* PlayButton component?? */}
-          <ControlsButton label="Play" icon="play_arrow" />
-          {/* <ControlsButton label="Play" icon="pause" /> */}
-          <ControlsButton label="Sound" icon="hearing" />
-          <ControlsButton label="Print" icon="print" />
+          <BtnControls label="Play" icon="play_arrow" />
+          {/* <BtnControls label="Play" icon="pause" /> */}
+          <BtnControls label="Sound" icon="hearing" />
+          <BtnControls label="Print" icon="print" />
         </ButtonGroup>
         <DividerLine vertical small />
         <ButtonGroup>
-          <ControlsButton reverse label="Help" icon="help_outline" />
-          <ControlsButton reverse label="Account" icon="person_outline" />
-          <ControlsButton reverse label="Sign Out" icon="directions_run" />
+          <BtnControls reverse label="Help" icon="help_outline" />
+          <BtnControls reverse label="Account" icon="person_outline" />
+          <BtnControls reverse label="Sign Out" icon="directions_run" />
         </ButtonGroup>
       </Buttons>
     </UserContainer>
