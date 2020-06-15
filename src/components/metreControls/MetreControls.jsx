@@ -8,9 +8,10 @@ import {
 
 const MetreControls = ({
   metre,
-  subdivision,
   setMetre,
+  subdivision,
   setSubdivision,
+  small,
   disabled,
 }) => {
   const { minSubdivision } = metreList[metre];
@@ -26,11 +27,12 @@ const MetreControls = ({
   };
 
   return (
-    <MetreContainer>
+    <MetreContainer small={small}>
       {setMetre && (
-        <MetreLabel>
-          <span>Metre:</span>
+        <MetreLabel small={small}>
+          {!small && <span>Metre:</span>}
           <MetreSelect
+            small={small}
             value={metre}
             disabled={disabled}
             onChange={handleTimeChange}
@@ -58,9 +60,10 @@ const MetreControls = ({
         </MetreLabel>
       )}
       {setSubdivision && (
-        <MetreLabel>
-          <span>Subdivision:</span>
+        <MetreLabel small={small}>
+          {!small && <span>Subdivision:</span>}
           <MetreSelect
+            small={small}
             value={subdivision}
             disabled={disabled}
             onChange={(e) => setSubdivision(e.target.value)}

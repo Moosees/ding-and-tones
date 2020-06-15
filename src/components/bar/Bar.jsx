@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BarControls from '../barControls/BarControls';
-import BarMetre from '../barMetre/BarMetre';
 import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
 
@@ -26,7 +25,6 @@ const Bar = ({ barId, bars, beats, currentBar, isEditingSong }) => {
     <BarContainer>
       {isEditingSong && <BarControls barId={barId} />}
       <Beats isPlaying={barId === currentBar}>{filteredBeats}</Beats>
-      {isEditingSong && <BarMetre barId={barId} />}
     </BarContainer>
   );
 };

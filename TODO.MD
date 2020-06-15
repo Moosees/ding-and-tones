@@ -2,11 +2,14 @@
 
 ## Current tasks
 
-* Inputs for title, etc. Validation
-* Fix edit song metre popup
 * Style bars and beats in songwriter, add drag handle, fix subdivision select
+* Inputs for title, etc. Validation
 * Disable lots of stuff when song is playing
-* Add play scale button
+* Add play scale button and function
+* Fix edit song metre popup
+* Rework controls
+* Select drum type - pan or tongue, etc.
+* Rearrange arrangement
 
 ## SIDEBAR
 
@@ -17,7 +20,6 @@
 
 ### Controls
 
-* Select drum type - pan or tongue, etc.
 * Connect to backend
 * Printing, format?
 * Save to .pdf?
@@ -42,7 +44,6 @@
 
 ### Songwriter
 
-* Rearrange arrangement
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
 * Add back copyBarToNext?
@@ -69,7 +70,7 @@
 * useRouter might not be best solution for navigation?
 * Refactor update found chord in chords reducer to new function
 * What to do with deleted bars? Save song only gathers bars "in use"?
-* Create selectors and use them for copying bars etc.
+* Create (re)selectors and use them for copying bars etc.
 
 ### Backend
 
@@ -82,11 +83,9 @@
 
 ### Design
 
-* Colors, fonts and stuff
 * Responsive design
 * Favicon - drum smiley?
 * Loading spinners?
-* Move popups to center of main window?
 * Distinct confirm and cancel buttons
 
 ### Low priority
@@ -109,3 +108,5 @@
 * Multiple drums for chords, songs etc.
 * Swing?
 * More drum alternatives?
+* Style dropdowns
+* Animations on drum
