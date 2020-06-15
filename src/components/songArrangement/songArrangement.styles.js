@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Bars = styled.div`
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
+  justify-content: flex-start;
 `;

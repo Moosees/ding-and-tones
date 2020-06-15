@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Style bars and beats in songwriter, add drag handle, fix subdivision select
+* Style beats in songwriter, add drag handle
+* Dragging should work with temporary react state?
 * Inputs for title, etc. Validation
 * Disable lots of stuff when song is playing
 * Add play scale button and function

@@ -5,9 +5,10 @@ import SongControls from '../../components/songControls/SongControls';
 import SongInfo from '../../components/songInfo/SongInfo';
 import {
   BottomSection,
+
   SongContainer,
   TopPart,
-  TopSection,
+  TopSection
 } from './songwriter.styles';
 
 const Songwriter = () => {

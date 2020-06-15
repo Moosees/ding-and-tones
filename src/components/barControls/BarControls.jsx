@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
 import {
   deleteBar,
@@ -9,11 +8,7 @@ import {
 } from '../../redux/bars/bars.actions';
 import BtnGradient from '../button/Gradient';
 import MetreControls from '../metreControls/MetreControls';
-
-const ControlsContainer = styled.div`
-  align-items: center;
-  display: flex;
-`;
+import { ControlsContainer, DragHandle } from './barControls.styles';
 
 const copyBar = (barId, bars, beats) => {
   const newBarId = uuid();
@@ -43,6 +38,9 @@ const BarControls = ({
 
   return (
     <ControlsContainer>
+      <DragHandle>
+        <i className="material-icons">drag_indicator</i>
+      </DragHandle>
       <BtnGradient
         label="Copy"
         onClick={() => duplicateBar(copyBar(barId, bars, beats))}

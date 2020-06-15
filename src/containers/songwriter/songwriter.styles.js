@@ -24,6 +24,9 @@ export const TopPart = styled.div`
 `;
 
 export const BottomSection = styled.div`
+  align-items: flex-start;
+  display: flex;
   flex: 10 0;
+  justify-content: center;
   width: 100%;
 `;
