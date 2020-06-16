@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { metreList } from '../../metre.data';
-import { updateBeat, updateMeasure } from '../../redux/bars/bars.actions';
+import { updateMeasureAndBeats } from '../../redux/bars/bars.actions';
 import { store } from '../../redux/store';
 import Beat from '../beat/Beat';
 
@@ -20,22 +20,23 @@ export const displayBeats = (measure, beats, barSubdivision) => {
 
 const updateBeats = (barId, measure, beats, barSubdivision, barMetre) => {
   let beatIndex = 0;
-  const measureCache = [];
+  const newMeasure = [];
+  const newBeats = {};
 
   metreList[barMetre].template.forEach((metreValue) => {
     const barBeat = measure[beatIndex];
 
     if (barBeat && beats[barBeat].value === metreValue) {
-      measureCache.push(barBeat);
+      newMeasure.push(barBeat);
       ++beatIndex;
     } else {
       const newId = uuid();
-      store.dispatch(updateBeat(newId, 'P', metreValue));
-      measureCache.push(newId);
+      newMeasure.push(newId);
+      newBeats[newId] = { sound: 'P', value: metreValue };
     }
   });
 
-  store.dispatch(updateMeasure(barId, measureCache));
+  store.dispatch(updateMeasureAndBeats(barId, newMeasure, newBeats));
 };
 
 export const checkMeasureVsMetre = (

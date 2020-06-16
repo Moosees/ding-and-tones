@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* New bars action for updating measure with all beats
 * Style beats in songwriter
 * Inputs for title, etc. Validation
 * Difficulty as dropdown

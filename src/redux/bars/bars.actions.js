@@ -29,12 +29,12 @@ export const setBarSubdivision = (barId, newSubdivision) => ({
   payload: { barId, newSubdivision },
 });
 
-export const updateBeat = (beatId, newSound, newValue) => ({
+export const updateBeat = (beatId, newSound) => ({
   type: actionTypes.UPDATE_BEAT,
-  payload: { beatId, newSound, newValue },
+  payload: { beatId, newSound },
 });
 
-export const updateMeasure = (barId, newMeasure) => ({
-  type: actionTypes.UPDATE_MEASURE,
-  payload: { barId, newMeasure },
+export const updateMeasureAndBeats = (barId, newMeasure, newBeats) => ({
+  type: actionTypes.UPDATE_MEASURE_AND_BEATS,
+  payload: { barId, newMeasure, newBeats },
 });
