@@ -6,6 +6,7 @@ const actionTypes = {
   SET_BAR_METRE: 'SET_BAR_METRE',
   SET_BAR_SUBDIVISION: 'SET_BAR_SUBDIVISION',
   UPDATE_BEAT: 'UPDATE_BEAT',
+  UPDATE_MEASURE: 'UPDATE_MEASURE',
 };
 
 export default actionTypes;

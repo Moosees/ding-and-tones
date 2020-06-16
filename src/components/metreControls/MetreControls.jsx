@@ -74,7 +74,7 @@ const MetreControls = ({
             <option value={8} disabled={minSubdivision > 8}>
               8ths
             </option>
-            <option value={16} disabled={minSubdivision > 16 || true}>
+            <option value={16} disabled={minSubdivision > 16}>
               16ths
             </option>
           </MetreSelect>

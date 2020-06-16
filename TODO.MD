@@ -2,9 +2,10 @@
 
 ## Current tasks
 
-* Style beats in songwriter, add drag handle
-* Dragging should work with temporary react state?
+* New bars action for updating measure with all beats
+* Style beats in songwriter
 * Inputs for title, etc. Validation
+* Difficulty as dropdown
 * Disable lots of stuff when song is playing
 * Add play scale button and function
 * Fix edit song metre popup
@@ -47,8 +48,6 @@
 
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
-* Add back copyBarToNext?
-* Add back 16ths subdivision
 * Plus and minus one for bpm
 
 ### Find songs

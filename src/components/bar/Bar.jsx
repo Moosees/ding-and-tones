@@ -1,30 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BarControls from '../barControls/BarControls';
-import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
-
-const displayBeats = (measure, beats, barSubdivision) => {
-  const filteredBeats = [];
-
-  measure.forEach((beat) => {
-    const { value } = beats[beat];
-
-    if (value <= barSubdivision)
-      filteredBeats.push(<Beat key={beat} beatId={beat} />);
-  });
-
-  return filteredBeats;
-};
+import { checkMeasureVsMetre, displayBeats } from './bar.utils';
+import { useEffect } from 'react';
 
 const Bar = ({ barId, bars, beats, currentBar, isEditingSong }) => {
-  const { measure, subdivision } = bars[barId];
+  const { measure, subdivision, metre } = bars[barId];
+
+  useEffect(() => {
+    checkMeasureVsMetre(barId, measure, beats, subdivision, metre);
+  }, [barId, measure, beats, subdivision, metre]);
+
   const filteredBeats = displayBeats(measure, beats, subdivision);
 
   return (
     <BarContainer>
       {isEditingSong && <BarControls barId={barId} />}
-      <Beats isPlaying={barId === currentBar}>{filteredBeats}</Beats>
+      {filteredBeats && (
+        <Beats isPlaying={barId === currentBar}>{filteredBeats}</Beats>
+      )}
     </BarContainer>
   );
 };

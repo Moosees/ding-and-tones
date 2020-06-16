@@ -50,6 +50,15 @@ const barsDataReducer = (state = barsDataState, { type, payload }) => {
         },
       };
 
+    case actionTypes.UPDATE_MEASURE:
+      return {
+        ...state,
+        [payload.barId]: {
+          ...state[payload.barId],
+          measure: payload.newMeasure,
+        },
+      };
+
     default:
       return state;
   }
@@ -69,7 +78,10 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
     case actionTypes.UPDATE_BEAT:
       return {
         ...state,
-        [payload.beatId]: { ...state[payload.beatId], sound: payload.newSound },
+        [payload.beatId]: {
+          sound: payload.newSound,
+          value: payload.newValue || state[payload.beatId].value,
+        },
       };
 
     default:
