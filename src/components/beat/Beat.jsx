@@ -1,24 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateBeat } from '../../redux/bars/bars.actions';
-import ToneInput from '../toneInput/ToneInput';
+import { setDropdownForBeat } from '../../redux/ui/ui.actions';
 import { BeatContainer, BeatText } from './beat.styles';
+import BeatDropdown from './BeatDropdown';
 
-const Beat = ({ beatId, beats, currentBeat, isEditingSong, updateBeat }) => {
+const Beat = ({
+  beatId,
+  beats,
+  currentBeat,
+  dropdownBeatId,
+  isEditingSong,
+  isSongPlaying,
+  setDropdownForBeat,
+}) => {
   const { value, sound } = beats[beatId];
+  const isBeatPlaying = beatId === currentBeat;
+  const isDropdownOpen = beatId === dropdownBeatId;
+
+  const openDropdown = (e) => {
+    e.stopPropagation();
+    if (!isSongPlaying && isEditingSong) {
+      setDropdownForBeat(beatId);
+    }
+  };
 
   return (
-    <BeatContainer isPlaying={beatId === currentBeat} isAccented={value === 4}>
-      {isEditingSong ? (
-        <ToneInput
-          sound={sound}
-          onChange={(newSound) => updateBeat(beatId, newSound)}
-        />
-      ) : (
-        <BeatText>
-          <span>{sound}</span>
-        </BeatText>
-      )}
+    <BeatContainer
+      isBeatPlaying={isBeatPlaying}
+      value={value}
+      onClick={openDropdown}
+    >
+      <BeatText isBeatPlaying={isBeatPlaying} value={value}>
+        {sound}
+      </BeatText>
+      {isDropdownOpen && <BeatDropdown beatId={beatId} sound={sound} />}
     </BeatContainer>
   );
 };
@@ -26,8 +41,9 @@ const Beat = ({ beatId, beats, currentBeat, isEditingSong, updateBeat }) => {
 const mapStateToProps = ({ bars, ui }) => ({
   beats: bars.beats,
   currentBeat: ui.currentBeat,
-  currentDropdown: ui.currentDropdown,
+  dropdownBeatId: ui.dropdownBeatId,
   isEditingSong: ui.isEditingSong,
+  isSongPlaying: ui.isSongPlaying,
 });
 
-export default connect(mapStateToProps, { updateBeat })(Beat);
+export default connect(mapStateToProps, { setDropdownForBeat })(Beat);

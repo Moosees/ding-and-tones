@@ -3,6 +3,7 @@ import actionTypes from './ui.types';
 const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
+  dropdownBeatId: null,
   isSongPlaying: false,
   isEditingSong: true,
   option: {},
@@ -20,6 +21,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         currentBeat: payload,
+      };
+
+    case actionTypes.SET_DROPDOWN_BEAT_ID:
+      return {
+        ...state,
+        dropdownBeatId: state.dropdownBeatId === payload ? null : payload,
       };
 
     case actionTypes.SET_IS_SONG_PLAYING:

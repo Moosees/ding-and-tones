@@ -10,6 +10,11 @@ export const setCurrentBeat = (beatId) => ({
   payload: beatId,
 });
 
+export const setDropdownForBeat = (beatId) => ({
+  type: actionTypes.SET_DROPDOWN_BEAT_ID,
+  payload: beatId,
+});
+
 export const setIsSongPlaying = (isSongPlaying) => ({
   type: actionTypes.SET_IS_SONG_PLAYING,
   payload: isSongPlaying,

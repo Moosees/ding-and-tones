@@ -22,20 +22,26 @@ import Nav from './containers/nav/Nav';
 import Scale from './containers/scale/Scale';
 import Songwriter from './containers/songwriter/Songwriter';
 import { saveScale } from './redux/scale/scale.actions';
+import { setDropdownForBeat } from './redux/ui/ui.actions';
 
 // const dummyScale = ['A2', 'C3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'E4'];
 const dummyScale = ['A2', 'C3', 'E3', 'C3', 'F3', 'G3', 'A3', 'B3', 'E4', 'C4'];
 
-const App = ({ saveScale }) => {
+const App = ({ saveScale, setDropdownForBeat }) => {
   useEffect(() => {
     saveScale('A Integral', 'round', dummyScale);
   }, [saveScale]);
+
+  const handleViewport = (e) => {
+    e.stopPropagation();
+    setDropdownForBeat(null);
+  };
 
   return (
     <>
       <GlobalStyles />
       <Router>
-        <Viewport>
+        <Viewport onClick={handleViewport}>
           <Column>
             <Drum />
             <Section maxWidth="35rem">
@@ -75,4 +81,4 @@ const App = ({ saveScale }) => {
   );
 };
 
-export default connect(null, { saveScale })(App);
+export default connect(null, { saveScale, setDropdownForBeat })(App);

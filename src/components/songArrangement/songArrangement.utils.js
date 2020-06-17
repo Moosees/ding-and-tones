@@ -10,7 +10,7 @@ export const createOptions = (scale) => {
     options.single.push({
       label: `${i}-${scale[i]}`,
       labelShort: `${i}`,
-      value: i,
+      value: `${i}`,
     });
   }
   return options;
