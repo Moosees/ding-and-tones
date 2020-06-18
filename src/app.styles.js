@@ -25,14 +25,13 @@ export const GlobalStyles = createGlobalStyle`
 
 export const Viewport = styled.div`
   align-items: center;
-  column-gap: 6rem;
+  column-gap: 4rem;
   display: grid;
   grid-template-columns: 22vw 1fr;
   height: 100vh;
   margin: 0 auto;
-  max-width: 140rem;
-  padding: 6rem;
-  width: 100vw;
+  max-width: 160rem;
+  padding: 4rem;
 `;
 
 export const Column = styled.div`

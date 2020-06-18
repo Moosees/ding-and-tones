@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Bars height changes when playing song
+* Bar info when bars are locked, metre and subdivision
 * Inputs for title, etc. Validation
 * Difficulty as dropdown
 * Disable lots of stuff when song is playing
@@ -95,6 +95,7 @@
 * Sort chords by type?
 * Ability to loop songs or repeat bars
 * Link drum and songwriter
+* Left and right hand recommendations for songwriter?
 
 ### Even lower priority
 
@@ -107,3 +108,5 @@
 * More drum alternatives?
 * Style dropdowns
 * Animations on drum
+* Full screen songwriter?
+* One-e-and-a style phonetic rhythm notation on bars?

@@ -8,11 +8,13 @@ export const BarContainer = styled.div`
 
 export const Beats = styled.div`
   align-items: center;
-  border: ${({ isPlaying }) => (isPlaying ? '2px' : '1px')} solid
-    rgba(0, 0, 0, 0.3);
+  border: 1px solid
+    ${({ theme, isPlaying }) =>
+      isPlaying ? theme.colorBeatActive : theme.colorBeat};
   border-left: 0;
-  border-radius: 1px;
+  border-radius: 2px;
   border-right: 0;
+  /* box-shadow: ${({ theme }) => theme.shadowBtnLight}; */
   display: flex;
   justify-content: center;
   margin: 2px;

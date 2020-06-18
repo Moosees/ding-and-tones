@@ -32,7 +32,7 @@ const updateBeats = (barId, measure, beats, barSubdivision, barMetre) => {
     } else {
       const newId = uuid();
       newMeasure.push(newId);
-      newBeats[newId] = { sound: 'P', value: metreValue };
+      newBeats[newId] = { sound: '-', value: metreValue };
     }
   });
 

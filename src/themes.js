@@ -9,6 +9,8 @@ export const mainTheme = {
   colorBg: '#e6e6ed',
   colorBox: '#DCDCE5',
   colorText: 'rgb(0, 0, 0, 0.8)',
+  colorBeat: '#757D96',
+  colorBeatActive: '#A70227',
   colorBtnLight: 'rgba(0, 0, 0, 0.03)',
   colorBtnHeavy: 'rgba(0, 0, 0, 0.1)',
   colorBtnConfirm: 'rgba(0, 150, 0, 0.9)',

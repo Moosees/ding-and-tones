@@ -11,7 +11,7 @@ const playBeat = (beat, timeout, audio) =>
 
     store.dispatch(setCurrentBeat(beat.beatId));
 
-    if (beat.sound !== 'P') new Audio(audio[beat.sound]).play();
+    if (beat.sound !== '-') new Audio(audio[beat.sound]).play();
 
     setTimeout(() => {
       return resolve();
@@ -35,9 +35,9 @@ const playBar = async (bar, bpm, audio) => {
 const setupAudio = (scale) => {
   const audio = scale.map((note) => `audio/pan/low/${note}.mp3`);
 
-  audio.forEach((sound) => {
-    new Audio(sound).load();
-  });
+  // audio.forEach((sound) => {
+  //   new Audio(sound).load();
+  // });
 
   return audio;
 };

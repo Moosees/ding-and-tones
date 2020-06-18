@@ -11,7 +11,7 @@ export const createNewBar = (metre, subdivision) => {
     const beatId = uuid();
     measure.push(beatId);
     beats[beatId] = {
-      sound: value === 4 ? '0' : 'P',
+      sound: value === 4 ? '0' : '-',
       value,
     };
   });
