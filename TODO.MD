@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Bar info when bars are locked, metre and subdivision
 * Inputs for title, etc. Validation
 * Difficulty as dropdown
 * Disable lots of stuff when song is playing
@@ -110,3 +109,5 @@
 * Animations on drum
 * Full screen songwriter?
 * One-e-and-a style phonetic rhythm notation on bars?
+* Custom line-break bars for users to add to songwriter?
+* Songwriter bars alignment should change with big songs

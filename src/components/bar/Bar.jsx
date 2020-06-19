@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import BarControls from '../barControls/BarControls';
+import BarInfo from '../barInfo/BarInfo';
 import { BarContainer, Beats } from './bar.styles';
 import { checkMeasureVsMetre, displayBeats } from './bar.utils';
-import { useEffect } from 'react';
 
 const Bar = ({ barId, bars, beats, currentBar, isEditingSong }) => {
   const { measure, subdivision, metre } = bars[barId];
@@ -16,7 +16,11 @@ const Bar = ({ barId, bars, beats, currentBar, isEditingSong }) => {
 
   return (
     <BarContainer>
-      {isEditingSong && <BarControls barId={barId} />}
+      {isEditingSong ? (
+        <BarControls barId={barId} />
+      ) : (
+        <BarInfo barId={barId} />
+      )}
       {filteredBeats && (
         <Beats isPlaying={barId === currentBar}>{filteredBeats}</Beats>
       )}

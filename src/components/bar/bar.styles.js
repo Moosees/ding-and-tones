@@ -14,9 +14,8 @@ export const Beats = styled.div`
   border-left: 0;
   border-radius: 2px;
   border-right: 0;
-  /* box-shadow: ${({ theme }) => theme.shadowBtnLight}; */
   display: flex;
   justify-content: center;
-  margin: 2px;
+  margin: 1px 2px 3px;
   padding: 0.5rem;
 `;
