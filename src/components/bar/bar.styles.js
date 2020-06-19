@@ -4,6 +4,7 @@ export const BarContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
+  opacity: ${({ isDragging }) => (isDragging ? '0.3' : '1')};
 `;
 
 export const Beats = styled.div`

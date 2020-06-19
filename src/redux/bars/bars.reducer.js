@@ -5,6 +5,7 @@ import {
   beatsState,
 } from './bars.initialState';
 import actionTypes from './bars.types';
+import { moveBar } from './bars.utils';
 
 const arrangementReducer = (state = arrangementState, { type, payload }) => {
   switch (type) {
@@ -20,6 +21,14 @@ const arrangementReducer = (state = arrangementState, { type, payload }) => {
     case actionTypes.DELETE_BAR:
       const arrFiltered = state.filter((bar) => bar !== payload);
       return arrFiltered;
+
+    case actionTypes.MOVE_BAR:
+      const newArrangement = moveBar(
+        state,
+        payload.barIndex,
+        payload.targetIndex
+      );
+      return newArrangement;
 
     default:
       return state;

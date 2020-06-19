@@ -29,6 +29,11 @@ export const setBarSubdivision = (barId, newSubdivision) => ({
   payload: { barId, newSubdivision },
 });
 
+export const moveBarInArrangement = (barIndex, targetIndex) => ({
+  type: actionTypes.MOVE_BAR,
+  payload: { barIndex, targetIndex },
+});
+
 export const updateBeat = (beatId, newSound) => ({
   type: actionTypes.UPDATE_BEAT,
   payload: { beatId, newSound },

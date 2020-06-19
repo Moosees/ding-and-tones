@@ -30,15 +30,17 @@ const BarControls = ({
   barId,
   bars,
   beats,
-  duplicateBar,
   deleteBar,
+  dragRef,
+  duplicateBar,
+  isDragging,
   setBarSubdivision,
 }) => {
   const { metre, subdivision } = bars[barId];
 
   return (
     <ControlsContainer>
-      <DragHandle>
+      <DragHandle ref={dragRef} isDragging={isDragging}>
         <i className="material-icons">drag_indicator</i>
       </DragHandle>
       <BtnGradient

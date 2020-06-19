@@ -9,7 +9,6 @@
 * Fix edit song metre popup
 * Rework controls
 * Select drum type - pan or tongue, etc.
-* Rearrange arrangement
 
 ## SIDEBAR
 
@@ -95,6 +94,7 @@
 * Ability to loop songs or repeat bars
 * Link drum and songwriter
 * Left and right hand recommendations for songwriter?
+* Solo bars
 
 ### Even lower priority
 

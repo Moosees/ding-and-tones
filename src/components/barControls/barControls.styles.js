@@ -9,11 +9,9 @@ export const ControlsContainer = styled.div`
 export const DragHandle = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.colorText};
-  cursor: grab;
+  cursor: ${({ isDragging }) => (isDragging ? 'grabbing' : 'grab')};
   display: flex;
   justify-content: center;
   padding: 2px;
   margin-right: 2px;
 `;
-
-// cursor: grabbing;
