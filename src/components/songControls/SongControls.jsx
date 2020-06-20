@@ -4,13 +4,13 @@ import { metreList } from '../../metre.data';
 import { addNewBar } from '../../redux/bars/bars.actions';
 import {
   setSongMetre,
-  setSongSubdivision,
+  setSongSubdivision
 } from '../../redux/song/song.actions';
 import { toggleEditSong } from '../../redux/ui/ui.actions';
 import BpmSlider from '../bpmSlider/BpmSlider';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
-import InfoField from '../infoField/InfoField';
+import InfoBox from '../infoBox/InfoBox';
 import PopupNewBar from './PopupNewBar';
 import PopupSongMetre from './PopupSongMetre';
 import { ControlsContainer } from './songControls.styles';
@@ -38,12 +38,10 @@ const SongControls = ({
   return (
     <>
       <ControlsContainer>
-        <InfoField
-          label={metreAndBpm}
-          reverse
-          onEdit={() => setMetreOpen(true)}
-        />
-        <InfoField label={<BpmSlider />} />
+        <InfoBox reverse>{metreAndBpm}</InfoBox>
+        <InfoBox>
+          <BpmSlider />
+        </InfoBox>
         <Buttons position="flex-start">
           <BtnPrimary
             label="Add bar"

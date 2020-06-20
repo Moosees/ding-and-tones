@@ -2,11 +2,11 @@
 
 ## Current tasks
 
-* Inputs for title, etc. Validation
-* Difficulty as dropdown
+* Scale info inputs
+* Input validation everywhere
+* Edit and save icons on info text boxes
 * Disable lots of stuff when song is playing
 * Add play scale button and function
-* Fix edit song metre popup
 * Rework controls
 * Select drum type - pan or tongue, etc.
 
@@ -26,15 +26,11 @@
 
 ### Intervals
 
-* Interval colors for compound intervals
-
 ## MAIN CONTENT
 
 ### Scale
 
 * Save/load scale
-* Create scale from name and string
-* Constants for layouts?
 * What happens when you change to a scale with less notes than pattern needs?
 
 ### Chords
@@ -95,6 +91,8 @@
 * Link drum and songwriter
 * Left and right hand recommendations for songwriter?
 * Solo bars
+* Interval colors for compound intervals
+* Create scale from name and string
 
 ### Even lower priority
 

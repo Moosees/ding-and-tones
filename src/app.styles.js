@@ -9,6 +9,12 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  button, label, input, select {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
   html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -19,7 +25,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colorText};
     font-family: 'Roboto', sans-serif;
     font-size: ${({ theme }) => theme.fzMedium};
-    line-height: 1.6;
   }
 `;
 

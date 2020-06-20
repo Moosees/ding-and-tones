@@ -9,7 +9,6 @@ const Btn = styled.button`
   );
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 2px;
-  color: ${({ theme }) => theme.colorText};
   cursor: pointer;
   padding: 3px;
   margin: 1px;

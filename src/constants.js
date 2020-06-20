@@ -9,3 +9,9 @@ export const MAX_NOTE_VALUE = 60;
 export const ItemTypes = {
   BAR: 'bar',
 };
+
+export const optionsDifficulty = [
+  { value: 1, label: 'Beginner' },
+  { value: 3, label: 'Confident' },
+  { value: 5, label: 'Advanced' },
+];

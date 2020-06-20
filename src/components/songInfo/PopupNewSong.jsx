@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { optionsDifficulty } from '../../constants';
 import { clearSong } from '../../redux/bars/bars.actions';
 import {
   setSongDifficulty,
@@ -9,7 +10,9 @@ import {
 } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
-import InfoField from '../infoField/InfoField';
+import InfoBox from '../infoBox/InfoBox';
+import InfoSelect from '../infoBox/InfoSelect';
+import InfoText from '../infoBox/InfoText';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 
@@ -21,10 +24,10 @@ const PopupNewSong = ({
   setSongSubdivision,
   setSongTitle,
 }) => {
-  const [difficulty, setDifficulty] = useState('Difficulty');
+  const [difficulty, setDifficulty] = useState(1);
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(4);
-  const [title, setTitle] = useState('Title');
+  const [title, setTitle] = useState('');
 
   const handleConfirm = () => {
     setSongDifficulty(difficulty);
@@ -37,8 +40,23 @@ const PopupNewSong = ({
 
   return (
     <Popup onClose={onClose}>
-      <InfoField label={title} onEdit={setTitle} input />
-      <InfoField label={difficulty} onEdit={setDifficulty} />
+      <InfoBox>
+        <InfoText
+          editOnly
+          placeholder={'Title'}
+          value={title}
+          handleChange={setTitle}
+        ></InfoText>
+      </InfoBox>
+      <InfoBox>
+        <InfoSelect
+          value={difficulty}
+          handleChange={setDifficulty}
+          options={optionsDifficulty}
+        >
+          {'Difficulty: '}
+        </InfoSelect>
+      </InfoBox>
       <MetreControls
         metre={metre}
         subdivision={subdivision}

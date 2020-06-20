@@ -21,7 +21,6 @@ export const MetreSelect = styled.select`
   );
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 2px;
-  color: ${({ theme }) => theme.colorText};
   cursor: pointer;
   padding: 2px;
   transition: border 0.15s ease-in;

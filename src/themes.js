@@ -12,7 +12,7 @@ export const mainTheme = {
   colorBeat: '#757D96',
   colorBeatActive: '#A70227',
   colorBtnLight: 'rgba(0, 0, 0, 0.03)',
-  colorBtnHeavy: 'rgba(0, 0, 0, 0.1)',
+  colorBtnHeavy: '#C6C6CE',
   colorBtnConfirm: 'rgba(0, 150, 0, 0.9)',
   colorBtnClear: 'rgba(200, 0, 0, 0.4)',
   colorCheckbox: 'rgba(0, 255, 0, 0.8)',

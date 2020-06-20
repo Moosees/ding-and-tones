@@ -11,7 +11,6 @@ const Btn = styled.button`
   border-top-right-radius: 10px;
   cursor: pointer;
   font-size: ${({ small, theme }) => (small ? theme.fzMedium : theme.fzLarge)};
-  font-weight: 500;
   margin: -3px 2px 0;
   padding: ${({ small }) => (small ? '0.4rem' : '0.4rem 1rem')};
   position: relative;
@@ -20,7 +19,7 @@ const Btn = styled.button`
   ${({ isActive }) => (isActive ? 'z-index: 10;' : '')}
 
   &:focus:not(.focus-visible) {
-    outline: none;
+    outline: 0;
   }
 
   &:hover {

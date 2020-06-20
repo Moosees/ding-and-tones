@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
-import InfoField from '../infoField/InfoField';
+import InfoBox from '../infoBox/InfoBox';
+import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
 
 const ScaleInfo = ({ name, layout, scale }) => {
   return (
     <InfoContainer>
-      <InfoField label={'Name: ' + name} onEdit={true} />
-      <InfoField label={scale.join(', ')} onEdit={true} />
-      <InfoField label={'Layout: ' + layout} onEdit={true} />
+      <InfoBox>
+        <InfoText>{'Scale: ' + name}</InfoText>
+      </InfoBox>
+      <InfoBox>{scale.join(', ')}</InfoBox>
       <Buttons>
         <BtnPrimary label="Save Scale" />
       </Buttons>

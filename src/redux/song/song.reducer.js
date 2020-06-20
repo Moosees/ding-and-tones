@@ -2,7 +2,7 @@ import actionTypes from './song.types';
 
 const INITIAL_STATE = {
   bpm: 100,
-  difficulty: 'Beginner',
+  difficulty: 1,
   metre: 's44',
   subdivision: 4,
   title: 'This is a song',

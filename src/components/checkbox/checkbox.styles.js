@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const CheckboxLabel = styled.label`
+  cursor: pointer;
   margin-bottom: 2px;
   padding: 0.5rem 0.5rem 0.5rem 3rem;
   position: relative;
 
   & input {
-    cursor: pointer;
     height: 0;
     opacity: 0;
     position: absolute;
