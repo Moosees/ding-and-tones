@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Scale info inputs
-* Input validation everywhere
+* Scale info, song info inputs
 * Edit and save icons on info text boxes
 * Disable lots of stuff when song is playing
 * Add play scale button and function

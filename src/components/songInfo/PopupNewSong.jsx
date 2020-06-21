@@ -30,12 +30,14 @@ const PopupNewSong = ({
   const [title, setTitle] = useState('');
 
   const handleConfirm = () => {
-    setSongDifficulty(difficulty);
-    setSongMetre(metre);
-    setSongSubdivision(subdivision);
-    setSongTitle(title);
-    clearSong();
-    onClose();
+    if (title) {
+      setSongDifficulty(difficulty);
+      setSongMetre(metre);
+      setSongSubdivision(subdivision);
+      setSongTitle(title);
+      clearSong();
+      onClose();
+    }
   };
 
   return (
@@ -44,6 +46,7 @@ const PopupNewSong = ({
         <InfoText
           editOnly
           placeholder={'Title'}
+          type="title"
           value={title}
           handleChange={setTitle}
         ></InfoText>
