@@ -2,9 +2,8 @@
 
 ## Current tasks
 
-* Edit and save icons on info text boxes
+* Errors display on inputs
 * Disable lots of stuff when song is playing
-* Add play scale button and function
 * Rework controls
 * Select drum type - pan or tongue, etc.
 
@@ -80,6 +79,7 @@
 
 ### Low priority
 
+* Add play scale button and function
 * Keyboard shortcuts?
 * Handle extra/bottom notes
 * Custom chord inputs
@@ -91,6 +91,7 @@
 * Solo bars
 * Interval colors for compound intervals
 * Create scale from name and string
+* Dropdowns open even if clicking label
 
 ### Even lower priority
 

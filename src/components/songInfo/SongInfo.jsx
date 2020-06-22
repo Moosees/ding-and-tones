@@ -24,7 +24,12 @@ const SongInfo = ({ difficulty, title, setSongDifficulty, setSongTitle }) => {
     <>
       <InfoContainer>
         <InfoBox>
-          <InfoText value={title} handleChange={setSongTitle}>
+          <InfoText
+            placeholder="Song title"
+            type="title"
+            value={title}
+            handleChange={setSongTitle}
+          >
             {'Title: ' + title}
           </InfoText>
         </InfoBox>
