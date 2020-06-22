@@ -23,7 +23,7 @@ const InfoText = ({
   }, [value]);
 
   const handleSave = () => {
-    handleChange(editValue);
+    if (!isEditing) handleChange(editValue);
     setEditOpen(false);
   };
 
