@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoContainer } from './styles';
+import { InfoContainer } from './infoBox.styles';
 
 const InfoBox = ({ children, reverse }) => (
   <InfoContainer reverse={reverse}>{children}</InfoContainer>

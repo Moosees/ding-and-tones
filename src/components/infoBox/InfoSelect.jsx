@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select, SelectContainer } from './styles';
+import { Select, SelectContainer } from './infoBox.styles';
 
 const InfoSelect = ({ children, handleChange, options, value }) => {
   return (

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useValidate from '../../hooks/useValidate';
-import { EditIcon, SaveIcon, TextInput } from './styles';
+import { EditIcon, SaveIcon, TextInput } from './infoBox.styles';
 
 const InfoText = ({
   children,
@@ -10,15 +10,26 @@ const InfoText = ({
   type,
   value,
 }) => {
-  const [isEditing, setIsEditing] = useState(editOnly);
-  const [validate, handleValidate, errors] = useValidate(
-    value,
-    handleChange,
+  const [editOpen, setEditOpen] = useState(editOnly);
+  const [editValue, setEditValue] = useState(value);
+  const [validate, handleValidate, errors, isEditing] = useValidate(
+    editOnly ? value : editValue,
+    editOnly ? handleChange : setEditValue,
     type
   );
+
+  useEffect(() => {
+    setEditValue(value);
+  }, [value]);
+
+  const handleSave = () => {
+    handleChange(editValue);
+    setEditOpen(false);
+  };
+
   return (
     <>
-      {isEditing ? (
+      {editOpen ? (
         <>
           <TextInput
             autoFocus
@@ -27,12 +38,26 @@ const InfoText = ({
             value={validate}
             onChange={handleValidate}
           />
-          {!editOnly && <SaveIcon onClick={() => setIsEditing(false)} />}
+          {!editOnly && (
+            <SaveIcon
+              className="material-icons"
+              disabled={isEditing}
+              isEditing={isEditing}
+              onClick={handleSave}
+            >
+              {isEditing ? 'not_interested' : 'check_circle_outline'}
+            </SaveIcon>
+          )}
         </>
       ) : (
         <>
           {children}
-          <EditIcon onClick={() => setIsEditing(true)} />
+          <EditIcon
+            className="material-icons"
+            onClick={() => setEditOpen(true)}
+          >
+            edit
+          </EditIcon>
         </>
       )}
     </>

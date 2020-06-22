@@ -16,19 +16,15 @@ export const InfoContainer = styled.div`
   padding: 0 0.5rem;
 `;
 
-// change to icon
-export const EditIcon = styled.span`
-  border: 1px solid #000;
-  border-radius: 100px;
+export const EditIcon = styled.i`
+  color: ${({ theme }) => theme.colorText};
   cursor: pointer;
-  padding: 1rem;
 `;
 
-export const SaveIcon = styled.span`
-  border: 1px solid #000;
-  border-radius: 100px;
-  cursor: pointer;
-  padding: 1rem;
+export const SaveIcon = styled.i`
+  color: ${({ isEditing, theme }) =>
+    isEditing ? theme.colorBtnClear : theme.colorBtnConfirm};
+  cursor: ${({ isEditing }) => (isEditing ? 'not-allowed' : 'pointer')};
 `;
 
 export const Select = styled.select`
