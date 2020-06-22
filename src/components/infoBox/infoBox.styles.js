@@ -35,6 +35,7 @@ export const Select = styled.select`
   );
   border: 0;
   cursor: pointer;
+  margin-right: 0.5rem;
   width: 100%;
 
   &:focus {
