@@ -9,19 +9,23 @@ const Btn = styled.button`
   );
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 2px;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   padding: 3px;
   margin: 1px;
   min-width: 2rem;
+  opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   transition: border 0.15s ease-in;
 
   &:hover {
-    border: ${({ theme }) => theme.borderLight};
+    border: ${({ disabled, theme }) =>
+      disabled ? theme.borderMedium : theme.borderLight};
   }
 `;
 
-const BtnGradient = ({ label, onClick }) => (
-  <Btn onClick={onClick}>{label}</Btn>
+const BtnGradient = ({ disabled, label, onClick }) => (
+  <Btn disabled={disabled} onClick={onClick}>
+    {label}
+  </Btn>
 );
 
 export default BtnGradient;

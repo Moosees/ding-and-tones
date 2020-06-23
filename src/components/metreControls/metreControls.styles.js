@@ -21,12 +21,13 @@ export const MetreSelect = styled.select`
   );
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 2px;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   padding: 2px;
   transition: border 0.15s ease-in;
 
   &:hover {
     border: ${({ theme, small }) =>
-      small ? theme.borderLight : theme.borderMedium};
+      small ? theme.borderMedium : theme.borderLight};
   }
 `;

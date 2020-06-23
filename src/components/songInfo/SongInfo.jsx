@@ -17,7 +17,13 @@ const InfoContainer = styled.div`
   width: 100%;
 `;
 
-const SongInfo = ({ difficulty, title, setSongDifficulty, setSongTitle }) => {
+const SongInfo = ({
+  difficulty,
+  isSongPlaying,
+  title,
+  setSongDifficulty,
+  setSongTitle,
+}) => {
   const [newOpen, setNewOpen] = useState(false);
 
   return (
@@ -44,8 +50,12 @@ const SongInfo = ({ difficulty, title, setSongDifficulty, setSongTitle }) => {
         </InfoBox>
         <Buttons>
           <PlayButton />
-          <BtnPrimary label="New Song" onClick={() => setNewOpen(true)} />
-          <BtnPrimary label="Save Song" />
+          <BtnPrimary
+            disabled={isSongPlaying}
+            label="New Song"
+            onClick={() => setNewOpen(true)}
+          />
+          <BtnPrimary disabled={isSongPlaying} label="Save Song" />
         </Buttons>
       </InfoContainer>
       {newOpen && <PopupNewSong onClose={() => setNewOpen(false)} />}
@@ -53,9 +63,10 @@ const SongInfo = ({ difficulty, title, setSongDifficulty, setSongTitle }) => {
   );
 };
 
-const mapStateToProps = ({ song }) => ({
+const mapStateToProps = ({ song, ui }) => ({
   difficulty: song.difficulty,
   title: song.title,
+  isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps, { setSongDifficulty, setSongTitle })(

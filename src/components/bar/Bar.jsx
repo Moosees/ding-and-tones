@@ -14,6 +14,7 @@ const Bar = ({
   currentBar,
   index,
   isEditingSong,
+  isSongPlaying,
   moveBar,
 }) => {
   const { measure, subdivision, metre } = bars[barId];
@@ -29,7 +30,7 @@ const Bar = ({
   const [, drop] = useDrop({
     accept: ItemTypes.BAR,
     hover(item, monitor) {
-      if (!ref.current) return;
+      if (!ref.current || isSongPlaying) return;
       const dragIndex = item.index;
       const hoverIndex = index;
       // Don't replace items with themselves
@@ -66,6 +67,7 @@ const mapStateToProps = ({ bars, ui }) => ({
   beats: bars.beats,
   currentBar: ui.currentBar,
   isEditingSong: ui.isEditingSong,
+  isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps)(Bar);

@@ -4,7 +4,7 @@ import { metreList } from '../../metre.data';
 import { addNewBar } from '../../redux/bars/bars.actions';
 import {
   setSongMetre,
-  setSongSubdivision
+  setSongSubdivision,
 } from '../../redux/song/song.actions';
 import { toggleEditSong } from '../../redux/ui/ui.actions';
 import BpmSlider from '../bpmSlider/BpmSlider';
@@ -73,10 +73,10 @@ const SongControls = ({
 
 const mapStateToProps = ({ song, ui }) => ({
   bpm: song.bpm,
-  isSongPlaying: song.isSongPlaying,
   subdivision: song.subdivision,
   metre: song.metre,
   isEditingSong: ui.isEditingSong,
+  isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps, {

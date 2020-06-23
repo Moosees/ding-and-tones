@@ -36,6 +36,7 @@ const ScaleEdit = ({
   scale,
   addNoteToScale,
   flushDrumState,
+  isSongPlaying,
   removeNoteFromScale,
   transposeScale,
 }) => {
@@ -60,15 +61,26 @@ const ScaleEdit = ({
     <EditContainer>
       <Notes>{notes}</Notes>
       <Buttons position="center">
-        <BtnPrimary label="Up" light onClick={() => handleTranspose(1)} />
-        <BtnPrimary label="Down" light onClick={() => handleTranspose(-1)} />
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="Up"
+          light
+          onClick={() => handleTranspose(1)}
+        />
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="Down"
+          light
+          onClick={() => handleTranspose(-1)}
+        />
       </Buttons>
     </EditContainer>
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
+const mapStateToProps = ({ scale, ui }) => ({
   scale: scale.scaleSimple,
+  isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps, {

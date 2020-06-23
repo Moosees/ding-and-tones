@@ -26,7 +26,7 @@ export const BeatContainer = styled.div`
   border-color: ${({ theme, isBeatPlaying }) =>
     isBeatPlaying ? theme.colorBeatActive : theme.colorBeat};
   box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   height: ${({ value }) => beatStyles.heightWidth[value]}rem;
   justify-content: center;

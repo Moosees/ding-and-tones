@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Errors display on inputs
-* Disable lots of stuff when song is playing
 * Rework controls
 * Select drum type - pan or tongue, etc.
 

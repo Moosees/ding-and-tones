@@ -34,21 +34,32 @@ const BarControls = ({
   dragRef,
   duplicateBar,
   isDragging,
+  isSongPlaying,
   setBarSubdivision,
 }) => {
   const { metre, subdivision } = bars[barId];
 
   return (
     <ControlsContainer>
-      <DragHandle ref={dragRef} isDragging={isDragging}>
+      <DragHandle
+        disabled={isSongPlaying}
+        ref={dragRef}
+        isDragging={isDragging}
+      >
         <i className="material-icons">drag_indicator</i>
       </DragHandle>
       <BtnGradient
+        disabled={isSongPlaying}
         label="Copy"
         onClick={() => duplicateBar(copyBar(barId, bars, beats))}
       />
-      <BtnGradient label="Delete" onClick={() => deleteBar(barId)} />
+      <BtnGradient
+        disabled={isSongPlaying}
+        label="Delete"
+        onClick={() => deleteBar(barId)}
+      />
       <MetreControls
+        disabled={isSongPlaying}
         small
         metre={metre}
         subdivision={subdivision}
@@ -58,9 +69,10 @@ const BarControls = ({
   );
 };
 
-const mapStateToProps = ({ bars }) => ({
+const mapStateToProps = ({ bars, ui }) => ({
   bars: bars.bars,
   beats: bars.beats,
+  isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps, {
