@@ -5,7 +5,7 @@ import {
   setIsSongPlaying,
 } from '../../redux/ui/ui.actions';
 
-const playBeat = (beat, timeout, audio) =>
+const playBeatPromise = (beat, timeout, audio) =>
   new Promise((resolve, reject) => {
     if (!store.getState().ui.isSongPlaying) return reject();
 
@@ -25,21 +25,27 @@ const playBar = async (bar, bpm, audio) => {
 
   for (let beat of bar.measure) {
     try {
-      await playBeat(beat, timeout, audio);
+      await playBeatPromise(beat, timeout, audio);
     } catch (e) {
       return;
     }
   }
 };
 
-const setupAudio = (scale) => {
-  const audio = scale.map((note) => `audio/pan/low/${note}.mp3`);
+const audioPromise = (sound) =>
+  new Promise((resolve) => {
+    const audio = new Audio(sound);
+    audio.oncanplaythrough = () => resolve();
+    audio.load();
+  });
 
-  // audio.forEach((sound) => {
-  //   new Audio(sound).load();
-  // });
+const setupAudio = async (scale) => {
+  const sounds = scale.map((note) => `audio/pan/low/${note}.mp3`);
 
-  return audio;
+  const audioPromises = sounds.map(audioPromise);
+  await Promise.all(audioPromises);
+
+  return sounds;
 };
 
 const setupSong = (bars) => {
@@ -66,7 +72,7 @@ const setupSong = (bars) => {
 // bpm always counts quarter notes right now
 export const playSong = async () => {
   const { bars, song, scale } = store.getState();
-  const audio = setupAudio(scale.scaleSimple);
+  const audio = await setupAudio(scale.scaleSimple);
   const arrangement = setupSong(bars);
 
   for (let bar of arrangement) {

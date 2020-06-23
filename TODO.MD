@@ -51,7 +51,8 @@
 ### Bugs
 
 * Play song logic should be moved somewhere else?
-* Preloading doesn't work
+* Play song logic should be reworked with less forEach
+* Icons and drag handles show up as text before page is fully loaded
 
 ### State/Routes
 
