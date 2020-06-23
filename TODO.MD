@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* New song title input validation
 * Errors display on inputs
 * Rework controls
 * Select drum type - pan or tongue, etc.
