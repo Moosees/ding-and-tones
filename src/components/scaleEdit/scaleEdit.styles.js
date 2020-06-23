@@ -23,7 +23,7 @@ export const Note = styled.span`
       : '1px solid ' + theme.colorBtnClear};
   border-radius: 100px;
   box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   font-size: ${({ theme }) => theme.fzSmall};
   height: 3rem;
@@ -33,6 +33,6 @@ export const Note = styled.span`
   width: 3rem;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(${({ disabled }) => (disabled ? '1' : '1.1')});
   }
 `;

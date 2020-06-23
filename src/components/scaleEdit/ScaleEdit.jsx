@@ -12,7 +12,7 @@ import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import { EditContainer, Note, Notes } from './scaleEdit.styles';
 
-const getNotes = (scale, fnAdd, fnRemove) => {
+const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
   const notes = [];
 
   for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
@@ -24,7 +24,12 @@ const getNotes = (scale, fnAdd, fnRemove) => {
       : () => fnAdd(noteName);
 
     notes.push(
-      <Note key={i} inScale={isNoteInScale} onClick={handleClick}>
+      <Note
+        disabled={isSongPlaying}
+        key={i}
+        inScale={isNoteInScale}
+        onClick={handleClick}
+      >
         <span>{noteName}</span>
       </Note>
     );
@@ -41,11 +46,13 @@ const ScaleEdit = ({
   transposeScale,
 }) => {
   const handleAdd = (note) => {
+    if (isSongPlaying) return;
     flushDrumState();
     addNoteToScale(note);
   };
 
   const handleRemove = (note) => {
+    if (isSongPlaying) return;
     flushDrumState();
     removeNoteFromScale(note);
   };
@@ -55,7 +62,7 @@ const ScaleEdit = ({
     transposeScale(destination);
   };
 
-  const notes = getNotes(scale, handleAdd, handleRemove);
+  const notes = getNotes(scale, handleAdd, handleRemove, isSongPlaying);
 
   return (
     <EditContainer>
