@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
+import { GlobalStyles } from './index.styles';
 import { store } from './redux/store';
 import * as serviceWorker from './serviceWorker';
 import { mainTheme } from './themes';
@@ -10,7 +12,10 @@ import { mainTheme } from './themes';
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={mainTheme}>
-      <App />
+      <GlobalStyles />
+      <Router>
+        <App />
+      </Router>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root')

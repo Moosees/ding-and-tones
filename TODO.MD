@@ -2,9 +2,29 @@
 
 ## Current tasks
 
+* Favicon - drum smiley?
 * Errors display on inputs
-* Rework controls
+* Rework controls - remove play button, rethink what buttons are needed
 * Select drum type - pan or tongue, etc.
+* Connect to backend
+* Save/load scale
+* Database - mongoDB?
+* Auth/Users - only if you want to save?
+
+## Bugs
+
+* Play song logic should be moved somewhere else?
+* Play song logic should be reworked with less forEach
+* Icons and drag handles show up as text before page is fully loaded
+* What happens when you change to a scale with less notes than pattern needs?
+* App crash when trying to save invalid scale
+* What to do with deleted bars? Save song only gathers bars "in use"?
+
+## Design
+
+* Responsive design
+* Loading spinners?
+* Distinct confirm and cancel buttons
 
 ## SIDEBAR
 
@@ -15,19 +35,10 @@
 
 ### Controls
 
-* Remove play button, rethink what buttons are needed
-* Connect to backend
 * Printing, format?
 * Save to .pdf?
 
-### Intervals
-
 ## MAIN CONTENT
-
-### Scale
-
-* Save/load scale
-* What happens when you change to a scale with less notes than pattern needs?
 
 ### Chords
 
@@ -48,34 +59,17 @@
 
 ## OTHER
 
-### Bugs
-
-* Play song logic should be moved somewhere else?
-* Play song logic should be reworked with less forEach
-* Icons and drag handles show up as text before page is fully loaded
-
 ### State/Routes
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * useRouter might not be best solution for navigation?
-* What to do with deleted bars? Save song only gathers bars "in use"?
 
 ### Backend
 
-* Server - express?
-* Database - mongoDB?
-* Auth/Users - only if you want to save?
 * GDPR
 * Analytics?
 * Hosting
-
-### Design
-
-* Responsive design
-* Favicon - drum smiley?
-* Loading spinners?
-* Distinct confirm and cancel buttons
 
 ### Low priority
 
