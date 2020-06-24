@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Favicon - drum smiley?
+* Prepare for non round layouts - separate ding/drum notes/extra notes
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Select drum type - pan or tongue, etc.
@@ -15,7 +15,6 @@
 
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
-* Icons and drag handles show up as text before page is fully loaded
 * What happens when you change to a scale with less notes than pattern needs?
 * App crash when trying to save invalid scale
 * What to do with deleted bars? Save song only gathers bars "in use"?
@@ -31,7 +30,6 @@
 ### Drum
 
 * Taks or other sounds
-* Prepare for non round layouts - separate ding/drum notes/extra notes
 
 ### Controls
 
