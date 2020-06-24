@@ -12,7 +12,7 @@ const InfoText = ({
 }) => {
   const [editOpen, setEditOpen] = useState(editOnly);
   const [editValue, setEditValue] = useState(value);
-  const [validate, handleValidate, errors, isEditing] = useValidate(
+  const [validate, handleValidate, errors, isValid] = useValidate(
     editOnly ? value : editValue,
     editOnly ? handleChange : setEditValue,
     type
@@ -22,9 +22,17 @@ const InfoText = ({
     setEditValue(value);
   }, [value]);
 
+  const handleKeyDown = (e) => {
+    // enter
+    if (e.keyCode === 13 && isValid) return handleSave();
+
+    // escape
+    if (e.keyCode === 27 && !editOnly) return setEditOpen(false);
+  };
+
   const handleSave = () => {
-    if (!isEditing) handleChange(editValue);
-    setEditOpen(false);
+    if (isValid) handleChange(editValue);
+    if (!editOnly) setEditOpen(false);
   };
 
   return (
@@ -37,15 +45,16 @@ const InfoText = ({
             placeholder={placeholder}
             value={validate}
             onChange={handleValidate}
+            onKeyDown={handleKeyDown}
           />
-          {!editOnly && (
+          {editOpen && (
             <SaveIcon
               className="material-icons"
-              disabled={isEditing}
-              isEditing={isEditing}
+              disabled={!isValid}
+              isValid={isValid}
               onClick={handleSave}
             >
-              {isEditing ? 'not_interested' : 'check_circle_outline'}
+              {isValid ? 'check_circle_outline' : 'not_interested'}
             </SaveIcon>
           )}
         </>

@@ -22,9 +22,9 @@ export const EditIcon = styled.i`
 `;
 
 export const SaveIcon = styled.i`
-  color: ${({ isEditing, theme }) =>
-    isEditing ? theme.colorBtnClear : theme.colorBtnConfirm};
-  cursor: ${({ isEditing }) => (isEditing ? 'not-allowed' : 'pointer')};
+  color: ${({ isValid, theme }) =>
+    isValid ? theme.colorBtnConfirm : theme.colorBtnClear};
+  cursor: ${({ isValid }) => (isValid ? 'pointer' : 'not-allowed')};
 `;
 
 export const Select = styled.select`
@@ -56,5 +56,10 @@ export const TextInput = styled.input`
 
   &:focus {
     outline: none;
+  }
+
+  &::selection {
+    background-color: ${({ theme }) => theme.colorTextInverted};
+    /* background-color: #fff; */
   }
 `;

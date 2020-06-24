@@ -24,22 +24,22 @@ const validateInput = (value, type) => {
 const useValidate = (defaultValue, callback, type) => {
   const [value, setValue] = useState(defaultValue || '');
   const [errors, setErrors] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
     setValue(defaultValue);
   }, [defaultValue]);
 
   useEffect(() => {
-    setIsEditing(true);
+    setIsValid(false);
     const timeout = setTimeout(() => {
       const newErrors = validateInput(value, type);
       setErrors(newErrors);
       if (!newErrors.length) {
-        setIsEditing(false);
+        setIsValid(true);
         callback(value);
       }
-    }, 1000);
+    }, 500);
 
     if (!value) return clearTimeout(timeout);
     return () => clearTimeout(timeout);
@@ -49,7 +49,7 @@ const useValidate = (defaultValue, callback, type) => {
     setValue(e.target.value);
   };
 
-  return [value, handleChange, errors, isEditing];
+  return [value, handleChange, errors, isValid];
 };
 
 export default useValidate;
