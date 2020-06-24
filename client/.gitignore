@@ -24,4 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # sound samples
-/public/audio
+/public/audio/pan
+/public/audio/tongue
