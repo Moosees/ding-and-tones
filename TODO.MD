@@ -2,14 +2,13 @@
 
 ## Current tasks
 
-* Prepare for non round layouts - separate ding/drum notes/extra notes
+* Save/load scale - in progress
+* Connect to backend
+* Auth/Users - only if you want to save?
+* Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Select drum type - pan or tongue, etc.
-* Connect to backend
-* Save/load scale
-* Database - mongoDB?
-* Auth/Users - only if you want to save?
 
 ## Bugs
 
