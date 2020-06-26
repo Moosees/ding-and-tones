@@ -2,20 +2,19 @@ import React from 'react';
 import BtnControls from '../../components/button/Controls';
 import DividerLine from '../../components/dividerLine/DividerLine';
 import {
-  AvatarContainer,
   ButtonGroup,
   ControlButtons,
+  Logo,
+  LogoContainer,
   UserContainer,
 } from './user.styles';
 
 const User = () => {
   return (
     <UserContainer>
-      <AvatarContainer>
-        <i className="material-icons" style={{ fontSize: 'inherit' }}>
-          face
-        </i>
-      </AvatarContainer>
+      <LogoContainer>
+        <Logo />
+      </LogoContainer>
       <ControlButtons>
         <ButtonGroup reverse>
           {/* PlayButton component?? */}

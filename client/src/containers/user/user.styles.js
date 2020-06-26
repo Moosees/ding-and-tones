@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const AvatarContainer = styled.div`
-  font-size: 4.2rem;
-`;
-
 export const ButtonGroup = styled.div`
   align-items: ${({ reverse }) => (reverse ? 'flex-end' : 'flex-start')};
   display: flex;
@@ -15,6 +11,18 @@ export const ButtonGroup = styled.div`
 export const ControlButtons = styled.div`
   align-items: center;
   display: flex;
+`;
+
+export const Logo = styled.svg`
+  background-image: url(logo.svg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+`;
+
+export const LogoContainer = styled.div`
+  height: 5rem;
+  width: 5rem;
 `;
 
 export const UserContainer = styled.div`

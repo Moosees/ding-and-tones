@@ -21,7 +21,7 @@ const SongControls = ({
   subdivision,
   toggleEditSong,
 }) => {
-  const [metreOpen, setMetreOpen] = useState(true);
+  const [metreOpen, setMetreOpen] = useState(false);
   const [newBarOpen, setNewBarOpen] = useState(false);
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
 

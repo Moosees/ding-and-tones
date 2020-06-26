@@ -24,6 +24,7 @@
 * Responsive design
 * Loading spinners?
 * Distinct confirm and cancel buttons
+* Svgs instead of iconfont?
 
 ## SIDEBAR
 
@@ -84,7 +85,7 @@
 * Solo bars
 * Interval colors for compound intervals
 * Create scale from name and string
-* Dropdowns open even if clicking label
+* Dropdowns open even if clicking label (difficulty)
 
 ### Even lower priority
 
