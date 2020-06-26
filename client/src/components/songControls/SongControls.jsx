@@ -21,7 +21,7 @@ const SongControls = ({
   subdivision,
   toggleEditSong,
 }) => {
-  const [metreOpen, setMetreOpen] = useState(false);
+  const [metreOpen, setMetreOpen] = useState(true);
   const [newBarOpen, setNewBarOpen] = useState(false);
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
 
@@ -32,7 +32,9 @@ const SongControls = ({
   return (
     <>
       <ControlsContainer>
-        <InfoBox reverse>{metreAndBpm}</InfoBox>
+        <InfoBox reverse onClick={() => setMetreOpen(true)}>
+          {metreAndBpm}
+        </InfoBox>
         <InfoBox>
           <BpmSlider />
         </InfoBox>

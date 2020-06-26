@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addNewBar } from '../../redux/bars/bars.actions';
 import { updateSongInfo } from '../../redux/song/song.actions';
+import Buttons from '../button/Buttons';
+import BtnPrimary from '../button/Primary';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 
@@ -12,15 +13,26 @@ const PopupSongMetre = ({
   subdivision,
   updateSongInfo,
 }) => {
+  const [newMetre, setNewMetre] = useState(metre);
+  const [newSubdivision, setNewSubdivision] = useState(subdivision);
+
+  const handleConfirm = () => {
+    updateSongInfo({ metre: newMetre, subdivision: newSubdivision });
+    onClose();
+  };
+
   return (
     <Popup onClose={onClose}>
       <MetreControls
-        metre={metre}
-        subdivision={subdivision}
-        setMetre={(value) => updateSongInfo({ metre: value })}
-        setSubdivision={(value) => updateSongInfo({ subdivision: value })}
-        onClick={() => handleNewBar(metre, subdivision)}
+        metre={newMetre}
+        subdivision={newSubdivision}
+        setMetre={setNewMetre}
+        setSubdivision={setNewSubdivision}
       />
+      <Buttons position="center">
+        <BtnPrimary label="Confirm" onClick={handleConfirm} />
+        <BtnPrimary label="Cancel" onClick={onClose} />
+      </Buttons>
     </Popup>
   );
 };
@@ -31,6 +43,5 @@ const mapStateToProps = ({ song }) => ({
 });
 
 export default connect(mapStateToProps, {
-  addNewBar,
   updateSongInfo,
 })(PopupSongMetre);
