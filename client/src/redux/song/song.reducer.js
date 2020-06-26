@@ -10,34 +10,10 @@ const INITIAL_STATE = {
 
 const songReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case actionTypes.SET_SONG_DIFFICULTY:
+    case actionTypes.UPDATE_SONG_INFO:
       return {
         ...state,
-        difficulty: payload,
-      };
-
-    case actionTypes.SET_BPM:
-      return {
-        ...state,
-        bpm: payload,
-      };
-
-    case actionTypes.SET_SONG_METRE:
-      return {
-        ...state,
-        metre: payload,
-      };
-
-    case actionTypes.SET_SONG_SUBDIVISION:
-      return {
-        ...state,
-        subdivision: payload,
-      };
-
-    case actionTypes.SET_SONG_TITLE:
-      return {
-        ...state,
-        title: payload,
+        ...payload,
       };
 
     default:

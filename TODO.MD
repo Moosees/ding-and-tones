@@ -9,6 +9,7 @@
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Select drum type - pan or tongue, etc.
+* Check text inputs for bad words
 
 ## Bugs
 
@@ -61,6 +62,7 @@
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * useRouter might not be best solution for navigation?
+* Merge ui reducer actions?
 
 ### Backend
 

@@ -2,8 +2,8 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import React from 'react';
 import { connect } from 'react-redux';
-import { setBpm } from '../../redux/song/song.actions';
 import styled from 'styled-components';
+import { updateSongInfo } from '../../redux/song/song.actions';
 
 const Mark = styled.span`
   color: ${({ theme }) => theme.colorText};
@@ -21,7 +21,7 @@ const marks = {
   160: <Mark>160</Mark>,
 };
 
-const BpmSlider = ({ bpm, setBpm, isSongPlaying }) => (
+const BpmSlider = ({ bpm, updateSongInfo, isSongPlaying }) => (
   <Slider
     value={bpm}
     step={5}
@@ -30,7 +30,7 @@ const BpmSlider = ({ bpm, setBpm, isSongPlaying }) => (
     marks={marks}
     included={false}
     disabled={isSongPlaying}
-    onChange={(value) => setBpm(value)}
+    onChange={(value) => updateSongInfo({ bpm: value })}
     handleStyle={{
       backgroundColor: '#888',
       border: '1px solid #444',
@@ -50,4 +50,4 @@ const mapStateToProps = ({ song, ui }) => ({
   isSongPlaying: ui.isSongPlaying,
 });
 
-export default connect(mapStateToProps, { setBpm })(BpmSlider);
+export default connect(mapStateToProps, { updateSongInfo })(BpmSlider);

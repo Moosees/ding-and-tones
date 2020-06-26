@@ -1,11 +1,8 @@
 import React from 'react';
-import MetreControls from '../metreControls/MetreControls';
 import { connect } from 'react-redux';
 import { addNewBar } from '../../redux/bars/bars.actions';
-import {
-  setSongMetre,
-  setSongSubdivision,
-} from '../../redux/song/song.actions';
+import { updateSongInfo } from '../../redux/song/song.actions';
+import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 
 const PopupSongMetre = ({
@@ -13,16 +10,15 @@ const PopupSongMetre = ({
   metre,
   onClose,
   subdivision,
-  setSongMetre,
-  setSongSubdivision,
+  updateSongInfo,
 }) => {
   return (
     <Popup onClose={onClose}>
       <MetreControls
         metre={metre}
         subdivision={subdivision}
-        setMetre={setSongMetre}
-        setSubdivision={setSongSubdivision}
+        setMetre={(value) => updateSongInfo({ metre: value })}
+        setSubdivision={(value) => updateSongInfo({ subdivision: value })}
         onClick={() => handleNewBar(metre, subdivision)}
       />
     </Popup>
@@ -36,6 +32,5 @@ const mapStateToProps = ({ song }) => ({
 
 export default connect(mapStateToProps, {
   addNewBar,
-  setSongSubdivision,
-  setSongMetre,
+  updateSongInfo,
 })(PopupSongMetre);

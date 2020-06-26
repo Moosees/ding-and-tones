@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { optionsDifficulty } from '../../constants';
 import { clearSong } from '../../redux/bars/bars.actions';
-import {
-  setSongDifficulty,
-  setSongMetre,
-  setSongSubdivision,
-  setSongTitle,
-} from '../../redux/song/song.actions';
+import { updateSongInfo } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -16,14 +11,7 @@ import InfoText from '../infoBox/InfoText';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 
-const PopupNewSong = ({
-  clearSong,
-  onClose,
-  setSongDifficulty,
-  setSongMetre,
-  setSongSubdivision,
-  setSongTitle,
-}) => {
+const PopupNewSong = ({ clearSong, onClose, updateSongInfo }) => {
   const [difficulty, setDifficulty] = useState(1);
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(4);
@@ -31,10 +19,7 @@ const PopupNewSong = ({
 
   const handleConfirm = () => {
     if (title) {
-      setSongDifficulty(difficulty);
-      setSongMetre(metre);
-      setSongSubdivision(subdivision);
-      setSongTitle(title);
+      updateSongInfo({ difficulty, metre, subdivision, title });
       clearSong();
       onClose();
     }
@@ -76,8 +61,5 @@ const PopupNewSong = ({
 
 export default connect(null, {
   clearSong,
-  setSongDifficulty,
-  setSongSubdivision,
-  setSongMetre,
-  setSongTitle,
+  updateSongInfo,
 })(PopupNewSong);

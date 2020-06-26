@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { optionsDifficulty } from '../../constants';
-import { setSongDifficulty, setSongTitle } from '../../redux/song/song.actions';
+import { updateSongInfo } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -17,13 +17,7 @@ const InfoContainer = styled.div`
   width: 100%;
 `;
 
-const SongInfo = ({
-  difficulty,
-  isSongPlaying,
-  title,
-  setSongDifficulty,
-  setSongTitle,
-}) => {
+const SongInfo = ({ difficulty, isSongPlaying, title, updateSongInfo }) => {
   const [newOpen, setNewOpen] = useState(false);
 
   return (
@@ -34,7 +28,7 @@ const SongInfo = ({
             placeholder="Song title"
             type="title"
             value={title}
-            handleChange={setSongTitle}
+            handleChange={(value) => updateSongInfo({ title: value })}
           >
             {'Title: ' + title}
           </InfoText>
@@ -42,7 +36,7 @@ const SongInfo = ({
         <InfoBox>
           <InfoSelect
             value={difficulty}
-            handleChange={setSongDifficulty}
+            handleChange={(value) => updateSongInfo({ difficulty: value })}
             options={optionsDifficulty}
           >
             {'Difficulty: '}
@@ -69,6 +63,4 @@ const mapStateToProps = ({ song, ui }) => ({
   isSongPlaying: ui.isSongPlaying,
 });
 
-export default connect(mapStateToProps, { setSongDifficulty, setSongTitle })(
-  SongInfo
-);
+export default connect(mapStateToProps, { updateSongInfo })(SongInfo);
