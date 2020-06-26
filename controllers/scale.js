@@ -12,7 +12,7 @@ exports.getScales = (req, res) => {
   Scale.find()
     .select('_id name layout scale')
     .then((scales) => res.json(scales))
-    .catch((error) => console.log(error));
+    .catch((error) => res.status(400).json({ error });
 };
 
 exports.saveScale = (req, res) => {

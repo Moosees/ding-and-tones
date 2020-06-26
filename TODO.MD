@@ -4,7 +4,7 @@
 
 * Save/load scale - in progress
 * Connect to backend
-* Auth/Users - only if you want to save?
+* Auth/Users - only if you want to save
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed

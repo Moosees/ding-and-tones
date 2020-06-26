@@ -18,6 +18,8 @@ db.once('open', () => console.log('Connected to database'));
 
 // Routes
 const scaleRoutes = require('./routes/scale');
+const songRoutes = require('./routes/song');
+const userRoutes = require('./routes/user');
 
 // Middleware
 app.use(bodyParser.json());
@@ -28,6 +30,8 @@ app.use(
 );
 app.use(cors());
 app.use('/', scaleRoutes);
+app.use('/', songRoutes);
+app.use('/', userRoutes);
 
 // Frontend
 // if (process.env.NODE_ENV === 'production') {
@@ -39,6 +43,6 @@ app.use('/', scaleRoutes);
 
 // Run server
 app.listen(port, (error) => {
-  if (error) throw error;
+  if (error) console.log('Errors starting server: ' + error);
   console.log('Running server on port: ' + port);
 });

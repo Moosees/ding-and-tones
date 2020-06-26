@@ -4,11 +4,11 @@ const { ObjectId } = mongoose.Schema;
 const scaleSchema = new mongoose.Schema({
   name: {
     type: String,
+    trim: true,
     required: true,
   },
   layout: {
     type: String,
-    required: true,
   },
   scale: {
     simple: [String],
