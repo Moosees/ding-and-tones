@@ -5,6 +5,7 @@ import drumReducer from './drum/drum.reducer';
 import scaleReducer from './scale/scale.reducer';
 import songReducer from './song/song.reducer';
 import uiReducer from './ui/ui.reducer';
+import userReducer from './user/user.reducer';
 
 const rootReducer = combineReducers({
   bars: barsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   scale: scaleReducer,
   song: songReducer,
   ui: uiReducer,
+  user: userReducer,
 });
 
 export default rootReducer;

@@ -50,6 +50,7 @@
 * Plus and minus one for bpm
 * Share song through link?
 * Web worker?
+* Show "song has unsaved changes"?
 
 ### Find songs
 
