@@ -3,8 +3,6 @@
 ## Current tasks
 
 * Save/load scale - in progress
-* Connect to backend
-* Auth/Users - only if you want to save
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
@@ -69,7 +67,6 @@
 ### Backend
 
 * GDPR
-* Analytics?
 * Hosting
 
 ### Low priority
@@ -87,6 +84,7 @@
 * Interval colors for compound intervals
 * Create scale from name and string
 * Dropdowns open even if clicking label (difficulty)
+* Analytics
 
 ### Even lower priority
 

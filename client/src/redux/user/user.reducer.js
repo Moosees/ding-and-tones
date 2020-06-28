@@ -3,6 +3,7 @@ import actionTypes from './user.types';
 const INITIAL_STATE = {
   user: null,
   isSignedIn: false,
+  newUser: false,
 };
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -18,6 +19,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         user: null,
         isSignedIn: false,
+        newUser: false,
       };
 
     default:

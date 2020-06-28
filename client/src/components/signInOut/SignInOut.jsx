@@ -1,28 +1,28 @@
+import axios from 'axios';
 import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
-import { GOOGLE_CLIENT_ID } from '../../oauth';
+import { API_ADDRESS, GOOGLE_CLIENT_ID } from '../../oauth';
 import { signIn, signOut } from '../../redux/user/user.actions';
 import BtnControls from '../button/Controls';
 
 const SignInOut = ({ isSignedIn, signIn, signOut }) => {
-  const handleFailure = (res) => {
-    signOut();
-  };
-
-  const handleSignIn = async (res) => {
+  const handleSignIn = async (auth) => {
     try {
-      const idToken = res.getAuthResponse().id_token;
-      // send sign in request to server, await user
-      signIn({ name: 'Test' }, res.isSignedIn());
-    } catch (error) {
-      console.error('Sign in failed');
-    }
-  };
+      const idToken = auth.getAuthResponse().id_token;
 
-  const handleSignOut = (res) => {
-    // send sign out request
-    signOut();
+      await axios
+        .post(`${API_ADDRESS}/signIn`, {
+          idToken,
+        })
+        .then((res) => {
+          if (res.status !== 200 && res.status !== 201)
+            throw new Error('Could not sign in');
+          signIn(res.data.user, auth.isSignedIn(), res.status === 201);
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -39,8 +39,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
               disabled={renderProps.disabled}
             />
           )}
-          buttonText="Sign Out"
-          onLogoutSuccess={handleSignOut}
+          onLogoutSuccess={signOut}
         />
       ) : (
         <GoogleLogin
@@ -54,9 +53,8 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
               disabled={renderProps.disabled}
             />
           )}
-          buttonText="Sign In"
           onSuccess={handleSignIn}
-          onFailure={handleFailure}
+          onFailure={signOut}
           isSignedIn={true}
           cookiePolicy={'single_host_origin'}
         />

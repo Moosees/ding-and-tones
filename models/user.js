@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  nickname: {
+  name: {
     type: String,
     trim: true,
     required: true,
@@ -9,8 +9,8 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
-    required: true,
   },
+  googleId: String,
   createdAt: {
     type: Date,
     default: Date.now,
