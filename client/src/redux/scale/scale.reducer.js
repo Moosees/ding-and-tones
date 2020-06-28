@@ -25,18 +25,7 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
         scaleFull: createFullScaleFromNames(newScaleSorted),
       };
 
-    case actionTypes.REMOVE_NOTE:
-      const filteredScaleSimple = state.scaleSimple.filter(
-        (note) => note !== payload
-      );
-
-      return {
-        ...state,
-        scaleSimple: filteredScaleSimple,
-        scaleFull: createFullScaleFromNames(filteredScaleSimple),
-      };
-
-    case actionTypes.SAVE_SCALE:
+    case actionTypes.LOAD_SCALE:
       const scaleFlat = removeSharps(payload.scaleAry);
       const scaleTrimmed = removeDuplicateNotes(scaleFlat);
       const scaleSimple = sortScaleByFreq(scaleTrimmed);
@@ -47,6 +36,17 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
         layout: payload.layout,
         scaleSimple,
         scaleFull: createFullScaleFromNames(scaleSimple),
+      };
+
+    case actionTypes.REMOVE_NOTE:
+      const filteredScaleSimple = state.scaleSimple.filter(
+        (note) => note !== payload
+      );
+
+      return {
+        ...state,
+        scaleSimple: filteredScaleSimple,
+        scaleFull: createFullScaleFromNames(filteredScaleSimple),
       };
 
     case actionTypes.SET_NAME:

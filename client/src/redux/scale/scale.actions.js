@@ -5,14 +5,14 @@ export const addNoteToScale = (newNote) => ({
   payload: newNote,
 });
 
+export const loadScale = (name, layout, scaleAry) => ({
+  type: actionTypes.LOAD_SCALE,
+  payload: { name, layout, scaleAry },
+});
+
 export const removeNoteFromScale = (noteToRemove) => ({
   type: actionTypes.REMOVE_NOTE,
   payload: noteToRemove,
-});
-
-export const saveScale = (name, layout, scaleAry) => ({
-  type: actionTypes.SAVE_SCALE,
-  payload: { name, layout, scaleAry },
 });
 
 export const setScaleName = (name) => ({

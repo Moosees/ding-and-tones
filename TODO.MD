@@ -2,9 +2,11 @@
 
 ## Current tasks
 
+* Style scales in scale search, add delete scale and notes
 * Only show save buttons if there are changes
 * Handle save as
 * Scale/song saved popup?
+* Scale by ID get
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed

@@ -6,15 +6,15 @@ import Controls from './containers/controls/Controls';
 import ControlsNav from './containers/controls/ControlsNav';
 import Drum from './containers/drum/Drum';
 import Nav from './containers/nav/Nav';
-import { saveScale } from './redux/scale/scale.actions';
+import { loadScale } from './redux/scale/scale.actions';
 import { setDropdownForBeat } from './redux/ui/ui.actions';
 
 const dummyScale = ['A2', 'C3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'E4'];
 
-const App = ({ saveScale, setDropdownForBeat }) => {
+const App = ({ loadScale, setDropdownForBeat }) => {
   useEffect(() => {
-    saveScale('A Integral', 'round', dummyScale);
-  }, [saveScale]);
+    loadScale('A Integral', 'round', dummyScale);
+  }, [loadScale]);
 
   const handleViewport = (e) => {
     e.stopPropagation();
@@ -44,4 +44,4 @@ const App = ({ saveScale, setDropdownForBeat }) => {
   );
 };
 
-export default connect(null, { saveScale, setDropdownForBeat })(App);
+export default connect(null, { loadScale, setDropdownForBeat })(App);
