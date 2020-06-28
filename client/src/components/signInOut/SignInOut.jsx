@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
-import { API_ADDRESS, GOOGLE_CLIENT_ID } from '../../oauth';
+import { GOOGLE_CLIENT_ID } from '../../oauth';
 import { signIn, signOut } from '../../redux/user/user.actions';
 import BtnControls from '../button/Controls';
 
@@ -12,7 +12,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
       const idToken = auth.getAuthResponse().id_token;
 
       await axios
-        .post(`${API_ADDRESS}/signIn`, {
+        .post('/signIn', {
           idToken,
         })
         .then((res) => {

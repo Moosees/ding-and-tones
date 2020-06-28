@@ -8,6 +8,11 @@ import { GlobalStyles } from './index.styles';
 import { store } from './redux/store';
 import * as serviceWorker from './serviceWorker';
 import { mainTheme } from './themes';
+import axios from 'axios';
+import { API_ADDRESS } from './oauth';
+
+axios.defaults.baseURL = API_ADDRESS;
+axios.defaults.headers['Accept'] = 'application/json';
 
 ReactDOM.render(
   <Provider store={store}>
