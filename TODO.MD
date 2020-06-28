@@ -2,12 +2,15 @@
 
 ## Current tasks
 
-* Save/load scale - in progress
+* Only show save buttons if there are changes
+* Handle save as
+* Scale/song saved popup?
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Select drum type - pan or tongue, etc.
 * Check text inputs for bad words
+* Check scales for duplicates when saving
 
 ## Bugs
 

@@ -6,8 +6,20 @@ import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
 import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
+import axios from 'axios';
+import { API_ADDRESS } from '../../oauth';
 
 const ScaleInfo = ({ layout, name, scale, setScaleName }) => {
+  const handleSave = () => {
+    axios
+      .post(`${API_ADDRESS}/scale`, { name, scale: { simple: scale }, layout })
+      .then((res) => {
+        if (res.status !== 201) throw new Error('Could not save scale');
+        //do something to show that scale is saved
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <InfoContainer>
       <InfoBox>
@@ -22,7 +34,7 @@ const ScaleInfo = ({ layout, name, scale, setScaleName }) => {
       </InfoBox>
       <InfoBox>{scale.join(', ')}</InfoBox>
       <Buttons>
-        <BtnPrimary label="Save Scale" />
+        <BtnPrimary label="Save Scale" onClick={handleSave} />
       </Buttons>
     </InfoContainer>
   );
