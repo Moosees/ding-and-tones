@@ -35,7 +35,7 @@ const ScalesFound = ({ loadScale }) => {
             }
           >
             <ScaleLabel>{name}</ScaleLabel>
-            <ScaleNotes>({label})</ScaleNotes>
+            <ScaleNotes>{label}</ScaleNotes>
           </ScaleContainer>
         );
       }),

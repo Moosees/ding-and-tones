@@ -19,6 +19,12 @@ export const InfoContainer = styled.div`
 export const EditIcon = styled.i`
   color: ${({ theme }) => theme.colorText};
   cursor: pointer;
+  font-size: ${({ theme }) => theme.fzLarge};
+  transition: color 0.1s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colorBtnConfirm};
+  }
 `;
 
 export const SaveIcon = styled.i`
@@ -35,7 +41,7 @@ export const Select = styled.select`
   );
   border: 0;
   cursor: pointer;
-  margin-right: 0.5rem;
+  margin-right: 2px;
   width: 100%;
 
   &:focus {
