@@ -10,6 +10,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
   const handleSignIn = async (auth) => {
     try {
       const idToken = auth.getAuthResponse().id_token;
+      axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
 
       await axios
         .post('/signIn', {
@@ -18,11 +19,17 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
         .then((res) => {
           if (res.status !== 200 && res.status !== 201)
             throw new Error('Could not sign in');
+
           signIn(res.data.user, auth.isSignedIn(), res.status === 201);
         });
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleSignOut = () => {
+    axios.defaults.headers.common['Authorization'] = '';
+    signOut();
   };
 
   return (
@@ -39,7 +46,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
               disabled={renderProps.disabled}
             />
           )}
-          onLogoutSuccess={signOut}
+          onLogoutSuccess={handleSignOut}
         />
       ) : (
         <GoogleLogin
@@ -54,7 +61,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
             />
           )}
           onSuccess={handleSignIn}
-          onFailure={signOut}
+          onFailure={handleSignOut}
           isSignedIn={true}
           cookiePolicy={'single_host_origin'}
         />

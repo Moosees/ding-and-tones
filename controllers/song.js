@@ -8,10 +8,11 @@ exports.getSongs = (req, res) => {
 };
 
 exports.saveSong = (req, res) => {
-  const song = new Song(req.body);
+  const userId = req.userId;
+  const song = new Song({ ...req.body, author: userId });
 
   song.save((error) => {
-    if (error) return res.status(400).json({ error });
-    return res.status(200).json({ message: 'song saved', _id: song._id });
+    if (error) return res.status(400).json({ error: 'Could not save song' });
+    return res.status(200).json({ message: 'Song saved' });
   });
 };

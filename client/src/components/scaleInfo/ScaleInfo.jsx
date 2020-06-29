@@ -8,7 +8,14 @@ import InfoBox from '../infoBox/InfoBox';
 import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
 
-const ScaleInfo = ({ label, layout, name, scale, setScaleName }) => {
+const ScaleInfo = ({
+  isSignedIn,
+  label,
+  layout,
+  name,
+  scale,
+  setScaleName,
+}) => {
   const handleSave = () => {
     axios
       .post('/scale', { name, label, layout, scale: { round: scale } })
@@ -33,17 +40,18 @@ const ScaleInfo = ({ label, layout, name, scale, setScaleName }) => {
       </InfoBox>
       <InfoBox>{label}</InfoBox>
       <Buttons>
-        <BtnPrimary label="Save Scale" onClick={handleSave} />
+        {isSignedIn && <BtnPrimary label="Save Scale" onClick={handleSave} />}
       </Buttons>
     </InfoContainer>
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
+const mapStateToProps = ({ scale, user }) => ({
   label: scale.label,
   layout: scale.layout,
   name: scale.name,
   scale: scale.scaleSimple,
+  isSignedIn: user.isSignedIn,
 });
 
 export default connect(mapStateToProps, { setScaleName })(ScaleInfo);

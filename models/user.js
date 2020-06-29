@@ -6,12 +6,12 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  email: {
-    type: String,
-    trim: true,
-  },
-  googleId: String,
+  userId: String,
   created: {
+    type: Date,
+    default: Date.now,
+  },
+  updated: {
     type: Date,
     default: Date.now,
   },

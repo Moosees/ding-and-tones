@@ -17,10 +17,11 @@ exports.getScales = (req, res) => {
 };
 
 exports.saveScale = (req, res) => {
-  const scale = new Scale(req.body);
+  const userId = req.userId;
+  const scale = new Scale({ ...req.body, author: userId });
 
   scale.save((error) => {
-    if (error) return res.status(400).json({ error });
-    return res.status(201).json({ message: 'scale saved', _id: scale._id });
+    if (error) return res.status(400).json({ error: 'Could not save scale' });
+    return res.status(201).json({ message: 'Scale saved' });
   });
 };

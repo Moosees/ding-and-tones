@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Update scale label when scale changes
 * Style scales in scale search, add delete scale and notes
 * Only show save buttons if there are changes
 * Or show "song has unsaved changes"?
@@ -77,6 +76,7 @@
 
 * GDPR
 * Hosting
+* update google json file
 
 ### Low priority
 

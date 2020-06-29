@@ -20,10 +20,6 @@ const scaleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  updated: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
 module.exports = mongoose.model('Scale', scaleSchema);

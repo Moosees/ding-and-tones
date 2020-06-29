@@ -13,7 +13,6 @@ import { API_ADDRESS } from './oauth';
 
 axios.defaults.baseURL = API_ADDRESS;
 axios.defaults.headers['Accept'] = 'application/json';
-// axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
 
 ReactDOM.render(
   <Provider store={store}>

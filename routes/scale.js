@@ -1,5 +1,6 @@
 const express = require('express');
 const { getScaleById, getScales, saveScale } = require('../controllers/scale');
+const { checkAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -10,6 +11,6 @@ router.get('/scale/id/:scaleId', getScaleById);
 
 // Authorized only
 // router.get('/scale/favorites')
-router.post('/scale', saveScale);
+router.post('/scale', checkAuth, saveScale);
 
 module.exports = router;
