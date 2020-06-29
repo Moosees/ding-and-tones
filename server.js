@@ -14,7 +14,9 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 const db = mongoose.connection;
-db.on('error', (error) => console.log(`Database connection failed: ${error}`));
+db.on('error', (error) =>
+  console.error(`Database connection failed: ${error}`)
+);
 db.once('open', () => console.log('Connected to database'));
 
 // Routes
@@ -44,6 +46,6 @@ app.use('/', userRoutes);
 
 // Run server
 app.listen(port, (error) => {
-  if (error) console.log('Errors starting server: ' + error);
+  if (error) console.error('Errors starting server: ' + error);
   console.log('Running server on port: ' + port);
 });

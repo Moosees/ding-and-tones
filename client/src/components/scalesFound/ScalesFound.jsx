@@ -18,6 +18,7 @@ const ScalesFound = ({ loadScale }) => {
         .get('/scale')
         .then((res) => {
           if (res.status !== 200) throw new Error('Could not get scales');
+          
           setScalesFound(res.data);
         })
         .catch((error) => console.error(error));
@@ -25,16 +26,19 @@ const ScalesFound = ({ loadScale }) => {
 
   const searchResults = useMemo(
     () =>
-      scalesFound.map((result) => {
-        const { _id, name, label, layout, scale } = result;
+      scalesFound.map((result, i) => {
+        const { name, label, layout, scale, isOwner } = result;
         return (
           <ScaleContainer
-            key={_id}
+            key={i}
             onClick={() =>
               loadScale({ name, label, layout, scaleSimple: scale.round })
             }
           >
-            <ScaleLabel>{name}</ScaleLabel>
+            <ScaleLabel>
+              {name}
+              {isOwner ? '*' : ''}
+            </ScaleLabel>
             <ScaleNotes>{label}</ScaleNotes>
           </ScaleContainer>
         );

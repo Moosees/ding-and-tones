@@ -9,10 +9,22 @@ exports.getScaleById = (req, res) => {
 
 exports.getScales = (req, res) => {
   Scale.find()
-    .select('_id name label layout scale')
+    .select('_id name label layout scale author')
     .limit(20)
     .sort({ created: -1 })
-    .then((scales) => res.status(200).json(scales))
+    .then((scales) => {
+      const responseData = scales.map((scaleData) => {
+        const { name, label, layout, scale, author } = scaleData;
+        return {
+          name,
+          label,
+          layout,
+          scale,
+          isOwner: req.userId ? req.userId.equals(author) : false,
+        };
+      });
+      res.status(200).json(responseData);
+    })
     .catch((error) => res.status(400).json({ error }));
 };
 

@@ -28,7 +28,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
   };
 
   const handleSignOut = () => {
-    axios.defaults.headers.common['Authorization'] = '';
+    axios.defaults.headers.common['Authorization'] = null;
     signOut();
   };
 

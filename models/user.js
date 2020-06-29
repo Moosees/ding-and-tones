@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  userId: String,
+  sub: String,
   created: {
     type: Date,
     default: Date.now,

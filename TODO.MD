@@ -17,6 +17,7 @@
 * Check scales for duplicates when saving?
 * Timeout on saving?
 * Move position map to reducer?
+* Show your own scales/songs
 
 ## Bugs
 

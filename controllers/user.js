@@ -14,9 +14,9 @@ exports.signIn = async (req, res) => {
   });
   const { name, sub } = ticket.getPayload();
 
-  User.findOne({ userId: sub }, 'name', async (error, user) => {
+  User.findOne({ sub }, 'name', async (error, user) => {
     if (error || !user) {
-      const newUser = new User({ userId: sub, name });
+      const newUser = new User({ sub, name });
 
       await newUser.save((error) => {
         if (error) return res.status(400).json({ error: 'Sign in failed' });
