@@ -13,7 +13,12 @@ const dummyScale = ['A2', 'C3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'E4'];
 
 const App = ({ loadScale, setDropdownForBeat }) => {
   useEffect(() => {
-    loadScale('A Integral', 'round', dummyScale);
+    loadScale({
+      name: 'A Integral',
+      label: '(A2) C3 E3 F3 G3 A3 B3 C4 E4',
+      layout: 1,
+      scaleSimple: dummyScale,
+    });
   }, [loadScale]);
 
   const handleViewport = (e) => {

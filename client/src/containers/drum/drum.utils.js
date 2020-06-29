@@ -69,5 +69,5 @@ const createRoundLayout = (numTones) => {
 };
 
 export const getPositionMap = (layout, numTones) => {
-  if (layout === 'round') return createRoundLayout(numTones);
+  if (layout === 1) return createRoundLayout(numTones);
 };

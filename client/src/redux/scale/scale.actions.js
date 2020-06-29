@@ -5,9 +5,9 @@ export const addNoteToScale = (newNote) => ({
   payload: newNote,
 });
 
-export const loadScale = (name, layout, scaleAry) => ({
+export const loadScale = (scaleObject) => ({
   type: actionTypes.LOAD_SCALE,
-  payload: { name, layout, scaleAry },
+  payload: scaleObject,
 });
 
 export const removeNoteFromScale = (noteToRemove) => ({

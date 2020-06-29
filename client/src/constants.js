@@ -10,8 +10,11 @@ export const ItemTypes = {
   BAR: 'bar',
 };
 
+// app values
 export const optionsDifficulty = [
   { value: 1, label: 'Beginner' },
   { value: 3, label: 'Confident' },
   { value: 5, label: 'Advanced' },
 ];
+
+export const scaleLayout = [{ value: 1, label: 'Round' }];

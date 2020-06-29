@@ -10,38 +10,39 @@ import {
 } from './scalesFound.styles';
 
 const ScalesFound = ({ loadScale }) => {
-  const [scales, setScales] = useState([]);
+  const [scalesFound, setScalesFound] = useState([]);
 
   useEffect(() => {
-    if (!scales.length)
+    if (!scalesFound.length)
       axios
         .get('/scale')
         .then((res) => {
           if (res.status !== 200) throw new Error('Could not get scales');
-          setScales(res.data);
+          setScalesFound(res.data);
         })
         .catch((error) => console.error(error));
-  }, [scales.length]);
+  }, [scalesFound.length]);
 
-  const scaleList = useMemo(
+  const searchResults = useMemo(
     () =>
-      scales.map((scale) => {
+      scalesFound.map((result) => {
+        const { _id, name, label, layout, scale } = result;
         return (
           <ScaleContainer
-            key={scale._id}
+            key={_id}
             onClick={() =>
-              loadScale(scale.name, scale.layout, scale.scale.simple)
+              loadScale({ name, label, layout, scaleSimple: scale.round })
             }
           >
-            <ScaleLabel>{scale.name}</ScaleLabel>
-            <ScaleNotes>({scale.scale.simple.join(', ')})</ScaleNotes>
+            <ScaleLabel>{name}</ScaleLabel>
+            <ScaleNotes>({label})</ScaleNotes>
           </ScaleContainer>
         );
       }),
-    [loadScale, scales]
+    [loadScale, scalesFound]
   );
 
-  return <ScaleList>{scaleList}</ScaleList>;
+  return <ScaleList>{searchResults}</ScaleList>;
 };
 
 export default connect(null, { loadScale })(ScalesFound);

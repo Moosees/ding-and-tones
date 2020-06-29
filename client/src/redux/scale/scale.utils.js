@@ -58,6 +58,27 @@ export const createFullScaleFromNames = (scale) => {
   return scaleFull;
 };
 
+// export const createScaleFromString = (scaleString) => {
+//   const scaleAry = scaleString.split(' ');
+//   const scaleFlat = removeSharps(scaleAry);
+//   const scaleTrimmed = removeDuplicateNotes(scaleFlat);
+//   const scaleSimple = sortScaleByFreq(scaleTrimmed);
+//   const scaleFull = createFullScaleFromNames(scaleSimple);
+
+//   return {
+//     name,
+//     layout,
+//     scaleSimple,
+//     scaleFull,
+//   };
+// };
+
+export const createScaleLabel = (scale) => {
+  if (scale.length === 0) return '';
+  if (scale.length === 1) return `(${scale[0]})`;
+  return `(${scale[0]}) ${scale.slice(1).join(' ')}`;
+};
+
 export const transposeScale = (scale, destination = 0) => {
   return scale
     .map((note) => {

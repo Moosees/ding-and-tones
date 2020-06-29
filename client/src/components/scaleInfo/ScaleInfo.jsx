@@ -8,10 +8,10 @@ import InfoBox from '../infoBox/InfoBox';
 import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
 
-const ScaleInfo = ({ layout, name, scale, setScaleName }) => {
+const ScaleInfo = ({ label, layout, name, scale, setScaleName }) => {
   const handleSave = () => {
     axios
-      .post('/scale', { name, scale: { simple: scale }, layout })
+      .post('/scale', { name, label, layout, scale: { round: scale } })
       .then((res) => {
         if (res.status !== 201) throw new Error('Could not save scale');
         //do something to show that scale is saved
@@ -31,7 +31,7 @@ const ScaleInfo = ({ layout, name, scale, setScaleName }) => {
           {'Scale: ' + name}
         </InfoText>
       </InfoBox>
-      <InfoBox>{scale.join(', ')}</InfoBox>
+      <InfoBox>{label}</InfoBox>
       <Buttons>
         <BtnPrimary label="Save Scale" onClick={handleSave} />
       </Buttons>
@@ -40,9 +40,10 @@ const ScaleInfo = ({ layout, name, scale, setScaleName }) => {
 };
 
 const mapStateToProps = ({ scale }) => ({
+  label: scale.label,
+  layout: scale.layout,
   name: scale.name,
   scale: scale.scaleSimple,
-  layout: scale.layout,
 });
 
 export default connect(mapStateToProps, { setScaleName })(ScaleInfo);

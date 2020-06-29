@@ -1,15 +1,15 @@
 import actionTypes from './scale.types';
 import {
   createFullScaleFromNames,
-  removeDuplicateNotes,
-  removeSharps,
+  createScaleLabel,
   sortScaleByFreq,
   transposeScale,
 } from './scale.utils';
 
 const INITIAL_STATE = {
   name: '',
-  layout: '',
+  layout: 1,
+  label: '',
   scaleSimple: [],
   scaleFull: [],
 };
@@ -21,21 +21,16 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return {
         ...state,
+        label: createScaleLabel(newScaleSorted),
         scaleSimple: newScaleSorted,
         scaleFull: createFullScaleFromNames(newScaleSorted),
       };
 
     case actionTypes.LOAD_SCALE:
-      const scaleFlat = removeSharps(payload.scaleAry);
-      const scaleTrimmed = removeDuplicateNotes(scaleFlat);
-      const scaleSimple = sortScaleByFreq(scaleTrimmed);
-
       return {
         ...state,
-        name: payload.name,
-        layout: payload.layout,
-        scaleSimple,
-        scaleFull: createFullScaleFromNames(scaleSimple),
+        ...payload,
+        scaleFull: createFullScaleFromNames(payload.scaleSimple),
       };
 
     case actionTypes.REMOVE_NOTE:
@@ -45,6 +40,7 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return {
         ...state,
+        label: createScaleLabel(filteredScaleSimple),
         scaleSimple: filteredScaleSimple,
         scaleFull: createFullScaleFromNames(filteredScaleSimple),
       };
@@ -60,6 +56,7 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return {
         ...state,
+        label: createScaleLabel(transposedScale),
         scaleSimple: transposedScale,
         scaleFull: createFullScaleFromNames(transposedScale),
       };

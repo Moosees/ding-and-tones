@@ -2,10 +2,10 @@
 
 ## Current tasks
 
-* Scale schema - presentational and functional fields for notes
-* Constants for layouts, save as numbers?
+* Update scale label when scale changes
 * Style scales in scale search, add delete scale and notes
 * Only show save buttons if there are changes
+* Or show "song has unsaved changes"?
 * Handle save as
 * Scale/song saved popup?
 * Scale by ID get
@@ -17,6 +17,7 @@
 * Check text inputs for bad words
 * Check scales for duplicates when saving?
 * Timeout on saving?
+* Move position map to reducer?
 
 ## Bugs
 
@@ -57,7 +58,6 @@
 * Plus and minus one for bpm
 * Share song through link?
 * Web worker?
-* Show "song has unsaved changes"?
 
 ### Find songs
 

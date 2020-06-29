@@ -7,13 +7,10 @@ const scaleSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  layout: {
-    type: Number,
-    default: 1,
-  },
+  layout: Number,
+  label: String,
   scale: {
-    label: String,
-    simple: [String],
+    round: [String],
   },
   author: {
     type: ObjectId,
