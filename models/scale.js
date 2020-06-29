@@ -8,16 +8,22 @@ const scaleSchema = new mongoose.Schema({
     required: true,
   },
   layout: {
-    type: String,
+    type: Number,
+    default: 1,
   },
   scale: {
+    label: String,
     simple: [String],
   },
   author: {
     type: ObjectId,
     ref: 'User',
   },
-  createdAt: {
+  created: {
+    type: Date,
+    default: Date.now,
+  },
+  updated: {
     type: Date,
     default: Date.now,
   },

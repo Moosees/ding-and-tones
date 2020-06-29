@@ -9,7 +9,7 @@ export const ScaleContainer = styled.div`
   overflow: auto;
 `;
 
-export const LeftSection = styled.div`
+export const Section = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;

@@ -3,18 +3,23 @@ import DividerLine from '../../components/dividerLine/DividerLine';
 import ScaleEdit from '../../components/scaleEdit/ScaleEdit';
 import ScaleInfo from '../../components/scaleInfo/ScaleInfo';
 import ScaleSearch from '../../components/scaleSearch/ScaleSearch';
-import { LeftSection, ScaleContainer } from './scale.styles';
+import ScalesFound from '../../components/scalesFound/ScalesFound';
+import { ScaleContainer, Section } from './scale.styles';
 
 const Scale = () => {
   return (
     <ScaleContainer>
-      <LeftSection>
+      <Section>
         <ScaleInfo />
         <DividerLine />
         <ScaleEdit />
-      </LeftSection>
+      </Section>
       <DividerLine vertical />
-      <ScaleSearch />
+      <Section>
+        <ScaleSearch />
+        <DividerLine />
+        <ScalesFound />
+      </Section>
     </ScaleContainer>
   );
 };

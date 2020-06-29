@@ -12,6 +12,6 @@ exports.saveSong = (req, res) => {
 
   song.save((error) => {
     if (error) return res.status(400).json({ error });
-    return res.status(200).json({ message: 'song saved' });
+    return res.status(200).json({ message: 'song saved', _id: song._id });
   });
 };

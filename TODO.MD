@@ -2,6 +2,8 @@
 
 ## Current tasks
 
+* Scale schema - presentational and functional fields for notes
+* Constants for layouts, save as numbers?
 * Style scales in scale search, add delete scale and notes
 * Only show save buttons if there are changes
 * Handle save as
@@ -10,9 +12,11 @@
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
+* Add account page
 * Select drum type - pan or tongue, etc.
 * Check text inputs for bad words
-* Check scales for duplicates when saving
+* Check scales for duplicates when saving?
+* Timeout on saving?
 
 ## Bugs
 

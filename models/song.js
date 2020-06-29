@@ -35,15 +35,15 @@ const songSchema = new mongoose.Schema({
     type: ObjectId,
     ref: 'User',
   },
-  defaultScale: {
+  scale: {
     type: ObjectId,
     ref: 'Scale',
   },
-  createdAt: {
+  created: {
     type: Date,
     default: Date.now,
   },
-  updatedAt: {
+  updated: {
     type: Date,
   },
 });

@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
   },
   googleId: String,
-  createdAt: {
+  created: {
     type: Date,
     default: Date.now,
   },
