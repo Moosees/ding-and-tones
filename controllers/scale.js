@@ -42,8 +42,12 @@ exports.saveScale = (req, res) => {
   const userId = req.userId;
   const scale = new Scale({ ...req.body, author: userId });
 
-  scale.save((error) => {
+  scale.save((error, newScale) => {
     if (error) return res.status(400).json({ error: 'Could not save scale' });
-    return res.status(201).json({ message: 'Scale saved' });
+
+    const { _id, name, label, layout, scale } = newScale;
+    return res
+      .status(201)
+      .json({ scaleId: _id, name, label, layout, scale, isOwner: true });
   });
 };

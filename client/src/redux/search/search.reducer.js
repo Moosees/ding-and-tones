@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case actionTypes.DELETE_FOUND_SCALE:
-      const filteredScales = deleteFoundScale(payload, state);
+      const filteredScales = deleteFoundScale(payload, state.scalesFound);
 
       return {
         ...state,

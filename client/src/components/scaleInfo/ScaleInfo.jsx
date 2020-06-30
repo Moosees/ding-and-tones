@@ -7,6 +7,7 @@ import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
 import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
+import { setScalesFound } from '../../redux/search/search.actions';
 
 const ScaleInfo = ({
   isSignedIn,
@@ -14,7 +15,9 @@ const ScaleInfo = ({
   layout,
   name,
   scale,
+  scalesFound,
   setScaleName,
+  setScalesFound,
 }) => {
   const handleSave = () => {
     axios
@@ -22,6 +25,7 @@ const ScaleInfo = ({
       .then((res) => {
         if (res.status !== 201) throw new Error('Could not save scale');
         //do something to show that scale is saved
+        setScalesFound([res.data, ...scalesFound]);
       })
       .catch((error) => console.error(error));
   };
@@ -46,12 +50,15 @@ const ScaleInfo = ({
   );
 };
 
-const mapStateToProps = ({ scale, user }) => ({
+const mapStateToProps = ({ scale, search, user }) => ({
   label: scale.label,
   layout: scale.layout,
   name: scale.name,
   scale: scale.scaleSimple,
+  scalesFound: search.scalesFound,
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { setScaleName })(ScaleInfo);
+export default connect(mapStateToProps, { setScaleName, setScalesFound })(
+  ScaleInfo
+);
