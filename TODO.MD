@@ -2,11 +2,13 @@
 
 ## Current tasks
 
+* Update url when loading things
+* Update nav even when route is not exact
+* Disable save when editing fields
 * Only show save buttons if there are changes
 * Or show "song has unsaved changes"?
 * Handle save as
 * Scale/song saved popup?
-* Scale by ID get
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
@@ -20,6 +22,7 @@
 
 ## Bugs
 
+* Rough server shutdown, maybe DB problem?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
 * What happens when you change to a scale with less notes than pattern needs?
