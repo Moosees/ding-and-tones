@@ -1,5 +1,14 @@
 const Scale = require('../models/scale');
 
+exports.deleteScale = (req, res) => {
+  const scaleId = req.params.scaleId;
+  const userId = req.userId;
+
+  Scale.deleteOne({ _id: scaleId, author: userId })
+    .then(() => res.status(200).json({ message: 'Scale deleted' }))
+    .catch((error) => res.status(400).json({ error }));
+};
+
 exports.getScaleById = (req, res) => {
   const data = Scale.findById(req.params.id)
     .select('_id name label layout scale')
@@ -14,8 +23,9 @@ exports.getScales = (req, res) => {
     .sort({ created: -1 })
     .then((scales) => {
       const responseData = scales.map((scaleData) => {
-        const { name, label, layout, scale, author } = scaleData;
+        const { _id, name, label, layout, scale, author } = scaleData;
         return {
+          scaleId: _id,
           name,
           label,
           layout,

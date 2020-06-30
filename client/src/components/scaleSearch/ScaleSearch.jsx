@@ -5,7 +5,7 @@ import { setScalesFound } from '../../redux/search/search.actions';
 
 const ScaleSearch = ({ scalesFound, setScalesFound, signInTried }) => {
   useEffect(() => {
-    if (!scalesFound.length && signInTried)
+    if (scalesFound === null && signInTried)
       axios
         .get('/scale')
         .then((res) => {
