@@ -27,6 +27,7 @@
 * What happens when you change to a scale with less notes than pattern needs?
 * App crash when trying to save invalid scale
 * What to do with deleted bars? Save song only gathers bars "in use"?
+* Logo svg gets requested on all route changes
 
 ## Design
 
@@ -78,7 +79,7 @@
 
 * GDPR
 * Hosting
-* update google json file
+* update google json file - hostedDomain on react-google-login?
 
 ### Low priority
 

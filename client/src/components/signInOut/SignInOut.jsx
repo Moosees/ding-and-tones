@@ -23,13 +23,18 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
           signIn(res.data.user, auth.isSignedIn(), res.status === 201);
         });
     } catch (error) {
+      handleSignOut();
       console.error(error);
     }
   };
 
   const handleSignOut = () => {
-    axios.defaults.headers.common['Authorization'] = null;
+    axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
     signOut();
+  };
+
+  const handleAutoLoadFinished = (autoLoadFinished) => {
+    if (!autoLoadFinished) handleSignOut();
   };
 
   return (
@@ -62,6 +67,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
           )}
           onSuccess={handleSignIn}
           onFailure={handleSignOut}
+          onAutoLoadFinished={handleAutoLoadFinished}
           isSignedIn={true}
           cookiePolicy={'single_host_origin'}
         />

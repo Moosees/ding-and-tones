@@ -5,9 +5,11 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 exports.checkAuth = async (req, res, next) => {
   const authHeader = req.get('authorization');
-  if (!authHeader) return res.status(403).json({ error: 'Not signed in' });
+  if (!authHeader) return res.status(403).json({ error: 'No authorization' });
 
   const idToken = authHeader.split(' ')[1];
+  if (idToken === 'undefined')
+    return res.status(403).json({ error: 'Not signed in' });
 
   const ticket = await client.verifyIdToken({
     idToken,
@@ -26,10 +28,11 @@ exports.checkAuth = async (req, res, next) => {
 };
 
 exports.getUserId = async (req, res, next) => {
-  if (req.get('authorization')) {
-    const authHeader = req.get('authorization');
-    const idToken = authHeader.split(' ')[1];
+  const authHeader = req.get('authorization');
+  if (!authHeader) return res.status(403).json({ error: 'No authorization' });
 
+  const idToken = authHeader.split(' ')[1];
+  if (idToken !== 'undefined') {
     const ticket = await client.verifyIdToken({
       idToken,
       audience: process.env.GOOGLE_CLIENT_ID,
