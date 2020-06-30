@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* No delete buttons when after logging out
 * Style scales in scale search, add delete scale and notes
 * Only show save buttons if there are changes
 * Or show "song has unsaved changes"?

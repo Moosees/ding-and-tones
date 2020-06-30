@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   user: null,
   isSignedIn: false,
   newUser: false,
+  signInTried: false,
 };
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -12,6 +13,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         ...payload,
+        signInTried: true,
       };
 
     case actionTypes.SIGN_OUT:
@@ -20,6 +22,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         user: null,
         isSignedIn: false,
         newUser: false,
+        signInTried: true,
       };
 
     default:
