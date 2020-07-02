@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Update url when loading things
-* Update nav even when route is not exact
 * Disable save when editing fields
 * Only show save buttons if there are changes
 * Or show "song has unsaved changes"?
@@ -73,7 +72,6 @@
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
-* useRouter might not be best solution for navigation?
 * Merge ui reducer actions?
 
 ### Backend

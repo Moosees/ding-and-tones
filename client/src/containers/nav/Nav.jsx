@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import BtnNav from '../../components/button/Nav';
 
@@ -8,33 +7,15 @@ const Navbar = styled.nav`
   margin-left: 10rem;
 `;
 
-const Nav = ({ history, location }) => {
-  const { pathname } = location;
-
+const Nav = () => {
   return (
     <Navbar>
-      <BtnNav
-        isActive={pathname === '/scale'}
-        label="Scale"
-        onClick={() => history.push('/scale')}
-      />
-      <BtnNav
-        isActive={pathname === '/chords'}
-        label="Chords"
-        onClick={() => history.push('/chords')}
-      />
-      <BtnNav
-        isActive={pathname === '/song'}
-        label="Songwriter"
-        onClick={() => history.push('/song')}
-      />
-      <BtnNav
-        isActive={pathname === '/find'}
-        label="Find Songs"
-        onClick={() => history.push('/find')}
-      />
+      <BtnNav label="Scale" to="/scale" />
+      <BtnNav label="Chords" to="/chords" />
+      <BtnNav label="Songwriter" to="/song" />
+      <BtnNav label="Find Songs" to="/find" />
     </Navbar>
   );
 };
 
-export default withRouter(Nav);
+export default Nav;

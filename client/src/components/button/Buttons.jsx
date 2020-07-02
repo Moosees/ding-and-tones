@@ -1,15 +1,8 @@
-import styled from 'styled-components';
 import React from 'react';
-
-const BtnContainer = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: ${({ position }) => (position ? position : 'flex-end')};
-  width: 100%;
-`;
+import { ButtonGroup } from './button.styles';
 
 const Buttons = ({ children, position }) => (
-  <BtnContainer position={position}>{children}</BtnContainer>
+  <ButtonGroup position={position}>{children}</ButtonGroup>
 );
 
 export default Buttons;
