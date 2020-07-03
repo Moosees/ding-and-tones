@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Scale/song saved popup?
+* Style Alert and use it when deleting scales
+* Fix scale search scrolling
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
@@ -10,7 +11,6 @@
 * Select drum type - pan or tongue, etc.
 * Check text inputs for bad words
 * Check scales for duplicates when saving?
-* Timeout on saving?
 * Move position map to reducer?
 * Show your own scales/songs
 * Handle save as
@@ -24,6 +24,7 @@
 * App crash when trying to save invalid scale
 * What to do with deleted bars? Save song only gathers bars "in use"?
 * Logo svg gets requested on all route changes
+* Timeout on saving?
 
 ## Design
 

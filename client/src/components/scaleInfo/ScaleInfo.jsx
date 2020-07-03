@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { setAlert } from '../../redux/alert/alert.actions';
 import { setScaleName } from '../../redux/scale/scale.actions';
 import { setScalesFound } from '../../redux/search/search.actions';
 import Buttons from '../button/Buttons';
@@ -16,6 +17,7 @@ const ScaleInfo = ({
   name,
   scale,
   scalesFound,
+  setAlert,
   setScaleName,
   setScalesFound,
 }) => {
@@ -31,10 +33,11 @@ const ScaleInfo = ({
         //do something to show that scale is saved
         setScalesFound([res.data, ...scalesFound]);
         setIsSaving(false);
+        setAlert('Scale saved!');
       })
       .catch((error) => {
-        console.error(error);
         setIsSaving(false);
+        setAlert('Save failed');
       });
   };
 
@@ -73,6 +76,8 @@ const mapStateToProps = ({ scale, search, user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { setScaleName, setScalesFound })(
-  ScaleInfo
-);
+export default connect(mapStateToProps, {
+  setAlert,
+  setScaleName,
+  setScalesFound,
+})(ScaleInfo);

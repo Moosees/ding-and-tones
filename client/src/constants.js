@@ -5,6 +5,9 @@ export const TRANSLATE_BASE = 6.6;
 export const MIN_NOTE_VALUE = 24;
 export const MAX_NOTE_VALUE = 60;
 
+// alerts
+export const ALERT_TIMEOUT = 5000;
+
 // reactDnD
 export const ItemTypes = {
   BAR: 'bar',

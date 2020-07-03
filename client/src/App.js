@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import AlertHandler from './AlertHandler';
 import { BorderContainer, Column, Section, Viewport } from './app.styles';
 import AppRoutes from './AppRoutes';
 import Controls from './containers/controls/Controls';
@@ -45,6 +46,7 @@ const App = ({ loadScale, setDropdownForBeat }) => {
           </BorderContainer>
         </Section>
       </Column>
+      <AlertHandler />
     </Viewport>
   );
 };
