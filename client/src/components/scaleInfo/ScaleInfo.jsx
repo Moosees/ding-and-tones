@@ -1,13 +1,13 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setScaleName } from '../../redux/scale/scale.actions';
+import { setScalesFound } from '../../redux/search/search.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
 import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
-import { setScalesFound } from '../../redux/search/search.actions';
 
 const ScaleInfo = ({
   isSignedIn,
@@ -19,15 +19,23 @@ const ScaleInfo = ({
   setScaleName,
   setScalesFound,
 }) => {
+  const [isSaving, setIsSaving] = useState(false);
+
   const handleSave = () => {
+    setIsSaving(true);
+
     axios
       .post('/scale', { name, label, layout, scale: { round: scale } })
       .then((res) => {
         if (res.status !== 201) throw new Error('Could not save scale');
         //do something to show that scale is saved
         setScalesFound([res.data, ...scalesFound]);
+        setIsSaving(false);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setIsSaving(false);
+      });
   };
 
   return (
@@ -44,7 +52,13 @@ const ScaleInfo = ({
       </InfoBox>
       <InfoBox>{label}</InfoBox>
       <Buttons>
-        {isSignedIn && <BtnPrimary label="Save Scale" onClick={handleSave} />}
+        {isSignedIn && (
+          <BtnPrimary
+            disabled={isSaving}
+            label="Save Scale"
+            onClick={handleSave}
+          />
+        )}
       </Buttons>
     </InfoContainer>
   );

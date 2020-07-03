@@ -2,11 +2,6 @@
 
 ## Current tasks
 
-* Update url when loading things
-* Disable save when editing fields
-* Only show save buttons if there are changes
-* Or show "song has unsaved changes"?
-* Handle save as
 * Scale/song saved popup?
 * Songwriter backend
 * Errors display on inputs
@@ -18,6 +13,7 @@
 * Timeout on saving?
 * Move position map to reducer?
 * Show your own scales/songs
+* Handle save as
 
 ## Bugs
 
@@ -34,7 +30,6 @@
 * Responsive design
 * Loading spinners?
 * Distinct confirm and cancel buttons
-* Svgs instead of iconfont?
 
 ## SIDEBAR
 
@@ -58,7 +53,6 @@
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
 * Plus and minus one for bpm
-* Share song through link?
 * Web worker?
 
 ### Find songs
@@ -82,6 +76,8 @@
 
 ### Low priority
 
+* Only show save buttons if there are changes
+* Update url when loading things and/or share by link
 * Add play scale button and function
 * Keyboard shortcuts?
 * Handle extra/bottom notes
@@ -96,6 +92,7 @@
 * Create scale from name and string
 * Dropdowns open even if clicking label (difficulty)
 * Analytics
+* Svgs instead of iconfont?
 
 ### Even lower priority
 
