@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Style Alert and use it when deleting scales
 * Fix scale search scrolling
 * Songwriter backend
 * Errors display on inputs
@@ -24,7 +23,6 @@
 * App crash when trying to save invalid scale
 * What to do with deleted bars? Save song only gathers bars "in use"?
 * Logo svg gets requested on all route changes
-* Timeout on saving?
 
 ## Design
 
@@ -94,6 +92,7 @@
 * Dropdowns open even if clicking label (difficulty)
 * Analytics
 * Svgs instead of iconfont?
+* Multiple alerts on screen? or just reset timeout and show newest?
 
 ### Even lower priority
 

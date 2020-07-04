@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import AlertHandler from './AlertHandler';
 import { BorderContainer, Column, Section, Viewport } from './app.styles';
 import AppRoutes from './AppRoutes';
+import AlertHandler from './components/popup/Alert';
 import Controls from './containers/controls/Controls';
 import ControlsNav from './containers/controls/ControlsNav';
 import Drum from './containers/drum/Drum';

@@ -33,7 +33,7 @@ const ScaleInfo = ({
         //do something to show that scale is saved
         setScalesFound([res.data, ...scalesFound]);
         setIsSaving(false);
-        setAlert('Scale saved!');
+        setAlert(`${name} saved`);
       })
       .catch((error) => {
         setIsSaving(false);

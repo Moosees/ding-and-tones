@@ -1,7 +1,7 @@
 import actionTypes from './alert.types';
 
 const INITIAL_STATE = {
-  msg: null,
+  msg: '',
 };
 
 const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
