@@ -2,17 +2,16 @@
 
 ## Current tasks
 
-* Fix scale search scrolling
 * Songwriter backend
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page
 * Select drum type - pan or tongue, etc.
 * Check text inputs for bad words
-* Check scales for duplicates when saving?
 * Move position map to reducer?
 * Show your own scales/songs
 * Handle save as
+* Loading spinners, check for login tried?
 
 ## Bugs
 
@@ -27,7 +26,6 @@
 ## Design
 
 * Responsive design
-* Loading spinners?
 * Distinct confirm and cancel buttons
 
 ## SIDEBAR
@@ -75,6 +73,7 @@
 
 ### Low priority
 
+* Pagination
 * Only show save buttons if there are changes
 * Update url when loading things and/or share by link
 * Add play scale button and function
@@ -93,6 +92,7 @@
 * Analytics
 * Svgs instead of iconfont?
 * Multiple alerts on screen? or just reset timeout and show newest?
+* Check scales for duplicates when saving?
 
 ### Even lower priority
 

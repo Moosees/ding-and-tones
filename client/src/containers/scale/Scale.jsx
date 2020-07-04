@@ -1,14 +1,14 @@
+import axios from 'axios';
 import React from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import DividerLine from '../../components/dividerLine/DividerLine';
 import ScaleEdit from '../../components/scaleEdit/ScaleEdit';
 import ScaleInfo from '../../components/scaleInfo/ScaleInfo';
 import ScaleSearch from '../../components/scaleSearch/ScaleSearch';
 import ScalesFound from '../../components/scalesFound/ScalesFound';
-import { ScaleContainer, Section } from './scale.styles';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { connect } from 'react-redux';
 import { loadScale } from '../../redux/scale/scale.actions';
+import { ScaleContainer, Section } from './scale.styles';
 
 const Scale = ({ loadScale }) => {
   const { scaleId } = useParams();
@@ -40,7 +40,6 @@ const Scale = ({ loadScale }) => {
       <DividerLine vertical />
       <Section>
         <ScaleSearch />
-        <DividerLine />
         <ScalesFound />
       </Section>
     </ScaleContainer>

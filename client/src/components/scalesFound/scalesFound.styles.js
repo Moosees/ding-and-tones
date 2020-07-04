@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const ScaleList = styled.div`
-  border: ${({ theme }) => theme.borderLight};
-  border-bottom: 0;
-  border-top: 0;
+  border: ${({ theme }) => theme.borderMedium};
+  border-left: 0;
+  border-right: 0;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
+  max-height: 50vh;
+  overflow: auto;
+  padding: 0 0.5rem;
   width: 100%;
 `;
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setScalesFound } from '../../redux/search/search.actions';
+import { SearchContainer } from './scaleSearch.styles';
 
 const ScaleSearch = ({ scalesFound, setScalesFound, signInTried }) => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const ScaleSearch = ({ scalesFound, setScalesFound, signInTried }) => {
         .catch((error) => console.error(error));
   }, [scalesFound, signInTried, setScalesFound]);
 
-  return <div>Search</div>;
+  return <SearchContainer>Search</SearchContainer>;
 };
 
 const mapStateToProps = ({ search, user }) => ({
