@@ -29,8 +29,8 @@ const ScaleInfo = ({
     axios
       .post('/scale', { name, label, layout, scale: { round: scale } })
       .then((res) => {
-        if (res.status !== 201) throw new Error('Could not save scale');
-        //do something to show that scale is saved
+        if (res.status !== 201) throw new Error(`Status code: ${res.status}`);
+
         setScalesFound([res.data, ...scalesFound]);
         setIsSaving(false);
         setAlert(`${name} saved`);
