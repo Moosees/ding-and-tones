@@ -10,6 +10,7 @@ import InfoSelect from '../infoBox/InfoSelect';
 import InfoText from '../infoBox/InfoText';
 import PlayButton from '../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
+import SaveSong from './SaveSong';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -49,9 +50,7 @@ const SongInfo = ({
           </InfoSelect>
         </InfoBox>
         <Buttons>
-          {isSignedIn && (
-            <BtnPrimary disabled={isSongPlaying} label="Save Song" />
-          )}
+          {isSignedIn && <SaveSong />}
           <BtnPrimary
             disabled={isSongPlaying}
             label="New Song"

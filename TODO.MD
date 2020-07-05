@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Songwriter backend
+* Songwriter backend - started, check updated on songs in db
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page
@@ -10,7 +10,6 @@
 * Check text inputs for bad words
 * Move position map to reducer?
 * Show your own scales/songs
-* Handle save as
 * Loading spinners, check for login tried?
 
 ## Bugs

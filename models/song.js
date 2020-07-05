@@ -19,11 +19,12 @@ const songSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  bars: [
+  arrangement: [
     {
       metre: String,
       subdivision: Number,
-      beats: [
+      repeats: String,
+      measure: [
         {
           sound: String,
           value: Number,
@@ -36,8 +37,10 @@ const songSchema = new mongoose.Schema({
     ref: 'User',
   },
   scale: {
-    type: ObjectId,
-    ref: 'Scale',
+    name: String,
+    layout: Number,
+    label: String,
+    scale: { round: [String] },
   },
   created: {
     type: Date,

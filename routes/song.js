@@ -5,7 +5,7 @@ const { checkAuth } = require('../middleware/auth');
 const router = express.Router();
 
 // Public
-router.get('/song', getSongs);
+// router.get('/song', getSongs);
 // router.get('/song/id/:songId', getSongById);
 // router.get('/song/random', getRandomSong);
 
