@@ -1,17 +1,9 @@
-exports.handleSaveResponse = (error, song, res) => {
-  if (error) return res.status(400).json({ error: 'Could not save song' });
-
-  const data = parseSongObject(song, userId);
-  return res.status(201).json(data);
-};
-
-exports.parseSongObject = (songObject, userId) => {
-  const { _id, title, author, arrangement } = songObject;
+exports.parseSaveResponse = (songObject, userId) => {
+  const { _id, composer, title } = songObject;
 
   return {
+    isOwner: userId ? userId.equals(composer) : false,
     songId: _id,
     title,
-    arrangement,
-    isOwner: userId ? userId.equals(author) : false,
   };
 };

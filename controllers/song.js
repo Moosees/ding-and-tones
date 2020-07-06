@@ -1,5 +1,5 @@
 const Song = require('../models/song');
-const { parseSongObject, handleSaveResponse } = require('../utils/song');
+const { parseSaveResponse } = require('../utils/song');
 
 // exports.getSongs = (req, res) => {
 //   Song.find()
@@ -10,27 +10,30 @@ const { parseSongObject, handleSaveResponse } = require('../utils/song');
 
 exports.saveSong = (req, res) => {
   const userId = req.userId;
-  const { songId, songUpdate, saveAs } = req.body;
+  const { songId, songUpdate } = req.body;
 
-  if (saveAs) {
-    const newSong = new Song({
+  if (!songId)
+    new Song({
       ...songUpdate,
-      author: userId,
+      composer: userId,
       updated: Date().now,
-    });
-
-    newSong.save((error, song) => {
+    }).save((error, song) => {
       if (error) {
         console.log(error);
         return res.status(400);
       }
 
-      const data = parseSongObject(song, userId);
-      return res.status(201).json(data);
+      const data = parseSaveResponse(song, userId);
+      return res.status(200).json(data);
     });
-  } else
+  else
     Song.findByIdAndUpdate(songId, {
       ...songUpdate,
       updated: new Date(),
-    }).exec((error, song) => handleSaveResponse(error, song, res));
+    }).exec((error, song) => {
+      if (error) return res.status(400);
+
+      const data = parseSaveResponse(song, userId);
+      return res.status(200).json(data);
+    });
 };

@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Songwriter backend - started, check updated on songs in db
+* Songwriter backend - started
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page
@@ -14,7 +14,7 @@
 
 ## Bugs
 
-* Rough server shutdown, maybe DB problem?
+* Save song changes creates new sub docs instead of updating
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
 * What happens when you change to a scale with less notes than pattern needs?

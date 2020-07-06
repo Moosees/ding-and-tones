@@ -20,6 +20,7 @@ const InfoContainer = styled.div`
 
 const SongInfo = ({
   difficulty,
+  isOwner,
   isSignedIn,
   isSongPlaying,
   title,
@@ -50,7 +51,8 @@ const SongInfo = ({
           </InfoSelect>
         </InfoBox>
         <Buttons>
-          {isSignedIn && <SaveSong />}
+          {isSignedIn && isOwner && <SaveSong />}
+          {isSignedIn && <SaveSong saveAs />}
           <BtnPrimary
             disabled={isSongPlaying}
             label="New Song"
@@ -67,6 +69,7 @@ const SongInfo = ({
 const mapStateToProps = ({ song, ui, user }) => ({
   difficulty: song.difficulty,
   title: song.title,
+  isOwner: song.isOwner,
   isSongPlaying: ui.isSongPlaying,
   isSignedIn: user.isSignedIn,
 });

@@ -11,30 +11,29 @@ const parseArrangement = (barState) => {
       .filter((beat) => beat);
 
     return {
+      measure: measureWithBeats,
       metre,
       repeats,
       subdivision,
-      measure: measureWithBeats,
     };
   });
 };
 
-export const parseSongForSaving = (bars, song, scale, saveAs) => {
-  const { difficulty, metre, title, subdivision } = song;
+export const parseSongForSaving = (bars, song, scale) => {
+  const { difficulty, isOwner, metre, title, songId, subdivision } = song;
   const { name, layout, label, scaleSimple } = scale;
 
   const arrangement = parseArrangement(bars);
 
   return {
-    saveAs,
-    songId: undefined,
+    songId: isOwner ? songId : null,
     songUpdate: {
-      title,
-      metre,
-      subdivision,
-      difficulty,
       arrangement,
       scale: { name, layout, label, scale: { round: scaleSimple } },
+      difficulty,
+      metre,
+      title,
+      subdivision,
     },
   };
 };

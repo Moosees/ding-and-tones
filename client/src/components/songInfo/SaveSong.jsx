@@ -2,45 +2,46 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/alert/alert.actions';
+import { updateSongInfo } from '../../redux/song/song.actions';
 import BtnPrimary from '../button/Primary';
 import { parseSongForSaving } from './saveSong.utils';
 
 const SaveSong = ({
   bars,
   isSongPlaying,
-  saveAs = true,
+  saveAs,
   setAlert,
   scale,
   song,
+  updateSongInfo,
 }) => {
   const [isSaving, setIsSaving] = useState(false);
 
   const handleSave = () => {
     setIsSaving(true);
 
-    const songUpdate = parseSongForSaving(bars, song, scale, saveAs);
+    const songUpdate = parseSongForSaving(bars, song, scale);
 
     axios
       .post('/song', songUpdate)
       .then((res) => {
-        if (res.status !== 201) throw new Error(`Status code: ${res.status}`);
-        // const { isOwner, songId, title } = res.data;
+        if (res.status !== 200) throw new Error(`Status code: ${res.status}`);
+        const { isOwner, songId, title } = res.data;
 
-        console.log(res.data.arrangement);
-
+        updateSongInfo({ songId, isOwner });
+        setAlert(`${title} saved`);
         setIsSaving(false);
-        setAlert(`${song.title} saved`);
       })
       .catch((error) => {
-        setIsSaving(false);
         setAlert('Save failed');
+        setIsSaving(false);
       });
   };
 
   return (
     <BtnPrimary
       disabled={isSongPlaying || isSaving}
-      label="Save Song"
+      label={saveAs ? 'Save as new' : 'Save changes'}
       onClick={handleSave}
     />
   );
@@ -53,4 +54,4 @@ const mapStateToProps = ({ bars, scale, song, ui }) => ({
   isSongPlaying: ui.isSongPlaying,
 });
 
-export default connect(mapStateToProps, { setAlert })(SaveSong);
+export default connect(mapStateToProps, { setAlert, updateSongInfo })(SaveSong);
