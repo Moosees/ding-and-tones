@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Check user controller
 * Songwriter backend - started
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
@@ -15,7 +16,6 @@
 
 ## Bugs
 
-* Created updates when saving changes
 * New song should disable saving changes
 * User can save with edit inputs open
 * Save song changes creates new sub docs instead of updating

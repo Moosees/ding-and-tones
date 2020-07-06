@@ -29,7 +29,7 @@ const SaveSong = ({
           const { isOwner, songId, title } = res.data;
 
           updateSongInfo({ songId, isOwner });
-          setAlert(`${title} saved`);
+          setAlert(`"${title}" saved`);
           setIsSaving(false);
         }
       })

@@ -12,21 +12,16 @@ const ObjectId = require('mongoose').Types.ObjectId;
 exports.saveSong = (req, res) => {
   const userId = req.userId;
   const { songId, songUpdate } = req.body;
+  songUpdate.composer = userId;
+  songUpdate.updated = Date.now();
 
-  console.log(songUpdate);
+  Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
+    .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
+    .select('_id composer title')
+    .exec((error, song) => {
+      if (error) return res.status(400).json({ error });
 
-  Song.findByIdAndUpdate(
-    songId || ObjectId(),
-    {
-      ...songUpdate,
-      composer: userId,
-      updated: new Date(),
-    },
-    { new: true, upsert: true }
-  ).exec((error, song) => {
-    if (error) return res.status(400).json(error);
-
-    const data = parseSaveResponse(song, userId);
-    res.status(200).json(data);
-  });
+      const data = parseSaveResponse(song, userId);
+      res.status(200).json(data);
+    });
 };
