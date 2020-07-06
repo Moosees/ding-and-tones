@@ -29,15 +29,15 @@ const ScaleInfo = ({
     axios
       .post('/scale', { name, label, layout, scale: { round: scale } })
       .then((res) => {
-        if (res.status !== 201) throw new Error(`Status code: ${res.status}`);
-
-        setScalesFound([res.data, ...scalesFound]);
-        setIsSaving(false);
-        setAlert(`${name} saved`);
+        if (res.status === 200) {
+          setScalesFound([res.data, ...scalesFound]);
+          setAlert(`"${res.data.name}" saved`);
+          setIsSaving(false);
+        }
       })
       .catch((error) => {
-        setIsSaving(false);
         setAlert('Save failed');
+        setIsSaving(false);
       });
   };
 

@@ -5,21 +5,23 @@
 * Songwriter backend - started
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
-* Add account page
+* Add account page - prompt to change name if new user
 * Select drum type - pan or tongue, etc.
 * Check text inputs for bad words
 * Move position map to reducer?
 * Show your own scales/songs
 * Loading spinners, check for login tried?
+* What happens when you change to a scale with less notes than pattern needs?
 
 ## Bugs
 
+* Created updates when saving changes
+* New song should disable saving changes
+* User can save with edit inputs open
 * Save song changes creates new sub docs instead of updating
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
-* What happens when you change to a scale with less notes than pattern needs?
-* App crash when trying to save invalid scale
-* What to do with deleted bars? Save song only gathers bars "in use"?
+* App crash when trying to save invalid scale - prevent with validation
 * Logo svg gets requested on all route changes
 
 ## Design

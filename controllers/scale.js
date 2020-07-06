@@ -5,19 +5,25 @@ exports.deleteScale = (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
 
-  Scale.deleteOne({ _id: scaleId, author: userId })
-    .then(() => res.status(200).json({ message: 'Scale deleted' }))
-    .catch((error) => res.status(400).json({ error }));
+  Scale.findOneAndDelete({ _id: scaleId, author: userId })
+    .select('_id name')
+    .exec((error, scale) => {
+      if (error) return res.status(400).json(error);
+
+      const { _id, name } = scale;
+      res.status(200).json({ scaleId: _id, name });
+    });
 };
 
 exports.getScaleById = (req, res) => {
   Scale.findById(req.params.scaleId)
     .select('_id name label layout scale author')
-    .then((scale) => {
+    .exec((error, scale) => {
+      if (error) return res.status(400).json(error);
+
       const data = parseScaleObject(scale, req.userId);
       res.status(200).json(data);
-    })
-    .catch((error) => res.status(400).json({ error }));
+    });
 };
 
 exports.getScales = (req, res) => {
@@ -25,22 +31,20 @@ exports.getScales = (req, res) => {
     .select('_id name label layout scale author')
     .limit(20)
     .sort({ created: -1 })
-    .then((scales) => {
-      const data = scales.map((scale) => parseScaleObject(scale, req.userId));
+    .exec((error, scales) => {
+      if (error) return res.status(400).json(error);
 
+      const data = scales.map((scale) => parseScaleObject(scale, req.userId));
       res.status(200).json(data);
-    })
-    .catch((error) => res.status(400).json({ error }));
+    });
 };
 
 exports.saveScale = (req, res) => {
   const userId = req.userId;
-  const newScale = new Scale({ ...req.body, author: userId });
-
-  newScale.save((error, scale) => {
-    if (error) return res.status(400).json({ error: 'Could not save scale' });
+  new Scale({ ...req.body, author: userId }).save((error, scale) => {
+    if (error) return res.status(400).json(error);
 
     const data = parseScaleObject(scale, userId);
-    return res.status(201).json(data);
+    res.status(200).json(data);
   });
 };

@@ -19,14 +19,14 @@ const parseArrangement = (barState) => {
   });
 };
 
-export const parseSongForSaving = (bars, song, scale) => {
+export const parseSongForSaving = (bars, song, scale, saveAs) => {
   const { difficulty, isOwner, metre, title, songId, subdivision } = song;
   const { name, layout, label, scaleSimple } = scale;
 
   const arrangement = parseArrangement(bars);
 
   return {
-    songId: isOwner ? songId : null,
+    songId: isOwner && !saveAs ? songId : null,
     songUpdate: {
       arrangement,
       scale: { name, layout, label, scale: { round: scaleSimple } },

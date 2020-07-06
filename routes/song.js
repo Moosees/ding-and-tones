@@ -11,6 +11,7 @@ const router = express.Router();
 
 // Authorized only
 // router.get('/song/favorites')
+// router.get('/song/me')
 router.post('/song', checkAuth, saveSong);
 
 module.exports = router;

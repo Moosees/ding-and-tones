@@ -16,6 +16,7 @@ router.get('/scale/id/:scaleId', getUserId, getScaleById);
 
 // Authorized only
 // router.get('/scale/favorites')
+// router.get('/scale/me')
 router.post('/scale', checkAuth, saveScale);
 router.delete('/scale/id/:scaleId', checkAuth, deleteScale);
 

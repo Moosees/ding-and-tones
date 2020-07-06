@@ -20,17 +20,18 @@ const SaveSong = ({
   const handleSave = () => {
     setIsSaving(true);
 
-    const songUpdate = parseSongForSaving(bars, song, scale);
+    const songUpdate = parseSongForSaving(bars, song, scale, saveAs);
 
     axios
       .post('/song', songUpdate)
       .then((res) => {
-        if (res.status !== 200) throw new Error(`Status code: ${res.status}`);
-        const { isOwner, songId, title } = res.data;
+        if (res.status === 200) {
+          const { isOwner, songId, title } = res.data;
 
-        updateSongInfo({ songId, isOwner });
-        setAlert(`${title} saved`);
-        setIsSaving(false);
+          updateSongInfo({ songId, isOwner });
+          setAlert(`${title} saved`);
+          setIsSaving(false);
+        }
       })
       .catch((error) => {
         setAlert('Save failed');

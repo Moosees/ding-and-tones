@@ -25,8 +25,8 @@ const ScalesFound = ({
       .delete(`/scale/id/${scaleId}`)
       .then((res) => {
         if (res.status === 200) {
-          deleteFoundScale(scaleId);
-          setAlert(`${name} deleted`);
+          deleteFoundScale(res.data.scaleId);
+          setAlert(`"${res.data.name}" deleted`);
         }
       })
       .catch((error) => setAlert('Delete failed'));

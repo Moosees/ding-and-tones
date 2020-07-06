@@ -1,5 +1,6 @@
 const Song = require('../models/song');
 const { parseSaveResponse } = require('../utils/song');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 // exports.getSongs = (req, res) => {
 //   Song.find()
@@ -12,28 +13,20 @@ exports.saveSong = (req, res) => {
   const userId = req.userId;
   const { songId, songUpdate } = req.body;
 
-  if (!songId)
-    new Song({
+  console.log(songUpdate);
+
+  Song.findByIdAndUpdate(
+    songId || ObjectId(),
+    {
       ...songUpdate,
       composer: userId,
-      updated: Date().now,
-    }).save((error, song) => {
-      if (error) {
-        console.log(error);
-        return res.status(400);
-      }
-
-      const data = parseSaveResponse(song, userId);
-      return res.status(200).json(data);
-    });
-  else
-    Song.findByIdAndUpdate(songId, {
-      ...songUpdate,
       updated: new Date(),
-    }).exec((error, song) => {
-      if (error) return res.status(400);
+    },
+    { new: true, upsert: true }
+  ).exec((error, song) => {
+    if (error) return res.status(400).json(error);
 
-      const data = parseSaveResponse(song, userId);
-      return res.status(200).json(data);
-    });
+    const data = parseSaveResponse(song, userId);
+    res.status(200).json(data);
+  });
 };

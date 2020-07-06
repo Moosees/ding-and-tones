@@ -17,10 +17,8 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
           idToken,
         })
         .then((res) => {
-          if (res.status !== 200 && res.status !== 201)
-            throw new Error('Could not sign in');
-
-          signIn(res.data.user, auth.isSignedIn(), res.status === 201);
+          if (res.status === 200)
+            signIn(res.data.user, auth.isSignedIn(), res.status === 200);
         });
     } catch (error) {
       handleSignOut();
