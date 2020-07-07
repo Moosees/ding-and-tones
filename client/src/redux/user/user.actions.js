@@ -1,8 +1,8 @@
 import actionTypes from './user.types';
 
-export const signIn = (user, isSignedIn, newUser) => ({
+export const signIn = (user, isSignedIn) => ({
   type: actionTypes.SIGN_IN,
-  payload: { user, isSignedIn, newUser },
+  payload: { user, isSignedIn },
 });
 
 export const signOut = () => ({

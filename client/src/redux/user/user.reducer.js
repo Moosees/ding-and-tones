@@ -1,7 +1,7 @@
 import actionTypes from './user.types';
 
 const INITIAL_STATE = {
-  user: null,
+  name: null,
   isSignedIn: false,
   newUser: false,
   signInTried: false,
@@ -12,7 +12,8 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
     case actionTypes.SIGN_IN:
       return {
         ...state,
-        ...payload,
+        ...payload.user,
+        isSignedIn: payload.isSignedIn,
         signInTried: true,
       };
 

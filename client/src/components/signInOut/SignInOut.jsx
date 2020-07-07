@@ -17,8 +17,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
           idToken,
         })
         .then((res) => {
-          if (res.status === 200)
-            signIn(res.data.user, auth.isSignedIn(), res.status === 200);
+          if (res.status === 200) signIn(res.data, auth.isSignedIn());
         });
     } catch (error) {
       handleSignOut();

@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Check user controller
 * Songwriter backend - started
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
@@ -28,6 +27,7 @@
 
 * Responsive design
 * Distinct confirm and cancel buttons
+* Style songwriter dropdowns
 
 ## SIDEBAR
 
@@ -71,6 +71,7 @@
 * GDPR
 * Hosting
 * update google json file - hostedDomain on react-google-login?
+* Handle errors sent to client
 
 ### Low priority
 
