@@ -1,11 +1,11 @@
 import React from 'react';
 import { EditIcon, InfoContainer } from './infoBox.styles';
 
-const InfoBox = ({ children, reverse, onClick }) => (
+const InfoBox = ({ children, reverse, onEdit }) => (
   <InfoContainer reverse={reverse}>
     {children}
-    {onClick && (
-      <EditIcon className="material-icons" onClick={onClick}>
+    {onEdit && (
+      <EditIcon className="material-icons" onClick={onEdit}>
         edit
       </EditIcon>
     )}

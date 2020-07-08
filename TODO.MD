@@ -16,8 +16,7 @@
 ## Bugs
 
 * New song should disable saving changes
-* User can save with edit inputs open
-* Save song changes creates new sub docs instead of updating
+* Save song changes creates new sub docs instead of updating?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
 * App crash when trying to save invalid scale - prevent with validation

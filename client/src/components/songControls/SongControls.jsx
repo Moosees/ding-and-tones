@@ -32,7 +32,7 @@ const SongControls = ({
   return (
     <>
       <ControlsContainer>
-        <InfoBox reverse onClick={() => setMetreOpen(true)}>
+        <InfoBox reverse onEdit={() => setMetreOpen(true)}>
           {metreAndBpm}
         </InfoBox>
         <InfoBox>

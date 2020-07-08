@@ -30,7 +30,8 @@ export const EditIcon = styled.i`
 export const SaveIcon = styled.i`
   color: ${({ isValid, theme }) =>
     isValid ? theme.colorBtnConfirm : theme.colorBtnClear};
-  cursor: ${({ isValid }) => (isValid ? 'pointer' : 'not-allowed')};
+  cursor: ${({ editOnly, isValid }) =>
+    !editOnly && isValid ? 'pointer' : 'unset'};
 `;
 
 export const Select = styled.select`

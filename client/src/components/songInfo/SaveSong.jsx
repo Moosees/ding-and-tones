@@ -8,6 +8,7 @@ import { parseSongForSaving } from './saveSong.utils';
 
 const SaveSong = ({
   bars,
+  isSaveable,
   isSongPlaying,
   saveAs,
   setAlert,
@@ -41,7 +42,7 @@ const SaveSong = ({
 
   return (
     <BtnPrimary
-      disabled={isSongPlaying || isSaving}
+      disabled={isSongPlaying || isSaving || !isSaveable}
       label={saveAs ? 'Save as new' : 'Save changes'}
       onClick={handleSave}
     />
@@ -52,6 +53,7 @@ const mapStateToProps = ({ bars, scale, song, ui }) => ({
   bars,
   scale,
   song,
+  isSaveable: ui.isSaveable,
   isSongPlaying: ui.isSongPlaying,
 });
 

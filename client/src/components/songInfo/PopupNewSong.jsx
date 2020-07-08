@@ -7,7 +7,7 @@ import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
 import InfoSelect from '../infoBox/InfoSelect';
-import InfoText from '../infoBox/InfoText';
+import InfoTextEdit from '../infoBox/InfoTextEdit';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 
@@ -28,13 +28,13 @@ const PopupNewSong = ({ clearSong, onClose, updateSongInfo }) => {
   return (
     <Popup onClose={onClose}>
       <InfoBox>
-        <InfoText
+        <InfoTextEdit
           editOnly
           placeholder={'Title'}
           type="title"
           value={title}
           handleChange={setTitle}
-        ></InfoText>
+        ></InfoTextEdit>
       </InfoBox>
       <InfoBox>
         <InfoSelect

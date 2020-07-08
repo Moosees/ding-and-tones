@@ -1,70 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import useValidate from '../../hooks/useValidate';
-import { EditIcon, SaveIcon, TextInput } from './infoBox.styles';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { setIsSaveable } from '../../redux/ui/ui.actions';
+import { EditIcon } from './infoBox.styles';
+import InfoTextEdit from './InfoTextEdit';
+import { useEffect } from 'react';
 
 const InfoText = ({
   children,
-  editOnly,
   handleChange,
   placeholder,
+  setIsSaveable,
   type,
   value,
 }) => {
-  const [editOpen, setEditOpen] = useState(editOnly);
-  const [editValue, setEditValue] = useState(value);
-  const [validate, handleValidate, errors, isValid] = useValidate(
-    editOnly ? value : editValue,
-    editOnly ? handleChange : setEditValue,
-    type
-  );
+  const [editOpen, setEditOpen] = useState(false);
 
+  // close edit mode if something else changes text
   useEffect(() => {
-    setEditValue(value);
+    setEditOpen(false);
   }, [value]);
 
-  const handleKeyDown = (e) => {
-    // enter
-    if (e.keyCode === 13 && isValid) return handleSave();
-
-    // escape
-    if (e.keyCode === 27 && !editOnly) return setEditOpen(false);
+  const handleClose = () => {
+    setIsSaveable(true);
+    setEditOpen(false);
   };
 
-  const handleSave = () => {
-    if (isValid) handleChange(editValue);
-    if (!editOnly) setEditOpen(false);
+  const handleOpen = () => {
+    setIsSaveable(false);
+    setEditOpen(true);
+  };
+
+  const handleSave = (value) => {
+    handleChange(value);
+    handleClose();
   };
 
   return (
     <>
       {editOpen ? (
-        <>
-          <TextInput
-            autoFocus
-            errors={errors}
-            placeholder={placeholder}
-            value={validate}
-            onChange={handleValidate}
-            onKeyDown={handleKeyDown}
-          />
-          {editOpen && (
-            <SaveIcon
-              className="material-icons"
-              disabled={!isValid}
-              isValid={isValid}
-              onClick={handleSave}
-            >
-              {isValid ? 'check_circle_outline' : 'not_interested'}
-            </SaveIcon>
-          )}
-        </>
+        <InfoTextEdit
+          placeholder={placeholder}
+          type={type}
+          value={value}
+          onClose={handleClose}
+          onSave={handleSave}
+        />
       ) : (
         <>
           {children}
-          <EditIcon
-            className="material-icons"
-            onClick={() => setEditOpen(true)}
-          >
+          <EditIcon className="material-icons" onClick={handleOpen}>
             edit
           </EditIcon>
         </>
@@ -73,4 +57,4 @@ const InfoText = ({
   );
 };
 
-export default InfoText;
+export default connect(null, { setIsSaveable })(InfoText);

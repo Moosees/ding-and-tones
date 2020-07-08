@@ -20,6 +20,11 @@ export const setIsSongPlaying = (isSongPlaying) => ({
   payload: isSongPlaying,
 });
 
+export const setIsSaveable = (isSaveable) => ({
+  type: actionTypes.SET_IS_SAVEABLE,
+  payload: isSaveable,
+});
+
 export const setOptions = (options) => ({
   type: actionTypes.SET_OPTIONS,
   payload: options,

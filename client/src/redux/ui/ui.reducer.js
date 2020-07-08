@@ -4,8 +4,9 @@ const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
   dropdownBeatId: null,
-  isSongPlaying: false,
   isEditingSong: true,
+  isSongPlaying: false,
+  isSaveable: true,
   option: {},
 };
 
@@ -33,6 +34,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         isSongPlaying: payload,
+      };
+
+    case actionTypes.SET_IS_SAVEABLE:
+      return {
+        ...state,
+        isSaveable: payload,
       };
 
     case actionTypes.SET_OPTIONS:
