@@ -19,7 +19,14 @@ const PopupNewSong = ({ clearSong, onClose, updateSongInfo }) => {
 
   const handleConfirm = () => {
     if (title) {
-      updateSongInfo({ difficulty, metre, subdivision, title });
+      updateSongInfo({
+        difficulty,
+        metre,
+        subdivision,
+        title,
+        isOwner: false,
+        songId: null,
+      });
       clearSong();
       onClose();
     }

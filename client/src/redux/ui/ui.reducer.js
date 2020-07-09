@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   isEditingSong: true,
   isSongPlaying: false,
   isSaveable: true,
-  option: {},
+  options: {},
 };
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {

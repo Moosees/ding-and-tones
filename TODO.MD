@@ -15,7 +15,6 @@
 
 ## Bugs
 
-* New song should disable saving changes
 * Save song changes creates new sub docs instead of updating?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
