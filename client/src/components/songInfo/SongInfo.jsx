@@ -67,9 +67,9 @@ const SongInfo = ({
 };
 
 const mapStateToProps = ({ song, ui, user }) => ({
-  difficulty: song.difficulty,
-  title: song.title,
-  isOwner: song.isOwner,
+  difficulty: song.info.difficulty,
+  title: song.info.title,
+  isOwner: song.info.isOwner,
   isSongPlaying: ui.isSongPlaying,
   isSignedIn: user.isSignedIn,
 });

@@ -46,7 +46,7 @@ const BpmSlider = ({ bpm, updateSongInfo, isSongPlaying }) => (
 );
 
 const mapStateToProps = ({ song, ui }) => ({
-  bpm: song.bpm,
+  bpm: song.info.bpm,
   isSongPlaying: ui.isSongPlaying,
 });
 

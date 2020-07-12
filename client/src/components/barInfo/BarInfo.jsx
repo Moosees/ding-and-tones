@@ -9,8 +9,8 @@ const BarControls = ({ barId, bars, beats }) => {
   return <InfoContainer>{metreList[metre].name}</InfoContainer>;
 };
 
-const mapStateToProps = ({ bars }) => ({
-  bars: bars.bars,
+const mapStateToProps = ({ song }) => ({
+  bars: song.bars,
 });
 
 export default connect(mapStateToProps)(BarControls);

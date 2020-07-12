@@ -62,9 +62,9 @@ const Bar = ({
   );
 };
 
-const mapStateToProps = ({ bars, ui }) => ({
-  bars: bars.bars,
-  beats: bars.beats,
+const mapStateToProps = ({ song, ui }) => ({
+  bars: song.bars,
+  beats: song.beats,
   currentBar: ui.currentBar,
   isEditingSong: ui.isEditingSong,
   isSongPlaying: ui.isSongPlaying,

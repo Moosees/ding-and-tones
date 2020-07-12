@@ -10,7 +10,7 @@
 * Check text inputs for bad words
 * Move position map to reducer?
 * Show your own scales/songs
-* Loading spinners, check for login tried?
+* Loading spinners, check for login tried, check for song/scale id param
 * What happens when you change to a scale with less notes than pattern needs?
 
 ## Bugs

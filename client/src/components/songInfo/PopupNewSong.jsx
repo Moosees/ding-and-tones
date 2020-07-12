@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { optionsDifficulty } from '../../constants';
-import { clearSong } from '../../redux/bars/bars.actions';
-import { updateSongInfo } from '../../redux/song/song.actions';
+import { clearSong, updateSongInfo } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';

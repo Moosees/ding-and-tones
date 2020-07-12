@@ -48,14 +48,14 @@ const setupAudio = async (scale) => {
   return sounds;
 };
 
-const setupSong = (bars) => {
+const setupSong = ({ arrangement, bars, beats }) => {
   const song = [];
-  bars.arrangement.forEach((barId) => {
-    const { lengthInBeats, measure, subdivision } = bars.bars[barId];
+  arrangement.forEach((barId) => {
+    const { lengthInBeats, measure, subdivision } = bars[barId];
     const measureFiltered = [];
 
     measure.forEach((beat) => {
-      const { sound, value } = bars.beats[beat];
+      const { sound, value } = beats[beat];
       if (value <= subdivision) measureFiltered.push({ sound, beatId: beat });
     });
 
@@ -71,14 +71,14 @@ const setupSong = (bars) => {
 
 // bpm always counts quarter notes right now
 export const playSong = async () => {
-  const { bars, song, scale } = store.getState();
+  const { song, scale } = store.getState();
   const audio = await setupAudio(scale.scaleSimple);
-  const arrangement = setupSong(bars);
+  const arrangement = setupSong(song);
 
   for (let bar of arrangement) {
     store.dispatch(setCurrentBar(bar.barId));
 
-    await playBar(bar, song.bpm, audio);
+    await playBar(bar, song.info.bpm, audio);
   }
 
   store.dispatch(setCurrentBeat(null));

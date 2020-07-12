@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { metreList } from '../../metre.data';
-import { updateMeasureAndBeats } from '../../redux/bars/bars.actions';
+import { updateMeasureAndBeats } from '../../redux/song/song.actions';
 import { store } from '../../redux/store';
 import Beat from '../beat/Beat';
 

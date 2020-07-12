@@ -1,6 +1,6 @@
 export const arrangementState = ['bar_a', 'bar_d'];
 
-export const barsDataState = {
+export const barsState = {
   bar_a: {
     metre: 's44',
     subdivision: 4,
@@ -32,4 +32,14 @@ export const beatsState = {
   dd: { sound: '0', value: 4 },
   de: { sound: '-', value: 8 },
   df: { sound: '-', value: 8 },
+};
+
+export const infoState = {
+  bpm: 100,
+  difficulty: 1,
+  isOwner: false,
+  metre: 's44',
+  songId: null,
+  subdivision: 4,
+  title: 'This is a song',
 };

@@ -39,8 +39,8 @@ const Beat = ({
   );
 };
 
-const mapStateToProps = ({ bars, ui }) => ({
-  beats: bars.beats,
+const mapStateToProps = ({ song, ui }) => ({
+  beats: song.beats,
   currentBeat: ui.currentBeat,
   dropdownBeatId: ui.dropdownBeatId,
   isEditingSong: ui.isEditingSong,

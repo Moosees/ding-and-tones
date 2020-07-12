@@ -5,7 +5,7 @@ import {
   deleteBar,
   duplicateBar,
   setBarSubdivision,
-} from '../../redux/bars/bars.actions';
+} from '../../redux/song/song.actions';
 import BtnGradient from '../button/Gradient';
 import MetreControls from '../metreControls/MetreControls';
 import { ControlsContainer, DragHandle } from './barControls.styles';
@@ -69,9 +69,9 @@ const BarControls = ({
   );
 };
 
-const mapStateToProps = ({ bars, ui }) => ({
-  bars: bars.bars,
-  beats: bars.beats,
+const mapStateToProps = ({ song, ui }) => ({
+  bars: song.bars,
+  beats: song.beats,
   isSongPlaying: ui.isSongPlaying,
 });
 

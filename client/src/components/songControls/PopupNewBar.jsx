@@ -31,8 +31,8 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
 };
 
 const mapStateToProps = ({ song }) => ({
-  songSubdivision: song.subdivision,
-  songMetre: song.metre,
+  songSubdivision: song.info.subdivision,
+  songMetre: song.info.metre,
 });
 
 export default connect(mapStateToProps)(PopupNewBar);

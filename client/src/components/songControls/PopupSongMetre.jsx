@@ -38,8 +38,8 @@ const PopupSongMetre = ({
 };
 
 const mapStateToProps = ({ song }) => ({
-  subdivision: song.subdivision,
-  metre: song.metre,
+  subdivision: song.info.subdivision,
+  metre: song.info.metre,
 });
 
 export default connect(mapStateToProps, {
