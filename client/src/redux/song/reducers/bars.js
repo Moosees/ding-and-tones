@@ -4,7 +4,7 @@ import { barsState } from '../song.initialState';
 const barsReducer = (state = barsState, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_NEW_BAR:
-      return { ...state, [payload.barId]: payload.barData };
+      return { ...state, [payload.barId]: payload.bar };
 
     case actionTypes.DUPLICATE_BAR:
       const oldBar = state[payload.oldBarId];
@@ -13,10 +13,7 @@ const barsReducer = (state = barsState, { type, payload }) => {
         [payload.newBarId]: { ...oldBar, measure: payload.newMeasure },
       };
 
-    case actionTypes.DELETE_BAR:
-      return state;
-
-    case actionTypes.SET_BAR_SUBDIVISION:
+    case actionTypes.UPDATE_BAR_SUBDIVISION:
       return {
         ...state,
         [payload.barId]: {
@@ -33,6 +30,9 @@ const barsReducer = (state = barsState, { type, payload }) => {
           measure: payload.newMeasure,
         },
       };
+
+    case actionTypes.UPDATE_SONG:
+      return payload.bars || state;
 
     default:
       return state;

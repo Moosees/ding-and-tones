@@ -9,9 +9,6 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
     case actionTypes.DUPLICATE_BAR:
       return { ...state, ...payload.newBeats };
 
-    case actionTypes.DELETE_BAR:
-      return state;
-
     case actionTypes.UPDATE_BEAT:
       return {
         ...state,
@@ -26,6 +23,9 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
         ...state,
         ...payload.newBeats,
       };
+
+    case actionTypes.UPDATE_SONG:
+      return payload.beats || state;
 
     default:
       return state;

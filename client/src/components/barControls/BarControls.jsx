@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import {
   deleteBar,
   duplicateBar,
-  setBarSubdivision,
+  updateBarSubdivision,
 } from '../../redux/song/song.actions';
 import BtnGradient from '../button/Gradient';
 import MetreControls from '../metreControls/MetreControls';
@@ -35,7 +35,7 @@ const BarControls = ({
   duplicateBar,
   isDragging,
   isSongPlaying,
-  setBarSubdivision,
+  updateBarSubdivision,
 }) => {
   const { metre, subdivision } = bars[barId];
 
@@ -63,7 +63,9 @@ const BarControls = ({
         small
         metre={metre}
         subdivision={subdivision}
-        setSubdivision={(subdivision) => setBarSubdivision(barId, subdivision)}
+        setSubdivision={(subdivision) =>
+          updateBarSubdivision(barId, subdivision)
+        }
       />
     </ControlsContainer>
   );
@@ -78,5 +80,5 @@ const mapStateToProps = ({ song, ui }) => ({
 export default connect(mapStateToProps, {
   deleteBar,
   duplicateBar,
-  setBarSubdivision,
+  updateBarSubdivision,
 })(BarControls);

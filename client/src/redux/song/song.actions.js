@@ -1,27 +1,8 @@
 import actionTypes from './song.types';
 
-export const loadSong = (song) => ({
-  type: actionTypes.LOAD_SONG,
-  payload: song,
-});
-
-export const updateSongInfo = (songInfo) => ({
-  type: actionTypes.UPDATE_SONG_INFO,
-  payload: songInfo,
-});
-
-export const addNewBar = ({ barId, barData, beats }) => ({
+export const addNewBar = (barWithBeatsAndId) => ({
   type: actionTypes.ADD_NEW_BAR,
-  payload: { barId, barData, beats },
-});
-
-export const clearSong = () => ({
-  type: actionTypes.CLEAR_SONG,
-});
-
-export const duplicateBar = ({ oldBarId, newBarId, newMeasure, newBeats }) => ({
-  type: actionTypes.DUPLICATE_BAR,
-  payload: { oldBarId, newBarId, newMeasure, newBeats },
+  payload: barWithBeatsAndId, // { bar, barId, beats }
 });
 
 export const deleteBar = (barId) => ({
@@ -29,24 +10,24 @@ export const deleteBar = (barId) => ({
   payload: barId,
 });
 
-export const loadBars = (bars) => ({
-  type: actionTypes.DELETE_BAR,
-  payload: bars,
+export const duplicateBar = (bar) => ({
+  type: actionTypes.DUPLICATE_BAR,
+  payload: bar, // { oldBarId, newBarId, newMeasure, newBeats }
 });
 
-// export const setBarMetre = (barId, newMetre, newLengthInBeats) => ({
-//   type: actionTypes.SET_BAR_METRE,
-//   payload: { barId, newMetre, newLengthInBeats },
+// export const loadSong = (song) => ({
+//   type: actionTypes.LOAD_SONG,
+//   payload: song,
 // });
-
-export const setBarSubdivision = (barId, newSubdivision) => ({
-  type: actionTypes.SET_BAR_SUBDIVISION,
-  payload: { barId, newSubdivision },
-});
 
 export const moveBarInArrangement = (barIndex, targetIndex) => ({
   type: actionTypes.MOVE_BAR,
   payload: { barIndex, targetIndex },
+});
+
+export const updateBarSubdivision = (barId, newSubdivision) => ({
+  type: actionTypes.UPDATE_BAR_SUBDIVISION,
+  payload: { barId, newSubdivision },
 });
 
 export const updateBeat = (beatId, newSound) => ({
@@ -57,4 +38,14 @@ export const updateBeat = (beatId, newSound) => ({
 export const updateMeasureAndBeats = (barId, newMeasure, newBeats) => ({
   type: actionTypes.UPDATE_MEASURE_AND_BEATS,
   payload: { barId, newMeasure, newBeats },
+});
+
+export const updateSong = (song) => ({
+  type: actionTypes.UPDATE_SONG,
+  payload: song, // arrangement, bars, beats, info
+});
+
+export const updateSongInfo = (songInfo) => ({
+  type: actionTypes.UPDATE_SONG_INFO,
+  payload: songInfo, // title, bpm, etc...
 });

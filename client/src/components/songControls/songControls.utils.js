@@ -16,7 +16,7 @@ export const createNewBar = (metre, subdivision) => {
     };
   });
 
-  const barData = {
+  const bar = {
     metre,
     subdivision: Math.max(subdivision, minSubdivision),
     repeats: 1,
@@ -24,5 +24,5 @@ export const createNewBar = (metre, subdivision) => {
     measure,
   };
 
-  return { barId, barData, beats };
+  return { barId, bar, beats };
 };
