@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/alert/alert.actions';
 import { loadScale } from '../../redux/scale/scale.actions';
-import { deleteFoundScale } from '../../redux/search/search.actions';
 import {
   DeleteIcon,
   ScaleContainer,
@@ -13,27 +12,18 @@ import {
   TextContainer,
 } from './scalesFound.styles';
 
-const ScalesFound = ({
-  deleteFoundScale,
-  isSignedIn,
-  loadScale,
-  scalesFound,
-  setAlert,
-}) => {
+const ScalesFound = ({ isSignedIn, loadScale, scales, setAlert }) => {
   const handleDelete = (scaleId, name) => {
     axios
       .delete(`/scale/id/${scaleId}`)
       .then((res) => {
-        if (res.status === 200) {
-          deleteFoundScale(res.data.scaleId);
-          setAlert(`"${res.data.name}" deleted`);
-        }
+        if (res.status === 200) setAlert(`"${res.data.name}" deleted`);
       })
       .catch((error) => setAlert('Delete failed'));
   };
 
   const getScales = () =>
-    scalesFound.map((result, i) => {
+    scales.map((result, i) => {
       const { name, label, layout, scale, scaleId, isOwner } = result;
       return (
         <ScaleContainer key={i}>
@@ -57,16 +47,15 @@ const ScalesFound = ({
       );
     });
 
-  return <ScaleList>{scalesFound && getScales()}</ScaleList>;
+  return <ScaleList>{scales && getScales()}</ScaleList>;
 };
 
 const mapStateToProps = ({ search, user }) => ({
-  scalesFound: search.scalesFound,
+  scales: search.scales,
   isSignedIn: user.isSignedIn,
 });
 
 export default connect(mapStateToProps, {
-  deleteFoundScale,
   loadScale,
   setAlert,
 })(ScalesFound);

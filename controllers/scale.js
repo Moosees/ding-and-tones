@@ -35,7 +35,7 @@ exports.getScales = (req, res) => {
       if (error) return res.status(400).json({ error });
 
       const data = scales.map((scale) => parseScaleObject(scale, req.userId));
-      res.status(200).json(data);
+      res.status(200).json({ scales: data });
     });
 };
 

@@ -3,6 +3,9 @@
 ## Current tasks
 
 * Songwriter backend - started
+* Saving or deleting should update search results
+* Remove scale search effect on scale route load
+* Handle search errors
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -12,6 +15,8 @@
 * Show your own scales/songs
 * Loading spinners, check for login tried, check for song/scale id param
 * What happens when you change to a scale with less notes than pattern needs?
+* Remove devtools in production
+* Rework metre template, split into beats?
 
 ## Bugs
 

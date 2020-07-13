@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/alert/alert.actions';
 import { setScaleName } from '../../redux/scale/scale.actions';
-import { setScalesFound } from '../../redux/search/search.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -17,10 +16,8 @@ const ScaleInfo = ({
   layout,
   name,
   scale,
-  scalesFound,
   setAlert,
   setScaleName,
-  setScalesFound,
 }) => {
   const [isSaving, setIsSaving] = useState(false);
 
@@ -31,7 +28,6 @@ const ScaleInfo = ({
       .post('/scale', { name, label, layout, scale: { round: scale } })
       .then((res) => {
         if (res.status === 200) {
-          setScalesFound([res.data, ...scalesFound]);
           setAlert(`"${res.data.name}" saved`);
           setIsSaving(false);
         }
@@ -73,7 +69,6 @@ const mapStateToProps = ({ scale, search, ui, user }) => ({
   layout: scale.layout,
   name: scale.name,
   scale: scale.scaleSimple,
-  scalesFound: search.scalesFound,
   isSaveable: ui.isSaveable,
   isSignedIn: user.isSignedIn,
 });
@@ -81,5 +76,4 @@ const mapStateToProps = ({ scale, search, ui, user }) => ({
 export default connect(mapStateToProps, {
   setAlert,
   setScaleName,
-  setScalesFound,
 })(ScaleInfo);

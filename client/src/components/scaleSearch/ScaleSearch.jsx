@@ -1,28 +1,20 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setScalesFound } from '../../redux/search/search.actions';
+import { fetchDataFrom } from '../../redux/search/search.actions';
 import { SearchContainer } from './scaleSearch.styles';
 
-const ScaleSearch = ({ scalesFound, setScalesFound, signInTried }) => {
+const ScaleSearch = ({ fetchDataFrom, isSearching, scales, signInTried }) => {
   useEffect(() => {
-    if (scalesFound === null && signInTried)
-      axios
-        .get('/scale')
-        .then((res) => {
-          if (res.status !== 200) throw new Error('Could not get scales');
-
-          setScalesFound(res.data);
-        })
-        .catch((error) => console.error(error));
-  }, [scalesFound, signInTried, setScalesFound]);
+    if (scales === null && signInTried && !isSearching) fetchDataFrom('/scale');
+  }, [scales, signInTried, isSearching, fetchDataFrom]);
 
   return <SearchContainer>Search</SearchContainer>;
 };
 
 const mapStateToProps = ({ search, user }) => ({
-  scalesFound: search.scalesFound,
+  isSearching: search.isSearching,
+  scales: search.scales,
   signInTried: user.signInTried,
 });
 
-export default connect(mapStateToProps, { setScalesFound })(ScaleSearch);
+export default connect(mapStateToProps, { fetchDataFrom })(ScaleSearch);

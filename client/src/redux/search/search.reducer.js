@@ -1,24 +1,32 @@
 import actionTypes from './search.types';
-import { deleteFoundScale } from './search.utils';
 
 const INITIAL_STATE = {
-  scalesFound: null,
+  error: '',
+  isSearching: false,
+  scales: null,
+  songs: null,
 };
 
 const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case actionTypes.DELETE_FOUND_SCALE:
-      const filteredScales = deleteFoundScale(payload, state.scalesFound);
-
+    case actionTypes.ADD_SEARCH_RESULTS:
       return {
         ...state,
-        scalesFound: filteredScales,
+        ...payload,
+        isSearching: false,
       };
 
-    case actionTypes.SET_SCALES_FOUND:
+    case actionTypes.SEARCH_ERROR:
       return {
         ...state,
-        scalesFound: payload,
+        error: payload,
+        isSearching: true,
+      };
+
+    case actionTypes.SEARCH_STARTED:
+      return {
+        ...state,
+        isSearching: true,
       };
 
     default:
