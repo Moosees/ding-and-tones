@@ -1,11 +1,11 @@
-import actionTypes from './chords.types';
+import chordsTypes from './chords.types';
 
 export const toggleChordIsSelected = (id, scale) => ({
-  type: actionTypes.SELECT_CHORD,
+  type: chordsTypes.SELECT_CHORD,
   payload: { id, scale },
 });
 
 export const setAllChordFiltersTo = (allSelected, currentScale) => ({
-  type: actionTypes.SET_ALL_FILTERS,
+  type: chordsTypes.SET_ALL_FILTERS,
   payload: { allSelected, currentScale },
 });

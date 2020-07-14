@@ -1,5 +1,5 @@
 import { scaleState } from './scale.initialState';
-import actionTypes from './scale.types';
+import scaleTypes from './scale.types';
 import {
   createFullScaleFromNames,
   createScaleLabel,
@@ -9,7 +9,7 @@ import {
 
 const scaleReducer = (state = scaleState, { type, payload }) => {
   switch (type) {
-    case actionTypes.ADD_NOTE:
+    case scaleTypes.ADD_NOTE:
       const newScaleSorted = sortScaleByFreq([...state.scaleSimple, payload]);
 
       return {
@@ -19,13 +19,13 @@ const scaleReducer = (state = scaleState, { type, payload }) => {
         scaleFull: createFullScaleFromNames(newScaleSorted),
       };
 
-    case actionTypes.SCALE_FETCH_ERROR:
+    case scaleTypes.SCALE_FETCH_ERROR:
       return { ...state, error: payload, isFetching: false };
 
-    case actionTypes.SCALE_FETCH_STARTED:
+    case scaleTypes.SCALE_FETCH_STARTED:
       return { ...state, isFetching: true };
 
-    case actionTypes.LOAD_SCALE:
+    case scaleTypes.LOAD_SCALE:
       return {
         ...state,
         ...payload,
@@ -33,7 +33,7 @@ const scaleReducer = (state = scaleState, { type, payload }) => {
         scaleFull: createFullScaleFromNames(payload.scaleSimple),
       };
 
-    case actionTypes.REMOVE_NOTE:
+    case scaleTypes.REMOVE_NOTE:
       const filteredScaleSimple = state.scaleSimple.filter(
         (note) => note !== payload
       );
@@ -45,13 +45,13 @@ const scaleReducer = (state = scaleState, { type, payload }) => {
         scaleFull: createFullScaleFromNames(filteredScaleSimple),
       };
 
-    case actionTypes.SET_NAME:
+    case scaleTypes.SET_NAME:
       return {
         ...state,
         name: payload,
       };
 
-    case actionTypes.TRANSPOSE_SCALE:
+    case scaleTypes.TRANSPOSE_SCALE:
       const transposedScale = transposeScale(state.scaleSimple, payload);
 
       return {

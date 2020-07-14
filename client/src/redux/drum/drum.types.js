@@ -1,8 +1,8 @@
-const actionTypes = {
+const drumTypes = {
   FLUSH_DRUM_STATE: 'FLUSH_DRUM_STATE',
   SET_DISPLAYED_CHORD: 'SET_DISPLAYED_CHORD',
   SET_DISPLAYED_NOTE: 'SET_DISPLAYED_NOTE',
   SET_SHOW_INTERVALS: 'SET_SHOW_INTERVALS',
 };
 
-export default actionTypes;
+export default drumTypes;

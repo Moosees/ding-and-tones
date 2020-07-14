@@ -1,15 +1,15 @@
 import { beatsState } from '../song.initialState';
-import actionTypes from '../song.types';
+import songTypes from '../song.types';
 
 const beatsReducer = (state = beatsState, { type, payload }) => {
   switch (type) {
-    case actionTypes.ADD_NEW_BAR:
+    case songTypes.ADD_NEW_BAR:
       return { ...state, ...payload.beats };
 
-    case actionTypes.DUPLICATE_BAR:
+    case songTypes.DUPLICATE_BAR:
       return { ...state, ...payload.newBeats };
 
-    case actionTypes.UPDATE_BEAT:
+    case songTypes.UPDATE_BEAT:
       return {
         ...state,
         [payload.beatId]: {
@@ -18,13 +18,13 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
         },
       };
 
-    case actionTypes.UPDATE_MEASURE_AND_BEATS:
+    case songTypes.UPDATE_MEASURE_AND_BEATS:
       return {
         ...state,
         ...payload.newBeats,
       };
 
-    case actionTypes.UPDATE_SONG:
+    case songTypes.UPDATE_SONG:
       return payload.beats || state;
 
     default:

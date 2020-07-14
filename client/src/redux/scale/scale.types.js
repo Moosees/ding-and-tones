@@ -1,4 +1,4 @@
-const actionTypes = {
+const scaleTypes = {
   ADD_NOTE: 'ADD_NOTE',
   LOAD_SCALE: 'LOAD_SCALE',
   REMOVE_NOTE: 'REMOVE_NOTE',
@@ -8,4 +8,4 @@ const actionTypes = {
   TRANSPOSE_SCALE: 'TRANSPOSE_SCALE',
 };
 
-export default actionTypes;
+export default scaleTypes;

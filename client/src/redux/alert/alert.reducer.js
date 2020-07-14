@@ -1,4 +1,4 @@
-import actionTypes from './alert.types';
+import alertTypes from './alert.types';
 
 const INITIAL_STATE = {
   msg: '',
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case actionTypes.SET_ALERT:
+    case alertTypes.CREATE_ALERT:
       return {
         ...state,
         msg: payload,

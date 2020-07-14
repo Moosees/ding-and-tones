@@ -1,5 +1,5 @@
-import { chordList } from './chords.data';
-import actionTypes from './chords.types';
+import { chordList } from '../../assets/chords';
+import chordsTypes from './chords.types';
 import {
   findAllChords,
   setAllIsSelected,
@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 
 const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case actionTypes.SELECT_CHORD:
+    case chordsTypes.SELECT_CHORD:
       const { id, scale } = payload;
       const updatedChordList = updateIsSelected(state.chordList, id);
 
@@ -28,7 +28,7 @@ const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
         foundChords: updatedFoundChords,
       };
 
-    case actionTypes.SET_ALL_FILTERS:
+    case chordsTypes.SET_ALL_FILTERS:
       const { allSelected, currentScale } = payload;
       const newChordList = setAllIsSelected(state.chordList, allSelected);
 

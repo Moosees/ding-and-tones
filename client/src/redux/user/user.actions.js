@@ -1,10 +1,10 @@
-import actionTypes from './user.types';
+import userTypes from './user.types';
 
 export const signIn = (user, isSignedIn) => ({
-  type: actionTypes.SIGN_IN,
+  type: userTypes.SIGN_IN,
   payload: { user, isSignedIn },
 });
 
 export const signOut = () => ({
-  type: actionTypes.SIGN_OUT,
+  type: userTypes.SIGN_OUT,
 });

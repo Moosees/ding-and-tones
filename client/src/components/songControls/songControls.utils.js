@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { metreList } from '../../metre.data';
+import { metreList } from '../../assets/metre';
 
 export const createNewBar = (metre, subdivision) => {
   const { template, minSubdivision } = metreList[metre];

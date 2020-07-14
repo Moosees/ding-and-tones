@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { optionsDifficulty } from '../../constants';
+import { optionsDifficulty } from '../../assets/constants';
 import { updateSongInfo } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';

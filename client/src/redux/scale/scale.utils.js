@@ -1,5 +1,5 @@
-import { noteNameToValue, noteValueToName } from '../../intervals.data';
-import { MIN_NOTE_VALUE, MAX_NOTE_VALUE } from '../../constants';
+import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
+import { noteNameToValue, noteValueToName } from '../../assets/intervals';
 
 // const addNoteNameFromValue = (scale) => {
 //   return scale.map((noteValue) => {

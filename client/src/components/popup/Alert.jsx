@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { ALERT_TIMEOUT } from '../../constants';
+import { ALERT_TIMEOUT } from '../../assets/constants';
 import { setAlert } from '../../redux/alert/alert.actions';
 import BtnPrimary from '../button/Primary';
 

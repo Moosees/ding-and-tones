@@ -1,5 +1,5 @@
-import { TRANSLATE_BASE } from '../../constants';
-import { intervals } from '../../intervals.data';
+import { TRANSLATE_BASE } from '../../assets/constants';
+import { intervals } from '../../assets/intervals';
 
 export const getChordColor = (note, notesInScale) => {
   return intervals[notesInScale[note]].color;

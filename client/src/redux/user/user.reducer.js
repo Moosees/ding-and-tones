@@ -1,4 +1,4 @@
-import actionTypes from './user.types';
+import userTypes from './user.types';
 
 const INITIAL_STATE = {
   name: null,
@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case actionTypes.SIGN_IN:
+    case userTypes.SIGN_IN:
       return {
         ...state,
         ...payload.user,
@@ -17,7 +17,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         signInTried: true,
       };
 
-    case actionTypes.SIGN_OUT:
+    case userTypes.SIGN_OUT:
       return {
         ...state,
         user: null,

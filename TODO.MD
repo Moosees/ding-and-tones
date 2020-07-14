@@ -24,6 +24,7 @@
 * Play song logic should be reworked with less forEach
 * App crash when trying to save invalid scale - prevent with validation
 * Logo svg gets requested on all route changes
+* flushDrumState should not be needed
 
 ## Design
 

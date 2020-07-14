@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { metreList } from '../../metre.data';
+import { metreList } from '../../assets/metre';
 import { addNewBar } from '../../redux/song/song.actions';
 import { toggleEditSong } from '../../redux/ui/ui.actions';
 import BpmSlider from '../bpmSlider/BpmSlider';

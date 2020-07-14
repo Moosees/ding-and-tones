@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
-import { GOOGLE_CLIENT_ID } from '../../oauth';
+import { GOOGLE_CLIENT_ID } from '../../assets/oauth';
 import { signIn, signOut } from '../../redux/user/user.actions';
 import BtnControls from '../button/Controls';
 

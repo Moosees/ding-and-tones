@@ -1,6 +1,6 @@
-import actionTypes from './alert.types';
+import alertTypes from './alert.types';
 
 export const setAlert = (msg) => ({
-  type: actionTypes.SET_ALERT,
+  type: alertTypes.CREATE_ALERT,
   payload: msg,
 });

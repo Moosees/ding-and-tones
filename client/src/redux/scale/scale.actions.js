@@ -1,13 +1,13 @@
 import axios from 'axios';
-import actionTypes from './scale.types';
+import scaleTypes from './scale.types';
 
 export const addNoteToScale = (newNote) => ({
-  type: actionTypes.ADD_NOTE,
+  type: scaleTypes.ADD_NOTE,
   payload: newNote,
 });
 
 export const getScaleById = (id) => (dispatch) => {
-  dispatch({ type: actionTypes.SCALE_FETCH_STARTED });
+  dispatch({ type: scaleTypes.SCALE_FETCH_STARTED });
 
   return axios
     .get(`/scale/id/${id}`)
@@ -20,30 +20,30 @@ export const getScaleById = (id) => (dispatch) => {
           layout,
           scaleSimple: scale.round,
         };
-        dispatch({ type: actionTypes.LOAD_SCALE, payload });
+        dispatch({ type: scaleTypes.LOAD_SCALE, payload });
       }
     })
     .catch((error) =>
-      dispatch({ type: actionTypes.SCALE_FETCH_ERROR, payload: error.message })
+      dispatch({ type: scaleTypes.SCALE_FETCH_ERROR, payload: error.message })
     );
 };
 
 export const loadScale = (scale) => ({
-  type: actionTypes.LOAD_SCALE,
+  type: scaleTypes.LOAD_SCALE,
   payload: scale,
 });
 
 export const removeNoteFromScale = (noteToRemove) => ({
-  type: actionTypes.REMOVE_NOTE,
+  type: scaleTypes.REMOVE_NOTE,
   payload: noteToRemove,
 });
 
 export const setScaleName = (name) => ({
-  type: actionTypes.SET_NAME,
+  type: scaleTypes.SET_NAME,
   payload: name,
 });
 
 export const transposeScale = (destination) => ({
-  type: actionTypes.TRANSPOSE_SCALE,
+  type: scaleTypes.TRANSPOSE_SCALE,
   payload: destination,
 });

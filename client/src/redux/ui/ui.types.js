@@ -1,4 +1,4 @@
-const actionTypes = {
+const uiTypes = {
   SET_CURRENT_BAR: 'SET_CURRENT_BAR',
   SET_CURRENT_BEAT: 'SET_CURRENT_BEAT',
   SET_DROPDOWN_BEAT_ID: 'SET_DROPDOWN_BEAT_ID',
@@ -8,4 +8,4 @@ const actionTypes = {
   TOGGLE_EDIT_SONG: 'TOGGLE_EDIT_SONG',
 };
 
-export default actionTypes;
+export default uiTypes;

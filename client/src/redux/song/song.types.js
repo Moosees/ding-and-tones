@@ -1,4 +1,4 @@
-const actionTypes = {
+const songTypes = {
   ADD_NEW_BAR: 'ADD_NEW_BAR',
   DELETE_BAR: 'DELETE_BAR',
   DUPLICATE_BAR: 'DUPLICATE_BAR',
@@ -10,4 +10,4 @@ const actionTypes = {
   UPDATE_SONG_INFO: 'UPDATE_SONG_INFO',
 };
 
-export default actionTypes;
+export default songTypes;

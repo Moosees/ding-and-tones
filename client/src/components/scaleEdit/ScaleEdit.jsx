@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../constants';
-import { noteValueToName } from '../../intervals.data';
+import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
+import { noteValueToName } from '../../assets/intervals';
 import { flushDrumState } from '../../redux/drum/drum.actions';
 import {
   addNoteToScale,

@@ -1,5 +1,5 @@
-import { MAX_NOTE_VALUE } from '../../constants';
-import { noteNameToValue, noteValueToName } from '../../intervals.data';
+import { MAX_NOTE_VALUE } from '../../assets/constants';
+import { noteNameToValue, noteValueToName } from '../../assets/intervals';
 
 /**
  * Get the notes that builds a specific chord

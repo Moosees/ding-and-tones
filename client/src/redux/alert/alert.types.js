@@ -1,5 +1,5 @@
-const actionTypes = {
-  SET_ALERT: 'SET_ALERT',
+const alertTypes = {
+  CREATE_ALERT: 'CREATE_ALERT',
 };
 
-export default actionTypes;
+export default alertTypes;

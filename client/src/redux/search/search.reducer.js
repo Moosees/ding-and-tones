@@ -1,4 +1,4 @@
-import actionTypes from './search.types';
+import searchTypes from './search.types';
 
 const INITIAL_STATE = {
   error: '',
@@ -9,21 +9,21 @@ const INITIAL_STATE = {
 
 const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case actionTypes.LOAD_SEARCH_RESULTS:
+    case searchTypes.LOAD_SEARCH_RESULTS:
       return {
         ...state,
         ...payload,
         isFetching: false,
       };
 
-    case actionTypes.SEARCH_ERROR:
+    case searchTypes.SEARCH_ERROR:
       return {
         ...state,
         error: payload,
         isFetching: true,
       };
 
-    case actionTypes.SEARCH_STARTED:
+    case searchTypes.SEARCH_STARTED:
       return {
         ...state,
         isFetching: true,
