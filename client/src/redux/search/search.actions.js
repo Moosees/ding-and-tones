@@ -8,9 +8,9 @@ export const fetchDataFrom = (searchTerm) => (dispatch) => {
     .get(searchTerm)
     .then((res) => {
       if (res.status === 200)
-        dispatch({ type: actionTypes.ADD_SEARCH_RESULTS, payload: res.data });
+        dispatch({ type: actionTypes.LOAD_SEARCH_RESULTS, payload: res.data });
     })
-    .catch((error) =>
-      dispatch({ type: actionTypes.SEARCH_ERROR, payload: error })
-    );
+    .catch((error) => {
+      dispatch({ type: actionTypes.SEARCH_ERROR, payload: error.message });
+    });
 };

@@ -1,3 +1,4 @@
+import { scaleState } from './scale.initialState';
 import actionTypes from './scale.types';
 import {
   createFullScaleFromNames,
@@ -6,15 +7,7 @@ import {
   transposeScale,
 } from './scale.utils';
 
-const INITIAL_STATE = {
-  name: '',
-  layout: 1,
-  label: '',
-  scaleSimple: [],
-  scaleFull: [],
-};
-
-const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
+const scaleReducer = (state = scaleState, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_NOTE:
       const newScaleSorted = sortScaleByFreq([...state.scaleSimple, payload]);
@@ -26,10 +19,17 @@ const scaleReducer = (state = INITIAL_STATE, { type, payload }) => {
         scaleFull: createFullScaleFromNames(newScaleSorted),
       };
 
+    case actionTypes.SCALE_FETCH_ERROR:
+      return { ...state, error: payload, isFetching: false };
+
+    case actionTypes.SCALE_FETCH_STARTED:
+      return { ...state, isFetching: true };
+
     case actionTypes.LOAD_SCALE:
       return {
         ...state,
         ...payload,
+        isFetching: false,
         scaleFull: createFullScaleFromNames(payload.scaleSimple),
       };
 

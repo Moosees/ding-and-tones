@@ -12,7 +12,13 @@ import {
   TextContainer,
 } from './scalesFound.styles';
 
-const ScalesFound = ({ isSignedIn, loadScale, scales, setAlert }) => {
+const ScalesFound = ({
+  isFetching,
+  isSignedIn,
+  loadScale,
+  scales,
+  setAlert,
+}) => {
   const handleDelete = (scaleId, name) => {
     axios
       .delete(`/scale/id/${scaleId}`)
@@ -47,11 +53,16 @@ const ScalesFound = ({ isSignedIn, loadScale, scales, setAlert }) => {
       );
     });
 
-  return <ScaleList>{scales && getScales()}</ScaleList>;
+  return isFetching ? (
+    <div>Loading...</div>
+  ) : (
+    <ScaleList>{scales && getScales()}</ScaleList>
+  );
 };
 
 const mapStateToProps = ({ search, user }) => ({
   scales: search.scales,
+  isFetching: search.isFetching,
   isSignedIn: user.isSignedIn,
 });
 

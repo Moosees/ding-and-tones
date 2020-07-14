@@ -4,8 +4,7 @@
 
 * Songwriter backend - started
 * Saving or deleting should update search results
-* Remove scale search effect on scale route load
-* Handle search errors
+* Handle fetch errors
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user

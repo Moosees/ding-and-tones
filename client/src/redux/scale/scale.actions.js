@@ -1,3 +1,4 @@
+import axios from 'axios';
 import actionTypes from './scale.types';
 
 export const addNoteToScale = (newNote) => ({
@@ -5,9 +6,31 @@ export const addNoteToScale = (newNote) => ({
   payload: newNote,
 });
 
-export const loadScale = (scaleObject) => ({
+export const getScaleById = (id) => (dispatch) => {
+  dispatch({ type: actionTypes.SCALE_FETCH_STARTED });
+
+  return axios
+    .get(`/scale/id/${id}`)
+    .then((res) => {
+      if (res.status === 200) {
+        const { name, label, layout, scale } = res.data;
+        const payload = {
+          name,
+          label,
+          layout,
+          scaleSimple: scale.round,
+        };
+        dispatch({ type: actionTypes.LOAD_SCALE, payload });
+      }
+    })
+    .catch((error) =>
+      dispatch({ type: actionTypes.SCALE_FETCH_ERROR, payload: error.message })
+    );
+};
+
+export const loadScale = (scale) => ({
   type: actionTypes.LOAD_SCALE,
-  payload: scaleObject,
+  payload: scale,
 });
 
 export const removeNoteFromScale = (noteToRemove) => ({
