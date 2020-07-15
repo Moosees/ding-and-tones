@@ -10,45 +10,61 @@ import {
 const scaleReducer = (state = scaleState, { type, payload }) => {
   switch (type) {
     case scaleTypes.ADD_NOTE:
-      const newScaleSorted = sortScaleByFreq([...state.scaleSimple, payload]);
+      const newScaleSorted = sortScaleByFreq([...state.scale.round, payload]);
 
       return {
         ...state,
         label: createScaleLabel(newScaleSorted),
-        scaleSimple: newScaleSorted,
-        scaleFull: createFullScaleFromNames(newScaleSorted),
+        scale: {
+          round: newScaleSorted,
+          scaleFull: createFullScaleFromNames(newScaleSorted),
+        },
       };
 
-    case scaleTypes.SCALE_DELETE_SUCCESSFUL:
-      return { ...state, isFetching: false };
+    case scaleTypes.DELETE_ERROR:
+      return { ...state, error: payload, isDeleting: false };
+    case scaleTypes.DELETE_STARTED:
+      return { ...state, isDeleting: true };
+    case scaleTypes.DELETE_SUCCESSFUL:
+      return { ...state, isDeleting: false };
 
-    case scaleTypes.SCALE_DELETE_ERROR:
-    case scaleTypes.SCALE_FETCH_ERROR:
+    case scaleTypes.FETCH_ERROR:
       return { ...state, error: payload, isFetching: false };
-
-    case scaleTypes.SCALE_DELETE_STARTED:
-    case scaleTypes.SCALE_FETCH_STARTED:
+    case scaleTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
 
+    case scaleTypes.FETCH_SUCCESSFUL:
+    case scaleTypes.SAVE_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
       return {
         ...state,
         ...payload,
         isFetching: false,
-        scaleFull: createFullScaleFromNames(payload.scaleSimple),
+        isSaving: false,
+        scale: {
+          round: payload.scale.round,
+          scaleFull: createFullScaleFromNames(payload.scale.round),
+        },
       };
 
     case scaleTypes.REMOVE_NOTE:
-      const filteredScaleSimple = state.scaleSimple.filter(
+      const filteredScaleRound = state.scale.round.filter(
         (note) => note !== payload
       );
 
       return {
         ...state,
-        label: createScaleLabel(filteredScaleSimple),
-        scaleSimple: filteredScaleSimple,
-        scaleFull: createFullScaleFromNames(filteredScaleSimple),
+        label: createScaleLabel(filteredScaleRound),
+        scale: {
+          round: filteredScaleRound,
+          scaleFull: createFullScaleFromNames(filteredScaleRound),
+        },
       };
+
+    case scaleTypes.SAVE_ERROR:
+      return { ...state, error: payload, isSaving: false };
+    case scaleTypes.SAVE_STARTED:
+      return { ...state, isSaving: true };
 
     case scaleTypes.SET_NAME:
       return {
@@ -57,13 +73,15 @@ const scaleReducer = (state = scaleState, { type, payload }) => {
       };
 
     case scaleTypes.TRANSPOSE_SCALE:
-      const transposedScale = transposeScale(state.scaleSimple, payload);
+      const transposedScale = transposeScale(state.scale.round, payload);
 
       return {
         ...state,
         label: createScaleLabel(transposedScale),
-        scaleSimple: transposedScale,
-        scaleFull: createFullScaleFromNames(transposedScale),
+        scale: {
+          round: transposedScale,
+          scaleFull: createFullScaleFromNames(transposedScale),
+        },
       };
 
     default:

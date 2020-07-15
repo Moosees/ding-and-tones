@@ -3,9 +3,9 @@ import searchTypes from './search.types';
 
 const INITIAL_STATE = {
   error: '',
-  isFetching: false,
-  scales: null,
-  songs: null,
+  isSearching: false,
+  scales: [],
+  songs: [],
 };
 
 const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -14,10 +14,10 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         ...payload,
-        isFetching: false,
+        isSearching: false,
       };
 
-    case scaleTypes.SCALE_DELETE_SUCCESSFUL:
+    case scaleTypes.DELETE_SUCCESSFUL:
       return {
         ...state,
         scales: state.scales.filter(
@@ -25,17 +25,23 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
         ),
       };
 
+    case scaleTypes.SAVE_SUCCESSFUL:
+      return {
+        ...state,
+        scales: [...state.scales, payload],
+      };
+
     case searchTypes.SEARCH_ERROR:
       return {
         ...state,
         error: payload,
-        isFetching: true,
+        isSearching: true,
       };
 
     case searchTypes.SEARCH_STARTED:
       return {
         ...state,
-        isFetching: true,
+        isSearching: true,
       };
 
     default:

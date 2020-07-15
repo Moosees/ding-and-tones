@@ -1,14 +1,18 @@
 const scaleTypes = {
-  ADD_NOTE: 'ADD_NOTE',
-  LOAD_SCALE: 'LOAD_SCALE',
-  REMOVE_NOTE: 'REMOVE_NOTE',
-  SCALE_DELETE_ERROR: 'SCALE_DELETE_ERROR',
-  SCALE_DELETE_SUCCESSFUL: 'SCALE_DELETE_SUCCESSFUL',
-  SCALE_DELETE_STARTED: 'SCALE_DELETE_STARTED',
-  SCALE_FETCH_ERROR: 'SCALE_FETCH_ERROR',
-  SCALE_FETCH_STARTED: 'SCALE_FETCH_STARTED',
-  SET_NAME: 'SET_NAME',
-  TRANSPOSE_SCALE: 'TRANSPOSE_SCALE',
+  ADD_NOTE: 'scale/addNote',
+  DELETE_ERROR: 'scale/deleteError',
+  DELETE_STARTED: 'scale/deleteStarted',
+  DELETE_SUCCESSFUL: 'scale/deleteSuccessful',
+  FETCH_ERROR: 'scale/fetchError',
+  FETCH_STARTED: 'scale/fetchStarted',
+  FETCH_SUCCESSFUL: 'scale/fetchSuccessful',
+  LOAD_SCALE: 'scale/load',
+  REMOVE_NOTE: 'scale/removeNote',
+  SAVE_ERROR: 'scale/saveError',
+  SAVE_STARTED: 'scale/saveStarted',
+  SAVE_SUCCESSFUL: 'scale/saveSuccessful',
+  SET_NAME: 'scale/setName',
+  TRANSPOSE_SCALE: 'scale/transpose',
 };
 
 export default scaleTypes;

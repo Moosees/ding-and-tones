@@ -7,7 +7,7 @@ exports.deleteScale = (req, res) => {
 
   Scale.findOneAndDelete({ _id: scaleId, author: userId }).exec(
     (error, scale) => {
-      if (error) return res.status(400).json({ error });
+      if (error || !scale) return res.status(400).json();
 
       res.status(200).json();
     }
@@ -18,7 +18,7 @@ exports.getScaleById = (req, res) => {
   Scale.findById(req.params.scaleId)
     .select('_id name label layout scale author')
     .exec((error, scale) => {
-      if (error) return res.status(400).json({ error });
+      if (error || !scale) return res.status(400).json();
 
       const data = parseScaleObject(scale, req.userId);
       res.status(200).json(data);
@@ -44,7 +44,7 @@ exports.saveScale = (req, res) => {
   req.body.isNew = true;
 
   new Scale(req.body).save((error, scale) => {
-    if (error) return res.status(400).json({ error });
+    if (error || !scale) return res.status(400).json({ error });
 
     const data = parseScaleObject(scale, userId);
     res.status(200).json(data);

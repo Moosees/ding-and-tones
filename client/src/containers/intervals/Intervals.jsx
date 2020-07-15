@@ -50,7 +50,7 @@ const Intervals = ({ displayedChord, displayedNote, scale }) => {
 const mapStateToProps = ({ scale, drum }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
-  scale: scale.scaleFull,
+  scale: scale.scale.scaleFull,
 });
 
 export default connect(mapStateToProps)(Intervals);

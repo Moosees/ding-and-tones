@@ -30,7 +30,7 @@ const SongArrangement = ({
 };
 
 const mapStateToProps = ({ scale, song }) => ({
-  scale: scale.scaleSimple,
+  scale: scale.scale.round,
   arrangement: song.arrangement,
 });
 

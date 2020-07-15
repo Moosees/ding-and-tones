@@ -91,7 +91,7 @@ const mapStateToProps = ({ drum, scale }) => ({
   displayedNote: drum.displayedNote,
   showIntervals: drum.showIntervals,
   layout: scale.layout,
-  scale: scale.scaleFull,
+  scale: scale.scale.scaleFull,
 });
 
 export default connect(mapStateToProps)(Drum);

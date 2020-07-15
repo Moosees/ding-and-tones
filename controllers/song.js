@@ -19,7 +19,7 @@ exports.saveSong = (req, res) => {
     .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
     .select('_id composer title')
     .exec((error, song) => {
-      if (error) return res.status(400).json({ error });
+      if (error || !song) return res.status(400).json();
 
       const data = parseSaveResponse(song, userId);
       res.status(200).json(data);

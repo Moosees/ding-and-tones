@@ -22,7 +22,7 @@ const Songwriter = () => {
   //       if (res.status === 200) {
   //         // const {bars, scale, song} = res.data
   //         // loadSong(song, bars)
-  //         // if user want scale: loadScale({scaleSimple: scale})
+  //         // if user want scale: loadScale(scale.scale.round)
   //       }
   //     })
   //     .catch((error) => console.error(error));

@@ -66,7 +66,7 @@ const ChordFilter = ({
 
 const mapStateToProps = ({ chords, scale }) => ({
   chordList: chords.chordList,
-  scale: scale.scaleFull,
+  scale: scale.scale.scaleFull,
 });
 
 export default connect(mapStateToProps, {

@@ -2,9 +2,9 @@
 
 ## Current tasks
 
+* Split scale reducer
 * Songwriter backend - started
-* Saving or deleting should update search results
-* Handle fetch errors
+* Handle fetch errors (better)
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user

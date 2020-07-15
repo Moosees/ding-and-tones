@@ -13,8 +13,19 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
         msg: payload,
       };
 
-    case scaleTypes.SCALE_DELETE_SUCCESSFUL:
+    case scaleTypes.DELETE_ERROR:
+    case scaleTypes.FETCH_ERROR:
+    case scaleTypes.SAVE_ERROR:
+      return { ...state, msg: 'Request failed' };
+
+    case scaleTypes.DELETE_SUCCESSFUL:
       return { ...state, msg: `"${payload.name}" deleted` };
+
+    case scaleTypes.FETCH_SUCCESSFUL:
+      return { ...state, msg: `"${payload.name}" loaded` };
+
+    case scaleTypes.SAVE_SUCCESSFUL:
+      return { ...state, msg: `"${payload.name}" saved` };
 
     default:
       return state;

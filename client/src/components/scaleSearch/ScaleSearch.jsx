@@ -3,16 +3,19 @@ import { connect } from 'react-redux';
 import { fetchDataFrom } from '../../redux/search/search.actions';
 import { SearchContainer } from './scaleSearch.styles';
 
-const ScaleSearch = ({ fetchDataFrom, isFetching, scales, signInTried }) => {
+const ScaleSearch = ({ fetchDataFrom, isSearching, scales, signInTried }) => {
   useEffect(() => {
-    if (scales === null && signInTried && !isFetching) fetchDataFrom('/scale');
-  }, [scales, signInTried, isFetching, fetchDataFrom]);
+    if (signInTried && !isSearching && !scales.length) {
+      console.log('fetching scales');
+      fetchDataFrom('/scale');
+    }
+  }, [scales, signInTried, isSearching, fetchDataFrom]);
 
   return <SearchContainer>Search</SearchContainer>;
 };
 
 const mapStateToProps = ({ search, user }) => ({
-  isFetching: search.isFetching,
+  isSearching: search.isSearching,
   scales: search.scales,
   signInTried: user.signInTried,
 });

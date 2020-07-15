@@ -12,14 +12,15 @@ import {
 
 const ScalesFound = ({
   deleteScaleById,
-  isFetching,
+  isSearching,
   isSignedIn,
   loadScale,
   scales,
 }) => {
   const getScales = () =>
-    scales.map((result, i) => {
-      const { name, label, layout, scale, scaleId, isOwner } = result;
+    scales.map((scale, i) => {
+      const { name, label, scaleId, isOwner } = scale;
+
       return (
         <ScaleContainer key={i}>
           {isOwner && isSignedIn && (
@@ -30,11 +31,7 @@ const ScalesFound = ({
               delete
             </DeleteIcon>
           )}
-          <TextContainer
-            onClick={() =>
-              loadScale({ name, label, layout, scaleSimple: scale.round })
-            }
-          >
+          <TextContainer onClick={() => loadScale(scale)}>
             <ScaleLabel>{name}</ScaleLabel>
             <ScaleNotes>{label}</ScaleNotes>
           </TextContainer>
@@ -42,7 +39,7 @@ const ScalesFound = ({
       );
     });
 
-  return isFetching ? (
+  return isSearching ? (
     <div>Loading...</div>
   ) : (
     <ScaleList>{scales && getScales()}</ScaleList>
@@ -51,7 +48,7 @@ const ScalesFound = ({
 
 const mapStateToProps = ({ search, user }) => ({
   scales: search.scales,
-  isFetching: search.isFetching,
+  isSearching: search.isSearching,
   isSignedIn: user.isSignedIn,
 });
 

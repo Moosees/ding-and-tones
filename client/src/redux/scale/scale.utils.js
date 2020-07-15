@@ -62,14 +62,16 @@ export const createFullScaleFromNames = (scale) => {
 //   const scaleAry = scaleString.split(' ');
 //   const scaleFlat = removeSharps(scaleAry);
 //   const scaleTrimmed = removeDuplicateNotes(scaleFlat);
-//   const scaleSimple = sortScaleByFreq(scaleTrimmed);
-//   const scaleFull = createFullScaleFromNames(scaleSimple);
+//   const round = sortScaleByFreq(scaleTrimmed);
+//   const scaleFull = createFullScaleFromNames(round);
 
 //   return {
 //     name,
 //     layout,
-//     scaleSimple,
-//     scaleFull,
+//     scale: {
+//       round,
+//       scaleFull,
+//     }
 //   };
 // };
 

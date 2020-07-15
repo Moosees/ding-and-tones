@@ -1,8 +1,6 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { setAlert } from '../../redux/alert/alert.actions';
-import { setScaleName } from '../../redux/scale/scale.actions';
+import { saveScale, setScaleName } from '../../redux/scale/scale.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -10,32 +8,18 @@ import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
 
 const ScaleInfo = ({
+  isSaving,
   isSaveable,
   isSignedIn,
   label,
   layout,
   name,
+  saveScale,
   scale,
-  setAlert,
   setScaleName,
 }) => {
-  const [isSaving, setIsSaving] = useState(false);
-
   const handleSave = () => {
-    setIsSaving(true);
-
-    axios
-      .post('/scale', { name, label, layout, scale: { round: scale } })
-      .then((res) => {
-        if (res.status === 200) {
-          setAlert(`"${res.data.name}" saved`);
-          setIsSaving(false);
-        }
-      })
-      .catch((error) => {
-        setAlert('Save failed');
-        setIsSaving(false);
-      });
+    saveScale({ name, label, layout, scale: { round: scale } });
   };
 
   return (
@@ -52,9 +36,9 @@ const ScaleInfo = ({
       </InfoBox>
       <InfoBox>{label}</InfoBox>
       <Buttons>
-        {isSignedIn && (
+        {isSignedIn && isSaveable && (
           <BtnPrimary
-            disabled={!isSaveable || isSaving}
+            disabled={isSaving}
             label="Save Scale"
             onClick={handleSave}
           />
@@ -65,15 +49,16 @@ const ScaleInfo = ({
 };
 
 const mapStateToProps = ({ scale, search, ui, user }) => ({
+  isSaving: scale.isSaving,
   label: scale.label,
   layout: scale.layout,
   name: scale.name,
-  scale: scale.scaleSimple,
+  scale: scale.scale.round,
   isSaveable: ui.isSaveable,
   isSignedIn: user.isSignedIn,
 });
 
 export default connect(mapStateToProps, {
-  setAlert,
+  saveScale,
   setScaleName,
 })(ScaleInfo);

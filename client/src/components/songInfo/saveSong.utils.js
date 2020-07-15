@@ -21,7 +21,6 @@ const parseArrangement = (barState) => {
 
 export const parseSongForSaving = (bars, song, scale, saveAs) => {
   const { difficulty, isOwner, metre, title, songId, subdivision } = song;
-  const { name, layout, label, scaleSimple } = scale;
 
   const arrangement = parseArrangement(bars);
 
@@ -29,7 +28,7 @@ export const parseSongForSaving = (bars, song, scale, saveAs) => {
     songId: isOwner && !saveAs ? songId : null,
     songUpdate: {
       arrangement,
-      scale: { name, layout, label, scale: { round: scaleSimple } },
+      scale,
       difficulty,
       metre,
       title,

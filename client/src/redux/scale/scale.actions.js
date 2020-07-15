@@ -7,41 +7,33 @@ export const addNoteToScale = (newNote) => ({
 });
 
 export const deleteScaleById = (scaleId, name) => (dispatch) => {
-  dispatch({ type: scaleTypes.SCALE_DELETE_STARTED });
+  dispatch({ type: scaleTypes.DELETE_STARTED });
 
   return axios
     .delete(`/scale/id/${scaleId}`)
     .then((res) => {
       if (res.status === 200)
         dispatch({
-          type: scaleTypes.SCALE_DELETE_SUCCESSFUL,
+          type: scaleTypes.DELETE_SUCCESSFUL,
           payload: { scaleId, name },
         });
     })
     .catch((error) =>
-      dispatch({ type: scaleTypes.SCALE_DELETE_ERROR, payload: error.message })
+      dispatch({ type: scaleTypes.DELETE_ERROR, payload: error.message })
     );
 };
 
 export const getScaleById = (id) => (dispatch) => {
-  dispatch({ type: scaleTypes.SCALE_FETCH_STARTED });
+  dispatch({ type: scaleTypes.FETCH_STARTED });
 
   return axios
     .get(`/scale/id/${id}`)
     .then((res) => {
-      if (res.status === 200) {
-        const { name, label, layout, scale } = res.data;
-        const payload = {
-          name,
-          label,
-          layout,
-          scaleSimple: scale.round,
-        };
-        dispatch({ type: scaleTypes.LOAD_SCALE, payload });
-      }
+      if (res.status === 200)
+        dispatch({ type: scaleTypes.FETCH_SUCCESSFUL, payload: res.data });
     })
     .catch((error) =>
-      dispatch({ type: scaleTypes.SCALE_FETCH_ERROR, payload: error.message })
+      dispatch({ type: scaleTypes.FETCH_ERROR, payload: error.message })
     );
 };
 
@@ -54,6 +46,21 @@ export const removeNoteFromScale = (noteToRemove) => ({
   type: scaleTypes.REMOVE_NOTE,
   payload: noteToRemove,
 });
+
+export const saveScale = (scale) => (dispatch) => {
+  dispatch({ type: scaleTypes.SAVE_STARTED });
+
+  return axios
+    .post('/scale', scale)
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch({ type: scaleTypes.SAVE_SUCCESSFUL, payload: res.data });
+      }
+    })
+    .catch((error) =>
+      dispatch({ type: scaleTypes.SAVE_ERROR, payload: error.message })
+    );
+};
 
 export const setScaleName = (name) => ({
   type: scaleTypes.SET_NAME,

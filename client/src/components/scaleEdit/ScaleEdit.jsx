@@ -86,7 +86,7 @@ const ScaleEdit = ({
 };
 
 const mapStateToProps = ({ scale, ui }) => ({
-  scale: scale.scaleSimple,
+  scale: scale.scale.round,
   isSongPlaying: ui.isSongPlaying,
 });
 
