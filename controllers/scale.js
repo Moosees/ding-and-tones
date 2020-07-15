@@ -5,14 +5,13 @@ exports.deleteScale = (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
 
-  Scale.findOneAndDelete({ _id: scaleId, author: userId })
-    .select('_id name')
-    .exec((error, scale) => {
+  Scale.findOneAndDelete({ _id: scaleId, author: userId }).exec(
+    (error, scale) => {
       if (error) return res.status(400).json({ error });
 
-      const { _id, name } = scale;
-      res.status(200).json({ scaleId: _id, name });
-    });
+      res.status(200).json();
+    }
+  );
 };
 
 exports.getScaleById = (req, res) => {

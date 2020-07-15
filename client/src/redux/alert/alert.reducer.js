@@ -1,4 +1,5 @@
 import alertTypes from './alert.types';
+import scaleTypes from '../scale/scale.types';
 
 const INITIAL_STATE = {
   msg: '',
@@ -11,6 +12,9 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         msg: payload,
       };
+
+    case scaleTypes.SCALE_DELETE_SUCCESSFUL:
+      return { ...state, msg: `"${payload.name}" deleted` };
 
     default:
       return state;

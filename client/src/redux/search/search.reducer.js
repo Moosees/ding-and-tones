@@ -1,3 +1,4 @@
+import scaleTypes from '../scale/scale.types';
 import searchTypes from './search.types';
 
 const INITIAL_STATE = {
@@ -14,6 +15,14 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         ...payload,
         isFetching: false,
+      };
+
+    case scaleTypes.SCALE_DELETE_SUCCESSFUL:
+      return {
+        ...state,
+        scales: state.scales.filter(
+          (scale) => scale.scaleId !== payload.scaleId
+        ),
       };
 
     case searchTypes.SEARCH_ERROR:

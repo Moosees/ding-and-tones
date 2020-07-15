@@ -6,6 +6,23 @@ export const addNoteToScale = (newNote) => ({
   payload: newNote,
 });
 
+export const deleteScaleById = (scaleId, name) => (dispatch) => {
+  dispatch({ type: scaleTypes.SCALE_DELETE_STARTED });
+
+  return axios
+    .delete(`/scale/id/${scaleId}`)
+    .then((res) => {
+      if (res.status === 200)
+        dispatch({
+          type: scaleTypes.SCALE_DELETE_SUCCESSFUL,
+          payload: { scaleId, name },
+        });
+    })
+    .catch((error) =>
+      dispatch({ type: scaleTypes.SCALE_DELETE_ERROR, payload: error.message })
+    );
+};
+
 export const getScaleById = (id) => (dispatch) => {
   dispatch({ type: scaleTypes.SCALE_FETCH_STARTED });
 

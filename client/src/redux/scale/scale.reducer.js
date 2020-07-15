@@ -19,9 +19,14 @@ const scaleReducer = (state = scaleState, { type, payload }) => {
         scaleFull: createFullScaleFromNames(newScaleSorted),
       };
 
+    case scaleTypes.SCALE_DELETE_SUCCESSFUL:
+      return { ...state, isFetching: false };
+
+    case scaleTypes.SCALE_DELETE_ERROR:
     case scaleTypes.SCALE_FETCH_ERROR:
       return { ...state, error: payload, isFetching: false };
 
+    case scaleTypes.SCALE_DELETE_STARTED:
     case scaleTypes.SCALE_FETCH_STARTED:
       return { ...state, isFetching: true };
 

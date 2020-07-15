@@ -1,8 +1,6 @@
-import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { setAlert } from '../../redux/alert/alert.actions';
-import { loadScale } from '../../redux/scale/scale.actions';
+import { deleteScaleById, loadScale } from '../../redux/scale/scale.actions';
 import {
   DeleteIcon,
   ScaleContainer,
@@ -13,21 +11,12 @@ import {
 } from './scalesFound.styles';
 
 const ScalesFound = ({
+  deleteScaleById,
   isFetching,
   isSignedIn,
   loadScale,
   scales,
-  setAlert,
 }) => {
-  const handleDelete = (scaleId, name) => {
-    axios
-      .delete(`/scale/id/${scaleId}`)
-      .then((res) => {
-        if (res.status === 200) setAlert(`"${res.data.name}" deleted`);
-      })
-      .catch((error) => setAlert('Delete failed'));
-  };
-
   const getScales = () =>
     scales.map((result, i) => {
       const { name, label, layout, scale, scaleId, isOwner } = result;
@@ -36,7 +25,7 @@ const ScalesFound = ({
           {isOwner && isSignedIn && (
             <DeleteIcon
               className="material-icons"
-              onClick={() => handleDelete(scaleId, name)}
+              onClick={() => deleteScaleById(scaleId, name)}
             >
               delete
             </DeleteIcon>
@@ -67,6 +56,6 @@ const mapStateToProps = ({ search, user }) => ({
 });
 
 export default connect(mapStateToProps, {
+  deleteScaleById,
   loadScale,
-  setAlert,
 })(ScalesFound);
