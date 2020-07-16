@@ -21,7 +21,7 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         scales: state.scales.filter(
-          (scale) => scale.scaleId !== payload.scaleId
+          (scale) => scale.info.scaleId !== payload.scaleId
         ),
       };
 

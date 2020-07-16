@@ -22,10 +22,10 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, msg: `"${payload.name}" deleted` };
 
     case scaleTypes.FETCH_SUCCESSFUL:
-      return { ...state, msg: `"${payload.name}" loaded` };
+      return { ...state, msg: `"${payload.info.name}" loaded` };
 
     case scaleTypes.SAVE_SUCCESSFUL:
-      return { ...state, msg: `"${payload.name}" saved` };
+      return { ...state, msg: `"${payload.info.name}" saved` };
 
     default:
       return state;

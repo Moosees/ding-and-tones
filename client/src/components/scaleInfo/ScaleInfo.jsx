@@ -8,19 +8,15 @@ import InfoText from '../infoBox/InfoText';
 import { InfoContainer } from './scaleInfo.styles';
 
 const ScaleInfo = ({
-  isSaving,
   isSaveable,
+  isSaving,
   isSignedIn,
-  label,
-  layout,
-  name,
   saveScale,
   scale,
+  scaleInfo,
   setScaleName,
 }) => {
-  const handleSave = () => {
-    saveScale({ name, label, layout, scale: { round: scale } });
-  };
+  const { label, layout, name } = scaleInfo;
 
   return (
     <InfoContainer>
@@ -40,7 +36,7 @@ const ScaleInfo = ({
           <BtnPrimary
             disabled={isSaving}
             label="Save Scale"
-            onClick={handleSave}
+            onClick={saveScale}
           />
         )}
       </Buttons>
@@ -49,11 +45,9 @@ const ScaleInfo = ({
 };
 
 const mapStateToProps = ({ scale, search, ui, user }) => ({
-  isSaving: scale.isSaving,
-  label: scale.label,
-  layout: scale.layout,
-  name: scale.name,
-  scale: scale.scale.round,
+  isSaving: scale.ui.isSaving,
+  scale: scale.notes.round,
+  scaleInfo: scale.info,
   isSaveable: ui.isSaveable,
   isSignedIn: user.isSignedIn,
 });

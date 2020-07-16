@@ -72,7 +72,7 @@ const setupSong = ({ arrangement, bars, beats }) => {
 // bpm always counts quarter notes right now
 export const playSong = async () => {
   const { song, scale } = store.getState();
-  const audio = await setupAudio(scale.scale.round);
+  const audio = await setupAudio(scale.notes.round);
   const arrangement = setupSong(song);
 
   for (let bar of arrangement) {

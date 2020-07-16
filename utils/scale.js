@@ -1,11 +1,13 @@
-exports.parseScaleObject = (scaleObject, userId) => {
-  const { _id, name, label, layout, scale, author } = scaleObject;
+exports.parseScaleResponse = (scaleObject, userId) => {
+  const { _id, name, label, layout, notes, author } = scaleObject;
   return {
-    scaleId: _id,
-    name,
-    label,
-    layout,
-    scale,
-    isOwner: userId ? userId.equals(author) : false,
+    info: {
+      scaleId: _id,
+      name,
+      label,
+      layout,
+      isOwner: userId ? userId.equals(author) : false,
+    },
+    notes,
   };
 };

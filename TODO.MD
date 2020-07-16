@@ -2,9 +2,7 @@
 
 ## Current tasks
 
-* Split scale reducer
 * Songwriter backend - started
-* Handle fetch errors (better)
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -16,15 +14,19 @@
 * What happens when you change to a scale with less notes than pattern needs?
 * Remove devtools in production
 * Rework metre template, split into beats?
+* Play song logic should be moved somewhere else?
+* Play song logic should be reworked with less forEach
+* Scale delete response data
 
 ## Bugs
 
+* Fetching scales infinite loop, fix with new loading states
 * Save song changes creates new sub docs instead of updating?
-* Play song logic should be moved somewhere else?
-* Play song logic should be reworked with less forEach
 * App crash when trying to save invalid scale - prevent with validation
 * Logo svg gets requested on all route changes
 * flushDrumState should not be needed
+* Db connection error handler might not work
+* Move error handling to react error boundaries?
 
 ## Design
 

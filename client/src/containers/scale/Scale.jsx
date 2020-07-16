@@ -39,7 +39,7 @@ const Scale = ({ getScaleById, isFetching }) => {
 };
 
 const mapStateToProps = ({ scale }) => ({
-  isFetching: scale.isFetching,
+  isFetching: scale.ui.isFetching,
 });
 
 export default connect(mapStateToProps, { getScaleById })(Scale);

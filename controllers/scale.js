@@ -1,5 +1,5 @@
 const Scale = require('../models/scale');
-const { parseScaleObject } = require('../utils/scale');
+const { parseScaleResponse } = require('../utils/scale');
 
 exports.deleteScale = (req, res) => {
   const scaleId = req.params.scaleId;
@@ -16,24 +16,24 @@ exports.deleteScale = (req, res) => {
 
 exports.getScaleById = (req, res) => {
   Scale.findById(req.params.scaleId)
-    .select('_id name label layout scale author')
+    .select('_id name label layout notes author')
     .exec((error, scale) => {
       if (error || !scale) return res.status(400).json();
 
-      const data = parseScaleObject(scale, req.userId);
+      const data = parseScaleResponse(scale, req.userId);
       res.status(200).json(data);
     });
 };
 
 exports.getScales = (req, res) => {
   Scale.find()
-    .select('_id name label layout scale author')
+    .select('_id name label layout notes author')
     .limit(20)
     .sort({ created: -1 })
     .exec((error, scales) => {
-      if (error) return res.status(400).json({ error });
+      if (error) return res.status(400).json();
 
-      const data = scales.map((scale) => parseScaleObject(scale, req.userId));
+      const data = scales.map((scale) => parseScaleResponse(scale, req.userId));
       res.status(200).json({ scales: data });
     });
 };
@@ -44,9 +44,9 @@ exports.saveScale = (req, res) => {
   req.body.isNew = true;
 
   new Scale(req.body).save((error, scale) => {
-    if (error || !scale) return res.status(400).json({ error });
+    if (error || !scale) return res.status(400).json();
 
-    const data = parseScaleObject(scale, userId);
+    const data = parseScaleResponse(scale, userId);
     res.status(200).json(data);
   });
 };

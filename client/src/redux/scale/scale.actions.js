@@ -1,10 +1,16 @@
 import axios from 'axios';
 import scaleTypes from './scale.types';
+import { sortScaleByFreq, transposeScaleToDestination } from './scale.utils';
 
-export const addNoteToScale = (newNote) => ({
-  type: scaleTypes.ADD_NOTE,
-  payload: newNote,
-});
+export const addNoteToScale = (newNote) => (dispatch, getState) => {
+  const { scale } = getState();
+  const newScale = sortScaleByFreq([...scale.notes.round, newNote]);
+
+  dispatch({
+    type: scaleTypes.UPDATE_SCALE,
+    payload: newScale,
+  });
+};
 
 export const deleteScaleById = (scaleId, name) => (dispatch) => {
   dispatch({ type: scaleTypes.DELETE_STARTED });
@@ -42,16 +48,29 @@ export const loadScale = (scale) => ({
   payload: scale,
 });
 
-export const removeNoteFromScale = (noteToRemove) => ({
-  type: scaleTypes.REMOVE_NOTE,
-  payload: noteToRemove,
-});
+export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
+  const { scale } = getState();
+  const newScale = scale.notes.round.filter((note) => note !== noteToRemove);
 
-export const saveScale = (scale) => (dispatch) => {
+  dispatch({
+    type: scaleTypes.UPDATE_SCALE,
+    payload: newScale,
+  });
+};
+
+export const saveScale = () => (dispatch, getState) => {
   dispatch({ type: scaleTypes.SAVE_STARTED });
 
+  const { scale } = getState();
+  const {
+    info: { name, layout, label },
+    notes: { round },
+  } = scale;
+
+  const body = { name, layout, label, notes: { round } };
+
   return axios
-    .post('/scale', scale)
+    .post('/scale', body)
     .then((res) => {
       if (res.status === 200) {
         dispatch({ type: scaleTypes.SAVE_SUCCESSFUL, payload: res.data });
@@ -67,7 +86,12 @@ export const setScaleName = (name) => ({
   payload: name,
 });
 
-export const transposeScale = (destination) => ({
-  type: scaleTypes.TRANSPOSE_SCALE,
-  payload: destination,
-});
+export const transposeScale = (destination) => (dispatch, getState) => {
+  const { scale } = getState();
+  const newScale = transposeScaleToDestination(scale.notes.round, destination);
+
+  dispatch({
+    type: scaleTypes.UPDATE_SCALE,
+    payload: newScale,
+  });
+};

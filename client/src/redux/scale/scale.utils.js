@@ -81,7 +81,7 @@ export const createScaleLabel = (scale) => {
   return `(${scale[0]}) ${scale.slice(1).join(' ')}`;
 };
 
-export const transposeScale = (scale, destination = 0) => {
+export const transposeScaleToDestination = (scale, destination = 0) => {
   return scale
     .map((note) => {
       const newValue = noteNameToValue[note] + destination;

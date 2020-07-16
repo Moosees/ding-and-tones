@@ -17,7 +17,7 @@ const scaleSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  scale: {
+  notes: {
     round: [String],
   },
 });
