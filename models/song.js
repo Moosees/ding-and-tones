@@ -40,7 +40,7 @@ const songSchema = new mongoose.Schema({
     name: String,
     layout: Number,
     label: String,
-    scale: { round: [String] },
+    notes: { round: [String] },
   },
   subdivision: {
     type: Number,

@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Songwriter backend - started
+* Fix save song, add other song routes
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -16,7 +16,7 @@
 * Rework metre template, split into beats?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
-* Scale delete response data
+* Scale/song delete response data
 
 ## Bugs
 

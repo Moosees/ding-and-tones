@@ -7,7 +7,6 @@ import BtnPrimary from '../button/Primary';
 import { parseSongForSaving } from './saveSong.utils';
 
 const SaveSong = ({
-  bars,
   isSaveable,
   isSongPlaying,
   saveAs,
@@ -21,7 +20,7 @@ const SaveSong = ({
   const handleSave = () => {
     setIsSaving(true);
 
-    const songUpdate = parseSongForSaving(bars, song, scale, saveAs);
+    const songUpdate = parseSongForSaving(song, scale, saveAs);
 
     axios
       .post('/song', songUpdate)
@@ -49,8 +48,7 @@ const SaveSong = ({
   );
 };
 
-const mapStateToProps = ({ bars, scale, song, ui }) => ({
-  bars,
+const mapStateToProps = ({ scale, song, ui }) => ({
   scale,
   song,
   isSaveable: ui.isSaveable,

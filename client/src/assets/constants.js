@@ -20,4 +20,9 @@ export const optionsDifficulty = [
   { value: 5, label: 'Advanced' },
 ];
 
+export const difficultyByValue = optionsDifficulty.reduce((acc, current) => {
+  acc[current.value] = current.label;
+  return acc;
+}, {});
+
 export const scaleLayout = [{ value: 1, label: 'Round' }];

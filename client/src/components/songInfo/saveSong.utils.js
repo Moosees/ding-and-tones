@@ -1,6 +1,4 @@
-const parseArrangement = (barState) => {
-  const { arrangement, bars, beats } = barState;
-
+const parseArrangement = (arrangement, bars, beats) => {
   return arrangement.map((bar) => {
     const { measure, metre, repeats, subdivision } = bars[bar];
     const measureWithBeats = measure
@@ -19,16 +17,23 @@ const parseArrangement = (barState) => {
   });
 };
 
-export const parseSongForSaving = (bars, song, scale, saveAs) => {
-  const { difficulty, isOwner, metre, title, songId, subdivision } = song;
+export const parseSongForSaving = (song, scale, saveAs) => {
+  const { arrangement, bars, beats, info } = song;
+  const { difficulty, isOwner, metre, title, songId, subdivision } = info;
+  const { notes, info: scaleInfo } = scale;
 
-  const arrangement = parseArrangement(bars);
+  const parsedArrangement = parseArrangement(arrangement, bars, beats);
 
   return {
     songId: isOwner && !saveAs ? songId : null,
     songUpdate: {
-      arrangement,
-      scale,
+      scale: {
+        notes,
+        label: scaleInfo.label,
+        layout: scaleInfo.layout,
+        name: scaleInfo.name,
+      },
+      arrangement: parsedArrangement,
       difficulty,
       metre,
       title,
