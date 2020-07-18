@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Chords from './containers/chords/Chords';
-import FindSongs from './containers/findSongs/FindSongs';
-import Scale from './containers/scale/Scale';
-import Songwriter from './containers/songwriter/Songwriter';
+import Loading from './components/loading/Loading';
+import SignInBoundary from './components/singInBoundary/SignInBoundary';
+
+const Chords = lazy(() => import('./containers/chords/Chords'));
+const FindSongs = lazy(() => import('./containers/findSongs/FindSongs'));
+const Scale = lazy(() => import('./containers/scale/Scale'));
+const Songwriter = lazy(() => import('./containers/songwriter/Songwriter'));
 
 const AppRoutes = () => (
-  <Switch>
-    <Route exact path="/scale" children={<Scale />} />
-    <Route path="/scale/:scaleId" children={<Scale />} />
-    <Route exact path="/chords" children={<Chords />} />
-    <Route exact path="/song" children={<Songwriter />} />
-    {/* <Route path="/song/:songId" children={<Songwriter />} /> */}
-    <Route exact path="/find" children={<FindSongs />} />
-    <Route path="/">
-      <Redirect to="/scale" />
-    </Route>
-  </Switch>
+  <SignInBoundary>
+    <Suspense fallback={<Loading />}>
+      <Switch>
+        <Route exact path="/scale" children={<Scale />} />
+        <Route path="/scale/:scaleId" children={<Scale />} />
+        <Route exact path="/chords" children={<Chords />} />
+        <Route exact path="/song" children={<Songwriter />} />
+        {/* <Route path="/song/:songId" children={<Songwriter />} /> */}
+        <Route exact path="/find" children={<FindSongs />} />
+        <Route path="/">
+          <Redirect to="/scale" />
+        </Route>
+      </Switch>
+    </Suspense>
+  </SignInBoundary>
 );
 
 export default AppRoutes;

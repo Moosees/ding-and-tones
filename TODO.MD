@@ -7,10 +7,9 @@
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
 * Select drum type - pan or tongue, etc.
-* Check text inputs for bad words
+* Check text inputs for bad words?
 * Move position map to reducer?
-* Show your own scales/songs
-* Loading spinners, check for login tried, check for song/scale id param
+* Loading spinners for song/scale id param?
 * What happens when you change to a scale with less notes than pattern needs?
 * Remove devtools in production
 * Rework metre template, split into beats?
@@ -62,6 +61,7 @@
 
 * Sorting/searching
 * Likes and/or comments?
+* Show your own scales/songs
 
 ## OTHER
 
@@ -76,7 +76,6 @@
 * GDPR
 * Hosting
 * update google json file - hostedDomain on react-google-login?
-* Handle errors sent to client
 
 ### Low priority
 
