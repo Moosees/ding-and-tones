@@ -13,11 +13,11 @@ exports.parseSearchResponse = (songObject, userId) => {
 };
 
 exports.parseSaveResponse = (songObject, userId) => {
-  const { _id, composer, title } = songObject;
+  const { _id, info } = songObject;
 
   return {
-    isOwner: userId ? userId.equals(composer) : false,
+    isOwner: userId ? userId.equals(info.composer) : false,
     songId: _id,
-    title,
+    title: info.title,
   };
 };

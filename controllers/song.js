@@ -24,7 +24,7 @@ exports.saveSong = (req, res) => {
 
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
     .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
-    .select('_id composer title')
+    .select('_id info')
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
 

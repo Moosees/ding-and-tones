@@ -2,53 +2,63 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
 const songSchema = new mongoose.Schema({
-  arrangement: [
+  arrangement: [String],
+  bars: [
     {
-      measure: [
-        {
-          sound: String,
-          value: Number,
-        },
-      ],
+      _id: String,
+      measure: [String],
       metre: String,
-      repeats: String,
+      repeats: { type: Number, default: 1 },
       subdivision: Number,
     },
   ],
-  composer: {
-    type: ObjectId,
-    ref: 'User',
-  },
-  created: {
-    type: Date,
-    default: Date.now,
-  },
-  difficulty: {
-    type: Number,
-    required: true,
-  },
-  metre: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    trim: true,
-    required: true,
+  beats: [
+    {
+      _id: String,
+      sound: String,
+      value: Number,
+    },
+  ],
+  info: {
+    composer: {
+      type: ObjectId,
+      ref: 'User',
+    },
+    created: {
+      type: Date,
+      default: Date.now,
+    },
+    difficulty: {
+      type: Number,
+      required: true,
+    },
+    metre: {
+      type: String,
+      required: true,
+    },
+    private: {
+      type: Boolean,
+      default: false,
+    },
+    subdivision: {
+      type: Number,
+      required: true,
+    },
+    title: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    updated: {
+      type: Date,
+      default: Date.now,
+    },
   },
   scale: {
     name: String,
     layout: Number,
     label: String,
     notes: { round: [String] },
-  },
-  subdivision: {
-    type: Number,
-    required: true,
-  },
-  updated: {
-    type: Date,
-    default: Date.now,
   },
 });
 

@@ -2,7 +2,11 @@
 
 ## Current tasks
 
-* Fix save song, add other song routes
+* Create save song action
+* Fix validation for new song
+* Fix get songs route
+* Add virtual label field for songs and use getting search results?
+* Add other song routes
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -20,7 +24,6 @@
 ## Bugs
 
 * Fetching scales infinite loop, fix with new loading states
-* Save song changes creates new sub docs instead of updating?
 * App crash when trying to save invalid scale - prevent with validation
 * Logo svg gets requested on all route changes
 * flushDrumState should not be needed
