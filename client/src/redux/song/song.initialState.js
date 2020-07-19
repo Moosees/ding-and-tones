@@ -37,9 +37,16 @@ export const beatsState = {
 export const infoState = {
   bpm: 100,
   difficulty: 1,
-  isOwner: false,
   metre: 's44',
-  songId: null,
   subdivision: 4,
   title: 'This is a song',
+};
+
+export const uiState = {
+  error: '',
+  isDeleting: false,
+  isFetching: false,
+  isSaving: false,
+  isOwner: false,
+  songId: null,
 };

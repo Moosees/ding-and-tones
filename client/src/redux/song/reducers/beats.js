@@ -18,7 +18,7 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
         },
       };
 
-    case songTypes.UPDATE_MEASURE_AND_BEATS:
+    case songTypes.UPDATE_MEASURE:
       return {
         ...state,
         ...payload.newBeats,

@@ -19,14 +19,18 @@ const songSchema = new mongoose.Schema({
       value: Number,
     },
   ],
+  composer: {
+    type: ObjectId,
+    ref: 'User',
+  },
+  created: {
+    type: Date,
+    default: Date.now,
+  },
   info: {
-    composer: {
-      type: ObjectId,
-      ref: 'User',
-    },
-    created: {
-      type: Date,
-      default: Date.now,
+    bpm: {
+      type: Number,
+      required: true,
     },
     difficulty: {
       type: Number,
@@ -35,10 +39,6 @@ const songSchema = new mongoose.Schema({
     metre: {
       type: String,
       required: true,
-    },
-    private: {
-      type: Boolean,
-      default: false,
     },
     subdivision: {
       type: Number,
@@ -49,16 +49,20 @@ const songSchema = new mongoose.Schema({
       trim: true,
       required: true,
     },
-    updated: {
-      type: Date,
-      default: Date.now,
-    },
+  },
+  private: {
+    type: Boolean,
+    default: false,
   },
   scale: {
     name: String,
     layout: Number,
     label: String,
     notes: { round: [String] },
+  },
+  updated: {
+    type: Date,
+    default: Date.now,
   },
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { metreList } from '../../assets/metre';
-import { updateMeasureAndBeats } from '../../redux/song/song.actions';
+import { updateMeasure } from '../../redux/song/song.actions';
 import { store } from '../../redux/store';
 import Beat from '../beat/Beat';
 
@@ -36,7 +36,7 @@ const updateBeats = (barId, measure, beats, barSubdivision, barMetre) => {
     }
   });
 
-  store.dispatch(updateMeasureAndBeats(barId, newMeasure, newBeats));
+  store.dispatch(updateMeasure(barId, newMeasure, newBeats));
 };
 
 export const checkMeasureVsMetre = (

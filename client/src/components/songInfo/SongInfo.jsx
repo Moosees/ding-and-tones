@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { optionsDifficulty } from '../../assets/constants';
-import { updateSongInfo } from '../../redux/song/song.actions';
+import { saveSong, updateSongInfo } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -10,7 +10,6 @@ import InfoSelect from '../infoBox/InfoSelect';
 import InfoText from '../infoBox/InfoText';
 import PlayButton from '../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
-import SaveSong from './SaveSong';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -21,8 +20,10 @@ const InfoContainer = styled.div`
 const SongInfo = ({
   difficulty,
   isOwner,
+  isSaving,
   isSignedIn,
   isSongPlaying,
+  saveSong,
   title,
   updateSongInfo,
 }) => {
@@ -51,8 +52,20 @@ const SongInfo = ({
           </InfoSelect>
         </InfoBox>
         <Buttons>
-          {isSignedIn && isOwner && <SaveSong />}
-          {isSignedIn && <SaveSong saveAs />}
+          {isSignedIn && isOwner && (
+            <BtnPrimary
+              disabled={isSongPlaying || isSaving}
+              label="Save"
+              onClick={saveSong}
+            />
+          )}
+          {isSignedIn && (
+            <BtnPrimary
+              disabled={isSongPlaying || isSaving}
+              label="Save as"
+              onClick={() => saveSong({ saveAs: true })}
+            />
+          )}
           <BtnPrimary
             disabled={isSongPlaying}
             label="New Song"
@@ -69,9 +82,10 @@ const SongInfo = ({
 const mapStateToProps = ({ song, ui, user }) => ({
   difficulty: song.info.difficulty,
   title: song.info.title,
-  isOwner: song.info.isOwner,
+  isOwner: song.ui.isOwner,
+  isSaving: song.ui.isSaving,
   isSongPlaying: ui.isSongPlaying,
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { updateSongInfo })(SongInfo);
+export default connect(mapStateToProps, { saveSong, updateSongInfo })(SongInfo);

@@ -20,11 +20,6 @@ export const setIsSongPlaying = (isSongPlaying) => ({
   payload: isSongPlaying,
 });
 
-export const setIsSaveable = (isSaveable) => ({
-  type: uiTypes.SET_IS_SAVEABLE,
-  payload: isSaveable,
-});
-
 export const setOptions = (options) => ({
   type: uiTypes.SET_OPTIONS,
   payload: options,

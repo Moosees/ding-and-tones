@@ -2,11 +2,12 @@
 
 ## Current tasks
 
-* Create save song action
+* Update scale state to be consistent with song state structure
 * Fix validation for new song
 * Fix get songs route
 * Add virtual label field for songs and use getting search results?
 * Add other song routes
+* Scale/song delete response data
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -19,11 +20,10 @@
 * Rework metre template, split into beats?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
-* Scale/song delete response data
 
 ## Bugs
 
-* Fetching scales infinite loop, fix with new loading states
+* Fetching scales/songs infinite loop
 * App crash when trying to save invalid scale - prevent with validation
 * Logo svg gets requested on all route changes
 * flushDrumState should not be needed
@@ -72,7 +72,7 @@
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
-* Merge ui reducer actions?
+* Merge ui reducer actions? Rework actions?
 
 ### Backend
 

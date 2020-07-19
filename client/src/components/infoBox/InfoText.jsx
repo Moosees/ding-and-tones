@@ -1,18 +1,8 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { setIsSaveable } from '../../redux/ui/ui.actions';
+import React, { useEffect, useState } from 'react';
 import { EditIcon } from './infoBox.styles';
 import InfoTextEdit from './InfoTextEdit';
-import { useEffect } from 'react';
 
-const InfoText = ({
-  children,
-  handleChange,
-  placeholder,
-  setIsSaveable,
-  type,
-  value,
-}) => {
+const InfoText = ({ children, handleChange, placeholder, type, value }) => {
   const [editOpen, setEditOpen] = useState(false);
 
   // close edit mode if something else changes text
@@ -21,12 +11,10 @@ const InfoText = ({
   }, [value]);
 
   const handleClose = () => {
-    setIsSaveable(true);
     setEditOpen(false);
   };
 
   const handleOpen = () => {
-    setIsSaveable(false);
     setEditOpen(true);
   };
 
@@ -57,4 +45,4 @@ const InfoText = ({
   );
 };
 
-export default connect(null, { setIsSaveable })(InfoText);
+export default InfoText;

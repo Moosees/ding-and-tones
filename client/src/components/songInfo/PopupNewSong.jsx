@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { optionsDifficulty } from '../../assets/constants';
-import { updateSong } from '../../redux/song/song.actions';
+import { setSongState } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -10,7 +10,7 @@ import InfoTextEdit from '../infoBox/InfoTextEdit';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
 
-const PopupNewSong = ({ onClose, updateSong }) => {
+const PopupNewSong = ({ onClose, setSongState }) => {
   const [difficulty, setDifficulty] = useState(1);
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(4);
@@ -27,7 +27,7 @@ const PopupNewSong = ({ onClose, updateSong }) => {
         songId: null,
       };
 
-      updateSong({ info, bars: {}, beats: {}, arrangement: [] });
+      setSongState({ info, bars: {}, beats: {}, arrangement: [] });
       onClose();
     }
   };
@@ -67,5 +67,5 @@ const PopupNewSong = ({ onClose, updateSong }) => {
 };
 
 export default connect(null, {
-  updateSong,
+  setSongState,
 })(PopupNewSong);

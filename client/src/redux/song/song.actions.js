@@ -1,4 +1,6 @@
+import axios from 'axios';
 import songTypes from './song.types';
+import { parseSongForSaving } from './song.utils';
 
 export const addNewBar = (barWithBeatsAndId) => ({
   type: songTypes.ADD_NEW_BAR,
@@ -25,6 +27,29 @@ export const moveBarInArrangement = (barIndex, targetIndex) => ({
   payload: { barIndex, targetIndex },
 });
 
+export const saveSong = ({ saveAs }) => (dispatch, getState) => {
+  dispatch({ type: songTypes.SAVE_STARTED });
+
+  const { song, scale } = getState();
+  const body = parseSongForSaving(song, scale, saveAs);
+
+  return axios
+    .post('/song', body)
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch({ type: songTypes.SAVE_SUCCESSFUL, payload: res.data });
+      }
+    })
+    .catch((error) => {
+      dispatch({ type: songTypes.SAVE_ERROR, payload: error.message });
+    });
+};
+
+export const setSongState = (song) => ({
+  type: songTypes.SET_STATE,
+  payload: song,
+});
+
 export const updateBarSubdivision = (barId, newSubdivision) => ({
   type: songTypes.UPDATE_BAR_SUBDIVISION,
   payload: { barId, newSubdivision },
@@ -35,17 +60,12 @@ export const updateBeat = (beatId, newSound) => ({
   payload: { beatId, newSound },
 });
 
-export const updateMeasureAndBeats = (barId, newMeasure, newBeats) => ({
-  type: songTypes.UPDATE_MEASURE_AND_BEATS,
+export const updateMeasure = (barId, newMeasure, newBeats) => ({
+  type: songTypes.UPDATE_MEASURE,
   payload: { barId, newMeasure, newBeats },
-});
-
-export const updateSong = (song) => ({
-  type: songTypes.UPDATE_SONG,
-  payload: song, // arrangement, bars, beats, info
 });
 
 export const updateSongInfo = (songInfo) => ({
   type: songTypes.UPDATE_SONG_INFO,
-  payload: songInfo, // title, bpm, etc...
+  payload: songInfo,
 });
