@@ -35,7 +35,7 @@ const BeatDropdown = ({
 };
 
 const mapStateToProps = ({ ui }) => ({
-  options: ui.options,
+  options: ui.soundOptions,
 });
 
 export default connect(mapStateToProps, { setDropdownForBeat, updateBeat })(

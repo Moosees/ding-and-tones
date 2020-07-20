@@ -3,7 +3,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { connect } from 'react-redux';
 import { moveBarInArrangement } from '../../redux/song/song.actions';
-import { setOptions } from '../../redux/ui/ui.actions';
+import { setSoundOptions } from '../../redux/ui/ui.actions';
 import Bar from '../bar/Bar';
 import { Bars } from './songArrangement.styles';
 import { createOptions } from './songArrangement.utils';
@@ -11,12 +11,12 @@ import { createOptions } from './songArrangement.utils';
 const SongArrangement = ({
   arrangement,
   scale,
-  setOptions,
+  setSoundOptions,
   moveBarInArrangement,
 }) => {
   useEffect(() => {
-    setOptions(createOptions(scale));
-  }, [scale, setOptions]);
+    setSoundOptions(createOptions(scale));
+  }, [scale, setSoundOptions]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -34,6 +34,7 @@ const mapStateToProps = ({ scale, song }) => ({
   arrangement: song.arrangement,
 });
 
-export default connect(mapStateToProps, { setOptions, moveBarInArrangement })(
-  SongArrangement
-);
+export default connect(mapStateToProps, {
+  setSoundOptions,
+  moveBarInArrangement,
+})(SongArrangement);

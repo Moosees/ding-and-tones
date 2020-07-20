@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   dropdownBeatId: null,
   isEditingSong: true,
   isSongPlaying: false,
-  options: {},
+  soundOptions: {},
 };
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -35,10 +35,10 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         isSongPlaying: payload,
       };
 
-    case uiTypes.SET_OPTIONS:
+    case uiTypes.SET_SOUND_OPTIONS:
       return {
         ...state,
-        options: payload,
+        soundOptions: payload,
       };
 
     case uiTypes.TOGGLE_EDIT_SONG:

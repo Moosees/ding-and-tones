@@ -1,8 +1,8 @@
 const drumTypes = {
-  FLUSH_DRUM_STATE: 'FLUSH_DRUM_STATE',
-  SET_DISPLAYED_CHORD: 'SET_DISPLAYED_CHORD',
-  SET_DISPLAYED_NOTE: 'SET_DISPLAYED_NOTE',
-  SET_SHOW_INTERVALS: 'SET_SHOW_INTERVALS',
+  FLUSH_DRUM_STATE: 'drum/flushState',
+  SET_DISPLAYED_CHORD: 'drum/setChord',
+  SET_DISPLAYED_NOTE: 'drum/setNote',
+  SET_SHOW_INTERVALS: 'drum/setShowingIntervals',
 };
 
 export default drumTypes;

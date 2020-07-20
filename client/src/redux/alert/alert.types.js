@@ -1,5 +1,5 @@
 const alertTypes = {
-  CREATE_ALERT: 'CREATE_ALERT',
+  CREATE_ALERT: 'alert/create',
 };
 
 export default alertTypes;

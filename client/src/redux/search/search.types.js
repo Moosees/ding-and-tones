@@ -1,7 +1,7 @@
 const searchTypes = {
-  LOAD_SEARCH_RESULTS: 'LOAD_SEARCH_RESULTS',
-  SEARCH_ERROR: 'SEARCH_ERROR',
-  SEARCH_STARTED: 'SEARCH_STARTED',
+  SEARCH_ERROR: 'search/error',
+  SEARCH_STARTED: 'search/started',
+  SEARCH_SUCCESSFUL: 'search/successful',
 };
 
 export default searchTypes;

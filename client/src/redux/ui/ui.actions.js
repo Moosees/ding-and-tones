@@ -20,8 +20,8 @@ export const setIsSongPlaying = (isSongPlaying) => ({
   payload: isSongPlaying,
 });
 
-export const setOptions = (options) => ({
-  type: uiTypes.SET_OPTIONS,
+export const setSoundOptions = (options) => ({
+  type: uiTypes.SET_SOUND_OPTIONS,
   payload: options,
 });
 

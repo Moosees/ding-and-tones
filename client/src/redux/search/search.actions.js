@@ -8,7 +8,7 @@ export const fetchDataFrom = (searchTerm) => (dispatch) => {
     .get(searchTerm)
     .then((res) => {
       if (res.status === 200)
-        dispatch({ type: searchTypes.LOAD_SEARCH_RESULTS, payload: res.data });
+        dispatch({ type: searchTypes.SEARCH_SUCCESSFUL, payload: res.data });
     })
     .catch((error) => {
       dispatch({ type: searchTypes.SEARCH_ERROR, payload: error.message });

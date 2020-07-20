@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Update actionTypes
 * Fix validation for new song popup
 * Add virtual label field for songs and use getting search results?
 * Add other song routes

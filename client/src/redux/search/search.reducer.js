@@ -10,13 +10,6 @@ const INITIAL_STATE = {
 
 const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case searchTypes.LOAD_SEARCH_RESULTS:
-      return {
-        ...state,
-        ...payload,
-        isSearching: false,
-      };
-
     case scaleTypes.DELETE_SUCCESSFUL:
       return {
         ...state,
@@ -42,6 +35,13 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         isSearching: true,
+      };
+
+    case searchTypes.SEARCH_SUCCESSFUL:
+      return {
+        ...state,
+        ...payload,
+        isSearching: false,
       };
 
     default:
