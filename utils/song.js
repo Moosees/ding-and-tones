@@ -1,5 +1,10 @@
 exports.parseSearchResponse = (songObject, userId) => {
-  const { _id, composer, scale, title, metre, difficulty } = songObject;
+  const {
+    _id,
+    composer,
+    scale,
+    info: { title, metre, difficulty },
+  } = songObject;
 
   return {
     isOwner: userId ? userId.equals(composer._id) : false,

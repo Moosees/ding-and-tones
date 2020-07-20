@@ -5,7 +5,7 @@ const ObjectId = require('mongoose').Types.ObjectId;
 exports.getSongs = (req, res) => {
   Song.find()
     .populate('composer', '_id name')
-    .select('_id scale title metre difficulty')
+    .select('_id scale info')
     .limit(20)
     .sort({ updated: -1 })
     .exec((error, songs) => {

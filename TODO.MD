@@ -3,8 +3,7 @@
 ## Current tasks
 
 * Update actionTypes
-* Fix validation for new song
-* Fix get songs route
+* Fix validation for new song popup
 * Add virtual label field for songs and use getting search results?
 * Add other song routes
 * Scale/song delete response data
