@@ -15,7 +15,7 @@ const ScaleInfo = ({
   scaleInfo,
   setScaleName,
 }) => {
-  const { label, layout, name } = scaleInfo;
+  const { label, name } = scaleInfo;
 
   return (
     <InfoContainer>

@@ -15,14 +15,27 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case scaleTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
     case scaleTypes.FETCH_SUCCESSFUL:
-      return { ...state, isFetching: false };
+      return {
+        ...state,
+        isFetching: false,
+        isOwner: payload.isOwner,
+        scaleId: payload.scaleId,
+      };
+
+    case scaleTypes.LOAD_SCALE:
+      return { ...state, isOwner: payload.isOwner, scaleId: payload.scaleId };
 
     case scaleTypes.SAVE_ERROR:
       return { ...state, error: payload, isSaving: false };
     case scaleTypes.SAVE_STARTED:
       return { ...state, isSaving: true };
     case scaleTypes.SAVE_SUCCESSFUL:
-      return { ...state, isSaving: false };
+      return {
+        ...state,
+        isSaving: false,
+        isOwner: payload.isOwner,
+        scaleId: payload.scaleId,
+      };
 
     default:
       return state;

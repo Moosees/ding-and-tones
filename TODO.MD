@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Update scale state to be consistent with song state structure
+* Update actionTypes
 * Fix validation for new song
 * Fix get songs route
 * Add virtual label field for songs and use getting search results?
@@ -25,7 +25,7 @@
 
 * Fetching scales/songs infinite loop
 * App crash when trying to save invalid scale - prevent with validation
-* Logo svg gets requested on all route changes
+* Logo svg gets requested on all route changes - logo is gone?
 * flushDrumState should not be needed
 * Db connection error handler might not work
 * Move error handling to react error boundaries?
@@ -84,7 +84,7 @@
 
 * Pagination
 * Only show save buttons if there are changes
-* Update url when loading things and/or share by link
+* Update url when loading things and/or share by link - check param vs id?
 * Add play scale button and function
 * Keyboard shortcuts?
 * Handle extra/bottom notes
@@ -105,7 +105,7 @@
 
 ### Even lower priority
 
-* Triplets, flams, etc.
+* Triplets, flams, etc. Value 9, 17 for triplets?
 * Custom metres
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now

@@ -19,7 +19,11 @@ const ScalesFound = ({
 }) => {
   const getScales = () =>
     scales.map((scale, i) => {
-      const { name, label, scaleId, isOwner } = scale.info;
+      const {
+        scaleId,
+        isOwner,
+        info: { name, label },
+      } = scale;
 
       return (
         <ScaleContainer key={i}>
