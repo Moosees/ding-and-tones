@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Add other song routes
-* Scale/song delete response data
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user

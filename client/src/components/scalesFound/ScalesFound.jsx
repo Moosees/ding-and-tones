@@ -30,7 +30,7 @@ const ScalesFound = ({
           {isOwner && isSignedIn && (
             <DeleteIcon
               className="material-icons"
-              onClick={() => deleteScaleById(scaleId, name)}
+              onClick={() => deleteScaleById(scaleId)}
             >
               delete
             </DeleteIcon>

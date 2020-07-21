@@ -21,7 +21,7 @@ export const deleteScaleById = (scaleId, name) => (dispatch) => {
       if (res.status === 200)
         dispatch({
           type: scaleTypes.DELETE_SUCCESSFUL,
-          payload: { scaleId, name },
+          payload: { scaleId: res.data._id, name: res.data.name },
         });
     })
     .catch((error) =>
