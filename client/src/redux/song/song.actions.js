@@ -17,11 +17,6 @@ export const duplicateBar = (bar) => ({
   payload: bar, // { oldBarId, newBarId, newMeasure, newBeats }
 });
 
-// export const loadSong = (song) => ({
-//   type: songTypes.LOAD_SONG,
-//   payload: song,
-// });
-
 export const getSongById = (songId) => (dispatch) => {
   dispatch({ type: songTypes.FETCH_STARTED });
 

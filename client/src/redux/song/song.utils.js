@@ -6,11 +6,18 @@ export const moveBar = (arrangement, barIndex, targetIndex) => {
   return arrCopy;
 };
 
-const parseBarsForSaving = (arrangement, bars) => {
-  return arrangement.map((bar) => ({
-    ...bars[bar],
-    _id: bar,
-  }));
+const parseBarsForSaving = (arrangement, bars, beats) => {
+  return arrangement.map((bar) => {
+    const { measure, subdivision } = bars[bar];
+    const filteredMeasure = measure.filter(
+      (beat) => beats[beat].value <= subdivision
+    );
+    return {
+      ...bars[bar],
+      measure: filteredMeasure,
+      _id: bar,
+    };
+  });
 };
 
 const parseBeatsForSaving = (arrangement, bars, beats) => {
@@ -30,7 +37,7 @@ export const parseSongForSaving = (song, scale, saveAs) => {
   const { arrangement, bars, beats, info, ui } = song;
   const { isOwner, songId } = ui;
   const { notes, info: scaleInfo } = scale;
-  const parsedBars = parseBarsForSaving(arrangement, bars);
+  const parsedBars = parseBarsForSaving(arrangement, bars, beats);
   const parsedBeats = parseBeatsForSaving(arrangement, bars, beats);
 
   return {

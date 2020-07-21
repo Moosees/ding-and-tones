@@ -28,6 +28,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         title,
       };
       const ui = {
+        composer: 'Anonymous',
         isOwner: false,
         songId: null,
       };

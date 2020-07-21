@@ -2,19 +2,15 @@
 
 ## Current tasks
 
-* Fix broken save song action
 * Convert setSongState to reset action?
-* Add other song routes
+* Add other song routes - wip
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
 * Select drum type - pan or tongue, etc.
-* Check text inputs for bad words?
 * Move position map to reducer?
-* Loading spinners for song/scale id param?
 * What happens when you change to a scale with less notes than pattern needs?
 * Remove devtools in production
-* Rework metre template, split into beats?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
 
@@ -22,17 +18,18 @@
 
 * Fetching scales/songs infinite loop
 * App crash when trying to save invalid scale - prevent with validation
-* Logo svg gets requested on all route changes - logo is gone?
+* Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work
 * Move error handling to react error boundaries?
-* Using input validators for save buttons till allows saving with unsaved inputs
+* Using input validators for save buttons still allows saving with unsaved inputs
 
 ## Design
 
 * Responsive design
 * Distinct confirm and cancel buttons
 * Style songwriter dropdowns
+* Dropdowns open even if clicking label (difficulty)
 
 ## SIDEBAR
 
@@ -80,38 +77,40 @@
 
 ### Low priority
 
-* Triplets, flams, etc. Value 9, 17 for triplets?
-* Pagination
-* Only show save buttons if there are changes
+* Check text inputs for bad words?
 * Update url when loading things and/or share by link - check param vs id?
+* Keyboard shortcuts on new song (and other?) popup
+* Rework metre template, split into beats?
+* Triplets, flams, etc. Value 9, 17 for triplets?
+* Pagination for search results, infinite scroll?
 * Add play scale button and function
-* Keyboard shortcuts?
+* Keyboard shortcuts for playing drum (or songwriter)
 * Handle extra/bottom notes
-* Custom chord inputs
 * Play chords, also play them as arpeggios?
 * Sort chords by type?
 * Ability to loop songs or repeat bars
-* Link drum and songwriter
 * Left and right hand recommendations for songwriter?
-* Solo bars
 * Interval colors for compound intervals
 * Create scale from name and string
-* Dropdowns open even if clicking label (difficulty)
 * Analytics
 * Svgs instead of iconfont?
 * Multiple alerts on screen? or just reset timeout and show newest?
 * Check scales for duplicates when saving?
 * Add virtual label field for songs and use it for search results?
+* Better Loading component
 
 ### Even lower priority
 
+* Solo bars
+* Only show save buttons if there are changes
+* Custom chord inputs
 * Custom metres
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.
 * Swing?
 * More drum alternatives?
-* Style dropdowns
+* Link drum and songwriter
 * Animations on drum
 * Full screen songwriter?
 * One-e-and-a style phonetic rhythm notation on bars?

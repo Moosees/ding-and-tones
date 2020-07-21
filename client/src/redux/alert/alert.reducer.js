@@ -30,7 +30,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
     case songTypes.FETCH_SUCCESSFUL:
       return {
         ...state,
-        msg: `"${payload.info.title}" by ${payload.composer} loaded`,
+        msg: `"${payload.info.title}" by ${payload.ui.composer} loaded`,
       };
 
     case scaleTypes.SAVE_SUCCESSFUL:
