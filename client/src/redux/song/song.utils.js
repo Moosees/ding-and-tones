@@ -6,14 +6,14 @@ export const moveBar = (arrangement, barIndex, targetIndex) => {
   return arrCopy;
 };
 
-const parseBars = (arrangement, bars) => {
+const parseBarsForSaving = (arrangement, bars) => {
   return arrangement.map((bar) => ({
     ...bars[bar],
     _id: bar,
   }));
 };
 
-const parseBeats = (arrangement, bars, beats) => {
+const parseBeatsForSaving = (arrangement, bars, beats) => {
   return arrangement.reduce((acc, bar) => {
     const { measure, subdivision } = bars[bar];
 
@@ -30,8 +30,8 @@ export const parseSongForSaving = (song, scale, saveAs) => {
   const { arrangement, bars, beats, info, ui } = song;
   const { isOwner, songId } = ui;
   const { notes, info: scaleInfo } = scale;
-  const parsedBars = parseBars(arrangement, bars);
-  const parsedBeats = parseBeats(arrangement, bars, beats);
+  const parsedBars = parseBarsForSaving(arrangement, bars);
+  const parsedBeats = parseBeatsForSaving(arrangement, bars, beats);
 
   return {
     songId: isOwner && !saveAs ? songId : null,
@@ -47,5 +47,37 @@ export const parseSongForSaving = (song, scale, saveAs) => {
         name: scaleInfo.name,
       },
     },
+  };
+};
+
+const parseArrayToObject = (array) => {
+  return array.reduce((acc, { _id, ...rest }) => {
+    acc[_id] = rest;
+    return acc;
+  }, {});
+};
+
+export const parseFetchedSong = (song) => {
+  const {
+    arrangement,
+    bars,
+    beats,
+    composer,
+    info,
+    isOwner,
+    scale,
+    songId,
+  } = song;
+
+  const parsedBars = parseArrayToObject(bars);
+  const parsedBeats = parseArrayToObject(beats);
+
+  return {
+    arrangement,
+    bars: parsedBars,
+    beats: parsedBeats,
+    info,
+    scale,
+    ui: { composer, isOwner, songId },
   };
 };

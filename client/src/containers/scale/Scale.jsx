@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import DividerLine from '../../components/dividerLine/DividerLine';
+import Loading from '../../components/loading/Loading';
 import ScaleEdit from '../../components/scaleEdit/ScaleEdit';
 import ScaleInfo from '../../components/scaleInfo/ScaleInfo';
 import ScaleSearch from '../../components/scaleSearch/ScaleSearch';
@@ -20,7 +21,7 @@ const Scale = ({ getScaleById, isFetching }) => {
     <ScaleContainer>
       <Section>
         {isFetching ? (
-          <div>Loading...</div>
+          <Loading />
         ) : (
           <>
             <ScaleInfo />

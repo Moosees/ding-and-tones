@@ -1,6 +1,6 @@
 import axios from 'axios';
 import songTypes from './song.types';
-import { parseSongForSaving } from './song.utils';
+import { parseSongForSaving, parseFetchedSong } from './song.utils';
 
 export const addNewBar = (barWithBeatsAndId) => ({
   type: songTypes.ADD_NEW_BAR,
@@ -21,6 +21,22 @@ export const duplicateBar = (bar) => ({
 //   type: songTypes.LOAD_SONG,
 //   payload: song,
 // });
+
+export const getSongById = (songId) => (dispatch) => {
+  dispatch({ type: songTypes.FETCH_STARTED });
+
+  return axios
+    .get(`/song/id/${songId}`)
+    .then((res) => {
+      if (res.status === 200) {
+        const fetchedSong = parseFetchedSong(res.data);
+        dispatch({ type: songTypes.FETCH_SUCCESSFUL, payload: fetchedSong });
+      }
+    })
+    .catch((error) =>
+      dispatch({ type: songTypes.FETCH_ERROR, payload: error.message })
+    );
+};
 
 export const moveBarInArrangement = (barIndex, targetIndex) => ({
   type: songTypes.MOVE_BAR,

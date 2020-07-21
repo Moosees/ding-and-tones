@@ -1,10 +1,12 @@
-// import axios from 'axios';
-import React from 'react';
-// import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import DividerLine from '../../components/dividerLine/DividerLine';
+import Loading from '../../components/loading/Loading';
 import SongArrangement from '../../components/songArrangement/SongArrangement';
 import SongControls from '../../components/songControls/SongControls';
 import SongInfo from '../../components/songInfo/SongInfo';
+import { getSongById } from '../../redux/song/song.actions';
 import {
   BottomSection,
   SongContainer,
@@ -12,39 +14,40 @@ import {
   TopSection,
 } from './songwriter.styles';
 
-const Songwriter = () => {
-  // const { songId } = useParams();
+const Songwriter = ({ getSongById, isFetching }) => {
+  const { songId } = useParams();
 
-  // if (songId) {
-  //   axios
-  //     .get(`/song/id/${songId}`)
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         // const {bars, scale, song} = res.data
-  //         // loadSong(song, bars)
-  //         // if user want scale: loadScale(scale.notes.round)
-  //       }
-  //     })
-  //     .catch((error) => console.error(error));
-  // }
+  useEffect(() => {
+    if (songId) getSongById(songId);
+  }, [songId, getSongById]);
 
   return (
     <SongContainer>
-      <TopSection>
-        <TopPart>
-          <SongInfo />
-        </TopPart>
-        <DividerLine vertical small />
-        <TopPart>
-          <SongControls />
-        </TopPart>
-      </TopSection>
-      <DividerLine />
-      <BottomSection>
-        <SongArrangement />
-      </BottomSection>
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <>
+          <TopSection>
+            <TopPart>
+              <SongInfo />
+            </TopPart>
+            <DividerLine vertical small />
+            <TopPart>
+              <SongControls />
+            </TopPart>
+          </TopSection>
+          <DividerLine />
+          <BottomSection>
+            <SongArrangement />
+          </BottomSection>
+        </>
+      )}
     </SongContainer>
   );
 };
 
-export default Songwriter;
+const mapStateToProps = ({ song }) => ({
+  isFetching: song.ui.isFetching,
+});
+
+export default connect(mapStateToProps, { getSongById })(Songwriter);

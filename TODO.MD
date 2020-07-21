@@ -2,6 +2,8 @@
 
 ## Current tasks
 
+* Fix broken save song action
+* Convert setSongState to reset action?
 * Add other song routes
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed

@@ -22,6 +22,7 @@ const arrangementReducer = (state = arrangementState, { type, payload }) => {
       );
       return newArrangement;
 
+    case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
       return payload.arrangement || state;
 

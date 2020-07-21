@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteScaleById, loadScale } from '../../redux/scale/scale.actions';
+import Loading from '../loading/Loading';
 import {
   DeleteIcon,
   ScaleContainer,
@@ -44,7 +45,7 @@ const ScalesFound = ({
     });
 
   return isSearching ? (
-    <div>Loading...</div>
+    <Loading />
   ) : (
     <ScaleList>{scales && getScales()}</ScaleList>
   );

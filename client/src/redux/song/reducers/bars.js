@@ -13,6 +13,7 @@ const barsReducer = (state = barsState, { type, payload }) => {
         [payload.newBarId]: { ...oldBar, measure: payload.newMeasure },
       };
 
+    case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
       return payload.bars || state;
 

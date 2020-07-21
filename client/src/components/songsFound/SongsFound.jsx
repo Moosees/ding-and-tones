@@ -1,16 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
+import Loading from '../loading/Loading';
 import { DeleteIcon, SongContainer, SongList } from './songsFound.styles';
 
 const SongsFound = ({ isSearching, isSignedIn, songs }) => {
+  const history = useHistory();
+
   const getSongs = () =>
     songs.map((song, i) => {
-      const { title, composer, scale, difficulty, metre, isOwner } = song;
+      const {
+        songId,
+        title,
+        composer,
+        scale,
+        difficulty,
+        metre,
+        isOwner,
+      } = song;
 
       return (
-        <SongContainer key={i}>
+        <SongContainer
+          key={songId}
+          onClick={() => history.push(`/song/${songId}`)}
+        >
           {isOwner && isSignedIn && (
             <DeleteIcon className="material-icons">delete</DeleteIcon>
           )}
@@ -20,11 +35,7 @@ const SongsFound = ({ isSearching, isSignedIn, songs }) => {
       );
     });
 
-  return isSearching ? (
-    <div>Loading...</div>
-  ) : (
-    <SongList>{songs && getSongs()}</SongList>
-  );
+  return isSearching ? <Loading /> : <SongList>{songs && getSongs()}</SongList>;
 };
 
 const mapStateToProps = ({ search, user }) => ({

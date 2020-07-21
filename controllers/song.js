@@ -1,6 +1,22 @@
 const Song = require('../models/song');
-const { parseSearchResponse, parseSaveResponse } = require('../utils/song');
+const {
+  parseGetResponse,
+  parseSearchResponse,
+  parseSaveResponse,
+} = require('../utils/song');
 const ObjectId = require('mongoose').Types.ObjectId;
+
+exports.getSongById = (req, res) => {
+  Song.findById(req.params.songId)
+    .populate('composer', '_id name')
+    .select('_id arrangement bars beats composer info scale')
+    .exec((error, song) => {
+      if (error || !song) return res.status(400).json();
+
+      const data = parseGetResponse(song, req.userId);
+      res.status(200).json(data);
+    });
+};
 
 exports.getSongs = (req, res) => {
   Song.find()

@@ -43,6 +43,7 @@ export const infoState = {
 };
 
 export const uiState = {
+  composer: null,
   error: '',
   isDeleting: false,
   isFetching: false,

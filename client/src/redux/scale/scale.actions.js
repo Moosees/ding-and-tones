@@ -12,7 +12,7 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
   });
 };
 
-export const deleteScaleById = (scaleId, name) => (dispatch) => {
+export const deleteScaleById = (scaleId) => (dispatch) => {
   dispatch({ type: scaleTypes.DELETE_STARTED });
 
   return axios
@@ -29,11 +29,11 @@ export const deleteScaleById = (scaleId, name) => (dispatch) => {
     );
 };
 
-export const getScaleById = (id) => (dispatch) => {
+export const getScaleById = (scaleId) => (dispatch) => {
   dispatch({ type: scaleTypes.FETCH_STARTED });
 
   return axios
-    .get(`/scale/id/${id}`)
+    .get(`/scale/id/${scaleId}`)
     .then((res) => {
       if (res.status === 200)
         dispatch({ type: scaleTypes.FETCH_SUCCESSFUL, payload: res.data });

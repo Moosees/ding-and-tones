@@ -1,12 +1,12 @@
 const express = require('express');
-const { getSongs, saveSong } = require('../controllers/song');
+const { getSongById, getSongs, saveSong } = require('../controllers/song');
 const { checkAuth, getUserId } = require('../middleware/auth');
 
 const router = express.Router();
 
 // Public
 router.get('/song', getUserId, getSongs);
-// router.get('/song/id/:songId', getSongById);
+router.get('/song/id/:songId', getUserId, getSongById);
 // router.get('/song/random', getRandomSong);
 
 // Authorized only

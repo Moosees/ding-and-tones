@@ -16,7 +16,7 @@ const AppRoutes = () => (
         <Route path="/scale/:scaleId" children={<Scale />} />
         <Route exact path="/chords" children={<Chords />} />
         <Route exact path="/song" children={<Songwriter />} />
-        {/* <Route path="/song/:songId" children={<Songwriter />} /> */}
+        <Route path="/song/:songId" children={<Songwriter />} />
         <Route exact path="/find" children={<FindSongs />} />
         <Route path="/">
           <Redirect to="/scale" />

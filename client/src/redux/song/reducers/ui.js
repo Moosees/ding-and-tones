@@ -10,12 +10,12 @@ const uiReducer = (state = uiState, { type, payload }) => {
     // case songTypes.DELETE_SUCCESSFUL:
     //   return { ...state, isDeleting: false };
 
-    // case songTypes.FETCH_ERROR:
-    //   return { ...state, error: payload, isFetching: false };
-    // case songTypes.FETCH_STARTED:
-    //   return { ...state, isFetching: true };
-    // case songTypes.FETCH_SUCCESSFUL:
-    //   return { ...state, isFetching: false };
+    case songTypes.FETCH_ERROR:
+      return { ...state, error: payload, isFetching: false };
+    case songTypes.FETCH_STARTED:
+      return { ...state, isFetching: true };
+    case songTypes.FETCH_SUCCESSFUL:
+      return { ...state, ...payload.ui, isFetching: false };
 
     case songTypes.SAVE_ERROR:
       return { ...state, error: payload, isSaving: false };
@@ -30,7 +30,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
       };
 
     case songTypes.SET_STATE:
-      return payload.ui || state;
+      return { ...state, ...payload.ui };
 
     default:
       return state;

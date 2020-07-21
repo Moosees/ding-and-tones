@@ -9,6 +9,7 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
     case songTypes.DUPLICATE_BAR:
       return { ...state, ...payload.newBeats };
 
+    case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
       return payload.beats || state;
 
