@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   isEditingSong: true,
   isSongPlaying: false,
   soundOptions: {},
+  textEditOpen: false,
 };
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {

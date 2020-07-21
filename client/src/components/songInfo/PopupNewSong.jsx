@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { optionsDifficulty } from '../../assets/constants';
+import useValidate from '../../hooks/useValidate';
 import { setSongState } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
@@ -14,20 +15,24 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   const [difficulty, setDifficulty] = useState(1);
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(4);
-  const [title, setTitle] = useState('');
+
+  const [title, setTitle, errors, isTitleValid] = useValidate('title');
 
   const handleConfirm = () => {
-    if (title) {
+    if (isTitleValid) {
       const info = {
+        bpm: 100,
         difficulty,
         metre,
         subdivision,
         title,
+      };
+      const ui = {
         isOwner: false,
         songId: null,
       };
 
-      setSongState({ info, bars: {}, beats: {}, arrangement: [] });
+      setSongState({ info, ui, bars: {}, beats: {}, arrangement: [] });
       onClose();
     }
   };
@@ -36,12 +41,12 @@ const PopupNewSong = ({ onClose, setSongState }) => {
     <Popup onClose={onClose}>
       <InfoBox>
         <InfoTextEdit
-          editOnly
+          errors={errors}
           placeholder={'Title'}
-          type="title"
           value={title}
           handleChange={setTitle}
-        ></InfoTextEdit>
+          isValid={isTitleValid}
+        />
       </InfoBox>
       <InfoBox>
         <InfoSelect
@@ -59,7 +64,11 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         setSubdivision={setSubdivision}
       />
       <Buttons position="center">
-        <BtnPrimary label="Confirm" onClick={handleConfirm} />
+        <BtnPrimary
+          label="Confirm"
+          disabled={!isTitleValid}
+          onClick={handleConfirm}
+        />
         <BtnPrimary label="Cancel" onClick={onClose} />
       </Buttons>
     </Popup>

@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Fix validation for new song popup
-* Add virtual label field for songs and use getting search results?
 * Add other song routes
 * Scale/song delete response data
 * Errors display on inputs
@@ -27,6 +25,7 @@
 * flushDrumState should not be needed
 * Db connection error handler might not work
 * Move error handling to react error boundaries?
+* Using input validators for save buttons till allows saving with unsaved inputs
 
 ## Design
 
@@ -80,6 +79,7 @@
 
 ### Low priority
 
+* Triplets, flams, etc. Value 9, 17 for triplets?
 * Pagination
 * Only show save buttons if there are changes
 * Update url when loading things and/or share by link - check param vs id?
@@ -100,10 +100,10 @@
 * Svgs instead of iconfont?
 * Multiple alerts on screen? or just reset timeout and show newest?
 * Check scales for duplicates when saving?
+* Add virtual label field for songs and use it for search results?
 
 ### Even lower priority
 
-* Triplets, flams, etc. Value 9, 17 for triplets?
 * Custom metres
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now

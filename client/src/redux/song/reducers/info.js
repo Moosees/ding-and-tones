@@ -6,11 +6,11 @@ const infoReducer = (state = infoState, { type, payload }) => {
     case songTypes.SAVE_SUCCESSFUL:
       return { ...state, title: payload.title };
 
+    case songTypes.SET_STATE:
+      return payload.info || state;
+
     case songTypes.UPDATE_SONG_INFO:
       return { ...state, ...payload };
-
-    case songTypes.UPDATE_SONG:
-      return payload.info || state;
 
     default:
       return state;

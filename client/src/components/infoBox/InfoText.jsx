@@ -1,42 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { EditIcon } from './infoBox.styles';
 import InfoTextEdit from './InfoTextEdit';
 
-const InfoText = ({ children, handleChange, placeholder, type, value }) => {
+const InfoText = ({
+  children,
+  errors = [],
+  handleChange = () => {},
+  handleClose = () => {},
+  handleSave = () => {},
+  isValid = true,
+  placeholder = '',
+  value = '',
+}) => {
   const [editOpen, setEditOpen] = useState(false);
 
-  // close edit mode if something else changes text
-  useEffect(() => {
-    setEditOpen(false);
-  }, [value]);
-
-  const handleClose = () => {
-    setEditOpen(false);
-  };
-
-  const handleOpen = () => {
-    setEditOpen(true);
-  };
-
-  const handleSave = (value) => {
-    handleChange(value);
+  const onClose = () => {
     handleClose();
+    setEditOpen(false);
+  };
+
+  const onSave = () => {
+    handleSave();
+    setEditOpen(false);
   };
 
   return (
     <>
       {editOpen ? (
         <InfoTextEdit
+          errors={errors}
           placeholder={placeholder}
-          type={type}
           value={value}
-          onClose={handleClose}
-          onSave={handleSave}
+          handleChange={handleChange}
+          onClose={onClose}
+          onSave={onSave}
+          isValid={isValid}
         />
       ) : (
         <>
           {children}
-          <EditIcon className="material-icons" onClick={handleOpen}>
+          <EditIcon
+            className="material-icons"
+            onClick={() => setEditOpen(true)}
+          >
             edit
           </EditIcon>
         </>

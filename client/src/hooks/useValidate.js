@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-const validateInput = (value, type) => {
+const validateInput = (value, validationType) => {
   let errors = [];
   let alphaNum = /^[.,_-\w\s]+$/g;
 
-  switch (type) {
+  switch (validationType) {
     case 'title':
       if (!alphaNum.test(value))
         errors.push('Title cannot contain special characters');
@@ -21,35 +21,35 @@ const validateInput = (value, type) => {
   return errors;
 };
 
-const useValidate = (defaultValue, callback, type) => {
+const useValidate = (validationType, defaultValue) => {
   const [value, setValue] = useState(defaultValue || '');
   const [errors, setErrors] = useState([]);
   const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
-    setValue(defaultValue);
-  }, [defaultValue]);
-
-  useEffect(() => {
     setIsValid(false);
+
     const timeout = setTimeout(() => {
-      const newErrors = validateInput(value, type);
+      const newErrors = validateInput(value, validationType);
       setErrors(newErrors);
-      if (!newErrors.length) {
-        setIsValid(true);
-        callback(value);
-      }
-    }, 500);
+
+      if (!newErrors.length) setIsValid(true);
+    }, 400);
 
     if (!value) return clearTimeout(timeout);
+
     return () => clearTimeout(timeout);
-  }, [value, type, callback]);
+  }, [value, validationType]);
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
-  return [value, handleChange, errors, isValid];
+  const resetValue = () => {
+    setValue(defaultValue || '');
+  };
+
+  return [value, handleChange, errors, isValid, resetValue];
 };
 
 export default useValidate;

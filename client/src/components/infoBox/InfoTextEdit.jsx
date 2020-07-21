@@ -1,34 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import useValidate from '../../hooks/useValidate';
+import React, { useEffect } from 'react';
 import { SaveIcon, TextInput } from './infoBox.styles';
 
 const InfoTextEdit = ({
+  errors,
   handleChange,
-  onSave,
-  onClose,
+  isValid,
+  onSave = () => {},
+  onClose = () => {},
   placeholder,
   type,
   value,
 }) => {
-  const [text, setText] = useState(value);
-  const [validateValue, handleValidate, errors, isValid] = useValidate(
-    handleChange ? value : text,
-    handleChange || setText,
-    type
-  );
-
-  useEffect(() => onClose, [onClose]);
+  // cleanup
+  useEffect(() => () => onClose, [onClose]);
 
   const handleKeyDown = (e) => {
     // enter
-    if (e.keyCode === 13) return trySave();
+    if (e.keyCode === 13) return onSave();
 
     // escape
     if (e.keyCode === 27) return onClose();
-  };
-
-  const trySave = () => {
-    if (isValid) onSave(text);
   };
 
   return (
@@ -36,16 +27,15 @@ const InfoTextEdit = ({
       <TextInput
         autoFocus
         errors={errors}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        value={validateValue}
-        onChange={handleValidate}
-        onKeyDown={handleChange ? undefined : handleKeyDown}
+        value={value}
       />
       <SaveIcon
         className="material-icons"
-        editOnly={!!handleChange}
         isValid={isValid}
-        onClick={handleChange ? undefined : trySave}
+        onClick={isValid ? onSave : onClose}
       >
         {isValid ? 'check_circle_outline' : 'not_interested'}
       </SaveIcon>

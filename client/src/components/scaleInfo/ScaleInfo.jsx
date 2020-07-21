@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import useValidate from '../../hooks/useValidate';
 import { saveScale, setScaleName } from '../../redux/scale/scale.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
@@ -15,25 +16,38 @@ const ScaleInfo = ({
   scaleInfo,
   setScaleName,
 }) => {
-  const { label, name } = scaleInfo;
+  const [
+    name,
+    handleNameChange,
+    nameErrors,
+    isNameValid,
+    resetName,
+  ] = useValidate('title', scaleInfo.name);
+
+  const handleSave = () => {
+    if (isNameValid) setScaleName(name);
+  };
 
   return (
     <InfoContainer>
       <InfoBox>
         <InfoText
+          errors={nameErrors}
+          handleChange={handleNameChange}
+          handleClose={resetName}
+          handleSave={handleSave}
+          isValid={isNameValid}
           placeholder="Scale name"
-          type="title"
           value={name}
-          handleChange={setScaleName}
         >
-          {'Scale: ' + name}
+          {'Scale: ' + scaleInfo.name}
         </InfoText>
       </InfoBox>
-      <InfoBox>{label}</InfoBox>
+      <InfoBox>{scaleInfo.label}</InfoBox>
       <Buttons>
         {isSignedIn && (
           <BtnPrimary
-            disabled={isSaving}
+            disabled={isSaving || !isNameValid}
             label="Save Scale"
             onClick={saveScale}
           />

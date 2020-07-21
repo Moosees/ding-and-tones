@@ -29,7 +29,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
         songId: payload.songId,
       };
 
-    case songTypes.UPDATE_SONG:
+    case songTypes.SET_STATE:
       return payload.ui || state;
 
     default:

@@ -13,6 +13,9 @@ const barsReducer = (state = barsState, { type, payload }) => {
         [payload.newBarId]: { ...oldBar, measure: payload.newMeasure },
       };
 
+    case songTypes.SET_STATE:
+      return payload.bars || state;
+
     case songTypes.UPDATE_BAR_SUBDIVISION:
       return {
         ...state,
@@ -30,9 +33,6 @@ const barsReducer = (state = barsState, { type, payload }) => {
           measure: payload.newMeasure,
         },
       };
-
-    case songTypes.UPDATE_SONG:
-      return payload.bars || state;
 
     default:
       return state;

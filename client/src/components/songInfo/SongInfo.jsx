@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { optionsDifficulty } from '../../assets/constants';
+import useValidate from '../../hooks/useValidate';
 import { saveSong, updateSongInfo } from '../../redux/song/song.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
@@ -18,33 +19,43 @@ const InfoContainer = styled.div`
 `;
 
 const SongInfo = ({
-  difficulty,
   isOwner,
   isSaving,
   isSignedIn,
   isSongPlaying,
   saveSong,
-  title,
+  songInfo,
   updateSongInfo,
 }) => {
   const [newOpen, setNewOpen] = useState(false);
+
+  const [
+    title,
+    handleTitleChange,
+    titleErrors,
+    isTitleValid,
+    resetTitle,
+  ] = useValidate('title', songInfo.title);
 
   return (
     <>
       <InfoContainer>
         <InfoBox>
           <InfoText
+            errors={titleErrors}
+            handleChange={handleTitleChange}
+            handleClose={resetTitle}
+            handleSave={() => updateSongInfo({ title })}
+            isValid={isTitleValid}
             placeholder="Song title"
-            type="title"
             value={title}
-            handleChange={(value) => updateSongInfo({ title: value })}
           >
-            {'Title: ' + title}
+            {'Title: ' + songInfo.title}
           </InfoText>
         </InfoBox>
         <InfoBox>
           <InfoSelect
-            value={difficulty}
+            value={songInfo.difficulty}
             handleChange={(value) => updateSongInfo({ difficulty: value })}
             options={optionsDifficulty}
           >
@@ -54,20 +65,20 @@ const SongInfo = ({
         <Buttons>
           {isSignedIn && isOwner && (
             <BtnPrimary
-              disabled={isSongPlaying || isSaving}
+              disabled={isSongPlaying || isSaving || !isTitleValid}
               label="Save"
               onClick={saveSong}
             />
           )}
           {isSignedIn && (
             <BtnPrimary
-              disabled={isSongPlaying || isSaving}
+              disabled={isSongPlaying || isSaving || !isTitleValid}
               label="Save as"
               onClick={() => saveSong({ saveAs: true })}
             />
           )}
           <BtnPrimary
-            disabled={isSongPlaying}
+            disabled={isSongPlaying || isSaving || !isTitleValid}
             label="New Song"
             onClick={() => setNewOpen(true)}
           />
@@ -80,8 +91,7 @@ const SongInfo = ({
 };
 
 const mapStateToProps = ({ song, ui, user }) => ({
-  difficulty: song.info.difficulty,
-  title: song.info.title,
+  songInfo: song.info,
   isOwner: song.ui.isOwner,
   isSaving: song.ui.isSaving,
   isSongPlaying: ui.isSongPlaying,
