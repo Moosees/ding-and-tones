@@ -6,6 +6,19 @@ const {
 } = require('../utils/song');
 const ObjectId = require('mongoose').Types.ObjectId;
 
+exports.deleteSong = (req, res) => {
+  const songId = req.params.songId;
+  const userId = req.userId;
+
+  Song.findOneAndDelete({ _id: songId, composer: userId })
+    .select('_id info.title')
+    .exec((error, song) => {
+      if (error || !song) return res.status(400).json();
+
+      res.status(200).json(song);
+    });
+};
+
 exports.getSongById = (req, res) => {
   Song.findById(req.params.songId)
     .populate('composer', '_id name')

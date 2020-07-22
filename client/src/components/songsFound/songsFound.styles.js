@@ -14,8 +14,8 @@ export const SongList = styled.div`
 
 export const SongContainer = styled.div`
   align-items: center;
-  cursor: pointer;
   display: flex;
+  justify-content: flex-start;
 
   &:nth-child(even) {
     background-color: ${({ theme }) => theme.colorBtnLight};
@@ -28,10 +28,33 @@ export const SongContainer = styled.div`
 
 export const DeleteIcon = styled.i`
   color: ${({ theme }) => theme.colorText};
+  cursor: pointer;
   font-size: ${({ theme }) => theme.fzLarge};
   padding: 0.8rem 0.4rem;
 
   &:hover {
     color: ${({ theme }) => theme.colorBtnClear};
+  }
+`;
+
+export const NoDeleteIcon = styled.i`
+  color: ${({ theme }) => theme.colorText};
+  cursor: default;
+  font-size: ${({ theme }) => theme.fzLarge};
+  padding: 0.8rem 0.4rem;
+  opacity: 0.1;
+`;
+
+export const SongTextContainer = styled.div`
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  flex: 1 0;
+  grid-template-columns: 5fr 1fr 2fr 5fr;
+  justify-items: start;
+  padding: 0.8rem 0.4rem;
+
+  &:hover {
+    color: ${({ theme }) => theme.colorBtnConfirm};
   }
 `;

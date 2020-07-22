@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
+import { deleteSongById } from '../../redux/song/song.actions';
 import Loading from '../loading/Loading';
-import { DeleteIcon, SongContainer, SongList } from './songsFound.styles';
+import {
+  DeleteIcon,
+  NoDeleteIcon,
+  SongContainer,
+  SongList,
+  SongTextContainer,
+} from './songsFound.styles';
 
-const SongsFound = ({ isSearching, isSignedIn, songs }) => {
+const SongsFound = ({ deleteSongById, isSearching, isSignedIn, songs }) => {
   const history = useHistory();
 
   const getSongs = () =>
@@ -22,15 +29,25 @@ const SongsFound = ({ isSearching, isSignedIn, songs }) => {
       } = song;
 
       return (
-        <SongContainer
-          key={songId}
-          onClick={() => history.push(`/song/${songId}`)}
-        >
-          {isOwner && isSignedIn && (
-            <DeleteIcon className="material-icons">delete</DeleteIcon>
+        <SongContainer key={songId}>
+          {isOwner && isSignedIn ? (
+            <DeleteIcon
+              className="material-icons"
+              onClick={() => deleteSongById(songId)}
+            >
+              delete
+            </DeleteIcon>
+          ) : (
+            <NoDeleteIcon className="material-icons">delete</NoDeleteIcon>
           )}
-          {title} by {composer} - Metre: {metreList[metre].name} - Difficulty:{' '}
-          {difficultyByValue[difficulty]} - Scale: {scale}
+          <SongTextContainer onClick={() => history.push(`/song/${songId}`)}>
+            <span>
+              {title} by {composer}
+            </span>
+            <span>{metreList[metre].name}</span>
+            <span>{difficultyByValue[difficulty]}</span>
+            <span>{scale}</span>
+          </SongTextContainer>
         </SongContainer>
       );
     });
@@ -44,4 +61,4 @@ const mapStateToProps = ({ search, user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps)(SongsFound);
+export default connect(mapStateToProps, { deleteSongById })(SongsFound);

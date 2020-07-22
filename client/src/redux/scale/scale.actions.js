@@ -21,7 +21,10 @@ export const deleteScaleById = (scaleId) => (dispatch) => {
       if (res.status === 200)
         dispatch({
           type: scaleTypes.DELETE_SUCCESSFUL,
-          payload: { scaleId: res.data._id, name: res.data.name },
+          payload: {
+            scaleId: res.data._id,
+            alert: `"${res.data.name}" deleted`,
+          },
         });
     })
     .catch((error) =>
@@ -36,7 +39,10 @@ export const getScaleById = (scaleId) => (dispatch) => {
     .get(`/scale/id/${scaleId}`)
     .then((res) => {
       if (res.status === 200)
-        dispatch({ type: scaleTypes.FETCH_SUCCESSFUL, payload: res.data });
+        dispatch({
+          type: scaleTypes.FETCH_SUCCESSFUL,
+          payload: { ...res.data, alert: `"${res.data.info.name}" loaded` },
+        });
     })
     .catch((error) =>
       dispatch({ type: scaleTypes.FETCH_ERROR, payload: error.message })
@@ -73,7 +79,10 @@ export const saveScale = () => (dispatch, getState) => {
     .post('/scale', body)
     .then((res) => {
       if (res.status === 200) {
-        dispatch({ type: scaleTypes.SAVE_SUCCESSFUL, payload: res.data });
+        dispatch({
+          type: scaleTypes.SAVE_SUCCESSFUL,
+          payload: { ...res.data, alert: `"${res.data.info.name}" saved` },
+        });
       }
     })
     .catch((error) =>

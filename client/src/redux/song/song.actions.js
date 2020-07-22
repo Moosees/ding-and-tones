@@ -1,6 +1,6 @@
 import axios from 'axios';
 import songTypes from './song.types';
-import { parseSongForSaving, parseFetchedSong } from './song.utils';
+import { parseFetchedSong, parseSongForSaving } from './song.utils';
 
 export const addNewBar = (barWithBeatsAndId) => ({
   type: songTypes.ADD_NEW_BAR,
@@ -11,6 +11,26 @@ export const deleteBar = (barId) => ({
   type: songTypes.DELETE_BAR,
   payload: barId,
 });
+
+export const deleteSongById = (songId) => (dispatch) => {
+  dispatch({ type: songTypes.DELETE_STARTED });
+
+  return axios
+    .delete(`/song/id/${songId}`)
+    .then((res) => {
+      if (res.status === 200)
+        dispatch({
+          type: songTypes.DELETE_SUCCESSFUL,
+          payload: {
+            songId: res.data._id,
+            alert: `"${res.data.info.title}" deleted`,
+          },
+        });
+    })
+    .catch((error) =>
+      dispatch({ type: songTypes.DELETE_ERROR, payload: error.message })
+    );
+};
 
 export const duplicateBar = (bar) => ({
   type: songTypes.DUPLICATE_BAR,
@@ -48,7 +68,10 @@ export const saveSong = ({ saveAs }) => (dispatch, getState) => {
     .post('/song', body)
     .then((res) => {
       if (res.status === 200) {
-        dispatch({ type: songTypes.SAVE_SUCCESSFUL, payload: res.data });
+        dispatch({
+          type: songTypes.SAVE_SUCCESSFUL,
+          payload: { ...res.data, alert: `"${res.data.title}" saved` },
+        });
       }
     })
     .catch((error) => {

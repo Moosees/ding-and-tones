@@ -2,8 +2,8 @@
 
 ## Current tasks
 
-* Convert setSongState to reset action?
-* Add other song routes - wip
+* Save and delete song changes search results
+* Check isDeleting state for scales and songs
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -13,6 +13,8 @@
 * Remove devtools in production
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
+* Move error handling to react error boundaries?
+* Add headings to search results, or just make a better table
 
 ## Bugs
 
@@ -21,8 +23,8 @@
 * Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work
-* Move error handling to react error boundaries?
 * Using input validators for save buttons still allows saving with unsaved inputs
+* Trim scale search results and add api requests instead of loadScale?
 
 ## Design
 

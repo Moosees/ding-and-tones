@@ -80,6 +80,7 @@ export const parseFetchedSong = (song) => {
   const parsedBeats = parseArrayToObject(beats);
 
   return {
+    alert: `"${song.info.title}" by ${song.composer} loaded`,
     arrangement,
     bars: parsedBars,
     beats: parsedBeats,

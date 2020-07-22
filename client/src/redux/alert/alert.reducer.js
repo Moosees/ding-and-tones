@@ -15,6 +15,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case scaleTypes.DELETE_ERROR:
+    case songTypes.DELETE_ERROR:
     case scaleTypes.FETCH_ERROR:
     case songTypes.FETCH_ERROR:
     case scaleTypes.SAVE_ERROR:
@@ -22,22 +23,12 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, msg: 'Request failed' };
 
     case scaleTypes.DELETE_SUCCESSFUL:
-      return { ...state, msg: `"${payload.name}" deleted` };
-
+    case songTypes.DELETE_SUCCESSFUL:
     case scaleTypes.FETCH_SUCCESSFUL:
-      return { ...state, msg: `"${payload.info.name}" loaded` };
-
     case songTypes.FETCH_SUCCESSFUL:
-      return {
-        ...state,
-        msg: `"${payload.info.title}" by ${payload.ui.composer} loaded`,
-      };
-
     case scaleTypes.SAVE_SUCCESSFUL:
-      return { ...state, msg: `"${payload.info.name}" saved` };
-
     case songTypes.SAVE_SUCCESSFUL:
-      return { ...state, msg: `"${payload.title}" saved` };
+      return { ...state, msg: payload.alert };
 
     default:
       return state;

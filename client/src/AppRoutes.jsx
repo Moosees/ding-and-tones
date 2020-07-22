@@ -18,9 +18,8 @@ const AppRoutes = () => (
         <Route exact path="/song" children={<Songwriter />} />
         <Route path="/song/:songId" children={<Songwriter />} />
         <Route exact path="/find" children={<FindSongs />} />
-        <Route path="/">
-          <Redirect to="/scale" />
-        </Route>
+        <Redirect from="/find/:songId" to="/song/:songId" />
+        <Redirect from="/" to="/scale" />
       </Switch>
     </Suspense>
   </SignInBoundary>

@@ -3,12 +3,12 @@ import songTypes from '../song.types';
 
 const uiReducer = (state = uiState, { type, payload }) => {
   switch (type) {
-    // case songTypes.DELETE_ERROR:
-    //   return { ...state, error: payload, isDeleting: false };
-    // case songTypes.DELETE_STARTED:
-    //   return { ...state, isDeleting: true };
-    // case songTypes.DELETE_SUCCESSFUL:
-    //   return { ...state, isDeleting: false };
+    case songTypes.DELETE_ERROR:
+      return { ...state, error: payload, isDeleting: false };
+    case songTypes.DELETE_STARTED:
+      return { ...state, isDeleting: true };
+    case songTypes.DELETE_SUCCESSFUL:
+      return { ...state, isDeleting: false };
 
     case songTypes.FETCH_ERROR:
       return { ...state, error: payload, isFetching: false };
