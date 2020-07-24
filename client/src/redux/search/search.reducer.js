@@ -1,5 +1,6 @@
 import scaleTypes from '../scale/scale.types';
 import searchTypes from './search.types';
+import songTypes from '../song/song.types';
 
 const INITIAL_STATE = {
   error: '',
@@ -18,10 +19,25 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
         ),
       };
 
+    case songTypes.DELETE_SUCCESSFUL:
+      return {
+        ...state,
+        songs: state.songs.filter((song) => song.songId !== payload.songId),
+      };
+
     case scaleTypes.SAVE_SUCCESSFUL:
       return {
         ...state,
-        scales: [...state.scales, payload],
+        scales: [payload, ...state.scales],
+      };
+
+    case songTypes.SAVE_SUCCESSFUL:
+      const filteredSongs = state.songs.filter(
+        (song) => song.songId !== payload.song.songId
+      );
+      return {
+        ...state,
+        songs: [payload.song, ...filteredSongs],
       };
 
     case searchTypes.SEARCH_ERROR:

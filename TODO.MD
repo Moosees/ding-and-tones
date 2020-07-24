@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Save and delete song changes search results
 * Check isDeleting state for scales and songs
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed

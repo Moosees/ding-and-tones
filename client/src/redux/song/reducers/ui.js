@@ -24,9 +24,9 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.SAVE_SUCCESSFUL:
       return {
         ...state,
-        isOwner: payload.isOwner,
+        isOwner: payload.song.isOwner,
         isSaving: false,
-        songId: payload.songId,
+        songId: payload.song.songId,
       };
 
     case songTypes.SET_STATE:

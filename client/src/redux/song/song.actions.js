@@ -70,7 +70,7 @@ export const saveSong = ({ saveAs }) => (dispatch, getState) => {
       if (res.status === 200) {
         dispatch({
           type: songTypes.SAVE_SUCCESSFUL,
-          payload: { ...res.data, alert: `"${res.data.title}" saved` },
+          payload: { song: res.data, alert: `"${res.data.title}" saved` },
         });
       }
     })

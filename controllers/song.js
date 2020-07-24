@@ -2,7 +2,6 @@ const Song = require('../models/song');
 const {
   parseGetResponse,
   parseSearchResponse,
-  parseSaveResponse,
 } = require('../utils/song');
 const ObjectId = require('mongoose').Types.ObjectId;
 
@@ -53,11 +52,12 @@ exports.saveSong = (req, res) => {
 
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
     .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
-    .select('_id composer info')
+    .populate('composer', '_id name')
+    .select('_id scale info')
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
 
-      const data = parseSaveResponse(song, userId);
+      const data = parseSearchResponse(song, userId);
       res.status(200).json(data);
     });
 };

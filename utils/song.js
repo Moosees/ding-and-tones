@@ -32,12 +32,12 @@ exports.parseSearchResponse = (songObject, userId) => {
   };
 };
 
-exports.parseSaveResponse = (songObject, userId) => {
-  const { _id, composer, info } = songObject;
+// exports.parseSaveResponse = (songObject, userId) => {
+//   const { _id, composer, info } = songObject;
 
-  return {
-    isOwner: userId ? userId.equals(composer._id) : false,
-    songId: _id,
-    title: info.title,
-  };
-};
+//   return {
+//     isOwner: userId ? userId.equals(composer._id) : false,
+//     songId: _id,
+//     title: info.title,
+//   };
+// };
