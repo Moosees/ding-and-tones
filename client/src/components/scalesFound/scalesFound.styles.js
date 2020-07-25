@@ -27,16 +27,6 @@ export const ScaleContainer = styled.div`
   }
 `;
 
-export const DeleteIcon = styled.i`
-  color: ${({ theme }) => theme.colorText};
-  font-size: ${({ theme }) => theme.fzLarge};
-  padding: 0.8rem 0.4rem;
-
-  &:hover {
-    color: ${({ theme }) => theme.colorBtnClear};
-  }
-`;
-
 export const ScaleLabel = styled.span``;
 
 export const ScaleNotes = styled.span`

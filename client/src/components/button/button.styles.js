@@ -46,6 +46,30 @@ export const GradientButton = styled.button`
   }
 `;
 
+export const IconButton = styled.button`
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  cursor: pointer;
+
+  & i {
+    color: ${({ theme }) => theme.colorText};
+    font-size: ${({ theme }) => theme.fzLarge};
+    padding: 0.8rem 0.4rem;
+  }
+
+  &:hover:not([disabled]) i {
+    color: ${({ theme }) => theme.colorBtnClear};
+  }
+
+  &:disabled {
+    cursor: default;
+
+    & i {
+      opacity: 0.2;
+    }
+  }
+`;
+
 export const NavButton = styled.button`
   background-color: ${({ theme }) => theme.colorBox};
   border: ${({ isActive, theme }) =>

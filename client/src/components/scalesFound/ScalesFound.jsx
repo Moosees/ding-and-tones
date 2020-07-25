@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteScaleById, loadScale } from '../../redux/scale/scale.actions';
+import BtnIcon from '../button/Icon';
 import Loading from '../loading/Loading';
 import {
-  DeleteIcon,
   ScaleContainer,
   ScaleLabel,
   ScaleList,
@@ -13,6 +13,7 @@ import {
 
 const ScalesFound = ({
   deleteScaleById,
+  isDeleting,
   isSearching,
   isSignedIn,
   loadScale,
@@ -29,12 +30,12 @@ const ScalesFound = ({
       return (
         <ScaleContainer key={i}>
           {isOwner && isSignedIn && (
-            <DeleteIcon
-              className="material-icons"
+            <BtnIcon
               onClick={() => deleteScaleById(scaleId)}
-            >
-              delete
-            </DeleteIcon>
+              disabled={isDeleting || isSearching}
+              icon="delete"
+              label={`delete ${name}`}
+            />
           )}
           <TextContainer onClick={() => loadScale(scale)}>
             <ScaleLabel>{name}</ScaleLabel>
@@ -51,7 +52,8 @@ const ScalesFound = ({
   );
 };
 
-const mapStateToProps = ({ search, user }) => ({
+const mapStateToProps = ({ scale, search, user }) => ({
+  isDeleting: scale.ui.isDeleting,
   scales: search.scales,
   isSearching: search.isSearching,
   isSignedIn: user.isSignedIn,
