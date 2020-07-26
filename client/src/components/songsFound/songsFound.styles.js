@@ -26,25 +26,6 @@ export const SongContainer = styled.div`
   }
 `;
 
-export const DeleteIcon = styled.i`
-  color: ${({ theme }) => theme.colorText};
-  cursor: pointer;
-  font-size: ${({ theme }) => theme.fzLarge};
-  padding: 0.8rem 0.4rem;
-
-  &:hover {
-    color: ${({ theme }) => theme.colorBtnClear};
-  }
-`;
-
-export const NoDeleteIcon = styled.i`
-  color: ${({ theme }) => theme.colorText};
-  cursor: default;
-  font-size: ${({ theme }) => theme.fzLarge};
-  padding: 0.8rem 0.4rem;
-  opacity: 0.1;
-`;
-
 export const SongTextContainer = styled.div`
   align-items: center;
   cursor: pointer;

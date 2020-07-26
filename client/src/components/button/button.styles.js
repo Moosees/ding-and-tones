@@ -55,6 +55,7 @@ export const IconButton = styled.button`
     color: ${({ theme }) => theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
     padding: 0.8rem 0.4rem;
+    transition: color 0.1s ease;
   }
 
   &:hover:not([disabled]) i {

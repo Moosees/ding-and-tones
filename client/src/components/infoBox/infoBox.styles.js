@@ -16,17 +16,6 @@ export const InfoContainer = styled.div`
   padding: 0 0.5rem;
 `;
 
-export const EditIcon = styled.i`
-  color: ${({ theme }) => theme.colorText};
-  cursor: pointer;
-  font-size: ${({ theme }) => theme.fzLarge};
-  transition: color 0.1s ease;
-
-  &:hover {
-    color: ${({ theme }) => theme.colorBtnConfirm};
-  }
-`;
-
 export const SaveIcon = styled.i`
   color: ${({ isValid, theme }) =>
     isValid ? theme.colorBtnConfirm : theme.colorBtnClear};

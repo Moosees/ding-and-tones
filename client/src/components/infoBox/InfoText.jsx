@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { EditIcon } from './infoBox.styles';
+import BtnIcon from '../button/Icon';
 import InfoTextEdit from './InfoTextEdit';
 
 const InfoText = ({
@@ -39,12 +39,7 @@ const InfoText = ({
       ) : (
         <>
           {children}
-          <EditIcon
-            className="material-icons"
-            onClick={() => setEditOpen(true)}
-          >
-            edit
-          </EditIcon>
+          <BtnIcon label="edit" icon="edit" onClick={() => setEditOpen(true)} />
         </>
       )}
     </>

@@ -4,10 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
 import { deleteSongById } from '../../redux/song/song.actions';
+import BtnIcon from '../button/Icon';
 import Loading from '../loading/Loading';
 import {
-  DeleteIcon,
-  NoDeleteIcon,
   SongContainer,
   SongList,
   SongTextContainer,
@@ -30,16 +29,12 @@ const SongsFound = ({ deleteSongById, isSearching, isSignedIn, songs }) => {
 
       return (
         <SongContainer key={songId}>
-          {isOwner && isSignedIn ? (
-            <DeleteIcon
-              className="material-icons"
-              onClick={() => deleteSongById(songId)}
-            >
-              delete
-            </DeleteIcon>
-          ) : (
-            <NoDeleteIcon className="material-icons">delete</NoDeleteIcon>
-          )}
+          <BtnIcon
+            label={`delete ${title}`}
+            icon="delete"
+            onClick={() => deleteSongById(songId)}
+            disabled={!isOwner || !isSignedIn}
+          />
           <SongTextContainer onClick={() => history.push(`/song/${songId}`)}>
             <span>
               {title} by {composer}
