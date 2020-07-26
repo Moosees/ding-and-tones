@@ -1,9 +1,15 @@
 import React from 'react';
 import { IconButton } from './button.styles';
 
-const BtnIcon = ({ disabled, label, icon, onClick }) => {
+const BtnIcon = ({ color, disabled, editOnly, label, icon, onClick }) => {
   return (
-    <IconButton aria-label={label} disabled={disabled} onClick={onClick}>
+    <IconButton
+      aria-label={label}
+      color={`color${color}`}
+      disabled={disabled}
+      editOnly={editOnly}
+      onClick={onClick}
+    >
       <i className="material-icons">{icon}</i>
     </IconButton>
   );

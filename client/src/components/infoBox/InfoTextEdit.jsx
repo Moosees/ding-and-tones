@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { SaveIcon, TextInput } from './infoBox.styles';
+import BtnIcon from '../button/Icon';
+import { TextInput } from './infoBox.styles';
 
 const InfoTextEdit = ({
+  editOnly,
   errors,
   handleChange,
   isValid,
@@ -32,13 +34,13 @@ const InfoTextEdit = ({
         placeholder={placeholder}
         value={value}
       />
-      <SaveIcon
-        className="material-icons"
-        isValid={isValid}
+      <BtnIcon
+        editOnly={editOnly}
+        color={isValid ? 'BtnConfirm' : 'BtnClear'}
+        label={isValid ? 'save' : 'cancel'}
+        icon={isValid ? 'check_circle_outline' : 'not_interested'}
         onClick={isValid ? onSave : onClose}
-      >
-        {isValid ? 'check_circle_outline' : 'not_interested'}
-      </SaveIcon>
+      />
     </>
   );
 };

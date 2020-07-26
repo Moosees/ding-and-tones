@@ -49,17 +49,19 @@ export const GradientButton = styled.button`
 export const IconButton = styled.button`
   background-color: rgba(0, 0, 0, 0);
   border: 0;
-  cursor: pointer;
+  cursor: ${({ editOnly }) => (editOnly ? 'default' : 'pointer')};
 
   & i {
-    color: ${({ theme }) => theme.colorText};
+    color: ${({ color, editOnly, theme }) =>
+      editOnly && color ? theme[color] : theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
     padding: 0.8rem 0.4rem;
     transition: color 0.1s ease;
   }
 
   &:hover:not([disabled]) i {
-    color: ${({ theme }) => theme.colorBtnClear};
+    color: ${({ color, theme }) =>
+      color ? theme[color] : theme.colorBtnClear};
   }
 
   &:disabled {

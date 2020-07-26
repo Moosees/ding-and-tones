@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Check isDeleting state for scales and songs
+* Check isDeleting state for scales and songs - done?
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -22,7 +22,7 @@
 * Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work
-* Using input validators for save buttons still allows saving with unsaved inputs
+* Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Trim scale search results and add api requests instead of loadScale?
 
 ## Design

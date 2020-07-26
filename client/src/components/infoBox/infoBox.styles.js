@@ -16,13 +16,6 @@ export const InfoContainer = styled.div`
   padding: 0 0.5rem;
 `;
 
-export const SaveIcon = styled.i`
-  color: ${({ isValid, theme }) =>
-    isValid ? theme.colorBtnConfirm : theme.colorBtnClear};
-  cursor: ${({ editOnly, isValid }) =>
-    !editOnly && isValid ? 'pointer' : 'unset'};
-`;
-
 export const Select = styled.select`
   background-image: linear-gradient(
     to bottom,

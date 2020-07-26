@@ -42,6 +42,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
     <Popup onClose={onClose}>
       <InfoBox>
         <InfoTextEdit
+          editOnly
           errors={errors}
           placeholder={'Title'}
           value={title}
