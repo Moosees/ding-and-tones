@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Check isDeleting state for scales and songs - done?
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user

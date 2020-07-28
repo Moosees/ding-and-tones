@@ -12,7 +12,13 @@ import {
   SongTextContainer,
 } from './songsFound.styles';
 
-const SongsFound = ({ deleteSongById, isSearching, isSignedIn, songs }) => {
+const SongsFound = ({
+  deleteSongById,
+  isDeleting,
+  isSearching,
+  isSignedIn,
+  songs,
+}) => {
   const history = useHistory();
 
   const getSongs = () =>
@@ -33,7 +39,7 @@ const SongsFound = ({ deleteSongById, isSearching, isSignedIn, songs }) => {
             label={`delete ${title}`}
             icon="delete"
             onClick={() => deleteSongById(songId)}
-            disabled={!isOwner || !isSignedIn}
+            disabled={!isSignedIn || !isOwner || !isSearching || isDeleting}
           />
           <SongTextContainer onClick={() => history.push(`/song/${songId}`)}>
             <span>
@@ -50,9 +56,10 @@ const SongsFound = ({ deleteSongById, isSearching, isSignedIn, songs }) => {
   return isSearching ? <Loading /> : <SongList>{songs && getSongs()}</SongList>;
 };
 
-const mapStateToProps = ({ search, user }) => ({
+const mapStateToProps = ({ search, song, user }) => ({
   songs: search.songs,
   isSearching: search.isSearching,
+  isDeleting: song.ui.isDeleting,
   isSignedIn: user.isSignedIn,
 });
 
