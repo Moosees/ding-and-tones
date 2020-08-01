@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Load and delete buttons on song list
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed
 * Add account page - prompt to change name if new user
@@ -12,7 +13,6 @@
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach
 * Move error handling to react error boundaries?
-* Add headings to search results, or just make a better table
 
 ## Bugs
 
@@ -22,7 +22,6 @@
 * flushDrumState should not be needed
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
-* Trim scale search results and add api requests instead of loadScale?
 
 ## Design
 

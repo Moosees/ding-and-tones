@@ -1,16 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
 import { deleteSongById } from '../../redux/song/song.actions';
-import BtnIcon from '../button/Icon';
 import Loading from '../loading/Loading';
-import {
-  SongContainer,
-  SongList,
-  SongTextContainer,
-} from './songsFound.styles';
+import Table from './Table';
 
 const SongsFound = ({
   deleteSongById,
@@ -21,39 +16,41 @@ const SongsFound = ({
 }) => {
   const history = useHistory();
 
-  const getSongs = () =>
-    songs.map((song, i) => {
-      const {
-        songId,
-        title,
-        composer,
-        scale,
-        difficulty,
-        metre,
-        isOwner,
-      } = song;
+  const columns = useMemo(() => [
+    {
+      Header: 'Title',
+      accessor: 'title',
+    },
+    {
+      Header: 'Composer',
+      accessor: 'composer',
+    },
+    {
+      Header: 'Metre',
+      accessor: 'metre',
+      Cell: ({ value }) => metreList[value].name,
+    },
+    {
+      Header: 'Scale',
+      accessor: 'scaleName',
+    },
+    {
+      Header: 'Difficulty',
+      accessor: 'difficulty',
+      Cell: ({ value }) => difficultyByValue[value],
+    },
+  ]);
 
-      return (
-        <SongContainer key={songId}>
-          <BtnIcon
-            label={`delete ${title}`}
-            icon="delete"
-            onClick={() => deleteSongById(songId)}
-            disabled={!isSignedIn || !isOwner || !isSearching || isDeleting}
-          />
-          <SongTextContainer onClick={() => history.push(`/song/${songId}`)}>
-            <span>
-              {title} by {composer}
-            </span>
-            <span>{metreList[metre].name}</span>
-            <span>{difficultyByValue[difficulty]}</span>
-            <span>{scale}</span>
-          </SongTextContainer>
-        </SongContainer>
-      );
-    });
+  //       <SongContainer key={songId}>
+  //         <BtnIcon
+  //           label={`delete ${title}`}
+  //           icon="delete"
+  //           onClick={() => deleteSongById(songId)}
+  //           disabled={!isSignedIn || !isOwner || !isSearching || isDeleting}
+  //         />
+  //         <SongTextContainer onClick={() => history.push(`/song/${songId}`)}>
 
-  return isSearching ? <Loading /> : <SongList>{songs && getSongs()}</SongList>;
+  return isSearching ? <Loading /> : <Table columns={columns} data={songs} />;
 };
 
 const mapStateToProps = ({ search, song, user }) => ({

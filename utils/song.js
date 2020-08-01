@@ -24,7 +24,8 @@ exports.parseSearchResponse = (songObject, userId) => {
   return {
     isOwner: userId ? userId.equals(composer._id) : false,
     songId: _id,
-    scale: scale.label,
+    scaleName: scale.name,
+    scaleLabel: scale.label,
     composer: composer.name,
     title,
     metre,
