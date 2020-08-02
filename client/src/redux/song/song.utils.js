@@ -49,9 +49,7 @@ export const parseSongForSaving = (song, scale, saveAs) => {
       info,
       scale: {
         notes,
-        label: scaleInfo.label,
-        layout: scaleInfo.layout,
-        name: scaleInfo.name,
+        info: scaleInfo,
       },
     },
   };

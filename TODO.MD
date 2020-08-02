@@ -2,6 +2,8 @@
 
 ## Current tasks
 
+* Load scales with songs
+* Alert for loadScale action?
 * Load and delete buttons on song list
 * Errors display on inputs
 * Rework controls - remove play button, rethink what buttons are needed

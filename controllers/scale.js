@@ -6,7 +6,7 @@ exports.deleteScale = (req, res) => {
   const userId = req.userId;
 
   Scale.findOneAndDelete({ _id: scaleId, author: userId })
-    .select('_id name')
+    .select('_id info.name')
     .exec((error, scale) => {
       if (error || !scale) return res.status(400).json();
 
@@ -16,7 +16,7 @@ exports.deleteScale = (req, res) => {
 
 exports.getScaleById = (req, res) => {
   Scale.findById(req.params.scaleId)
-    .select('_id name label layout notes author')
+    .select('_id info notes author')
     .exec((error, scale) => {
       if (error || !scale) return res.status(400).json();
 
@@ -27,7 +27,7 @@ exports.getScaleById = (req, res) => {
 
 exports.getScales = (req, res) => {
   Scale.find()
-    .select('_id name label layout notes author')
+    .select('_id info notes author')
     .limit(20)
     .sort({ created: -1 })
     .exec((error, scales) => {

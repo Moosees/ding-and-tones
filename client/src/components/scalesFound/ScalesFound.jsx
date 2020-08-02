@@ -24,7 +24,7 @@ const ScalesFound = ({
       const {
         scaleId,
         isOwner,
-        info: { name, label },
+        info: { name, label, rootName },
       } = scale;
 
       return (
@@ -34,11 +34,11 @@ const ScalesFound = ({
               onClick={() => deleteScaleById(scaleId)}
               disabled={isDeleting || isSearching}
               icon="delete"
-              label={`delete ${name}`}
+              label={`delete ${rootName} ${name}`}
             />
           )}
           <TextContainer onClick={() => loadScale(scale)}>
-            <ScaleLabel>{name}</ScaleLabel>
+            <ScaleLabel>{`${rootName} ${name}`}</ScaleLabel>
             <ScaleNotes>{label}</ScaleNotes>
           </TextContainer>
         </ScaleContainer>

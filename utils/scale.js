@@ -1,11 +1,7 @@
 exports.parseScaleResponse = (scaleObject, userId) => {
-  const { _id, name, label, layout, notes, author } = scaleObject;
+  const { _id, info, notes, author } = scaleObject;
   return {
-    info: {
-      name,
-      label,
-      layout,
-    },
+    info,
     isOwner: userId ? userId.equals(author) : false,
     notes,
     scaleId: _id,

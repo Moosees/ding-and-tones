@@ -10,12 +10,23 @@ const scaleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  label: { type: String, required: true },
-  layout: { type: Number, required: true },
-  name: {
-    type: String,
-    trim: true,
-    required: true,
+  info: {
+    label: { type: String, required: true },
+    layout: { type: Number, required: true },
+    name: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    rootName: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    rootValue: {
+      type: Number,
+      required: true,
+    },
   },
   notes: {
     round: [String],

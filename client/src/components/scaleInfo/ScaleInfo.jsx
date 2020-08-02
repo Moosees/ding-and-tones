@@ -40,7 +40,7 @@ const ScaleInfo = ({
           placeholder="Scale name"
           value={name}
         >
-          {'Scale: ' + scaleInfo.name}
+          {`Scale: ${scaleInfo.rootName} ${scaleInfo.name}`}
         </InfoText>
       </InfoBox>
       <InfoBox>{scaleInfo.label}</InfoBox>

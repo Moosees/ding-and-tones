@@ -1,8 +1,5 @@
 const Song = require('../models/song');
-const {
-  parseGetResponse,
-  parseSearchResponse,
-} = require('../utils/song');
+const { parseGetResponse, parseSearchResponse } = require('../utils/song');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.deleteSong = (req, res) => {
@@ -33,7 +30,7 @@ exports.getSongById = (req, res) => {
 exports.getSongs = (req, res) => {
   Song.find()
     .populate('composer', '_id name')
-    .select('_id scale info')
+    .select('_id scale.info info')
     .limit(20)
     .sort({ updated: -1 })
     .exec((error, songs) => {
@@ -53,7 +50,7 @@ exports.saveSong = (req, res) => {
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
     .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
     .populate('composer', '_id name')
-    .select('_id scale info')
+    .select('_id scale.info info')
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
 

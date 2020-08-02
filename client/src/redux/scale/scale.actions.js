@@ -23,7 +23,7 @@ export const deleteScaleById = (scaleId) => (dispatch) => {
           type: scaleTypes.DELETE_SUCCESSFUL,
           payload: {
             scaleId: res.data._id,
-            alert: `"${res.data.name}" deleted`,
+            alert: `"${res.data.info.rootName} ${res.data.info.name}" deleted`,
           },
         });
     })
@@ -41,7 +41,10 @@ export const getScaleById = (scaleId) => (dispatch) => {
       if (res.status === 200)
         dispatch({
           type: scaleTypes.FETCH_SUCCESSFUL,
-          payload: { ...res.data, alert: `"${res.data.info.name}" loaded` },
+          payload: {
+            ...res.data,
+            alert: `"${res.data.info.rootName} ${res.data.info.name}" loaded`,
+          },
         });
     })
     .catch((error) =>
@@ -68,20 +71,18 @@ export const saveScale = () => (dispatch, getState) => {
   dispatch({ type: scaleTypes.SAVE_STARTED });
 
   const { scale } = getState();
-  const {
-    info: { name, layout, label },
-    notes: { round },
-  } = scale;
-
-  const body = { name, layout, label, notes: { round } };
+  const { info, notes } = scale;
 
   return axios
-    .post('/scale', body)
+    .post('/scale', { info, notes })
     .then((res) => {
       if (res.status === 200) {
         dispatch({
           type: scaleTypes.SAVE_SUCCESSFUL,
-          payload: { ...res.data, alert: `"${res.data.info.name}" saved` },
+          payload: {
+            ...res.data,
+            alert: `"${res.data.info.rootName} ${res.data.info.name}" saved`,
+          },
         });
       }
     })
