@@ -24,6 +24,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case scaleTypes.DELETE_SUCCESSFUL:
     case songTypes.DELETE_SUCCESSFUL:
+    case scaleTypes.LOAD_SCALE:
     case scaleTypes.FETCH_SUCCESSFUL:
     case songTypes.FETCH_SUCCESSFUL:
     case scaleTypes.SAVE_SUCCESSFUL:

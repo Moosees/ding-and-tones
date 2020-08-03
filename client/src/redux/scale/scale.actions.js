@@ -54,7 +54,10 @@ export const getScaleById = (scaleId) => (dispatch) => {
 
 export const loadScale = (scale) => ({
   type: scaleTypes.LOAD_SCALE,
-  payload: scale,
+  payload: {
+    ...scale,
+    alert: `"${scale.info.rootName} ${scale.info.name}" loaded`,
+  },
 });
 
 export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
