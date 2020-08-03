@@ -23,7 +23,7 @@ const App = ({ setDropdownForBeat }) => {
         <Suspense fallback={<Loading />}>
           <Drum />
         </Suspense>
-        <Section maxWidth="35rem">
+        <Section>
           <ControlsNav />
           <BorderContainer small>
             <Controls />

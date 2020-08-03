@@ -7,23 +7,26 @@ export const Viewport = styled.div`
   grid-template-columns: 22vw 1fr;
   height: 100vh;
   margin: 0 auto;
-  max-width: 160rem;
-  padding: 4rem;
+  padding: 0 4rem;
+  width: 100vw;
 `;
 
 export const Column = styled.div`
   align-items: center;
   display: flex;
-  height: 100%;
+  height: 100vh;
   flex-direction: column;
+  justify-content: center;
   max-height: 75rem;
+  padding: 4rem 0;
+  /* width: 100%; */
 `;
 
 export const Section = styled.div`
   display: flex;
-  flex: 1 0;
+  /* flex: 1 0; */
   flex-direction: column;
-  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'unset')};
+  height: 100%;
   width: 100%;
 `;
 
@@ -32,7 +35,8 @@ export const BorderContainer = styled.div`
   border: ${({ theme }) => theme.borderHeavyDark};
   border-radius: ${({ small }) => (small ? '50' : '100')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
-  flex: 1 0 10vh;
-  overflow: auto;
+  /* flex: 1 0 10vh; */
+  height: 100%;
+  /* overflow: auto; */
   position: relative;
 `;

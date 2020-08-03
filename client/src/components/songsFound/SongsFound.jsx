@@ -5,7 +5,7 @@ import { difficultyByValue } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
 import { deleteSongById } from '../../redux/song/song.actions';
 import Loading from '../loading/Loading';
-import Table from './Table';
+import SongsTable from './SongsTable';
 
 const SongsFound = ({
   deleteSongById,
@@ -50,7 +50,11 @@ const SongsFound = ({
   //         />
   //         <SongTextContainer onClick={() => history.push(`/song/${songId}`)}>
 
-  return isSearching ? <Loading /> : <Table columns={columns} data={songs} />;
+  return isSearching ? (
+    <Loading />
+  ) : (
+    <SongsTable columns={columns} data={songs} />
+  );
 };
 
 const mapStateToProps = ({ search, song, user }) => ({

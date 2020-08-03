@@ -2,23 +2,22 @@
 
 ## Current tasks
 
-* Load scales with songs
-* Load and delete buttons on song list
+* Overflow for intervals - check max-width prop
+* Load and delete buttons on song list - expand table row?
+* Load scales with songs, user decides?
+* Fetching scales/songs infinite loop
+* Infinite scroll on songs (and scales?)
+* Sorting and searching
 * Errors display on inputs
-* Rework controls - remove play button, rethink what buttons are needed
-* Add account page - prompt to change name if new user
-* Select drum type - pan or tongue, etc.
 * Move position map to reducer?
 * What happens when you change to a scale with less notes than pattern needs?
 * Remove devtools in production
 * Play song logic should be moved somewhere else?
-* Play song logic should be reworked with less forEach
-* Move error handling to react error boundaries?
+* Play song logic should be reworked with less forEach?
+* Move error handling to react error boundaries
 
 ## Bugs
 
-* Fetching scales/songs infinite loop
-* App crash when trying to save invalid scale - prevent with validation
 * Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work
@@ -29,53 +28,45 @@
 * Responsive design
 * Distinct confirm and cancel buttons
 * Style songwriter dropdowns
-* Dropdowns open even if clicking label (difficulty)
+* Dropdowns open when clicking label (difficulty and new song popup)
 
-## SIDEBAR
-
-### Drum
+## Drum
 
 * Taks or other sounds
+* Tongue drum sounds
 
-### Controls
+## Controls
 
 * Printing, format?
 * Save to .pdf?
+* Rework controls - remove play button, rethink what buttons are needed
+* Add account page - prompt to change name if new user
+* Select drum type - pan or tongue, etc.
 
-## MAIN CONTENT
-
-### Chords
+## Chords
 
 * ID and cache chords?
 
-### Songwriter
+## Songwriter
 
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
 * Plus and minus one for bpm
 * Web worker?
 
-### Find songs
-
-* Sorting/searching
-* Likes and/or comments?
-* Show your own scales/songs
-
-## OTHER
-
-### State/Routes
+## State/Routes
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
 
-### Backend
+## Backend
 
 * GDPR
 * Hosting
 * update google json file - hostedDomain on react-google-login?
 
-### Low priority
+## Low priority
 
 * Check text inputs for bad words?
 * Update url when loading things and/or share by link - check param vs id?
@@ -98,8 +89,10 @@
 * Check scales for duplicates when saving?
 * Add virtual label field for songs and use it for search results?
 * Better Loading component
+* Likes and/or comments?
+* Show your own scales/songs
 
-### Even lower priority
+## Even lower priority
 
 * Solo bars
 * Only show save buttons if there are changes

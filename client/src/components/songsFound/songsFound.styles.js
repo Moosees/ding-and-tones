@@ -1,41 +1,46 @@
 import styled from 'styled-components';
 
-export const SongList = styled.div`
-  border: ${({ theme }) => theme.borderMedium};
-  border-left: 0;
-  border-right: 0;
-  display: flex;
-  flex-direction: column;
-  max-height: 80%;
+export const TableContainer = styled.div`
+  border-bottom: ${({ theme }) => theme.borderMedium};
+  border-top: ${({ theme }) => theme.borderMedium};
+  height: 100%;
   overflow: auto;
-  padding: 0 0.5rem;
+  width: 90%;
+`;
+
+export const Table = styled.table`
+  border-spacing: 0;
+  padding: 0 0.6rem;
+  position: relative;
   width: 100%;
 `;
 
-export const SongContainer = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: flex-start;
-
-  &:nth-child(even) {
-    background-color: ${({ theme }) => theme.colorBtnLight};
-  }
-
-  &:nth-child(odd) {
-    background-color: ${({ theme }) => theme.colorBtnHeavy};
-  }
+export const TableHeader = styled.th`
+  background-color: ${({ theme }) => theme.colorBtnHeavy};
+  border-bottom: ${({ theme }) => theme.borderLight};
+  padding: 0.5rem;
+  position: sticky;
+  text-align: left;
+  text-transform: uppercase;
+  top: 0;
 `;
 
-export const SongTextContainer = styled.div`
-  align-items: center;
+export const TableRow = styled.tr`
   cursor: pointer;
-  display: grid;
-  flex: 1 0;
-  grid-template-columns: 5fr 1fr 2fr 5fr;
-  justify-items: start;
-  padding: 0.8rem 0.4rem;
 
   &:hover {
     color: ${({ theme }) => theme.colorBtnConfirm};
   }
+
+  &:nth-child(odd) {
+    background-color: ${({ theme }) => theme.colorBtnLight};
+  }
+
+  &:nth-child(even) {
+    background-color: ${({ theme }) => theme.colorBtnHeavy};
+  }
+`;
+
+export const TableCell = styled.td`
+  padding: 0.5rem;
 `;
