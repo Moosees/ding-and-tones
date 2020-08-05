@@ -2,29 +2,30 @@ import styled from 'styled-components';
 
 export const Viewport = styled.div`
   align-items: center;
-  column-gap: 4rem;
-  display: grid;
-  grid-template-columns: 22vw 1fr;
+  display: flex;
   height: 100vh;
-  margin: 0 auto;
-  padding: 0 4rem;
+  justify-content: center;
   width: 100vw;
 `;
 
-export const Column = styled.div`
+export const LayoutGrid = styled.div`
   align-items: center;
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: center;
+  column-gap: 4rem;
+  display: grid;
+  grid-template-areas:
+    'drum main'
+    'controls main';
+  grid-template-columns: 30rem 1fr;
+  grid-template-rows: 50% 50%;
+  height: 100%;
   max-height: 75rem;
-  padding: 4rem 0;
-  /* width: 100%; */
+  max-width: 160rem;
+  padding: 4rem;
+  width: 100%;
 `;
 
-export const Section = styled.div`
+export const SectionWithNav = styled.div`
   display: flex;
-  /* flex: 1 0; */
   flex-direction: column;
   height: 100%;
   width: 100%;
@@ -35,8 +36,7 @@ export const BorderContainer = styled.div`
   border: ${({ theme }) => theme.borderHeavyDark};
   border-radius: ${({ small }) => (small ? '50' : '100')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
-  /* flex: 1 0 10vh; */
   height: 100%;
-  /* overflow: auto; */
   position: relative;
+  width: 100%;
 `;

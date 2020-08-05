@@ -4,6 +4,8 @@ export const IntervalList = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: auto;
   padding: 0.5rem;
 `;
 

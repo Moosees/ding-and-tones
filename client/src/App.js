@@ -1,6 +1,12 @@
 import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
-import { BorderContainer, Column, Section, Viewport } from './app.styles';
+import {
+  BorderContainer,
+  Column,
+  LayoutGrid,
+  SectionWithNav,
+  Viewport,
+} from './app.styles';
 import Loading from './components/loading/Loading';
 import AlertHandler from './components/popup/Alert';
 import Controls from './containers/controls/Controls';
@@ -19,27 +25,25 @@ const App = ({ setDropdownForBeat }) => {
 
   return (
     <Viewport onClick={handleViewport}>
-      <Column>
+      <LayoutGrid>
         <Suspense fallback={<Loading />}>
-          <Drum />
+          <Drum style={{ gridArea: 'drum' }} />
         </Suspense>
-        <Section>
+        <SectionWithNav style={{ gridArea: 'controls' }}>
           <ControlsNav />
           <BorderContainer small>
             <Controls />
           </BorderContainer>
-        </Section>
-      </Column>
-      <Column>
-        <Section>
+        </SectionWithNav>
+        <SectionWithNav style={{ gridArea: 'main' }}>
           <Nav />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
               <AppRoutes />
             </Suspense>
           </BorderContainer>
-        </Section>
-      </Column>
+        </SectionWithNav>
+      </LayoutGrid>
       <AlertHandler />
     </Viewport>
   );
