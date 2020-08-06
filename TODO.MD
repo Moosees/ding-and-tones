@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Interval colors overlap container, nav should not affect layout?
 * Load and delete buttons on song list - expand table row?
 * Load scales with songs, user decides?
 * Fetching scales/songs infinite loop

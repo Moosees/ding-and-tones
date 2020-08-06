@@ -20,7 +20,7 @@ export const LayoutGrid = styled.div`
   height: 100%;
   max-height: 75rem;
   max-width: 160rem;
-  padding: 4rem;
+  padding: 4rem 4rem 1rem;
   width: 100%;
 `;
 
@@ -28,15 +28,17 @@ export const SectionWithNav = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
   width: 100%;
 `;
 
 export const BorderContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBox};
   border: ${({ theme }) => theme.borderHeavyDark};
-  border-radius: ${({ small }) => (small ? '50' : '100')}px;
+  border-radius: ${({ small }) => (small ? '65' : '100')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   height: 100%;
+  overflow: hidden;
   position: relative;
   width: 100%;
 `;

@@ -5,8 +5,11 @@ import BtnNavControls from '../../components/button/NavControls';
 import { setShowIntervals } from '../../redux/drum/drum.actions';
 
 export const NavButtons = styled.div`
+  top: -2.5rem;
   display: flex;
-  margin-left: 5rem;
+  height: 2.5rem;
+  margin-left: 6.5rem;
+  position: absolute;
 `;
 
 const ControlsNav = ({ showIntervals, setShowIntervals }) => {
