@@ -47,6 +47,8 @@ const SongsFound = ({
     []
   );
 
+  const data = useMemo(() => [...songs], [songs]);
+
   const renderRowExpanded = useCallback(
     (rowData) => {
       const { isOwner, songId, title } = rowData;
@@ -73,13 +75,19 @@ const SongsFound = ({
     [deleteSongById, isDeleting, isSearching, isSignedIn, redirectTo]
   );
 
+  const handleFetchMore = useCallback(
+    () => console.log('fetch more songs'),
+    []
+  );
+
   return isSearching ? (
     <Loading />
   ) : (
     <SongsTable
       columns={columns}
-      data={songs}
+      data={data}
       renderRowExpanded={renderRowExpanded}
+      handleFetchMore={handleFetchMore}
     />
   );
 };

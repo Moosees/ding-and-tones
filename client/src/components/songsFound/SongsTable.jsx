@@ -7,12 +7,14 @@ import {
   TableContainer,
   TableHeader,
   TableRow,
+  TableFooter,
 } from './songsFound.styles';
 
-const SongsTable = ({ columns, data, renderRowExpanded }) => {
+const SongsTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
   const {
     getTableProps,
     getTableBodyProps,
+    footerGroups,
     headerGroups,
     rows,
     prepareRow,
@@ -67,6 +69,16 @@ const SongsTable = ({ columns, data, renderRowExpanded }) => {
             );
           })}
         </tbody>
+        <tfoot>
+          <tr>
+            <TableFooter
+              colSpan={visibleColumns.length}
+              onClick={handleFetchMore}
+            >
+              Find more songs...
+            </TableFooter>
+          </tr>
+        </tfoot>
       </Table>
     </TableContainer>
   );

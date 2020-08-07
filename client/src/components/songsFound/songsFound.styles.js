@@ -16,13 +16,21 @@ export const Table = styled.table`
 `;
 
 export const TableHeader = styled.th`
-  background-color: ${({ theme }) => theme.colorBtnHeavy};
+  background-color: ${({ theme }) => theme.colorBeat};
   border-bottom: ${({ theme }) => theme.borderLight};
-  padding: 0.5rem;
+  color: ${({ theme }) => theme.colorTextInverted};
+  padding: 0.7rem 0.5rem 0.5rem;
   position: sticky;
   text-align: left;
-  text-transform: uppercase;
   top: 0;
+
+  &:first-child {
+    border-top-left-radius: 10px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 10px;
+  }
 `;
 
 export const TableRow = styled.tr`
@@ -56,5 +64,18 @@ export const ExpandedRow = styled.tr`
 
   td {
     padding-bottom: 0.7rem;
+  }
+`;
+
+export const TableFooter = styled.td`
+  background-color: ${({ theme }) => theme.colorBeat};
+  border-radius: 0 0 10px 10px;
+  color: ${({ theme }) => theme.colorTextInverted};
+  cursor: pointer;
+  padding: 0.6rem;
+  text-align: center;
+
+  &:hover {
+    color: ${({ theme }) => theme.colorBeatActive};
   }
 `;
