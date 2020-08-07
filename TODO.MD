@@ -17,7 +17,6 @@
 
 ## Bugs
 
-* Alert for delete scales bug
 * Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work

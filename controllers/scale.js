@@ -6,7 +6,7 @@ exports.deleteScale = (req, res) => {
   const userId = req.userId;
 
   Scale.findOneAndDelete({ _id: scaleId, author: userId })
-    .select('_id info.name')
+    .select('_id info.name info.rootName')
     .exec((error, scale) => {
       if (error || !scale) return res.status(400).json();
 
