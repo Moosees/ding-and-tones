@@ -42,5 +42,19 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
-  padding: 0.5rem;
+  padding: 0.7rem 0.5rem;
+`;
+
+export const ExpandedRow = styled.tr`
+  &:nth-child(odd) {
+    background-color: ${({ theme }) => theme.colorBtnLight};
+  }
+
+  &:nth-child(even) {
+    background-color: ${({ theme }) => theme.colorBtnHeavy};
+  }
+
+  td {
+    padding-bottom: 0.7rem;
+  }
 `;

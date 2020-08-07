@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Load and delete buttons on song list - expand table row?
-* Load scales with songs, user decides?
 * Fetching scales/songs infinite loop
 * Infinite scroll on songs (and scales?)
 * Sorting and searching
@@ -14,9 +12,12 @@
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Move error handling to react error boundaries
+* Confirmation popups for deleting and other irreversible actions
+* Show scale notes in song list expanded row
 
 ## Bugs
 
+* Alert for delete scales bug
 * Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work

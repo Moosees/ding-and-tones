@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import {
   BorderContainer,
-  Column,
   LayoutGrid,
   SectionWithNav,
   Viewport,

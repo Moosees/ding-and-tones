@@ -5,7 +5,7 @@ const BtnIcon = ({ color, disabled, editOnly, label, icon, onClick }) => {
   return (
     <IconButton
       aria-label={label}
-      color={`color${color}`}
+      color={color ? `color${color}` : null}
       disabled={disabled}
       editOnly={editOnly}
       onClick={onClick}
