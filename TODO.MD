@@ -3,7 +3,7 @@
 ## Current tasks
 
 * Fetching scales/songs infinite loop
-* Infinite scroll on songs (and scales?)
+* Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
 * Move position map to reducer?
@@ -13,7 +13,7 @@
 * Play song logic should be reworked with less forEach?
 * Move error handling to react error boundaries
 * Confirmation popups for deleting and other irreversible actions
-* Show scale notes in song list expanded row
+* Loading indicator if needed before song starts playing
 
 ## Bugs
 
@@ -26,6 +26,7 @@
 
 * Responsive design
 * Distinct confirm and cancel buttons
+* New buttons for loading songs
 * Style songwriter dropdowns
 * Dropdowns open when clicking label (difficulty and new song popup)
 

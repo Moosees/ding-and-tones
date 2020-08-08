@@ -31,7 +31,7 @@ exports.getSongs = (req, res) => {
   Song.find()
     .populate('composer', '_id name')
     .select('_id scale.info info')
-    .limit(40)
+    .limit(20)
     .sort({ updated: -1 })
     .exec((error, songs) => {
       if (error) return res.status(400).json();

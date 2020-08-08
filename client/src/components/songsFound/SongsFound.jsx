@@ -33,6 +33,9 @@ const SongsFound = ({
         Header: 'Metre',
         accessor: 'metre',
         Cell: ({ value }) => metreList[value].name,
+        style: {
+          textAlign: 'center',
+        },
       },
       {
         Header: 'Scale',
@@ -50,17 +53,19 @@ const SongsFound = ({
   const data = useMemo(() => [...songs], [songs]);
 
   const renderRowExpanded = useCallback(
-    (rowData) => {
-      const { isOwner, songId, title } = rowData;
-
-      return (
-        <Buttons position="flex-start">
+    ({ isOwner, scaleLabel, songId, title }) => (
+      <>
+        <td>
           <BtnPrimary
             light
             label="Load with scale"
             onClick={() => redirectTo(`/song/${songId}`)}
           />
+        </td>
+        <td>
           <BtnPrimary light label="Load w/o scale" disabled={true} />
+        </td>
+        <td>
           {isOwner && isSignedIn ? (
             <BtnIcon
               label={`delete ${title}`}
@@ -69,9 +74,10 @@ const SongsFound = ({
               disabled={isSearching || isDeleting}
             />
           ) : null}
-        </Buttons>
-      );
-    },
+        </td>
+        <td colSpan={2}>{scaleLabel}</td>
+      </>
+    ),
     [deleteSongById, isDeleting, isSearching, isSignedIn, redirectTo]
   );
 

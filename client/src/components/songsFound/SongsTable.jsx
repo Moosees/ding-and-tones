@@ -5,23 +5,20 @@ import {
   Table,
   TableCell,
   TableContainer,
+  TableFooter,
   TableHeader,
   TableRow,
-  TableFooter,
 } from './songsFound.styles';
 
 const SongsTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
   const {
     getTableProps,
     getTableBodyProps,
-    footerGroups,
     headerGroups,
     rows,
     prepareRow,
     visibleColumns,
   } = useTable({ columns, data }, useExpanded);
-
-  console.log('table rendering');
 
   return (
     <TableContainer>
@@ -56,13 +53,9 @@ const SongsTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
                 {row.isExpanded && (
                   <>
                     <tr>
-                      <td></td>
+                      <td colSpan={visibleColumns.length} />
                     </tr>
-                    <ExpandedRow>
-                      <td colSpan={visibleColumns.length}>
-                        {renderRowExpanded(row.original)}
-                      </td>
-                    </ExpandedRow>
+                    <ExpandedRow>{renderRowExpanded(row.original)}</ExpandedRow>
                   </>
                 )}
               </Fragment>

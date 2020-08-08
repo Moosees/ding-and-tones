@@ -51,6 +51,7 @@ export const TableRow = styled.tr`
 
 export const TableCell = styled.td`
   padding: 0.7rem 0.5rem;
+  width: 1%;
 `;
 
 export const ExpandedRow = styled.tr`
@@ -64,6 +65,11 @@ export const ExpandedRow = styled.tr`
 
   td {
     padding-bottom: 0.7rem;
+    width: 0.01%;
+
+    & button {
+      margin: 0;
+    }
   }
 `;
 
