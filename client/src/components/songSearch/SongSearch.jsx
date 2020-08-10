@@ -1,23 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchDataFrom } from '../../redux/search/search.actions';
+import { startSearch } from '../../redux/search/search.actions';
+import searchOptions from '../../redux/search/search.options';
 import { SearchContainer } from './songSearch.styles';
 
-const SongSearch = ({ fetchDataFrom, isSearching }) => {
+const SongSearch = ({ isSearching, songsFetchTried, startSearch }) => {
   useEffect(() => {
-    console.log('fetching songs');
-    fetchDataFrom('/song');
-  }, [fetchDataFrom]);
+    if (!songsFetchTried && !isSearching)
+      startSearch(searchOptions.songs.latest);
+  }, [isSearching, songsFetchTried, startSearch]);
 
-  return (
-    <SearchContainer>
-      <button disabled={isSearching}>Search</button>
-    </SearchContainer>
-  );
+  return <SearchContainer>Search</SearchContainer>;
 };
 
 const mapStateToProps = ({ search }) => ({
   isSearching: search.isSearching,
+  songsFetchTried: search.songsFetchTried,
 });
 
-export default connect(mapStateToProps, { fetchDataFrom })(SongSearch);
+export default connect(mapStateToProps, { startSearch })(SongSearch);

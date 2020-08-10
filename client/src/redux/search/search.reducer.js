@@ -6,7 +6,9 @@ const INITIAL_STATE = {
   error: '',
   isSearching: false,
   scales: [],
+  scalesFetchTried: false,
   songs: [],
+  songsFetchTried: false,
 };
 
 const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
