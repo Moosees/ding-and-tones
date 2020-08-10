@@ -27,7 +27,7 @@ const SongsTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((col) => (
-                <TableHeader {...col.getHeaderProps()}>
+                <TableHeader {...col.getHeaderProps([{ style: col.style }])}>
                   {col.render('Header')}
                 </TableHeader>
               ))}
@@ -45,7 +45,9 @@ const SongsTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
                   onClick={() => row.toggleRowExpanded(!row.isExpanded)}
                 >
                   {row.cells.map((cell) => (
-                    <TableCell {...cell.getCellProps()}>
+                    <TableCell
+                      {...cell.getCellProps([{ style: cell.column.style }])}
+                    >
                       {cell.render('Cell')}
                     </TableCell>
                   ))}

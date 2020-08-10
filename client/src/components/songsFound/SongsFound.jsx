@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
 import { deleteSongById } from '../../redux/song/song.actions';
+import Buttons from '../button/Buttons';
 import BtnIcon from '../button/Icon';
 import BtnPrimary from '../button/Primary';
 import Loading from '../loading/Loading';
@@ -32,9 +33,7 @@ const SongsFound = ({
         Header: 'Metre',
         accessor: 'metre',
         Cell: ({ value }) => metreList[value].name,
-        style: {
-          textAlign: 'center',
-        },
+        style: { width: '0.001%' },
       },
       {
         Header: 'Scale',
@@ -44,6 +43,7 @@ const SongsFound = ({
         Header: 'Difficulty',
         accessor: 'difficulty',
         Cell: ({ value }) => difficultyByValue[value],
+        style: { width: '0.001%' },
       },
     ],
     []
@@ -54,25 +54,23 @@ const SongsFound = ({
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title }) => (
       <>
-        <td>
-          <BtnPrimary
-            light
-            label="Load with scale"
-            onClick={() => redirectTo(`/song/${songId}`)}
-          />
-        </td>
-        <td>
-          <BtnPrimary light label="Load w/o scale" disabled={true} />
-        </td>
-        <td>
-          {isOwner && isSignedIn ? (
-            <BtnIcon
-              label={`delete ${title}`}
-              icon="delete"
-              onClick={() => deleteSongById(songId)}
-              disabled={isSearching || isDeleting}
+        <td colSpan={3}>
+          <Buttons position="flex-start">
+            <BtnPrimary
+              light
+              label="Load with scale"
+              onClick={() => redirectTo(`/song/${songId}`)}
             />
-          ) : null}
+            <BtnPrimary light label="Load w/o scale" disabled={true} />
+            {isOwner && isSignedIn ? (
+              <BtnIcon
+                label={`delete ${title}`}
+                icon="delete"
+                onClick={() => deleteSongById(songId)}
+                disabled={isSearching || isDeleting}
+              />
+            ) : null}
+          </Buttons>
         </td>
         <td colSpan={2}>{scaleLabel}</td>
       </>

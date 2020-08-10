@@ -68,7 +68,7 @@ export const ExpandedRow = styled.tr`
     width: 0.01%;
 
     & button {
-      margin: 0;
+      margin: 0 1px;
     }
   }
 `;
