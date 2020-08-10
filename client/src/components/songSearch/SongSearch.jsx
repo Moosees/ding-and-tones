@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import { fetchDataFrom } from '../../redux/search/search.actions';
 import { SearchContainer } from './songSearch.styles';
 
-const SongSearch = ({ fetchDataFrom, isSearching, songs, signInTried }) => {
+const SongSearch = ({ fetchDataFrom, isSearching }) => {
   useEffect(() => {
-    if (signInTried && !isSearching && !songs.length) {
-      console.log('fetching songs');
-      fetchDataFrom('/song');
-    }
-  }, [songs, signInTried, isSearching, fetchDataFrom]);
+    console.log('fetching songs');
+    fetchDataFrom('/song');
+  }, [fetchDataFrom]);
 
-  return <SearchContainer>Search</SearchContainer>;
+  return (
+    <SearchContainer>
+      <button disabled={isSearching}>Search</button>
+    </SearchContainer>
+  );
 };
 
-const mapStateToProps = ({ search, user }) => ({
+const mapStateToProps = ({ search }) => ({
   isSearching: search.isSearching,
-  songs: search.songs,
-  signInTried: user.signInTried,
 });
 
 export default connect(mapStateToProps, { fetchDataFrom })(SongSearch);

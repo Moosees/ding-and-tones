@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
 import { deleteSongById } from '../../redux/song/song.actions';
-import Buttons from '../button/Buttons';
 import BtnIcon from '../button/Icon';
 import BtnPrimary from '../button/Primary';
 import Loading from '../loading/Loading';

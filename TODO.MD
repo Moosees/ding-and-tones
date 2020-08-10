@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Fetching scales/songs infinite loop
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
