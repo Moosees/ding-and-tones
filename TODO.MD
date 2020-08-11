@@ -7,11 +7,9 @@
 * Errors display on inputs
 * Move position map to reducer?
 * What happens when you change to a scale with less notes than pattern needs?
-* Remove devtools in production
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Move error handling to react error boundaries
-* Confirmation popups for deleting and other irreversible actions
 * Loading indicator if needed before song starts playing
 
 ## Bugs

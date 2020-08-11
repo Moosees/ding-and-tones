@@ -71,7 +71,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
           disabled={!isTitleValid}
           onClick={handleConfirm}
         />
-        <BtnPrimary label="Cancel" onClick={onClose} />
+        <BtnPrimary light label="Cancel" onClick={onClose} />
       </Buttons>
     </Popup>
   );

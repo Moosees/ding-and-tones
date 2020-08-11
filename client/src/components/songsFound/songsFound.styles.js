@@ -66,10 +66,6 @@ export const ExpandedRow = styled.tr`
   td {
     padding-bottom: 0.7rem;
     width: 0.01%;
-
-    & button {
-      margin: 0 1px;
-    }
   }
 `;
 

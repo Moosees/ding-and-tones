@@ -8,6 +8,7 @@ import Buttons from '../button/Buttons';
 import BtnIcon from '../button/Icon';
 import BtnPrimary from '../button/Primary';
 import Loading from '../loading/Loading';
+import Confirmation from '../popup/Confirmation';
 import SongsTable from './SongsTable';
 
 const SongsFound = ({
@@ -63,12 +64,16 @@ const SongsFound = ({
             />
             <BtnPrimary light label="Load w/o scale" disabled={true} />
             {isOwner && isSignedIn ? (
-              <BtnIcon
-                label={`delete ${title}`}
-                icon="delete"
-                onClick={() => deleteSongById(songId)}
-                disabled={isSearching || isDeleting}
-              />
+              <Confirmation
+                onConfirm={() => deleteSongById(songId)}
+                label={`Are you sure you want to delete "${title}"`}
+              >
+                <BtnIcon
+                  label={`delete ${title}`}
+                  icon="delete"
+                  disabled={isSearching || isDeleting}
+                />
+              </Confirmation>
             ) : null}
           </Buttons>
         </td>

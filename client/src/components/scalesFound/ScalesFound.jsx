@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { deleteScaleById, loadScale } from '../../redux/scale/scale.actions';
 import BtnIcon from '../button/Icon';
 import Loading from '../loading/Loading';
+import Confirmation from '../popup/Confirmation';
 import {
   ScaleContainer,
   ScaleLabel,
@@ -30,12 +31,16 @@ const ScalesFound = ({
       return (
         <ScaleContainer key={i}>
           {isOwner && isSignedIn && (
-            <BtnIcon
-              onClick={() => deleteScaleById(scaleId)}
-              disabled={isDeleting || isSearching}
-              icon="delete"
-              label={`delete ${rootName} ${name}`}
-            />
+            <Confirmation
+              onConfirm={() => deleteScaleById(scaleId)}
+              label={`Are you sure you want to delete "${rootName} ${name}"`}
+            >
+              <BtnIcon
+                disabled={isDeleting || isSearching}
+                icon="delete"
+                label={`delete ${rootName} ${name}`}
+              />
+            </Confirmation>
           )}
           <TextContainer onClick={() => loadScale(scale)}>
             <ScaleLabel>{`${rootName} ${name}`}</ScaleLabel>
