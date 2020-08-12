@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Scale reducers reduce loaded song actions
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
@@ -15,6 +14,7 @@
 
 ## Bugs
 
+* Play song breaks when loading songs
 * Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work

@@ -1,3 +1,4 @@
+import songTypes from '../../song/song.types';
 import { notesState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
 import { createFullScaleFromNames } from '../scale.utils';
@@ -20,6 +21,15 @@ const notesReducer = (state = notesState, { type, payload }) => {
         round: payload,
         scaleFull: createFullScaleFromNames(payload),
       };
+
+    case songTypes.FETCH_SUCCESSFUL:
+      return payload.scale
+        ? {
+            ...state,
+            round: payload.scale.notes.round,
+            scaleFull: createFullScaleFromNames(payload.scale.notes.round),
+          }
+        : state;
 
     default:
       return state;

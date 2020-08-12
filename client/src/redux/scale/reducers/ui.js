@@ -1,3 +1,4 @@
+import songTypes from '../../song/song.types';
 import { uiState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
 
@@ -36,6 +37,11 @@ const uiReducer = (state = uiState, { type, payload }) => {
         isOwner: payload.isOwner,
         scaleId: payload.scaleId,
       };
+
+    case songTypes.FETCH_SUCCESSFUL:
+      return payload.scale
+        ? { ...state, isOwner: false, scaleId: null }
+        : state;
 
     default:
       return state;

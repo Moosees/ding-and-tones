@@ -1,4 +1,5 @@
 import { noteNameToValue } from '../../../assets/intervals';
+import songTypes from '../../song/song.types';
 import { infoState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
 import { createScaleLabel } from '../scale.utils';
@@ -26,6 +27,14 @@ const infoReducer = (state = infoState, { type, payload }) => {
         rootName: payload[0].slice(0, -1),
         rootValue: noteNameToValue[payload[0]],
       };
+
+    case songTypes.FETCH_SUCCESSFUL:
+      return payload.scale
+        ? {
+            ...state,
+            ...payload.scale.info,
+          }
+        : state;
 
     default:
       return state;
