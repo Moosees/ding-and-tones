@@ -34,7 +34,7 @@ const Tonefield = ({
       cy="0"
       transform={`rotate(${rotate}) translate(${translate})`}
       style={{
-        fontSize: isDing ? '0.23rem' : '0.16rem',
+        fontSize: isDing ? '0.23rem' : '0.14rem',
         cursor:
           showNote && !(displayedChord && showIntervals)
             ? 'pointer'
@@ -42,7 +42,7 @@ const Tonefield = ({
       }}
     >
       <circle
-        r={isDing ? '2.5' : '1.7'}
+        r={isDing ? '2.5' : '1.5'}
         stroke={color}
         strokeWidth={hasFocus ? '0.5' : '0.2'}
         fill="#333"

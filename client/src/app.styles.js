@@ -10,12 +10,12 @@ export const Viewport = styled.div`
 
 export const LayoutGrid = styled.div`
   align-items: center;
-  column-gap: 4rem;
+  column-gap: 2rem;
   display: grid;
   grid-template-areas:
     'drum main'
     'controls main';
-  grid-template-columns: 30rem 1fr;
+  grid-template-columns: 35rem 1fr;
   grid-template-rows: 50% 50%;
   height: 100%;
   max-height: 75rem;

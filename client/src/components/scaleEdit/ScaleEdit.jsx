@@ -25,7 +25,7 @@ const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
 
     notes.push(
       <Note
-        disabled={isSongPlaying}
+        disabled={isSongPlaying || (!isNoteInScale && scale.length >= 15)}
         key={i}
         inScale={isNoteInScale}
         onClick={handleClick}

@@ -14,7 +14,7 @@ export const Notes = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const Note = styled.span`
+export const Note = styled.button`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.05);
   border: ${({ inScale, theme }) =>
@@ -34,5 +34,9 @@ export const Note = styled.span`
 
   &:hover {
     transform: scale(${({ disabled }) => (disabled ? '1' : '1.1')});
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
