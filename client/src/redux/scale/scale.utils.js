@@ -81,6 +81,11 @@ export const createScaleLabel = (scale) => {
   return `(${scale[0]}) ${scale.slice(1).join(' ')}`;
 };
 
+export const parseNotesForSaveScale = ({ round }) => ({
+  dings: [round[0]],
+  round: round.slice(1),
+});
+
 export const transposeScaleToDestination = (scale, destination = 0) => {
   return scale
     .map((note) => {

@@ -29,6 +29,7 @@ const scaleSchema = new mongoose.Schema({
     },
   },
   notes: {
+    dings: [String],
     round: [String],
   },
 });

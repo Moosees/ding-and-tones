@@ -1,6 +1,10 @@
 import axios from 'axios';
 import scaleTypes from './scale.types';
-import { sortScaleByFreq, transposeScaleToDestination } from './scale.utils';
+import {
+  sortScaleByFreq,
+  transposeScaleToDestination,
+  parseNotesForSaveScale,
+} from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
   const { scale } = getState();
@@ -77,7 +81,7 @@ export const saveScale = () => (dispatch, getState) => {
   const { info, notes } = scale;
 
   return axios
-    .post('/scale', { info, notes })
+    .post('/scale', { info, notes: parseNotesForSaveScale(notes) })
     .then((res) => {
       if (res.status === 200) {
         dispatch({

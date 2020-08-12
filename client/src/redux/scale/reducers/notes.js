@@ -7,10 +7,11 @@ const notesReducer = (state = notesState, { type, payload }) => {
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.SAVE_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
+      const scaleMerged = [payload.notes.dings[0], ...payload.notes.round];
       return {
         ...state,
-        round: payload.notes.round,
-        scaleFull: createFullScaleFromNames(payload.notes.round),
+        round: scaleMerged,
+        scaleFull: createFullScaleFromNames(scaleMerged),
       };
 
     case scaleTypes.UPDATE_SCALE:

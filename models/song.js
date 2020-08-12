@@ -73,7 +73,7 @@ const songSchema = new mongoose.Schema({
         required: true,
       },
     },
-    notes: { round: [String] },
+    notes: { dings: [String], round: [String] },
   },
   updated: {
     type: Date,

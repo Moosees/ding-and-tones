@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Scale reducers reduce loaded song actions
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
@@ -65,6 +66,7 @@
 
 ## Low priority
 
+* Dynamic size for tonefields
 * Check text inputs for bad words?
 * Update url when loading things and/or share by link - check param vs id?
 * Keyboard shortcuts on new song (and other?) popup

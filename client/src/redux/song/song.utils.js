@@ -1,3 +1,5 @@
+import { parseNotesForSaveScale } from '../scale/scale.utils';
+
 export const moveBar = (arrangement, barIndex, targetIndex) => {
   const arrCopy = [...arrangement];
 
@@ -48,7 +50,7 @@ export const parseSongForSaving = (song, scale, saveAs) => {
       beats: parsedBeats,
       info,
       scale: {
-        notes,
+        notes: parseNotesForSaveScale(notes),
         info: scaleInfo,
       },
     },
@@ -60,6 +62,15 @@ const parseArrayToObject = (array) => {
     acc[_id] = rest;
     return acc;
   }, {});
+};
+
+const parseScaleForLoadSong = (scale) => {
+  const {
+    info,
+    notes: { dings, round },
+  } = scale;
+
+  return { info, notes: { round: [dings[0], ...round] } };
 };
 
 export const parseFetchedSong = (song) => {
@@ -76,6 +87,7 @@ export const parseFetchedSong = (song) => {
 
   const parsedBars = parseArrayToObject(bars);
   const parsedBeats = parseArrayToObject(beats);
+  const parsedScale = parseScaleForLoadSong(scale);
 
   return {
     alert: `"${song.info.title}" by ${song.composer} loaded`,
@@ -83,7 +95,7 @@ export const parseFetchedSong = (song) => {
     bars: parsedBars,
     beats: parsedBeats,
     info,
-    scale,
+    scale: parsedScale,
     ui: { composer, isOwner, songId },
   };
 };
