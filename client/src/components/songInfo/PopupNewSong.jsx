@@ -10,6 +10,7 @@ import InfoSelect from '../infoBox/InfoSelect';
 import InfoTextEdit from '../infoBox/InfoTextEdit';
 import MetreControls from '../metreControls/MetreControls';
 import Popup from '../popup/Popup';
+import { useHistory } from 'react-router-dom';
 
 const PopupNewSong = ({ onClose, setSongState }) => {
   const [difficulty, setDifficulty] = useState(1);
@@ -17,6 +18,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   const [subdivision, setSubdivision] = useState(4);
 
   const [title, setTitle, errors, isTitleValid] = useValidate('title');
+  const { push } = useHistory();
 
   const handleConfirm = () => {
     if (isTitleValid) {
@@ -34,6 +36,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
       };
 
       setSongState({ info, ui, bars: {}, beats: {}, arrangement: [] });
+      push('/song');
       onClose();
     }
   };

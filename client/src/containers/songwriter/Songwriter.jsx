@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import DividerLine from '../../components/dividerLine/DividerLine';
 import Loading from '../../components/loading/Loading';
 import SongArrangement from '../../components/songArrangement/SongArrangement';
@@ -14,16 +14,22 @@ import {
   TopSection,
 } from './songwriter.styles';
 
-const Songwriter = ({ getSongById, isFetching }) => {
+const Songwriter = ({ getSongById, songUi }) => {
   const { songId } = useParams();
+  const { replace } = useHistory();
 
   useEffect(() => {
-    if (songId) getSongById(songId);
-  }, [songId, getSongById]);
+    if (!songId && songUi.songId) replace(`/song/${songUi.songId}`);
+  }, [replace, songId, songUi.songId]);
+
+  useEffect(() => {
+    if (songId && songUi.songId !== songId && !songUi.isFetching)
+      getSongById(songId);
+  }, [getSongById, songId, songUi.isFetching, songUi.songId]);
 
   return (
     <SongContainer>
-      {isFetching ? (
+      {songUi.isFetching ? (
         <Loading />
       ) : (
         <>
@@ -47,7 +53,7 @@ const Songwriter = ({ getSongById, isFetching }) => {
 };
 
 const mapStateToProps = ({ song }) => ({
-  isFetching: song.ui.isFetching,
+  songUi: song.ui,
 });
 
 export default connect(mapStateToProps, { getSongById })(Songwriter);
