@@ -14,7 +14,7 @@ export const ControlButtons = styled.div`
 `;
 
 export const Logo = styled.svg`
-  background-image: url(logo.svg);
+  background-image: url(/logo.svg);
   background-size: cover;
   height: 100%;
   width: 100%;

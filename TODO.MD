@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Check if song Id is already loaded before trying to fetch scale/song
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
@@ -12,11 +11,10 @@
 * Play song logic should be reworked with less forEach?
 * Move error handling to react error boundaries
 * Loading indicator if needed before song starts playing
-* Derive lengthInBeats (and other values?) from metre instead of db
 
 ## Bugs
 
-* Logo svg gets requested on all route changes - logo is gone sometimes?
+* Logo svg gets requested on all route changes
 * flushDrumState should not be needed
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
@@ -68,6 +66,7 @@
 
 ## Low priority
 
+* Derive lengthInBeats (and other values?) from metre instead of db?
 * Dynamic size for tonefields
 * Check text inputs for bad words?
 * Update url when loading things and/or share by link - check param vs id?
