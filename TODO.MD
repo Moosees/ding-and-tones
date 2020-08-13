@@ -2,23 +2,25 @@
 
 ## Current tasks
 
+* Check if song Id is already loaded before trying to fetch scale/song
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
 * Move position map to reducer?
-* What happens when you change to a scale with less notes than pattern needs?
+* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Move error handling to react error boundaries
 * Loading indicator if needed before song starts playing
+* Derive lengthInBeats (and other values?) from metre instead of db
 
 ## Bugs
 
-* Play song breaks when loading songs
 * Logo svg gets requested on all route changes - logo is gone sometimes?
 * flushDrumState should not be needed
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
+* Bug with slicing undefined if transposing last note outside of range
 
 ## Design
 

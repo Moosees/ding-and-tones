@@ -4,10 +4,10 @@ import { setIsSongPlaying } from '../../redux/ui/ui.actions';
 import BtnPrimary from '../button/Primary';
 import { playSong } from './playButton.utils';
 
-const PlayButton = ({ isSongPlaying, setIsSongPlaying }) => {
+const PlayButton = ({ isSongPlaying, scale, setIsSongPlaying, song }) => {
   const handlePlayPause = () => {
     setIsSongPlaying(!isSongPlaying);
-    if (!isSongPlaying) playSong();
+    if (!isSongPlaying) playSong(scale, song);
   };
 
   return (
@@ -18,8 +18,10 @@ const PlayButton = ({ isSongPlaying, setIsSongPlaying }) => {
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
+const mapStateToProps = ({ scale, song, ui }) => ({
   isSongPlaying: ui.isSongPlaying,
+  scale,
+  song,
 });
 
 export default connect(mapStateToProps, { setIsSongPlaying })(PlayButton);

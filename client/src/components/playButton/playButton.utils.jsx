@@ -40,7 +40,7 @@ const audioPromise = (sound) =>
   });
 
 const setupAudio = async (scale) => {
-  const sounds = scale.map((note) => `audio/pan/low/${note}.mp3`);
+  const sounds = scale.map((note) => `/audio/pan/low/${note}.mp3`);
 
   const audioPromises = sounds.map(audioPromise);
   await Promise.all(audioPromises);
@@ -70,8 +70,7 @@ const setupSong = ({ arrangement, bars, beats }) => {
 };
 
 // bpm always counts quarter notes right now
-export const playSong = async () => {
-  const { song, scale } = store.getState();
+export const playSong = async (scale, song) => {
   const audio = await setupAudio(scale.notes.round);
   const arrangement = setupSong(song);
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import DividerLine from '../../components/dividerLine/DividerLine';
 import Loading from '../../components/loading/Loading';
 import ScaleEdit from '../../components/scaleEdit/ScaleEdit';
@@ -10,17 +10,23 @@ import ScalesFound from '../../components/scalesFound/ScalesFound';
 import { getScaleById } from '../../redux/scale/scale.actions';
 import { ScaleContainer, Section } from './scale.styles';
 
-const Scale = ({ getScaleById, isFetching }) => {
+const Scale = ({ getScaleById, scaleUi }) => {
   const { scaleId } = useParams();
+  const { replace } = useHistory();
 
   useEffect(() => {
-    if (scaleId) getScaleById(scaleId);
-  }, [getScaleById, scaleId]);
+    if (!scaleId && scaleUi.scaleId) replace(`/scale/${scaleUi.scaleId}`);
+  }, [replace, scaleId, scaleUi.scaleId]);
+
+  useEffect(() => {
+    if (scaleId && scaleUi.scaleId !== scaleId && !scaleUi.isFetching)
+      getScaleById(scaleId);
+  }, [getScaleById, scaleId, scaleUi.isFetching, scaleUi.scaleId]);
 
   return (
     <ScaleContainer>
       <Section>
-        {isFetching ? (
+        {scaleUi.isFetching ? (
           <Loading />
         ) : (
           <>
@@ -40,7 +46,7 @@ const Scale = ({ getScaleById, isFetching }) => {
 };
 
 const mapStateToProps = ({ scale }) => ({
-  isFetching: scale.ui.isFetching,
+  scaleUi: scale.ui,
 });
 
 export default connect(mapStateToProps, { getScaleById })(Scale);

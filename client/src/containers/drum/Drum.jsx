@@ -18,7 +18,7 @@ const Drum = ({
 }) => {
   const positionMap = useMemo(() => getPositionMap(layout, scale.length), [
     layout,
-    scale,
+    scale.length,
   ]);
 
   const tonefields = scale.map((note, i) => {

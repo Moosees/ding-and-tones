@@ -18,7 +18,7 @@ const Tonefield = ({
   const { rotate, translate } = position;
 
   const handlePlay = () => {
-    new Audio(`audio/pan/low/${note}.mp3`).play();
+    new Audio(`/audio/pan/low/${note}.mp3`).play();
   };
 
   const handleIntervals = () => {

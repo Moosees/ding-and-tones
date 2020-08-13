@@ -6,6 +6,7 @@ const songSchema = new mongoose.Schema({
   bars: [
     {
       _id: String,
+      lengthInBeats: Number,
       measure: [String],
       metre: String,
       repeats: { type: Number, default: 1 },
