@@ -1,9 +1,5 @@
 import drumTypes from './drum.types';
 
-export const flushDrumState = () => ({
-  type: drumTypes.FLUSH_DRUM_STATE,
-});
-
 export const setDisplayedChord = (chord) => ({
   type: drumTypes.SET_DISPLAYED_CHORD,
   payload: chord,

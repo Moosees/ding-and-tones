@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
 import { noteValueToName } from '../../assets/intervals';
-import { flushDrumState } from '../../redux/drum/drum.actions';
 import {
   addNoteToScale,
   removeNoteFromScale,
@@ -25,7 +24,7 @@ const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
 
     notes.push(
       <Note
-        disabled={isSongPlaying || (!isNoteInScale && scale.length >= 15)}
+        disabled={!isNoteInScale && scale.length >= 15}
         key={i}
         inScale={isNoteInScale}
         onClick={handleClick}
@@ -40,25 +39,21 @@ const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
 const ScaleEdit = ({
   scale,
   addNoteToScale,
-  flushDrumState,
   isSongPlaying,
   removeNoteFromScale,
   transposeScale,
 }) => {
   const handleAdd = (note) => {
     if (isSongPlaying) return;
-    flushDrumState();
     addNoteToScale(note);
   };
 
   const handleRemove = (note) => {
     if (isSongPlaying) return;
-    flushDrumState();
     removeNoteFromScale(note);
   };
 
   const handleTranspose = (destination) => {
-    flushDrumState();
     transposeScale(destination);
   };
 
@@ -92,7 +87,6 @@ const mapStateToProps = ({ scale, ui }) => ({
 
 export default connect(mapStateToProps, {
   addNoteToScale,
-  flushDrumState,
   removeNoteFromScale,
   transposeScale,
 })(ScaleEdit);
