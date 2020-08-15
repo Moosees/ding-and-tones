@@ -24,8 +24,8 @@ const infoReducer = (state = infoState, { type, payload }) => {
       return {
         ...state,
         label: createScaleLabel(payload),
-        rootName: payload[0].slice(0, -1),
-        rootValue: noteNameToValue[payload[0]],
+        rootName: payload[0] ? payload[0].slice(0, -1) : '',
+        rootValue: payload[0] ? noteNameToValue[payload[0]] : -1,
       };
 
     case songTypes.FETCH_SUCCESSFUL:

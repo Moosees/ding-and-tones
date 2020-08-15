@@ -52,6 +52,8 @@ const addIntervalMap = (scaleWithValues) => {
 };
 
 export const createFullScaleFromNames = (scale) => {
+  if (!scale.length) return [];
+
   const scaleWithValues = addNoteValueFromName(scale);
   const scaleFull = addIntervalMap(scaleWithValues);
 
