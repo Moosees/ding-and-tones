@@ -11,12 +11,17 @@
 * Play song logic should be reworked with less forEach?
 * Move error handling to react error boundaries
 * Loading indicator if needed before song starts playing
+* Saving stuff needs minimal conditions?
+* Rework controls - remove play button, rethink what buttons are needed
+* Add account page - prompt to change name if new user
+* Select drum type - pan or tongue, etc.
 
 ## Bugs
 
 * Logo svg gets requested on all route changes
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
+* Removing user should remove all users songs?
 
 ## Design
 
@@ -25,6 +30,7 @@
 * New buttons for loading songs
 * Style songwriter dropdowns
 * Dropdowns open when clicking label (difficulty and new song popup)
+* Remove line on find songs route? Sticky footer?
 
 ## Drum
 
@@ -35,9 +41,6 @@
 
 * Printing, format?
 * Save to .pdf?
-* Rework controls - remove play button, rethink what buttons are needed
-* Add account page - prompt to change name if new user
-* Select drum type - pan or tongue, etc.
 
 ## Chords
 
@@ -64,6 +67,7 @@
 
 ## Low priority
 
+* Update delete icons if user logs in after app is loaded
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Dynamic size for tonefields
 * Check text inputs for bad words?

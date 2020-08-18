@@ -13,14 +13,14 @@ exports.signIn = async (req, res) => {
       idToken,
       audience: process.env.GOOGLE_CLIENT_ID,
     });
-    const { sub } = ticket.getPayload();
+    const { email, sub } = ticket.getPayload();
 
     await User.findOne({ sub })
       .select('-_id name')
       .exec((error, user) => {
         if (user) return res.status(200).json(user);
 
-        new User({ name: 'Anonymous', sub }).save((error, user) =>
+        new User({ email, name: 'Anonymous', sub }).save((error, user) =>
           res.status(200).json({ name: user.name, newUser: true })
         );
       });

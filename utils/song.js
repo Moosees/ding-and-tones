@@ -22,11 +22,11 @@ exports.parseSearchResponse = (songObject, userId) => {
   } = songObject;
 
   return {
-    isOwner: userId ? userId.equals(composer._id) : false,
+    isOwner: userId && composer ? userId.equals(composer._id) : false,
     songId: _id,
     scaleLabel: scale.info.label,
     scaleName: `${scale.info.rootName} ${scale.info.name}`,
-    composer: composer.name,
+    composer: composer ? composer.name : 'Anonymous',
     title,
     metre,
     difficulty,
