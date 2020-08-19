@@ -2,19 +2,19 @@
 
 ## Current tasks
 
+* Add account page - prompt to change name if new user
+* Rework popups and reuse code
+* Select drum type - pan or tongue, etc.
+* Rework controls - remove play button, rethink what buttons are needed
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
 * Move position map to reducer?
-* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Move error handling to react error boundaries
 * Loading indicator if needed before song starts playing
 * Saving stuff needs minimal conditions?
-* Rework controls - remove play button, rethink what buttons are needed
-* Add account page - prompt to change name if new user
-* Select drum type - pan or tongue, etc.
 
 ## Bugs
 
@@ -67,6 +67,7 @@
 
 ## Low priority
 
+* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
 * Update delete icons if user logs in after app is loaded
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Dynamic size for tonefields

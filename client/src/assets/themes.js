@@ -25,4 +25,5 @@ export const mainTheme = {
   fzSmall: '1.2rem',
   fzMedium: '1.4rem',
   fzLarge: '1.8rem',
+  fzHeader: '2.4rem',
 };
