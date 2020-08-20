@@ -1,7 +1,7 @@
 import userTypes from './user.types';
 
 const INITIAL_STATE = {
-  name: null,
+  name: '',
   isSignedIn: false,
   newUser: false,
   signInTried: false,
@@ -9,6 +9,12 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+    case userTypes.CLEAR_NEW_USER:
+      return {
+        ...state,
+        newUser: false,
+      };
+
     case userTypes.SIGN_IN:
       return {
         ...state,
@@ -20,7 +26,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
     case userTypes.SIGN_OUT:
       return {
         ...state,
-        user: null,
+        name: '',
         isSignedIn: false,
         newUser: false,
         signInTried: true,

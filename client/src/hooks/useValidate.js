@@ -8,9 +8,15 @@ const validateInput = (value, validationType) => {
     case 'title':
       if (!alphaNum.test(value))
         errors.push('Title cannot contain special characters');
-      if (value.length < 4)
-        errors.push('Length should be at least four letters');
-      if (value.length > 30) errors.push('Length should be at most 30 letters');
+      if (value.length < 4) errors.push('Title is too short');
+      if (value.length > 30) errors.push('Title is too long');
+      break;
+
+    case 'username':
+      if (!alphaNum.test(value))
+        errors.push('Username cannot contain special characters');
+      if (value.length < 3) errors.push('Username is too short');
+      if (value.length > 20) errors.push('Username is too long');
       break;
 
     default:

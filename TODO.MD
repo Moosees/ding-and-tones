@@ -2,8 +2,9 @@
 
 ## Current tasks
 
-* Add account page - prompt to change name if new user
-* Rework popups and reuse code
+* Add account page - add api request to change name
+* Tweak text inputs, add length where needed
+* Rework popups? Reuse code and add headers?
 * Select drum type - pan or tongue, etc.
 * Rework controls - remove play button, rethink what buttons are needed
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?

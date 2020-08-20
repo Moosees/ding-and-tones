@@ -10,6 +10,7 @@ const InfoTextEdit = ({
   onSave = () => {},
   onClose = () => {},
   placeholder,
+  size,
   type,
   value,
 }) => {
@@ -32,6 +33,7 @@ const InfoTextEdit = ({
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
+        size={size}
         value={value}
       />
       <BtnIcon
