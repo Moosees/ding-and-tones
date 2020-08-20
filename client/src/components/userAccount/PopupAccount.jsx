@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import useValidate from '../../hooks/useValidate';
-import { clearNewUser } from '../../redux/user/user.actions';
+import { clearNewUser, saveUser } from '../../redux/user/user.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -22,7 +22,7 @@ const AccountHeader = styled.h2`
   padding: 1rem;
 `;
 
-const PopupAccount = ({ clearNewUser, name, onClose }) => {
+const PopupAccount = ({ clearNewUser, name, onClose, saveUser }) => {
   const [username, setUsername, errors, usernameValid] = useValidate(
     'username',
     name
@@ -34,7 +34,7 @@ const PopupAccount = ({ clearNewUser, name, onClose }) => {
   };
 
   const handleSave = () => {
-    if (usernameValid) console.log({ username });
+    if (usernameValid) saveUser(username);
   };
 
   return (
@@ -65,4 +65,6 @@ const mapStateToProps = ({ user }) => ({
   name: user.name,
 });
 
-export default connect(mapStateToProps, { clearNewUser })(PopupAccount);
+export default connect(mapStateToProps, { clearNewUser, saveUser })(
+  PopupAccount
+);

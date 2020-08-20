@@ -1,5 +1,6 @@
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
+import userTypes from '../user/user.types';
 import alertTypes from './alert.types';
 
 const INITIAL_STATE = {
@@ -20,6 +21,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
     case songTypes.FETCH_ERROR:
     case scaleTypes.SAVE_ERROR:
     case songTypes.SAVE_ERROR:
+    case userTypes.SAVE_ERROR:
       return { ...state, msg: 'Request failed' };
 
     case scaleTypes.DELETE_SUCCESSFUL:
@@ -29,6 +31,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
     case songTypes.FETCH_SUCCESSFUL:
     case scaleTypes.SAVE_SUCCESSFUL:
     case songTypes.SAVE_SUCCESSFUL:
+    case userTypes.SAVE_SUCCESSFUL:
       return { ...state, msg: payload.alert };
 
     default:

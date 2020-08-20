@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Add account page - add api request to change name
+* Add account page - move popup to reducer and merge with newUser? Close popup
 * Tweak text inputs, add length where needed
 * Rework popups? Reuse code and add headers?
 * Select drum type - pan or tongue, etc.
@@ -16,6 +16,7 @@
 * Move error handling to react error boundaries
 * Loading indicator if needed before song starts playing
 * Saving stuff needs minimal conditions?
+* Check scales/users/songs for duplicates when saving?
 
 ## Bugs
 
@@ -90,7 +91,6 @@
 * Analytics
 * Svgs instead of iconfont?
 * Multiple alerts on screen? or just reset timeout and show newest?
-* Check scales for duplicates when saving?
 * Add virtual label field for songs and use it for search results?
 * Better Loading component
 * Likes and/or comments?
