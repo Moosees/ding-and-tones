@@ -85,6 +85,7 @@ export const NavButton = styled.button`
   font-size: ${({ controls, theme }) =>
     controls ? theme.fzMedium : theme.fzLarge};
   margin: -3px 2px 0;
+  min-width: 6rem;
   padding: ${({ controls }) => (controls ? '0.4rem' : '0.4rem 1rem')};
   position: relative;
   top: 3px;

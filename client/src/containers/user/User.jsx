@@ -1,7 +1,7 @@
 import React from 'react';
 import BtnControls from '../../components/button/Controls';
 import DividerLine from '../../components/dividerLine/DividerLine';
-import SignInOut from '../../components/signInOut/SignInOut';
+import UserSignInOut from '../../components/userSignInOut/UserSignInOut';
 import UserAccount from '../../components/userAccount/UserAccount';
 import {
   ButtonGroup,
@@ -27,8 +27,8 @@ const User = () => (
       <DividerLine vertical small />
       <ButtonGroup>
         <BtnControls reverse label="Help" icon="help_outline" />
-        <UserAccount />
-        <SignInOut />
+        <UserAccount reverse />
+        <UserSignInOut reverse />
       </ButtonGroup>
     </ControlButtons>
   </UserContainer>

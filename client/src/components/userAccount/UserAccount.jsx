@@ -4,11 +4,11 @@ import { toggleAccount } from '../../redux/user/user.actions';
 import BtnControls from '../button/Controls';
 import PopupAccount from './PopupAccount';
 
-const UserAccount = ({ accountOpen, toggleAccount }) => {
+const UserAccount = ({ accountOpen, reverse, toggleAccount }) => {
   return (
     <>
       <BtnControls
-        reverse
+        reverse={reverse}
         label="Account"
         icon="person_outline"
         onClick={toggleAccount}

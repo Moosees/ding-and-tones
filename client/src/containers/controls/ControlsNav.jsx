@@ -17,7 +17,7 @@ const ControlsNav = ({ showIntervals, setShowIntervals }) => {
     <NavButtons>
       <BtnNavControls
         isActive={!showIntervals}
-        label="Controls"
+        label="User"
         onClick={() => setShowIntervals(false)}
       />
       <BtnNavControls

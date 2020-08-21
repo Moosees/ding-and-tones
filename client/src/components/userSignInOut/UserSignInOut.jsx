@@ -6,7 +6,7 @@ import { GOOGLE_CLIENT_ID } from '../../assets/oauth';
 import { signIn, signOut } from '../../redux/user/user.actions';
 import BtnControls from '../button/Controls';
 
-const SignInOut = ({ isSignedIn, signIn, signOut }) => {
+const UserSignInOut = ({ isSignedIn, reverse, signIn, signOut }) => {
   const handleSignIn = async (auth) => {
     try {
       const idToken = auth.getAuthResponse().id_token;
@@ -42,7 +42,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
           clientId={GOOGLE_CLIENT_ID}
           render={(renderProps) => (
             <BtnControls
-              reverse
+              reverse={reverse}
               label="Sign Out"
               icon="directions_run"
               onClick={renderProps.onClick}
@@ -56,7 +56,7 @@ const SignInOut = ({ isSignedIn, signIn, signOut }) => {
           clientId={GOOGLE_CLIENT_ID}
           render={(renderProps) => (
             <BtnControls
-              reverse
+              reverse={reverse}
               label="Sign In"
               icon="login"
               onClick={renderProps.onClick}
@@ -78,4 +78,4 @@ const mapStateToProps = ({ user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { signIn, signOut })(SignInOut);
+export default connect(mapStateToProps, { signIn, signOut })(UserSignInOut);

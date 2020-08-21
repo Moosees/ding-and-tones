@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Tweak text inputs, add length where needed, set reverse for buttons in user container
+* Tweak text inputs, add length where needed
 * Rework popups? Reuse code and add headers?
 * Select drum type - pan or tongue, etc.
 * Rework controls - remove play button, rethink what buttons are needed
