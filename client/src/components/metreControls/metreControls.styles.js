@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const MetreContainer = styled.div`
   display: flex;
-  margin: ${({ small }) => (small ? '0' : '1rem 0')};
 `;
 
 export const MetreLabel = styled.label`

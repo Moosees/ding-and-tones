@@ -19,12 +19,20 @@ const Background = styled.div`
   border-radius: 50px;
   display: flex;
   flex-direction: column;
+  font-size: ${({ theme }) => theme.fzMedium};
   justify-content: space-between;
   min-width: 30rem;
   padding: 3rem;
 `;
 
-const Popup = ({ children, onClose }) => {
+const AccountHeader = styled.h2`
+  align-self: center;
+  font-size: ${({ theme }) => theme.fzHeader};
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+`;
+
+const Popup = ({ children, header, onClose }) => {
   const overlayRef = useRef(null);
 
   const handleClick = (e) => {
@@ -33,7 +41,10 @@ const Popup = ({ children, onClose }) => {
 
   return (
     <Overlay ref={overlayRef} onClick={handleClick}>
-      <Background onClick={(e) => e.preventDefault()}>{children}</Background>
+      <Background onClick={(e) => e.preventDefault()}>
+        {header && <AccountHeader>{header}</AccountHeader>}
+        {children}
+      </Background>
     </Overlay>
   );
 };

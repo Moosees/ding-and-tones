@@ -1,8 +1,9 @@
 import React from 'react';
 import BtnControls from '../../components/button/Controls';
 import DividerLine from '../../components/dividerLine/DividerLine';
-import UserSignInOut from '../../components/userSignInOut/UserSignInOut';
 import UserAccount from '../../components/userAccount/UserAccount';
+import UserSignInOut from '../../components/userSignInOut/UserSignInOut';
+import UserSound from '../../components/userSound/UserSound';
 import {
   ButtonGroup,
   ControlButtons,
@@ -21,7 +22,7 @@ const User = () => (
         {/* PlayButton component?? */}
         <BtnControls label="Play" icon="play_arrow" />
         {/* <BtnControls label="Play" icon="pause" /> */}
-        <BtnControls label="Sound" icon="hearing" />
+        <UserSound />
         <BtnControls label="Print" icon="print" />
       </ButtonGroup>
       <DividerLine vertical small />

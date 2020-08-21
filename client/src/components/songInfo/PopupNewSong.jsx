@@ -42,7 +42,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   };
 
   return (
-    <Popup onClose={onClose}>
+    <Popup header="New song" onClose={onClose}>
       <InfoBox>
         <InfoTextEdit
           editOnly

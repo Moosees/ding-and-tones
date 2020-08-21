@@ -11,7 +11,7 @@ const Label = styled.div`
   padding: 2rem 1.5rem;
 `;
 
-const Confirmation = ({ children, label, onConfirm }) => {
+const Confirmation = ({ children, header, label, onConfirm }) => {
   const [popupOpen, setPopupOpen] = useState(false);
 
   const handleConfirm = () => {
@@ -25,7 +25,7 @@ const Confirmation = ({ children, label, onConfirm }) => {
         onClick: () => setPopupOpen(true),
       })}
       {popupOpen && (
-        <Popup onClose={() => setPopupOpen(false)}>
+        <Popup header={header} onClose={() => setPopupOpen(false)}>
           <Label>{label}</Label>
           <Buttons position="center">
             <BtnPrimary label="Confirm" onClick={handleConfirm} />

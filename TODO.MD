@@ -2,9 +2,8 @@
 
 ## Current tasks
 
-* Tweak text inputs, add length where needed
-* Rework popups? Reuse code and add headers?
 * Select drum type - pan or tongue, etc.
+* Tweak text inputs, add length where needed
 * Rework controls - remove play button, rethink what buttons are needed
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
