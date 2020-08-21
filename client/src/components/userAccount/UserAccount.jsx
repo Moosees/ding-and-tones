@@ -1,28 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { toggleAccount } from '../../redux/user/user.actions';
 import BtnControls from '../button/Controls';
 import PopupAccount from './PopupAccount';
 
-const UserAccount = ({ newUser }) => {
-  const [popupOpen, setPopupOpen] = useState(false);
-
+const UserAccount = ({ accountOpen, toggleAccount }) => {
   return (
     <>
       <BtnControls
         reverse
         label="Account"
         icon="person_outline"
-        onClick={() => setPopupOpen(true)}
+        onClick={toggleAccount}
       />
-      {(popupOpen || newUser) && (
-        <PopupAccount onClose={() => setPopupOpen(false)} />
-      )}
+      {accountOpen && <PopupAccount />}
     </>
   );
 };
 
 const mapStateToProps = ({ user }) => ({
-  newUser: user.newUser,
+  accountOpen: user.accountOpen,
 });
 
-export default connect(mapStateToProps)(UserAccount);
+export default connect(mapStateToProps, { toggleAccount })(UserAccount);

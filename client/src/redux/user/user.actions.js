@@ -1,10 +1,6 @@
 import axios from 'axios';
 import userTypes from './user.types';
 
-export const clearNewUser = () => ({
-  type: userTypes.CLEAR_NEW_USER,
-});
-
 export const saveUser = (newName) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
 
@@ -18,7 +14,6 @@ export const saveUser = (newName) => (dispatch, getState) => {
     .post('/user', { name: newName })
     .then((res) => {
       if (res.status === 200) {
-        console.log(res.data);
         dispatch({
           type: userTypes.SAVE_SUCCESSFUL,
           payload: {
@@ -33,11 +28,15 @@ export const saveUser = (newName) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (user, isSignedIn) => ({
+export const signIn = (name, isSignedIn, accountOpen) => ({
   type: userTypes.SIGN_IN,
-  payload: { user, isSignedIn },
+  payload: { name, isSignedIn, accountOpen },
 });
 
 export const signOut = () => ({
   type: userTypes.SIGN_OUT,
+});
+
+export const toggleAccount = () => ({
+  type: userTypes.TOGGLE_ACCOUNT,
 });

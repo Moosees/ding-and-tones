@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Add account page - move popup to reducer and merge with newUser? Close popup
-* Tweak text inputs, add length where needed
+* Tweak text inputs, add length where needed, set reverse for buttons in user container
 * Rework popups? Reuse code and add headers?
 * Select drum type - pan or tongue, etc.
 * Rework controls - remove play button, rethink what buttons are needed
@@ -95,6 +94,7 @@
 * Better Loading component
 * Likes and/or comments?
 * Show your own scales/songs
+* Move user sign in logic to reducer
 
 ## Even lower priority
 

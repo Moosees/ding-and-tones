@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import useValidate from '../../hooks/useValidate';
-import { clearNewUser, saveUser } from '../../redux/user/user.actions';
+import { saveUser, toggleAccount } from '../../redux/user/user.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import InfoBox from '../infoBox/InfoBox';
@@ -22,23 +22,18 @@ const AccountHeader = styled.h2`
   padding: 1rem;
 `;
 
-const PopupAccount = ({ clearNewUser, name, onClose, saveUser }) => {
+const PopupAccount = ({ clearNewUser, name, toggleAccount, saveUser }) => {
   const [username, setUsername, errors, usernameValid] = useValidate(
     'username',
     name
   );
-
-  const handleClose = () => {
-    clearNewUser();
-    onClose();
-  };
 
   const handleSave = () => {
     if (usernameValid) saveUser(username);
   };
 
   return (
-    <Popup onClose={handleClose}>
+    <Popup onClose={toggleAccount}>
       <AccountContainer>
         <AccountHeader>Account</AccountHeader>
         <InfoBox>
@@ -54,7 +49,7 @@ const PopupAccount = ({ clearNewUser, name, onClose, saveUser }) => {
         </InfoBox>
         <Buttons position="center">
           <BtnPrimary label="Save" onClick={handleSave} />
-          <BtnPrimary light label="Cancel" onClick={handleClose} />
+          <BtnPrimary light label="Cancel" onClick={toggleAccount} />
         </Buttons>
       </AccountContainer>
     </Popup>
@@ -65,6 +60,6 @@ const mapStateToProps = ({ user }) => ({
   name: user.name,
 });
 
-export default connect(mapStateToProps, { clearNewUser, saveUser })(
+export default connect(mapStateToProps, { saveUser, toggleAccount })(
   PopupAccount
 );
