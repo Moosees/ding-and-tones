@@ -8,7 +8,7 @@ export const saveUser = (newName) => (dispatch, getState) => {
     user: { name },
   } = getState();
 
-  if (name === newName) return;
+  if (name === newName) return dispatch({ type: userTypes.TOGGLE_ACCOUNT });
 
   return axios
     .post('/user', { name: newName })
