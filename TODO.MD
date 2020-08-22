@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Select drum type - pan or tongue, etc.
 * Tweak text inputs, add length where needed
 * Rework controls - remove play button, rethink what buttons are needed
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
@@ -18,6 +17,8 @@
 
 ## Bugs
 
+* Problem with loading songs (userId problem in parseGetResponse?)
+* Problem with loading scales if on a id route
 * Logo svg gets requested on all route changes
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open

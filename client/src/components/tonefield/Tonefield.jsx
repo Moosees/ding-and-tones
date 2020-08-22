@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setDisplayedNote } from '../../redux/drum/drum.actions';
 
 const Tonefield = ({
+  audioPath,
   color,
   displayedChord,
   hasFocus,
@@ -18,7 +19,7 @@ const Tonefield = ({
   const { rotate, translate } = position;
 
   const handlePlay = () => {
-    new Audio(`/audio/pan/low/${note}.mp3`).play();
+    new Audio(`${audioPath}/${note}.mp3`).play();
   };
 
   const handleIntervals = () => {
@@ -60,6 +61,7 @@ const Tonefield = ({
 };
 
 const mapStateToProps = ({ drum }) => ({
+  audioPath: drum.audioPath,
   displayedChord: drum.displayedChord,
   showIntervals: drum.showIntervals,
 });

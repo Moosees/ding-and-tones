@@ -41,7 +41,7 @@ const Popup = ({ children, header, onClose }) => {
 
   return (
     <Overlay ref={overlayRef} onClick={handleClick}>
-      <Background onClick={(e) => e.preventDefault()}>
+      <Background onClick={(e) => e.stopPropagation()}>
         {header && <AccountHeader>{header}</AccountHeader>}
         {children}
       </Background>
