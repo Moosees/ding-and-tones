@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { deleteScaleById, loadScale } from '../../redux/scale/scale.actions';
 import BtnIcon from '../button/Icon';
 import Loading from '../loading/Loading';
@@ -20,6 +21,8 @@ const ScalesFound = ({
   loadScale,
   scales,
 }) => {
+  const { push } = useHistory();
+
   const getScales = () =>
     scales.map((scale, i) => {
       const {
@@ -27,6 +30,11 @@ const ScalesFound = ({
         isOwner,
         info: { name, label, rootName },
       } = scale;
+
+      const handleLoadScale = () => {
+        loadScale(scale);
+        push('/scale');
+      };
 
       return (
         <ScaleContainer key={i}>
@@ -42,7 +50,7 @@ const ScalesFound = ({
               />
             </Confirmation>
           )}
-          <TextContainer onClick={() => loadScale(scale)}>
+          <TextContainer onClick={handleLoadScale}>
             <ScaleLabel>{`${rootName} ${name}`}</ScaleLabel>
             <ScaleNotes>{label}</ScaleNotes>
           </TextContainer>
