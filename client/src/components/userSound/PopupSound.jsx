@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { sound } from '../../assets/sound';
+import { selectSoundSource } from '../../redux/drum/drum.actions';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
-import InfoBox from '../infoBox/InfoBox';
 import Popup from '../popup/Popup';
-import { selectSoundSource } from '../../redux/drum/drum.actions';
-import styled from 'styled-components';
 
 const AudioOption = styled.div`
   background-color: ${({ theme }) => theme.colorBtnHeavy};

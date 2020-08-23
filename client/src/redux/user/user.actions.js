@@ -18,7 +18,7 @@ export const saveUser = (newName) => (dispatch, getState) => {
           type: userTypes.SAVE_SUCCESSFUL,
           payload: {
             ...res.data,
-            alert: 'Account successfully saved',
+            alert: 'Username changed successfully',
           },
         });
       }
