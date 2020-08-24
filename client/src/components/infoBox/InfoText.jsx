@@ -10,6 +10,7 @@ const InfoText = ({
   handleSave = () => {},
   isValid = true,
   placeholder = '',
+  size,
   value = '',
 }) => {
   const [editOpen, setEditOpen] = useState(false);
@@ -29,12 +30,13 @@ const InfoText = ({
       {editOpen ? (
         <InfoTextEdit
           errors={errors}
-          placeholder={placeholder}
-          value={value}
           handleChange={handleChange}
+          isValid={isValid}
           onClose={onClose}
           onSave={onSave}
-          isValid={isValid}
+          placeholder={placeholder}
+          size={size}
+          value={value}
         />
       ) : (
         <>

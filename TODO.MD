@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Tweak text inputs, add length where needed
 * Rework controls - remove play button, rethink what buttons are needed
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching

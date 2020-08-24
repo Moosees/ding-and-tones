@@ -47,10 +47,11 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         <InfoTextEdit
           editOnly
           errors={errors}
-          placeholder={'Title'}
-          value={title}
           handleChange={setTitle}
           isValid={isTitleValid}
+          placeholder={'Title'}
+          size={32}
+          value={title}
         />
       </InfoBox>
       <InfoBox>
