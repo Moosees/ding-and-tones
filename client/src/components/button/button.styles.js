@@ -8,10 +8,12 @@ export const ButtonGroup = styled.div`
 `;
 
 export const ControlsButton = styled.div`
+  align-items: center;
   cursor: pointer;
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-  padding: 0.5rem;
+  font-size: ${({ theme }) => theme.fzMedium};
+  padding: 0.4rem;
   text-shadow: ${({ theme }) => theme.textShadowLight};
   transition: color 0.1s ease-in;
 

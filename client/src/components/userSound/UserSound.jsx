@@ -8,10 +8,11 @@ const UserSound = ({ reverse }) => {
   return (
     <>
       <BtnControls
-        reverse={reverse}
-        label="Sound"
         icon="hearing"
+        iconAlign={3}
+        label="Sound setup"
         onClick={() => setSoundOpen(true)}
+        reverse={reverse}
       />
       {soundOpen && <PopupSound onClose={() => setSoundOpen(false)} />}
     </>

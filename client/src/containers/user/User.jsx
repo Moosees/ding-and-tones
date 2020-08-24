@@ -5,7 +5,7 @@ import UserAccount from '../../components/userAccount/UserAccount';
 import UserSignInOut from '../../components/userSignInOut/UserSignInOut';
 import UserSound from '../../components/userSound/UserSound';
 import {
-  ButtonGroup,
+  ButtonColumn,
   ControlButtons,
   Logo,
   LogoContainer,
@@ -18,19 +18,17 @@ const User = () => (
       <Logo />
     </LogoContainer>
     <ControlButtons>
-      <ButtonGroup reverse>
-        {/* PlayButton component?? */}
-        <BtnControls label="Play" icon="play_arrow" />
-        {/* <BtnControls label="Play" icon="pause" /> */}
+      <ButtonColumn reverse>
         <UserSound />
-        <BtnControls label="Print" icon="print" />
-      </ButtonGroup>
+        <BtnControls label="Print/Save" icon="print" />
+        <BtnControls label="Support me" icon="support" />
+      </ButtonColumn>
       <DividerLine vertical small />
-      <ButtonGroup>
+      <ButtonColumn>
         <BtnControls reverse label="Help" icon="help_outline" />
         <UserAccount reverse />
         <UserSignInOut reverse />
-      </ButtonGroup>
+      </ButtonColumn>
     </ControlButtons>
   </UserContainer>
 );

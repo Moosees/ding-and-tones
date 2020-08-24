@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Rework controls - remove play button, rethink what buttons are needed
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
@@ -12,7 +11,7 @@
 * Move error handling to react error boundaries
 * Loading indicator if needed before song starts playing
 * Saving stuff needs minimal conditions?
-* Check scales/users/songs for duplicates when saving?
+* Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 
 ## Bugs
 

@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
-export const ButtonGroup = styled.div`
+export const ButtonColumn = styled.div`
   align-items: ${({ reverse }) => (reverse ? 'flex-end' : 'flex-start')};
   display: flex;
+  flex: 1;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.fzLarge};
-  justify-content: center;
 `;
 
 export const ControlButtons = styled.div`
   align-items: center;
   display: flex;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const Logo = styled.svg`
