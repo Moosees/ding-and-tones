@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import BtnNavControls from '../../components/button/NavControls';
 import { setShowIntervals } from '../../redux/drum/drum.actions';
+import BtnNavControls from '../button/NavControls';
 
 export const NavButtons = styled.div`
   top: -2.5rem;

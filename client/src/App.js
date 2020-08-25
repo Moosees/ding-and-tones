@@ -6,10 +6,10 @@ import {
   SectionWithNav,
   Viewport,
 } from './app.styles';
+import ControlsNav from './components/controlsNav/ControlsNav';
 import Loading from './components/loading/Loading';
 import AlertHandler from './components/popup/Alert';
 import Controls from './containers/controls/Controls';
-import ControlsNav from './containers/controls/ControlsNav';
 import Drum from './containers/drum/Drum';
 import Nav from './containers/nav/Nav';
 import { setDropdownForBeat } from './redux/ui/ui.actions';

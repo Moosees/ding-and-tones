@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { sound } from '../../assets/sound';
-import { selectSoundSource } from '../../redux/drum/drum.actions';
-import Buttons from '../button/Buttons';
-import BtnPrimary from '../button/Primary';
-import Popup from '../popup/Popup';
+import { sound } from '../../../assets/sound';
+import Buttons from '../../../components/button/Buttons';
+import BtnPrimary from '../../../components/button/Primary';
+import Popup from '../../../components/popup/Popup';
+import { selectSoundSource } from '../../../redux/drum/drum.actions';
 
 const AudioOption = styled.div`
   background-color: ${({ theme }) => theme.colorBtnHeavy};

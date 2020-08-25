@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleAccount } from '../../redux/user/user.actions';
-import BtnControls from '../button/Controls';
+import BtnControls from '../../../components/button/Controls';
+import { toggleAccount } from '../../../redux/user/user.actions';
 import PopupAccount from './PopupAccount';
 
-const UserAccount = ({ accountOpen, reverse, toggleAccount }) => {
+const Account = ({ accountOpen, reverse, toggleAccount }) => {
   return (
     <>
       <BtnControls
@@ -22,4 +22,4 @@ const mapStateToProps = ({ user }) => ({
   accountOpen: user.accountOpen,
 });
 
-export default connect(mapStateToProps, { toggleAccount })(UserAccount);
+export default connect(mapStateToProps, { toggleAccount })(Account);

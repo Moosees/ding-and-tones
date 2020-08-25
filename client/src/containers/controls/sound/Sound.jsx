@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import BtnControls from '../button/Controls';
+import BtnControls from '../../../components/button/Controls';
 import PopupSound from './PopupSound';
 
-const UserSound = ({ reverse }) => {
+const Sound = ({ reverse }) => {
   const [soundOpen, setSoundOpen] = useState(false);
 
   return (
@@ -19,4 +19,4 @@ const UserSound = ({ reverse }) => {
   );
 };
 
-export default UserSound;
+export default Sound;

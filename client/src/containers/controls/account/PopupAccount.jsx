@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import useValidate from '../../hooks/useValidate';
-import { saveUser, toggleAccount } from '../../redux/user/user.actions';
-import Buttons from '../button/Buttons';
-import BtnPrimary from '../button/Primary';
-import InfoBox from '../infoBox/InfoBox';
-import InfoTextEdit from '../infoBox/InfoTextEdit';
-import Popup from '../popup/Popup';
+import Buttons from '../../../components/button/Buttons';
+import BtnPrimary from '../../../components/button/Primary';
+import InfoBox from '../../../components/infoBox/InfoBox';
+import InfoTextEdit from '../../../components/infoBox/InfoTextEdit';
+import Popup from '../../../components/popup/Popup';
+import useValidate from '../../../hooks/useValidate';
+import { saveUser, toggleAccount } from '../../../redux/user/user.actions';
 
 const PopupAccount = ({ clearNewUser, name, toggleAccount, saveUser }) => {
   const [username, setUsername, errors, usernameValid] = useValidate(

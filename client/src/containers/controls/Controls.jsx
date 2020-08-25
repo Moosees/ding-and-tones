@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Intervals from '../intervals/Intervals';
-import User from '../user/User';
+import Intervals from './intervals/Intervals';
+import User from './user/User';
 
 const Controls = ({ showIntervals }) => {
   return <>{showIntervals ? <Intervals /> : <User />}</>;

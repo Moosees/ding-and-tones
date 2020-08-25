@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Style songwriter dropdowns, add hover?
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Errors display on inputs
@@ -25,7 +26,6 @@
 * Responsive design
 * Distinct confirm and cancel buttons
 * New buttons for loading songs
-* Style songwriter dropdowns
 * Dropdowns open when clicking label (difficulty and new song popup)
 * Remove line on find songs route? Sticky footer?
 

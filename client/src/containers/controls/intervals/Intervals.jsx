@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { intervals } from '../../assets/intervals';
+import { intervals } from '../../../assets/intervals';
 import { Interval, IntervalContainer, IntervalList } from './intervals.styles';
 
 const getChordLegend = (intervalList) => {

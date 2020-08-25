@@ -1,9 +1,9 @@
 import React from 'react';
-import BtnControls from '../../components/button/Controls';
-import DividerLine from '../../components/dividerLine/DividerLine';
-import UserAccount from '../../components/userAccount/UserAccount';
-import UserSignInOut from '../../components/userSignInOut/UserSignInOut';
-import UserSound from '../../components/userSound/UserSound';
+import BtnControls from '../../../components/button/Controls';
+import DividerLine from '../../../components/dividerLine/DividerLine';
+import Account from '../account/Account';
+import SignIn from '../signIn/SignIn';
+import Sound from '../sound/Sound';
 import {
   ButtonColumn,
   ControlButtons,
@@ -19,15 +19,15 @@ const User = () => (
     </LogoContainer>
     <ControlButtons>
       <ButtonColumn reverse>
-        <UserSound />
+        <Sound />
         <BtnControls label="Print/Save" icon="print" />
         <BtnControls label="Support me" icon="support" />
       </ButtonColumn>
       <DividerLine vertical small />
       <ButtonColumn>
         <BtnControls reverse label="Help" icon="help_outline" />
-        <UserAccount reverse />
-        <UserSignInOut reverse />
+        <Account reverse />
+        <SignIn reverse />
       </ButtonColumn>
     </ControlButtons>
   </UserContainer>

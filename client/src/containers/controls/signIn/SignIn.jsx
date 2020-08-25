@@ -2,11 +2,11 @@ import axios from 'axios';
 import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
-import { GOOGLE_CLIENT_ID } from '../../assets/oauth';
-import { signIn, signOut } from '../../redux/user/user.actions';
-import BtnControls from '../button/Controls';
+import { GOOGLE_CLIENT_ID } from '../../../assets/oauth';
+import BtnControls from '../../../components/button/Controls';
+import { signIn, signOut } from '../../../redux/user/user.actions';
 
-const UserSignInOut = ({ isSignedIn, reverse, signIn, signOut }) => {
+const SignIn = ({ isSignedIn, reverse, signIn, signOut }) => {
   const handleSignIn = async (auth) => {
     try {
       const idToken = auth.getAuthResponse().id_token;
@@ -78,4 +78,4 @@ const mapStateToProps = ({ user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { signIn, signOut })(UserSignInOut);
+export default connect(mapStateToProps, { signIn, signOut })(SignIn);
