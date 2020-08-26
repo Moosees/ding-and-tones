@@ -6,12 +6,12 @@ import {
   SectionWithNav,
   Viewport,
 } from './app.styles';
-import ControlsNav from './components/controlsNav/ControlsNav';
 import Loading from './components/loading/Loading';
+import NavControls from './components/navControls/NavControls';
+import NavMain from './components/navMain/NavMain';
 import AlertHandler from './components/popup/Alert';
 import Controls from './containers/controls/Controls';
 import Drum from './containers/drum/Drum';
-import Nav from './containers/nav/Nav';
 import { setDropdownForBeat } from './redux/ui/ui.actions';
 
 const AppRoutes = lazy(() => import('./AppRoutes'));
@@ -27,13 +27,13 @@ const App = ({ setDropdownForBeat }) => {
       <LayoutGrid>
         <Drum style={{ gridArea: 'drum' }} />
         <SectionWithNav style={{ gridArea: 'controls' }}>
-          <ControlsNav />
+          <NavControls />
           <BorderContainer small>
             <Controls />
           </BorderContainer>
         </SectionWithNav>
         <SectionWithNav style={{ gridArea: 'main' }}>
-          <Nav />
+          <NavMain />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
               <AppRoutes />

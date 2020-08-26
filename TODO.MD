@@ -41,6 +41,7 @@
 ## Chords
 
 * ID and cache chords?
+* Check cache for possible chords to show in filter
 
 ## Songwriter
 

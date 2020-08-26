@@ -12,7 +12,7 @@ export const NavButtons = styled.div`
   position: absolute;
 `;
 
-const ControlsNav = ({ showIntervals, setShowIntervals }) => {
+const NavControls = ({ showIntervals, setShowIntervals }) => {
   return (
     <NavButtons>
       <BtnNavControls
@@ -33,4 +33,4 @@ const mapStateToProps = ({ drum }) => ({
   showIntervals: drum.showIntervals,
 });
 
-export default connect(mapStateToProps, { setShowIntervals })(ControlsNav);
+export default connect(mapStateToProps, { setShowIntervals })(NavControls);

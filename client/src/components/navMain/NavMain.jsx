@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import BtnNav from '../../components/button/Nav';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+import BtnNav from '../button/Nav';
 
 const Navbar = styled.nav`
   top: -3rem;
@@ -11,7 +11,7 @@ const Navbar = styled.nav`
   position: absolute;
 `;
 
-const Nav = ({ scaleId, songId }) => {
+const NavMain = ({ scaleId, songId }) => {
   return (
     <Navbar>
       <BtnNav label="Scale" to={`/scale${scaleId ? '/' + scaleId : ''}`} />
@@ -27,4 +27,4 @@ const mapStateToProps = ({ scale, song }) => ({
   songId: song.ui.songId,
 });
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(NavMain);
