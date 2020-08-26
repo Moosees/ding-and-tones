@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
-import { noteValueToName } from '../../assets/intervals';
+import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../../assets/constants';
+import { noteValueToName } from '../../../assets/intervals';
+import Buttons from '../../../components/button/Buttons';
+import BtnPrimary from '../../../components/button/Primary';
 import {
   addNoteToScale,
   removeNoteFromScale,
   transposeScale,
-} from '../../redux/scale/scale.actions';
-import Buttons from '../button/Buttons';
-import BtnPrimary from '../button/Primary';
-import { EditContainer, Note, Notes } from './scaleEdit.styles';
+} from '../../../redux/scale/scale.actions';
+import { EditContainer, Note, Notes } from './edit.styles';
 
 const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
   const notes = [];
@@ -36,7 +36,7 @@ const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
   return notes;
 };
 
-const ScaleEdit = ({
+const Edit = ({
   scale,
   addNoteToScale,
   isSongPlaying,
@@ -89,4 +89,4 @@ export default connect(mapStateToProps, {
   addNoteToScale,
   removeNoteFromScale,
   transposeScale,
-})(ScaleEdit);
+})(Edit);

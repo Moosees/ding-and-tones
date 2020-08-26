@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import DividerLine from '../../components/dividerLine/DividerLine';
 import Loading from '../../components/loading/Loading';
-import ScaleEdit from '../../components/scaleEdit/ScaleEdit';
-import ScaleInfo from '../../components/scaleInfo/ScaleInfo';
-import ScaleSearch from '../../components/scaleSearch/ScaleSearch';
-import ScalesFound from '../../components/scalesFound/ScalesFound';
 import { getScaleById } from '../../redux/scale/scale.actions';
+import Edit from './edit/Edit';
+import Info from './info/Info';
+import Results from './results/Results';
 import { ScaleContainer, Section } from './scale.styles';
+import Search from './search/Search';
 
 const Scale = ({ getScaleById, scaleUi }) => {
   const { scaleId } = useParams();
@@ -30,16 +30,16 @@ const Scale = ({ getScaleById, scaleUi }) => {
           <Loading />
         ) : (
           <>
-            <ScaleInfo />
+            <Info />
             <DividerLine />
-            <ScaleEdit />
+            <Edit />
           </>
         )}
       </Section>
       <DividerLine vertical />
       <Section>
-        <ScaleSearch />
-        <ScalesFound />
+        <Search />
+        <Results />
       </Section>
     </ScaleContainer>
   );

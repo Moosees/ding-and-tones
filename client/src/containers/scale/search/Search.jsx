@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { startSearch } from '../../redux/search/search.actions';
-import searchOptions from '../../redux/search/search.options';
-import { SearchContainer } from './scaleSearch.styles';
+import { startSearch } from '../../../redux/search/search.actions';
+import searchOptions from '../../../redux/search/search.options';
+import { SearchContainer } from './search.styles';
 
-const ScaleSearch = ({ isSearching, scalesFetchTried, startSearch }) => {
+const Search = ({ isSearching, scalesFetchTried, startSearch }) => {
   useEffect(() => {
     if (!scalesFetchTried && !isSearching)
       startSearch(searchOptions.scales.latest);
@@ -18,4 +18,4 @@ const mapStateToProps = ({ search }) => ({
   scalesFetchTried: search.scalesFetchTried,
 });
 
-export default connect(mapStateToProps, { startSearch })(ScaleSearch);
+export default connect(mapStateToProps, { startSearch })(Search);

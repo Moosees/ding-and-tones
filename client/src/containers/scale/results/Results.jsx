@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { deleteScaleById, loadScale } from '../../redux/scale/scale.actions';
-import BtnIcon from '../button/Icon';
-import Loading from '../loading/Loading';
-import Confirmation from '../popup/Confirmation';
+import BtnIcon from '../../../components/button/Icon';
+import Loading from '../../../components/loading/Loading';
+import Confirmation from '../../../components/popup/Confirmation';
+import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
 import {
   ScaleContainer,
   ScaleLabel,
   ScaleList,
   ScaleNotes,
   TextContainer,
-} from './scalesFound.styles';
+} from './results.styles';
 
-const ScalesFound = ({
+const Results = ({
   deleteScaleById,
   isDeleting,
   isSearching,
@@ -75,4 +75,4 @@ const mapStateToProps = ({ scale, search, user }) => ({
 export default connect(mapStateToProps, {
   deleteScaleById,
   loadScale,
-})(ScalesFound);
+})(Results);
