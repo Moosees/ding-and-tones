@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { optionsDifficulty } from '../../assets/constants';
-import useValidate from '../../hooks/useValidate';
-import { setSongState } from '../../redux/song/song.actions';
-import Buttons from '../button/Buttons';
-import BtnPrimary from '../button/Primary';
-import InfoBox from '../infoBox/InfoBox';
-import InfoSelect from '../infoBox/InfoSelect';
-import InfoTextEdit from '../infoBox/InfoTextEdit';
-import MetreControls from '../metreControls/MetreControls';
-import Popup from '../popup/Popup';
 import { useHistory } from 'react-router-dom';
+import { optionsDifficulty } from '../../../assets/constants';
+import useValidate from '../../../hooks/useValidate';
+import { setSongState } from '../../../redux/song/song.actions';
+import Buttons from '../../button/Buttons';
+import BtnPrimary from '../../button/Primary';
+import InfoBox from '../../infoBox/InfoBox';
+import InfoSelect from '../../infoBox/InfoSelect';
+import InfoTextEdit from '../../infoBox/InfoTextEdit';
+import MetreControls from '../../metreControls/MetreControls';
+import Popup from '../../popup/Popup';
 
 const PopupNewSong = ({ onClose, setSongState }) => {
   const [difficulty, setDifficulty] = useState(1);

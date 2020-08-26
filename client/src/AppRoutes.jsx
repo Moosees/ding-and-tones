@@ -6,7 +6,7 @@ import SignInBoundary from './components/singInBoundary/SignInBoundary';
 const Chords = lazy(() => import('./containers/chords/Chords'));
 const FindSongs = lazy(() => import('./containers/findSongs/FindSongs'));
 const Scale = lazy(() => import('./containers/scale/Scale'));
-const Songwriter = lazy(() => import('./containers/songwriter/Songwriter'));
+const Songwriter = lazy(() => import('./components/songwriter/Songwriter'));
 
 const AppRoutes = () => (
   <SignInBoundary>

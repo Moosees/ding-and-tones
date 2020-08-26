@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { optionsDifficulty } from '../../assets/constants';
-import useValidate from '../../hooks/useValidate';
-import { saveSong, updateSongInfo } from '../../redux/song/song.actions';
-import Buttons from '../button/Buttons';
-import BtnPrimary from '../button/Primary';
-import InfoBox from '../infoBox/InfoBox';
-import InfoSelect from '../infoBox/InfoSelect';
-import InfoText from '../infoBox/InfoText';
-import PlayButton from '../playButton/PlayButton';
+import { optionsDifficulty } from '../../../assets/constants';
+import useValidate from '../../../hooks/useValidate';
+import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
+import Buttons from '../../button/Buttons';
+import BtnPrimary from '../../button/Primary';
+import InfoBox from '../../infoBox/InfoBox';
+import InfoSelect from '../../infoBox/InfoSelect';
+import InfoText from '../../infoBox/InfoText';
+import PlayButton from '../../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
 
 const InfoContainer = styled.div`
@@ -18,7 +18,7 @@ const InfoContainer = styled.div`
   width: 100%;
 `;
 
-const SongInfo = ({
+const Info = ({
   isOwner,
   isSaving,
   isSignedIn,
@@ -98,4 +98,4 @@ const mapStateToProps = ({ song, ui, user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { saveSong, updateSongInfo })(SongInfo);
+export default connect(mapStateToProps, { saveSong, updateSongInfo })(Info);

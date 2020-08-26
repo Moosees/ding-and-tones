@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { moveBarInArrangement } from '../../redux/song/song.actions';
 import { setSoundOptions } from '../../redux/ui/ui.actions';
 import Bar from '../bar/Bar';
-import { Bars } from './songArrangement.styles';
-import { createOptions } from './songArrangement.utils';
+import { Bars } from './arrangement.styles';
+import { createOptions } from './arrangement.utils';
 
 const SongArrangement = ({
   arrangement,

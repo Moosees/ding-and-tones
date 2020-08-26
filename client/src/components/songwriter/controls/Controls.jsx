@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { metreList } from '../../assets/metre';
-import { addNewBar } from '../../redux/song/song.actions';
-import { toggleEditSong } from '../../redux/ui/ui.actions';
-import BpmSlider from '../bpmSlider/BpmSlider';
-import Buttons from '../button/Buttons';
-import BtnPrimary from '../button/Primary';
-import InfoBox from '../infoBox/InfoBox';
+import { metreList } from '../../../assets/metre';
+import { addNewBar } from '../../../redux/song/song.actions';
+import { toggleEditSong } from '../../../redux/ui/ui.actions';
+import BpmSlider from '../../bpmSlider/BpmSlider';
+import Buttons from '../../button/Buttons';
+import BtnPrimary from '../../button/Primary';
+import InfoBox from '../../infoBox/InfoBox';
+import { ControlsContainer } from './controls.styles';
+import { createNewBar } from './controls.utils';
 import PopupNewBar from './PopupNewBar';
 import PopupSongMetre from './PopupSongMetre';
-import { ControlsContainer } from './songControls.styles';
-import { createNewBar } from './songControls.utils';
 
-const SongControls = ({
+const Controls = ({
   addNewBar,
   bpm,
   metre,
@@ -78,4 +78,4 @@ const mapStateToProps = ({ song, ui }) => ({
 export default connect(mapStateToProps, {
   addNewBar,
   toggleEditSong,
-})(SongControls);
+})(Controls);

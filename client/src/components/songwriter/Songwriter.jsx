@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import DividerLine from '../../components/dividerLine/DividerLine';
-import Loading from '../../components/loading/Loading';
-import SongArrangement from '../../components/songArrangement/SongArrangement';
-import SongControls from '../../components/songControls/SongControls';
-import SongInfo from '../../components/songInfo/SongInfo';
 import { getSongById } from '../../redux/song/song.actions';
+import Arrangement from '../arrangement/Arrangement';
+import DividerLine from '../dividerLine/DividerLine';
+import Loading from '../loading/Loading';
+import Controls from './controls/Controls';
+import Info from './info/Info';
 import {
   BottomSection,
   SongContainer,
@@ -35,16 +35,16 @@ const Songwriter = ({ getSongById, songUi }) => {
         <>
           <TopSection>
             <TopPart>
-              <SongInfo />
+              <Info />
             </TopPart>
             <DividerLine vertical small />
             <TopPart>
-              <SongControls />
+              <Controls />
             </TopPart>
           </TopSection>
           <DividerLine />
           <BottomSection>
-            <SongArrangement />
+            <Arrangement />
           </BottomSection>
         </>
       )}
