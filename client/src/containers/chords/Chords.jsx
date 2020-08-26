@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ChordFilter from '../../components/chordFilter/ChordFilter';
-import ChordsFound from '../../components/chordsFound/ChordsFound';
 import DividerLine from '../../components/dividerLine/DividerLine';
+import Filter from './filter/Filter';
+import List from './list/List';
 
 const ChordsContainer = styled.div`
   align-items: center;
@@ -15,9 +15,9 @@ const ChordsContainer = styled.div`
 const Chords = () => {
   return (
     <ChordsContainer>
-      <ChordFilter />
+      <Filter />
       <DividerLine vertical />
-      <ChordsFound />
+      <List />
     </ChordsContainer>
   );
 };

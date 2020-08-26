@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import Buttons from '../../../components/button/Buttons';
+import BtnPrimary from '../../../components/button/Primary';
+import Checkbox from '../../../components/checkbox/Checkbox';
+import DividerLine from '../../../components/dividerLine/DividerLine';
 import {
   setAllChordFiltersTo,
   toggleChordIsSelected,
-} from '../../redux/chords/chords.actions';
-import { setDisplayedChord } from '../../redux/drum/drum.actions';
-import Buttons from '../button/Buttons';
-import BtnPrimary from '../button/Primary';
-import Checkbox from '../checkbox/Checkbox';
-import DividerLine from '../dividerLine/DividerLine';
+} from '../../../redux/chords/chords.actions';
+import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 
 const ControlsContainer = styled.div`
   align-items: center;
@@ -22,7 +22,7 @@ const CheckBoxes = styled.div`
   flex-direction: column;
 `;
 
-const ChordFilter = ({
+const Filter = ({
   chordList,
   scale,
   setAllChordFiltersTo,
@@ -73,4 +73,4 @@ export default connect(mapStateToProps, {
   setAllChordFiltersTo,
   setDisplayedChord,
   toggleChordIsSelected,
-})(ChordFilter);
+})(Filter);

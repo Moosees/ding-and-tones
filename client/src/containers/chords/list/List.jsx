@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDisplayedChord } from '../../redux/drum/drum.actions';
-import { ListContainer, ListItem } from './chordsFound.styles';
+import { setDisplayedChord } from '../../../redux/drum/drum.actions';
+import { ListContainer, ListItem } from './list.styles';
 
-const ChordsFound = ({ displayedChord, setDisplayedChord, foundChords }) => {
+const List = ({ displayedChord, setDisplayedChord, foundChords }) => {
   return (
     <ListContainer>
       {foundChords &&
@@ -31,4 +31,4 @@ const mapStateToProps = ({ chords, drum }) => ({
 
 export default connect(mapStateToProps, {
   setDisplayedChord,
-})(ChordsFound);
+})(List);
