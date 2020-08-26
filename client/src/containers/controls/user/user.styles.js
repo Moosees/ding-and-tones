@@ -14,13 +14,6 @@ export const ControlButtons = styled.div`
   width: 100%;
 `;
 
-export const Logo = styled.svg`
-  background-image: url(/logo.svg);
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-`;
-
 export const LogoContainer = styled.div`
   height: 5rem;
   width: 5rem;

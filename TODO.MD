@@ -16,7 +16,6 @@
 
 ## Bugs
 
-* Logo svg gets requested on all route changes
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)

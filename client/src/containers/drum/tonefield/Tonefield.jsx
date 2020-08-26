@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDisplayedNote } from '../../redux/drum/drum.actions';
+import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 
 const Tonefield = ({
   audioPath,

@@ -4,10 +4,10 @@ import DividerLine from '../../../components/dividerLine/DividerLine';
 import Account from '../account/Account';
 import SignIn from '../signIn/SignIn';
 import Sound from '../sound/Sound';
+import Logo from './Logo';
 import {
   ButtonColumn,
   ControlButtons,
-  Logo,
   LogoContainer,
   UserContainer,
 } from './user.styles';

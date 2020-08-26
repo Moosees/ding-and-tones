@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
-import Tonefield from '../../components/tonefield/Tonefield';
 import { DrumContainer, DrumSvg } from './drum.styles';
 import {
   getChordColor,
@@ -8,6 +7,7 @@ import {
   getNoteText,
   getPositionMap,
 } from './drum.utils';
+import Tonefield from './tonefield/Tonefield';
 
 const Drum = ({
   displayedChord,
