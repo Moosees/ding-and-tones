@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SongSearch from '../../components/songSearch/SongSearch';
-import SongsFound from '../../components/songsFound/SongsFound';
+import Results from './results/Results';
+import Search from './search/Search';
 
 const FindSongsContainer = styled.div`
   align-items: center;
@@ -14,8 +14,8 @@ const FindSongsContainer = styled.div`
 const FindSongs = () => {
   return (
     <FindSongsContainer>
-      <SongSearch />
-      <SongsFound />
+      <Search />
+      <Results />
     </FindSongsContainer>
   );
 };

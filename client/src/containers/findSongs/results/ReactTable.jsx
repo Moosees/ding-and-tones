@@ -8,9 +8,9 @@ import {
   TableFooter,
   TableHeader,
   TableRow,
-} from './songsFound.styles';
+} from './results.styles';
 
-const SongsTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
+const ReactTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -79,4 +79,4 @@ const SongsTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
   );
 };
 
-export default SongsTable;
+export default ReactTable;

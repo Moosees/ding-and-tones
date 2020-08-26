@@ -1,17 +1,17 @@
 import React, { useCallback, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { difficultyByValue } from '../../assets/constants';
-import { metreList } from '../../assets/metre';
-import { deleteSongById } from '../../redux/song/song.actions';
-import Buttons from '../button/Buttons';
-import BtnIcon from '../button/Icon';
-import BtnPrimary from '../button/Primary';
-import Loading from '../loading/Loading';
-import Confirmation from '../popup/Confirmation';
-import SongsTable from './SongsTable';
+import { difficultyByValue } from '../../../assets/constants';
+import { metreList } from '../../../assets/metre';
+import Buttons from '../../../components/button/Buttons';
+import BtnIcon from '../../../components/button/Icon';
+import BtnPrimary from '../../../components/button/Primary';
+import Loading from '../../../components/loading/Loading';
+import Confirmation from '../../../components/popup/Confirmation';
+import { deleteSongById } from '../../../redux/song/song.actions';
+import ReactTable from './ReactTable';
 
-const SongsFound = ({
+const Results = ({
   deleteSongById,
   isDeleting,
   isSearching,
@@ -91,7 +91,7 @@ const SongsFound = ({
   return isSearching ? (
     <Loading />
   ) : (
-    <SongsTable
+    <ReactTable
       columns={columns}
       data={data}
       renderRowExpanded={renderRowExpanded}
@@ -107,4 +107,4 @@ const mapStateToProps = ({ search, song, user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { deleteSongById })(SongsFound);
+export default connect(mapStateToProps, { deleteSongById })(Results);
