@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDropdownForBeat } from '../../redux/ui/ui.actions';
+import { setDropdownForBeat } from '../../../redux/ui/ui.actions';
 import { BeatContainer, BeatText } from './beat.styles';
 import BeatDropdown from './BeatDropdown';
 

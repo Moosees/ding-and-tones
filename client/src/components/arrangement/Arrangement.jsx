@@ -4,9 +4,9 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { connect } from 'react-redux';
 import { moveBarInArrangement } from '../../redux/song/song.actions';
 import { setSoundOptions } from '../../redux/ui/ui.actions';
-import Bar from '../bar/Bar';
 import { Bars } from './arrangement.styles';
 import { createOptions } from './arrangement.utils';
+import Bar from './bar/Bar';
 
 const SongArrangement = ({
   arrangement,

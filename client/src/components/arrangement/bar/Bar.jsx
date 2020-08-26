@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { connect } from 'react-redux';
-import { ItemTypes } from '../../assets/constants';
+import { ItemTypes } from '../../../assets/constants';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import { BarContainer, Beats } from './bar.styles';

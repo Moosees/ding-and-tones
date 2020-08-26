@@ -5,9 +5,9 @@ import {
   deleteBar,
   duplicateBar,
   updateBarSubdivision,
-} from '../../redux/song/song.actions';
-import BtnGradient from '../button/Gradient';
-import MetreControls from '../metreControls/MetreControls';
+} from '../../../redux/song/song.actions';
+import BtnGradient from '../../button/Gradient';
+import MetreControls from '../../metreControls/MetreControls';
 import { ControlsContainer, DragHandle } from './barControls.styles';
 
 const copyBar = (barId, bars, beats) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateBeat } from '../../redux/song/song.actions';
-import { setDropdownForBeat } from '../../redux/ui/ui.actions';
+import { updateBeat } from '../../../redux/song/song.actions';
+import { setDropdownForBeat } from '../../../redux/ui/ui.actions';
 import { Dropdown } from './beat.styles';
 
 const BeatDropdown = ({

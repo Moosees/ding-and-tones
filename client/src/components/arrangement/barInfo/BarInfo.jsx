@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { metreList } from '../../assets/metre';
+import { metreList } from '../../../assets/metre';
 import { InfoContainer } from './barInfo.styles';
 
 const BarControls = ({ barId, bars, beats }) => {
