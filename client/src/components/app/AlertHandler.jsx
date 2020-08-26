@@ -25,7 +25,7 @@ const AlertText = styled.span`
   margin: 0 1rem;
 `;
 
-export const Alert = ({ msg, setAlert }) => {
+export const AlertHandler = ({ msg, setAlert }) => {
   useEffect(() => {
     if (msg) {
       const timeout = setTimeout(() => setAlert(''), ALERT_TIMEOUT);
@@ -49,4 +49,4 @@ const mapStateToProps = ({ alert }) => ({
   msg: alert.msg,
 });
 
-export default connect(mapStateToProps, { setAlert })(Alert);
+export default connect(mapStateToProps, { setAlert })(AlertHandler);

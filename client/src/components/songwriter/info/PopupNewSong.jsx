@@ -6,11 +6,11 @@ import useValidate from '../../../hooks/useValidate';
 import { setSongState } from '../../../redux/song/song.actions';
 import Buttons from '../../button/Buttons';
 import BtnPrimary from '../../button/Primary';
-import InfoBox from '../../infoBox/InfoBox';
-import InfoSelect from '../../infoBox/InfoSelect';
-import InfoTextEdit from '../../infoBox/InfoTextEdit';
 import MetreControls from '../../metreControls/MetreControls';
-import Popup from '../../popup/Popup';
+import InfoBox from '../../shared/infoBox/InfoBox';
+import InfoSelect from '../../shared/infoBox/InfoSelect';
+import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
+import Popup from '../../shared/popup/Popup';
 
 const PopupNewSong = ({ onClose, setSongState }) => {
   const [difficulty, setDifficulty] = useState(1);

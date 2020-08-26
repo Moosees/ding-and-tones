@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import App from './App';
 import { API_ADDRESS } from './assets/oauth';
 import { mainTheme } from './assets/themes';
-import { GlobalStyles } from './index.styles';
+import App from './components/app/App';
+import GlobalStyles from './globalStyles';
 import { store } from './redux/store';
 import * as serviceWorker from './serviceWorker';
 

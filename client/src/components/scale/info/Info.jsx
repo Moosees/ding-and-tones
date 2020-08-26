@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Buttons from '../../../components/button/Buttons';
 import BtnPrimary from '../../../components/button/Primary';
-import InfoBox from '../../../components/infoBox/InfoBox';
-import InfoText from '../../../components/infoBox/InfoText';
 import useValidate from '../../../hooks/useValidate';
 import { saveScale, setScaleName } from '../../../redux/scale/scale.actions';
+import InfoBox from '../../shared/infoBox/InfoBox';
+import InfoText from '../../shared/infoBox/InfoText';
 import { InfoContainer } from './info.styles';
 
 const Info = ({

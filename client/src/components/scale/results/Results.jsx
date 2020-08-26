@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import BtnIcon from '../../../components/button/Icon';
-import Loading from '../../../components/loading/Loading';
-import Confirmation from '../../../components/popup/Confirmation';
 import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
+import Loading from '../../shared/loading/Loading';
+import Confirmation from '../../shared/popup/Confirmation';
 import {
   ScaleContainer,
   ScaleLabel,

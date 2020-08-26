@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { getSongById } from '../../redux/song/song.actions';
 import Arrangement from '../arrangement/Arrangement';
 import DividerLine from '../dividerLine/DividerLine';
-import Loading from '../loading/Loading';
+import Loading from '../shared/loading/Loading';
 import Controls from './controls/Controls';
 import Info from './info/Info';
 import {

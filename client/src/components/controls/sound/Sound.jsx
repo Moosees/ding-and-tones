@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BtnControls from '../../../components/button/Controls';
+import BtnControls from '../../shared/button/Controls';
 import PopupSound from './PopupSound';
 
 const Sound = ({ reverse }) => {

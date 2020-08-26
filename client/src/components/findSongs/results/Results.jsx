@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
-import Buttons from '../../../components/button/Buttons';
-import BtnIcon from '../../../components/button/Icon';
-import BtnPrimary from '../../../components/button/Primary';
-import Loading from '../../../components/loading/Loading';
-import Confirmation from '../../../components/popup/Confirmation';
 import { deleteSongById } from '../../../redux/song/song.actions';
+import Buttons from '../../button/Buttons';
+import BtnIcon from '../../button/Icon';
+import BtnPrimary from '../../button/Primary';
+import Loading from '../../shared/loading/Loading';
+import Confirmation from '../../shared/popup/Confirmation';
 import ReactTable from './ReactTable';
 
 const Results = ({

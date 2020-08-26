@@ -1,20 +1,20 @@
 import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
+import { setDropdownForBeat } from '../../redux/ui/ui.actions';
+import Controls from '../controls/Controls';
+import Drum from '../drum/Drum';
+import NavMain from '../navMain/NavMain';
+import NavSmall from '../navSmall/NavSmall';
+import Loading from '../shared/loading/Loading';
+import AlertHandler from './AlertHandler';
 import {
   BorderContainer,
   LayoutGrid,
   SectionWithNav,
   Viewport,
 } from './app.styles';
-import Loading from './components/loading/Loading';
-import NavControls from './components/navControls/NavControls';
-import NavMain from './components/navMain/NavMain';
-import AlertHandler from './components/popup/Alert';
-import Controls from './containers/controls/Controls';
-import Drum from './containers/drum/Drum';
-import { setDropdownForBeat } from './redux/ui/ui.actions';
 
-const AppRoutes = lazy(() => import('./AppRoutes'));
+const Routes = lazy(() => import('./Routes'));
 
 const App = ({ setDropdownForBeat }) => {
   const handleViewport = (e) => {
@@ -27,7 +27,7 @@ const App = ({ setDropdownForBeat }) => {
       <LayoutGrid>
         <Drum style={{ gridArea: 'drum' }} />
         <SectionWithNav style={{ gridArea: 'controls' }}>
-          <NavControls />
+          <NavSmall />
           <BorderContainer small>
             <Controls />
           </BorderContainer>
@@ -36,7 +36,7 @@ const App = ({ setDropdownForBeat }) => {
           <NavMain />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
-              <AppRoutes />
+              <Routes />
             </Suspense>
           </BorderContainer>
         </SectionWithNav>

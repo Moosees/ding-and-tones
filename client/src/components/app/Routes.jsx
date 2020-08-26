@@ -1,14 +1,14 @@
 import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Loading from './components/loading/Loading';
-import SignInBoundary from './components/singInBoundary/SignInBoundary';
+import Loading from '../shared/loading/Loading';
+import SignInBoundary from './SignInBoundary';
 
-const Chords = lazy(() => import('./containers/chords/Chords'));
-const FindSongs = lazy(() => import('./containers/findSongs/FindSongs'));
-const Scale = lazy(() => import('./containers/scale/Scale'));
-const Songwriter = lazy(() => import('./components/songwriter/Songwriter'));
+const Chords = lazy(() => import('../chords/Chords'));
+const FindSongs = lazy(() => import('../findSongs/FindSongs'));
+const Scale = lazy(() => import('../scale/Scale'));
+const Songwriter = lazy(() => import('../songwriter/Songwriter'));
 
-const AppRoutes = () => (
+const Routes = () => (
   <SignInBoundary>
     <Suspense fallback={<Loading />}>
       <Switch>
@@ -25,4 +25,4 @@ const AppRoutes = () => (
   </SignInBoundary>
 );
 
-export default AppRoutes;
+export default Routes;

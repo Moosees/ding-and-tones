@@ -16,6 +16,8 @@
 
 ## Bugs
 
+* Canceling text inputs by clicking on icon when validation is running
+* Loading scales (also with songs) with selected chords leads to strange behavior
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)
@@ -56,36 +58,25 @@
 * Prevent transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
 
-## Backend
-
-* GDPR
-* Hosting
-* update google json file - hostedDomain on react-google-login?
 
 ## Low priority
 
+* GDPR and similar, analytics
+* update google json file - hostedDomain on react-google-login?
 * What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
 * Update delete icons if user logs in after app is loaded
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Dynamic size for tonefields
 * Check text inputs for bad words?
-* Update url when loading things and/or share by link - check param vs id?
 * Keyboard shortcuts on new song (and other?) popup
-* Rework metre template, split into beats?
-* Triplets, flams, etc. Value 9, 17 for triplets?
-* Pagination for search results, infinite scroll?
-* Add play scale button and function
 * Keyboard shortcuts for playing drum (or songwriter)
+* Rework metre template, split into beats?
+* Add play scale button and function
 * Handle extra/bottom notes
 * Play chords, also play them as arpeggios?
-* Sort chords by type?
 * Ability to loop songs or repeat bars
 * Left and right hand recommendations for songwriter?
-* Interval colors for compound intervals
 * Create scale from name and string
-* Analytics
-* Svgs instead of iconfont?
-* Multiple alerts on screen? or just reset timeout and show newest?
 * Add virtual label field for songs and use it for search results?
 * Better Loading component
 * Likes and/or comments?
@@ -95,6 +86,7 @@
 
 ## Even lower priority
 
+* Triplets, flams, etc. Value 9, 17 for triplets?
 * Solo bars
 * Only show save buttons if there are changes
 * Custom chord inputs
@@ -110,3 +102,7 @@
 * One-e-and-a style phonetic rhythm notation on bars?
 * Custom line-break bars for users to add to songwriter?
 * Songwriter bars alignment should change with big songs
+* Sort chords by type?
+* Svgs instead of iconfont?
+* Interval colors for compound intervals?
+* Multiple alerts on screen? or just reset timeout and show newest?

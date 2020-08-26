@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { setShowIntervals } from '../../redux/drum/drum.actions';
-import BtnNavControls from '../button/NavControls';
+import BtnNavControls from '../shared/button/NavControls';
 
 export const NavButtons = styled.div`
   top: -2.5rem;
@@ -12,7 +12,7 @@ export const NavButtons = styled.div`
   position: absolute;
 `;
 
-const NavControls = ({ showIntervals, setShowIntervals }) => {
+const NavSmall = ({ showIntervals, setShowIntervals }) => {
   return (
     <NavButtons>
       <BtnNavControls
@@ -33,4 +33,4 @@ const mapStateToProps = ({ drum }) => ({
   showIntervals: drum.showIntervals,
 });
 
-export default connect(mapStateToProps, { setShowIntervals })(NavControls);
+export default connect(mapStateToProps, { setShowIntervals })(NavSmall);

@@ -6,10 +6,10 @@ import useValidate from '../../../hooks/useValidate';
 import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../button/Buttons';
 import BtnPrimary from '../../button/Primary';
-import InfoBox from '../../infoBox/InfoBox';
-import InfoSelect from '../../infoBox/InfoSelect';
-import InfoText from '../../infoBox/InfoText';
 import PlayButton from '../../playButton/PlayButton';
+import InfoBox from '../../shared/infoBox/InfoBox';
+import InfoSelect from '../../shared/infoBox/InfoSelect';
+import InfoText from '../../shared/infoBox/InfoText';
 import PopupNewSong from './PopupNewSong';
 
 const InfoContainer = styled.div`
