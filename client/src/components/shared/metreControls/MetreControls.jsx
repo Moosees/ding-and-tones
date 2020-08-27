@@ -1,5 +1,5 @@
 import React from 'react';
-import { metreList } from '../../assets/metre';
+import { metreList } from '../../../assets/metre';
 import {
   MetreContainer,
   MetreLabel,

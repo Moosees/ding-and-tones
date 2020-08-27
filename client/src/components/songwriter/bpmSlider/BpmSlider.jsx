@@ -3,7 +3,7 @@ import 'rc-slider/assets/index.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { updateSongInfo } from '../../redux/song/song.actions';
+import { updateSongInfo } from '../../../redux/song/song.actions';
 
 const Mark = styled.span`
   color: ${({ theme }) => theme.colorText};

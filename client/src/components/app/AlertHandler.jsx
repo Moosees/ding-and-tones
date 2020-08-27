@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { ALERT_TIMEOUT } from '../../assets/constants';
 import { setAlert } from '../../redux/alert/alert.actions';
-import BtnPrimary from '../button/Primary';
+import BtnPrimary from '../shared/button/Primary';
 
 const AlertContainer = styled.div`
   align-items: center;

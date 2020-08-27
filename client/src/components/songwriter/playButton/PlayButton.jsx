@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setIsSongPlaying } from '../../redux/ui/ui.actions';
-import BtnPrimary from '../button/Primary';
+import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
+import BtnPrimary from '../../shared/button/Primary';
 import { playSong } from './playButton.utils';
 
 const PlayButton = ({

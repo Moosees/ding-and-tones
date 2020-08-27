@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { sound } from '../../../assets/sound';
 import { selectSoundSource } from '../../../redux/drum/drum.actions';
-import Buttons from '../../button/Buttons';
-import BtnPrimary from '../../button/Primary';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
 import Popup from '../../shared/popup/Popup';
 
 const AudioOption = styled.div`

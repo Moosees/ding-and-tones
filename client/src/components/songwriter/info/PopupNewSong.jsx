@@ -4,12 +4,12 @@ import { useHistory } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import { setSongState } from '../../../redux/song/song.actions';
-import Buttons from '../../button/Buttons';
-import BtnPrimary from '../../button/Primary';
-import MetreControls from '../../metreControls/MetreControls';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/infoBox/InfoBox';
 import InfoSelect from '../../shared/infoBox/InfoSelect';
 import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
+import MetreControls from '../../shared/metreControls/MetreControls';
 import Popup from '../../shared/popup/Popup';
 
 const PopupNewSong = ({ onClose, setSongState }) => {

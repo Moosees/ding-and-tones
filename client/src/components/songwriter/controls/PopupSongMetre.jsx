@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateSongInfo } from '../../../redux/song/song.actions';
-import Buttons from '../../button/Buttons';
-import BtnPrimary from '../../button/Primary';
-import MetreControls from '../../metreControls/MetreControls';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
+import MetreControls from '../../shared/metreControls/MetreControls';
 import Popup from '../../shared/popup/Popup';
 
 const PopupSongMetre = ({

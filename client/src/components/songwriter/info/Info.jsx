@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
-import Buttons from '../../button/Buttons';
-import BtnPrimary from '../../button/Primary';
-import PlayButton from '../../playButton/PlayButton';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/infoBox/InfoBox';
 import InfoSelect from '../../shared/infoBox/InfoSelect';
 import InfoText from '../../shared/infoBox/InfoText';
+import PlayButton from '../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
 
 const InfoContainer = styled.div`

@@ -1,9 +1,9 @@
-import { store } from '../../redux/store';
+import { store } from '../../../redux/store';
 import {
   setCurrentBar,
   setCurrentBeat,
   setIsSongPlaying,
-} from '../../redux/ui/ui.actions';
+} from '../../../redux/ui/ui.actions';
 
 const playBeatPromise = (beat, timeout, audio) =>
   new Promise((resolve, reject) => {

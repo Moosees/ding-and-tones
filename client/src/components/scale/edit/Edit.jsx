@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../../assets/constants';
 import { noteValueToName } from '../../../assets/intervals';
-import Buttons from '../../../components/button/Buttons';
-import BtnPrimary from '../../../components/button/Primary';
 import {
   addNoteToScale,
   removeNoteFromScale,
   transposeScale,
 } from '../../../redux/scale/scale.actions';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
 import { EditContainer, Note, Notes } from './edit.styles';
 
 const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {

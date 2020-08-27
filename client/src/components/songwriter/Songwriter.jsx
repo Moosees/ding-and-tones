@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getSongById } from '../../redux/song/song.actions';
 import Arrangement from '../arrangement/Arrangement';
-import DividerLine from '../dividerLine/DividerLine';
+import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import Controls from './controls/Controls';
 import Info from './info/Info';

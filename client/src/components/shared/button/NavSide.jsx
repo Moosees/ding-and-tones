@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavButton } from './button.styles';
 
-const BtnNavControls = ({ isActive, label, onClick }) => {
+const BtnNavSide = ({ isActive, label, onClick }) => {
   return (
     <NavButton
       isActive={isActive}
@@ -14,4 +14,4 @@ const BtnNavControls = ({ isActive, label, onClick }) => {
   );
 };
 
-export default BtnNavControls;
+export default BtnNavSide;

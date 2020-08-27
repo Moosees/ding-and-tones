@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BtnControls from '../../../components/button/Controls';
 import { toggleAccount } from '../../../redux/user/user.actions';
+import BtnControls from '../../shared/button/Controls';
 import PopupAccount from './PopupAccount';
 
 const Account = ({ accountOpen, reverse, toggleAccount }) => {

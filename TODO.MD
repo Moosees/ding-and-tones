@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Move initial fetching to App.jsx instead of checking if they are done already?
 * Style songwriter dropdowns, add hover?
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching

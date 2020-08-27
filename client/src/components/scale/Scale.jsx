@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import DividerLine from '../../components/dividerLine/DividerLine';
 import { getScaleById } from '../../redux/scale/scale.actions';
+import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import Edit from './edit/Edit';
 import Info from './info/Info';

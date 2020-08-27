@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Buttons from '../../../components/button/Buttons';
-import BtnPrimary from '../../../components/button/Primary';
 import useValidate from '../../../hooks/useValidate';
 import { saveUser, toggleAccount } from '../../../redux/user/user.actions';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/infoBox/InfoBox';
 import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
 import Popup from '../../shared/popup/Popup';

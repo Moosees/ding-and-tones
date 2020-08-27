@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { setDropdownForBeat } from '../../redux/ui/ui.actions';
 import Controls from '../controls/Controls';
 import Drum from '../drum/Drum';
-import NavMain from '../navMain/NavMain';
-import NavSmall from '../navSmall/NavSmall';
+import NavMain from '../nav/NavMain';
+import NavSide from '../nav/NavSide';
 import Loading from '../shared/loading/Loading';
 import AlertHandler from './AlertHandler';
 import {
@@ -27,7 +27,7 @@ const App = ({ setDropdownForBeat }) => {
       <LayoutGrid>
         <Drum style={{ gridArea: 'drum' }} />
         <SectionWithNav style={{ gridArea: 'controls' }}>
-          <NavSmall />
+          <NavSide />
           <BorderContainer small>
             <Controls />
           </BorderContainer>

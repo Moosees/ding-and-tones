@@ -3,8 +3,8 @@ import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
 import { GOOGLE_CLIENT_ID } from '../../../assets/oauth';
-import BtnControls from '../../../components/button/Controls';
 import { signIn, signOut } from '../../../redux/user/user.actions';
+import BtnControls from '../../shared/button/Controls';
 
 const SignIn = ({ isSignedIn, reverse, signIn, signOut }) => {
   const handleSignIn = async (auth) => {

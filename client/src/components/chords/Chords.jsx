@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import DividerLine from '../../components/dividerLine/DividerLine';
+import DividerLine from '../shared/dividerLine/DividerLine';
 import Filter from './filter/Filter';
 import List from './list/List';
 

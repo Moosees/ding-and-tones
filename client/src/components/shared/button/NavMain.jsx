@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import { NavButton } from './button.styles';
 
-const BtnNav = ({ label, to }) => {
+const BtnNavMain = ({ label, to }) => {
   const history = useHistory();
   const match = useRouteMatch(to);
 
@@ -17,4 +17,4 @@ const BtnNav = ({ label, to }) => {
   );
 };
 
-export default BtnNav;
+export default BtnNavMain;

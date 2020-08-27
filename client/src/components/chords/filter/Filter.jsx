@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Buttons from '../../../components/button/Buttons';
-import BtnPrimary from '../../../components/button/Primary';
-import Checkbox from '../../../components/checkbox/Checkbox';
-import DividerLine from '../../../components/dividerLine/DividerLine';
 import {
   setAllChordFiltersTo,
   toggleChordIsSelected,
 } from '../../../redux/chords/chords.actions';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
+import Checkbox from '../../shared/checkbox/Checkbox';
+import DividerLine from '../../shared/dividerLine/DividerLine';
 
 const ControlsContainer = styled.div`
   align-items: center;
