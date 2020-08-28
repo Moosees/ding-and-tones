@@ -27,7 +27,7 @@ export const Select = styled.select`
   margin-right: 2px;
   width: 100%;
 
-  &:focus {
+  &:focus:not(.focus-visible) {
     outline: none;
   }
 `;

@@ -21,6 +21,7 @@ const InfoText = ({
   };
 
   const onSave = () => {
+    if (!isValid) return;
     handleSave();
     setEditOpen(false);
   };

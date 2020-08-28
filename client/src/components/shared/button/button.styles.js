@@ -73,6 +73,10 @@ export const IconButton = styled.button`
       opacity: 0.2;
     }
   }
+
+  &:focus:not(.focus-visible) {
+    outline: none;
+  }
 `;
 
 export const NavButton = styled.button`
@@ -95,7 +99,7 @@ export const NavButton = styled.button`
   ${({ isActive }) => (isActive ? 'z-index: 10;' : '')}
 
   &:focus:not(.focus-visible) {
-    outline: 0;
+    outline: none;
   }
 
   &:hover {

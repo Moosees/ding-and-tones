@@ -20,7 +20,6 @@
 
 ## Bugs
 
-* Canceling text inputs by clicking on icon when validation is running
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)
@@ -32,6 +31,8 @@
 * New buttons for loading songs
 * Dropdowns open when clicking label (difficulty and new song popup)
 * Remove line on find songs route? Sticky footer?
+* User can tab select :active outside of popups
+* Style text inputs when :focus
 
 ## Drum
 
