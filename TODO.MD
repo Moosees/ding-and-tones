@@ -2,23 +2,25 @@
 
 ## Current tasks
 
-* Move initial fetching to App.jsx instead of checking if they are done already?
 * Style songwriter dropdowns, add hover?
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
-* Errors display on inputs
 * Move position map to reducer?
+
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
-* Move error handling to react error boundaries
 * Loading indicator if needed before song starts playing
+
 * Saving stuff needs minimal conditions?
+* Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
+
+* Move error handling to react error boundaries
+* Move initial fetching to App.jsx instead of checking if they are done already?
 
 ## Bugs
 
 * Canceling text inputs by clicking on icon when validation is running
-* Loading scales (also with songs) with selected chords leads to strange behavior
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)

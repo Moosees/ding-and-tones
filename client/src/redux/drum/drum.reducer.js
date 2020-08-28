@@ -1,6 +1,7 @@
 import { sound } from '../../assets/sound';
 import scaleTypes from '../scale/scale.types';
 import drumTypes from './drum.types';
+import songTypes from '../song/song.types';
 
 const INITIAL_STATE = {
   audioPath: sound[0].path,
@@ -38,7 +39,10 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
           payload || state.displayedChord ? state.displayedNote : 0,
       };
 
+    case scaleTypes.FETCH_SUCCESSFUL:
+    case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE:
+    case songTypes.FETCH_SUCCESSFUL:
       return {
         ...state,
         displayedChord: null,
