@@ -45,13 +45,14 @@ const Controls = ({
             onClick={() => handleNewBar(metre, subdivision)}
           />
           <BtnPrimary
-            label="Add Custom Bar"
+            label="Custom Bar"
             disabled={isSongPlaying}
             onClick={() => setNewBarOpen(true)}
             handleNewBar={handleNewBar}
           />
           <BtnPrimary
             label={isEditingSong ? 'Lock' : 'Unlock'}
+            disabled={isSongPlaying}
             onClick={toggleEditSong}
           />
         </Buttons>

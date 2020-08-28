@@ -6,10 +6,11 @@
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting and searching
 * Move position map to reducer?
+* Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
+* Disable title change, metre change and difficulty change when song i playing
 
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
-* Loading indicator if needed before song starts playing
 
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
@@ -23,6 +24,7 @@
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)
+* Cursor: pointer still shows for beats when lock is on
 
 ## Design
 
@@ -48,6 +50,7 @@
 
 * ID and cache chords?
 * Check cache for possible chords to show in filter
+* Intervals for chords should have better descriptions
 
 ## Songwriter
 
@@ -61,7 +64,6 @@
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
-
 
 ## Low priority
 

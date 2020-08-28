@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   currentBeat: null,
   dropdownBeatId: null,
   isEditingSong: true,
+  isPreparingSong: false,
   isSongPlaying: false,
   soundOptions: {},
   textEditOpen: false,
@@ -28,6 +29,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         dropdownBeatId: state.dropdownBeatId === payload ? null : payload,
+      };
+
+    case uiTypes.SET_IS_PREPARING_SONG:
+      return {
+        ...state,
+        isPreparingSong: payload,
       };
 
     case uiTypes.SET_IS_SONG_PLAYING:

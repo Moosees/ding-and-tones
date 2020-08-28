@@ -6,6 +6,7 @@ import { playSong } from './playButton.utils';
 
 const PlayButton = ({
   audioPath,
+  isPreparingSong,
   isSongPlaying,
   scale,
   setIsSongPlaying,
@@ -18,14 +19,16 @@ const PlayButton = ({
 
   return (
     <BtnPrimary
+      disabled={isPreparingSong}
       onClick={handlePlayPause}
-      label={isSongPlaying ? 'Stop' : 'Play'}
+      label={isPreparingSong ? 'Preparing' : isSongPlaying ? 'Stop' : 'Play'}
     />
   );
 };
 
 const mapStateToProps = ({ drum, scale, song, ui }) => ({
   audioPath: drum.audioPath,
+  isPreparingSong: ui.isPreparingSong,
   isSongPlaying: ui.isSongPlaying,
   scale,
   song,

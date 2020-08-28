@@ -12,7 +12,7 @@ export const ControlsButton = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-  font-size: ${({ theme }) => theme.fzMedium};
+  font-size: ${({ theme }) => theme.fzControls};
   padding: 0.4rem;
   text-shadow: ${({ theme }) => theme.textShadowLight};
   transition: color 0.1s ease-in;
@@ -115,10 +115,11 @@ export const PrimaryButton = styled.button`
   box-shadow: ${({ light, theme }) =>
     light ? theme.shadowBtnLight : theme.shadowBtnHeavy};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  margin: 0.5rem;
-  min-width: 6rem;
+  font-size: ${({ theme }) => theme.fzMedium};
+  margin: 0.5rem 3px;
+  min-width: 7rem;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
-  padding: 0.5rem;
+  padding: 0.5rem 2px;
   transition: border 0.15s ease-in;
 
   &:hover {

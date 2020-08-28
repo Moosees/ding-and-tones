@@ -3,6 +3,7 @@ import {
   setCurrentBar,
   setCurrentBeat,
   setIsSongPlaying,
+  setIsPreparingSong,
 } from '../../../redux/ui/ui.actions';
 
 const playBeatPromise = (beat, timeout, audio) =>
@@ -71,8 +72,10 @@ const setupSong = ({ arrangement, bars, beats }) => {
 
 // bpm always counts quarter notes right now
 export const playSong = async (scale, song, audioPath) => {
+  store.dispatch(setIsPreparingSong(true));
   const audio = await setupAudio(scale.notes.round, audioPath);
   const arrangement = setupSong(song);
+  store.dispatch(setIsPreparingSong(false));
 
   for (let bar of arrangement) {
     store.dispatch(setCurrentBar(bar.barId));
