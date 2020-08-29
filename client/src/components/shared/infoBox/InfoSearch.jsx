@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { TextInput } from './infoBox.styles';
+import InfoBox from './InfoBox';
 
-const InfoSearch = ({ autoFocus, onSearch, placeholder, size }) => {
+const InfoSearch = ({ onSearch, placeholder, size }) => {
   const [value, setValue] = useState('');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      onSearch(value);
-    }, 500);
+      if (value.length > 2) onSearch(value);
+    }, 400);
 
     return () => clearTimeout(timeout);
   }, [onSearch, value]);
 
   return (
-    <TextInput
-      autoFocus={autoFocus}
-      onChange={(e) => setValue(e.target.value)}
-      placeholder={placeholder}
-      size={size}
-      value={value}
-    />
+    <InfoBox>
+      <TextInput
+        autoFocus
+        onChange={(e) => setValue(e.target.value)}
+        placeholder={placeholder}
+        size={size}
+        value={value}
+      />
+    </InfoBox>
   );
 };
 

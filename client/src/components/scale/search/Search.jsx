@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
 import searchOptions from '../../../redux/search/search.options';
 import { SearchContainer } from './search.styles';
+import InfoSearch from '../../shared/infoBox/InfoSearch';
 
 const Search = ({ isSearching, scalesFetchTried, startSearch }) => {
   useEffect(() => {
@@ -10,7 +11,17 @@ const Search = ({ isSearching, scalesFetchTried, startSearch }) => {
       startSearch(searchOptions.scales.latest);
   }, [isSearching, scalesFetchTried, startSearch]);
 
-  return <SearchContainer>Search</SearchContainer>;
+  return (
+    <SearchContainer>
+      <InfoSearch
+        onSearch={(value) =>
+          startSearch(searchOptions.scales.alphabetical, value)
+        }
+        placeholder="Search scales"
+        size={25}
+      />
+    </SearchContainer>
+  );
 };
 
 const mapStateToProps = ({ search }) => ({

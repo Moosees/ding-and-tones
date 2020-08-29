@@ -3,6 +3,7 @@ const {
   deleteScale,
   getScaleById,
   getScales,
+  scaleSearch,
   saveScale,
 } = require('../controllers/scale');
 const { checkAuth, getUserId } = require('../middleware/auth');
@@ -11,6 +12,7 @@ const router = express.Router();
 
 // Public
 router.get('/scale', getUserId, getScales);
+router.get('/scale/a/:searchTerm', getUserId, scaleSearch);
 router.get('/scale/id/:scaleId', getUserId, getScaleById);
 // router.get('/scale/random', getRandomScale);
 

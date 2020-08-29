@@ -34,4 +34,8 @@ const scaleSchema = new mongoose.Schema({
   },
 });
 
+scaleSchema
+  .virtual('nameLabel')
+  .get(() => `${this.info.rootName} ${this.info.name}`);
+
 module.exports = mongoose.model('Scale', scaleSchema);

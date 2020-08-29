@@ -50,3 +50,16 @@ exports.saveScale = (req, res) => {
     res.status(200).json(data);
   });
 };
+
+exports.scaleSearch = (req, res) => {
+  Scale.find({ 'info.name': { $regex: req.params.searchTerm } })
+    .select('_id info notes author')
+    .limit(20)
+    .sort({ 'info.name': 1, 'info.rootName': 1 })
+    .exec((error, scales) => {
+      if (error || !scales.length) return res.status(400).json();
+
+      const data = scales.map((scale) => parseScaleResponse(scale, req.userId));
+      res.status(200).json({ scales: data });
+    });
+};

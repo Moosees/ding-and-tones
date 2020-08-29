@@ -2,12 +2,10 @@
 
 ## Current tasks
 
-* Searching
+* Searching, scale search started
 * Style songwriter dropdowns, add hover?
-* Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
-* Move position map to reducer?
 * Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
-* Disable title change, metre change and difficulty change when song i playing
+* Disable title change, metre change and difficulty change when song is playing
 
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
@@ -16,11 +14,11 @@
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 
-* Use response codes for error handling
-* Move initial fetching to App.jsx instead of checking if they are done already?
+* Use response codes for api error handling
 
 ## Bugs
 
+* Initial scale (and song?) search causes re-render search loops
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)
@@ -67,6 +65,7 @@
 
 ## Low priority
 
+* Searching scales allows searching for rootName and name together
 * GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?
 * What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
@@ -83,13 +82,14 @@
 * Ability to loop songs or repeat bars
 * Left and right hand recommendations for songwriter?
 * Create scale from name and string
-* Add virtual label field for songs and use it for search results?
 * Better Loading component
 * Likes and/or comments?
 * Show your own scales/songs
 * Move user sign in logic to reducer
 * Removing user should remove all users songs?
 * Sorting search results
+* Move position map to reducer?
+* Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 
 ## Even lower priority
 
