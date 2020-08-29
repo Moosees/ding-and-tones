@@ -2,9 +2,9 @@
 
 ## Current tasks
 
+* Searching
 * Style songwriter dropdowns, add hover?
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
-* Sorting and searching
 * Move position map to reducer?
 * Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
 * Disable title change, metre change and difficulty change when song i playing
@@ -16,7 +16,7 @@
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 
-* Move error handling to react error boundaries
+* Use response codes for error handling
 * Move initial fetching to App.jsx instead of checking if they are done already?
 
 ## Bugs
@@ -89,6 +89,7 @@
 * Show your own scales/songs
 * Move user sign in logic to reducer
 * Removing user should remove all users songs?
+* Sorting search results
 
 ## Even lower priority
 
