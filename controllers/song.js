@@ -58,3 +58,17 @@ exports.saveSong = (req, res) => {
       res.status(200).json(data);
     });
 };
+
+exports.songSearch = (req, res) => {
+  Song.find({ 'info.title': { $regex: req.params.searchTerm } })
+    .populate('composer', '_id name')
+    .select('_id scale.info info')
+    .limit(20)
+    .sort({ 'info.title': 1 })
+    .exec((error, songs) => {
+      if (error || !songs) return res.status(400).json();
+
+      const data = songs.map((song) => parseSearchResponse(song, req.userId));
+      res.status(200).json({ songs: data });
+    });
+};

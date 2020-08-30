@@ -3,6 +3,7 @@ const {
   getSongById,
   getSongs,
   saveSong,
+  songSearch,
   deleteSong,
 } = require('../controllers/song');
 const { checkAuth, getUserId } = require('../middleware/auth');
@@ -11,6 +12,7 @@ const router = express.Router();
 
 // Public
 router.get('/song', getUserId, getSongs);
+router.get('/song/a/:searchTerm', getUserId, songSearch);
 router.get('/song/id/:songId', getUserId, getSongById);
 // router.get('/song/random', getRandomSong);
 

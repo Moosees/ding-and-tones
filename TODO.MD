@@ -2,7 +2,10 @@
 
 ## Current tasks
 
-* Searching, scale search started
+* Searching, fix bugs, $text instead of regex? ignore case
+* Use response codes for api error handling
+* Handle empty search results
+
 * Style songwriter dropdowns, add hover?
 * Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
 * Disable title change, metre change and difficulty change when song is playing
@@ -14,7 +17,6 @@
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 
-* Use response codes for api error handling
 
 ## Bugs
 
@@ -65,6 +67,7 @@
 
 ## Low priority
 
+* DRY up search logic
 * Searching scales allows searching for rootName and name together
 * GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?
