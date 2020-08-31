@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
 import searchOptions from '../../../redux/search/search.options';
 import InfoSearch from '../../shared/infoBox/InfoSearch';
 import { SearchContainer } from './search.styles';
 
-const Search = ({ isSearching, songsFetchTried, startSearch }) => {
-  useEffect(() => {
-    if (!songsFetchTried && !isSearching)
-      startSearch(searchOptions.songs.latest);
-  }, [isSearching, songsFetchTried, startSearch]);
-
+const Search = ({ startSearch }) => {
   return (
     <SearchContainer>
       <InfoSearch
@@ -24,9 +19,4 @@ const Search = ({ isSearching, songsFetchTried, startSearch }) => {
   );
 };
 
-const mapStateToProps = ({ search }) => ({
-  isSearching: search.isSearching,
-  songsFetchTried: search.songsFetchTried,
-});
-
-export default connect(mapStateToProps, { startSearch })(Search);
+export default connect(null, { startSearch })(Search);

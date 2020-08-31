@@ -2,8 +2,8 @@
 
 ## Current tasks
 
-* Searching, fix bugs, $text instead of regex? ignore case
-* Use response codes for api error handling
+* Searching, $text instead of regex? ignore case, pass searchOption to infoSearch? Rework Loading component for searches
+* Use response codes for api error handling - no search results found
 * Handle empty search results
 
 * Style songwriter dropdowns, add hover?
@@ -17,10 +17,8 @@
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 
-
 ## Bugs
 
-* Initial scale (and song?) search causes re-render search loops
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)
