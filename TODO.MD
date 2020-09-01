@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Searching, $text instead of regex? ignore case, pass searchOption to infoSearch? Rework Loading component for searches
+* Searching, pass searchOption to infoSearch?
 * Use response codes for api error handling - no search results found
 * Handle empty search results
 
@@ -19,6 +19,7 @@
 
 ## Bugs
 
+* Why are buttons disabled on songwriter mount?
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?)

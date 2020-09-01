@@ -43,6 +43,8 @@ exports.saveScale = (req, res) => {
   req.body.author = userId;
   req.body.isNew = true;
 
+  req.body.queryString = `${req.body.info.rootName.toLowerCase()} ${req.body.info.name.toLowerCase()}`;
+
   new Scale(req.body).save((error, scale) => {
     if (error || !scale) return res.status(400).json();
 
@@ -52,7 +54,7 @@ exports.saveScale = (req, res) => {
 };
 
 exports.scaleSearch = (req, res) => {
-  Scale.find({ 'info.name': { $regex: req.params.searchTerm } })
+  Scale.find({ queryString: { $regex: req.params.searchTerm.toLowerCase() } })
     .select('_id info notes author')
     .limit(20)
     .sort({ 'info.name': 1, 'info.rootName': 1 })

@@ -32,6 +32,7 @@ const scaleSchema = new mongoose.Schema({
     dings: [String],
     round: [String],
   },
+  queryString: String,
 });
 
 scaleSchema

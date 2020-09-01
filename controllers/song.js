@@ -47,6 +47,8 @@ exports.saveSong = (req, res) => {
   songUpdate.composer = userId;
   songUpdate.updated = Date.now();
 
+  songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${songUpdate.scale.info.rootName.toLowerCase()} ${songUpdate.scale.info.name.toLowerCase()}`;
+
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
     .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
     .populate('composer', '_id name')
@@ -60,11 +62,11 @@ exports.saveSong = (req, res) => {
 };
 
 exports.songSearch = (req, res) => {
-  Song.find({ 'info.title': { $regex: req.params.searchTerm } })
+  Song.find({ queryString: { $regex: req.params.searchTerm.toLowerCase() } })
     .populate('composer', '_id name')
     .select('_id scale.info info')
     .limit(20)
-    .sort({ 'info.title': 1 })
+    // .sort({ 'info.title': 1 })
     .exec((error, songs) => {
       if (error || !songs) return res.status(400).json();
 

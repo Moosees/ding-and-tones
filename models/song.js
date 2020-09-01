@@ -80,6 +80,7 @@ const songSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  queryString: String,
 });
 
 module.exports = mongoose.model('Song', songSchema);
