@@ -66,7 +66,7 @@ exports.songSearch = (req, res) => {
     .populate('composer', '_id name')
     .select('_id scale.info info')
     .limit(20)
-    // .sort({ 'info.title': 1 })
+    .sort({ 'info.title': 1 })
     .exec((error, songs) => {
       if (error || !songs) return res.status(400).json();
 

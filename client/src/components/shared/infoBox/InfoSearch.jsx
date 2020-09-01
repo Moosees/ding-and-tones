@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { TextInput } from './infoBox.styles';
 import InfoBox from './InfoBox';
+import { TextInput } from './infoBox.styles';
 
 const InfoSearch = ({ onSearch, placeholder, size }) => {
   const [value, setValue] = useState('');
