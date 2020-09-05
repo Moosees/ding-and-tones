@@ -21,7 +21,7 @@ exports.getSongById = (req, res) => {
     .select('_id arrangement bars beats composer info scale')
     .exec((error, song) => {
       if (error) return res.status(400).json();
-      if (!song) return res.status(404).json();
+      if (!song) return res.status(204).json();
 
       const data = parseGetResponse(song, req.userId);
       res.status(200).json(data);

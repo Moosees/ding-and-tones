@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Search - findById handle 404 - errors on delete or save
+* Song and find songs api requests
 
 * Style songwriter dropdowns, add hover?
 * Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
@@ -62,6 +62,7 @@
 
 ## Low priority
 
+* HTTP codes, 204 should be 404 or something else?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Show your own scales/songs
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
@@ -79,6 +80,7 @@
 
 ## Even lower priority
 
+* Redirect to url without id on delete song/scale
 * Move user sign in logic to reducer
 * Create scale from name and string
 * Ability to loop songs or repeat bars

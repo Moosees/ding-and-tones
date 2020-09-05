@@ -13,6 +13,8 @@ const uiReducer = (state = uiState, { type, payload }) => {
 
     case scaleTypes.FETCH_ERROR:
       return { ...state, error: payload, isFetching: false };
+    case scaleTypes.FETCH_NOT_FOUND:
+      return { ...state, scaleId: null, isFetching: false };
     case scaleTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
     case scaleTypes.FETCH_SUCCESSFUL:

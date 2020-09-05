@@ -1,9 +1,12 @@
 const Scale = require('../models/scale');
 const { parseScaleResponse } = require('../utils/scale');
+const { isValidObjectId } = require('mongoose');
 
 exports.deleteScale = (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
+
+  if (!isValidObjectId(scaleId)) return res.status(400).json();
 
   Scale.findOneAndDelete({ _id: scaleId, author: userId })
     .select('_id info.name info.rootName')
@@ -15,13 +18,18 @@ exports.deleteScale = (req, res) => {
 };
 
 exports.getScaleById = (req, res) => {
-  Scale.findById(req.params.scaleId)
+  const scaleId = req.params.scaleId;
+  const userId = req.userId;
+
+  if (!isValidObjectId(scaleId)) return res.status(204).json();
+
+  Scale.findById(scaleId)
     .select('_id info notes author')
     .exec((error, scale) => {
       if (error) return res.status(400).json();
-      if (!scale) return res.status(404).json();
+      if (!scale) return res.status(204).json();
 
-      const data = parseScaleResponse(scale, req.userId);
+      const data = parseScaleResponse(scale, userId);
       res.status(200).json(data);
     });
 };

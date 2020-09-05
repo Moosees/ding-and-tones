@@ -14,16 +14,18 @@ import Search from './search/Search';
 
 const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   const { scaleId } = useParams();
-  const { replace } = useHistory();
+  const { push, replace } = useHistory();
 
   useEffect(() => {
     if (!scaleId && scaleUi.scaleId) replace(`/scale/${scaleUi.scaleId}`);
   }, [replace, scaleId, scaleUi.scaleId]);
 
   useEffect(() => {
-    if (scaleId && scaleUi.scaleId !== scaleId && !scaleUi.isFetching)
+    if (scaleId && scaleUi.scaleId !== scaleId && !scaleUi.isFetching) {
+      push('/scale');
       getScaleById(scaleId);
-  }, [getScaleById, scaleId, scaleUi.isFetching, scaleUi.scaleId]);
+    }
+  }, [getScaleById, push, scaleId, scaleUi.isFetching, scaleUi.scaleId]);
 
   useEffect(() => {
     if (!scalesFetchTried) startSearch(searchOptions.scales.latest);

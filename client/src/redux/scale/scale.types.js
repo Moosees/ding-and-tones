@@ -3,6 +3,7 @@ const scaleTypes = {
   DELETE_STARTED: 'scale/deleteStarted',
   DELETE_SUCCESSFUL: 'scale/deleteSuccessful',
   FETCH_ERROR: 'scale/fetchError',
+  FETCH_NOT_FOUND: 'scale/fetchNotFound',
   FETCH_STARTED: 'scale/fetchStarted',
   FETCH_SUCCESSFUL: 'scale/fetchSuccessful',
   LOAD_SCALE: 'scale/load',
