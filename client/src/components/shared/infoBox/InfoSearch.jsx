@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { startSearch } from '../../../redux/search/search.actions';
 import InfoBox from './InfoBox';
 import { TextInput } from './infoBox.styles';
 
-const InfoSearch = ({ onSearch, placeholder, size }) => {
+const InfoSearch = ({ placeholder, searchOption, size, startSearch }) => {
   const [value, setValue] = useState('');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (value.length > 2) onSearch(value);
+      if (value.length > 2) startSearch(searchOption, value);
     }, 400);
 
     return () => clearTimeout(timeout);
-  }, [onSearch, value]);
+  }, [searchOption, startSearch, value]);
 
   return (
     <InfoBox>
@@ -26,4 +28,4 @@ const InfoSearch = ({ onSearch, placeholder, size }) => {
   );
 };
 
-export default InfoSearch;
+export default connect(null, { startSearch })(InfoSearch);

@@ -2,9 +2,7 @@
 
 ## Current tasks
 
-* Searching, pass searchOption to infoSearch?
-* Use response codes for api error handling - no search results found
-* Handle empty search results
+* Use response codes for api error handling - handle search results found
 
 * Style songwriter dropdowns, add hover?
 * Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
