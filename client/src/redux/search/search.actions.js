@@ -1,6 +1,6 @@
 import axios from 'axios';
-import searchTypes from './search.types';
 import searchOptions from './search.options';
+import searchTypes from './search.types';
 
 export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
   dispatch({ type: searchTypes.SEARCH_STARTED });
@@ -31,16 +31,20 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
       return;
   }
 
-  return axios
-    .get(query)
-    .then((res) => {
-      if (res.status === 200)
-        dispatch({
-          type: searchTypes.SEARCH_SUCCESSFUL,
-          payload: { ...res.data, ...extraPayload },
-        });
-    })
-    .catch((error) => {
-      dispatch({ type: searchTypes.SEARCH_ERROR, payload: error.message });
+  axios.get(query).then((res) => {
+    if (res.status === 200)
+      return dispatch({
+        type: searchTypes.SEARCH_SUCCESSFUL,
+        payload: { ...res.data, ...extraPayload },
+      });
+    if (res.status === 204)
+      return dispatch({
+        type: searchTypes.SEARCH_NOT_FOUND,
+        payload: { alert: 'Not found' },
+      });
+    dispatch({
+      type: searchTypes.SEARCH_ERROR,
+      payload: res.status,
     });
+  });
 };

@@ -1,6 +1,6 @@
 import scaleTypes from '../scale/scale.types';
-import searchTypes from './search.types';
 import songTypes from '../song/song.types';
+import searchTypes from './search.types';
 
 const INITIAL_STATE = {
   error: '',
@@ -46,7 +46,13 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         error: payload,
-        isSearching: true,
+        isSearching: false,
+      };
+
+    case searchTypes.SEARCH_NOT_FOUND:
+      return {
+        ...state,
+        isSearching: false,
       };
 
     case searchTypes.SEARCH_STARTED:

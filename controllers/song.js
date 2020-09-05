@@ -20,7 +20,8 @@ exports.getSongById = (req, res) => {
     .populate('composer', '_id name')
     .select('_id arrangement bars beats composer info scale')
     .exec((error, song) => {
-      if (error || !song) return res.status(400).json();
+      if (error) return res.status(400).json();
+      if (!song) return res.status(404).json();
 
       const data = parseGetResponse(song, req.userId);
       res.status(200).json(data);
@@ -35,6 +36,7 @@ exports.getSongs = (req, res) => {
     .sort({ updated: -1 })
     .exec((error, songs) => {
       if (error) return res.status(400).json();
+      if (!songs.length) return res.status(204).json();
 
       const data = songs.map((song) => parseSearchResponse(song, req.userId));
       res.status(200).json({ songs: data });
@@ -69,6 +71,7 @@ exports.songSearch = (req, res) => {
     .sort({ 'info.title': 1 })
     .exec((error, songs) => {
       if (error || !songs) return res.status(400).json();
+      if (!songs.length) return res.status(204).json();
 
       const data = songs.map((song) => parseSearchResponse(song, req.userId));
       res.status(200).json({ songs: data });

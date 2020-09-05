@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Use response codes for api error handling - handle search results found
+* Search - findById handle 404 - errors on delete or save
 
 * Style songwriter dropdowns, add hover?
 * Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
@@ -29,6 +29,7 @@
 * User can tab select :active outside of popups
 * Style text inputs when :focus
 * Better Loading component
+* Dynamic size for tonefields
 
 ## Drum
 
@@ -61,19 +62,20 @@
 
 ## Low priority
 
-* DRY up search logic
+* DRY up search logic - reset search with button or empty search field (cache initial search?)
+* Show your own scales/songs
+* Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
+* Find songs by user
+* Sorting search results in table
+
 * GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?
+
 * What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Rework metre template, split into beats?
-* Dynamic size for tonefields
 * Check text inputs for bad words?
 * Left and right hand recommendations for songwriter?
-* Show your own scales/songs
-* Find songs by user
-* Sorting search results in table
-* Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 
 ## Even lower priority
 

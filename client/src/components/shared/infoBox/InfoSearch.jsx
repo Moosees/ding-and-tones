@@ -10,7 +10,7 @@ const InfoSearch = ({ placeholder, searchOption, size, startSearch }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (value.length > 2) startSearch(searchOption, value);
-    }, 400);
+    }, 600);
 
     return () => clearTimeout(timeout);
   }, [searchOption, startSearch, value]);
