@@ -68,9 +68,9 @@ const ReactTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
           <tr>
             <TableFooter
               colSpan={visibleColumns.length}
-              onClick={handleFetchMore}
+              // onClick={handleFetchMore}
             >
-              Find more songs...
+              {/* Find more songs... */}
             </TableFooter>
           </tr>
         </tfoot>

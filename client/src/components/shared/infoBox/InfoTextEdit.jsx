@@ -37,10 +37,10 @@ const InfoTextEdit = ({
         value={value}
       />
       <BtnIcon
-        editOnly={editOnly}
         color={isValid ? 'BtnConfirm' : 'BtnClear'}
-        label={isValid ? 'save' : 'cancel'}
+        editOnly={editOnly}
         icon={isValid ? 'check_circle_outline' : 'not_interested'}
+        label={isValid ? 'save' : 'cancel'}
         onClick={isValid ? onSave : onClose}
       />
     </>

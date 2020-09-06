@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const TableContainer = styled.div`
-  border-bottom: ${({ theme }) => theme.borderMedium};
-  border-top: ${({ theme }) => theme.borderMedium};
   height: 100%;
   overflow: auto;
   width: 90%;
@@ -73,7 +71,7 @@ export const TableFooter = styled.td`
   background-color: ${({ theme }) => theme.colorBeat};
   border-radius: 0 0 10px 10px;
   color: ${({ theme }) => theme.colorTextInverted};
-  cursor: pointer;
+  /* cursor: pointer; */
   padding: 0.6rem;
   text-align: center;
 

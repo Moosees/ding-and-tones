@@ -23,7 +23,6 @@
 * Distinct confirm and cancel buttons
 * New buttons for loading songs
 * Dropdowns open when clicking label (difficulty and new song popup)
-* Remove line on find songs route? Sticky footer?
 * User can tab select :active outside of popups
 * Style text inputs when :focus
 * Better Loading component

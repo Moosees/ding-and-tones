@@ -1,12 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { IconButton } from './button.styles';
 
-const BtnIcon = ({ color, disabled, editOnly, label, icon, onClick }) => {
+const BtnIcon = ({
+  color,
+  disabled,
+  editOnly,
+  label,
+  icon,
+  isSongPlaying,
+  onClick,
+}) => {
   return (
     <IconButton
       aria-label={label}
       color={color ? `color${color}` : null}
-      disabled={disabled}
+      disabled={disabled || isSongPlaying}
       editOnly={editOnly}
       onClick={onClick}
     >
@@ -15,4 +24,8 @@ const BtnIcon = ({ color, disabled, editOnly, label, icon, onClick }) => {
   );
 };
 
-export default BtnIcon;
+const mapStateToProps = ({ ui }) => ({
+  isSongPlaying: ui.isSongPlaying,
+});
+
+export default connect(mapStateToProps)(BtnIcon);

@@ -26,7 +26,7 @@ const Beat = ({
 
   return (
     <BeatContainer
-      isLocked={!isEditingSong}
+      isLocked={!isEditingSong || isSongPlaying}
       isBeatPlaying={isBeatPlaying}
       value={value}
       onClick={openDropdown}
