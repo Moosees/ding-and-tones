@@ -15,21 +15,17 @@ export const deleteBar = (barId) => ({
 export const deleteSongById = (songId) => (dispatch) => {
   dispatch({ type: songTypes.DELETE_STARTED });
 
-  return axios
-    .delete(`/song/id/${songId}`)
-    .then((res) => {
-      if (res.status === 200)
-        dispatch({
-          type: songTypes.DELETE_SUCCESSFUL,
-          payload: {
-            songId: res.data._id,
-            alert: `"${res.data.info.title}" deleted`,
-          },
-        });
-    })
-    .catch((error) =>
-      dispatch({ type: songTypes.DELETE_ERROR, payload: error.message })
-    );
+  axios.delete(`/song/id/${songId}`).then((res) => {
+    if (res.status === 200)
+      return dispatch({
+        type: songTypes.DELETE_SUCCESSFUL,
+        payload: {
+          songId: res.data._id,
+          alert: `"${res.data.info.title}" deleted`,
+        },
+      });
+    dispatch({ type: songTypes.DELETE_ERROR, payload: res.status });
+  });
 };
 
 export const duplicateBar = (bar) => ({
@@ -40,17 +36,21 @@ export const duplicateBar = (bar) => ({
 export const getSongById = (songId) => (dispatch) => {
   dispatch({ type: songTypes.FETCH_STARTED });
 
-  return axios
-    .get(`/song/id/${songId}`)
-    .then((res) => {
-      if (res.status === 200) {
-        const fetchedSong = parseFetchedSong(res.data);
-        dispatch({ type: songTypes.FETCH_SUCCESSFUL, payload: fetchedSong });
-      }
-    })
-    .catch((error) =>
-      dispatch({ type: songTypes.FETCH_ERROR, payload: error.message })
-    );
+  axios.get(`/song/id/${songId}`).then((res) => {
+    if (res.status === 200) {
+      const fetchedSong = parseFetchedSong(res.data);
+      return dispatch({
+        type: songTypes.FETCH_SUCCESSFUL,
+        payload: fetchedSong,
+      });
+    }
+    if (res.status === 204)
+      return dispatch({
+        type: songTypes.FETCH_NOT_FOUND,
+        payload: { alert: 'Song not found' },
+      });
+    dispatch({ type: songTypes.FETCH_ERROR, payload: res.status });
+  });
 };
 
 export const moveBarInArrangement = (barIndex, targetIndex) => ({
@@ -64,19 +64,14 @@ export const saveSong = ({ saveAs }) => (dispatch, getState) => {
   const { song, scale } = getState();
   const body = parseSongForSaving(song, scale, saveAs);
 
-  return axios
-    .post('/song', body)
-    .then((res) => {
-      if (res.status === 200) {
-        dispatch({
-          type: songTypes.SAVE_SUCCESSFUL,
-          payload: { song: res.data, alert: `"${res.data.title}" saved` },
-        });
-      }
-    })
-    .catch((error) => {
-      dispatch({ type: songTypes.SAVE_ERROR, payload: error.message });
-    });
+  axios.post('/song', body).then((res) => {
+    if (res.status === 200)
+      return dispatch({
+        type: songTypes.SAVE_SUCCESSFUL,
+        payload: { song: res.data, alert: `"${res.data.title}" saved` },
+      });
+    dispatch({ type: songTypes.SAVE_ERROR, payload: res.status });
+  });
 };
 
 export const setSongState = (song) => ({

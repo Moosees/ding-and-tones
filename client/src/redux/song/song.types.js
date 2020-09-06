@@ -6,6 +6,7 @@ const songTypes = {
   DELETE_SUCCESSFUL: 'song/deleteSuccessful',
   DUPLICATE_BAR: 'song/duplicateBar',
   FETCH_ERROR: 'song/fetchError',
+  FETCH_NOT_FOUND: 'song/fetchNotFound',
   FETCH_STARTED: 'song/fetchStarted',
   FETCH_SUCCESSFUL: 'song/fetchSuccessful',
   MOVE_BAR: 'song/moveBar',

@@ -17,8 +17,9 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   const { push, replace } = useHistory();
 
   useEffect(() => {
-    if (!scaleId && scaleUi.scaleId) replace(`/scale/${scaleUi.scaleId}`);
-  }, [replace, scaleId, scaleUi.scaleId]);
+    if (!scaleId && scaleUi.scaleId && !scaleUi.isFetching)
+      replace(`/scale/${scaleUi.scaleId}`);
+  }, [replace, scaleId, scaleUi.isFetching, scaleUi.scaleId]);
 
   useEffect(() => {
     if (scaleId && scaleUi.scaleId !== scaleId && !scaleUi.isFetching) {

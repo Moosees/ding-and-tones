@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Song and find songs api requests
-
 * Style songwriter dropdowns, add hover?
 * Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
 * Disable title change, metre change and difficulty change when song is playing

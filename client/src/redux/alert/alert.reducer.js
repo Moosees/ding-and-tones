@@ -26,6 +26,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, msg: 'Request failed' };
 
     case scaleTypes.FETCH_NOT_FOUND:
+    case songTypes.FETCH_NOT_FOUND:
     case searchTypes.SEARCH_NOT_FOUND:
     case scaleTypes.DELETE_SUCCESSFUL:
     case songTypes.DELETE_SUCCESSFUL:

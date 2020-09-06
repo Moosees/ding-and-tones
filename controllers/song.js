@@ -1,10 +1,13 @@
 const Song = require('../models/song');
 const { parseGetResponse, parseSearchResponse } = require('../utils/song');
+const { isValidObjectId } = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.deleteSong = (req, res) => {
   const songId = req.params.songId;
   const userId = req.userId;
+
+  if (!isValidObjectId(songId)) return res.status(400).json();
 
   Song.findOneAndDelete({ _id: songId, composer: userId })
     .select('_id info.title')
@@ -16,14 +19,19 @@ exports.deleteSong = (req, res) => {
 };
 
 exports.getSongById = (req, res) => {
-  Song.findById(req.params.songId)
+  const songId = req.params.songId;
+  const userId = req.userId;
+
+  if (!isValidObjectId(songId)) return res.status(204).json();
+
+  Song.findById(songId)
     .populate('composer', '_id name')
     .select('_id arrangement bars beats composer info scale')
     .exec((error, song) => {
       if (error) return res.status(400).json();
       if (!song) return res.status(204).json();
 
-      const data = parseGetResponse(song, req.userId);
+      const data = parseGetResponse(song, userId);
       res.status(200).json(data);
     });
 };
@@ -49,6 +57,8 @@ exports.saveSong = (req, res) => {
   songUpdate.composer = userId;
   songUpdate.updated = Date.now();
 
+  if (songId && !isValidObjectId(songId)) return res.status(400).json();
+
   songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${songUpdate.scale.info.rootName.toLowerCase()} ${songUpdate.scale.info.name.toLowerCase()}`;
 
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
@@ -70,7 +80,7 @@ exports.songSearch = (req, res) => {
     .limit(20)
     .sort({ 'info.title': 1 })
     .exec((error, songs) => {
-      if (error || !songs) return res.status(400).json();
+      if (error) return res.status(400).json();
       if (!songs.length) return res.status(204).json();
 
       const data = songs.map((song) => parseSearchResponse(song, req.userId));
