@@ -11,7 +11,6 @@ const InfoTextEdit = ({
   onClose = () => {},
   placeholder,
   size,
-  type,
   value,
 }) => {
   // cleanup

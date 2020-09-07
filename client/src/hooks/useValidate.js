@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 
 const validateInput = (value, validationType) => {
+  const alphaNum = /^[.,_-\w\s]+$/g;
   let errors = [];
-  let alphaNum = /^[.,_-\w\s]+$/g;
 
   switch (validationType) {
+    case 'bpm':
+      if (value > 200 || value < 50) errors.push('Bpm is out of range');
+      break;
+
     case 'title':
       if (!alphaNum.test(value))
         errors.push('Title cannot contain special characters');

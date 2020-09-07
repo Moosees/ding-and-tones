@@ -1,10 +1,6 @@
 import React from 'react';
 import { metreList } from '../../../assets/metre';
-import {
-  MetreContainer,
-  MetreLabel,
-  MetreSelect,
-} from './metreControls.styles';
+import { MetreLabel, MetreSelect } from './metreControls.styles';
 
 const MetreControls = ({
   metre,
@@ -27,7 +23,7 @@ const MetreControls = ({
   };
 
   return (
-    <MetreContainer small={small}>
+    <>
       {setMetre && (
         <MetreLabel small={small}>
           {!small && <span>Metre:</span>}
@@ -80,7 +76,7 @@ const MetreControls = ({
           </MetreSelect>
         </MetreLabel>
       )}
-    </MetreContainer>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as?
+* Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as? Or just have one save button?
 
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
@@ -25,6 +25,8 @@
 * Style text inputs when :focus
 * Better Loading component
 * Dynamic size for tonefields
+* Style text inputs on popups and popups in general
+* Always show placeholder for editOnly inputs?
 
 ## Drum
 
@@ -46,7 +48,6 @@
 
 * Chords
 * Dropdown list show all dyads and ding + note combinations?
-* Plus and minus one for bpm
 * Web worker?
 
 ## State/Routes
@@ -75,6 +76,8 @@
 
 ## Even lower priority
 
+* Plus and minus one for bpm
+* Split MetreControls component?
 * Redirect to url without id on delete song/scale
 * Move user sign in logic to reducer
 * Create scale from name and string

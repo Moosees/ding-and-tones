@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const MetreContainer = styled.div`
-  display: flex;
-`;
-
 export const MetreLabel = styled.label`
   display: flex;
   flex: 1 0;

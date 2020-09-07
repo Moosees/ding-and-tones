@@ -21,7 +21,7 @@ const Background = styled.div`
   flex-direction: column;
   font-size: ${({ theme }) => theme.fzMedium};
   justify-content: space-between;
-  min-width: 30rem;
+  min-width: 26rem;
   padding: 3rem;
 `;
 
