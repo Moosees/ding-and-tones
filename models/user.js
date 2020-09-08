@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   created: {
@@ -15,6 +16,8 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  scales: [{ type: ObjectId, ref: 'Scale' }],
+  songs: [{ type: ObjectId, ref: 'Song' }],
   sub: String,
   updated: {
     type: Date,

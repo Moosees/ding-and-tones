@@ -1,4 +1,5 @@
 const Song = require('../models/song');
+const User = require('../models/user');
 const { parseGetResponse, parseSearchResponse } = require('../utils/song');
 const { isValidObjectId } = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
@@ -56,12 +57,25 @@ exports.saveSong = (req, res) => {
   const { songId, songUpdate } = req.body;
   songUpdate.composer = userId;
   songUpdate.updated = Date.now();
+  let newSongId;
 
   if (songId && !isValidObjectId(songId)) return res.status(400).json();
 
+  if (!songId) {
+    newSongId = ObjectId();
+
+    User.findByIdAndUpdate(userId, {
+      $push: { songs: newSongId },
+    })
+      .setOptions({ new: true })
+      .exec((error) => {
+        if (error) return res.status(400).json();
+      });
+  }
+
   songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${songUpdate.scale.info.rootName.toLowerCase()} ${songUpdate.scale.info.name.toLowerCase()}`;
 
-  Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
+  Song.findByIdAndUpdate(songId || newSongId, songUpdate)
     .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
     .populate('composer', '_id name')
     .select('_id scale.info info')

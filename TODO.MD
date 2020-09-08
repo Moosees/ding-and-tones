@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Merge db updates so if one fails both fail (scales/songs for user)
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
@@ -13,7 +14,8 @@
 * Why are buttons disabled on songwriter mount?
 * Db connection error handler might not work
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
-* Rare save scale bug (if db.scales is empty?)
+* Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
+* "not found" alert if initial songs/scales fetch returns empty array
 
 ## Design
 

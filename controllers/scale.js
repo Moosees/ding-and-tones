@@ -1,6 +1,8 @@
 const Scale = require('../models/scale');
+const User = require('../models/user');
 const { parseScaleResponse } = require('../utils/scale');
 const { isValidObjectId } = require('mongoose');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.deleteScale = (req, res) => {
   const scaleId = req.params.scaleId;
@@ -52,11 +54,20 @@ exports.saveScale = (req, res) => {
   const userId = req.userId;
   req.body.author = userId;
   req.body.isNew = true;
+  req.body._id = ObjectId();
 
   req.body.queryString = `${req.body.info.rootName.toLowerCase()} ${req.body.info.name.toLowerCase()}`;
 
   new Scale(req.body).save((error, scale) => {
     if (error || !scale) return res.status(400).json();
+
+    User.findByIdAndUpdate(userId, {
+      $push: { scales: req.body._id },
+    })
+      .setOptions({ new: true })
+      .exec((error) => {
+        if (error) return res.status(400).json();
+      });
 
     const data = parseScaleResponse(scale, userId);
     res.status(200).json(data);
