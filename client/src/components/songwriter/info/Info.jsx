@@ -63,18 +63,18 @@ const Info = ({
           </InfoSelect>
         </InfoBox>
         <Buttons>
-          {isSignedIn && isOwner && (
+          {/* {isSignedIn && isOwner && (
             <BtnPrimary
               disabled={isSongPlaying || isSaving || !isTitleValid}
               label="Save"
               onClick={saveSong}
             />
-          )}
+          )} */}
           {isSignedIn && (
             <BtnPrimary
               disabled={isSongPlaying || isSaving || !isTitleValid}
-              label="Save as"
-              onClick={() => saveSong({ saveAs: true })}
+              label="Save"
+              onClick={() => saveSong({ saveAs: !isOwner })}
             />
           )}
           <BtnPrimary

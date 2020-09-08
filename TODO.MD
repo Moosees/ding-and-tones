@@ -2,11 +2,11 @@
 
 ## Current tasks
 
-* Save as renamed to save new? Show confirmation dialog if song already exists when trying to save as? Or just have one save button?
-
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
+* Find songs by user
+* Show your own scales/songs
 
 ## Bugs
 
@@ -60,9 +60,7 @@
 
 * HTTP codes, 204 should be 404 or something else?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
-* Show your own scales/songs
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
-* Find songs by user
 * Sorting search results in table
 
 * GDPR and similar, analytics
@@ -76,6 +74,7 @@
 
 ## Even lower priority
 
+* Chose between save and save as new?
 * Plus and minus one for bpm
 * Split MetreControls component?
 * Redirect to url without id on delete song/scale
