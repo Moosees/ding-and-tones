@@ -18,6 +18,10 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
       query = '/scale';
       break;
 
+    case searchOptions.scales.me:
+      query = '/scale/me';
+      break;
+
     case searchOptions.songs.alphabetical:
       query = `/song/a/${searchTerm}`;
       break;
@@ -25,6 +29,10 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
     case searchOptions.songs.latest:
       extraPayload = { songsFetchTried: true };
       query = '/song';
+      break;
+
+    case searchOptions.songs.me:
+      query = '/song/me';
       break;
 
     default:

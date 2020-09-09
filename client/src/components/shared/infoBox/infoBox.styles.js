@@ -41,7 +41,6 @@ export const TextInput = styled.input`
   background-color: rgba(0, 0, 0, 0);
   border: 0;
   height: 3rem;
-  width: 100%;
 
   &:focus {
     outline: none;

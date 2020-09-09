@@ -1,11 +1,13 @@
 const searchOptions = {
   scales: {
-    alphabetical: 'scale/alpha',
-    latest: 'scale/latest',
+    alphabetical: 'scales/alpha',
+    latest: 'scales/latest',
+    me: 'scales/me',
   },
   songs: {
-    alphabetical: 'song/alpha',
-    latest: 'song/latest',
+    alphabetical: 'songs/alpha',
+    latest: 'songs/latest',
+    me: 'songs/me',
   },
 };
 

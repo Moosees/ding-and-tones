@@ -5,6 +5,7 @@ const {
   getScales,
   scaleSearch,
   saveScale,
+  getMyScales,
 } = require('../controllers/scale');
 const { checkAuth, getUserId } = require('../middleware/auth');
 
@@ -18,7 +19,7 @@ router.get('/scale/id/:scaleId', getUserId, getScaleById);
 
 // Authorized only
 // router.get('/scale/favorites')
-// router.get('/scale/me')
+router.get('/scale/me', checkAuth, getMyScales);
 router.post('/scale', checkAuth, saveScale);
 router.delete('/scale/id/:scaleId', checkAuth, deleteScale);
 

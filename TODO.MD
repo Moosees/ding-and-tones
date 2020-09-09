@@ -2,12 +2,11 @@
 
 ## Current tasks
 
+* Show your own scales/songs - scales done
 * Merge db updates so if one fails both fail (scales/songs for user)
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
-* Find songs by user
-* Show your own scales/songs
 
 ## Bugs
 
@@ -16,6 +15,7 @@
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
+* scale name edit validation icon has no color and remembers input even if scales changes
 
 ## Design
 
@@ -76,6 +76,7 @@
 
 ## Even lower priority
 
+* Find songs by user
 * Chose between save and save as new?
 * Plus and minus one for bpm
 * Split MetreControls component?
