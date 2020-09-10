@@ -37,6 +37,8 @@ exports.getScaleById = (req, res) => {
 };
 
 exports.getScales = (req, res) => {
+  const userId = req.userId;
+
   Scale.find()
     .select('_id info notes author')
     .limit(20)
@@ -45,7 +47,7 @@ exports.getScales = (req, res) => {
       if (error) return res.status(400).json();
       if (!scales.length) return res.status(204).json();
 
-      const data = scales.map((scale) => parseScaleResponse(scale, req.userId));
+      const data = scales.map((scale) => parseScaleResponse(scale, userId));
       res.status(200).json({ scales: data });
     });
 };
@@ -54,15 +56,18 @@ exports.getMyScales = (req, res) => {
   const userId = req.userId;
 
   User.findById(userId)
-    .populate('scales', '_id info notes author')
-    .limit(20)
-    // .sort({ created: -1 })
+    .populate({
+      path: 'scales',
+      select: '_id info notes author',
+      options: { limit: 20, sort: { created: -1 } },
+    })
+    .select('_id')
     .exec((error, user) => {
       if (error) return res.status(400).json();
       if (!user.scales.length) return res.status(204).json();
 
       const data = user.scales.map((scale) =>
-        parseScaleResponse(scale, req.userId)
+        parseScaleResponse(scale, userId)
       );
       res.status(200).json({ scales: data });
     });
@@ -93,7 +98,10 @@ exports.saveScale = (req, res) => {
 };
 
 exports.scaleSearch = (req, res) => {
-  Scale.find({ queryString: { $regex: req.params.searchTerm.toLowerCase() } })
+  const userId = req.userId;
+  const searchTerm = req.params.searchTerm.toLowerCase();
+
+  Scale.find({ queryString: { $regex: searchTerm } })
     .select('_id info notes author')
     .limit(20)
     .sort({ 'info.name': 1, 'info.rootName': 1 })
@@ -101,7 +109,7 @@ exports.scaleSearch = (req, res) => {
       if (error) return res.status(400).json();
       if (!scales.length) return res.status(204).json();
 
-      const data = scales.map((scale) => parseScaleResponse(scale, req.userId));
+      const data = scales.map((scale) => parseScaleResponse(scale, userId));
       res.status(200).json({ scales: data });
     });
 };

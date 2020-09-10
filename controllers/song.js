@@ -23,10 +23,12 @@ exports.getMySongs = (req, res) => {
   const userId = req.userId;
 
   User.findById(userId)
-    .populate('songs', '_id scale.info info')
-    .select('name songs')
-    .limit(20)
-    // .sort({ updated: -1 })
+    .populate({
+      path: 'songs',
+      select: '_id scale.info info',
+      options: { limit: 20, sort: { updated: -1 } },
+    })
+    .select('_id name')
     .exec((error, user) => {
       if (error) return res.status(400).json();
       if (!user.songs.length) return res.status(204).json();
@@ -54,7 +56,7 @@ exports.getSongById = (req, res) => {
 
   Song.findById(songId)
     .populate('composer', '_id name')
-    .select('_id arrangement bars beats composer info scale')
+    .select('_id arrangement bars beats info scale')
     .exec((error, song) => {
       if (error) return res.status(400).json();
       if (!song) return res.status(204).json();
@@ -65,6 +67,8 @@ exports.getSongById = (req, res) => {
 };
 
 exports.getSongs = (req, res) => {
+  const userId = req.userId;
+
   Song.find()
     .populate('composer', '_id name')
     .select('_id scale.info info')
@@ -74,7 +78,7 @@ exports.getSongs = (req, res) => {
       if (error) return res.status(400).json();
       if (!songs.length) return res.status(204).json();
 
-      const data = songs.map((song) => parseSearchResponse(song, req.userId));
+      const data = songs.map((song) => parseSearchResponse(song, userId));
       res.status(200).json({ songs: data });
     });
 };
@@ -115,6 +119,8 @@ exports.saveSong = (req, res) => {
 };
 
 exports.songSearch = (req, res) => {
+  const userId = req.userId;
+
   Song.find({ queryString: { $regex: req.params.searchTerm.toLowerCase() } })
     .populate('composer', '_id name')
     .select('_id scale.info info')
@@ -124,7 +130,7 @@ exports.songSearch = (req, res) => {
       if (error) return res.status(400).json();
       if (!songs.length) return res.status(204).json();
 
-      const data = songs.map((song) => parseSearchResponse(song, req.userId));
+      const data = songs.map((song) => parseSearchResponse(song, userId));
       res.status(200).json({ songs: data });
     });
 };

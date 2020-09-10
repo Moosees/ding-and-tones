@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Merge db updates so if one fails both fail (scales/songs for user)
-* clean up select() and populate() for some route controllers
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
@@ -15,9 +13,8 @@
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
-* scale name edit validation icon has no color and remembers input even if scales changes
+* scale name edit remembers input even if scales changes
 * Logged out user can still own scales/songs?
-* Sorting for my scales/songs sorts user and not scales/songs
 
 ## Design
 
@@ -68,6 +65,8 @@
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting search results in table
 * Favorite songs/scales
+* Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
+* Split save song controller
 
 * GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?
