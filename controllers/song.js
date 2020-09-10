@@ -19,6 +19,33 @@ exports.deleteSong = (req, res) => {
     });
 };
 
+exports.getMySongs = (req, res) => {
+  const userId = req.userId;
+
+  User.findById(userId)
+    .populate('songs', '_id scale.info info')
+    .select('name songs')
+    .limit(20)
+    // .sort({ updated: -1 })
+    .exec((error, user) => {
+      if (error) return res.status(400).json();
+      if (!user.songs.length) return res.status(204).json();
+
+      const data = user.songs.map((song) =>
+        parseSearchResponse(
+          {
+            _id: song._id,
+            scale: song.scale,
+            info: song.info,
+            composer: { _id: user._id, name: user.name },
+          },
+          userId
+        )
+      );
+      res.status(200).json({ songs: data });
+    });
+};
+
 exports.getSongById = (req, res) => {
   const songId = req.params.songId;
   const userId = req.userId;

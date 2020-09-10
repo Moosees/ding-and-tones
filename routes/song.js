@@ -5,6 +5,7 @@ const {
   saveSong,
   songSearch,
   deleteSong,
+  getMySongs,
 } = require('../controllers/song');
 const { checkAuth, getUserId } = require('../middleware/auth');
 
@@ -18,7 +19,7 @@ router.get('/song/id/:songId', getUserId, getSongById);
 
 // Authorized only
 // router.get('/song/favorites')
-// router.get('/song/me')
+router.get('/song/me', checkAuth, getMySongs);
 router.post('/song', checkAuth, saveSong);
 router.delete('/song/id/:songId', checkAuth, deleteSong);
 

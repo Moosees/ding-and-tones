@@ -56,13 +56,13 @@ exports.getMyScales = (req, res) => {
   User.findById(userId)
     .populate('scales', '_id info notes author')
     .limit(20)
-    .sort({ created: -1 })
+    // .sort({ created: -1 })
     .exec((error, user) => {
       if (error) return res.status(400).json();
       if (!user.scales.length) return res.status(204).json();
-      
+
       const data = user.scales.map((scale) =>
-      parseScaleResponse(scale, req.userId)
+        parseScaleResponse(scale, req.userId)
       );
       res.status(200).json({ scales: data });
     });

@@ -2,8 +2,8 @@
 
 ## Current tasks
 
-* Show your own scales/songs - scales done
 * Merge db updates so if one fails both fail (scales/songs for user)
+* clean up select() and populate() for some route controllers
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
@@ -16,6 +16,8 @@
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
 * scale name edit validation icon has no color and remembers input even if scales changes
+* Logged out user can still own scales/songs?
+* Sorting for my scales/songs sorts user and not scales/songs
 
 ## Design
 
@@ -29,6 +31,7 @@
 * Dynamic size for tonefields
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
+* Full screen songwriter? Or just hide drum on command?
 
 ## Drum
 
@@ -64,6 +67,7 @@
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
 * Sorting search results in table
+* Favorite songs/scales
 
 * GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?
@@ -73,17 +77,18 @@
 * Rework metre template, split into beats?
 * Check text inputs for bad words?
 * Left and right hand recommendations for songwriter?
+* One-e-and-a style phonetic rhythm notation on bars?
 
 ## Even lower priority
 
-* Find songs by user
+* Find songs by user (other than current user)
 * Chose between save and save as new?
 * Plus and minus one for bpm
 * Split MetreControls component?
 * Redirect to url without id on delete song/scale
 * Move user sign in logic to reducer
 * Create scale from name and string
-* Ability to loop songs or repeat bars
+* Ability to loop songs or repeat/solo bars
 * Add play scale button and function
 * Play chords, also play them as arpeggios?
 * Play song logic should be moved somewhere else?
@@ -91,12 +96,12 @@
 * Removing user should remove all users songs?
 * Keyboard shortcuts on new song (and other?) popup
 * Keyboard shortcuts for playing drum (or songwriter)
+* Keyboard shortcuts for popups
 * Likes and/or comments?
 * Move position map to reducer?
 * Update delete icons if user logs in after app is loaded
 * Handle extra/bottom notes
 * Triplets, flams, etc. Value 9, 17 for triplets?
-* Solo bars
 * Only show save buttons if there are changes
 * Custom chord inputs
 * Custom metres
@@ -105,10 +110,7 @@
 * Multiple drums for chords, songs etc.
 * Swing?
 * More drum alternatives?
-* Link drum and songwriter
-* Animations on drum
-* Full screen songwriter?
-* One-e-and-a style phonetic rhythm notation on bars?
+* Link drum and songwriter - animations?
 * Custom line-break bars for users to add to songwriter?
 * Songwriter bars alignment should change with big songs
 * Sort chords by type?
