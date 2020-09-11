@@ -2,6 +2,8 @@
 
 ## Current tasks
 
+* Clear scale on delete
+* Delete songs from user songs when deleting songs
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?

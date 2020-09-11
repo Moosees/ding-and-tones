@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import useValidate from '../../../hooks/useValidate';
 import { saveScale, setScaleName } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
@@ -9,6 +10,7 @@ import InfoText from '../../shared/infoBox/InfoText';
 import { InfoContainer } from './info.styles';
 
 const Info = ({
+  isFetching,
   isSaving,
   isSignedIn,
   saveScale,
@@ -16,6 +18,8 @@ const Info = ({
   scaleInfo,
   setScaleName,
 }) => {
+  const { push } = useHistory();
+
   const [
     name,
     handleNameChange,
@@ -24,7 +28,12 @@ const Info = ({
     resetName,
   ] = useValidate('title', scaleInfo.name);
 
-  const handleSave = () => {
+  const handleScaleSave = () => {
+    push('/scale');
+    saveScale();
+  };
+
+  const handleNameSave = () => {
     if (isNameValid) setScaleName(name);
   };
 
@@ -35,7 +44,7 @@ const Info = ({
           errors={nameErrors}
           handleChange={handleNameChange}
           handleClose={resetName}
-          handleSave={handleSave}
+          handleSave={handleNameSave}
           isValid={isNameValid}
           placeholder="Scale name"
           value={name}
@@ -47,9 +56,9 @@ const Info = ({
       <Buttons>
         {isSignedIn && (
           <BtnPrimary
-            disabled={isSaving || !isNameValid}
+            disabled={isSaving || isFetching || !isNameValid}
             label="Save Scale"
-            onClick={saveScale}
+            onClick={handleScaleSave}
           />
         )}
       </Buttons>
@@ -58,6 +67,7 @@ const Info = ({
 };
 
 const mapStateToProps = ({ scale, search, user }) => ({
+  isFetching: scale.ui.isFetching,
   isSaving: scale.ui.isSaving,
   scale: scale.notes.round,
   scaleInfo: scale.info,

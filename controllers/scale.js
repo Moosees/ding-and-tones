@@ -15,7 +15,15 @@ exports.deleteScale = (req, res) => {
     .exec((error, scale) => {
       if (error || !scale) return res.status(400).json();
 
-      res.status(200).json(scale);
+      User.findByIdAndUpdate(userId, {
+        $pull: { scales: scale._id },
+      })
+        .setOptions({ new: true })
+        .exec((error) => {
+          if (error) return res.status(400).json();
+
+          res.status(200).json(scale);
+        });
     });
 };
 
@@ -85,15 +93,15 @@ exports.saveScale = (req, res) => {
     if (error || !scale) return res.status(400).json();
 
     User.findByIdAndUpdate(userId, {
-      $push: { scales: req.body._id },
+      $push: { scales: scale._id },
     })
       .setOptions({ new: true })
       .exec((error) => {
         if (error) return res.status(400).json();
-      });
 
-    const data = parseScaleResponse(scale, userId);
-    res.status(200).json(data);
+        const data = parseScaleResponse(scale, userId);
+        res.status(200).json(data);
+      });
   });
 };
 
