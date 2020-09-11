@@ -31,6 +31,11 @@ const Results = ({
         info: { name, label, rootName },
       } = scale;
 
+      const handleDeleteScale = () => {
+        deleteScaleById(scaleId);
+        push('/scale');
+      };
+
       const handleLoadScale = () => {
         loadScale(scale);
         push('/scale');
@@ -40,7 +45,7 @@ const Results = ({
         <ScaleContainer key={i}>
           {isOwner && isSignedIn && (
             <Confirmation
-              onConfirm={() => deleteScaleById(scaleId)}
+              onConfirm={handleDeleteScale}
               label={`Are you sure you want to delete "${rootName} ${name}"`}
             >
               <BtnIcon

@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Clear scale on delete
 * Delete songs from user songs when deleting songs
 * Saving stuff needs minimal conditions?
 * Errors display on inputs
@@ -69,6 +68,8 @@
 * Favorite songs/scales
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
 * Split save song controller
+* Save scale on client should be more functional?
+* Merge api status states (isFetching etc.) in client?
 
 * GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?

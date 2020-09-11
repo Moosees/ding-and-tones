@@ -10,6 +10,7 @@ import InfoText from '../../shared/infoBox/InfoText';
 import { InfoContainer } from './info.styles';
 
 const Info = ({
+  isDeleting,
   isFetching,
   isSaving,
   isSignedIn,
@@ -56,7 +57,7 @@ const Info = ({
       <Buttons>
         {isSignedIn && (
           <BtnPrimary
-            disabled={isSaving || isFetching || !isNameValid}
+            disabled={isDeleting || isFetching || isSaving || !isNameValid}
             label="Save Scale"
             onClick={handleScaleSave}
           />
@@ -67,6 +68,7 @@ const Info = ({
 };
 
 const mapStateToProps = ({ scale, search, user }) => ({
+  isDeleting: scale.ui.isDeleting,
   isFetching: scale.ui.isFetching,
   isSaving: scale.ui.isSaving,
   scale: scale.notes.round,

@@ -16,23 +16,27 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   const { scaleId } = useParams();
   const { push, replace } = useHistory();
 
+  const { isDeleting, isFetching, isSaving } = scaleUi;
+
   useEffect(() => {
     if (
       !scaleId &&
       scaleUi.scaleId &&
-      !scaleUi.isFetching &&
-      !scaleUi.isSaving
+      !isDeleting &&
+      !isFetching &&
+      !isSaving
     ) {
       replace(`/scale/${scaleUi.scaleId}`);
     }
-  }, [replace, scaleId, scaleUi.isFetching, scaleUi.isSaving, scaleUi.scaleId]);
+  }, [replace, scaleId, isDeleting, isFetching, isSaving, scaleUi.scaleId]);
 
   useEffect(() => {
     if (
       scaleId &&
       scaleUi.scaleId !== scaleId &&
-      !scaleUi.isFetching &&
-      !scaleUi.isSaving
+      !isDeleting &&
+      !isFetching &&
+      !isSaving
     ) {
       push('/scale');
       getScaleById(scaleId);
@@ -41,8 +45,9 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
     getScaleById,
     push,
     scaleId,
-    scaleUi.isFetching,
-    scaleUi.isSaving,
+    isDeleting,
+    isFetching,
+    isSaving,
     scaleUi.scaleId,
   ]);
 
@@ -53,7 +58,7 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   return (
     <ScaleContainer>
       <Section>
-        {scaleUi.isFetching || scaleUi.isSaving ? (
+        {isDeleting || isFetching || isSaving ? (
           <Loading />
         ) : (
           <>

@@ -9,7 +9,12 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case scaleTypes.DELETE_STARTED:
       return { ...state, isDeleting: true };
     case scaleTypes.DELETE_SUCCESSFUL:
-      return { ...state, isDeleting: false };
+      return {
+        ...state,
+        isDeleting: false,
+        isOwner: state.scaleId === payload.scaleId ? false : state.isOwner,
+        scaleId: state.scaleId === payload.scaleId ? null : state.scaleId,
+      };
 
     case scaleTypes.FETCH_ERROR:
       return { ...state, error: payload, isFetching: false };
