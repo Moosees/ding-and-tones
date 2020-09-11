@@ -2,21 +2,26 @@
 
 ## Current tasks
 
-* Add latest button to scales and find songs
-* Delete songs from user songs when deleting songs
+* Delete songs from user songs when deleting songs, check songId and owner if deleting current song
 * Saving stuff needs minimal conditions?
-* Errors display on inputs
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
+* Send messages back from backend
 
 ## Bugs
 
-* Why are buttons disabled on songwriter mount?
 * Db connection error handler might not work
-* Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
-* scale name edit remembers input even if scales changes
-* Logged out user can still own scales/songs?
+* Logged out user can still own scales/songs? Update delete icons when logging out
+* Subdivision dropdown for beats doesn't shrink
+
+## Inputs and useValidate
+
+* Scale name edit remembers input even if scales changes
+* Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
+* Why are buttons disabled on songwriter mount? They are waiting for text validation, minor issue for now
+* Check text inputs for bad words?
+* Errors display on inputs
 
 ## Design
 
@@ -41,6 +46,7 @@
 
 * Printing, format?
 * Save to .pdf?
+* Help leads to facebook thread?
 
 ## Chords
 
@@ -50,18 +56,18 @@
 
 ## Songwriter
 
-* Chords
+* Chords/multiple notes on one beat
 * Dropdown list show all dyads and ding + note combinations?
 * Web worker?
+* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
+* Left and right hand recommendations for songwriter?
+* One-e-and-a style phonetic rhythm notation on bars?
 
-## State/Routes
+## State/Backend
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
-
-## Low priority
-
 * HTTP codes, 204 should be 404 or something else?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
@@ -71,24 +77,18 @@
 * Split save song controller
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
-
 * GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?
-
-* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Rework metre template, split into beats?
-* Check text inputs for bad words?
-* Left and right hand recommendations for songwriter?
-* One-e-and-a style phonetic rhythm notation on bars?
 
-## Even lower priority
+## Future plans
 
+* Typescript and testing
 * Find songs by user (other than current user)
 * Chose between save and save as new?
 * Plus and minus one for bpm
 * Split MetreControls component?
-* Redirect to url without id on delete song/scale
 * Move user sign in logic to reducer
 * Create scale from name and string
 * Ability to loop songs or repeat/solo bars
@@ -102,10 +102,9 @@
 * Keyboard shortcuts for popups
 * Likes and/or comments?
 * Move position map to reducer?
-* Update delete icons if user logs in after app is loaded
-* Handle extra/bottom notes
+* Handle extra/bottom notes/mutant drums
 * Triplets, flams, etc. Value 9, 17 for triplets?
-* Only show save buttons if there are changes
+* Disable save button if there are no changes
 * Custom chord inputs
 * Custom metres
 * Comparing scales using tables or other presentations
@@ -114,7 +113,7 @@
 * Swing?
 * More drum alternatives?
 * Link drum and songwriter - animations?
-* Custom line-break bars for users to add to songwriter?
+* Custom line-break bars for users to add to songwriter? Only for printing?
 * Songwriter bars alignment should change with big songs
 * Sort chords by type?
 * Svgs instead of iconfont?
