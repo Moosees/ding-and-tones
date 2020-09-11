@@ -73,7 +73,7 @@ const Info = ({
           {isSignedIn && (
             <BtnPrimary
               disabled={isSongPlaying || isSaving || !isTitleValid}
-              label="Save"
+              label={isOwner ? 'Save Changes' : 'Save'}
               onClick={() => saveSong({ saveAs: !isOwner })}
             />
           )}

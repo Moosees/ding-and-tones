@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Add latest button to scales and find songs
 * Delete songs from user songs when deleting songs
 * Saving stuff needs minimal conditions?
 * Errors display on inputs

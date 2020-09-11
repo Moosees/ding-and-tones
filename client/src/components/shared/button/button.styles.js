@@ -117,7 +117,7 @@ export const PrimaryButton = styled.button`
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   font-size: ${({ theme }) => theme.fzMedium};
   margin: 0.5rem 3px;
-  min-width: 7rem;
+  min-width: 8rem;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   padding: 0.5rem 2px;
   transition: border 0.15s ease-in;

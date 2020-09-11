@@ -9,6 +9,11 @@ import { SearchContainer } from './search.styles';
 const Search = ({ isSearching, startSearch }) => {
   return (
     <SearchContainer>
+      <BtnPrimary
+        disabled={isSearching}
+        label="New Songs"
+        onClick={() => startSearch(searchOptions.songs.latest)}
+      />
       <InfoSearch
         placeholder="Search songs"
         searchOption={searchOptions.songs.alphabetical}
@@ -16,7 +21,7 @@ const Search = ({ isSearching, startSearch }) => {
       />
       <BtnPrimary
         disabled={isSearching}
-        label="My songs"
+        label="My Songs"
         onClick={() => startSearch(searchOptions.songs.me)}
       />
     </SearchContainer>
