@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Delete songs from user songs when deleting songs, check songId and owner if deleting current song
-* Saving stuff needs minimal conditions?
+* Saving stuff needs minimal conditions? At least one bar?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 * Send messages back from backend
 
@@ -14,6 +13,7 @@
 * "not found" alert if initial songs/scales fetch returns empty array
 * Logged out user can still own scales/songs? Update delete icons when logging out
 * Subdivision dropdown for beats doesn't shrink
+* Composer in song state doesn't update when saving songs
 
 ## Inputs and useValidate
 
@@ -103,14 +103,12 @@
 * Likes and/or comments?
 * Move position map to reducer?
 * Handle extra/bottom notes/mutant drums
-* Triplets, flams, etc. Value 9, 17 for triplets?
 * Disable save button if there are no changes
 * Custom chord inputs
 * Custom metres
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.
-* Swing?
 * More drum alternatives?
 * Link drum and songwriter - animations?
 * Custom line-break bars for users to add to songwriter? Only for printing?
@@ -119,3 +117,5 @@
 * Svgs instead of iconfont?
 * Interval colors for compound intervals?
 * Multiple alerts on screen? or just reset timeout and show newest?
+* Triplets, flams, etc. Value 9, 17 for triplets?
+* Swing? Accents?

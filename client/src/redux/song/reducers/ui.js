@@ -8,7 +8,12 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.DELETE_STARTED:
       return { ...state, isDeleting: true };
     case songTypes.DELETE_SUCCESSFUL:
-      return { ...state, isDeleting: false };
+      return {
+        ...state,
+        isDeleting: false,
+        isOwner: state.songId === payload.songId ? false : state.isOwner,
+        songId: state.songId === payload.songId ? null : state.songId,
+      };
 
     case songTypes.FETCH_ERROR:
       return { ...state, error: payload, isFetching: false };

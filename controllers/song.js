@@ -15,7 +15,15 @@ exports.deleteSong = (req, res) => {
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
 
-      res.status(200).json(song);
+      User.findByIdAndUpdate(userId, {
+        $pull: { songs: song._id },
+      })
+        .setOptions({ new: true })
+        .exec((error) => {
+          if (error) return res.status(400).json();
+
+          res.status(200).json(song);
+        });
     });
 };
 
@@ -88,33 +96,30 @@ exports.saveSong = (req, res) => {
   const { songId, songUpdate } = req.body;
   songUpdate.composer = userId;
   songUpdate.updated = Date.now();
-  let newSongId;
+  let newSong = false;
 
   if (songId && !isValidObjectId(songId)) return res.status(400).json();
-
-  if (!songId) {
-    newSongId = ObjectId();
-
-    User.findByIdAndUpdate(userId, {
-      $push: { songs: newSongId },
-    })
-      .setOptions({ new: true })
-      .exec((error) => {
-        if (error) return res.status(400).json();
-      });
-  }
+  if (!songId) newSong = true;
 
   songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${songUpdate.scale.info.rootName.toLowerCase()} ${songUpdate.scale.info.name.toLowerCase()}`;
 
-  Song.findByIdAndUpdate(songId || newSongId, songUpdate)
+  Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
     .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
     .populate('composer', '_id name')
     .select('_id scale.info info')
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
-
       const data = parseSearchResponse(song, userId);
-      res.status(200).json(data);
+      if (!newSong) return res.status(200).json(data);
+
+      User.findByIdAndUpdate(userId, {
+        $push: { songs: song._id },
+      })
+        .setOptions({ new: true })
+        .exec((error) => {
+          if (error) return res.status(400).json();
+          res.status(200).json(data);
+        });
     });
 };
 
