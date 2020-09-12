@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Responsive design - started
 * Saving stuff needs minimal conditions? At least one bar?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 * Send messages back from backend
@@ -11,7 +12,7 @@
 * Db connection error handler might not work
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
-* Logged out user can still own scales/songs? Update delete icons when logging out
+* Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
 * Subdivision dropdown for beats doesn't shrink
 * Composer in song state doesn't update when saving songs
 
@@ -25,7 +26,6 @@
 
 ## Design
 
-* Responsive design
 * Distinct confirm and cancel buttons
 * New buttons for loading songs
 * Dropdowns open when clicking label (difficulty and new song popup)

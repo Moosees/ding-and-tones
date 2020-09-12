@@ -1,3 +1,18 @@
+import { css } from 'styled-components';
+
+const mqSizes = {
+  mqLarge: 1300,
+};
+
+const mediaQueries = Object.keys(mqSizes).reduce((acc, size) => {
+  acc[size] = (...args) => css`
+    @media (max-width: ${mqSizes[size]}px) {
+      ${css(...args)};
+    }
+  `;
+  return acc;
+}, {});
+
 const colorGreyDark = '#333';
 
 export const mainTheme = {
@@ -27,4 +42,5 @@ export const mainTheme = {
   fzControls: '1.4rem',
   fzLarge: '1.8rem',
   fzHeader: '2.4rem',
+  ...mediaQueries
 };

@@ -16,12 +16,21 @@ export const LayoutGrid = styled.div`
     'drum main'
     'controls main';
   grid-template-columns: 35rem 1fr;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: minmax(35rem, 50%) 50%;
   height: 100%;
   max-height: 75rem;
   max-width: 160rem;
   padding: 4rem 4rem 1rem;
   width: 100%;
+
+  ${({ theme }) => theme.mqLarge`
+    column-gap: 1rem;
+    grid-template-columns: 32rem 1fr;
+    grid-template-rows: minmax(32rem, 50%) 50%;
+    max-height: unset;
+    max-width: unset;
+    padding: 4rem 1rem 1rem;
+  `}
 `;
 
 export const SectionWithNav = styled.div`
