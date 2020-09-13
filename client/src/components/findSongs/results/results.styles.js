@@ -4,6 +4,10 @@ export const TableContainer = styled.div`
   height: 100%;
   overflow: auto;
   width: 90%;
+
+  ${({ theme }) => theme.mqMedium`
+    width: 100%;
+  `}
 `;
 
 export const Table = styled.table`

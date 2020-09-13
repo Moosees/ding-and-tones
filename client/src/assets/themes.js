@@ -2,6 +2,8 @@ import { css } from 'styled-components';
 
 const mqSizes = {
   mqLarge: 1300,
+  mqMedium: 1200,
+  mqSmall: 1000,
 };
 
 const mediaQueries = Object.keys(mqSizes).reduce((acc, size) => {
@@ -37,10 +39,11 @@ export const mainTheme = {
   shadowBtnLight: '0px 2px 5px -1px rgba(0, 0, 0, 0.1)',
   shadowBtnHeavy: '0px 2px 5px -1px rgba(0, 0, 0, 0.2)',
   textShadowLight: '0px 2px 4px rgba(0, 0, 0, 0.15)',
+  fzSmaller: '1.1rem',
   fzSmall: '1.2rem',
   fzMedium: '1.3rem',
   fzControls: '1.4rem',
   fzLarge: '1.8rem',
   fzHeader: '2.4rem',
-  ...mediaQueries
+  ...mediaQueries,
 };

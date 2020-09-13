@@ -27,10 +27,16 @@ export const ScaleContainer = styled.div`
   }
 `;
 
-export const ScaleLabel = styled.span``;
+export const ScaleLabel = styled.span`
+  font-size: ${({ theme }) => theme.fzSmall};
+`;
 
 export const ScaleNotes = styled.span`
   font-size: ${({ theme }) => theme.fzSmall};
+
+  ${({ theme }) => theme.mqLarge`
+    font-size: ${theme.fzSmaller};
+  `}
 `;
 
 export const TextContainer = styled.div`

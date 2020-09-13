@@ -6,6 +6,10 @@ const VerticalLine = styled.div`
   height: 75%;
   margin: ${({ small }) => (small ? '0.5rem' : '3rem')};
   width: 1px;
+
+  ${({ small, theme }) => theme.mqLarge`
+    margin: ${small ? '2px' : '1rem'};
+  `}
 `;
 
 const HorizontalLine = styled.div`
@@ -13,6 +17,10 @@ const HorizontalLine = styled.div`
   height: 1px;
   margin: ${({ small }) => (small ? '0.5rem' : '3rem')};
   width: 75%;
+
+  ${({ theme }) => theme.mqLarge`
+    margin: 0.5rem;
+  `}
 `;
 
 const DividerLine = ({ vertical, small }) => {

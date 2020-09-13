@@ -7,6 +7,10 @@ export const ScaleContainer = styled.div`
   height: 100%;
   padding: 3rem;
   overflow: auto;
+
+  ${({ theme }) => theme.mqMedium`
+    grid-template-columns: max-content min-content 1fr;
+  `}
 `;
 
 export const Section = styled.div`

@@ -18,6 +18,10 @@ export default createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+
+    ${({ theme }) => theme.mqMedium`
+      font-size: 56.25%;
+  `}
   }
 
   body {

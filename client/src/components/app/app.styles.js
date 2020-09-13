@@ -27,7 +27,6 @@ export const LayoutGrid = styled.div`
     column-gap: 1rem;
     grid-template-columns: 32rem 1fr;
     grid-template-rows: minmax(32rem, 50%) 50%;
-    max-height: unset;
     max-width: unset;
     padding: 4rem 1rem 1rem;
   `}
