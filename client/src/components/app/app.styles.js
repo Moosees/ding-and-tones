@@ -6,6 +6,15 @@ export const Viewport = styled.div`
   height: 100vh;
   justify-content: center;
   width: 100vw;
+
+  /* @media screen and (max-width: 800px) and (orientation: portrait) {
+    left: 0;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+  } */
 `;
 
 export const LayoutGrid = styled.div`
@@ -30,6 +39,11 @@ export const LayoutGrid = styled.div`
     max-width: unset;
     padding: 4rem 1rem 1rem;
   `}
+
+  ${({ theme }) => theme.mqSmall`
+    display: block;
+    padding: 3rem 0.5rem 0.5rem;
+  `}
 `;
 
 export const SectionWithNav = styled.div`
@@ -49,4 +63,8 @@ export const BorderContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
+
+  ${({ theme }) => theme.mqSmall`
+    border-radius: 60px;
+  `}
 `;

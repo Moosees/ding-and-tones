@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import Mobile from '../mobile/Mobile';
 import Loading from '../shared/loading/Loading';
 import SignInBoundary from './SignInBoundary';
 
@@ -8,13 +9,14 @@ const FindSongs = lazy(() => import('../findSongs/FindSongs'));
 const Scale = lazy(() => import('../scale/Scale'));
 const Songwriter = lazy(() => import('../songwriter/Songwriter'));
 
-const Routes = () => (
-  <SignInBoundary>
+const Routes = ({ mobile }) => (
+  <SignInBoundary mobile={mobile}>
     <Suspense fallback={<Loading />}>
       <Switch>
+        {mobile && <Route exact path="/drum" children={<Mobile />} />}
         <Route exact path="/scale" children={<Scale />} />
         <Route path="/scale/:scaleId" children={<Scale />} />
-        <Route exact path="/chords" children={<Chords />} />
+        {!mobile && <Route exact path="/chords" children={<Chords />} />}
         <Route exact path="/song" children={<Songwriter />} />
         <Route path="/song/:songId" children={<Songwriter />} />
         <Route exact path="/find" children={<FindSongs />} />

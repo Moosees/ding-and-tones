@@ -15,6 +15,7 @@ const Drum = ({
   layout,
   scale,
   showIntervals,
+  style,
 }) => {
   const positionMap = useMemo(() => getPositionMap(layout, scale.length), [
     layout,
@@ -56,7 +57,7 @@ const Drum = ({
   });
 
   return (
-    <DrumContainer>
+    <DrumContainer style={style}>
       <DrumSvg viewBox="-10 -10 20 20" transform="rotate(90)">
         <defs>
           <radialGradient id="drumGradient">

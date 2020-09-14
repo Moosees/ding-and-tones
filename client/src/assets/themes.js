@@ -4,11 +4,12 @@ const mqSizes = {
   mqLarge: 1300,
   mqMedium: 1200,
   mqSmall: 1000,
+  mqSmaller: 850,
 };
 
 const mediaQueries = Object.keys(mqSizes).reduce((acc, size) => {
   acc[size] = (...args) => css`
-    @media (max-width: ${mqSizes[size]}px) {
+    @media screen and (max-width: ${mqSizes[size]}px) {
       ${css(...args)};
     }
   `;

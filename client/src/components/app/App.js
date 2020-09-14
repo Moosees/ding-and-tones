@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { setDropdownForBeat } from '../../redux/ui/ui.actions';
 import Controls from '../controls/Controls';
@@ -17,6 +17,17 @@ import {
 const Routes = lazy(() => import('./Routes'));
 
 const App = ({ setDropdownForBeat }) => {
+  const [width, setWidth] = useState(window ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    if (window) {
+      const updateWidth = () => setWidth(window.innerWidth);
+
+      window.addEventListener('resize', updateWidth);
+      return () => window.removeEventListener('resize', updateWidth);
+    }
+  });
+
   const handleViewport = (e) => {
     e.stopPropagation();
     setDropdownForBeat(null);
@@ -25,22 +36,27 @@ const App = ({ setDropdownForBeat }) => {
   return (
     <Viewport onClick={handleViewport}>
       <LayoutGrid>
-        <Drum style={{ gridArea: 'drum' }} />
-        <SectionWithNav style={{ gridArea: 'controls' }}>
-          <NavSide />
-          <BorderContainer small>
-            <Controls />
-          </BorderContainer>
-        </SectionWithNav>
+        {width > 1000 && (
+          <>
+            <Drum style={{ gridArea: 'drum' }} />
+            <SectionWithNav style={{ gridArea: 'controls' }}>
+              <NavSide />
+              <BorderContainer small>
+                <Controls />
+              </BorderContainer>
+            </SectionWithNav>
+          </>
+        )}
         <SectionWithNav style={{ gridArea: 'main' }}>
-          <NavMain />
+          <NavMain mobile={width < 1000} />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
-              <Routes />
+              <Routes mobile={width < 1000} />
             </Suspense>
           </BorderContainer>
         </SectionWithNav>
       </LayoutGrid>
+
       <AlertHandler />
     </Viewport>
   );

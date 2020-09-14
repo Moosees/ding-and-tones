@@ -22,6 +22,11 @@ export default createGlobalStyle`
     ${({ theme }) => theme.mqMedium`
       font-size: 56.25%;
   `}
+
+    ${({ theme }) => theme.mqSmaller`
+      font-size: 50%;
+      ${'' /* font-size: 43.75%; */}
+  `}
   }
 
   body {

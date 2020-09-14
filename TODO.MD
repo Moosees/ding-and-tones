@@ -35,7 +35,6 @@
 * Dynamic size for tonefields
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
-* Full screen songwriter? Or just hide drum on command?
 
 ## Drum
 
