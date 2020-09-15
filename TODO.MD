@@ -9,7 +9,6 @@
 
 ## Bugs
 
-* Db connection error handler might not work
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
 * Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?

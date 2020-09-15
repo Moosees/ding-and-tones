@@ -9,16 +9,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Database
-mongoose.connect(process.env.MONGO_URI, {
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on('error', (error) =>
-  console.error(`Database connection failed: ${error}`)
-);
-db.once('open', () => console.log('Connected to database'));
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('Connected to database'))
+  .catch((error) => console.error('Database connection failed: ', error));
 
 // Routes
 const scaleRoutes = require('./routes/scale');
