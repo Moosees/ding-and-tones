@@ -16,30 +16,31 @@ exports.saveUser = (req, res) => {
     });
 };
 
-exports.signIn = async (req, res) => {
-  const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
+exports.signIn = (req, res) => {
   const authHeader = req.get('authorization');
   if (!authHeader) return res.status(403).json({ error: 'Not authorized' });
 
-  try {
-    const idToken = authHeader.split(' ')[1];
-    const ticket = await client.verifyIdToken({
+  const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+  const idToken = authHeader.split(' ')[1];
+
+  client
+    .verifyIdToken({
       idToken,
       audience: process.env.GOOGLE_CLIENT_ID,
-    });
-    const { email, sub } = ticket.getPayload();
+    })
+    .then((ticket) => {
+      const { email, sub } = ticket.getPayload();
 
-    await User.findOne({ sub })
-      .select('-_id name')
-      .exec((error, user) => {
-        if (user) return res.status(200).json(user);
+      User.findOne({ sub })
+        .select('-_id name')
+        .exec((error, user) => {
+          if (error) return res.status(400).json();
+          if (user) return res.status(200).json(user);
 
-        new User({ email, name: 'Anonymous', sub }).save((error, user) =>
-          res.status(200).json({ name: user.name, newUser: true })
-        );
-      });
-  } catch (error) {
-    return res.status(400).json({ error });
-  }
+          new User({ email, name: 'Anonymous', sub }).save((error, user) =>
+            res.status(200).json({ name: user.name, newUser: true })
+          );
+        });
+    })
+    .catch((error) => res.status(400).json());
 };

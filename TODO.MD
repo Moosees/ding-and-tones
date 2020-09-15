@@ -14,6 +14,7 @@
 * Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
 * Subdivision dropdown for beats doesn't shrink
 * Composer in song state doesn't update when saving songs
+* Res status 400 might not be accurate for some responses
 
 ## Inputs and useValidate
 

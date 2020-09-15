@@ -18,11 +18,6 @@ mongoose
   .then(() => console.log('Connected to database'))
   .catch((error) => console.error('Database connection failed: ', error));
 
-// Routes
-const scaleRoutes = require('./routes/scale');
-const songRoutes = require('./routes/song');
-const userRoutes = require('./routes/user');
-
 // Middleware
 app.use(bodyParser.json());
 app.use(
@@ -31,6 +26,12 @@ app.use(
   })
 );
 app.use(cors());
+
+// Routes
+const scaleRoutes = require('./routes/scale');
+const songRoutes = require('./routes/song');
+const userRoutes = require('./routes/user');
+
 app.use('/', scaleRoutes);
 app.use('/', songRoutes);
 app.use('/', userRoutes);
