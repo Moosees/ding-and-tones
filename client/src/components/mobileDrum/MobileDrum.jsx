@@ -2,9 +2,9 @@ import React from 'react';
 import Chords from '../chords/Chords';
 import Intervals from '../controls/intervals/Intervals';
 import Drum from '../drum/Drum';
-import { MobileContainer, SubContainer } from './mobile.styles';
+import { MobileContainer, SubContainer } from './mobileDrum.styles';
 
-const Mobile = () => {
+const MobileDrum = () => {
   return (
     <MobileContainer>
       <Drum style={{ gridArea: 'drum' }} />
@@ -18,4 +18,4 @@ const Mobile = () => {
   );
 };
 
-export default Mobile;
+export default MobileDrum;
