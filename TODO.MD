@@ -35,6 +35,7 @@
 * Dynamic size for tonefields
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
+* Divider line css DRY!
 
 ## Drum
 

@@ -10,6 +10,10 @@ const VerticalLine = styled.div`
   ${({ small, theme }) => theme.mqLarge`
     margin: ${small ? '2px' : '1rem'};
   `}
+
+  ${({ theme }) => theme.mqSmaller`
+    margin: 0.5rem;
+  `}
 `;
 
 const HorizontalLine = styled.div`

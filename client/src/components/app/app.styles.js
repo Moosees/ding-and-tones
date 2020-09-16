@@ -7,14 +7,19 @@ export const Viewport = styled.div`
   justify-content: center;
   width: 100vw;
 
-  /* @media screen and (max-width: 800px) and (orientation: portrait) {
+  ${({ theme }) => theme.mqSmaller`
+    height: 70rem;
+  `}
+
+  @media screen and (max-width: 800px) and (orientation: portrait) {
+    height: 70rem;
     left: 0;
-    overflow-x: hidden;
     position: absolute;
     top: 100%;
     transform: rotate(-90deg);
     transform-origin: left top;
-  } */
+    width: 100vh;
+  }
 `;
 
 export const LayoutGrid = styled.div`

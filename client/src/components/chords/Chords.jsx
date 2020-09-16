@@ -10,6 +10,10 @@ const ChordsContainer = styled.div`
   grid-template-columns: max-content min-content 2fr;
   height: 100%;
   padding: 3rem;
+
+  ${({ theme }) => theme.mqSmaller`
+    padding: 1rem;
+  `}
 `;
 
 const Chords = () => {

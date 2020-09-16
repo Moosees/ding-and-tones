@@ -126,4 +126,10 @@ export const PrimaryButton = styled.button`
     border: ${({ disabled, theme }) =>
       disabled ? theme.borderLight : theme.borderMedium};
   }
+
+  ${({ theme }) => theme.mqSmall`
+    margin: 3px;
+    min-width: 6rem;
+    padding: 3px 2px;
+  `}
 `;

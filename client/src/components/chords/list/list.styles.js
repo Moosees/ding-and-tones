@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 
+export const ScrollContainer = styled.div`
+  height: 100%;
+  overflow: auto;
+`;
+
 export const ListContainer = styled.ul`
+  align-content: center;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 100%;
 `;
 
 export const ListItem = styled.li`
@@ -22,4 +30,9 @@ export const ListItem = styled.li`
   &:hover {
     transform: scale(1.05);
   }
+
+  ${({ theme }) => theme.mqSmaller`
+    margin: 1px;
+    padding: 3px;
+  `}
 `;
