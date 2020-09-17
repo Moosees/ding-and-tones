@@ -22,7 +22,21 @@ const Background = styled.div`
   font-size: ${({ theme }) => theme.fzMedium};
   justify-content: space-between;
   min-width: 26rem;
-  padding: 3rem;
+  padding: ${({ theme }) => theme.paddingLarge};
+
+  & > *:last-child {
+    margin-bottom: 1.2rem;
+  }
+
+  ${({ theme }) => theme.mqMedium`
+    border-radius: 40px;
+    padding: ${theme.paddingMedium};
+  `}
+
+  ${({ theme }) => theme.mqSmaller`
+    border-radius: 30px;
+    padding: ${theme.paddingSmall};
+  `}
 `;
 
 const AccountHeader = styled.h2`

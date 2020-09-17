@@ -12,7 +12,15 @@ const FindSongsContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 3rem;
+  padding: ${({ theme }) => theme.paddingLarge};
+
+  ${({ theme }) => theme.mqMedium`
+    padding: ${theme.paddingMedium};
+  `}
+
+  ${({ theme }) => theme.mqSmaller`
+    padding: ${theme.paddingSmall};
+  `}
 `;
 
 const FindSongs = ({ startSearch, songsFetchTried }) => {

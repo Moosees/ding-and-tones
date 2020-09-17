@@ -5,15 +5,19 @@ export const ScaleContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
   height: 100%;
-  padding: 3rem;
+  padding: ${({ theme }) => theme.paddingLarge};
   overflow: auto;
 
   ${({ theme }) => theme.mqMedium`
     grid-template-columns: max-content min-content 1fr;
   `}
 
+  ${({ theme }) => theme.mqMedium`
+    padding: ${theme.paddingMedium};
+  `}
+
   ${({ theme }) => theme.mqSmaller`
-    padding: 1rem;
+    padding: ${theme.paddingSmall};
   `}
 `;
 

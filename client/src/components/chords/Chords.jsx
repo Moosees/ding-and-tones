@@ -9,10 +9,14 @@ const ChordsContainer = styled.div`
   display: grid;
   grid-template-columns: max-content min-content 2fr;
   height: 100%;
-  padding: 3rem;
+  padding: ${({ theme }) => theme.paddingLarge};
+
+  ${({ theme }) => theme.mqMedium`
+    padding: ${theme.paddingMedium};
+  `}
 
   ${({ theme }) => theme.mqSmaller`
-    padding: 1rem;
+    padding: ${theme.paddingSmall};
   `}
 `;
 

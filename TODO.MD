@@ -2,8 +2,8 @@
 
 ## Current tasks
 
-* Padding (and other values) global variables, 2rem medium 1rem small?
 * Responsive design - started
+* Mobile user menu
 * Add way to switch between playing drum and changing interval focus on smaller screens
 * Saving stuff needs minimal conditions? At least one bar?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
@@ -37,8 +37,9 @@
 * Dynamic size for tonefields
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
-* Divider line css DRY!
+* Divider line css DRY! Container mix-ins
 * Remake scale grid layout
+* Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 
 ## Drum
 
