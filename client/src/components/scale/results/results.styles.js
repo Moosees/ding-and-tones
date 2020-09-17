@@ -6,10 +6,14 @@ export const ScaleList = styled.div`
   border-right: 0;
   display: flex;
   flex-direction: column;
-  max-height: 50vh;
+  max-height: 40vh;
   overflow: auto;
   padding: 0 0.5rem;
   width: 100%;
+
+  ${({ theme }) => theme.mqSmaller`
+    max-height: 80vh;
+  `}
 `;
 
 export const ScaleContainer = styled.div`
@@ -33,6 +37,7 @@ export const ScaleLabel = styled.span`
 
 export const ScaleNotes = styled.span`
   font-size: ${({ theme }) => theme.fzSmall};
+  word-spacing: -1px;
 
   ${({ theme }) => theme.mqLarge`
     font-size: ${theme.fzSmaller};

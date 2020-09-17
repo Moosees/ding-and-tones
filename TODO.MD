@@ -2,7 +2,9 @@
 
 ## Current tasks
 
+* Padding (and other values) global variables, 2rem medium 1rem small?
 * Responsive design - started
+* Add way to switch between playing drum and changing interval focus on smaller screens
 * Saving stuff needs minimal conditions? At least one bar?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
 * Send messages back from backend
@@ -36,6 +38,7 @@
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
 * Divider line css DRY!
+* Remake scale grid layout
 
 ## Drum
 

@@ -14,6 +14,10 @@ export const InfoContainer = styled.div`
   margin: 0.5rem;
   min-height: 3.5rem;
   padding: 0 0.5rem;
+
+  ${({ theme }) => theme.mqSmaller`
+    max-height: 3.5rem;
+  `}
 `;
 
 export const Select = styled.select`

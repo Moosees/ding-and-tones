@@ -12,6 +12,14 @@ export const Notes = styled.div`
   justify-content: center;
   max-width: 34rem;
   margin-bottom: 1rem;
+
+  ${({ theme }) => theme.mqMedium`
+    max-width: 30rem;
+  `}
+
+  ${({ theme }) => theme.mqSmaller`
+    max-width: 28rem;
+  `}
 `;
 
 export const Note = styled.button`
@@ -39,4 +47,12 @@ export const Note = styled.button`
   &:focus {
     outline: none;
   }
+
+  ${({ theme }) => theme.mqMedium`
+    margin: 3px;
+  `}
+
+  ${({ theme }) => theme.mqSmaller`
+    margin: 2px;
+  `}
 `;

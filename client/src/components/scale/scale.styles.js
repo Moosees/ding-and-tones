@@ -11,6 +11,10 @@ export const ScaleContainer = styled.div`
   ${({ theme }) => theme.mqMedium`
     grid-template-columns: max-content min-content 1fr;
   `}
+
+  ${({ theme }) => theme.mqSmaller`
+    padding: 1rem;
+  `}
 `;
 
 export const Section = styled.div`

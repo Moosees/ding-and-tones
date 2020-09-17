@@ -7,7 +7,7 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/infoBox/InfoBox';
 import InfoText from '../../shared/infoBox/InfoText';
-import { InfoContainer } from './info.styles';
+import { InfoContainer, ScaleLabel } from './info.styles';
 
 const Info = ({
   isDeleting,
@@ -53,7 +53,9 @@ const Info = ({
           {`Scale: ${scaleInfo.rootName} ${scaleInfo.name}`}
         </InfoText>
       </InfoBox>
-      <InfoBox>{scaleInfo.label}</InfoBox>
+      <InfoBox>
+        <ScaleLabel>{scaleInfo.label}</ScaleLabel>
+      </InfoBox>
       <Buttons>
         {isSignedIn && (
           <BtnPrimary
