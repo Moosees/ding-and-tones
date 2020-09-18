@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import SignIn from '../controls/signIn/SignIn';
+import MobileUser from '../mobileUser/MobileUser';
 import BtnNavMain from '../shared/button/NavMain';
 
 const Navbar = styled.nav`
@@ -23,7 +23,7 @@ const NavMain = ({ mobile, scaleId, songId }) => {
         to={`/song${songId ? '/' + songId : ''}`}
       />
       <BtnNavMain label="Find Songs" to="/find" />
-      {mobile && <SignIn />}
+      {mobile && <MobileUser />}
     </Navbar>
   );
 };

@@ -2,11 +2,10 @@
 
 ## Current tasks
 
-* Responsive design - started
-* Mobile user menu
+* Responsive design - songwriter (only scroll on bars?)
 * Add way to switch between playing drum and changing interval focus on smaller screens
 * Saving stuff needs minimal conditions? At least one bar?
-* Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save?
+* Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?
 * Send messages back from backend
 
 ## Bugs
@@ -16,7 +15,9 @@
 * Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
 * Subdivision dropdown for beats doesn't shrink
 * Composer in song state doesn't update when saving songs
-* Res status 400 might not be accurate for some responses
+* Res status 400 might not be accurate for some responses, same for 204?
+* NavButton for mobileUser is wonky
+* Load song button can be seen through table header
 
 ## Inputs and useValidate
 
@@ -66,19 +67,20 @@
 * What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
 * Left and right hand recommendations for songwriter?
 * One-e-and-a style phonetic rhythm notation on bars?
+* Bar names or index visible (when not locked?)
+* Count number of bars for search results? Virtual field?
 
 ## State/Backend
 
 * Persist working state through local storage?
 * Prevent transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
-* HTTP codes, 204 should be 404 or something else?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
-* Infinite scroll on songs (and scales?) - only show "load more" if there is more to load?
+* Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Sorting search results in table
 * Favorite songs/scales
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
-* Split save song controller
+* Split save song controller?
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
 * GDPR and similar, analytics
