@@ -6,7 +6,10 @@ export const SongContainer = styled.div`
   flex-direction: column;
   height: 100%;
   padding: 2rem;
-  overflow: auto;
+
+  ${({ theme }) => theme.mqMedium`
+    padding: 1rem;
+  `}
 `;
 
 export const TopSection = styled.div`
@@ -17,9 +20,13 @@ export const TopSection = styled.div`
   max-width: 80rem;
   padding: 2rem 2rem 0;
   width: 100%;
+
+  ${({ theme }) => theme.mqSmall`
+    padding: 1rem 1rem 0;
+  `}
 `;
 
-export const TopPart = styled.div`
+export const TopColumn = styled.div`
   flex: 1 0;
 `;
 
@@ -28,5 +35,6 @@ export const BottomSection = styled.div`
   display: flex;
   flex: 10 0;
   justify-content: center;
+  overflow: auto;
   width: 100%;
 `;

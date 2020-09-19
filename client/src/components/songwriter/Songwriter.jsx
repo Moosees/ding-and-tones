@@ -10,7 +10,7 @@ import Info from './info/Info';
 import {
   BottomSection,
   SongContainer,
-  TopPart,
+  TopColumn,
   TopSection,
 } from './songwriter.styles';
 
@@ -37,13 +37,13 @@ const Songwriter = ({ getSongById, songUi }) => {
       ) : (
         <>
           <TopSection>
-            <TopPart>
+            <TopColumn>
               <Info />
-            </TopPart>
+            </TopColumn>
             <DividerLine vertical small />
-            <TopPart>
+            <TopColumn>
               <Controls />
-            </TopPart>
+            </TopColumn>
           </TopSection>
           <DividerLine />
           <BottomSection>

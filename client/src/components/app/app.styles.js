@@ -8,11 +8,11 @@ export const Viewport = styled.div`
   width: 100vw;
 
   ${({ theme }) => theme.mqSmaller`
-    height: 70rem;
+    min-height: 50rem;
   `}
 
   @media screen and (max-width: 800px) and (orientation: portrait) {
-    height: 70rem;
+    height: 100vw;
     left: 0;
     position: absolute;
     top: 100%;
