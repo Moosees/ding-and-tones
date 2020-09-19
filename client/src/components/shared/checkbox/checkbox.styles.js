@@ -24,6 +24,10 @@ export const CheckboxLabel = styled.label`
   &:hover input:checked ~ span::after {
     background-color: ${({ theme }) => theme.colorBtnConfirm};
   }
+
+  ${({ theme }) => theme.mqSmaller`
+    margin-bottom: 1px;
+  `}
 `;
 
 export const CheckboxInput = styled.span`
@@ -45,4 +49,15 @@ export const CheckboxInput = styled.span`
     position: absolute;
     width: 2.5rem;
   }
+
+  ${({ theme }) => theme.mqSmaller`
+    height: 2rem;
+    top: 2px;
+    width: 2rem;
+
+    &::after {
+      height: 2rem;
+      width: 2rem;
+    }
+  `}
 `;

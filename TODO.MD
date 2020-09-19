@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Responsive design - songwriter (only scroll on bars?)
+* Responsive design - round 2
 * Add way to switch between playing drum and changing interval focus on smaller screens
 * Saving stuff needs minimal conditions? At least one bar?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?

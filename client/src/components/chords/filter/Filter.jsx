@@ -15,11 +15,16 @@ const ControlsContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 `;
 
 const CheckBoxes = styled.div`
   display: flex;
   flex-direction: column;
+
+  ${({ theme }) => theme.mqSmaller`
+    font-size: ${theme.fzSmall};
+  `}
 `;
 
 const Filter = ({

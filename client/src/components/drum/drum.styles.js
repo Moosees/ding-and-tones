@@ -8,6 +8,10 @@ export const DrumContainer = styled.div`
   ${({ theme }) => theme.mqLarge`
     margin: 0 0 2rem;
   `}
+
+  ${({ theme }) => theme.mqSmall`
+    margin: -1rem 0;
+  `}
 `;
 
 export const DrumSvg = styled.svg`

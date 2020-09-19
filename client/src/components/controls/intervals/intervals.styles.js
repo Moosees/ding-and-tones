@@ -7,6 +7,10 @@ export const IntervalList = styled.div`
   height: 100%;
   overflow: auto;
   padding: 0.5rem;
+
+  ${({ theme }) => theme.mqSmaller`
+    padding: 1rem 0.5rem;
+  `}
 `;
 
 export const IntervalContainer = styled.div`
@@ -26,4 +30,9 @@ export const Interval = styled.div`
   height: 2.2rem;
   margin: 0.25rem;
   width: 2.2rem;
+
+  ${({ theme }) => theme.mqSmaller`
+    height: 1.6rem;
+    width: 1.6rem;
+  `}
 `;

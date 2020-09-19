@@ -33,6 +33,6 @@ export const ListItem = styled.li`
 
   ${({ theme }) => theme.mqSmaller`
     margin: 1px;
-    padding: 3px;
+    padding: 2px;
   `}
 `;
