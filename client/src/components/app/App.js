@@ -35,7 +35,7 @@ const App = ({ setDropdownForBeat }) => {
 
   return (
     <Viewport onClick={handleViewport}>
-      <LayoutGrid>
+      <LayoutGrid id="outsideTarget">
         {width > 1000 && (
           <>
             <Drum style={{ gridArea: 'drum' }} />

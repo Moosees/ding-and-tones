@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useCloseOutside from '../../hooks/useCloseOutside';
 import Account from '../controls/account/Account';
 import SignIn from '../controls/signIn/SignIn';
 import Sound from '../controls/sound/Sound';
@@ -7,16 +8,17 @@ import BtnNavMain from '../shared/button/NavMain';
 import { UserAnchor, UserMenu } from './mobileUser.styles';
 
 const MobileUser = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleClick = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const [menuOpen, setMenuOpen, menuRef, btnRef] = useCloseOutside(false);
 
   return (
     <UserAnchor>
-      <BtnNavMain isActive={menuOpen} label="User" onClick={handleClick} />
-      <UserMenu open={menuOpen}>
+      <BtnNavMain
+        isActive={menuOpen}
+        label="User"
+        onClick={() => setMenuOpen(!menuOpen)}
+        ref={btnRef}
+      />
+      <UserMenu open={menuOpen} ref={menuRef}>
         <Sound reverse />
         <BtnControls reverse label="Print/Save" icon="print" />
         <BtnControls reverse label="Support me" icon="support" />

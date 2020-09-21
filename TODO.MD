@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Responsive design - round 2
+* Use useCloseOutside on all popups (without overlays)?
+* Responsive design - small screens in landscape over 400 px scrolls inside the borderContainer, all scroll or no scroll?
 * Add way to switch between playing drum and changing interval focus on smaller screens
 * Saving stuff needs minimal conditions? At least one bar?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?
@@ -10,6 +11,7 @@
 
 ## Bugs
 
+* user menu buttons don't stretch horizontally, active state might be stuck on click
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
 * Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
