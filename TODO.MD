@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Use useCloseOutside on all popups (without overlays)?
-* Responsive design - small screens in landscape over 400 px scrolls inside the borderContainer, all scroll or no scroll?
 * Add way to switch between playing drum and changing interval focus on smaller screens
 * Saving stuff needs minimal conditions? At least one bar?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?

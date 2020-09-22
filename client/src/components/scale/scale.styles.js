@@ -6,13 +6,9 @@ export const ScaleContainer = styled.div`
   grid-template-columns: 1fr min-content 1fr;
   height: 100%;
   padding: ${({ theme }) => theme.paddingLarge};
-  overflow: auto;
 
   ${({ theme }) => theme.mqMedium`
     grid-template-columns: max-content min-content 1fr;
-  `}
-
-  ${({ theme }) => theme.mqMedium`
     padding: ${theme.paddingMedium};
   `}
 

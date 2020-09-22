@@ -12,7 +12,7 @@ export const ScaleList = styled.div`
   width: 100%;
 
   ${({ theme }) => theme.mqSmaller`
-    max-height: 80vh;
+    max-height: 70vh;
   `}
 `;
 
