@@ -3,7 +3,8 @@ export const createOptions = (scale) => {
   const options = {
     single: [
       { label: 'Pause', value: '-' },
-      { label: 'Tak', value: 'T' },
+      { label: 'Loud Tak', value: 'T' },
+      { label: 'Soft Tak', value: 't' },
     ],
   };
   for (let i = 0; i < scale.length; ++i) {

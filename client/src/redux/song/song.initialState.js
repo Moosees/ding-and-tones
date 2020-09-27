@@ -27,11 +27,11 @@ export const beatsState = {
   ag: { sound: '7', value: 4 },
   ah: { sound: '8', value: 8 },
   da: { sound: '0', value: 4 },
-  db: { sound: '-', value: 8 },
+  db: { sound: 'T', value: 8 },
   dc: { sound: '-', value: 8 },
   dd: { sound: '0', value: 4 },
-  de: { sound: '-', value: 8 },
-  df: { sound: '-', value: 8 },
+  de: { sound: 'T', value: 8 },
+  df: { sound: 'T', value: 8 },
 };
 
 export const infoState = {

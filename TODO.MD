@@ -2,8 +2,10 @@
 
 ## Current tasks
 
-* Add way to switch between playing drum and changing interval focus on smaller screens
-* Saving stuff needs minimal conditions? At least one bar?
+* User button on bigger screens too
+* Close user menu when selecting an item
+* Add way to switch between playing drum and changing interval focus on smaller screens (on all screens)
+* Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?
 * Send messages back from backend
 
@@ -41,6 +43,8 @@
 * Divider line css DRY! Container mix-ins
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
+* Nicer shadows
+* New user button, rename to "settings" or "options"?
 
 ## Drum
 
@@ -69,6 +73,7 @@
 * One-e-and-a style phonetic rhythm notation on bars?
 * Bar names or index visible (when not locked?)
 * Count number of bars for search results? Virtual field?
+* Options handling should be moved from arrangement.utils to constants or redux?
 
 ## State/Backend
 
@@ -116,6 +121,7 @@
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.
 * More drum alternatives?
+* Percussive hits on handpan
 * Link drum and songwriter - animations?
 * Custom line-break bars for users to add to songwriter? Only for printing?
 * Songwriter bars alignment should change with big songs

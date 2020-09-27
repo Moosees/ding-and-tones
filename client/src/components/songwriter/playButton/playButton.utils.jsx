@@ -33,7 +33,7 @@ const playBar = async (bar, bpm, audio) => {
   }
 };
 
-const audioPromise = (sound) =>
+const createAudioPromise = (sound) =>
   new Promise((resolve) => {
     const audio = new Audio(sound);
     audio.oncanplaythrough = () => resolve();
@@ -41,12 +41,19 @@ const audioPromise = (sound) =>
   });
 
 const setupAudio = async (scale, audioPath) => {
+  const percussive = { T: '/audio/takLoud.mp3', t: '/audio/takSoft.mp3' };
   const sounds = scale.map((note) => `${audioPath}/${note}.mp3`);
+  const audioPromises = [
+    ...sounds.map(createAudioPromise),
+    ...Object.values(percussive).map(createAudioPromise),
+  ];
 
-  const audioPromises = sounds.map(audioPromise);
   await Promise.all(audioPromises);
 
-  return sounds;
+  return sounds.reduce((acc, note, i) => {
+    acc[i] = note;
+    return acc;
+  }, percussive);
 };
 
 const setupSong = ({ arrangement, bars, beats }) => {

@@ -47,11 +47,12 @@ export const Dropdown = styled.div`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  left: -1px;
+  left: -4px;
   padding: 4px 0;
   position: absolute;
   text-align: center;
   top: 32px;
+  width: max-content;
   z-index: 100;
 
   &::before {

@@ -1,4 +1,4 @@
 export const sound = [
+  { label: 'Tonguepan', path: '/audio/tongue/low' },
   { label: 'Handpan', path: '/audio/pan/low' },
-  // { label: 'Tongue drum', path: '/audio/tongue/low' },
 ];
