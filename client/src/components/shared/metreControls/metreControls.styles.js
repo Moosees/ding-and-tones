@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const MetreLabel = styled.label`
   display: flex;
-  flex: 1 0;
   flex-direction: column;
   padding: ${({ small }) => (small ? '1px' : '0.5rem')};
   text-align: center;

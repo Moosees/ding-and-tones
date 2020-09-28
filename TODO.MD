@@ -10,14 +10,16 @@
 
 ## Bugs
 
-* Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
-* "not found" alert if initial songs/scales fetch returns empty array
-* Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
-* Subdivision dropdown for beats doesn't shrink
+* Use touch compatible drag and drop
 * Composer in song state doesn't update when saving songs
+* Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
+
+## Minor Bugs
+
+* "not found" alert if initial songs/scales fetch returns empty array, should not happen in real life
+* Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * Res status 400 might not be accurate for some responses, same for 204?
 * Load song button can be seen through table header
-* Active state for nav buttons might not need the full pathname
 
 ## Inputs and useValidate
 
@@ -42,19 +44,19 @@
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Nicer shadows
-* New user button, rename to "settings" or "options"?
 
 ## Drum
 
 * Taks or other sounds
 * Tongue drum sounds
 
-## User
+## User/Menu
 
 * Printing, format?
 * Save to .pdf?
 * Help leads to facebook thread?
-* Close user menu when selecting an item
+* Active state for nav buttons might not need the full pathname
+* Don't render popups as children of buttons (no close and active state stuck)?
 
 ## Chords
 
