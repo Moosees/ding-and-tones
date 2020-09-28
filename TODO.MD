@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide!
+* Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?
@@ -10,7 +10,6 @@
 
 ## Bugs
 
-* user menu buttons don't stretch horizontally, active state might be stuck on click
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * "not found" alert if initial songs/scales fetch returns empty array
 * Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
@@ -18,6 +17,7 @@
 * Composer in song state doesn't update when saving songs
 * Res status 400 might not be accurate for some responses, same for 204?
 * Load song button can be seen through table header
+* Active state for nav buttons might not need the full pathname
 
 ## Inputs and useValidate
 

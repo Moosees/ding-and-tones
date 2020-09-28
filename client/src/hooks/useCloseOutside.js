@@ -3,14 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 const useCloseOutside = (defaultIsOpen) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpen);
   const insideRef = useRef(null);
-  const btnRef = useRef(null);
 
   const handleClickOutside = (e) => {
-    if (
-      insideRef.current &&
-      !insideRef.current.contains(e.target) &&
-      !btnRef.current.contains(e.target)
-    )
+    if (insideRef.current && !insideRef.current.contains(e.target))
       setIsOpen(false);
   };
 
@@ -22,7 +17,7 @@ const useCloseOutside = (defaultIsOpen) => {
     };
   }, []);
 
-  return [isOpen, setIsOpen, insideRef, btnRef];
+  return [isOpen, setIsOpen, insideRef];
 };
 
 export default useCloseOutside;

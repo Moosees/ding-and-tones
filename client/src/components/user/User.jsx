@@ -1,25 +1,25 @@
 import React from 'react';
 import useCloseOutside from '../../hooks/useCloseOutside';
 import BtnControls from '../shared/button/Controls';
-import BtnNavMain from '../shared/button/NavMain';
+import BtnNav from '../shared/button/Nav';
 import Account from './account/Account';
 import Logo from './Logo';
 import SignIn from './signIn/SignIn';
 import Sound from './sound/Sound';
-import { UserAnchor, UserLabel, UserMenu } from './user.styles';
+import { UserAnchor, UserMenu } from './user.styles';
 
 const User = () => {
-  const [menuOpen, setMenuOpen, menuRef, btnRef] = useCloseOutside(false);
+  const [menuOpen, setMenuOpen, menuRef] = useCloseOutside(false);
 
   return (
-    <UserAnchor>
-      <BtnNavMain
+    <UserAnchor ref={menuRef}>
+      <BtnNav
+        disabled={false}
         isActive={menuOpen}
         label={<Logo />}
         onClick={() => setMenuOpen(!menuOpen)}
-        ref={btnRef}
       />
-      <UserMenu open={menuOpen} ref={menuRef}>
+      <UserMenu open={menuOpen}>
         <Sound reverse />
         <BtnControls reverse label="Print/Save" icon="print" />
         <BtnControls reverse label="Support me" icon="support" />

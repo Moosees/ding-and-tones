@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setDropdownForBeat } from '../../redux/ui/ui.actions';
 import Drum from '../drum/Drum';
 import Intervals from '../intervals/Intervals';
-import NavMain from '../nav/NavMain';
+import Nav from '../nav/Nav';
 import Loading from '../shared/loading/Loading';
 import AlertHandler from './AlertHandler';
 import {
@@ -44,7 +44,7 @@ const App = ({ setDropdownForBeat }) => {
           </>
         )}
         <SectionWithNav style={{ gridArea: 'main' }}>
-          <NavMain mobile={width < 1000} />
+          <Nav mobile={width < 1000} />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
               <Routes mobile={width < 1000} />
