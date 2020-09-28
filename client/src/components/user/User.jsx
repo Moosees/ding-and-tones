@@ -1,20 +1,21 @@
 import React from 'react';
 import useCloseOutside from '../../hooks/useCloseOutside';
-import Account from '../controls/account/Account';
-import SignIn from '../controls/signIn/SignIn';
-import Sound from '../controls/sound/Sound';
 import BtnControls from '../shared/button/Controls';
 import BtnNavMain from '../shared/button/NavMain';
-import { UserAnchor, UserMenu } from './mobileUser.styles';
+import Account from './account/Account';
+import Logo from './Logo';
+import SignIn from './signIn/SignIn';
+import Sound from './sound/Sound';
+import { UserAnchor, UserLabel, UserMenu } from './user.styles';
 
-const MobileUser = () => {
+const User = () => {
   const [menuOpen, setMenuOpen, menuRef, btnRef] = useCloseOutside(false);
 
   return (
     <UserAnchor>
       <BtnNavMain
         isActive={menuOpen}
-        label="User"
+        label={<Logo />}
         onClick={() => setMenuOpen(!menuOpen)}
         ref={btnRef}
       />
@@ -30,4 +31,4 @@ const MobileUser = () => {
   );
 };
 
-export default MobileUser;
+export default User;

@@ -1,10 +1,9 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { setDropdownForBeat } from '../../redux/ui/ui.actions';
-import Controls from '../controls/Controls';
 import Drum from '../drum/Drum';
+import Intervals from '../intervals/Intervals';
 import NavMain from '../nav/NavMain';
-import NavSide from '../nav/NavSide';
 import Loading from '../shared/loading/Loading';
 import AlertHandler from './AlertHandler';
 import {
@@ -39,12 +38,9 @@ const App = ({ setDropdownForBeat }) => {
         {width > 1000 && (
           <>
             <Drum style={{ gridArea: 'drum' }} />
-            <SectionWithNav style={{ gridArea: 'controls' }}>
-              <NavSide />
-              <BorderContainer small>
-                <Controls />
-              </BorderContainer>
-            </SectionWithNav>
+            <BorderContainer small>
+              <Intervals />
+            </BorderContainer>
           </>
         )}
         <SectionWithNav style={{ gridArea: 'main' }}>

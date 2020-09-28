@@ -17,7 +17,7 @@ export const UserMenu = styled.div`
   justify-content: center;
   padding: 1rem;
   position: absolute;
-  top: 3rem;
+  top: 3.2rem;
   visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
   z-index: 1000;
 `;

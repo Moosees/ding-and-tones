@@ -13,9 +13,9 @@ const Routes = ({ mobile }) => (
   <SignInBoundary mobile={mobile}>
     <Suspense fallback={<Loading />}>
       <Switch>
-        {mobile && <Route exact path="/drum" children={<MobileDrum />} />}
         <Route exact path="/scale" children={<Scale />} />
         <Route path="/scale/:scaleId" children={<Scale />} />
+        {mobile && <Route exact path="/drum" children={<MobileDrum />} />}
         {!mobile && <Route exact path="/chords" children={<Chords />} />}
         <Route exact path="/song" children={<Songwriter />} />
         <Route path="/song/:songId" children={<Songwriter />} />

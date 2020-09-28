@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Logo = () => (
-  <svg viewBox="-10 -10 20 20" transform="rotate(90)">
+  <svg
+    viewBox="-10 -10 20 20"
+    transform="rotate(90)"
+    style={{ height: '3rem', margin: '-0.4rem 0 0' }}
+  >
     <defs>
       <radialGradient id="drumGradient">
         <stop offset="0%" stopColor="#8998aa" />

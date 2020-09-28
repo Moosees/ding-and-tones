@@ -2,9 +2,8 @@
 
 ## Current tasks
 
-* User button on bigger screens too
-* Close user menu when selecting an item
-* Add way to switch between playing drum and changing interval focus on smaller screens (on all screens)
+* Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide!
+* Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?
 * Send messages back from backend
@@ -18,7 +17,6 @@
 * Subdivision dropdown for beats doesn't shrink
 * Composer in song state doesn't update when saving songs
 * Res status 400 might not be accurate for some responses, same for 204?
-* NavButton for mobileUser is wonky
 * Load song button can be seen through table header
 
 ## Inputs and useValidate
@@ -51,11 +49,12 @@
 * Taks or other sounds
 * Tongue drum sounds
 
-## Controls
+## User
 
 * Printing, format?
 * Save to .pdf?
 * Help leads to facebook thread?
+* Close user menu when selecting an item
 
 ## Chords
 

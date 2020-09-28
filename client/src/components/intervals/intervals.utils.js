@@ -1,9 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { intervals } from '../../../assets/intervals';
-import { Interval, IntervalContainer, IntervalList } from './intervals.styles';
+import { intervals } from '../../assets/intervals';
+import { Interval, IntervalContainer } from './intervals.styles';
 
-const getChordLegend = (intervalList) => {
+export const getChordLegend = (intervalList) => {
   return intervalList.map((interval) => (
     <IntervalContainer key={interval}>
       <Interval color={intervals[interval].color} />
@@ -13,7 +12,7 @@ const getChordLegend = (intervalList) => {
   ));
 };
 
-const getScaleLegend = (note, scale) => {
+export const getScaleLegend = (note, scale) => {
   const currentIntervals = scale[note].intervalMap;
 
   return currentIntervals.map(({ semitones, compound, note }, i) => {
@@ -36,21 +35,3 @@ const getScaleLegend = (note, scale) => {
     );
   });
 };
-
-const Intervals = ({ displayedChord, displayedNote, scale }) => {
-  return (
-    <IntervalList>
-      {scale.length && displayedChord
-        ? getChordLegend(displayedChord.intervals)
-        : getScaleLegend(displayedNote, scale)}
-    </IntervalList>
-  );
-};
-
-const mapStateToProps = ({ scale, drum }) => ({
-  displayedChord: drum.displayedChord,
-  displayedNote: drum.displayedNote,
-  scale: scale.notes.scaleFull,
-});
-
-export default connect(mapStateToProps)(Intervals);

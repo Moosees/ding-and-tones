@@ -1,7 +1,7 @@
 import React from 'react';
 import Chords from '../chords/Chords';
-import Intervals from '../controls/intervals/Intervals';
 import Drum from '../drum/Drum';
+import Intervals from '../intervals/Intervals';
 import { MobileContainer, SubContainer } from './mobileDrum.styles';
 
 const MobileDrum = () => {

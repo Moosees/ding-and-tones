@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import MobileUser from '../mobileUser/MobileUser';
 import BtnNavMain from '../shared/button/NavMain';
+import User from '../user/User';
 
 const Navbar = styled.nav`
   top: -3rem;
@@ -15,15 +15,15 @@ const Navbar = styled.nav`
 const NavMain = ({ mobile, scaleId, songId }) => {
   return (
     <Navbar>
-      {mobile && <BtnNavMain label="Drum" to="/drum" />}
       <BtnNavMain label="Scale" to={`/scale${scaleId ? '/' + scaleId : ''}`} />
+      {mobile && <BtnNavMain label="Drum" to="/drum" />}
       {!mobile && <BtnNavMain label="Chords" to="/chords" />}
       <BtnNavMain
         label="Songwriter"
         to={`/song${songId ? '/' + songId : ''}`}
       />
       <BtnNavMain label="Find Songs" to="/find" />
-      {mobile && <MobileUser />}
+      <User />
     </Navbar>
   );
 };
