@@ -11,7 +11,6 @@ export const ControlsButton = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
-  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   font-size: ${({ theme }) => theme.fzControls};
   padding: 0.4rem;
   text-shadow: ${({ theme }) => theme.textShadowLight};
@@ -23,8 +22,7 @@ export const ControlsButton = styled.div`
 `;
 
 export const ControlsLabel = styled.span`
-  padding-left: ${({ reverse }) => (reverse ? '5px' : '0px')};
-  padding-right: ${({ reverse }) => (reverse ? '0px' : '5px')};
+  padding-left: 5px;
 `;
 
 export const GradientButton = styled.button`

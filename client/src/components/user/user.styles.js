@@ -8,13 +8,11 @@ export const UserAnchor = styled.div`
 `;
 
 export const UserMenu = styled.div`
-  align-items: flex-start;
   background-color: ${({ theme }) => theme.colorBox};
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 1rem;
   position: absolute;
   top: 3.2rem;

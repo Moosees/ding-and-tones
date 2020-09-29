@@ -20,12 +20,12 @@ const User = () => {
         onClick={() => setMenuOpen(!menuOpen)}
       />
       <UserMenu open={menuOpen}>
-        <Sound reverse />
-        <BtnControls reverse label="Print/Save" icon="print" />
-        <BtnControls reverse label="Support me" icon="support" />
-        <BtnControls reverse label="Help" icon="help_outline" />
-        <Account reverse />
-        <SignIn reverse />
+        <Sound />
+        <BtnControls label="Print/Save" icon="print" />
+        <BtnControls label="Support me" icon="support" />
+        <BtnControls label="Help" icon="help_outline" />
+        <Account />
+        <SignIn />
       </UserMenu>
     </UserAnchor>
   );

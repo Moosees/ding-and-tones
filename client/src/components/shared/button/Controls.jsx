@@ -1,13 +1,13 @@
 import React from 'react';
 import { ControlsButton, ControlsLabel } from './button.styles';
 
-const BtnControls = ({ icon, iconAlign, label, onClick, reverse }) => {
+const BtnControls = ({ icon, iconAlign, label, onClick }) => {
   return (
-    <ControlsButton reverse={reverse} onClick={onClick}>
-      <ControlsLabel reverse={reverse}>{label}</ControlsLabel>
+    <ControlsButton onClick={onClick}>
       <i style={{ marginTop: `${iconAlign}px` }} className="material-icons">
         {icon}
       </i>
+      <ControlsLabel>{label}</ControlsLabel>
     </ControlsButton>
   );
 };
