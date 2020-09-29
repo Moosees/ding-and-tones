@@ -12,7 +12,6 @@
 
 * Use touch compatible drag and drop
 * Composer in song state doesn't update when saving songs
-* Logged out user can still own scales/songs? Update delete icons when logging out - perform a new search when logging out?
 
 ## Minor Bugs
 
@@ -57,6 +56,7 @@
 * Help leads to facebook thread?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
+* Alerts when signing in or out, show alert on load if user has active session?
 
 ## Chords
 
@@ -93,10 +93,12 @@
 * update google json file - hostedDomain on react-google-login?
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Rework metre template, split into beats?
+* Remove isOwner from scale ui state or add ability to save scale changes
 
 ## Future plans
 
 * Typescript and testing
+* Logging in should check scales/songs if you are owner?
 * Find songs by user (other than current user)
 * Chose between save and save as new?
 * Plus and minus one for bpm

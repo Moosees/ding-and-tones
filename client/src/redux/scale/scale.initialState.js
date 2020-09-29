@@ -27,7 +27,7 @@ export const uiState = {
   error: '',
   isDeleting: false,
   isFetching: false,
-  isOwner: true,
+  isOwner: false,
   isSaving: false,
   scaleId: null,
 };

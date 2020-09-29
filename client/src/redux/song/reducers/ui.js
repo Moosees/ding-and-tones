@@ -1,3 +1,4 @@
+import userTypes from '../../user/user.types';
 import { uiState } from '../song.initialState';
 import songTypes from '../song.types';
 
@@ -38,6 +39,9 @@ const uiReducer = (state = uiState, { type, payload }) => {
 
     case songTypes.SET_STATE:
       return { ...state, ...payload.ui };
+
+    case userTypes.SIGN_OUT:
+      return { ...state, isOwner: false };
 
     default:
       return state;

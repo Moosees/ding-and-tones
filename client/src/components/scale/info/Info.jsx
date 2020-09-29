@@ -57,13 +57,13 @@ const Info = ({
         <ScaleLabel>{scaleInfo.label}</ScaleLabel>
       </InfoBox>
       <Buttons>
-        {isSignedIn && (
-          <BtnPrimary
-            disabled={isDeleting || isFetching || isSaving || !isNameValid}
-            label="Save Scale"
-            onClick={handleScaleSave}
-          />
-        )}
+        <BtnPrimary
+          disabled={
+            !isSignedIn || isDeleting || isFetching || isSaving || !isNameValid
+          }
+          label="Save Scale"
+          onClick={handleScaleSave}
+        />
       </Buttons>
     </InfoContainer>
   );
