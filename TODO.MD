@@ -11,7 +11,6 @@
 ## Bugs
 
 * Use touch compatible drag and drop
-* Alert anchor on small screens when menu is open is off
 
 ## Minor Bugs
 
@@ -20,6 +19,7 @@
 * Res status 400 might not be accurate for some responses, same for 204?
 * Load song button can be seen through table header
 * Logging in should check scales/songs if you are owner? - and it looks like it does already
+* Redirect between chords and drum when resizing? Use same route for all screens?
 
 ## Inputs and useValidate
 
@@ -54,7 +54,7 @@
 
 * Printing, format?
 * Save to .pdf?
-* Help leads to facebook thread?
+* Help leads to facebook thread? Support this page? Discord?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Alerts when signing in or out, show alert on load if user has active session?

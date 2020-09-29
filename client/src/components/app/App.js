@@ -52,7 +52,6 @@ const App = ({ setDropdownForBeat }) => {
           </BorderContainer>
         </SectionWithNav>
       </LayoutGrid>
-
       <AlertHandler />
     </Viewport>
   );
