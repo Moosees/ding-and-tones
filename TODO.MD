@@ -11,7 +11,7 @@
 ## Bugs
 
 * Use touch compatible drag and drop
-* Composer in song state doesn't update when saving songs
+* Alert anchor on small screens when menu is open is off
 
 ## Minor Bugs
 
@@ -19,6 +19,7 @@
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * Res status 400 might not be accurate for some responses, same for 204?
 * Load song button can be seen through table header
+* Logging in should check scales/songs if you are owner? - and it looks like it does already
 
 ## Inputs and useValidate
 
@@ -98,7 +99,6 @@
 ## Future plans
 
 * Typescript and testing
-* Logging in should check scales/songs if you are owner?
 * Find songs by user (other than current user)
 * Chose between save and save as new?
 * Plus and minus one for bpm

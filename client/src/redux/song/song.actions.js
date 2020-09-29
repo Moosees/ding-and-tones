@@ -65,6 +65,7 @@ export const saveSong = ({ saveAs }) => (dispatch, getState) => {
   const body = parseSongForSaving(song, scale, saveAs);
 
   axios.post('/song', body).then((res) => {
+    console.log(res.data);
     if (res.status === 200)
       return dispatch({
         type: songTypes.SAVE_SUCCESSFUL,
