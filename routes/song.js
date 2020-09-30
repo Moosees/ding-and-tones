@@ -8,6 +8,7 @@ const {
   getMySongs,
 } = require('../controllers/song');
 const { checkAuth, getUserId } = require('../middleware/auth');
+const { checkSongsLimit } = require('../middleware/user');
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ router.get('/song/id/:songId', getUserId, getSongById);
 // Authorized only
 // router.get('/song/favorites')
 router.get('/song/me', checkAuth, getMySongs);
-router.post('/song', checkAuth, saveSong);
+router.post('/song', checkAuth, checkSongsLimit, saveSong);
 router.delete('/song/id/:songId', checkAuth, deleteSong);
 
 module.exports = router;

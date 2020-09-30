@@ -2,10 +2,12 @@
 
 ## Current tasks
 
+* Limit scales (or songs) each user can save?
+* Show limits to user when signing in
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
-* Check scales/users/songs for duplicates when saving? Limit scales (or songs) each user can save? Unique names? Unique usernames? Unique other?
+* Check scales/users/songs for duplicates when saving? Unique names? Unique usernames? Unique other?
 * Send messages back from backend
 
 ## Bugs
@@ -134,3 +136,4 @@
 * Multiple alerts on screen? or just reset timeout and show newest?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
+* Automate created and updates posts for db documents

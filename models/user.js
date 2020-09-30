@@ -11,6 +11,14 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  maxSavedScales: {
+    type: Number,
+    default: 20,
+  },
+  maxSavedSongs: {
+    type: Number,
+    default: 20,
+  },
   name: {
     type: String,
     trim: true,
