@@ -5,7 +5,7 @@ import songTypes from '../song.types';
 const uiReducer = (state = uiState, { type, payload }) => {
   switch (type) {
     case songTypes.DELETE_ERROR:
-      return { ...state, error: payload, isDeleting: false };
+      return { ...state, isDeleting: false };
     case songTypes.DELETE_STARTED:
       return { ...state, isDeleting: true };
     case songTypes.DELETE_SUCCESSFUL:
@@ -17,7 +17,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
       };
 
     case songTypes.FETCH_ERROR:
-      return { ...state, error: payload, isFetching: false };
+      return { ...state, isFetching: false };
     case songTypes.FETCH_NOT_FOUND:
       return { ...state, songId: null, isFetching: false };
     case songTypes.FETCH_STARTED:
@@ -26,7 +26,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
       return { ...state, ...payload.ui, isFetching: false };
 
     case songTypes.SAVE_ERROR:
-      return { ...state, error: payload, isSaving: false };
+      return { ...state, isSaving: false };
     case songTypes.SAVE_STARTED:
       return { ...state, isSaving: true };
     case songTypes.SAVE_SUCCESSFUL:

@@ -23,7 +23,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
     case scaleTypes.SAVE_ERROR:
     case songTypes.SAVE_ERROR:
     case userTypes.SAVE_ERROR:
-      return { ...state, msg: 'Request failed' };
+      return { ...state, msg: payload.alert || 'Request failed' };
 
     case scaleTypes.FETCH_NOT_FOUND:
     case songTypes.FETCH_NOT_FOUND:

@@ -2,13 +2,12 @@
 
 ## Current tasks
 
-* Handle denied save requests on client
+* Send messages back from backend - use saveSong for reference
 * Add limit to scales too
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Check scales/users/songs for duplicates when saving? Unique names? Unique usernames? Unique other?
-* Send messages back from backend
 
 ## Bugs
 
@@ -58,7 +57,7 @@
 
 * Printing, format?
 * Save to .pdf?
-* Help leads to facebook thread? Support this page? Discord?
+* Help leads to facebook thread? Support this page? Discord? Help displays save limit?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Alerts when signing in or out, show alert on load if user has active session?
@@ -136,7 +135,8 @@
 * Songwriter bars alignment should change with big songs
 * Sort chords by type?
 * Interval colors for compound intervals?
-* Multiple alerts on screen? or just reset timeout and show newest?
+* Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
 * Automate created and updates posts for db documents
+* Increase max save limits for older accounts

@@ -16,10 +16,8 @@ exports.checkSongsLimit = (req, res, next) => {
       if (error) return res.status(400).json();
 
       if (numSavedSongs >= maxSavedSongs)
-        return res.status(403).json({
-          message:
-            'Max number of saved songs reached, please delete a song before trying to save again',
-        });
+        return res.status(403).json(`Song limit reached. 
+          You are only allowed to save ${maxSavedSongs} songs`);
 
       next();
     });
