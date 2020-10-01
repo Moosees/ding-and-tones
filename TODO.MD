@@ -2,8 +2,8 @@
 
 ## Current tasks
 
-* Limit scales (or songs) each user can save?
-* Show limits to user when signing in
+* Handle denied save requests on client
+* Add limit to scales too
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
@@ -46,6 +46,8 @@
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Nicer shadows
+* Svgs instead of iconfont?
+* Owner info and C etc.
 
 ## Drum
 
@@ -60,6 +62,7 @@
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Alerts when signing in or out, show alert on load if user has active session?
+* Show songs/scales saved and max to user when signing in?
 
 ## Chords
 
@@ -126,12 +129,12 @@
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.
 * More drum alternatives?
-* Percussive hits on handpan
+* Percussive hits on handpan - normalize handpan samples
+* Higher quality samples
 * Link drum and songwriter - animations?
 * Custom line-break bars for users to add to songwriter? Only for printing?
 * Songwriter bars alignment should change with big songs
 * Sort chords by type?
-* Svgs instead of iconfont?
 * Interval colors for compound intervals?
 * Multiple alerts on screen? or just reset timeout and show newest?
 * Triplets, flams, etc. Value 9, 17 for triplets?
