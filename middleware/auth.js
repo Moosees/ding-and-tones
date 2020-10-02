@@ -5,11 +5,11 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 exports.checkAuth = async (req, res, next) => {
   const authHeader = req.get('authorization');
-  if (!authHeader) return res.status(403).json({ error: 'No authorization' });
+  if (!authHeader) return res.status(403).json({ msg: 'No authorization' });
 
   const idToken = authHeader.split(' ')[1];
   if (idToken === 'undefined')
-    return res.status(403).json({ error: 'Not signed in' });
+    return res.status(403).json({ msg: 'No authorization' });
 
   const ticket = await client.verifyIdToken({
     idToken,
@@ -19,8 +19,7 @@ exports.checkAuth = async (req, res, next) => {
   const { sub } = ticket.getPayload();
 
   User.findOne({ sub }, '_id', (error, user) => {
-    if (error || !user)
-      return res.status(403).json({ error: 'User not found' });
+    if (error || !user) return res.status(403).json({ msg: 'User not found' });
 
     req.userId = user._id;
     next();
@@ -29,7 +28,7 @@ exports.checkAuth = async (req, res, next) => {
 
 exports.getUserId = async (req, res, next) => {
   const authHeader = req.get('authorization');
-  if (!authHeader) return res.status(403).json({ error: 'No authorization' });
+  if (!authHeader) return res.status(403).json({ msg: 'No authorization' });
 
   const idToken = authHeader.split(' ')[1];
   if (idToken !== 'undefined') {
@@ -41,7 +40,7 @@ exports.getUserId = async (req, res, next) => {
     const { sub } = ticket.getPayload();
 
     await User.findOne({ sub }, '_id', (error, user) => {
-      if (error) console.error(error);
+      if (error) return res.status(400).json();
       if (user) req.userId = user._id;
     });
   }

@@ -22,7 +22,6 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
         });
     } catch (error) {
       handleSignOut();
-      console.error(error);
     }
   };
 

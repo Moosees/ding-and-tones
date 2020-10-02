@@ -39,20 +39,24 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
       return;
   }
 
-  axios.get(query).then((res) => {
-    if (res.status === 200)
-      return dispatch({
-        type: searchTypes.SEARCH_SUCCESSFUL,
-        payload: { ...res.data, ...extraPayload },
+  axios
+    .get(query)
+    .then((res) => {
+      if (res.status === 200)
+        return dispatch({
+          type: searchTypes.SEARCH_SUCCESSFUL,
+          payload: { ...res.data, ...extraPayload },
+        });
+      if (res.status === 204)
+        dispatch({
+          type: searchTypes.SEARCH_NOT_FOUND,
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch({
+        type: searchTypes.SEARCH_ERROR,
+        payload: { alert: error.response.data.msg || 'Search failed' },
       });
-    if (res.status === 204)
-      return dispatch({
-        type: searchTypes.SEARCH_NOT_FOUND,
-        payload: { alert: 'Not found' },
-      });
-    dispatch({
-      type: searchTypes.SEARCH_ERROR,
-      payload: res.status,
     });
-  });
 };

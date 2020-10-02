@@ -24,7 +24,6 @@ export const notesState = {
 };
 
 export const uiState = {
-  error: '',
   isDeleting: false,
   isFetching: false,
   isOwner: false,

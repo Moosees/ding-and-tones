@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Send messages back from backend - use saveSong for reference
-* Add limit to scales too
+* Add save limit to scales too
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
@@ -12,23 +11,22 @@
 ## Bugs
 
 * Use touch compatible drag and drop
+* Search results loading component flicker
 
-## Minor Bugs
-
-* "not found" alert if initial songs/scales fetch returns empty array, should not happen in real life
-* Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
-* Res status 400 might not be accurate for some responses, same for 204?
-* Load song button can be seen through table header
-* Logging in should check scales/songs if you are owner? - and it looks like it does already
-* Redirect between chords and drum when resizing? Use same route for all screens?
-
-## Inputs and useValidate
+## Inputs and useValidate (bugs)
 
 * Scale name edit remembers input even if scales changes
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
 * Why are buttons disabled on songwriter mount? They are waiting for text validation, minor issue for now
 * Check text inputs for bad words?
 * Errors display on inputs
+
+## Minor Bugs
+
+* Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
+* Load song button can be seen through table header
+* Logging in should check scales/songs if you are owner? - and it looks like it does already
+* Redirect between chords and drum when resizing? Use same route for all screens?
 
 ## Design
 

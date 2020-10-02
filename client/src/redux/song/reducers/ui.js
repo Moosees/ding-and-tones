@@ -18,8 +18,6 @@ const uiReducer = (state = uiState, { type, payload }) => {
 
     case songTypes.FETCH_ERROR:
       return { ...state, isFetching: false };
-    case songTypes.FETCH_NOT_FOUND:
-      return { ...state, songId: null, isFetching: false };
     case songTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
     case songTypes.FETCH_SUCCESSFUL:

@@ -18,7 +18,7 @@ exports.saveUser = (req, res) => {
 
 exports.signIn = (req, res) => {
   const authHeader = req.get('authorization');
-  if (!authHeader) return res.status(403).json({ error: 'Not authorized' });
+  if (!authHeader) return res.status(403).json({ msg: 'No authorization' });
 
   const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
   const idToken = authHeader.split(' ')[1];

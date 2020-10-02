@@ -6,7 +6,7 @@ import scaleTypes from '../scale.types';
 const uiReducer = (state = uiState, { type, payload }) => {
   switch (type) {
     case scaleTypes.DELETE_ERROR:
-      return { ...state, error: payload, isDeleting: false };
+      return { ...state, isDeleting: false };
     case scaleTypes.DELETE_STARTED:
       return { ...state, isDeleting: true };
     case scaleTypes.DELETE_SUCCESSFUL:
@@ -18,9 +18,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
       };
 
     case scaleTypes.FETCH_ERROR:
-      return { ...state, error: payload, isFetching: false };
-    case scaleTypes.FETCH_NOT_FOUND:
-      return { ...state, scaleId: null, isFetching: false };
+      return { ...state, isFetching: false };
     case scaleTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
     case scaleTypes.FETCH_SUCCESSFUL:
@@ -35,7 +33,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
       return { ...state, isOwner: payload.isOwner, scaleId: payload.scaleId };
 
     case scaleTypes.SAVE_ERROR:
-      return { ...state, error: payload, isSaving: false };
+      return { ...state, isSaving: false };
     case scaleTypes.SAVE_STARTED:
       return { ...state, isSaving: true };
     case scaleTypes.SAVE_SUCCESSFUL:

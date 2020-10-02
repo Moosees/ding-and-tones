@@ -31,13 +31,13 @@ exports.getScaleById = (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
 
-  if (!isValidObjectId(scaleId)) return res.status(204).json();
+  if (!isValidObjectId(scaleId)) return res.status(404).json();
 
   Scale.findById(scaleId)
     .select('_id info notes author')
     .exec((error, scale) => {
       if (error) return res.status(400).json();
-      if (!scale) return res.status(204).json();
+      if (!scale) return res.status(404).json();
 
       const data = parseScaleResponse(scale, userId);
       res.status(200).json(data);

@@ -60,14 +60,14 @@ exports.getSongById = (req, res) => {
   const songId = req.params.songId;
   const userId = req.userId;
 
-  if (!isValidObjectId(songId)) return res.status(204).json();
+  if (!isValidObjectId(songId)) return res.status(404).json();
 
   Song.findById(songId)
     .populate('composer', '_id name')
     .select('_id arrangement bars beats info scale')
     .exec((error, song) => {
       if (error) return res.status(400).json();
-      if (!song) return res.status(204).json();
+      if (!song) return res.status(404).json();
 
       const data = parseGetResponse(song, userId);
       res.status(200).json(data);

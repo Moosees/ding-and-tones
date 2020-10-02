@@ -19,38 +19,47 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
 export const deleteScaleById = (scaleId) => (dispatch) => {
   dispatch({ type: scaleTypes.DELETE_STARTED });
 
-  axios.delete(`/scale/id/${scaleId}`).then((res) => {
-    if (res.status === 200)
-      return dispatch({
-        type: scaleTypes.DELETE_SUCCESSFUL,
-        payload: {
-          scaleId: res.data._id,
-          alert: `"${res.data.info.rootName} ${res.data.info.name}" deleted`,
-        },
+  axios
+    .delete(`/scale/id/${scaleId}`)
+    .then((res) => {
+      if (res.status === 200)
+        dispatch({
+          type: scaleTypes.DELETE_SUCCESSFUL,
+          payload: {
+            scaleId: res.data._id,
+            alert: `"${res.data.info.rootName} ${res.data.info.name}" deleted`,
+          },
+        });
+    })
+    .catch((error) => {
+      dispatch({
+        type: scaleTypes.DELETE_ERROR,
+        payload: { alert: error.response.data.msg || 'Delete failed' },
       });
-    dispatch({ type: scaleTypes.DELETE_ERROR, payload: res.status });
-  });
+    });
 };
 
 export const getScaleById = (scaleId) => (dispatch) => {
   dispatch({ type: scaleTypes.FETCH_STARTED });
 
-  axios.get(`/scale/id/${scaleId}`).then((res) => {
-    if (res.status === 200)
-      return dispatch({
-        type: scaleTypes.FETCH_SUCCESSFUL,
-        payload: {
-          ...res.data,
-          alert: `"${res.data.info.rootName} ${res.data.info.name}" loaded`,
-        },
+  axios
+    .get(`/scale/id/${scaleId}`)
+    .then((res) => {
+      if (res.status === 200)
+        dispatch({
+          type: scaleTypes.FETCH_SUCCESSFUL,
+          payload: {
+            ...res.data,
+            alert: `"${res.data.info.rootName} ${res.data.info.name}" loaded`,
+          },
+        });
+    })
+    .catch((error) => {
+      dispatch({
+        type: scaleTypes.FETCH_ERROR,
+        payload: { alert: error.response.data.msg || 'Scale not found' },
       });
-    if (res.status === 204)
-      return dispatch({
-        type: scaleTypes.FETCH_NOT_FOUND,
-        payload: { alert: 'Scale not found' },
-      });
-    dispatch({ type: scaleTypes.FETCH_ERROR, payload: res.status });
-  });
+    });
 };
 
 export const loadScale = (scale) => ({
@@ -81,7 +90,7 @@ export const saveScale = () => (dispatch, getState) => {
     .post('/scale', { info, notes: parseNotesForSaveScale(notes) })
     .then((res) => {
       if (res.status === 200) {
-        return dispatch({
+        dispatch({
           type: scaleTypes.SAVE_SUCCESSFUL,
           payload: {
             ...res.data,
@@ -89,7 +98,12 @@ export const saveScale = () => (dispatch, getState) => {
           },
         });
       }
-      dispatch({ type: scaleTypes.SAVE_ERROR, payload: res.status });
+    })
+    .catch((error) => {
+      dispatch({
+        type: scaleTypes.SAVE_ERROR,
+        payload: { alert: error.response.data.msg || 'Save failed' },
+      });
     });
 };
 

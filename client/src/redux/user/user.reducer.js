@@ -2,7 +2,6 @@ import userTypes from './user.types';
 
 const INITIAL_STATE = {
   accountOpen: false,
-  error: '',
   name: '',
   isSaving: false,
   isSignedIn: false,
@@ -12,7 +11,7 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case userTypes.SAVE_ERROR:
-      return { ...state, error: payload, isSaving: false };
+      return { ...state, isSaving: false };
     case userTypes.SAVE_STARTED:
       return { ...state, isSaving: true };
     case userTypes.SAVE_SUCCESSFUL:
