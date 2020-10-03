@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   maxSavedScales: {
     type: Number,
-    default: 20,
+    default: 10,
   },
   maxSavedSongs: {
     type: Number,

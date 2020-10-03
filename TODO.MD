@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Add save limit to scales too
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?

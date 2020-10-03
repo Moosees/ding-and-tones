@@ -8,6 +8,7 @@ const {
   getMyScales,
 } = require('../controllers/scale');
 const { checkAuth, getUserId } = require('../middleware/auth');
+const { checkNumVsMaxScales } = require('../middleware/user');
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ router.get('/scale/id/:scaleId', getUserId, getScaleById);
 // Authorized only
 // router.get('/scale/favorites')
 router.get('/scale/me', checkAuth, getMyScales);
-router.post('/scale', checkAuth, saveScale);
+router.post('/scale', checkAuth, checkNumVsMaxScales, saveScale);
 router.delete('/scale/id/:scaleId', checkAuth, deleteScale);
 
 module.exports = router;

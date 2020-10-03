@@ -1,26 +1,33 @@
 const User = require('../models/user');
 const ObjectId = require('mongoose').Types.ObjectId;
 
-exports.checkSongsLimit = (req, res, next) => {
-  if (req.body.songId) return next();
+const checkNumVsMaxSavesFor = (type) => {
+  const projection = {
+    num: { $size: `$${type.toLowerCase()}` },
+    max: `$maxSaved${type}`,
+  };
 
-  User.aggregate()
-    .match({ _id: ObjectId(req.userId) })
-    .project({
-      numSavedSongs: { $size: '$songs' },
-      maxSavedSongs: '$maxSavedSongs',
-    })
-    .exec((error, user) => {
-      const { numSavedSongs, maxSavedSongs } = user[0];
+  return (req, res, next) => {
+    if (req.body.songId) return next();
 
-      if (error) return res.status(400).json();
+    User.aggregate()
+      .match({ _id: ObjectId(req.userId) })
+      .project(projection)
+      .exec((error, user) => {
+        const { num, max } = user[0];
 
-      if (numSavedSongs >= maxSavedSongs)
-        return res.status(403).json({
-          msg: `Song limit reached. 
-          You are only allowed to save ${maxSavedSongs} songs`,
-        });
+        if (error) return res.status(400).json();
 
-      next();
-    });
+        if (num >= max)
+          return res.status(403).json({
+            msg: `${type} limit reached. 
+          You are only allowed to save ${max} ${type.toLowerCase()}`,
+          });
+
+        next();
+      });
+  };
 };
+
+exports.checkNumVsMaxScales = checkNumVsMaxSavesFor('Scales');
+exports.checkNumVsMaxSongs = checkNumVsMaxSavesFor('Songs');
