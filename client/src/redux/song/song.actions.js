@@ -30,7 +30,9 @@ export const deleteSongById = (songId) => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: songTypes.DELETE_ERROR,
-        payload: { alert: error.response.data.msg || 'Delete failed' },
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Delete failed',
+        },
       });
     });
 };
@@ -57,7 +59,9 @@ export const getSongById = (songId) => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: songTypes.FETCH_ERROR,
-        payload: { alert: error.response.data.msg || 'Song not found' },
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Song not found',
+        },
       });
     });
 };
@@ -85,7 +89,9 @@ export const saveSong = ({ saveAs }) => (dispatch, getState) => {
     .catch((error) => {
       dispatch({
         type: songTypes.SAVE_ERROR,
-        payload: { alert: error.response.data.msg || 'Save failed' },
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Save failed',
+        },
       });
     });
 };

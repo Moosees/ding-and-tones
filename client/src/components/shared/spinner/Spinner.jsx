@@ -14,7 +14,7 @@ const spin = keyframes`
 const SpinDiv = styled.div`
   animation: ${spin} 1.5s linear infinite;
   border: 1px solid
-    ${({ spin, theme }) => (spin ? theme.colorBeat : 'transparent')};
+    ${({ isSpinning, theme }) => (isSpinning ? theme.colorBeat : 'transparent')};
   border-left-color: transparent;
   border-right-color: transparent;
   border-radius: 100%;
@@ -22,8 +22,8 @@ const SpinDiv = styled.div`
   width: 2rem;
 `;
 
-const Spinner = ({ spin }) => {
-  return <SpinDiv spin={spin} />;
+const Spinner = ({ isSpinning }) => {
+  return <SpinDiv isSpinning={isSpinning} />;
 };
 
 export default Spinner;

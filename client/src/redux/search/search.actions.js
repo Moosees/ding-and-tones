@@ -53,10 +53,11 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
         });
     })
     .catch((error) => {
-      console.log(error);
       dispatch({
         type: searchTypes.SEARCH_ERROR,
-        payload: { alert: error.response.data.msg || 'Search failed' },
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Search failed',
+        },
       });
     });
 };

@@ -27,7 +27,9 @@ export const saveUser = (newName) => (dispatch, getState) => {
       dispatch({
         type: userTypes.SAVE_ERROR,
         payload: {
-          alert: error.response.data.msg || 'Name could not be changed',
+          alert: error.response
+            ? error.response.data.msg
+            : 'Name could not be changed',
         },
       })
     );

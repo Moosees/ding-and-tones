@@ -34,7 +34,9 @@ export const deleteScaleById = (scaleId) => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: scaleTypes.DELETE_ERROR,
-        payload: { alert: error.response.data.msg || 'Delete failed' },
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Delete failed',
+        },
       });
     });
 };
@@ -57,7 +59,9 @@ export const getScaleById = (scaleId) => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: scaleTypes.FETCH_ERROR,
-        payload: { alert: error.response.data.msg || 'Scale not found' },
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Scale not found',
+        },
       });
     });
 };
@@ -102,7 +106,9 @@ export const saveScale = () => (dispatch, getState) => {
     .catch((error) => {
       dispatch({
         type: scaleTypes.SAVE_ERROR,
-        payload: { alert: error.response.data.msg || 'Save failed' },
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Save failed',
+        },
       });
     });
 };
