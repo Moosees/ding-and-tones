@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
 import BtnIcon from '../../shared/button/Icon';
-import Loading from '../../shared/loading/Loading';
 import Confirmation from '../../shared/popup/Confirmation';
 import {
   ScaleContainer,
@@ -63,11 +62,7 @@ const Results = ({
       );
     });
 
-  return isSearching ? (
-    <Loading />
-  ) : (
-    <ScaleList>{scales && getScales()}</ScaleList>
-  );
+  return <ScaleList>{scales && getScales()}</ScaleList>;
 };
 
 const mapStateToProps = ({ scale, search, user }) => ({

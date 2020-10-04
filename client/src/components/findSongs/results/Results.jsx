@@ -7,7 +7,6 @@ import { deleteSongById } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnIcon from '../../shared/button/Icon';
 import BtnPrimary from '../../shared/button/Primary';
-import Loading from '../../shared/loading/Loading';
 import Confirmation from '../../shared/popup/Confirmation';
 import ReactTable from './ReactTable';
 
@@ -88,9 +87,7 @@ const Results = ({
     []
   );
 
-  return isSearching ? (
-    <Loading />
-  ) : (
+  return (
     <ReactTable
       columns={columns}
       data={data}

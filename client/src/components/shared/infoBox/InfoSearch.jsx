@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
-import InfoBox from './InfoBox';
-import { TextInput } from './infoBox.styles';
+import Spinner from '../spinner/Spinner';
+import { InfoContainer, TextInput } from './infoBox.styles';
 
-const InfoSearch = ({ placeholder, searchOption, size, startSearch }) => {
+const InfoSearch = ({
+  isSearching,
+  placeholder,
+  searchOption,
+  size,
+  startSearch,
+}) => {
   const [value, setValue] = useState('');
 
   useEffect(() => {
@@ -16,7 +22,7 @@ const InfoSearch = ({ placeholder, searchOption, size, startSearch }) => {
   }, [searchOption, startSearch, value]);
 
   return (
-    <InfoBox>
+    <InfoContainer>
       <TextInput
         autoFocus
         onChange={(e) => setValue(e.target.value)}
@@ -24,8 +30,13 @@ const InfoSearch = ({ placeholder, searchOption, size, startSearch }) => {
         size={size}
         value={value}
       />
-    </InfoBox>
+      <Spinner spin={isSearching} />
+    </InfoContainer>
   );
 };
 
-export default connect(null, { startSearch })(InfoSearch);
+const mapStateToProps = ({ search }) => ({
+  isSearching: search.isSearching,
+});
+
+export default connect(mapStateToProps, { startSearch })(InfoSearch);

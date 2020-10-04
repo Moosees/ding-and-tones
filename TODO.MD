@@ -10,7 +10,6 @@
 ## Bugs
 
 * Use touch compatible drag and drop
-* Search results loading component flicker
 
 ## Inputs and useValidate (bugs)
 
@@ -34,7 +33,7 @@
 * Dropdowns open when clicking label (difficulty and new song popup)
 * User can tab select :active outside of popups
 * Style text inputs when :focus
-* Better Loading component
+* Better Loading component - big spinner?
 * Dynamic size for tonefields
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
