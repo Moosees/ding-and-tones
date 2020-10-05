@@ -104,7 +104,12 @@ exports.saveSong = (req, res) => {
   songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${songUpdate.scale.info.rootName.toLowerCase()} ${songUpdate.scale.info.name.toLowerCase()}`;
 
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
-    .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
+    .setOptions({
+      new: true,
+      upsert: true,
+      setDefaultsOnInsert: true,
+      runValidators: true,
+    })
     .populate('composer', '_id name')
     .select('_id scale.info info')
     .exec((error, song) => {

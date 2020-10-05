@@ -2,6 +2,10 @@
 
 ## Current tasks
 
+* Anonymous user switch in account
+* Anonymous in search results
+* Scale name validation (also in songs)
+* Validator errors from api to client
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?

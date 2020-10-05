@@ -2,7 +2,8 @@ import userTypes from './user.types';
 
 const INITIAL_STATE = {
   accountOpen: false,
-  name: '',
+  name: 'Anonymous',
+  isAnonymous: true,
   isSaving: false,
   isSignedIn: false,
   signInTried: false,

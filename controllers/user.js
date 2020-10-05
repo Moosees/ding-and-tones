@@ -7,7 +7,12 @@ exports.saveUser = (req, res) => {
   const updated = Date.now();
 
   User.findByIdAndUpdate(userId, { name, updated })
-    .setOptions({ new: true, upsert: true, setDefaultsOnInsert: true })
+    .setOptions({
+      new: true,
+      upsert: true,
+      setDefaultsOnInsert: true,
+      runValidators: true,
+    })
     .select('name')
     .exec((error, user) => {
       if (error || !user) return res.status(400).json();
@@ -32,13 +37,13 @@ exports.signIn = (req, res) => {
       const { email, sub } = ticket.getPayload();
 
       User.findOne({ sub })
-        .select('-_id name')
+        .select('-_id anonymous name')
         .exec((error, user) => {
           if (error) return res.status(400).json();
           if (user) return res.status(200).json(user);
 
-          new User({ email, name: 'Anonymous', sub }).save((error, user) =>
-            res.status(200).json({ name: user.name, newUser: true })
+          new User({ email, sub }).save((error, user) =>
+            res.status(200).json({ anonymous: user.anonymous, newUser: true })
           );
         });
     })

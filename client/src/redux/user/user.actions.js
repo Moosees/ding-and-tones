@@ -35,9 +35,9 @@ export const saveUser = (newName) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (name, isSignedIn, accountOpen) => ({
+export const signIn = (name, isSignedIn, isAnonymous, isNewUser) => ({
   type: userTypes.SIGN_IN,
-  payload: { name, isSignedIn, accountOpen },
+  payload: { name, isSignedIn, isAnonymous, accountOpen: isNewUser },
 });
 
 export const signOut = () => ({

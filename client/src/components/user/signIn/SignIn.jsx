@@ -18,7 +18,12 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
         })
         .then((res) => {
           if (res.status === 200)
-            signIn(res.data.name, auth.isSignedIn(), res.data.newUser);
+            signIn(
+              res.data.anonymous ? 'Anonymous' : res.data.name,
+              auth.isSignedIn(),
+              res.data.anonymous,
+              res.data.newUser
+            );
         });
     } catch (error) {
       handleSignOut();
