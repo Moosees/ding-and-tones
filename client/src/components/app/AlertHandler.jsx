@@ -10,7 +10,7 @@ const AlertContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBg};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-radius: 20px;
-  bottom: 5rem;
+  bottom: 15vh;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   display: flex;
   left: 50%;
@@ -18,6 +18,7 @@ const AlertContainer = styled.div`
   transform: translateX(-50%);
   padding: 1rem;
   position: absolute;
+  z-index: 9999;
 
   ${({ theme }) => theme.mqMedium`
     bottom: 3rem;

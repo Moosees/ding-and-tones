@@ -25,8 +25,6 @@
 * Load song button can be seen through table header
 * Logging in should check scales/songs if you are owner? - and it looks like it does already
 * Redirect between chords and drum when resizing? Use same route for all screens?
-* Account page can be opened even if not logged in
-* Alerts show under popup windows (account page)
 
 ## Design
 
