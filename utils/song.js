@@ -4,7 +4,7 @@ exports.parseGetResponse = (songObject, userId) => {
   return {
     isOwner: userId && composer ? userId.equals(composer._id) : false,
     songId: _id,
-    composer: composer ? composer.name : 'Anonymous',
+    composer: composer && !composer.anonymous ? composer.name : 'Anonymous',
     arrangement,
     bars,
     beats,
@@ -21,12 +21,17 @@ exports.parseSearchResponse = (songObject, userId) => {
     info: { title, metre, difficulty },
   } = songObject;
 
+  const isOwner = userId && composer ? userId.equals(composer._id) : false;
+
   return {
-    isOwner: userId && composer ? userId.equals(composer._id) : false,
+    isOwner,
     songId: _id,
     scaleLabel: scale.info.label,
     scaleName: `${scale.info.rootName} ${scale.info.name}`,
-    composer: composer ? composer.name : 'Anonymous',
+    composer:
+      isOwner || (composer && !composer.anonymous)
+        ? composer.name
+        : 'Anonymous',
     title,
     metre,
     difficulty,

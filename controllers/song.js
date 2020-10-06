@@ -47,7 +47,7 @@ exports.getMySongs = (req, res) => {
             _id: song._id,
             scale: song.scale,
             info: song.info,
-            composer: { _id: user._id, name: user.name },
+            composer: { _id: user._id, anonymous: false, name: user.name },
           },
           userId
         )
@@ -63,7 +63,7 @@ exports.getSongById = (req, res) => {
   if (!isValidObjectId(songId)) return res.status(404).json();
 
   Song.findById(songId)
-    .populate('composer', '_id name')
+    .populate('composer', '_id anonymous name')
     .select('_id arrangement bars beats info scale')
     .exec((error, song) => {
       if (error) return res.status(400).json();
@@ -78,7 +78,7 @@ exports.getSongs = (req, res) => {
   const userId = req.userId;
 
   Song.find()
-    .populate('composer', '_id name')
+    .populate('composer', '_id anonymous name')
     .select('_id scale.info info')
     .limit(20)
     .sort({ updated: -1 })
@@ -110,7 +110,7 @@ exports.saveSong = (req, res) => {
       setDefaultsOnInsert: true,
       runValidators: true,
     })
-    .populate('composer', '_id name')
+    .populate('composer', '_id anonymous name')
     .select('_id scale.info info')
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
@@ -132,7 +132,7 @@ exports.songSearch = (req, res) => {
   const userId = req.userId;
 
   Song.find({ queryString: { $regex: req.params.searchTerm.toLowerCase() } })
-    .populate('composer', '_id name')
+    .populate('composer', '_id anonymous name')
     .select('_id scale.info info')
     .limit(20)
     .sort({ 'info.title': 1 })
