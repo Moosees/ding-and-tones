@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Anonymous user switch in account
+* Anonymous user switch in account - handleSave
 * Scale name validation (also in songs)
 * Validator errors from api to client
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!

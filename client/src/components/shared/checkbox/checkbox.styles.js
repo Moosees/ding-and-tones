@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 export const CheckboxLabel = styled.label`
   cursor: pointer;
-  margin-bottom: 2px;
-  padding: 0.5rem 0.5rem 0.5rem 3rem;
+  padding: 0.2rem;
+  padding-left: ${({ reverse }) => (reverse ? '0.2rem' : '2.2rem')};
+  padding-right: ${({ reverse }) => (reverse ? '2.2rem' : '0.2rem')};
   position: relative;
+  width: 100%;
 
   & input {
     height: 0;
@@ -18,46 +20,45 @@ export const CheckboxLabel = styled.label`
   }
 
   &:hover input ~ span {
-    background-color: ${({ theme }) => theme.colorBtnHeavy};
-  }
+    transform: scale(1.15);
 
-  &:hover input:checked ~ span::after {
-    background-color: ${({ theme }) => theme.colorBtnConfirm};
-  }
-
-  ${({ theme }) => theme.mqSmaller`
-    margin-bottom: 1px;
+    ${({ theme }) => theme.mqMedium`
+    transform: unset;
+    }
   `}
 `;
 
 export const CheckboxInput = styled.span`
-  background-color: ${({ theme }) => theme.colorBtnLight};
+  background-color: ${({ theme }) => theme.colorBtnClear};
   border-radius: 100px;
-  height: 2.5rem;
-  left: 0;
+  height: 2rem;
+  left: ${({ reverse }) => (reverse ? 'unset' : '0')};
+  right: ${({ reverse }) => (reverse ? '0' : 'unset')};
   position: absolute;
-  top: 3px;
-  width: 2.5rem;
+  top: 0;
+  width: 2rem;
 
   &::after {
+    box-sizing: border-box;
     background-color: ${({ theme }) => theme.colorCheckbox};
-    border: ${({ theme }) => theme.borderLight};
     border-radius: 100px;
     content: '';
     display: none;
-    height: 2.5rem;
+    height: 2rem;
     position: absolute;
-    width: 2.5rem;
+    top: 0;
+    left: 0;
+    width: 2rem;
   }
 
-  ${({ theme }) => theme.mqSmaller`
-    height: 2rem;
+  /* ${({ theme }) => theme.mqSmaller`
+    height: 1.8rem;
     top: 2px;
-    width: 2rem;
+    width: 1.8rem;
 
     &::after {
-      height: 2rem;
-      width: 2rem;
-    }
+      height: 1.8rem;
+      width: 1.8rem;
+    } */
   `}
 `;

@@ -50,6 +50,7 @@ const Filter = ({
       label={chord.name}
       isSelected={chord.isSelected}
       handleChange={(e) => toggleChordIsSelected(e.target.name, scale)}
+      style={{ marginBottom: '0.5rem' }}
     />
   ));
 

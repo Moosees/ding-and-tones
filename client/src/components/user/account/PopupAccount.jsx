@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
 import { saveUser, toggleAccount } from '../../../redux/user/user.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
+import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoBox from '../../shared/infoBox/InfoBox';
 import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
 import Popup from '../../shared/popup/Popup';
 
-const PopupAccount = ({ clearNewUser, name, toggleAccount, saveUser }) => {
+const PopupAccount = ({
+  clearNewUser,
+  isAnonymous,
+  name,
+  toggleAccount,
+  saveUser,
+}) => {
+  const [anon, setAnon] = useState(isAnonymous);
+
   const [username, setUsername, errors, usernameValid] = useValidate(
     'username',
     name
   );
+
+  const handleAnon = (e) => {
+    setAnon(e.target.anon);
+  };
 
   const handleSave = () => {
     if (usernameValid) saveUser(username);
@@ -20,6 +33,15 @@ const PopupAccount = ({ clearNewUser, name, toggleAccount, saveUser }) => {
 
   return (
     <Popup header="Account" onClose={toggleAccount}>
+      <InfoBox>
+        <Checkbox
+          reverse
+          label="Hide name in searches"
+          checked={anon}
+          onChange={handleAnon}
+          style={{ marginRight: '0.5rem' }}
+        />
+      </InfoBox>
       <InfoBox>
         <InfoTextEdit
           editOnly
@@ -40,6 +62,7 @@ const PopupAccount = ({ clearNewUser, name, toggleAccount, saveUser }) => {
 };
 
 const mapStateToProps = ({ user }) => ({
+  isAnonymous: user.isAnonymous,
   name: user.name,
 });
 

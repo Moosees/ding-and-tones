@@ -1,16 +1,16 @@
 import React from 'react';
 import { CheckboxInput, CheckboxLabel } from './checkbox.styles';
 
-const Checkbox = ({ label, id, isSelected, handleChange }) => {
+const Checkbox = ({ handleChange, id, isSelected, label, reverse, style }) => {
   return (
-    <CheckboxLabel>
+    <CheckboxLabel reverse={reverse} style={style}>
       <input
         type="checkbox"
         name={id}
         checked={isSelected}
         onChange={handleChange}
       />
-      <CheckboxInput />
+      <CheckboxInput reverse={reverse} />
       {label}
     </CheckboxLabel>
   );
