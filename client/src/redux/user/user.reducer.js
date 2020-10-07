@@ -20,6 +20,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         isSaving: false,
         accountOpen: false,
+        isAnonymous: payload.isAnonymous,
         name: payload.name,
       };
 

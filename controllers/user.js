@@ -3,21 +3,21 @@ const { OAuth2Client } = require('google-auth-library');
 
 exports.saveUser = (req, res) => {
   const userId = req.userId;
-  const { name } = req.body;
+  const { anonymous, name } = req.body;
   const updated = Date.now();
 
-  User.findByIdAndUpdate(userId, { name, updated })
+  User.findByIdAndUpdate(userId, { anonymous, name, updated })
     .setOptions({
       new: true,
       upsert: true,
       setDefaultsOnInsert: true,
       runValidators: true,
     })
-    .select('name')
+    .select('anonymous name')
     .exec((error, user) => {
       if (error || !user) return res.status(400).json();
 
-      res.status(200).json({ name: user.name });
+      res.status(200).json({ isAnonymous: user.anonymous, name: user.name });
     });
 };
 

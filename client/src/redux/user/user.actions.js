@@ -1,24 +1,25 @@
 import axios from 'axios';
 import userTypes from './user.types';
 
-export const saveUser = (newName) => (dispatch, getState) => {
+export const saveUser = (newName, newAnon) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
 
   const {
-    user: { name },
+    user: { name, isAnonymous },
   } = getState();
 
-  if (name === newName) return dispatch({ type: userTypes.TOGGLE_ACCOUNT });
+  if (name === newName && isAnonymous === newAnon)
+    return dispatch({ type: userTypes.TOGGLE_ACCOUNT });
 
   return axios
-    .post('/user', { name: newName })
+    .post('/user', { name: newName, anonymous: newAnon })
     .then((res) => {
       if (res.status === 200) {
         dispatch({
           type: userTypes.SAVE_SUCCESSFUL,
           payload: {
             ...res.data,
-            alert: 'Username changed successfully',
+            alert: 'Account updated successfully',
           },
         });
       }
@@ -29,7 +30,7 @@ export const saveUser = (newName) => (dispatch, getState) => {
         payload: {
           alert: error.response
             ? error.response.data.msg
-            : 'Name could not be changed',
+            : 'Account could not be updated',
         },
       })
     );

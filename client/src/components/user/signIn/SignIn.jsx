@@ -19,7 +19,7 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
         .then((res) => {
           if (res.status === 200)
             signIn(
-              res.data.anonymous ? 'Anonymous' : res.data.name,
+              res.data.name,
               auth.isSignedIn(),
               res.data.anonymous,
               res.data.newUser

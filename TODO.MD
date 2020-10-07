@@ -2,14 +2,18 @@
 
 ## Current tasks
 
-* Anonymous user switch in account - handleSave
+* Validator errors from api to client (user name duplicate)
 * Scale name validation (also in songs)
-* Validator errors from api to client
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Beat Dropdown text and anchor?
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Check scales/users/songs for duplicates when saving? Unique names? Unique usernames? Unique other?
 * Users own songs are highlighted in search results? Or skipped?
+* Remove forced style props (on checkboxes)?
+
+* Style text inputs when :focus
+* Style text inputs on popups and popups in general
+* Always show placeholder for editOnly inputs?
 
 ## Bugs
 
@@ -36,11 +40,8 @@
 * New buttons for loading songs
 * Dropdowns open when clicking label (difficulty and new song popup)
 * User can tab select :active outside of popups
-* Style text inputs when :focus
 * Better Loading component - big spinner?
 * Dynamic size for tonefields
-* Style text inputs on popups and popups in general
-* Always show placeholder for editOnly inputs?
 * Divider line css DRY! Container mix-ins
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?

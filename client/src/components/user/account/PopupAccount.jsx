@@ -23,12 +23,8 @@ const PopupAccount = ({
     name
   );
 
-  const handleAnon = (e) => {
-    setAnon(e.target.anon);
-  };
-
   const handleSave = () => {
-    if (usernameValid) saveUser(username);
+    if (usernameValid) saveUser(username, anon);
   };
 
   return (
@@ -37,8 +33,9 @@ const PopupAccount = ({
         <Checkbox
           reverse
           label="Hide name in searches"
+          name="anon"
           checked={anon}
-          onChange={handleAnon}
+          onChange={() => setAnon(!anon)}
           style={{ marginRight: '0.5rem' }}
         />
       </InfoBox>
