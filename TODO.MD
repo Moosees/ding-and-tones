@@ -2,11 +2,11 @@
 
 ## Current tasks
 
-* Scale name validation (length) (also in songs)
 * code 200 and msg for save limit reached (like on user controller)
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Users own songs are highlighted in search results? Or skipped?
 * Remove forced style props (on checkboxes)?
+* Only user tongue drum at launch?
 
 * Style text inputs when :focus
 * Style text inputs on popups and popups in general
@@ -27,6 +27,7 @@
 
 ## Bugs
 
+* Loading a song from another composer then saving that song loads first song again
 * Use touch compatible drag and drop
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * Load song button can be seen through table header

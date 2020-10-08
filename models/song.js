@@ -65,6 +65,8 @@ const songSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true,
+        minlength: 4,
+        maxlength: 20,
       },
       rootName: {
         type: String,
