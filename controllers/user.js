@@ -15,7 +15,9 @@ exports.saveUser = (req, res) => {
     })
     .select('anonymous name')
     .exec((error, user) => {
-      if (error || !user) return res.status(400).json();
+      if (error && error.code === 11000)
+        return res.status(200).json({ msg: 'Name is already in use' });
+      if (!user || error) return res.status(400).json();
 
       res.status(200).json({ isAnonymous: user.anonymous, name: user.name });
     });
@@ -42,8 +44,18 @@ exports.signIn = (req, res) => {
           if (error) return res.status(400).json();
           if (user) return res.status(200).json(user);
 
-          new User({ email, sub }).save((error, user) =>
-            res.status(200).json({ anonymous: user.anonymous, newUser: true })
+          new User({
+            email,
+            sub,
+            name: email.split('@')[0],
+          }).save((error, user) =>
+            res
+              .status(200)
+              .json({
+                anonymous: user.anonymous,
+                name: user.name,
+                newUser: true,
+              })
           );
         });
     })

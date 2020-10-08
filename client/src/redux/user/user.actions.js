@@ -15,6 +15,12 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     .post('/user', { name: newName, anonymous: newAnon })
     .then((res) => {
       if (res.status === 200) {
+        if (res.data.msg)
+          return dispatch({
+            type: userTypes.SAVE_ERROR,
+            payload: { alert: res.data.msg },
+          });
+
         dispatch({
           type: userTypes.SAVE_SUCCESSFUL,
           payload: {

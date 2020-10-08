@@ -2,33 +2,32 @@
 
 ## Current tasks
 
-* Validator errors from api to client (user name duplicate)
-* Scale name validation (also in songs)
+* Scale name validation (length) (also in songs)
+* code 200 and msg for save limit reached (like on user controller)
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
-* Beat Dropdown text and anchor?
-* Saving stuff needs minimal conditions? At least one bar? Max x bars?
-* Check scales/users/songs for duplicates when saving? Unique names? Unique usernames? Unique other?
 * Users own songs are highlighted in search results? Or skipped?
 * Remove forced style props (on checkboxes)?
 
 * Style text inputs when :focus
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
-
-## Bugs
-
-* Use touch compatible drag and drop
+* Nicer shadows
+* Owner info and C etc.
+* Beat Dropdown text and anchor?
+* Distinct confirm and cancel buttons
 
 ## Inputs and useValidate (bugs)
 
 * Scale name edit remembers input even if scales changes
 * Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
+* Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Why are buttons disabled on songwriter mount? They are waiting for text validation, minor issue for now
 * Check text inputs for bad words?
 * Errors display on inputs
 
-## Minor Bugs
+## Bugs
 
+* Use touch compatible drag and drop
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * Load song button can be seen through table header
 * Logging in should check scales/songs if you are owner? - and it looks like it does already
@@ -36,18 +35,15 @@
 
 ## Design
 
-* Distinct confirm and cancel buttons
 * New buttons for loading songs
 * Dropdowns open when clicking label (difficulty and new song popup)
 * User can tab select :active outside of popups
-* Better Loading component - big spinner?
+* Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Divider line css DRY! Container mix-ins
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
-* Nicer shadows
 * Svgs instead of iconfont?
-* Owner info and C etc.
 
 ## Drum
 
