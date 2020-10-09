@@ -19,7 +19,7 @@ const checkNumVsMaxSavesFor = (type) => {
         if (error) return res.status(400).json();
 
         if (num >= max)
-          return res.status(403).json({
+          return res.status(200).json({
             msg: `${type} limit reached. 
           You are only allowed to save ${max} ${type.toLowerCase()}`,
           });

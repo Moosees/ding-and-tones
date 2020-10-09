@@ -80,11 +80,20 @@ export const saveSong = ({ saveAs }) => (dispatch, getState) => {
   axios
     .post('/song', body)
     .then((res) => {
-      if (res.status === 200)
+      if (res.status === 200) {
+        if (res.data.msg)
+          return dispatch({
+            type: songTypes.SAVE_ERROR,
+            payload: {
+              alert: res.data.msg,
+            },
+          });
+
         dispatch({
           type: songTypes.SAVE_SUCCESSFUL,
           payload: { song: res.data, alert: `"${res.data.title}" saved` },
         });
+      }
     })
     .catch((error) => {
       dispatch({

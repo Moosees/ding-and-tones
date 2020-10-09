@@ -94,6 +94,14 @@ export const saveScale = () => (dispatch, getState) => {
     .post('/scale', { info, notes: parseNotesForSaveScale(notes) })
     .then((res) => {
       if (res.status === 200) {
+        if (res.data.msg)
+          return dispatch({
+            type: scaleTypes.SAVE_ERROR,
+            payload: {
+              alert: res.data.msg,
+            },
+          });
+
         dispatch({
           type: scaleTypes.SAVE_SUCCESSFUL,
           payload: {

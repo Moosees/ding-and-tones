@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* code 200 and msg for save limit reached (like on user controller)
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 * Users own songs are highlighted in search results? Or skipped?
 * Remove forced style props (on checkboxes)?
