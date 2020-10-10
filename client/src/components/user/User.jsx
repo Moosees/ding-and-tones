@@ -4,6 +4,7 @@ import BtnControls from '../shared/button/Controls';
 import BtnNav from '../shared/button/Nav';
 import Account from './account/Account';
 import Logo from './Logo';
+import Print from './print/Print';
 import SignIn from './signIn/SignIn';
 import Sound from './sound/Sound';
 import { UserAnchor, UserMenu } from './user.styles';
@@ -20,11 +21,15 @@ const User = () => {
         onClick={() => setMenuOpen(!menuOpen)}
       />
       <UserMenu open={menuOpen}>
-        <Sound />
-        <BtnControls label="Print/Save" icon="print" />
-        <BtnControls label="Support me" icon="support" />
-        <BtnControls label="Help" icon="help_outline" />
-        <Account />
+        {menuOpen && (
+          <>
+            <Sound />
+            <Print />
+            <BtnControls label="Support me" icon="support" />
+            <BtnControls label="Help" icon="help_outline" />
+            <Account />
+          </>
+        )}
         <SignIn />
       </UserMenu>
     </UserAnchor>
