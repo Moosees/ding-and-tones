@@ -2,8 +2,8 @@
 
 ## Current tasks
 
+* Printing, lazy load? tempo in words, footer text, remove empty beats text
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
-* Printing, make custom component, lazy load?
 
 * Users own songs are highlighted in search results? Or skipped?
 * Remove forced style props (on checkboxes)?

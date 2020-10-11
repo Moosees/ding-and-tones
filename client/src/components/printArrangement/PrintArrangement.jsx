@@ -18,9 +18,11 @@ class PrintArrangement extends Component {
         <Title>{title}</Title>
         {composer && <Composer>Composer: {composer}</Composer>}
         <Tempo>{bpm} bpm</Tempo>
-        {arrangement.map((bar, i) => (
-          <Bar key={bar} barId={bar} />
-        ))}
+        <div>
+          {arrangement.map((bar, i) => (
+            <Bar key={bar} barId={bar} />
+          ))}
+        </div>
         <Footer>Made with dingandtones.com</Footer>
       </PrintLayout>
     );
