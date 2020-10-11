@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BtnControls from '../../shared/button/Controls';
-import PrintArrangement from './PrintArrangement';
+import ReactToPrint from './ReactToPrint';
 
 const Print = () => {
   const [showPrint, setShowPrint] = useState(false);
@@ -14,7 +14,7 @@ const Print = () => {
       />
       {showPrint && (
         <div style={{ display: 'none' }}>
-          <PrintArrangement onAfterPrint={() => setShowPrint(false)} />
+          <ReactToPrint onAfterPrint={() => setShowPrint(false)} />
         </div>
       )}
     </>

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
+import PrintArrangement from '../../printArrangement/PrintArrangement';
 
-const PrintArrangement = ({ onAfterPrint }) => {
+const ReactToPrint = ({ onAfterPrint }) => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -14,12 +15,7 @@ const PrintArrangement = ({ onAfterPrint }) => {
     handlePrint();
   }, [handlePrint]);
 
-  return (
-    <div ref={componentRef}>
-      <h1>Title</h1>
-      <div>Bars...</div>
-    </div>
-  );
+  return <PrintArrangement ref={componentRef} />;
 };
 
-export default PrintArrangement;
+export default ReactToPrint;
