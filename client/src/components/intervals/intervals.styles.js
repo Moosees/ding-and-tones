@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+export const CheckboxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const IntervalHeader = styled.h4`
+  font-size: ${({ theme }) => theme.fzMedium};
+  margin: 3px 0;
+  text-transform: uppercase;
+`;
+
 export const IntervalList = styled.div`
   align-items: center;
   display: flex;

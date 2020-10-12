@@ -12,7 +12,7 @@ export const getChordLegend = (intervalList) => {
   ));
 };
 
-export const getScaleLegend = (note, scale) => {
+export const getScaleLegend = (note, scale, showIntervals) => {
   const currentIntervals = scale[note].intervalMap;
 
   return currentIntervals.map(({ semitones, compound, note }, i) => {
@@ -28,7 +28,9 @@ export const getScaleLegend = (note, scale) => {
       <IntervalContainer key={i}>
         <Interval color={color} />
         {semitones === 0
-          ? 'Current focus - P1'
+          ? showIntervals
+            ? `${note} - Current Focus`
+            : `${note} - Perfect Unison`
           : `${note} - ${name}${modifier} (${semitones} steps)`}
         <Interval color={color} />
       </IntervalContainer>

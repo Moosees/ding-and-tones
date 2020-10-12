@@ -2,17 +2,16 @@
 
 ## Current tasks
 
-* Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
+* Fix bpm validation in metre popup
+* Owner info and C etc.
+* Only user tongue drum at launch?
 
 * Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
 * Remove forced style props (on checkboxes)?
-* Only user tongue drum at launch?
-
 * Style text inputs when :focus
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
 * Nicer shadows
-* Owner info and C etc.
 * Beat Dropdown text and anchor?
 * Distinct confirm and cancel buttons
 
