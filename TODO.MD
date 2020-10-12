@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Printing, lazy load? tempo in words, footer text, remove empty beats text
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 
 * Users own songs are highlighted in search results? Or skipped?
@@ -60,6 +59,7 @@
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Alerts when signing in or out, show alert on load if user has active session?
 * Show songs/scales saved and max to user when signing in?
+* Lazy load print song component
 
 ## Chords
 

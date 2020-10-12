@@ -2,30 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { metreList } from '../../../assets/metre';
 import {
-  BeatsContainer,
-  BeatContainer,
-  BeatText,
-  MetreContainer,
   BarContainer,
+  BarMetre,
+  BeatContainer,
+  BeatsContainer,
 } from './bar.styles';
 
-const Bar = ({ barId, bars, beats }) => {
-  const { metre, subdivision, lengthInBeats, measure } = bars[barId];
-  const barMetre = metreList[metre];
-  // const {
-  //   name,
-  //   template,
-  //   lengthInBeats,
-  //   minSubdivision,
-  //   subdivisionCount,
-  // } = metreList[metre];
+const Bar = ({ barId, bars, beats, prevBar }) => {
+  const { metre, subdivision, measure } = bars[barId];
+  const prevBarMetre = prevBar ? bars[prevBar].metre : null;
+  const metreInfo = metreList[metre];
 
   const filteredBeats = measure
     .map((beat) => {
       const { value, sound } = beats[beat];
       return value <= subdivision ? (
         <BeatContainer key={beat} value={value}>
-          {sound}
+          {sound !== '-' && sound}
         </BeatContainer>
       ) : null;
     })
@@ -33,7 +26,9 @@ const Bar = ({ barId, bars, beats }) => {
 
   return (
     <BarContainer>
-      <div>{barMetre.name}</div>
+      <BarMetre>
+        {(!prevBarMetre || prevBarMetre !== metre) && metreInfo.name}
+      </BarMetre>
       <BeatsContainer>{filteredBeats}</BeatsContainer>
     </BarContainer>
   );

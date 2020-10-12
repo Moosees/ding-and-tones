@@ -4,7 +4,7 @@ const beatStyles = {
   heightWidth: {
     4: '30',
     8: '26',
-    16: '23',
+    16: '25',
   },
   fz: {
     4: '16',
@@ -19,7 +19,6 @@ const beatStyles = {
 };
 
 export const BarContainer = styled.div`
-  align-items: center;
   display: inline-flex;
   flex-direction: column;
   padding: 30px 8px 4px;
@@ -34,6 +33,11 @@ export const BarContainer = styled.div`
     bottom: 0;
     width: 1px;
   }
+`;
+
+export const BarMetre = styled.div`
+  font-size: 12px;
+  margin-bottom: 4px;
 `;
 
 export const BeatsContainer = styled.div`

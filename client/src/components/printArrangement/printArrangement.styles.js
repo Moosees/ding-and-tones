@@ -19,13 +19,12 @@ export const Composer = styled.h2`
 `;
 
 export const Tempo = styled.h4`
-  font-size: 20px;
-  margin-left: 10px;
-  margin-top: 20px;
+  font-size: 14px;
+  margin: 30px 10px -10px;
 `;
 
 export const Footer = styled.footer`
   font-size: 12px;
   margin-left: 10px;
-  margin-top: 12px;
+  margin-top: 24px;
 `;

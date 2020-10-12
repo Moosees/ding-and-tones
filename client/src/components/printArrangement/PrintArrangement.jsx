@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getTempoText } from '../../assets/tempo';
 import Bar from './bar/Bar';
 import {
   Composer,
@@ -13,17 +14,17 @@ class PrintArrangement extends Component {
   render() {
     const { arrangement, bpm, composer, title } = this.props;
 
+    const bars = arrangement.map((bar, i) => {
+      return <Bar key={bar} barId={bar} prevBar={arrangement[i - 1] || null} />;
+    });
+
     return (
       <PrintLayout>
         <Title>{title}</Title>
         {composer && <Composer>Composer: {composer}</Composer>}
-        <Tempo>{bpm} bpm</Tempo>
-        <div>
-          {arrangement.map((bar, i) => (
-            <Bar key={bar} barId={bar} />
-          ))}
-        </div>
-        <Footer>Made with dingandtones.com</Footer>
+        <Tempo>{getTempoText(bpm)}</Tempo>
+        <div>{bars}</div>
+        <Footer>Drum tab created with DingAndTones.com</Footer>
       </PrintLayout>
     );
   }
