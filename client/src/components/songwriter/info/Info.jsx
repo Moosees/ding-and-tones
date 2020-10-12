@@ -40,7 +40,7 @@ const Info = ({
   ] = useValidate('title', songInfo.title);
 
   const handleSave = () => {
-    saveSong({ saveAs: !isOwner });
+    saveSong({ saveAs: !isOwner, title });
     replace('/song');
   };
 

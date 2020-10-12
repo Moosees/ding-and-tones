@@ -4,7 +4,7 @@
 
 * Add way to switch between playing drum and changing interval focus on smaller screens (on all screens). NavSide! NavBtnSide!
 
-* Users own songs are highlighted in search results? Or skipped?
+* Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
 * Remove forced style props (on checkboxes)?
 * Only user tongue drum at launch?
 
@@ -19,7 +19,7 @@
 ## Inputs and useValidate (bugs)
 
 * Scale name edit remembers input even if scales changes
-* Using input validators for save buttons still allows saving with unsaved inputs, and new song doesn't close title edit open
+* new song doesn't close title edit open
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Why are buttons disabled on songwriter mount? They are waiting for text validation, minor issue for now
 * Check text inputs for bad words?

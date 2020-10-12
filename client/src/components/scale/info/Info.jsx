@@ -30,7 +30,7 @@ const Info = ({
   ] = useValidate('title', scaleInfo.name);
 
   const handleScaleSave = () => {
-    saveScale();
+    saveScale({ name });
     replace('/scale');
   };
 

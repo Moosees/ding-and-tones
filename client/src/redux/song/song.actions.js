@@ -71,11 +71,11 @@ export const moveBarInArrangement = (barIndex, targetIndex) => ({
   payload: { barIndex, targetIndex },
 });
 
-export const saveSong = ({ saveAs }) => (dispatch, getState) => {
+export const saveSong = ({ saveAs, title }) => (dispatch, getState) => {
   dispatch({ type: songTypes.SAVE_STARTED });
 
   const { song, scale } = getState();
-  const body = parseSongForSaving(song, scale, saveAs);
+  const body = parseSongForSaving(song, scale, saveAs, title);
 
   axios
     .post('/song', body)

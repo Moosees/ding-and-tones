@@ -35,25 +35,27 @@ const parseBeatsForSaving = (arrangement, bars, beats) => {
   }, []);
 };
 
-export const parseSongForSaving = (song, scale, saveAs) => {
+export const parseSongForSaving = (song, scale, saveAs, title) => {
   const { arrangement, bars, beats, info, ui } = song;
   const { isOwner, songId } = ui;
   const { notes, info: scaleInfo } = scale;
   const parsedBars = parseBarsForSaving(arrangement, bars, beats);
   const parsedBeats = parseBeatsForSaving(arrangement, bars, beats);
+  const songUpdate = {
+    arrangement,
+    bars: parsedBars,
+    beats: parsedBeats,
+    info,
+    scale: {
+      notes: parseNotesForSaveScale(notes),
+      info: scaleInfo,
+    },
+  };
+  if (title) songUpdate.info.title = title;
 
   return {
     songId: isOwner && !saveAs ? songId : null,
-    songUpdate: {
-      arrangement,
-      bars: parsedBars,
-      beats: parsedBeats,
-      info,
-      scale: {
-        notes: parseNotesForSaveScale(notes),
-        info: scaleInfo,
-      },
-    },
+    songUpdate,
   };
 };
 

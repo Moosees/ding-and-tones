@@ -84,14 +84,16 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   });
 };
 
-export const saveScale = () => (dispatch, getState) => {
+export const saveScale = ({ name }) => (dispatch, getState) => {
   dispatch({ type: scaleTypes.SAVE_STARTED });
 
   const { scale } = getState();
   const { info, notes } = scale;
+  const scaleUpdate = { info, notes: parseNotesForSaveScale(notes) };
+  if (name) scaleUpdate.info.name = name;
 
   axios
-    .post('/scale', { info, notes: parseNotesForSaveScale(notes) })
+    .post('/scale', scaleUpdate)
     .then((res) => {
       if (res.status === 200) {
         if (res.data.msg)
