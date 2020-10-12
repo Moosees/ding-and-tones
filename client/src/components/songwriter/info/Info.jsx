@@ -37,6 +37,7 @@ const Info = ({
     titleErrors,
     isTitleValid,
     resetTitle,
+    setTitle,
   ] = useValidate('title', songInfo.title);
 
   const handleSave = () => {
@@ -83,7 +84,12 @@ const Info = ({
           <PlayButton />
         </Buttons>
       </InfoContainer>
-      {newOpen && <PopupNewSong onClose={() => setNewOpen(false)} />}
+      {newOpen && (
+        <PopupNewSong
+          onClose={() => setNewOpen(false)}
+          updateValidation={setTitle}
+        />
+      )}
     </>
   );
 };

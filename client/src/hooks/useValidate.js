@@ -59,7 +59,7 @@ const useValidate = (validationType, defaultValue) => {
     setValue(defaultValue || '');
   };
 
-  return [value, handleChange, errors, isValid, resetValue];
+  return [value, handleChange, errors, isValid, resetValue, setValue];
 };
 
 export default useValidate;

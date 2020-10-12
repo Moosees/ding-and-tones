@@ -18,12 +18,11 @@
 
 ## Inputs and useValidate (bugs)
 
-* Scale name edit remembers input even if scales changes
-* new song doesn't close title edit open
 * Saving stuff needs minimal conditions? At least one bar? Max x bars?
 * Why are buttons disabled on songwriter mount? They are waiting for text validation, minor issue for now
 * Check text inputs for bad words?
 * Errors display on inputs
+* useValidate should return object instead of array?
 
 ## Bugs
 
@@ -33,6 +32,7 @@
 * Logging in should check scales/songs if you are owner? - and it looks like it does already
 * Redirect between chords and drum when resizing? Use same route for all screens?
 * React-to-print document.write warnings
+* Scale name edit remembers input even if scales changes - fix with scale save changes update?
 
 ## Design
 

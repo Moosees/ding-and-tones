@@ -12,7 +12,7 @@ import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
 import MetreControls from '../../shared/metreControls/MetreControls';
 import Popup from '../../shared/popup/Popup';
 
-const PopupNewSong = ({ onClose, setSongState }) => {
+const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
   const [difficulty, setDifficulty] = useState(1);
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(4);
@@ -37,6 +37,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
 
       setSongState({ info, ui, bars: {}, beats: {}, arrangement: [] });
       push('/song');
+      updateValidation(title);
       onClose();
     }
   };
