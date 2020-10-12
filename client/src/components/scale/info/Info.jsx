@@ -19,7 +19,7 @@ const Info = ({
   scaleInfo,
   setScaleName,
 }) => {
-  const { push } = useHistory();
+  const { replace } = useHistory();
 
   const [
     name,
@@ -30,8 +30,8 @@ const Info = ({
   ] = useValidate('title', scaleInfo.name);
 
   const handleScaleSave = () => {
-    push('/scale');
     saveScale();
+    replace('/scale');
   };
 
   const handleNameSave = () => {

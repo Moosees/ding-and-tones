@@ -14,51 +14,31 @@ import Search from './search/Search';
 
 const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   const { scaleId } = useParams();
-  const { push, replace } = useHistory();
+  const { replace } = useHistory();
 
   const { isDeleting, isFetching, isSaving } = scaleUi;
+  const isWorking = isDeleting || isFetching || isSaving;
 
   useEffect(() => {
-    if (
-      !scaleId &&
-      scaleUi.scaleId &&
-      !isDeleting &&
-      !isFetching &&
-      !isSaving
-    ) {
+    if (!scaleId && scaleUi.scaleId && !isWorking) {
       replace(`/scale/${scaleUi.scaleId}`);
     }
-  }, [replace, scaleId, isDeleting, isFetching, isSaving, scaleUi.scaleId]);
+  }, [isWorking, replace, scaleId, scaleUi.scaleId]);
 
   useEffect(() => {
-    if (
-      scaleId &&
-      scaleUi.scaleId !== scaleId &&
-      !isDeleting &&
-      !isFetching &&
-      !isSaving
-    ) {
-      push('/scale');
+    if (scaleId && scaleUi.scaleId !== scaleId && !isWorking)
       getScaleById(scaleId);
-    }
-  }, [
-    getScaleById,
-    push,
-    scaleId,
-    isDeleting,
-    isFetching,
-    isSaving,
-    scaleUi.scaleId,
-  ]);
+  }, [isWorking, getScaleById, scaleId, scaleUi.scaleId]);
 
   useEffect(() => {
-    if (!scalesFetchTried) startSearch(searchOptions.scales.latest);
-  }, [scalesFetchTried, startSearch]);
+    if (!scalesFetchTried && !isWorking)
+      startSearch(searchOptions.scales.latest);
+  }, [isWorking, scalesFetchTried, startSearch]);
 
   return (
     <ScaleContainer>
       <Section>
-        {isDeleting || isFetching || isSaving ? (
+        {isWorking ? (
           <Loading />
         ) : (
           <>

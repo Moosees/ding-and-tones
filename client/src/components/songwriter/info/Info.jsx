@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
@@ -28,6 +29,7 @@ const Info = ({
   updateSongInfo,
 }) => {
   const [newOpen, setNewOpen] = useState(false);
+  const { replace } = useHistory();
 
   const [
     title,
@@ -36,6 +38,11 @@ const Info = ({
     isTitleValid,
     resetTitle,
   ] = useValidate('title', songInfo.title);
+
+  const handleSave = () => {
+    saveSong({ saveAs: !isOwner });
+    replace('/song');
+  };
 
   return (
     <>
@@ -66,7 +73,7 @@ const Info = ({
           <BtnPrimary
             disabled={!isSignedIn || isSongPlaying || isSaving || !isTitleValid}
             label={isOwner ? 'Save Changes' : 'Save'}
-            onClick={() => saveSong({ saveAs: !isOwner })}
+            onClick={handleSave}
           />
           <BtnPrimary
             disabled={isSongPlaying || isSaving || !isTitleValid}

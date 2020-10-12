@@ -27,7 +27,6 @@
 
 ## Bugs
 
-* Loading a song from another composer then saving that song loads first song again
 * Use touch compatible drag and drop
 * Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
 * Load song button can be seen through table header

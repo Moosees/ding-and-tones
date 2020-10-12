@@ -16,23 +16,23 @@ import {
 
 const Songwriter = ({ getSongById, songUi }) => {
   const { songId } = useParams();
-  const { push, replace } = useHistory();
+  const { replace } = useHistory();
+
+  const { isDeleting, isFetching, isSaving } = songUi;
+  const isWorking = isDeleting || isFetching || isSaving;
 
   useEffect(() => {
-    if (!songId && songUi.songId && !songUi.isFetching)
+    if (!songId && songUi.songId && !isWorking)
       replace(`/song/${songUi.songId}`);
-  }, [replace, songId, songUi.isFetching, songUi.songId]);
+  }, [isWorking, replace, songId, songUi.songId]);
 
   useEffect(() => {
-    if (songId && songUi.songId !== songId && !songUi.isFetching) {
-      push('/song');
-      getSongById(songId);
-    }
-  }, [getSongById, push, songId, songUi.isFetching, songUi.songId]);
+    if (songId && songUi.songId !== songId && !isWorking) getSongById(songId);
+  }, [isWorking, getSongById, songId, songUi.songId]);
 
   return (
     <SongContainer>
-      {songUi.isFetching ? (
+      {isWorking ? (
         <Loading />
       ) : (
         <>
