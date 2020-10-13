@@ -12,19 +12,15 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
       const idToken = auth.getAuthResponse().id_token;
       axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
 
-      await axios
-        .post('/signIn', {
-          idToken,
-        })
-        .then((res) => {
-          if (res.status === 200)
-            signIn(
-              res.data.name,
-              auth.isSignedIn(),
-              res.data.anonymous,
-              res.data.newUser
-            );
-        });
+      await axios.post('/signIn').then((res) => {
+        if (res.status === 200)
+          signIn(
+            res.data.name,
+            auth.isSignedIn(),
+            res.data.anonymous,
+            res.data.newUser
+          );
+      });
     } catch (error) {
       handleSignOut();
     }

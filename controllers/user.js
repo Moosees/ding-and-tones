@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const { OAuth2Client } = require('google-auth-library');
+const { getClient } = require('../utils/auth');
 
 exports.saveUser = (req, res) => {
   const userId = req.userId;
@@ -25,12 +25,11 @@ exports.saveUser = (req, res) => {
 
 exports.signIn = (req, res) => {
   const authHeader = req.get('authorization');
+
   if (!authHeader) return res.status(403).json({ msg: 'No authorization' });
-
-  const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+  
   const idToken = authHeader.split(' ')[1];
-
-  client
+  getClient()
     .verifyIdToken({
       idToken,
       audience: process.env.GOOGLE_CLIENT_ID,
@@ -49,13 +48,11 @@ exports.signIn = (req, res) => {
             sub,
             name: email.split('@')[0],
           }).save((error, user) =>
-            res
-              .status(200)
-              .json({
-                anonymous: user.anonymous,
-                name: user.name,
-                newUser: true,
-              })
+            res.status(200).json({
+              anonymous: user.anonymous,
+              name: user.name,
+              newUser: true,
+            })
           );
         });
     })
