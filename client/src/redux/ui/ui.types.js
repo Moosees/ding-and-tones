@@ -4,6 +4,7 @@ const uiTypes = {
   SET_DROPDOWN_BEAT_ID: 'ui/setDropdown',
   SET_IS_PREPARING_SONG: 'ui/setIsPreparingSong',
   SET_IS_SONG_PLAYING: 'ui/setIsSongPlaying',
+  SET_PRIVACY_OPEN: 'ui/setPrivacyOpen',
   SET_SOUND_OPTIONS: 'ui/setSoundOptions',
   TOGGLE_EDIT_SONG: 'ui/toggleEditSong',
 };

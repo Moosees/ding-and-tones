@@ -42,7 +42,7 @@ const AlertText = styled.span`
   `}
 `;
 
-export const AlertHandler = ({ msg, setAlert }) => {
+export const AlertHandler = ({ msg, privacyOpen, setAlert }) => {
   useEffect(() => {
     if (msg) {
       const timeout = setTimeout(() => setAlert(''), ALERT_TIMEOUT);
@@ -52,7 +52,7 @@ export const AlertHandler = ({ msg, setAlert }) => {
 
   return (
     <>
-      {msg && (
+      {msg && !privacyOpen && (
         <AlertContainer>
           <AlertText>{msg}</AlertText>
           <BtnPrimary light label="Ok!" onClick={() => setAlert(null)} />
@@ -62,8 +62,9 @@ export const AlertHandler = ({ msg, setAlert }) => {
   );
 };
 
-const mapStateToProps = ({ alert }) => ({
+const mapStateToProps = ({ alert, ui }) => ({
   msg: alert.msg,
+  privacyOpen: ui.privacyOpen,
 });
 
 export default connect(mapStateToProps, { setAlert })(AlertHandler);

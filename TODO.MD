@@ -2,8 +2,9 @@
 
 ## Current tasks
 
+* Privacy
+* Rework sign in logic (move to reducer)
 * Fix bpm validation in metre popup
-* Owner info and C etc.
 * Only user tongue drum at launch?
 
 * Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
@@ -90,7 +91,6 @@
 * Split save song controller?
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
-* GDPR and similar, analytics
 * update google json file - hostedDomain on react-google-login?
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Rework metre template, split into beats?
@@ -103,7 +103,6 @@
 * Chose between save and save as new?
 * Plus and minus one for bpm
 * Split MetreControls component?
-* Move user sign in logic to reducer
 * Create scale from name and string
 * Ability to loop songs or repeat/solo bars
 * Add play scale button and function

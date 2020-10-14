@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { setDropdownForBeat } from '../../redux/ui/ui.actions';
+import { setDropdownForBeat, setPrivacyOpen } from '../../redux/ui/ui.actions';
 import Drum from '../drum/Drum';
 import Intervals from '../intervals/Intervals';
 import Nav from '../nav/Nav';
@@ -8,14 +8,17 @@ import Loading from '../shared/loading/Loading';
 import AlertHandler from './AlertHandler';
 import {
   BorderContainer,
+  Copyright,
   LayoutGrid,
+  PrivacyLink,
   SectionWithNav,
   Viewport,
 } from './app.styles';
+import Privacy from './Privacy';
 
 const Routes = lazy(() => import('./Routes'));
 
-const App = ({ setDropdownForBeat }) => {
+const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
   const [width, setWidth] = useState(window ? window.innerWidth : 1200);
 
   useEffect(() => {
@@ -53,8 +56,15 @@ const App = ({ setDropdownForBeat }) => {
         </SectionWithNav>
       </LayoutGrid>
       <AlertHandler />
+      <Privacy />
+      <Copyright>
+        Copyright &copy; 2020 Linus Almgren -{' '}
+        <PrivacyLink onClick={() => setPrivacyOpen(true)}>
+          Terms and privacy
+        </PrivacyLink>
+      </Copyright>
     </Viewport>
   );
 };
 
-export default connect(null, { setDropdownForBeat })(App);
+export default connect(null, { setDropdownForBeat, setPrivacyOpen })(App);

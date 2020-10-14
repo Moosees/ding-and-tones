@@ -3,12 +3,13 @@ import styled from 'styled-components';
 export const Viewport = styled.div`
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   justify-content: center;
   width: 100vw;
 
   ${({ theme }) => theme.mqSmaller`
-    min-height: calc(100vh + 3rem);
+    height: calc(100vh + 5rem);
   `}
 
   @media screen and (max-width: 800px) and (orientation: portrait) {
@@ -69,7 +70,29 @@ export const BorderContainer = styled.div`
   position: relative;
   width: 100%;
 
-  ${({ theme }) => theme.mqSmall`
-    border-radius: 60px;
+  ${({ small, theme }) => theme.mqMedium`
+    border-radius: ${small ? '50' : '70'}px;
   `}
+
+  ${({ theme }) => theme.mqSmall`
+    border-radius: 45px;
+    max-height: 99vh;
+  `}
+`;
+
+export const Copyright = styled.footer`
+  bottom: 0;
+  font-size: 1.2rem;
+  height: 2rem;
+  padding: 2px;
+  position: absolute;
+
+  ${({ theme }) => theme.mqSmall`
+  position: static;
+`}
+`;
+
+export const PrivacyLink = styled.a`
+  cursor: pointer;
+  text-decoration: underline;
 `;

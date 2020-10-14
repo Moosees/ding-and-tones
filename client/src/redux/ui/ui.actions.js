@@ -25,6 +25,11 @@ export const setIsSongPlaying = (isSongPlaying) => ({
   payload: isSongPlaying,
 });
 
+export const setPrivacyOpen = (privacyOpen) => ({
+  type: uiTypes.SET_PRIVACY_OPEN,
+  payload: privacyOpen,
+});
+
 export const setSoundOptions = (options) => ({
   type: uiTypes.SET_SOUND_OPTIONS,
   payload: options,

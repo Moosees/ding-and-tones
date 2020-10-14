@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,
+  privacyOpen: false,
   soundOptions: {},
   textEditOpen: false,
 };
@@ -41,6 +42,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         isSongPlaying: payload,
+      };
+
+    case uiTypes.SET_PRIVACY_OPEN:
+      return {
+        ...state,
+        privacyOpen: payload,
       };
 
     case uiTypes.SET_SOUND_OPTIONS:
