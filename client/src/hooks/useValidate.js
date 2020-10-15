@@ -6,7 +6,7 @@ const validateInput = (value, validationType) => {
 
   switch (validationType) {
     case 'bpm':
-      if (value > 200 || value < 50) errors.push('Bpm is out of range');
+      if (value > 180 || value < 40) errors.push('Bpm is out of range');
       break;
 
     case 'title':

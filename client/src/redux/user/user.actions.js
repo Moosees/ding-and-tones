@@ -51,12 +51,12 @@ export const signIn = (auth) => (dispatch) => {
     .post('/signIn')
     .then((res) => {
       if (res.status === 200) {
-        const { name, isAnonymous, newUser } = res.data;
+        const { name, anonymous, newUser } = res.data;
         dispatch({
           type: userTypes.SIGN_IN,
           payload: {
             name,
-            isAnonymous,
+            isAnonymous: anonymous,
             isSignedIn: auth.isSignedIn(),
             accountOpen: newUser,
           },
@@ -71,7 +71,7 @@ export const signIn = (auth) => (dispatch) => {
 
 export const signOut = (error) => (dispatch) => {
   axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
-  
+
   if (error)
     return dispatch({
       type: userTypes.GOOGLE_ERROR,

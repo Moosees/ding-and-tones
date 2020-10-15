@@ -2,7 +2,7 @@ import userTypes from './user.types';
 
 const INITIAL_STATE = {
   accountOpen: false,
-  name: 'Anonymous',
+  name: '',
   isAnonymous: true,
   isSaving: false,
   isSignedIn: false,
@@ -33,6 +33,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         name: '',
+        isAnonymous: true,
         isSignedIn: false,
       };
 

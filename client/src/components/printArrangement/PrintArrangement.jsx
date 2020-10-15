@@ -21,7 +21,9 @@ class PrintArrangement extends Component {
     return (
       <PrintLayout>
         <Title>{title}</Title>
-        {composer && <Composer>Composer: {composer}</Composer>}
+        {composer && composer !== 'Anonymous' && (
+          <Composer>Composer: {composer}</Composer>
+        )}
         <Tempo>{getTempoText(bpm)}</Tempo>
         <div>{bars}</div>
         <Footer>Drum tab created with DingAndTones.com</Footer>

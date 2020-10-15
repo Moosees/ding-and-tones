@@ -54,7 +54,11 @@ const PopupSongMetre = ({
         setSubdivision={setNewSubdivision}
       />
       <Buttons position="center">
-        <BtnPrimary label="Confirm" onClick={handleConfirm} />
+        <BtnPrimary
+          disabled={!isNewBpmValid}
+          label="Confirm"
+          onClick={handleConfirm}
+        />
         <BtnPrimary light label="Cancel" onClick={onClose} />
       </Buttons>
     </Popup>

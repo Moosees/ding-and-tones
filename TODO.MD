@@ -2,9 +2,7 @@
 
 ## Current tasks
 
-* Anon mode checkbox
 * Privacy - login from popup instead of button, add text
-* Fix bpm validation in metre popup
 
 * Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
 * Remove forced style props (on checkboxes)?
