@@ -16,6 +16,5 @@ export const UserMenu = styled.div`
   padding: 1rem;
   position: absolute;
   top: 3.2rem;
-  visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
   z-index: 1000;
 `;

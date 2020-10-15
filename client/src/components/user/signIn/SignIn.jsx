@@ -1,40 +1,11 @@
-import axios from 'axios';
 import React from 'react';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import GoogleLogin, { GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
 import { GOOGLE_CLIENT_ID } from '../../../assets/oauth';
 import { signIn, signOut } from '../../../redux/user/user.actions';
 import BtnControls from '../../shared/button/Controls';
 
 const SignIn = ({ isSignedIn, signIn, signOut }) => {
-  const handleSignIn = async (auth) => {
-    try {
-      const idToken = auth.getAuthResponse().id_token;
-      axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
-
-      await axios.post('/signIn').then((res) => {
-        if (res.status === 200)
-          signIn(
-            res.data.name,
-            auth.isSignedIn(),
-            res.data.anonymous,
-            res.data.newUser
-          );
-      });
-    } catch (error) {
-      handleSignOut();
-    }
-  };
-
-  const handleSignOut = () => {
-    axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
-    signOut();
-  };
-
-  const handleAutoLoadFinished = (autoLoadFinished) => {
-    if (!autoLoadFinished) handleSignOut();
-  };
-
   return (
     <>
       {isSignedIn ? (
@@ -48,7 +19,8 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
               disabled={renderProps.disabled}
             />
           )}
-          onLogoutSuccess={handleSignOut}
+          onLogoutSuccess={signOut}
+          onFailure={signOut}
         />
       ) : (
         <GoogleLogin
@@ -61,10 +33,8 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
               disabled={renderProps.disabled}
             />
           )}
-          onSuccess={handleSignIn}
-          onFailure={handleSignOut}
-          onAutoLoadFinished={handleAutoLoadFinished}
-          isSignedIn={true}
+          onSuccess={signIn}
+          onFailure={signOut}
           cookiePolicy={'single_host_origin'}
         />
       )}

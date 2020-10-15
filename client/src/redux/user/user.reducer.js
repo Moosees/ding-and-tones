@@ -6,7 +6,6 @@ const INITIAL_STATE = {
   isAnonymous: true,
   isSaving: false,
   isSignedIn: false,
-  signInTried: false,
 };
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -28,7 +27,6 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         ...payload,
-        signInTried: true,
       };
 
     case userTypes.SIGN_OUT:
@@ -36,7 +34,6 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         name: '',
         isSignedIn: false,
-        signInTried: true,
       };
 
     case userTypes.TOGGLE_ACCOUNT:

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import userTypes from './user.types';
+import { getGoogleError } from './user.utils';
 
 export const saveUser = (newName, newAnon) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
@@ -11,7 +12,7 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
   if (name === newName && isAnonymous === newAnon)
     return dispatch({ type: userTypes.TOGGLE_ACCOUNT });
 
-  return axios
+  axios
     .post('/user', { name: newName, anonymous: newAnon })
     .then((res) => {
       if (res.status === 200) {
@@ -42,14 +43,45 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (name, isSignedIn, isAnonymous, isNewUser) => ({
-  type: userTypes.SIGN_IN,
-  payload: { name, isSignedIn, isAnonymous, accountOpen: isNewUser },
-});
+export const signIn = (auth) => (dispatch) => {
+  const idToken = auth.getAuthResponse().id_token;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
 
-export const signOut = () => ({
-  type: userTypes.SIGN_OUT,
-});
+  axios
+    .post('/signIn')
+    .then((res) => {
+      if (res.status === 200) {
+        const { name, isAnonymous, newUser } = res.data;
+        dispatch({
+          type: userTypes.SIGN_IN,
+          payload: {
+            name,
+            isAnonymous,
+            isSignedIn: auth.isSignedIn(),
+            accountOpen: newUser,
+          },
+        });
+      }
+    })
+    .catch((error) => {
+      axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
+      dispatch({ type: userTypes.SIGN_OUT });
+    });
+};
+
+export const signOut = (error) => (dispatch) => {
+  axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
+  
+  if (error)
+    return dispatch({
+      type: userTypes.GOOGLE_ERROR,
+      payload: { alert: getGoogleError(error) },
+    });
+
+  dispatch({
+    type: userTypes.SIGN_OUT,
+  });
+};
 
 export const toggleAccount = () => ({
   type: userTypes.TOGGLE_ACCOUNT,

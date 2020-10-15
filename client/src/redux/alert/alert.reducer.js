@@ -19,6 +19,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
     case songTypes.DELETE_ERROR:
     case scaleTypes.FETCH_ERROR:
     case songTypes.FETCH_ERROR:
+    case userTypes.GOOGLE_ERROR:
     case scaleTypes.SAVE_ERROR:
     case songTypes.SAVE_ERROR:
     case userTypes.SAVE_ERROR:

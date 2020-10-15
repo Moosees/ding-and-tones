@@ -2,10 +2,9 @@
 
 ## Current tasks
 
-* Privacy
-* Rework sign in logic (move to reducer)
+* Anon mode checkbox
+* Privacy - login from popup instead of button, add text
 * Fix bpm validation in metre popup
-* Only user tongue drum at launch?
 
 * Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
 * Remove forced style props (on checkboxes)?
@@ -45,6 +44,7 @@
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Svgs instead of iconfont?
+* Redesign "select drum mode"
 
 ## Drum
 
