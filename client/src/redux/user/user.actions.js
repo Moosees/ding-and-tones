@@ -55,17 +55,20 @@ export const signIn = (auth) => (dispatch) => {
         dispatch({
           type: userTypes.SIGN_IN,
           payload: {
-            name,
-            isAnonymous: anonymous,
-            isSignedIn: auth.isSignedIn(),
-            accountOpen: newUser,
+            alert: 'Signed in successfully!',
+            user: {
+              name,
+              isAnonymous: anonymous,
+              isSignedIn: auth.isSignedIn(),
+              accountOpen: newUser,
+            },
           },
         });
       }
     })
     .catch((error) => {
       axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
-      dispatch({ type: userTypes.SIGN_OUT });
+      dispatch({ type: userTypes.SIGN_OUT, payload: { alert: '' } });
     });
 };
 
@@ -80,6 +83,7 @@ export const signOut = (error) => (dispatch) => {
 
   dispatch({
     type: userTypes.SIGN_OUT,
+    payload: { alert: 'Signed out successfully!' },
   });
 };
 

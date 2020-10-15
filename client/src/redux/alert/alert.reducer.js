@@ -31,6 +31,8 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
     case scaleTypes.SAVE_SUCCESSFUL:
     case songTypes.SAVE_SUCCESSFUL:
     case userTypes.SAVE_SUCCESSFUL:
+    case userTypes.SIGN_IN:
+    case userTypes.SIGN_OUT:
       return { ...state, msg: payload.alert };
 
     default:

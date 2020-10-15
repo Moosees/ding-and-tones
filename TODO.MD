@@ -54,7 +54,6 @@
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
-* Alerts when signing in or out, show alert on load if user has active session?
 * Show songs/scales saved and max to user when signing in?
 * Lazy load print song component
 

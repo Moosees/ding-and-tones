@@ -26,7 +26,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
     case userTypes.SIGN_IN:
       return {
         ...state,
-        ...payload,
+        ...payload.user,
       };
 
     case userTypes.SIGN_OUT:
