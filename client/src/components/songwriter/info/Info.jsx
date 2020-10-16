@@ -20,6 +20,7 @@ const InfoContainer = styled.div`
 `;
 
 const Info = ({
+  arrangement,
   isOwner,
   isSaving,
   isSignedIn,
@@ -39,6 +40,8 @@ const Info = ({
     resetTitle,
     setTitle,
   ] = useValidate('title', songInfo.title);
+
+  const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
 
   const handleSave = () => {
     saveSong({ saveAs: !isOwner, title });
@@ -72,7 +75,13 @@ const Info = ({
         </InfoBox>
         <Buttons>
           <BtnPrimary
-            disabled={!isSignedIn || isSongPlaying || isSaving || !isTitleValid}
+            disabled={
+              !isSignedIn ||
+              isSongPlaying ||
+              isSaving ||
+              !isTitleValid ||
+              !isSongSavable
+            }
             label={isOwner ? 'Save Changes' : 'Save'}
             onClick={handleSave}
           />
@@ -95,6 +104,7 @@ const Info = ({
 };
 
 const mapStateToProps = ({ song, ui, user }) => ({
+  arrangement: song.arrangement,
   songInfo: song.info,
   isOwner: song.ui.isOwner,
   isSaving: song.ui.isSaving,

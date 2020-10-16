@@ -3,37 +3,27 @@
 ## Current tasks
 
 * Privacy - login from popup instead of button, add text
+* Use touch compatible drag and drop
 
 * Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
 * Remove forced style props (on checkboxes)?
 * Style text inputs when :focus
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
-* Nicer shadows
-* Beat Dropdown text and anchor?
-* Distinct confirm and cancel buttons
-
-## Inputs and useValidate (bugs)
-
-* Saving stuff needs minimal conditions? At least one bar? Max x bars?
-* Why are buttons disabled on songwriter mount? They are waiting for text validation, minor issue for now
+* Beat Dropdown text and anchor (on tablets and bigger)
 * Check text inputs for bad words?
 * Errors display on inputs
 * useValidate should return object instead of array?
 
 ## Bugs
 
-* Use touch compatible drag and drop
-* Rare save scale bug (if db.scales is empty?) first save doesn't add itself to results array?
-* Load song button can be seen through table header
-* Logging in should check scales/songs if you are owner? - and it looks like it does already
-* Redirect between chords and drum when resizing? Use same route for all screens?
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
+* Safari (and other browsers?) rotates drum 90deg
 
 ## Design
 
-* New buttons for loading songs
+* New buttons for loading songs and confirm/cancel
 * Dropdowns open when clicking label (difficulty and new song popup)
 * User can tab select :active outside of popups
 * Better Loading component - big spinner? Spinner on account page save
@@ -43,11 +33,7 @@
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Svgs instead of iconfont?
 * Redesign "select drum mode"
-
-## Drum
-
-* Taks or other sounds
-* Tongue drum sounds
+* Load song button can be seen through table header
 
 ## User/Menu
 
@@ -78,7 +64,7 @@
 ## State/Backend
 
 * Persist working state through local storage?
-* Prevent transition away from page if data isn't saved?
+* Prevent/warn transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
@@ -92,6 +78,7 @@
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Rework metre template, split into beats?
 * Remove isOwner from scale ui state or add ability to save scale changes
+* Redirect between chords and drum when resizing? Use same route for all screens?
 
 ## Future plans
 

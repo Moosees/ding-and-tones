@@ -36,7 +36,7 @@ export const beatsState = {
   ca: { sound: '8', value: 4 },
   cb: { sound: '-', value: 8 },
   cc: { sound: 'T', value: 4 },
-  cd: { sound: '_', value: 8 },
+  cd: { sound: '-', value: 8 },
   ce: { sound: '0', value: 4 },
   cf: { sound: '-', value: 8 },
   cg: { sound: 't', value: 4 },

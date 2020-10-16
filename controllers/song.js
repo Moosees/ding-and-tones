@@ -94,6 +94,10 @@ exports.getSongs = (req, res) => {
 exports.saveSong = (req, res) => {
   const userId = req.userId;
   const { songId, songUpdate } = req.body;
+
+  if (songUpdate.arrangement.length < 1 || songUpdate.arrangement.length > 100)
+    return res.status(400).json();
+
   songUpdate.composer = userId;
   songUpdate.updated = Date.now();
   let newSong = false;
