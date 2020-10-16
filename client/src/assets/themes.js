@@ -19,8 +19,8 @@ const mediaQueries = Object.keys(mqSizes).reduce((acc, size) => {
 const colorGreyDark = '#333';
 
 export const mainTheme = {
-  borderLight: '1px solid rgba(0,0,0,0.1)',
-  borderMedium: '1px solid rgba(0,0,0,0.5)',
+  borderLight: '1px solid rgba(0,0,80,0.1)',
+  borderMedium: '1px solid rgba(0,0,80,0.5)',
   borderHeavyDark: `3px solid ${colorGreyDark}`,
   borderHeavyLight: '3px solid #777',
   colorNavBorder: colorGreyDark, // same as borderHeavyDark!
@@ -30,11 +30,11 @@ export const mainTheme = {
   colorTextInverted: 'rgba(255, 255, 255, 0.8)',
   colorBeat: '#757D96',
   colorBeatActive: '#A70227',
-  colorBtnLight: 'rgba(0, 0, 0, 0.03)',
+  colorBtnLight: 'rgba(0, 0, 80, 0.03)',
   colorBtnHeavy: '#C6C6CE',
   colorBtnConfirm: 'rgba(0, 150, 0, 0.9)',
-  colorBtnClear: 'rgba(200, 0, 0, 0.4)',
-  colorCheckbox: 'rgba(0, 255, 0, 0.8)',
+  colorBtnClear: 'rgba(200, 30, 10, 0.4)',
+  colorCheckbox: 'rgba(20, 240, 20, 0.9)',
   fzSmaller: '1.1rem',
   fzSmall: '1.2rem',
   fzMedium: '1.3rem',
@@ -44,10 +44,10 @@ export const mainTheme = {
   paddingLarge: '3rem',
   paddingMedium: '2rem',
   paddingSmall: '1rem',
-  shadowLight: '0px 2px 5px 2px rgba(0, 0, 0, 0.25)',
-  shadowHeavy: '0px 5px 10px 1px rgba(0, 0, 0, 0.25)',
-  shadowBtnLight: '0px 2px 5px -1px rgba(0, 0, 0, 0.1)',
-  shadowBtnHeavy: '0px 2px 5px -1px rgba(0, 0, 0, 0.2)',
-  textShadowLight: '0px 2px 4px rgba(0, 0, 0, 0.15)',
+  shadowLight: '0px 2px 5px 2px rgba(0, 0, 80, 0.25)',
+  shadowHeavy: '0px 5px 10px 1px rgba(0, 0, 80, 0.25)',
+  shadowBtnLight: '0px 2px 5px -1px rgba(0, 0, 80, 0.1)',
+  shadowBtnHeavy: '0px 2px 5px -1px rgba(0, 0, 80, 0.2)',
+  textShadowLight: '0px 2px 4px rgba(0, 0, 80, 0.15)',
   ...mediaQueries,
 };

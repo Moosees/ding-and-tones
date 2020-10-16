@@ -13,7 +13,7 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
           clientId={GOOGLE_CLIENT_ID}
           render={(renderProps) => (
             <BtnControls
-              label="Sign Out"
+              label="Sign out"
               icon="directions_run"
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
@@ -27,8 +27,9 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
           clientId={GOOGLE_CLIENT_ID}
           render={(renderProps) => (
             <BtnControls
-              label="Sign In"
+              label="Sign in"
               icon="login"
+              iconJustify="-2"
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
             />

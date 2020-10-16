@@ -34,7 +34,7 @@ const Background = styled.div`
   `}
 
   ${({ theme }) => theme.mqSmaller`
-    border-radius: 30px;
+    border-radius: 20px;
     padding: ${theme.paddingSmall};
   `}
 `;

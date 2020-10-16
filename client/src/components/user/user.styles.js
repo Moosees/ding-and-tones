@@ -13,7 +13,8 @@ export const UserMenu = styled.div`
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  min-width: 10rem;
+  padding: 0.5rem;
   position: absolute;
   top: 3.2rem;
   z-index: 1000;

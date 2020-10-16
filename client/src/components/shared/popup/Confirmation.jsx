@@ -9,6 +9,10 @@ const Label = styled.div`
   border-radius: 10px;
   margin-bottom: 1rem;
   padding: 2rem 1.5rem;
+
+  ${({ theme }) => theme.mqSmall`
+    padding: 1.5rem 1rem;
+  `}
 `;
 
 const Confirmation = ({ children, header, label, onConfirm }) => {

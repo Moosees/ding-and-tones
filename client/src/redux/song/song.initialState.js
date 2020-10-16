@@ -1,4 +1,4 @@
-export const arrangementState = ['bar_a', 'bar_d'];
+export const arrangementState = ['bar_a', 'bar_b', 'bar_c'];
 
 export const barsState = {
   bar_a: {
@@ -6,32 +6,41 @@ export const barsState = {
     subdivision: 4,
     lengthInBeats: 4,
     repeats: 1,
-    measure: ['aa', 'ab', 'ac', 'ad', 'ae', 'af', 'ag', 'ah'],
+    measure: ['aa', 'ab', 'ac', 'ad'],
   },
-  bar_d: {
-    metre: 'c68',
-    subdivision: 8,
-    lengthInBeats: 3,
+  bar_b: {
+    metre: 's44',
+    subdivision: 4,
+    lengthInBeats: 4,
     repeats: 1,
-    measure: ['da', 'db', 'dc', 'dd', 'de', 'df'],
+    measure: ['ba', 'bb', 'bc', 'bd'],
+  },
+  bar_c: {
+    metre: 's44',
+    subdivision: 8,
+    lengthInBeats: 4,
+    repeats: 1,
+    measure: ['ca', 'cb', 'cc', 'cd', 'ce', 'cf', 'cg', 'ch'],
   },
 };
 
 export const beatsState = {
-  aa: { sound: '1', value: 4 },
-  ab: { sound: '2', value: 8 },
-  ac: { sound: '3', value: 4 },
-  ad: { sound: '4', value: 8 },
-  ae: { sound: '5', value: 4 },
-  af: { sound: '6', value: 8 },
-  ag: { sound: '7', value: 4 },
-  ah: { sound: '8', value: 8 },
-  da: { sound: '0', value: 4 },
-  db: { sound: 'T', value: 8 },
-  dc: { sound: '-', value: 8 },
-  dd: { sound: '0', value: 4 },
-  de: { sound: 'T', value: 8 },
-  df: { sound: 'T', value: 8 },
+  aa: { sound: '0', value: 4 },
+  ab: { sound: '1', value: 4 },
+  ac: { sound: '2', value: 4 },
+  ad: { sound: '3', value: 4 },
+  ba: { sound: '4', value: 4 },
+  bb: { sound: '5', value: 4 },
+  bc: { sound: '6', value: 4 },
+  bd: { sound: '7', value: 4 },
+  ca: { sound: '8', value: 4 },
+  cb: { sound: '-', value: 8 },
+  cc: { sound: 'T', value: 4 },
+  cd: { sound: '_', value: 8 },
+  ce: { sound: '0', value: 4 },
+  cf: { sound: '-', value: 8 },
+  cg: { sound: 't', value: 4 },
+  ch: { sound: 't', value: 8 },
 };
 
 export const infoState = {

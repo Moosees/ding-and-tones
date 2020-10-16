@@ -12,7 +12,7 @@ export const ControlsButton = styled.div`
   cursor: pointer;
   display: flex;
   font-size: ${({ theme }) => theme.fzControls};
-  padding: 0.4rem;
+  padding: 0.5rem 2px;
   text-shadow: ${({ theme }) => theme.textShadowLight};
   transition: color 0.1s ease-in;
 
@@ -92,6 +92,7 @@ export const NavButton = styled.button`
   min-width: 6rem;
   padding: ${({ controls }) => (controls ? '0.4rem' : '0.4rem 1rem')};
   position: relative;
+  text-shadow: ${({ theme }) => theme.textShadowLight};
   top: 3px;
   transition: transform 0.1s ease-in;
   ${({ isActive }) => (isActive ? 'z-index: 10;' : '')}
