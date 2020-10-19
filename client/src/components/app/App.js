@@ -14,7 +14,7 @@ import {
   SectionWithNav,
   Viewport,
 } from './app.styles';
-import Privacy from './Privacy';
+import PopupPrivacy from './PopupPrivacy';
 
 const Routes = lazy(() => import('./Routes'));
 
@@ -56,12 +56,12 @@ const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
         </SectionWithNav>
       </LayoutGrid>
       <AlertHandler />
-      <Privacy />
       <Copyright>
         Copyright &copy; 2020 Linus Almgren -{' '}
         <PrivacyLink onClick={() => setPrivacyOpen(true)}>
           Terms and privacy
         </PrivacyLink>
+        <PopupPrivacy />
       </Copyright>
     </Viewport>
   );
