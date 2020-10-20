@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Privacy - login from popup instead of button, add text
 * Use touch compatible drag and drop
 
 * Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
@@ -19,7 +18,6 @@
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
-* Safari (and other browsers?) rotates drum 90deg
 
 ## Design
 

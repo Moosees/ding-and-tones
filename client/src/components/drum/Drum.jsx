@@ -58,7 +58,7 @@ const Drum = ({
 
   return (
     <DrumContainer style={style}>
-      <DrumSvg viewBox="-10 -10 20 20" transform="rotate(90)">
+      <DrumSvg viewBox="-10 -10 20 20">
         <defs>
           <radialGradient id="drumGradient">
             <stop offset="0%" stopColor="#8998aa" />

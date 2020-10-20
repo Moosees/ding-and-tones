@@ -33,7 +33,7 @@ const Tonefield = ({
       }
       cx="0"
       cy="0"
-      transform={`rotate(${rotate}) translate(${translate})`}
+      transform={`rotate(${rotate + 90}) translate(${translate})`}
       style={{
         fontSize: isDing ? '0.23rem' : '0.14rem',
         cursor:
