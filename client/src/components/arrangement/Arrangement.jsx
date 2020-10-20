@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
 import { connect } from 'react-redux';
 import { moveBarInArrangement } from '../../redux/song/song.actions';
 import { setSoundOptions } from '../../redux/ui/ui.actions';
@@ -18,8 +19,10 @@ const SongArrangement = ({
     setSoundOptions(createOptions(scale));
   }, [scale, setSoundOptions]);
 
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={isTouch ? TouchBackend : HTML5Backend}>
       <Bars>
         {arrangement.map((bar, i) => (
           <Bar key={bar} barId={bar} index={i} moveBar={moveBarInArrangement} />

@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Use touch compatible drag and drop
-
 * Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
 * Remove forced style props (on checkboxes)?
 * Style text inputs when :focus
@@ -18,6 +16,7 @@
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
+* Drag and drop need testing
 
 ## Design
 

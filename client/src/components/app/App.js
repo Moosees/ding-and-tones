@@ -47,10 +47,10 @@ const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
           </>
         )}
         <SectionWithNav style={{ gridArea: 'main' }}>
-          <Nav mobile={width < 1000} />
+          <Nav mobile={width <= 1000} />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
-              <Routes mobile={width < 1000} />
+              <Routes mobile={width <= 1000} />
             </Suspense>
           </BorderContainer>
         </SectionWithNav>
