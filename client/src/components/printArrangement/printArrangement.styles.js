@@ -3,13 +3,14 @@ import styled from 'styled-components';
 export const PrintLayout = styled.div`
   background-color: #fff;
   color: #000;
+  max-width: 100%;
+  margin: 2cm 0.5cm;
   font-size: 14px;
 `;
 
 export const Title = styled.h1`
   text-align: center;
   font-size: 32px;
-  margin-top: 20px;
 `;
 
 export const Composer = styled.h2`
@@ -20,7 +21,12 @@ export const Composer = styled.h2`
 
 export const Tempo = styled.h4`
   font-size: 14px;
-  margin: 30px 10px -10px;
+  margin: 30px 10px 10px;
+`;
+
+export const Bars = styled.ul`
+  display: block;
+  max-width: 100%;
 `;
 
 export const Footer = styled.footer`

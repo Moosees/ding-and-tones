@@ -11,6 +11,7 @@
 * Check text inputs for bad words?
 * Errors display on inputs
 * useValidate should return object instead of array?
+* Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
 
 ## Bugs
 
@@ -38,7 +39,6 @@
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Show songs/scales saved and max to user when signing in?
-* Lazy load print song component
 
 ## Chords
 
