@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GoogleLogin from 'react-google-login';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { GOOGLE_CLIENT_ID } from '../../../assets/oauth';
+import { GOOGLE_CLIENT_ID } from '../../../oauth';
 import { signIn, signOut } from '../../../redux/user/user.actions';
 import Popup from '../../shared/popup/Popup';
 import Privacy from '../../shared/privacy/Privacy';
@@ -32,7 +32,7 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
           terms and privacy policy
         </TermsLink>
         <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
+          clientId={process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID}
           onSuccess={signIn}
           onFailure={signOut}
           cookiePolicy={'single_host_origin'}

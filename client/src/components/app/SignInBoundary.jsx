@@ -1,13 +1,13 @@
 import React from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import { connect } from 'react-redux';
-import { GOOGLE_CLIENT_ID } from '../../assets/oauth';
+import { GOOGLE_CLIENT_ID } from '../../oauth';
 import { signIn, signOut } from '../../redux/user/user.actions';
 import Loading from '../shared/loading/Loading';
 
 const SignInBoundary = ({ children, signIn, singOut }) => {
   const { loaded } = useGoogleLogin({
-    clientId: GOOGLE_CLIENT_ID,
+    clientId: process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID,
     isSignedIn: true,
     cookiePolicy: 'single_host_origin',
     onSuccess: (auth) => signIn(auth),

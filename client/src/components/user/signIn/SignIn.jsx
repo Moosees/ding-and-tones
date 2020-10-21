@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
-import { GOOGLE_CLIENT_ID } from '../../../assets/oauth';
+import { GOOGLE_CLIENT_ID } from '../../../oauth';
 import { signIn, signOut } from '../../../redux/user/user.actions';
 import BtnControls from '../../shared/button/Controls';
 import PopupSignIn from './PopupSignIn';
@@ -13,7 +13,7 @@ const SignIn = ({ isSignedIn, signIn, signOut }) => {
     <>
       {isSignedIn ? (
         <GoogleLogout
-          clientId={GOOGLE_CLIENT_ID}
+          clientId={process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID}
           render={(renderProps) => (
             <BtnControls
               label="Sign out"
