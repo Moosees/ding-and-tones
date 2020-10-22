@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 // Database
 mongoose
@@ -33,15 +33,9 @@ const scaleRoutes = require('./routes/scale');
 const songRoutes = require('./routes/song');
 const userRoutes = require('./routes/user');
 
-app.use('/api/', scaleRoutes);
-app.use('/api/', songRoutes);
-app.use('/api/', userRoutes);
-
-// Frontend
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+app.use('/', scaleRoutes);
+app.use('/', songRoutes);
+app.use('/', userRoutes);
 
 // Run server
 app.listen(port, (error) => {
