@@ -33,9 +33,15 @@ const scaleRoutes = require('./routes/scale');
 const songRoutes = require('./routes/song');
 const userRoutes = require('./routes/user');
 
-app.use('/', scaleRoutes);
-app.use('/', songRoutes);
-app.use('/', userRoutes);
+app.use('/api/', scaleRoutes);
+app.use('/api/', songRoutes);
+app.use('/api/', userRoutes);
+
+// Front-end
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 // Run server
 app.listen(port, (error) => {
