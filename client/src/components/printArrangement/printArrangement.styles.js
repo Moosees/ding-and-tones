@@ -4,7 +4,7 @@ export const PrintLayout = styled.div`
   background-color: #fff;
   color: #000;
   max-width: 100%;
-  margin: 2cm 0.5cm;
+  margin: 1.6cm;
   font-size: 14px;
 `;
 

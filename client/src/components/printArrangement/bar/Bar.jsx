@@ -14,15 +14,19 @@ const Bar = ({ barId, bars, beats, prevBar }) => {
   const metreInfo = metreList[metre];
 
   const filteredBeats = measure
-    .map((beat) => {
+    .filter((beat) => beats[beat].value <= subdivision)
+    .map((beat, i) => {
       const { value, sound } = beats[beat];
-      return value <= subdivision ? (
-        <BeatContainer key={beat} value={value}>
+      return (
+        <BeatContainer
+          key={beat}
+          value={value}
+          addMarginLeft={i && subdivision === 4}
+        >
           {sound !== '-' && sound}
         </BeatContainer>
-      ) : null;
-    })
-    .filter((beat) => beat);
+      );
+    });
 
   return (
     <BarContainer>

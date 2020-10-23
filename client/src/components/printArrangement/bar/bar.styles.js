@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 const beatStyles = {
   heightWidth: {
-    4: '28',
-    8: '25',
-    16: '24',
+    4: '24',
+    8: '22',
+    16: '22',
   },
   fz: {
-    4: '15',
-    8: '14',
-    16: '13',
+    4: '13',
+    8: '12',
+    16: '12',
   },
   border: {
     4: 'solid',
@@ -60,7 +60,8 @@ export const BeatContainer = styled.div`
   width: ${({ value }) => beatStyles.heightWidth[value]}px;
 
   &:not(:first-child) {
-    margin-left: ${({ value }) => (value === 4 ? '4px' : '2px')};
+    margin-left: ${({ addMarginLeft, value }) =>
+      addMarginLeft ? '8px' : value === 4 ? '4px' : '2px'};
   }
 
   span {
