@@ -50,6 +50,7 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
       if (res.status === 204)
         dispatch({
           type: searchTypes.SEARCH_NOT_FOUND,
+          payload: extraPayload,
         });
     })
     .catch((error) => {

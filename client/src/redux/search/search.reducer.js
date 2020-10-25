@@ -50,6 +50,7 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
     case searchTypes.SEARCH_NOT_FOUND:
       return {
         ...state,
+        ...payload,
         isSearching: false,
       };
 
