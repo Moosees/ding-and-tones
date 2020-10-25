@@ -2,32 +2,38 @@
 
 ## Current tasks
 
-* Change query string to keyword search?
-* Show name for your songs as "you"?
+* Alert popup position on bigger screens
+* Chords/multiple notes on one beat
+* Dropdown list show all dyads and ding + note combinations?
+* Left and right hand recommendations for songwriter?
+* Options handling should be moved from arrangement.utils to constants or redux?
 * Remove forced style props (on checkboxes)?
+* Divider line css DRY! Container mix-ins
+* Intervals for chords should have better descriptions
 * Style text inputs when :focus
 * Style text inputs on popups and popups in general
 * Always show placeholder for editOnly inputs?
-* Beat Dropdown text and anchor (on tablets and bigger)
-* Check text inputs for bad words?
 * Errors display on inputs
-* useValidate should return object instead of array?
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
+* Save scale on client should be more functional?
+* Merge api status states (isFetching etc.) in client?
+* HostedDomain on react-google-login?
+* Derive lengthInBeats (and other values?) from metre instead of db?
+* Rework metre template, split into beats?
 
 ## Bugs
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * Drag and drop need testing
+* User can tab select :active outside of popups
 
 ## Design
 
 * New buttons for loading songs and confirm/cancel
 * Dropdowns open when clicking label (difficulty and new song popup)
-* User can tab select :active outside of popups
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
-* Divider line css DRY! Container mix-ins
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Svgs instead of iconfont?
@@ -36,28 +42,23 @@
 
 ## User/Menu
 
-* Help leads to facebook thread? Support this page? Discord? Help displays save limit?
+* Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
-* Show songs/scales saved and max to user when signing in?
 
 ## Chords
 
 * ID and cache chords?
 * Check cache for possible chords to show in filter
-* Intervals for chords should have better descriptions
 
 ## Songwriter
 
-* Chords/multiple notes on one beat
-* Dropdown list show all dyads and ding + note combinations?
 * Web worker?
-* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen? Move all notes of type?
-* Left and right hand recommendations for songwriter?
+* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen?
+* Transpose all notes of type?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Bar names or index visible (when not locked?)
 * Count number of bars for search results? Virtual field?
-* Options handling should be moved from arrangement.utils to constants or redux?
 
 ## State/Backend
 
@@ -65,16 +66,11 @@
 * Prevent/warn transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
+* Show name for your songs as "you"?
+* Change query string to keyword search? Add difficulty filter to searches
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Sorting search results in table
-* Favorite songs/scales
-* Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
 * Split save song controller?
-* Save scale on client should be more functional?
-* Merge api status states (isFetching etc.) in client?
-* update google json file - hostedDomain on react-google-login?
-* Derive lengthInBeats (and other values?) from metre instead of db?
-* Rework metre template, split into beats?
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Redirect between chords and drum when resizing? Use same route for all screens?
 
@@ -117,3 +113,6 @@
 * Swing? Accents?
 * Automate created and updates posts for db documents
 * Increase max save limits for older accounts
+* Favorite songs/scales
+* Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
+* Check text inputs for bad words?

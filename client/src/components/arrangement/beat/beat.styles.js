@@ -44,28 +44,28 @@ export const Dropdown = styled.div`
   background-color: ${({ theme }) => theme.colorBg};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-width: 2px;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: ${({ theme }) => theme.shadowLight};
   display: flex;
   flex-direction: column;
-  left: -4px;
   padding: 4px 0;
   position: absolute;
   text-align: center;
-  top: 32px;
+  top: 3rem;
   width: max-content;
   z-index: 100;
 
   &::before {
+    align-self: center;
     background-color: ${({ theme }) => theme.colorBg};
     border: ${({ theme }) => theme.borderHeavyLight};
     border-radius: 2px;
-    border-width: 0 2px 2px 0;
+    border-width: 2px 0 0 2px;
     content: '';
-    left: 6px;
-    padding: 5px;
+    padding: 0.5rem;
     position: absolute;
-    top: -7px;
-    transform: rotate(-136deg);
+    top: -0.7rem;
+    transform: rotate(45deg);
   }
 `;
 
