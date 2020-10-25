@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Users own songs are highlighted in search results? Or skipped? Show name for your songs as "you"
+* Change query string to keyword search?
+* Show name for your songs as "you"?
 * Remove forced style props (on checkboxes)?
 * Style text inputs when :focus
 * Style text inputs on popups and popups in general

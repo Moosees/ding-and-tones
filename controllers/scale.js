@@ -47,7 +47,7 @@ exports.getScaleById = (req, res) => {
 exports.getScales = (req, res) => {
   const userId = req.userId;
 
-  Scale.find()
+  Scale.find({ author: { $ne: ObjectId(userId) } })
     .select('_id info notes author')
     .limit(20)
     .sort({ created: -1 })

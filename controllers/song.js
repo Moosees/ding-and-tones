@@ -77,7 +77,7 @@ exports.getSongById = (req, res) => {
 exports.getSongs = (req, res) => {
   const userId = req.userId;
 
-  Song.find()
+  Song.find({ composer: { $ne: ObjectId(userId) } })
     .populate('composer', '_id anonymous name')
     .select('_id scale.info info')
     .limit(20)
