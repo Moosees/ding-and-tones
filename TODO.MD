@@ -2,6 +2,8 @@
 
 ## Current tasks
 
+* Is saving song shouldn't show loading screen
+* Mute buttons to skip bars when writing songs
 * Alert popup position on bigger screens
 * Chords/multiple notes on one beat
 * Dropdown list show all dyads and ding + note combinations?
@@ -20,6 +22,7 @@
 * HostedDomain on react-google-login?
 * Derive lengthInBeats (and other values?) from metre instead of db?
 * Rework metre template, split into beats?
+* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 
 ## Bugs
 

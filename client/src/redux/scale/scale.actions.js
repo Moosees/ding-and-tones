@@ -76,6 +76,9 @@ export const loadScale = (scale) => ({
 
 export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   const { scale } = getState();
+
+  if (scale.notes.round.length <= 1) return;
+
   const newScale = scale.notes.round.filter((note) => note !== noteToRemove);
 
   dispatch({
@@ -131,6 +134,8 @@ export const setScaleName = (name) => ({
 export const transposeScale = (destination) => (dispatch, getState) => {
   const { scale } = getState();
   const newScale = transposeScaleToDestination(scale.notes.round, destination);
+
+  if (!newScale.length) return;
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
