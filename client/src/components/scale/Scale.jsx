@@ -38,7 +38,7 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   return (
     <ScaleContainer>
       <Section>
-        {isWorking ? (
+        {isFetching ? (
           <Loading />
         ) : (
           <>

@@ -32,7 +32,7 @@ const Songwriter = ({ getSongById, songUi }) => {
 
   return (
     <SongContainer>
-      {isWorking ? (
+      {isFetching ? (
         <Loading />
       ) : (
         <>

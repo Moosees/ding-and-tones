@@ -54,8 +54,8 @@ const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
             </Suspense>
           </BorderContainer>
         </SectionWithNav>
+        <AlertHandler />
       </LayoutGrid>
-      <AlertHandler />
       <Copyright>
         Copyright &copy; 2020 Linus Almgren -{' '}
         <PrivacyLink onClick={() => setPrivacyOpen(true)}>

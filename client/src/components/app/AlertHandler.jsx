@@ -10,7 +10,7 @@ const AlertContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBg};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-radius: 20px;
-  bottom: 15vh;
+  bottom: 0;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   display: flex;
   left: 50%;
@@ -20,15 +20,11 @@ const AlertContainer = styled.div`
   position: absolute;
   z-index: 9999;
 
-  ${({ theme }) => theme.mqMedium`
-    bottom: 3rem;
-  `}
-
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqSmall`
     background-color: ${theme.colorBox};
-    bottom: 2rem;
     border-radius: 10px;
     border: ${theme.borderMedium};
+    bottom: 3.5rem;
     padding: 0.7rem;
   `}
 `;

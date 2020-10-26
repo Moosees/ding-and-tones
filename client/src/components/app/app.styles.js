@@ -36,6 +36,7 @@ export const LayoutGrid = styled.div`
   max-height: 75rem;
   max-width: 160rem;
   padding: 4rem 4rem 1rem;
+  position: relative;
   width: 100%;
 
   ${({ theme }) => theme.mqLarge`
