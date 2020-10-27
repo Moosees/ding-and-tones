@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { moveBarInArrangement } from '../../redux/song/song.actions';
 import { setSoundOptions } from '../../redux/ui/ui.actions';
 import { Bars } from './arrangement.styles';
-import { createOptions } from './arrangement.utils';
 import Bar from './bar/Bar';
 
 const SongArrangement = ({
@@ -16,7 +15,7 @@ const SongArrangement = ({
   moveBarInArrangement,
 }) => {
   useEffect(() => {
-    setSoundOptions(createOptions(scale));
+    setSoundOptions(scale);
   }, [scale, setSoundOptions]);
 
   const isTouch = window.matchMedia('(pointer: coarse)').matches;

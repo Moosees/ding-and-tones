@@ -30,10 +30,24 @@ export const setPrivacyOpen = (privacyOpen) => ({
   payload: privacyOpen,
 });
 
-export const setSoundOptions = (options) => ({
-  type: uiTypes.SET_SOUND_OPTIONS,
-  payload: options,
-});
+export const setSoundOptions = (scale) => (dispatch) => {
+  const options = {
+    single: [
+      { label: 'Pause', value: '-' },
+      { label: 'Loud Tak', value: 'T' },
+      { label: 'Soft Tak', value: 't' },
+    ],
+  };
+
+  scale.forEach((note, i) => {
+    options.single.push({
+      label: `${i} - ${note}`,
+      value: `${i}`,
+    });
+  });
+
+  dispatch({ type: uiTypes.SET_SOUND_OPTIONS, payload: options });
+};
 
 export const toggleEditSong = () => ({
   type: uiTypes.TOGGLE_EDIT_SONG,

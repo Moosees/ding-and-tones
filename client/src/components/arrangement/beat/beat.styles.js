@@ -70,6 +70,10 @@ export const Dropdown = styled.div`
 `;
 
 export const DropdownItem = styled.div`
+  background-color: ${({ selected, theme }) =>
+    selected ? theme.colorBeat : 'transparent'};
+  color: ${({ selected, theme }) =>
+    selected ? theme.colorTextInverted : theme.colorText};
   font-size: ${({ theme }) => theme.fzSmall};
   padding: 2px 5px;
   position: relative;

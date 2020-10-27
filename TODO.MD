@@ -5,7 +5,6 @@
 * Chords/multiple notes on one beat
 * Dropdown list show all dyads and ding + note combinations?
 * Left and right hand recommendations for songwriter?
-* Options handling should be moved from arrangement.utils to constants or redux?
 * Remove forced style props (on checkboxes)?
 * Divider line css DRY! Container mix-ins
 * Intervals for chords should have better descriptions
