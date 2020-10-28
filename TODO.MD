@@ -16,7 +16,6 @@
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
 * HostedDomain on react-google-login?
-* Derive lengthInBeats (and other values?) from metre instead of db?
 * Rework metre template, split into beats?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Mute buttons to skip bars when writing songs

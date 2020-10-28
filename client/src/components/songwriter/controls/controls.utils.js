@@ -20,7 +20,6 @@ export const createNewBar = (metre, subdivision) => {
     metre,
     subdivision: Math.max(subdivision, minSubdivision),
     repeats: 1,
-    lengthInBeats: metreList[metre].lengthInBeats,
     measure,
   };
 

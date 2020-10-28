@@ -27,10 +27,8 @@ export const getScaleLegend = (note, scale, showIntervals) => {
     return (
       <IntervalContainer key={i}>
         <Interval color={color} />
-        {semitones === 0
-          ? showIntervals
-            ? `${note} - Current Focus`
-            : `${note} - Perfect Unison`
+        {showIntervals && semitones === 0
+          ? `${note} - Current Focus`
           : `${note} - ${name}${modifier} (${semitones} steps)`}
         <Interval color={color} />
       </IntervalContainer>

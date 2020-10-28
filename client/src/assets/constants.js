@@ -18,6 +18,7 @@ export const optionsDifficulty = [
   { value: 1, label: 'Beginner' },
   { value: 3, label: 'Confident' },
   { value: 5, label: 'Advanced' },
+  { value: 10, label: 'Exercise' },
 ];
 
 export const difficultyByValue = optionsDifficulty.reduce((acc, current) => {

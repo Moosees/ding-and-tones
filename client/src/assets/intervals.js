@@ -183,8 +183,8 @@ export const noteValueToName = {
 
 export const intervals = {
   0: {
-    name: 'Perfect Unison',
-    inverted: 'Perfect Octave',
+    name: 'Tonic',
+    inverted: 'Octave',
     nameShort: 'P1',
     invertedShort: 'P8',
     color: '#A70227',
@@ -291,8 +291,8 @@ export const intervals = {
     semitones: 11,
   },
   12: {
-    name: 'Perfect Octave',
-    inverted: 'Perfect Octave',
+    name: 'Octave',
+    inverted: 'Octave',
     nameShort: 'P8',
     invertedShort: 'P8',
     color: '#A90327',

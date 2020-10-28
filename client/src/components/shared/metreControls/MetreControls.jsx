@@ -13,9 +13,9 @@ const MetreControls = ({
   const { minSubdivision } = metreList[metre];
 
   const handleTimeChange = (e) => {
-    const { minSubdivision, lengthInBeats } = metreList[e.target.value];
+    const { minSubdivision } = metreList[e.target.value];
 
-    setMetre(e.target.value, lengthInBeats);
+    setMetre(e.target.value);
 
     if (minSubdivision > subdivision) {
       setSubdivision(minSubdivision);

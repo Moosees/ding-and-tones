@@ -4,21 +4,18 @@ export const barsState = {
   bar_a: {
     metre: 's44',
     subdivision: 4,
-    lengthInBeats: 4,
     repeats: 1,
     measure: ['aa', 'ab', 'ac', 'ad'],
   },
   bar_b: {
     metre: 's44',
     subdivision: 4,
-    lengthInBeats: 4,
     repeats: 1,
     measure: ['ba', 'bb', 'bc', 'bd'],
   },
   bar_c: {
     metre: 's44',
     subdivision: 8,
-    lengthInBeats: 4,
     repeats: 1,
     measure: ['ca', 'cb', 'cc', 'cd', 'ce', 'cf', 'cg', 'ch'],
   },

@@ -1,9 +1,10 @@
+import { metreList } from '../../../assets/metre';
 import { store } from '../../../redux/store';
 import {
   setCurrentBar,
   setCurrentBeat,
-  setIsSongPlaying,
   setIsPreparingSong,
+  setIsSongPlaying,
 } from '../../../redux/ui/ui.actions';
 
 const playBeatPromise = (beat, timeout, audio) =>
@@ -59,7 +60,8 @@ const setupAudio = async (scale, audioPath) => {
 const setupSong = ({ arrangement, bars, beats }) => {
   const song = [];
   arrangement.forEach((barId) => {
-    const { lengthInBeats, measure, subdivision } = bars[barId];
+    const { measure, metre, subdivision } = bars[barId];
+    const { lengthInBeats } = metreList[metre];
     const measureFiltered = [];
 
     measure.forEach((beat) => {
