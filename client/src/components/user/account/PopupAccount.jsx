@@ -30,14 +30,15 @@ const PopupAccount = ({
   return (
     <Popup header="Account" onClose={toggleAccount}>
       <InfoBox>
-        <Checkbox
-          reverse
-          label="Hide name in searches"
-          name="anon"
-          checked={anon}
-          onChange={() => setAnon(!anon)}
-          style={{ marginRight: '0.5rem' }}
-        />
+        <div style={{ marginRight: '0.4rem', width: '100%' }}>
+          <Checkbox
+            reverse
+            label="Hide name in searches"
+            name="anon"
+            checked={anon}
+            onChange={() => setAnon(!anon)}
+          />
+        </div>
       </InfoBox>
       <InfoBox>
         <InfoTextEdit

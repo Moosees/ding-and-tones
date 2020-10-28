@@ -15,12 +15,15 @@ const ControlsContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  justify-content: center;
   overflow: auto;
 `;
 
 const CheckBoxes = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 100%;
+  row-gap: 0.5rem;
 
   ${({ theme }) => theme.mqSmaller`
     font-size: ${theme.fzSmall};
@@ -50,7 +53,6 @@ const Filter = ({
       label={chord.name}
       checked={chord.isSelected}
       onChange={(e) => toggleChordIsSelected(e.target.name, scale)}
-      style={{ marginBottom: '0.5rem' }}
     />
   ));
 

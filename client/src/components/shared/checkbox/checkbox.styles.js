@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const CheckboxLabel = styled.label`
   cursor: pointer;
+  display: flex;
+  opacity: ${({ checked }) => (checked ? '1' : '0.75')};
   padding: 0.2rem;
   padding-left: ${({ reverse }) => (reverse ? '0.2rem' : '2.2rem')};
   padding-right: ${({ reverse }) => (reverse ? '2.2rem' : '0.2rem')};
@@ -36,6 +38,7 @@ export const CheckboxInput = styled.span`
   right: ${({ reverse }) => (reverse ? '0' : 'unset')};
   position: absolute;
   top: 0;
+  transition: transform 0.2s ease;
   width: 2rem;
 
   &::after {

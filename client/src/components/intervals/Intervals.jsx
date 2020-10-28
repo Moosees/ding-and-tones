@@ -26,14 +26,12 @@ const Intervals = ({
           onChange={() => setShowIntervals(!showIntervals)}
           label="Click to play"
           checked={!showIntervals}
-          style={{ opacity: showIntervals ? '0.5' : '1' }}
         />
         <Checkbox
           name="focus"
           onChange={() => setShowIntervals(!showIntervals)}
           label="Click to focus"
           checked={showIntervals}
-          style={{ opacity: showIntervals ? '1' : '0.5' }}
         />
       </CheckboxContainer>
       <DividerLine small />
