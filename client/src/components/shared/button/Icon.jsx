@@ -10,6 +10,7 @@ const BtnIcon = ({
   icon,
   isSongPlaying,
   onClick,
+  reverse,
 }) => {
   return (
     <IconButton
@@ -18,6 +19,7 @@ const BtnIcon = ({
       disabled={disabled || isSongPlaying}
       editOnly={editOnly}
       onClick={onClick}
+      reverse={reverse}
     >
       <i className="material-icons">{icon}</i>
     </IconButton>

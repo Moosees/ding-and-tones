@@ -7,9 +7,6 @@
 * Left and right hand recommendations for songwriter?
 * Divider line css DRY! Container mix-ins
 * Intervals for chords should have better descriptions
-* Style text inputs when :focus
-* Style text inputs on popups and popups in general
-* Always show placeholder for editOnly inputs?
 * Errors display on inputs
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
 * Save scale on client should be more functional?

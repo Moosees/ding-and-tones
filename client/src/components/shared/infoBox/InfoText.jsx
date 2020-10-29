@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BtnIcon from '../button/Icon';
-import InfoTextEdit from './InfoTextEdit';
+import { InfoContainer } from './infoBox.styles';
+import InfoInput from './InfoInput';
 
 const InfoText = ({
   children,
@@ -10,7 +11,6 @@ const InfoText = ({
   handleSave = () => {},
   isValid = true,
   placeholder = '',
-  size,
   value = '',
 }) => {
   const [editOpen, setEditOpen] = useState(false);
@@ -29,21 +29,20 @@ const InfoText = ({
   return (
     <>
       {editOpen ? (
-        <InfoTextEdit
+        <InfoInput
           errors={errors}
           handleChange={handleChange}
           isValid={isValid}
           onClose={onClose}
           onSave={onSave}
           placeholder={placeholder}
-          size={size}
           value={value}
         />
       ) : (
-        <>
+        <InfoContainer>
           {children}
           <BtnIcon label="edit" icon="edit" onClick={() => setEditOpen(true)} />
-        </>
+        </InfoContainer>
       )}
     </>
   );

@@ -47,15 +47,18 @@ export const GradientButton = styled.button`
 `;
 
 export const IconButton = styled.button`
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 0;
   cursor: ${({ editOnly }) => (editOnly ? 'default' : 'pointer')};
+  left: ${({ reverse }) => (reverse ? '1px' : 'unset')};
+  position: absolute;
+  right: ${({ reverse }) => (reverse ? 'unset' : '1px')};
 
   & i {
     color: ${({ color, editOnly, theme }) =>
       editOnly && color ? theme[color] : theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
-    padding: 0.8rem 0.4rem;
+    padding: 0.5rem;
     transition: color 0.1s ease;
   }
 

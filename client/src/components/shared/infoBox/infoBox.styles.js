@@ -8,12 +8,13 @@ export const InfoContainer = styled.div`
   border-radius: 3px;
   cursor: default;
   display: flex;
-  flex: 0 0;
+  flex: 1;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   justify-content: space-between;
   margin: 0.5rem;
   min-height: 3.5rem;
   padding: 0 0.5rem;
+  position: relative;
 
   ${({ theme }) => theme.mqSmaller`
     max-height: 3.5rem;
@@ -42,9 +43,10 @@ export const SelectContainer = styled.label`
 `;
 
 export const TextInput = styled.input`
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 0;
   height: 3rem;
+  width: 100%;
 
   &:focus {
     outline: none;
@@ -52,6 +54,19 @@ export const TextInput = styled.input`
 
   &::selection {
     background-color: ${({ theme }) => theme.colorTextInverted};
-    /* background-color: #fff; */
+  }
+`;
+
+export const TextInputLabel = styled.label`
+  align-items: center;
+  display: flex;
+  width: 100%;
+
+  span {
+    bottom: 3rem;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    transition: opacity 0.2s ease;
   }
 `;

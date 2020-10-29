@@ -7,8 +7,8 @@ import { setSongState } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/infoBox/InfoBox';
+import InfoInput from '../../shared/infoBox/InfoInput';
 import InfoSelect from '../../shared/infoBox/InfoSelect';
-import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
 import MetreControls from '../../shared/metreControls/MetreControls';
 import Popup from '../../shared/popup/Popup';
 
@@ -44,17 +44,14 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
 
   return (
     <Popup header="New song" onClose={onClose}>
-      <InfoBox>
-        <InfoTextEdit
-          editOnly
-          errors={errors}
-          handleChange={setTitle}
-          isValid={isTitleValid}
-          placeholder={'Title'}
-          size={32}
-          value={title}
-        />
-      </InfoBox>
+      <InfoInput
+        editOnly
+        errors={errors}
+        handleChange={setTitle}
+        isValid={isTitleValid}
+        placeholder={'Title'}
+        value={title}
+      />
       <InfoBox>
         <InfoSelect
           value={difficulty}

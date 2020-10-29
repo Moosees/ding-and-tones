@@ -6,7 +6,7 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoBox from '../../shared/infoBox/InfoBox';
-import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
+import InfoInput from '../../shared/infoBox/InfoInput';
 import Popup from '../../shared/popup/Popup';
 
 const PopupAccount = ({
@@ -29,26 +29,21 @@ const PopupAccount = ({
 
   return (
     <Popup header="Account" onClose={toggleAccount}>
+      <InfoInput
+        editOnly
+        errors={errors}
+        handleChange={setUsername}
+        isValid={usernameValid}
+        placeholder={'Username'}
+        value={username}
+      />
       <InfoBox>
-        <div style={{ marginRight: '0.4rem', width: '100%' }}>
-          <Checkbox
-            reverse
-            label="Hide name in searches"
-            name="anon"
-            checked={anon}
-            onChange={() => setAnon(!anon)}
-          />
-        </div>
-      </InfoBox>
-      <InfoBox>
-        <InfoTextEdit
-          editOnly
-          errors={errors}
-          handleChange={setUsername}
-          isValid={usernameValid}
-          placeholder={'Username'}
-          size={22}
-          value={username}
+        <Checkbox
+          reverse
+          label="Hide name in searches"
+          name="anon"
+          checked={anon}
+          onChange={() => setAnon(!anon)}
         />
       </InfoBox>
       <Buttons position="center">

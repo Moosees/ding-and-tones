@@ -8,7 +8,6 @@ const InfoSearch = ({
   isSearching,
   placeholder,
   searchOption,
-  size,
   startSearch,
 }) => {
   const [value, setValue] = useState('');
@@ -27,7 +26,6 @@ const InfoSearch = ({
         autoFocus
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-        size={size}
         value={value}
       />
       <Spinner spin={isSearching} />

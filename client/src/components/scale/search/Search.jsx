@@ -13,7 +13,6 @@ const Search = ({ isSearching, startSearch }) => {
       <InfoSearch
         placeholder="Search scales"
         searchOption={searchOptions.scales.alphabetical}
-        size={25}
       />
       <Buttons position="center">
         <BtnPrimary

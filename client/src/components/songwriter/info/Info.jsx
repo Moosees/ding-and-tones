@@ -51,19 +51,17 @@ const Info = ({
   return (
     <>
       <InfoContainer>
-        <InfoBox>
-          <InfoText
-            errors={titleErrors}
-            handleChange={handleTitleChange}
-            handleClose={resetTitle}
-            handleSave={() => updateSongInfo({ title })}
-            isValid={isTitleValid}
-            placeholder="Song title"
-            value={title}
-          >
-            {'Title: ' + songInfo.title}
-          </InfoText>
-        </InfoBox>
+        <InfoText
+          errors={titleErrors}
+          handleChange={handleTitleChange}
+          handleClose={resetTitle}
+          handleSave={() => updateSongInfo({ title })}
+          isValid={isTitleValid}
+          placeholder="Song title"
+          value={title}
+        >
+          {'Title: ' + songInfo.title}
+        </InfoText>
         <InfoBox>
           <InfoSelect
             value={songInfo.difficulty}

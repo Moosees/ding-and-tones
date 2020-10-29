@@ -4,8 +4,7 @@ import useValidate from '../../../hooks/useValidate';
 import { updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
-import InfoBox from '../../shared/infoBox/InfoBox';
-import InfoTextEdit from '../../shared/infoBox/InfoTextEdit';
+import InfoInput from '../../shared/infoBox/InfoInput';
 import MetreControls from '../../shared/metreControls/MetreControls';
 import Popup from '../../shared/popup/Popup';
 
@@ -37,16 +36,14 @@ const PopupSongMetre = ({
 
   return (
     <Popup header="Metre" onClose={onClose}>
-      <InfoBox>
-        <InfoTextEdit
-          editOnly
-          errors={newBpmErrors}
-          handleChange={setNewBpm}
-          isValid={isNewBpmValid}
-          placeholder="Beats per minute"
-          value={newBpm}
-        />
-      </InfoBox>
+      <InfoInput
+        editOnly
+        errors={newBpmErrors}
+        handleChange={setNewBpm}
+        isValid={isNewBpmValid}
+        placeholder="BPM"
+        value={newBpm}
+      />
       <MetreControls
         metre={newMetre}
         subdivision={newSubdivision}

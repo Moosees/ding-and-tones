@@ -17,7 +17,6 @@ const Search = ({ isSearching, startSearch }) => {
       <InfoSearch
         placeholder="Search songs"
         searchOption={searchOptions.songs.alphabetical}
-        size={30}
       />
       <BtnPrimary
         disabled={isSearching}

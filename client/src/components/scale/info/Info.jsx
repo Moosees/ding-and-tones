@@ -40,19 +40,17 @@ const Info = ({
 
   return (
     <InfoContainer>
-      <InfoBox>
-        <InfoText
-          errors={nameErrors}
-          handleChange={handleNameChange}
-          handleClose={resetName}
-          handleSave={handleNameSave}
-          isValid={isNameValid}
-          placeholder="Scale name"
-          value={name}
-        >
-          {`Scale: ${scaleInfo.rootName} ${scaleInfo.name}`}
-        </InfoText>
-      </InfoBox>
+      <InfoText
+        errors={nameErrors}
+        handleChange={handleNameChange}
+        handleClose={resetName}
+        handleSave={handleNameSave}
+        isValid={isNameValid}
+        placeholder="Scale name"
+        value={name}
+      >
+        {`Scale: ${scaleInfo.rootName} ${scaleInfo.name}`}
+      </InfoText>
       <InfoBox>
         <ScaleLabel>{scaleInfo.label}</ScaleLabel>
       </InfoBox>
