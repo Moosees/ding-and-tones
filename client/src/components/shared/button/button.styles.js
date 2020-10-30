@@ -26,23 +26,25 @@ export const ControlsLabel = styled.span`
 `;
 
 export const GradientButton = styled.button`
+  align-items: center;
   background-image: linear-gradient(
     to bottom,
     #ccc 0%,
     ${({ theme }) => theme.colorBox} 100%
   );
-  border: ${({ theme }) => theme.borderMedium};
-  border-radius: 2px;
+  border: ${({ theme }) => theme.borderLight};
+  border-radius: 4px;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  padding: 3px;
-  margin: 1px;
+  display: flex;
+  font-size: ${({ theme }) => theme.fzSmall};
+  padding: 1px 4px;
   min-width: 2rem;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   transition: border 0.15s ease-in;
 
   &:hover {
     border: ${({ disabled, theme }) =>
-      disabled ? theme.borderMedium : theme.borderLight};
+      !disabled ? theme.borderMedium : theme.borderLight};
   }
 `;
 

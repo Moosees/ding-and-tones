@@ -59,6 +59,7 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         {'Difficulty: '}
       </InfoSelect>
       <MetreControls
+        hasLabel
         metre={metre}
         subdivision={subdivision}
         setMetre={setMetre}

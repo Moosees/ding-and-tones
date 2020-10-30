@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* New song popup styles and icon for delete songs/scales are messed up
 * Chords/multiple notes on one beat
 * Dropdown list show all dyads and ding + note combinations?
 * Left and right hand recommendations for songwriter?
@@ -16,6 +17,7 @@
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Mute buttons to skip bars when writing songs
 * Icon button colors when validating, styles are messed up
+* Transition mixin
 
 ## Bugs
 

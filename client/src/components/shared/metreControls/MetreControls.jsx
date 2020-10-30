@@ -3,11 +3,11 @@ import { metreList } from '../../../assets/metre';
 import { MetreLabel, MetreSelect } from './metreControls.styles';
 
 const MetreControls = ({
+  hasLabel,
   metre,
   setMetre,
   subdivision,
   setSubdivision,
-  small,
   disabled,
 }) => {
   const { minSubdivision } = metreList[metre];
@@ -25,10 +25,9 @@ const MetreControls = ({
   return (
     <>
       {setMetre && (
-        <MetreLabel small={small}>
-          {!small && <span>Metre:</span>}
+        <MetreLabel hasLabel={hasLabel}>
+          {hasLabel && <span>Metre:</span>}
           <MetreSelect
-            small={small}
             value={metre}
             disabled={disabled}
             onChange={handleTimeChange}
@@ -53,13 +52,13 @@ const MetreControls = ({
               <option value={'x332'}>8/8 - 3-3-2</option>
             </optgroup>
           </MetreSelect>
+          <i className="material-icons">keyboard_arrow_down</i>
         </MetreLabel>
       )}
       {setSubdivision && (
-        <MetreLabel small={small}>
-          {!small && <span>Subdivision:</span>}
+        <MetreLabel hasLabel={hasLabel}>
+          {hasLabel && <span>Subdivision:</span>}
           <MetreSelect
-            small={small}
             value={subdivision}
             disabled={disabled}
             onChange={(e) => setSubdivision(e.target.value)}
@@ -74,6 +73,7 @@ const MetreControls = ({
               16ths
             </option>
           </MetreSelect>
+          <i className="material-icons">keyboard_arrow_down</i>
         </MetreLabel>
       )}
     </>

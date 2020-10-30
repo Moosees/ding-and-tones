@@ -17,6 +17,7 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
   return (
     <Popup header="New bar" onClose={onClose}>
       <MetreControls
+        hasLabel
         metre={metre}
         subdivision={subdivision}
         setMetre={setMetre}
