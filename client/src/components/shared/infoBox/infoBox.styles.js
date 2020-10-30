@@ -21,25 +21,40 @@ export const InfoContainer = styled.div`
   `}
 `;
 
+export const SelectLabel = styled.label`
+  align-items: center;
+  background-color: ${({ theme }) => theme.colorBtnHeavy};
+  display: flex;
+  height: 3rem;
+  width: 100%;
+
+  span {
+    position: absolute;
+  }
+
+  i {
+    color: ${({ theme }) => theme.colorText};
+    font-size: ${({ theme }) => theme.fzLarge};
+    position: absolute;
+    right: 6px;
+  }
+`;
+
 export const Select = styled.select`
-  background-image: linear-gradient(
-    to bottom,
-    ${({ theme }) => theme.colorBtnHeavy} 0%,
-    ${({ theme }) => theme.colorBtnHeavy} 100%
-  );
+  appearance: none;
+  background-color: transparent;
   border: 0;
   cursor: pointer;
-  margin-right: 2px;
+  display: block;
+  height: 100%;
+  padding-left: ${({ labelWidth }) => labelWidth + 3}px;
+  padding-right: 1rem;
   width: 100%;
+  z-index: 1;
 
   &:focus:not(.focus-visible) {
     outline: none;
   }
-`;
-
-export const SelectContainer = styled.label`
-  display: flex;
-  width: 100%;
 `;
 
 export const TextInput = styled.input`

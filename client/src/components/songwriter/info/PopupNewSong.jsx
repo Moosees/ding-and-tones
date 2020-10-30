@@ -6,7 +6,6 @@ import useValidate from '../../../hooks/useValidate';
 import { setSongState } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
-import InfoBox from '../../shared/infoBox/InfoBox';
 import InfoInput from '../../shared/infoBox/InfoInput';
 import InfoSelect from '../../shared/infoBox/InfoSelect';
 import MetreControls from '../../shared/metreControls/MetreControls';
@@ -52,15 +51,13 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         placeholder={'Title'}
         value={title}
       />
-      <InfoBox>
-        <InfoSelect
-          value={difficulty}
-          handleChange={setDifficulty}
-          options={optionsDifficulty}
-        >
-          {'Difficulty: '}
-        </InfoSelect>
-      </InfoBox>
+      <InfoSelect
+        value={difficulty}
+        handleChange={setDifficulty}
+        options={optionsDifficulty}
+      >
+        {'Difficulty: '}
+      </InfoSelect>
       <MetreControls
         metre={metre}
         subdivision={subdivision}

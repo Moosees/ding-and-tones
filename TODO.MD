@@ -15,6 +15,7 @@
 * Rework metre template, split into beats?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Mute buttons to skip bars when writing songs
+* Icon button colors when validating, styles are messed up
 
 ## Bugs
 
@@ -26,7 +27,6 @@
 ## Design
 
 * New buttons for loading songs and confirm/cancel
-* Dropdowns open when clicking label (difficulty and new song popup)
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Remake scale grid layout

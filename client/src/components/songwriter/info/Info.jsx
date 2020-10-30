@@ -7,7 +7,6 @@ import useValidate from '../../../hooks/useValidate';
 import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
-import InfoBox from '../../shared/infoBox/InfoBox';
 import InfoSelect from '../../shared/infoBox/InfoSelect';
 import InfoText from '../../shared/infoBox/InfoText';
 import PlayButton from '../playButton/PlayButton';
@@ -62,15 +61,13 @@ const Info = ({
         >
           {'Title: ' + songInfo.title}
         </InfoText>
-        <InfoBox>
-          <InfoSelect
-            value={songInfo.difficulty}
-            handleChange={(value) => updateSongInfo({ difficulty: value })}
-            options={optionsDifficulty}
-          >
-            {'Difficulty: '}
-          </InfoSelect>
-        </InfoBox>
+        <InfoSelect
+          value={songInfo.difficulty}
+          handleChange={(value) => updateSongInfo({ difficulty: value })}
+          options={optionsDifficulty}
+        >
+          {'Difficulty: '}
+        </InfoSelect>
         <Buttons>
           <BtnPrimary
             disabled={
