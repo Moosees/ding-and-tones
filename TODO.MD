@@ -3,28 +3,32 @@
 ## Current tasks
 
 * New song popup styles and icon for delete songs/scales are messed up
-* Chords/multiple notes on one beat
-* Dropdown list show all dyads and ding + note combinations?
-* Left and right hand recommendations for songwriter?
+* Transition mixin, border radius mixin?
+* Icon button colors when validating, styles are messed up
 * Divider line css DRY! Container mix-ins
 * Intervals for chords should have better descriptions
 * Errors display on inputs
+* Redesign "select drum mode"
+
+* Chords/multiple notes on one beat
+* Dropdown list show all dyads and ding + note combinations?
+* Left and right hand recommendations for songwriter?
+* Mute buttons to skip bars when writing songs
+* One-e-and-a style phonetic rhythm notation on bars?
+* Bar names or index visible (when not locked?)
+
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
+
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
 * HostedDomain on react-google-login?
-* Rework metre template, split into beats?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* Mute buttons to skip bars when writing songs
-* Icon button colors when validating, styles are messed up
-* Transition mixin
 
 ## Bugs
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * Drag and drop need testing
-* User can tab select :active outside of popups
 
 ## Design
 
@@ -34,8 +38,8 @@
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Svgs instead of iconfont?
-* Redesign "select drum mode"
 * Load song button can be seen through table header
+* User can tab select :active outside of popups
 
 ## User/Menu
 
@@ -53,8 +57,6 @@
 * Web worker?
 * What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen?
 * Transpose all notes of type?
-* One-e-and-a style phonetic rhythm notation on bars?
-* Bar names or index visible (when not locked?)
 * Count number of bars for search results? Virtual field?
 
 ## State/Backend
@@ -63,7 +65,6 @@
 * Prevent/warn transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
-* Show name for your songs as "you"?
 * Change query string to keyword search? Add difficulty filter to searches
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Sorting search results in table
@@ -113,3 +114,4 @@
 * Favorite songs/scales
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
 * Check text inputs for bad words?
+* Show name for your songs as "you"?

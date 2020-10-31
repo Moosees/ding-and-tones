@@ -56,23 +56,21 @@ export const IconButton = styled.button`
   position: absolute;
   right: ${({ reverse }) => (reverse ? 'unset' : '1px')};
 
-  & i {
-    color: ${({ color, editOnly, theme }) =>
-      editOnly && color ? theme[color] : theme.colorText};
+  i {
+    color: ${({ color, theme }) => (color ? theme[color] : theme.colorText)};
     font-size: ${({ theme }) => theme.fzLarge};
     padding: 0.5rem;
-    transition: color 0.1s ease;
+    transition: transform 0.1s ease-in;
   }
 
   &:hover:not([disabled]) i {
-    color: ${({ color, theme }) =>
-      color ? theme[color] : theme.colorBtnClear};
+    transform: scale(${({ editOnly }) => (!editOnly ? '1.15' : '1')});
   }
 
   &:disabled {
     cursor: default;
 
-    & i {
+    i {
       opacity: 0.2;
     }
   }

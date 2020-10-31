@@ -10,7 +10,7 @@ export const CheckboxLabel = styled.label`
   position: relative;
   width: 100%;
 
-  & input {
+  input {
     height: 0;
     opacity: 0;
     position: absolute;
