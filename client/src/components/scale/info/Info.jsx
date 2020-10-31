@@ -46,7 +46,7 @@ const Info = ({
         handleClose={resetName}
         handleSave={handleNameSave}
         isValid={isNameValid}
-        placeholder="Scale name"
+        placeholder="Scale name: "
         value={name}
       >
         {`Scale: ${scaleInfo.rootName} ${scaleInfo.name}`}

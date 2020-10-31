@@ -48,16 +48,9 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         errors={errors}
         handleChange={setTitle}
         isValid={isTitleValid}
-        placeholder={'Title'}
+        placeholder={'Title: '}
         value={title}
       />
-      <InfoSelect
-        value={difficulty}
-        handleChange={setDifficulty}
-        options={optionsDifficulty}
-      >
-        {'Difficulty: '}
-      </InfoSelect>
       <MetreControls
         hasLabel
         metre={metre}
@@ -65,6 +58,14 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         setMetre={setMetre}
         setSubdivision={setSubdivision}
       />
+      <InfoSelect
+        hasLabel
+        value={difficulty}
+        handleChange={setDifficulty}
+        options={optionsDifficulty}
+      >
+        {'Difficulty: '}
+      </InfoSelect>
       <Buttons position="center">
         <BtnPrimary
           label="Confirm"

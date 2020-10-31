@@ -2,9 +2,9 @@
 
 ## Current tasks
 
-* New song popup styles and icon for delete songs/scales are messed up
+* Song metre/bpm popup styles
+* Icon for delete songs/scales are messed up
 * Transition mixin, border radius mixin?
-* Icon button colors when validating, styles are messed up
 * Divider line css DRY! Container mix-ins
 * Intervals for chords should have better descriptions
 * Errors display on inputs
@@ -40,6 +40,8 @@
 * Svgs instead of iconfont?
 * Load song button can be seen through table header
 * User can tab select :active outside of popups
+* Use InfoContainer for metre dropdown
+* Line breaks inside bars? Only for printing?
 
 ## User/Menu
 

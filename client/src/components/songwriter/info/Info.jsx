@@ -56,7 +56,7 @@ const Info = ({
           handleClose={resetTitle}
           handleSave={() => updateSongInfo({ title })}
           isValid={isTitleValid}
-          placeholder="Song title"
+          placeholder="Song title: "
           value={title}
         >
           {'Title: ' + songInfo.title}

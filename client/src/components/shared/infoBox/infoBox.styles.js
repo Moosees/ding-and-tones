@@ -11,10 +11,11 @@ export const InfoContainer = styled.div`
   flex: 1;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   justify-content: space-between;
-  margin: 0.5rem;
+  margin: 0.5rem 0;
   min-height: 3.5rem;
   padding: 0 0.5rem;
   position: relative;
+  width: 100%;
 
   ${({ theme }) => theme.mqSmaller`
     max-height: 3.5rem;
@@ -25,10 +26,14 @@ export const SelectLabel = styled.label`
   align-items: center;
   background-color: ${({ theme }) => theme.colorBtnHeavy};
   display: flex;
-  height: 3rem;
+  height: 3.2rem;
+  min-height: ${({ hasLabel }) => (hasLabel ? '3rem' : 'unset')};
   width: 100%;
 
   span {
+    bottom: ${({ hasLabel }) => (hasLabel ? '3rem' : 'unset')};
+    left: ${({ hasLabel }) => (hasLabel ? '0' : 'unset')};
+    opacity: ${({ hasLabel }) => (hasLabel ? '0.6' : '1')};
     position: absolute;
   }
 
@@ -47,7 +52,8 @@ export const Select = styled.select`
   cursor: pointer;
   display: block;
   height: 100%;
-  padding-left: ${({ labelWidth }) => labelWidth + 3}px;
+  padding-left: ${({ hasLabel, labelWidth }) =>
+    !hasLabel ? labelWidth + 3 : '0'}px;
   padding-right: 1rem;
   width: 100%;
   z-index: 1;
@@ -60,7 +66,7 @@ export const Select = styled.select`
 export const TextInput = styled.input`
   background-color: transparent;
   border: 0;
-  height: 3rem;
+  height: 3.2rem;
   width: 100%;
 
   &:focus {

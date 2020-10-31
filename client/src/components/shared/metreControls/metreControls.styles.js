@@ -11,8 +11,8 @@ export const MetreLabel = styled.label`
   )`};
   display: flex;
   font-size: ${({ hasLabel, theme }) => (hasLabel ? 'inherit' : theme.fzSmall)};
-  margin: ${({ hasLabel }) => (hasLabel ? '1.5rem 0' : 'unset')};
-  min-height: ${({ hasLabel }) => (hasLabel ? '3rem' : 'unset')};
+  margin: ${({ hasLabel }) => (hasLabel ? '1rem 0' : 'unset')};
+  min-height: ${({ hasLabel }) => (hasLabel ? '3.4rem' : 'unset')};
   min-width: 5.5rem;
   position: relative;
   text-align: center;
@@ -23,11 +23,11 @@ export const MetreLabel = styled.label`
     color: ${({ theme }) => theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
     position: absolute;
-    right: 2px;
+    right: ${({ hasLabel }) => (hasLabel ? '7px' : '2px')};
   }
 
   span {
-    bottom: 2.8rem;
+    bottom: 3.1rem;
     left: 0;
     opacity: 0.6;
     position: absolute;
@@ -41,7 +41,7 @@ export const MetreSelect = styled.select`
   border-radius: 4px;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
-  padding: 1px 15px 1px 2px;
+  padding: ${({ hasLabel }) => (hasLabel ? '0 0.5rem' : '1px 15px 1px 2px')};
   transition: border 0.15s ease-in;
   width: 100%;
   z-index: 1;

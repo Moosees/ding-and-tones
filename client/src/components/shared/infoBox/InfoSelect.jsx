@@ -5,6 +5,7 @@ import { InfoContainer, Select, SelectLabel } from './infoBox.styles';
 const InfoSelect = ({
   children,
   handleChange,
+  hasLabel,
   isSongPlaying,
   options,
   value,
@@ -29,9 +30,10 @@ const InfoSelect = ({
 
   return (
     <InfoContainer>
-      <SelectLabel>
+      <SelectLabel hasLabel={hasLabel}>
         <span ref={labelRef}>{children}</span>
         <Select
+          hasLabel={hasLabel}
           disabled={isSongPlaying}
           value={value}
           labelWidth={labelWidth}

@@ -28,6 +28,7 @@ const MetreControls = ({
         <MetreLabel hasLabel={hasLabel}>
           {hasLabel && <span>Metre:</span>}
           <MetreSelect
+            hasLabel={hasLabel}
             value={metre}
             disabled={disabled}
             onChange={handleTimeChange}
