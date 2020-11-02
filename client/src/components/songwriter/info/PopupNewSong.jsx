@@ -16,7 +16,7 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(4);
 
-  const [title, setTitle, errors, isTitleValid] = useValidate('title');
+  const [title, setTitle, titleErrors, isTitleValid] = useValidate('title');
   const { push } = useHistory();
 
   const handleConfirm = () => {
@@ -45,10 +45,9 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
     <Popup header="New song" onClose={onClose}>
       <InfoInput
         editOnly
-        errors={errors}
         handleChange={setTitle}
         isValid={isTitleValid}
-        placeholder={'Title: '}
+        placeholder={titleErrors.length ? titleErrors[0] : 'Song title:'}
         value={title}
       />
       <MetreControls

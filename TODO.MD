@@ -2,12 +2,10 @@
 
 ## Current tasks
 
-* Song metre/bpm popup styles
-* Icon for delete songs/scales are messed up
+* Icon for delete songs/scales are messed up, spinners missing
+* Errors from backend display on inputs
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins
-* Intervals for chords should have better descriptions
-* Errors display on inputs
 * Redesign "select drum mode"
 
 * Chords/multiple notes on one beat

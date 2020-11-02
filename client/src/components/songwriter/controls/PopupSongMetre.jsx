@@ -36,19 +36,19 @@ const PopupSongMetre = ({
 
   return (
     <Popup header="Metre" onClose={onClose}>
-      <InfoInput
-        editOnly
-        errors={newBpmErrors}
-        handleChange={setNewBpm}
-        isValid={isNewBpmValid}
-        placeholder="BPM"
-        value={newBpm}
-      />
       <MetreControls
+        hasLabel
         metre={newMetre}
         subdivision={newSubdivision}
         setMetre={setNewMetre}
         setSubdivision={setNewSubdivision}
+      />
+      <InfoInput
+        editOnly
+        handleChange={setNewBpm}
+        isValid={isNewBpmValid}
+        placeholder={newBpmErrors.length ? newBpmErrors[0] : 'Bpm:'}
+        value={newBpm}
       />
       <Buttons position="center">
         <BtnPrimary

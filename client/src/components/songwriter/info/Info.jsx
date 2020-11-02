@@ -51,12 +51,11 @@ const Info = ({
     <>
       <InfoContainer>
         <InfoText
-          errors={titleErrors}
           handleChange={handleTitleChange}
           handleClose={resetTitle}
           handleSave={() => updateSongInfo({ title })}
           isValid={isTitleValid}
-          placeholder="Song title: "
+          placeholder={titleErrors.length ? titleErrors[0] : 'Song title:'}
           value={title}
         >
           {'Title: ' + songInfo.title}

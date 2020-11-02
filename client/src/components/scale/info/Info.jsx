@@ -41,12 +41,11 @@ const Info = ({
   return (
     <InfoContainer>
       <InfoText
-        errors={nameErrors}
         handleChange={handleNameChange}
         handleClose={resetName}
         handleSave={handleNameSave}
         isValid={isNameValid}
-        placeholder="Scale name: "
+        placeholder={nameErrors.length ? nameErrors[0] : 'Scale name:'}
         value={name}
       >
         {`Scale: ${scaleInfo.rootName} ${scaleInfo.name}`}

@@ -18,7 +18,7 @@ const PopupAccount = ({
 }) => {
   const [anon, setAnon] = useState(isAnonymous);
 
-  const [username, setUsername, errors, usernameValid] = useValidate(
+  const [username, setUsername, usernameErrors, usernameValid] = useValidate(
     'username',
     name
   );
@@ -31,16 +31,15 @@ const PopupAccount = ({
     <Popup header="Account" onClose={toggleAccount}>
       <InfoInput
         editOnly
-        errors={errors}
         handleChange={setUsername}
         isValid={usernameValid}
-        placeholder={'Username'}
+        placeholder={usernameErrors.length ? usernameErrors[0] : 'Username:'}
         value={username}
       />
       <InfoBox>
         <Checkbox
           reverse
-          label="Hide name in searches"
+          label="Hide name in searches?"
           name="anon"
           checked={anon}
           onChange={() => setAnon(!anon)}
