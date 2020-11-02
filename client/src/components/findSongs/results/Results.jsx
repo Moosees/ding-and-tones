@@ -9,6 +9,7 @@ import BtnIcon from '../../shared/button/Icon';
 import BtnPrimary from '../../shared/button/Primary';
 import Confirmation from '../../shared/popup/Confirmation';
 import ReactTable from './ReactTable';
+import { DeleteContainer } from './results.styles';
 
 const Results = ({
   deleteSongById,
@@ -54,7 +55,7 @@ const Results = ({
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title }) => (
       <>
-        <td colSpan={3}>
+        <td colSpan={2}>
           <Buttons position="flex-start">
             <BtnPrimary
               light
@@ -62,7 +63,11 @@ const Results = ({
               onClick={() => redirectTo(`/song/${songId}`)}
             />
             <BtnPrimary light label="Load w/o scale" disabled={true} />
-            {isOwner && isSignedIn ? (
+          </Buttons>
+        </td>
+        <td colSpan={1}>
+          {isOwner && isSignedIn ? (
+            <DeleteContainer>
               <Confirmation
                 onConfirm={() => deleteSongById(songId)}
                 label={`Are you sure you want to delete "${title}"`}
@@ -73,8 +78,8 @@ const Results = ({
                   disabled={isSearching || isDeleting}
                 />
               </Confirmation>
-            ) : null}
-          </Buttons>
+            </DeleteContainer>
+          ) : null}
         </td>
         <td colSpan={2}>{scaleLabel}</td>
       </>

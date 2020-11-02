@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Icon for delete songs/scales are messed up
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins
 * Redesign "select drum mode"
@@ -16,6 +15,7 @@
 
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
 
+* Load song without scale
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
 * HostedDomain on react-google-login?

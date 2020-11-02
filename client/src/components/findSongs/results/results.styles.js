@@ -71,6 +71,13 @@ export const ExpandedRow = styled.tr`
   }
 `;
 
+export const DeleteContainer = styled.div`
+  align-items: center;
+  display: flex;
+  position: relative;
+  right: 1.4rem;
+`;
+
 export const TableFooter = styled.td`
   background-color: ${({ theme }) => theme.colorBeat};
   border-radius: 0 0 10px 10px;

@@ -41,7 +41,7 @@ const Results = ({
       };
 
       return (
-        <ScaleContainer key={i}>
+        <ScaleContainer key={i} isOwner={isOwner && isSignedIn}>
           {isOwner && isSignedIn && (
             <Confirmation
               onConfirm={handleDeleteScale}
