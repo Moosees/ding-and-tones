@@ -28,7 +28,7 @@ const InfoSearch = ({
         placeholder={placeholder}
         value={value}
       />
-      <Spinner spin={isSearching} />
+      <Spinner isSpinning={isSearching} />
     </InfoContainer>
   );
 };

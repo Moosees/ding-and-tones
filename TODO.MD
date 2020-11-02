@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Icon for delete songs/scales are messed up, spinners missing
-* Errors from backend display on inputs
+* Icon for delete songs/scales are messed up
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins
 * Redesign "select drum mode"
@@ -40,6 +39,7 @@
 * User can tab select :active outside of popups
 * Use InfoContainer for metre dropdown
 * Line breaks inside bars? Only for printing?
+* Errors from backend display on inputs
 
 ## User/Menu
 
