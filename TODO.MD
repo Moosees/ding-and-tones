@@ -2,11 +2,19 @@
 
 ## Current tasks
 
+* Chords/multiple notes on one beat
+* Beat dropdown, sound player should work with chords
+* New song and add bar need to make correct beats
+* Print page display chords
+* Fallback for db entries that lack mode?
+* Beat sound doesn't have to be an array? Split at play instead of save/load? No need to split at all because of mode?
+* "+" for chords, ">" for flams?
+
+* Shadow on drum is 90deg shifted!
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins
 * Redesign "select drum mode"
 
-* Chords/multiple notes on one beat
 * Dropdown list show all dyads and ding + note combinations?
 * Left and right hand recommendations for songwriter?
 * Mute buttons to skip bars when writing songs
@@ -115,3 +123,4 @@
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
 * Check text inputs for bad words?
 * Show name for your songs as "you"?
+* Print multiple songs on same page

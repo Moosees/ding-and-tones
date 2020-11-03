@@ -13,7 +13,7 @@ const playBeatPromise = (beat, timeout, audio) =>
 
     store.dispatch(setCurrentBeat(beat.beatId));
 
-    if (beat.sound !== '-') new Audio(audio[beat.sound]).play();
+    if (beat.sound[0] !== '-') new Audio(audio[beat.sound[0]]).play();
 
     setTimeout(() => {
       return resolve();
@@ -65,8 +65,9 @@ const setupSong = ({ arrangement, bars, beats }) => {
     const measureFiltered = [];
 
     measure.forEach((beat) => {
-      const { sound, value } = beats[beat];
-      if (value <= subdivision) measureFiltered.push({ sound, beatId: beat });
+      const { sound, value, type } = beats[beat];
+      if (value <= subdivision)
+        measureFiltered.push({ sound, type, beatId: beat });
     });
 
     song.push({

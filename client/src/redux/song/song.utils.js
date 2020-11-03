@@ -23,15 +23,16 @@ const parseBarsForSaving = (arrangement, bars, beats) => {
 };
 
 const parseBeatsForSaving = (arrangement, bars, beats) => {
-  return arrangement.reduce((acc, bar) => {
+  return arrangement.reduce((parsedBeats, bar) => {
     const { measure, subdivision } = bars[bar];
 
     measure.forEach((beat) => {
-      const { value } = beats[beat];
-      if (value <= subdivision) acc.push({ ...beats[beat], _id: beat });
+      const { sound, value, mode } = beats[beat];
+      if (value <= subdivision)
+        parsedBeats.push({ sound: sound.join('+'), value, mode, _id: beat });
     });
 
-    return acc;
+    return parsedBeats;
   }, []);
 };
 
@@ -66,6 +67,16 @@ const parseArrayToObject = (array) => {
   }, {});
 };
 
+const parseBeatsForLoadSong = (beats) => {
+  const parsedBeats = beats.map((beat) => {
+    const { sound, value, mode, _id } = beat;
+
+    return { sound: sound.split('+'), value, mode, _id };
+  });
+
+  return parseArrayToObject(parsedBeats);
+};
+
 const parseScaleForLoadSong = (scale) => {
   const {
     info,
@@ -88,7 +99,7 @@ export const parseFetchedSong = (song) => {
   } = song;
 
   const parsedBars = parseArrayToObject(bars);
-  const parsedBeats = parseArrayToObject(beats);
+  const parsedBeats = parseBeatsForLoadSong(beats);
   const parsedScale = parseScaleForLoadSong(scale);
 
   return {

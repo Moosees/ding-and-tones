@@ -22,22 +22,22 @@ export const barsState = {
 };
 
 export const beatsState = {
-  aa: { sound: '0', value: 4 },
-  ab: { sound: '1', value: 4 },
-  ac: { sound: '2', value: 4 },
-  ad: { sound: '3', value: 4 },
-  ba: { sound: '4', value: 4 },
-  bb: { sound: '5', value: 4 },
-  bc: { sound: '6', value: 4 },
-  bd: { sound: '7', value: 4 },
-  ca: { sound: '8', value: 4 },
-  cb: { sound: '-', value: 8 },
-  cc: { sound: 'T', value: 4 },
-  cd: { sound: '-', value: 8 },
-  ce: { sound: '0', value: 4 },
-  cf: { sound: '-', value: 8 },
-  cg: { sound: 't', value: 4 },
-  ch: { sound: 't', value: 8 },
+  aa: { sound: ['0'], value: 4, mode: 'c' },
+  ab: { sound: ['1'], value: 4, mode: 'c' },
+  ac: { sound: ['2'], value: 4, mode: 'c' },
+  ad: { sound: ['3'], value: 4, mode: 'c' },
+  ba: { sound: ['4'], value: 4, mode: 'c' },
+  bb: { sound: ['5'], value: 4, mode: 'c' },
+  bc: { sound: ['6'], value: 4, mode: 'c' },
+  bd: { sound: ['7'], value: 4, mode: 'c' },
+  ca: { sound: ['8'], value: 4, mode: 'c' },
+  cb: { sound: ['-'], value: 8, mode: 'c' },
+  cc: { sound: ['T'], value: 4, mode: 'c' },
+  cd: { sound: ['-'], value: 8, mode: 'c' },
+  ce: { sound: ['5', '7'], value: 4, mode: 'c' },
+  cf: { sound: ['-'], value: 8, mode: 'c' },
+  cg: { sound: ['t'], value: 4, mode: 'c' },
+  ch: { sound: ['t'], value: 8, mode: 'c' },
 };
 
 export const infoState = {
