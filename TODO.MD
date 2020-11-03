@@ -10,7 +10,6 @@
 * Beat sound doesn't have to be an array? Split at play instead of save/load? No need to split at all because of mode?
 * "+" for chords, ">" for flams?
 
-* Shadow on drum is 90deg shifted!
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins
 * Redesign "select drum mode"

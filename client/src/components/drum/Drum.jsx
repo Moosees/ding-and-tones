@@ -67,9 +67,10 @@ const Drum = ({
           </radialGradient>
           <filter id="drumShadow">
             <feDropShadow
-              dx="0.5"
-              dy="0"
+              dx="0"
+              dy="0.5"
               stdDeviation="0.25"
+              floodColor="#000050"
               floodOpacity="0.25"
             />
           </filter>
