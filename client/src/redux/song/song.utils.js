@@ -112,3 +112,17 @@ export const parseFetchedSong = (song) => {
     ui: { composer, isOwner, songId },
   };
 };
+
+export const addSoundToBeat = (newSound, soundArray) => {
+  if (soundArray.length >= 2) return soundArray;
+
+  return [...soundArray, newSound]
+    .filter((sound) => sound !== '-')
+    .sort((a, b) => a - b);
+};
+
+export const removeSoundFromBeat = (newSound, soundArray) => {
+  if (soundArray.length <= 1) return ['-'];
+
+  return soundArray.filter((sound) => sound !== newSound);
+};

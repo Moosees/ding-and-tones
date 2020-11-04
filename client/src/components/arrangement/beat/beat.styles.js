@@ -38,6 +38,7 @@ export const BeatContainer = styled.div`
 
 export const BeatText = styled.div`
   font-size: ${({ value }) => beatStyles.fz[value]}rem;
+  letter-spacing: -1px;
 `;
 
 export const Dropdown = styled.div`
@@ -74,13 +75,18 @@ export const DropdownItem = styled.div`
     selected ? theme.colorBeat : 'transparent'};
   color: ${({ selected, theme }) =>
     selected ? theme.colorTextInverted : theme.colorText};
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   font-size: ${({ theme }) => theme.fzSmall};
   padding: 2px 5px;
   position: relative;
   transition: background-color 0.2s ease;
   z-index: 1000;
 
+  ${({ disabled, theme }) =>
+    !disabled &&
+    `
   &:hover {
-    background-color: ${({ theme }) => theme.colorBtnHeavy};
+    background-color: ${theme.colorBtnHeavy};
   }
+  `};
 `;

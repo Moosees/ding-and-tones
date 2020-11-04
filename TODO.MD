@@ -2,9 +2,9 @@
 
 ## Current tasks
 
-* Chords for beats and beat dropdown
 * New song and add bar need to make correct beats
 * Print page display chords
+* Chords when deleting or copying bars?
 
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins

@@ -1,5 +1,6 @@
 import { beatsState } from '../song.initialState';
 import songTypes from '../song.types';
+import { addSoundToBeat, removeSoundFromBeat } from '../song.utils';
 
 const beatsReducer = (state = beatsState, { type, payload }) => {
   switch (type) {
@@ -18,7 +19,9 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
         ...state,
         [payload.beatId]: {
           ...state[payload.beatId],
-          sound: payload.newSound,
+          sound: payload.selected
+            ? removeSoundFromBeat(payload.newSound, state[payload.beatId].sound)
+            : addSoundToBeat(payload.newSound, state[payload.beatId].sound),
         },
       };
 

@@ -32,7 +32,7 @@ const Beat = ({
       onClick={openDropdown}
     >
       <BeatText isBeatPlaying={isBeatPlaying} value={value}>
-        {sound}
+        {sound.join('+')}
       </BeatText>
       {isDropdownOpen && <BeatDropdown beatId={beatId} sound={sound} />}
     </BeatContainer>
