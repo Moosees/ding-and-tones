@@ -13,7 +13,10 @@ const playBeatPromise = (beat, timeout, audio) =>
 
     store.dispatch(setCurrentBeat(beat.beatId));
 
-    if (beat.sound[0] !== '-') new Audio(audio[beat.sound[0]]).play();
+    if (!beat.mode || beat.mode === 'c')
+      beat.sound.forEach((tone) => {
+        if (tone !== '-') new Audio(audio[tone]).play();
+      });
 
     setTimeout(() => {
       return resolve();

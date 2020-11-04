@@ -2,13 +2,9 @@
 
 ## Current tasks
 
-* Chords/multiple notes on one beat
-* Beat dropdown, sound player should work with chords
+* Chords for beats and beat dropdown
 * New song and add bar need to make correct beats
 * Print page display chords
-* Fallback for db entries that lack mode?
-* Beat sound doesn't have to be an array? Split at play instead of save/load? No need to split at all because of mode?
-* "+" for chords, ">" for flams?
 
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins
