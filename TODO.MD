@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* New song and add bar need to make correct beats
-* Print page display chords
+* New song, add bar and change subdivision works with chords
 
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins

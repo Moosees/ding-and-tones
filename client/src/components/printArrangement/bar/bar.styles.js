@@ -3,18 +3,18 @@ import styled from 'styled-components';
 const beatStyles = {
   heightWidth: {
     4: '24',
-    8: '22',
+    8: '23',
     16: '22',
   },
   fz: {
     4: '13',
     8: '12',
-    16: '12',
+    16: '11',
   },
   border: {
-    4: 'solid',
-    8: 'solid',
-    16: 'dashed',
+    4: '1px solid #000',
+    8: '1px dotted #000',
+    16: '1px dashed #000',
   },
 };
 
@@ -50,13 +50,12 @@ export const BeatsContainer = styled.div`
 
 export const BeatContainer = styled.div`
   align-items: center;
-  border: ${({ value }) => (value === 4 ? '2px' : '1px')};
-  border-style: ${({ value }) => beatStyles.border[value]};
+  border: ${({ value }) => beatStyles.border[value]};
   border-radius: 100%;
-  border-color: #000;
   display: flex;
   height: ${({ value }) => beatStyles.heightWidth[value]}px;
   justify-content: center;
+  text-align: center;
   width: ${({ value }) => beatStyles.heightWidth[value]}px;
 
   &:not(:first-child) {
@@ -66,5 +65,7 @@ export const BeatContainer = styled.div`
 
   span {
     font-size: ${({ value }) => beatStyles.fz[value]}px;
+    letter-spacing: -1px;
+    margin-left: -1px;
   }
 `;

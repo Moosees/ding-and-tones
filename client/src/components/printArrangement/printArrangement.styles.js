@@ -21,7 +21,7 @@ export const Composer = styled.h2`
 
 export const Tempo = styled.h4`
   font-size: 14px;
-  margin: 30px 10px 10px;
+  margin: 46px 10px 10px;
 `;
 
 export const Bars = styled.ul`

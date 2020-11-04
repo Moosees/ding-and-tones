@@ -23,7 +23,7 @@ const Bar = ({ barId, bars, beats, prevBar }) => {
           value={value}
           addMarginLeft={i && subdivision === 4}
         >
-          {sound !== '-' && sound}
+          <span>{sound !== '-' && sound.join('+')}</span>
         </BeatContainer>
       );
     });
