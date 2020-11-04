@@ -33,7 +33,7 @@ export const setPrivacyOpen = (privacyOpen) => ({
 export const setSoundOptions = (scale) => (dispatch) => {
   const options = {
     single: [
-      { label: 'Pause', value: '-' },
+      // { label: 'Pause', value: '-' },
       { label: 'Loud Tak', value: 'T' },
       { label: 'Soft Tak', value: 't' },
     ],

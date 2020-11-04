@@ -20,6 +20,7 @@ const copyBar = (barId, bars, beats) => {
     newBeats[newBeatId] = {
       sound: beats[beat].sound,
       value: beats[beat].value,
+      mode: beats[beat].mode,
     };
     newMeasure.push(newBeatId);
   });
