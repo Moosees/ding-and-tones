@@ -27,9 +27,9 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
   return (
     <Popup header="Sign in" onClose={onClose}>
       <SignInContainer>
-        By signing in you agree to our{' '}
+        By using this website you agree to our{' '}
         <TermsLink onClick={() => setPrivacyOpen(true)}>
-          terms and privacy policy
+          terms and privacy policy.
         </TermsLink>
         <GoogleLogin
           clientId={process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID}
