@@ -29,6 +29,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...payload.user,
       };
 
+    case userTypes.GOOGLE_ERROR:
     case userTypes.SIGN_OUT:
       return {
         ...state,

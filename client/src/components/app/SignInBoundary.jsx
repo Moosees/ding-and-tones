@@ -10,8 +10,8 @@ const SignInBoundary = ({ children, signIn, singOut }) => {
     clientId: process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID,
     isSignedIn: true,
     cookiePolicy: 'single_host_origin',
-    onSuccess: (auth) => signIn(auth),
-    onFailure: (res) => signOut(res),
+    onSuccess: signIn,
+    onFailure: signOut,
   });
 
   return <>{loaded ? children : <Loading />}</>;
