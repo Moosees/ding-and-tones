@@ -25,18 +25,17 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
     <PrivacyHeader>Ding and Tones vision</PrivacyHeader>
     <PrivacyParagraph>
       With this website I hope to provide solutions to common issues I see in
-      tonguedrum and handpan discussions. How to find and make drum tabs, what
-      scale to chose, how to find chords and basic music theory. I hope to do
-      this in a way that is applicable no matter what type of drum or scale you
-      play.
+      tonguedrum and handpan discussions online. How to find and make drum tabs,
+      what scale to chose, how to find chords on your drum and help with basic
+      music theory. I hope to do this in a way that is applicable no matter what
+      type of drum or scale you play. Enjoy!
     </PrivacyParagraph>
     <PrivacyHeader>Collected data</PrivacyHeader>
     <PrivacyParagraph>
       Most of the website is usable without sharing any of your personal data.
-      But if you want to save your work, (and more importantly) collaborate with
-      other people, an account is needed. To make this possible your email will
-      be saved in our database, but not shared with other users or any third
-      party.
+      But if you want to save your songs or scales an account is needed. To make
+      this possible your email will be saved in our database, but not shared
+      with other users or any third party.
     </PrivacyParagraph>
     <PrivacyHeader>Collaboration</PrivacyHeader>
     <PrivacyParagraph>
@@ -45,21 +44,29 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
       creations. This will not modify the original creations, only the creator
       is allowed to do that. When saving a song or a scale, it will be public
       (though it can be anonymous if you chose). With this in mind, please don't
-      upload other peoples content like, for example, exercises from courses.
+      upload other peoples content, like songs or tutorials you didn't make.
       Also please keep offensive or disturbing content away and help keep this
       website a safe and including space.
     </PrivacyParagraph>
     <PrivacyHeader>Cookies</PrivacyHeader>
     <PrivacyParagraph>
-      By signing in with your Google account third party cookies from Google are
-      saved to your computer to help this website remember that you are signed
-      in.
+      This site uses Sign in with Google to handle users. Third party cookies
+      from Google are necessary for this to work. To find out more about this
+      please refer to{' '}
+      <a
+        href="https://policies.google.com/technologies/cookies"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google's privacy policy
+      </a>
+      .
     </PrivacyParagraph>
     <PrivacyHeader>Consent</PrivacyHeader>
     <PrivacyParagraph>
       By using this website you consent to these terms.
     </PrivacyParagraph>
-    <PrivacyParagraph>Last updated: 19th october 2020</PrivacyParagraph>
+    <PrivacyParagraph>Last updated: 4 november 2020</PrivacyParagraph>
   </TermsContainer>
 );
 
