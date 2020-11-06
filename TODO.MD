@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* New song, add bar and change subdivision works with chords
-
 * Transition mixin, border radius mixin?
 * Divider line css DRY! Container mix-ins
 * Redesign "select drum mode"
