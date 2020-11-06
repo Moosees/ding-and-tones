@@ -9,27 +9,43 @@ const SignInBoundary = ({ children, signIn, singOut }) => {
 
   useEffect(() => {
     const loadAuth = () => {
-      window.gapi.load('auth2', () => {
-        window.gapi.auth2
-          .init({
-            client_id: process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID,
-          })
-          .then(
-            (auth) => {
-              if (auth.isSignedIn.get()) signIn(auth.currentUser.get());
+      if (!window.gapi) return setLoaded(true);
+      // console.log(gapiScript.getAttribute('gapi_processed'));
+      let iterations = 0;
+      const gapiInterval = setInterval(() => {
+        ++iterations;
+        if (iterations >= 50) {
+          clearInterval(gapiInterval);
+          return setLoaded(true);
+        }
 
-              setLoaded(true);
-            },
-            (error) => {
-              signOut(error);
-              setLoaded(true);
-            }
-          );
-      });
+        if (window.gapi.load) {
+          clearInterval(gapiInterval);
+
+          window.gapi.load('auth2', () => {
+            window.gapi.auth2
+              .init({
+                client_id: process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID,
+              })
+              .then(
+                (auth) => {
+                  if (auth.isSignedIn.get()) signIn(auth.currentUser.get());
+
+                  setLoaded(true);
+                },
+                (error) => {
+                  signOut(error);
+                  setLoaded(true);
+                }
+              );
+          });
+        }
+      }, 100);
     };
 
     const gapiScript = document.createElement('script');
-    gapiScript.src = 'https://apis.google.com/js/platform.js';
+    gapiScript.src = 'https://apis.google.com/js/api.js';
+    gapiScript.type = 'text/javascript';
     gapiScript.async = true;
     gapiScript.onload = loadAuth;
     document.body.appendChild(gapiScript);
