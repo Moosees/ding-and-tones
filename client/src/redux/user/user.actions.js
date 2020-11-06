@@ -43,9 +43,9 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (auth) => (dispatch) => {
+export const signIn = (user) => (dispatch) => {
   try {
-    const idToken = auth.getAuthResponse().id_token;
+    const idToken = user.getAuthResponse().id_token;
     if (!idToken) return;
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
@@ -62,7 +62,7 @@ export const signIn = (auth) => (dispatch) => {
               user: {
                 name,
                 isAnonymous: anonymous,
-                isSignedIn: auth.isSignedIn(),
+                isSignedIn: user.isSignedIn(),
                 accountOpen: newUser,
               },
             },
@@ -78,6 +78,7 @@ export const signIn = (auth) => (dispatch) => {
 };
 
 export const signOut = (error) => (dispatch) => {
+  console.log({ error });
   axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
 
   if (error)

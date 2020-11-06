@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import GoogleLogin from 'react-google-login';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { GOOGLE_CLIENT_ID } from '../../../oauth';
 import { signIn, signOut } from '../../../redux/user/user.actions';
 import Popup from '../../shared/popup/Popup';
 import Privacy from '../../shared/privacy/Privacy';
@@ -24,6 +22,20 @@ const TermsLink = styled.a`
 const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
+  useEffect(() => {
+    window.gapi.load('signin2', () => {
+      window.gapi.signin2.render('googleSignIn', {
+        scope: 'profile email',
+        width: 180,
+        height: 40,
+        longtitle: false,
+        theme: 'dark',
+        onsuccess: signIn,
+        onfailure: signOut,
+      });
+    });
+  }, [signIn, signOut]);
+
   return (
     <Popup header="Sign in" onClose={onClose}>
       <SignInContainer>
@@ -31,12 +43,7 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
         <TermsLink onClick={() => setPrivacyOpen(true)}>
           terms and privacy policy.
         </TermsLink>
-        <GoogleLogin
-          clientId={process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID}
-          onSuccess={signIn}
-          onFailure={signOut}
-          cookiePolicy={'single_host_origin'}
-        />
+        <div id="googleSignIn" />
         {privacyOpen && <Privacy />}
       </SignInContainer>
     </Popup>

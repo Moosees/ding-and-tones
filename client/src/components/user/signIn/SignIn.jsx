@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
-import { GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
-import { GOOGLE_CLIENT_ID } from '../../../oauth';
-import { signIn, signOut } from '../../../redux/user/user.actions';
+import { signOut } from '../../../redux/user/user.actions';
 import BtnControls from '../../shared/button/Controls';
 import PopupSignIn from './PopupSignIn';
 
-const SignIn = ({ isSignedIn, signIn, signOut }) => {
+const SignIn = ({ isSignedIn, signOut }) => {
   const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleSignOut = () => {
+    window.gapi.auth2
+      .getAuthInstance()
+      .signOut()
+      .then(() => {
+        signOut();
+      });
+  };
 
   return (
     <>
       {isSignedIn ? (
-        <GoogleLogout
-          clientId={process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID}
-          render={(renderProps) => (
-            <BtnControls
-              label="Sign out"
-              icon="directions_run"
-              onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
-            />
-          )}
-          onLogoutSuccess={signOut}
-          onFailure={signOut}
+        <BtnControls
+          label="Sign out"
+          icon="directions_run"
+          onClick={handleSignOut}
         />
       ) : (
         <>
@@ -44,4 +43,4 @@ const mapStateToProps = ({ user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { signIn, signOut })(SignIn);
+export default connect(mapStateToProps, { signOut })(SignIn);
