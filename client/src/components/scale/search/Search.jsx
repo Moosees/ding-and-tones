@@ -7,7 +7,7 @@ import BtnPrimary from '../../shared/button/Primary';
 import InfoSearch from '../../shared/infoBox/InfoSearch';
 import { SearchContainer } from './search.styles';
 
-const Search = ({ isSearching, startSearch }) => {
+const Search = ({ isSearching, isSignedIn, startSearch }) => {
   return (
     <SearchContainer>
       <InfoSearch
@@ -21,7 +21,7 @@ const Search = ({ isSearching, startSearch }) => {
           onClick={() => startSearch(searchOptions.scales.latest)}
         />
         <BtnPrimary
-          disabled={isSearching}
+          disabled={!isSignedIn || isSearching}
           label="My Scales"
           onClick={() => startSearch(searchOptions.scales.me)}
         />
@@ -30,8 +30,9 @@ const Search = ({ isSearching, startSearch }) => {
   );
 };
 
-const mapStateToProps = ({ search }) => ({
+const mapStateToProps = ({ search, user }) => ({
   isSearching: search.isSearching,
+  isSignedIn: user.isSignedIn,
 });
 
 export default connect(mapStateToProps, { startSearch })(Search);

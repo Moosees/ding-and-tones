@@ -6,7 +6,7 @@ import BtnPrimary from '../../shared/button/Primary';
 import InfoSearch from '../../shared/infoBox/InfoSearch';
 import { SearchContainer } from './search.styles';
 
-const Search = ({ isSearching, startSearch }) => {
+const Search = ({ isSearching, isSignedIn, startSearch }) => {
   return (
     <SearchContainer>
       <BtnPrimary
@@ -19,7 +19,7 @@ const Search = ({ isSearching, startSearch }) => {
         searchOption={searchOptions.songs.alphabetical}
       />
       <BtnPrimary
-        disabled={isSearching}
+        disabled={!isSignedIn || isSearching}
         label="My Songs"
         onClick={() => startSearch(searchOptions.songs.me)}
       />
@@ -27,8 +27,9 @@ const Search = ({ isSearching, startSearch }) => {
   );
 };
 
-const mapStateToProps = ({ search }) => ({
+const mapStateToProps = ({ search, user }) => ({
   isSearching: search.isSearching,
+  isSignedIn: user.isSignedIn,
 });
 
 export default connect(mapStateToProps, { startSearch })(Search);

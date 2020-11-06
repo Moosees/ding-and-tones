@@ -44,37 +44,33 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
 };
 
 export const signIn = (user) => (dispatch) => {
-  try {
-    const idToken = user.getAuthResponse().id_token;
-    if (!idToken) return;
+  const idToken = user.getAuthResponse().id_token;
+  if (!idToken) return;
 
-    axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
 
-    axios
-      .post('/signIn')
-      .then((res) => {
-        if (res.status === 200) {
-          const { name, anonymous, newUser } = res.data;
-          dispatch({
-            type: userTypes.SIGN_IN,
-            payload: {
-              alert: 'Signed in successfully!',
-              user: {
-                name,
-                isAnonymous: anonymous,
-                isSignedIn: user.isSignedIn(),
-                accountOpen: newUser,
-              },
+  axios
+    .post('/signIn')
+    .then((res) => {
+      if (res.status === 200) {
+        const { name, anonymous, newUser } = res.data;
+        dispatch({
+          type: userTypes.SIGN_IN,
+          payload: {
+            alert: 'Signed in successfully!',
+            user: {
+              name,
+              isAnonymous: anonymous,
+              isSignedIn: user.isSignedIn(),
+              accountOpen: newUser,
             },
-          });
-        }
-      })
-      .catch((error) => {
-        signOut();
-      });
-  } catch (error) {
-    signOut();
-  }
+          },
+        });
+      }
+    })
+    .catch((error) => {
+      signOut();
+    });
 };
 
 export const signOut = (error) => (dispatch) => {

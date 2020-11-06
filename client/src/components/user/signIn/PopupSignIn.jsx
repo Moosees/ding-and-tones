@@ -25,7 +25,7 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
   useEffect(() => {
     window.gapi.load('signin2', () => {
       window.gapi.signin2.render('googleSignIn', {
-        scope: 'profile email',
+        scope: 'email',
         width: 180,
         height: 40,
         longtitle: false,
