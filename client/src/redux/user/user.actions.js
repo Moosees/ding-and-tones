@@ -74,7 +74,6 @@ export const signIn = (user) => (dispatch) => {
 };
 
 export const signOut = (error) => (dispatch) => {
-  console.log({ error });
   axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
 
   if (error)

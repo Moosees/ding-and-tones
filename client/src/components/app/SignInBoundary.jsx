@@ -8,38 +8,31 @@ const SignInBoundary = ({ children, signIn, singOut }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    let tries = 0;
+    const loadAuth = () => {
+      window.gapi.load('auth2', () => {
+        window.gapi.auth2
+          .init({
+            client_id: process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID,
+          })
+          .then(
+            (auth) => {
+              if (auth.isSignedIn.get()) signIn(auth.currentUser.get());
 
-    const interval = setInterval(() => {
-      if (tries >= 100) {
-        clearInterval(interval);
-        setLoaded(true);
-      }
+              setLoaded(true);
+            },
+            (error) => {
+              signOut(error);
+              setLoaded(true);
+            }
+          );
+      });
+    };
 
-      if (window.gapi) {
-        clearInterval(interval);
-
-        window.gapi.load('auth2', () => {
-          window.gapi.auth2
-            .init({
-              client_id: process.env.GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID,
-            })
-            .then(
-              (auth) => {
-                if (auth.isSignedIn.get()) signIn(auth.currentUser.get());
-
-                setLoaded(true);
-              },
-              (error) => {
-                signOut(error);
-                setLoaded(true);
-              }
-            );
-        });
-      } else {
-        ++tries;
-      }
-    }, 100);
+    const gapiScript = document.createElement('script');
+    gapiScript.src = 'https://apis.google.com/js/platform.js';
+    gapiScript.async = true;
+    gapiScript.onload = loadAuth;
+    document.body.appendChild(gapiScript);
   }, [signIn]);
 
   return <>{loaded ? children : <Loading />}</>;
