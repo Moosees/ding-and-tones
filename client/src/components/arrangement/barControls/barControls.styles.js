@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const ControlsContainer = styled.div`
+  align-items: center;
   display: grid;
   gap: 2px;
   grid-template-columns: repeat(4, min-content);
   justify-content: center;
+  padding-right: 2.5rem;
+  position: relative;
 `;
 
 export const DragHandle = styled.div`

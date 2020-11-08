@@ -7,6 +7,7 @@ import {
   updateBarSubdivision,
 } from '../../../redux/song/song.actions';
 import BtnGradient from '../../shared/button/Gradient';
+import BtnIcon from '../../shared/button/Icon';
 import MetreControls from '../../shared/metreControls/MetreControls';
 import { ControlsContainer, DragHandle } from './barControls.styles';
 
@@ -68,6 +69,7 @@ const BarControls = ({
           updateBarSubdivision(barId, subdivision)
         }
       />
+      <BtnIcon label="mute" icon={false ? 'music_off' : 'music_note'} />
     </ControlsContainer>
   );
 };

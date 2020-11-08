@@ -2,13 +2,16 @@
 
 ## Current tasks
 
-* Transition mixin, border radius mixin?
-* Divider line css DRY! Container mix-ins
+* Position attribute for BtnIcon, use it in search results
+* Mute buttons to skip bars when writing songs - ui or song state?
+* New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
+
+* Transition mixin, border radius mixin?
+* InfoBox and gradient mix-ins
 
 * Dropdown list show all dyads and ding + note combinations?
 * Left and right hand recommendations for songwriter?
-* Mute buttons to skip bars when writing songs
 * One-e-and-a style phonetic rhythm notation on bars?
 * Bar names or index visible (when not locked?)
 
@@ -17,7 +20,6 @@
 * Load song without scale
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
-* HostedDomain on react-google-login?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 
 ## Bugs
@@ -28,7 +30,6 @@
 
 ## Design
 
-* New buttons for loading songs and confirm/cancel
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Remake scale grid layout
