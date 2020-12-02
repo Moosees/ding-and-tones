@@ -11,6 +11,7 @@ const BtnIcon = ({
   isSongPlaying,
   onClick,
   reverse,
+  title,
 }) => {
   return (
     <IconButton
@@ -20,6 +21,7 @@ const BtnIcon = ({
       editOnly={editOnly}
       onClick={onClick}
       reverse={reverse}
+      title={title}
     >
       <i className="material-icons">{icon}</i>
     </IconButton>

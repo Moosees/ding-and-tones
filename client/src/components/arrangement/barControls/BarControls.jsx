@@ -6,6 +6,7 @@ import {
   duplicateBar,
   updateBarSubdivision,
 } from '../../../redux/song/song.actions';
+import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnGradient from '../../shared/button/Gradient';
 import BtnIcon from '../../shared/button/Icon';
 import MetreControls from '../../shared/metreControls/MetreControls';
@@ -37,9 +38,12 @@ const BarControls = ({
   duplicateBar,
   isDragging,
   isSongPlaying,
+  mutedBars,
+  toggleMuteBar,
   updateBarSubdivision,
 }) => {
   const { metre, subdivision } = bars[barId];
+  const isMuted = mutedBars[barId];
 
   return (
     <ControlsContainer>
@@ -69,7 +73,12 @@ const BarControls = ({
           updateBarSubdivision(barId, subdivision)
         }
       />
-      <BtnIcon label="mute" icon={false ? 'music_off' : 'music_note'} />
+      <BtnIcon
+        title={isMuted ? 'Unmute bar' : 'Mute bar'}
+        label="mute"
+        icon={isMuted ? 'music_off' : 'music_note'}
+        onClick={() => toggleMuteBar(barId)}
+      />
     </ControlsContainer>
   );
 };
@@ -78,10 +87,12 @@ const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
   beats: song.beats,
   isSongPlaying: ui.isSongPlaying,
+  mutedBars: ui.mutedBars,
 });
 
 export default connect(mapStateToProps, {
   deleteBar,
   duplicateBar,
+  toggleMuteBar,
   updateBarSubdivision,
 })(BarControls);

@@ -60,9 +60,11 @@ const setupAudio = async (scale, audioPath) => {
   }, percussive);
 };
 
-const setupSong = ({ arrangement, bars, beats }) => {
+const setupSong = ({ arrangement, bars, beats }, mutedBars) => {
   const song = [];
   arrangement.forEach((barId) => {
+    if (mutedBars[barId]) return;
+
     const { measure, metre, subdivision } = bars[barId];
     const { lengthInBeats } = metreList[metre];
     const measureFiltered = [];
@@ -84,10 +86,10 @@ const setupSong = ({ arrangement, bars, beats }) => {
 };
 
 // bpm always counts quarter notes right now
-export const playSong = async (scale, song, audioPath) => {
+export const playSong = async (scale, song, mutedBars, audioPath) => {
   store.dispatch(setIsPreparingSong(true));
   const audio = await setupAudio(scale.notes.round, audioPath);
-  const arrangement = setupSong(song);
+  const arrangement = setupSong(song, mutedBars);
   store.dispatch(setIsPreparingSong(false));
 
   for (let bar of arrangement) {

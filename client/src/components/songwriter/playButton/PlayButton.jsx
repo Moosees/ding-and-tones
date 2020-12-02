@@ -8,13 +8,14 @@ const PlayButton = ({
   audioPath,
   isPreparingSong,
   isSongPlaying,
+  mutedBars,
   scale,
   setIsSongPlaying,
   song,
 }) => {
   const handlePlayPause = () => {
     setIsSongPlaying(!isSongPlaying);
-    if (!isSongPlaying) playSong(scale, song, audioPath);
+    if (!isSongPlaying) playSong(scale, song, mutedBars, audioPath);
   };
 
   return (
@@ -30,6 +31,7 @@ const mapStateToProps = ({ drum, scale, song, ui }) => ({
   audioPath: drum.audioPath,
   isPreparingSong: ui.isPreparingSong,
   isSongPlaying: ui.isSongPlaying,
+  mutedBars: ui.mutedBars,
   scale,
   song,
 });

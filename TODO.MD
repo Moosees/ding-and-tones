@@ -2,8 +2,9 @@
 
 ## Current tasks
 
+* Hover color for bar controls buttons, spacing for mute
+* Clear mutedBars on new song
 * Position attribute for BtnIcon, use it in search results
-* Mute buttons to skip bars when writing songs - ui or song state?
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 

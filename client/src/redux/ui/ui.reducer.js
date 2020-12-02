@@ -1,4 +1,5 @@
 import uiTypes from './ui.types';
+import { updateMutedBars } from './ui.utils';
 
 const INITIAL_STATE = {
   currentBar: null,
@@ -7,6 +8,7 @@ const INITIAL_STATE = {
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,
+  mutedBars: {},
   privacyOpen: false,
   soundOptions: {},
   textEditOpen: false,
@@ -60,6 +62,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         isEditingSong: !state.isEditingSong,
+      };
+
+    case uiTypes.TOGGLE_MUTE_BAR:
+      return {
+        ...state,
+        mutedBars: updateMutedBars(state.mutedBars, payload),
       };
 
     default:
