@@ -50,7 +50,7 @@ const Results = ({
               <BtnIcon
                 disabled={isDeleting || isSearching}
                 icon="delete"
-                label={`delete ${rootName} ${name}`}
+                title={`Delete "${rootName} ${name}"`}
               />
             </Confirmation>
           )}

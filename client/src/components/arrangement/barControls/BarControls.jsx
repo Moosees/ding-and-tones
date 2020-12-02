@@ -75,7 +75,6 @@ const BarControls = ({
       />
       <BtnIcon
         title={isMuted ? 'Unmute bar' : 'Mute bar'}
-        label="mute"
         icon={isMuted ? 'music_off' : 'music_note'}
         onClick={() => toggleMuteBar(barId)}
       />

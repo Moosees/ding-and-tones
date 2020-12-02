@@ -41,7 +41,7 @@ const InfoText = ({
       ) : (
         <InfoContainer>
           {children}
-          <BtnIcon label="edit" icon="edit" onClick={() => setEditOpen(true)} />
+          <BtnIcon title="Edit" icon="edit" onClick={() => setEditOpen(true)} />
         </InfoContainer>
       )}
     </>

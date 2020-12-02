@@ -73,7 +73,7 @@ const Results = ({
                 label={`Are you sure you want to delete "${title}"`}
               >
                 <BtnIcon
-                  label={`delete ${title}`}
+                  title={`Delete "${title}"`}
                   icon="delete"
                   disabled={isSearching || isDeleting}
                 />

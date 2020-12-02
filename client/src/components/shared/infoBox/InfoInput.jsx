@@ -39,7 +39,7 @@ const InfoInput = ({
           color={isValid ? 'BtnConfirm' : 'BtnClear'}
           editOnly={editOnly}
           icon={isValid ? 'check_circle_outline' : 'not_interested'}
-          label={isValid ? 'save' : 'cancel'}
+          title={isValid ? 'Save' : 'Cancel'}
           onClick={isValid ? onSave : onClose}
         />
       </TextInputLabel>
