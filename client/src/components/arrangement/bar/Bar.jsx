@@ -16,8 +16,10 @@ const Bar = ({
   isEditingSong,
   isSongPlaying,
   moveBar,
+  mutedBars,
 }) => {
   const { measure, subdivision, metre } = bars[barId];
+  const isMuted = mutedBars[barId];
 
   useEffect(() => {
     checkMeasureVsMetre(barId, measure, beats, subdivision, metre);
@@ -56,7 +58,9 @@ const Bar = ({
         <BarInfo barId={barId} />
       )}
       {filteredBeats && (
-        <Beats isPlaying={barId === currentBar}>{filteredBeats}</Beats>
+        <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
+          {filteredBeats}
+        </Beats>
       )}
     </BarContainer>
   );
@@ -68,6 +72,7 @@ const mapStateToProps = ({ song, ui }) => ({
   currentBar: ui.currentBar,
   isEditingSong: ui.isEditingSong,
   isSongPlaying: ui.isSongPlaying,
+  mutedBars: ui.mutedBars,
 });
 
 export default connect(mapStateToProps)(Bar);

@@ -1,3 +1,4 @@
+import songTypes from '../song/song.types';
 import uiTypes from './ui.types';
 import { updateMutedBars } from './ui.utils';
 
@@ -62,12 +63,20 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         isEditingSong: !state.isEditingSong,
+        mutedBars: {},
       };
 
     case uiTypes.TOGGLE_MUTE_BAR:
       return {
         ...state,
         mutedBars: updateMutedBars(state.mutedBars, payload),
+      };
+
+    case songTypes.SET_STATE:
+      return {
+        ...state,
+        isEditingSong: true,
+        mutedBars: {},
       };
 
     default:

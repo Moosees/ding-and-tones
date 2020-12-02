@@ -2,9 +2,8 @@
 
 ## Current tasks
 
-* Hover color for bar controls buttons, spacing for mute
-* Clear mutedBars on new song, opacity on bars when muted?
-* Position attribute for BtnIcon, use it in search results
+* Hover color for bar controls buttons, disabled color for difficulty dropdown arrow
+* Position attribute for BtnIcon, use it in search results and to position mute bar buttons
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 
@@ -22,6 +21,7 @@
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+* Make lock song more useful for playing song from screen, rename "lock" to something better
 
 ## Bugs
 
