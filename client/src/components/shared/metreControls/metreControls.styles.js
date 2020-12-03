@@ -16,14 +16,13 @@ export const MetreLabel = styled.label`
   min-width: 5.5rem;
   position: relative;
   text-align: center;
-  width: 100%;
 
   i {
     align-self: center;
     color: ${({ theme }) => theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
     position: absolute;
-    right: ${({ hasLabel }) => (hasLabel ? '7px' : '2px')};
+    right: ${({ hasLabel }) => (hasLabel ? '6px' : '2px')};
   }
 
   span {

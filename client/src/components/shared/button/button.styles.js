@@ -52,9 +52,9 @@ export const IconButton = styled.button`
   background-color: transparent;
   border: 0;
   cursor: ${({ editOnly }) => (editOnly ? 'default' : 'pointer')};
-  left: ${({ reverse }) => (reverse ? '1px' : 'unset')};
-  position: absolute;
-  right: ${({ reverse }) => (reverse ? 'unset' : '1px')};
+  left: ${({ position }) => (position === 'left' ? '1px' : 'unset')};
+  position: ${({ position }) => (position ? 'absolute' : 'static')};
+  right: ${({ position }) => (position === 'right' ? '1px' : 'unset')};
 
   i {
     color: ${({ color, theme }) => (color ? theme[color] : theme.colorText)};

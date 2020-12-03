@@ -13,7 +13,8 @@ export const InfoContainer = styled.div`
   justify-content: space-between;
   margin: 0.5rem 0;
   min-height: 3.5rem;
-  padding: 0 0.5rem;
+  padding-left: ${({ reverse }) => (reverse ? '0' : '0.5rem')};
+  padding-right: ${({ reverse }) => (reverse ? '0.5rem' : '0')};
   position: relative;
   width: 100%;
 
@@ -41,7 +42,7 @@ export const SelectLabel = styled.label`
     color: ${({ theme }) => theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
     position: absolute;
-    right: 6px;
+    right: 5px;
   }
 `;
 

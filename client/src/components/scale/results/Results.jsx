@@ -51,6 +51,7 @@ const Results = ({
                 disabled={isDeleting || isSearching}
                 icon="delete"
                 title={`Delete "${rootName} ${name}"`}
+                position="right"
               />
             </Confirmation>
           )}

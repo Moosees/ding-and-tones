@@ -6,7 +6,7 @@ const InfoBox = ({ children, reverse, onEdit }) => (
   <InfoContainer reverse={reverse}>
     {children}
     {onEdit && (
-      <BtnIcon reverse={reverse} title="Edit" icon="edit" onClick={onEdit} />
+      <BtnIcon title="Edit" icon="edit" onClick={onEdit} />
     )}
   </InfoContainer>
 );

@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Hover color for bar controls buttons, disabled color for difficulty dropdown arrow
-* Position attribute for BtnIcon, use it in search results and to position mute bar buttons
+* Hover color for bar controls buttons, disabled color for difficulty dropdown arrow, dropdowns use same base component?
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 

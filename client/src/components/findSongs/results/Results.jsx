@@ -76,6 +76,7 @@ const Results = ({
                   title={`Delete "${title}"`}
                   icon="delete"
                   disabled={isSearching || isDeleting}
+                  position="right"
                 />
               </Confirmation>
             </DeleteContainer>
