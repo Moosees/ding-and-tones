@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Hover color for bar controls buttons, disabled color for difficulty dropdown arrow, dropdowns use same base component?
+* Dropdowns use same base component - started
+* Hover color for bar controls buttons, disabled color for difficulty dropdown arrow
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 
