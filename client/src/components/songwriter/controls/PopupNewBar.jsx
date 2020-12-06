@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
-import MetreControls from '../../shared/metreControls/MetreControls';
+import Metre from '../../shared/metreControls/Metre';
+import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
 
 const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
@@ -16,11 +17,17 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
 
   return (
     <Popup header="New bar" onClose={onClose}>
-      <MetreControls
+      <Metre
         hasLabel
         metre={metre}
         subdivision={subdivision}
         setMetre={setMetre}
+        setSubdivision={setSubdivision}
+      />
+      <Subdivision
+        hasLabel
+        metre={metre}
+        subdivision={subdivision}
         setSubdivision={setSubdivision}
       />
       <Buttons position="center">

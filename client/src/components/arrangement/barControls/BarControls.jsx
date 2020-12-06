@@ -9,7 +9,7 @@ import {
 import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnGradient from '../../shared/button/Gradient';
 import BtnIcon from '../../shared/button/Icon';
-import MetreControls from '../../shared/metreControls/MetreControls';
+import Subdivision from '../../shared/metreControls/Subdivision';
 import { ControlsContainer, DragHandle } from './barControls.styles';
 
 const copyBar = (barId, bars, beats) => {
@@ -64,9 +64,7 @@ const BarControls = ({
         label="Delete"
         onClick={() => deleteBar(barId)}
       />
-      <MetreControls
-        disabled={isSongPlaying}
-        small
+      <Subdivision
         metre={metre}
         subdivision={subdivision}
         setSubdivision={(subdivision) =>

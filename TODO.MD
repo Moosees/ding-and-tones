@@ -2,10 +2,12 @@
 
 ## Current tasks
 
-* Dropdowns use same base component - started
-* Hover color for bar controls buttons, disabled color for difficulty dropdown arrow
+* Subdivision button on bar controls
+* Hover color for bar controls buttons - remake bar controls layout
+* Disabled color for dropdown arrows and labels
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
+* Margin for info boxes
 
 * Transition mixin, border radius mixin?
 * InfoBox and gradient mix-ins

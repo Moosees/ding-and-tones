@@ -3,14 +3,20 @@ import { connect } from 'react-redux';
 import { SelectDropdown, SelectLabel } from './select.styles';
 
 const parseOptions = (options) =>
-  options.map((option) => {
+  options.map((option, i) => {
     if (option.group)
       return (
-        <optgroup label={option.group}>{parseOptions(option.options)}</optgroup>
+        <optgroup label={option.group} key={i}>
+          {parseOptions(option.options)}
+        </optgroup>
       );
     else
       return (
-        <option value={option.value} key={option.value}>
+        <option
+          disabled={option.disabled}
+          value={option.value}
+          key={option.value}
+        >
           {option.label}
         </option>
       );

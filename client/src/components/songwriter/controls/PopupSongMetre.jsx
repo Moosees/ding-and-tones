@@ -5,7 +5,8 @@ import { updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoInput from '../../shared/infoBox/InfoInput';
-import MetreControls from '../../shared/metreControls/MetreControls';
+import Metre from '../../shared/metreControls/Metre';
+import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
 
 const PopupSongMetre = ({
@@ -36,11 +37,17 @@ const PopupSongMetre = ({
 
   return (
     <Popup header="Metre" onClose={onClose}>
-      <MetreControls
+      <Metre
         hasLabel
         metre={newMetre}
         subdivision={newSubdivision}
         setMetre={setNewMetre}
+        setSubdivision={setNewSubdivision}
+      />
+      <Subdivision
+        hasLabel
+        metre={newMetre}
+        subdivision={newSubdivision}
         setSubdivision={setNewSubdivision}
       />
       <InfoInput

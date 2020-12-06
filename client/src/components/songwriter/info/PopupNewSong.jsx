@@ -8,7 +8,8 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoInput from '../../shared/infoBox/InfoInput';
 import InfoSelect from '../../shared/infoBox/InfoSelect';
-import MetreControls from '../../shared/metreControls/MetreControls';
+import Metre from '../../shared/metreControls/Metre';
+import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
 
 const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
@@ -50,11 +51,17 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         placeholder={titleErrors.length ? titleErrors[0] : 'Song title:'}
         value={title}
       />
-      <MetreControls
+      <Metre
         hasLabel
         metre={metre}
         subdivision={subdivision}
         setMetre={setMetre}
+        setSubdivision={setSubdivision}
+      />
+      <Subdivision
+        hasLabel
+        metre={metre}
+        subdivision={subdivision}
         setSubdivision={setSubdivision}
       />
       <InfoSelect
