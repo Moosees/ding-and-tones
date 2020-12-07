@@ -1,6 +1,6 @@
 import React from 'react';
-import Select from '../select/Select';
-import { InfoContainer } from './infoBox.styles';
+import Select from './Select';
+import { InfoContainer } from '../infoBox/infoBox.styles';
 
 const InfoSelect = (props) => {
   return (

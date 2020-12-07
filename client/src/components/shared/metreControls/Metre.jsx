@@ -1,6 +1,6 @@
 import React from 'react';
 import { metreList } from '../../../assets/metre';
-import InfoSelect from '../infoBox/InfoSelect';
+import InfoSelect from '../select/InfoSelect';
 
 const metreOptions = [
   {

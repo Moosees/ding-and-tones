@@ -20,9 +20,9 @@ export const SelectDropdown = styled.select`
 
 export const SelectLabel = styled.label`
   align-items: center;
-  background-color: ${({ theme }) => theme.colorBtnHeavy};
+  background-color: transparent;
   display: flex;
-  height: 3.2rem;
+  height: ${({ gradient }) => (gradient ? 'unset' : '3.2rem')};
   min-height: ${({ hasLabel }) => (hasLabel ? '3rem' : 'unset')};
   width: 100%;
 
@@ -37,6 +37,6 @@ export const SelectLabel = styled.label`
     color: ${({ theme }) => theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
     position: absolute;
-    right: 5px;
+    right: ${({ gradient }) => (gradient ? '0px' : '5px')};
   }
 `;

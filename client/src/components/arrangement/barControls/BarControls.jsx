@@ -65,6 +65,7 @@ const BarControls = ({
         onClick={() => deleteBar(barId)}
       />
       <Subdivision
+        gradient
         metre={metre}
         subdivision={subdivision}
         setSubdivision={(subdivision) =>

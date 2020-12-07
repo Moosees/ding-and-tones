@@ -37,8 +37,9 @@ export const GradientButton = styled.button`
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   font-size: ${({ theme }) => theme.fzSmall};
-  padding: 1px 4px;
   min-width: 2rem;
+  padding: 1px 4px;
+  position: relative;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   transition: border 0.15s ease-in;
 

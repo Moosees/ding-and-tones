@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Subdivision button on bar controls
-* Hover color for bar controls buttons - remake bar controls layout
+* Hover color for drag handle. Drag handle position
 * Disabled color for dropdown arrows and labels
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
@@ -24,6 +23,8 @@
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Make lock song more useful for playing song from screen, rename "lock" to something better
+* Drag target size for 16th subdivision?
+* Changing from focus to play mode should retain current focus?
 
 ## Bugs
 

@@ -7,10 +7,10 @@ import { setSongState } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoInput from '../../shared/infoBox/InfoInput';
-import InfoSelect from '../../shared/infoBox/InfoSelect';
 import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
+import InfoSelect from '../../shared/select/InfoSelect';
 
 const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
   const [difficulty, setDifficulty] = useState(1);

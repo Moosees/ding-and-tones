@@ -26,6 +26,7 @@ const Select = ({
   children,
   handleChange,
   hasLabel,
+  gradient,
   isSongPlaying,
   options,
   value,
@@ -49,7 +50,7 @@ const Select = ({
   }, []);
 
   return (
-    <SelectLabel hasLabel={hasLabel}>
+    <SelectLabel hasLabel={hasLabel} gradient={gradient}>
       <span ref={labelRef}>{children}</span>
       <SelectDropdown
         hasLabel={hasLabel}
