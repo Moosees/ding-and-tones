@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Hover color for drag handle. Drag handle position
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Margin for info boxes

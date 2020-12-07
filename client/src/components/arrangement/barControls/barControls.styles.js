@@ -14,15 +14,16 @@ export const DragHandle = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1px;
+  margin-right: 2px;
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   padding: 0 1px;
-  transition: color 0.15s ease-in;
+  transition: transform 0.15s ease-in;
 
   i {
     font-size: 18px;
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colorBeat};
+    transform: scale(1.15);
   }
 `;
