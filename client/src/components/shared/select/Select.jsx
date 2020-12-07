@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
+import { GradientButton } from '../button/button.styles';
+import { InfoContainer } from '../infoBox/infoBox.styles';
 import { SelectDropdown, SelectLabel } from './select.styles';
 
 const parseOptions = (options) =>
@@ -49,20 +51,29 @@ const Select = ({
     }
   }, []);
 
+  const Layout = gradient ? GradientButton : InfoContainer;
+
   return (
-    <SelectLabel hasLabel={hasLabel} gradient={gradient}>
-      <span ref={labelRef}>{children}</span>
-      <SelectDropdown
+    <Layout as="div" disabled={isSongPlaying}>
+      <SelectLabel
         hasLabel={hasLabel}
+        gradient={gradient}
         disabled={isSongPlaying}
-        value={value}
-        labelWidth={labelWidth}
-        onChange={(e) => handleChange(e.target.value)}
       >
-        {parseOptions(options)}
-      </SelectDropdown>
-      <i className="material-icons">keyboard_arrow_down</i>
-    </SelectLabel>
+        <span ref={labelRef}>{children}</span>
+        <SelectDropdown
+          gradient={gradient}
+          hasLabel={hasLabel}
+          disabled={isSongPlaying}
+          value={value}
+          labelWidth={labelWidth}
+          onChange={(e) => handleChange(e.target.value)}
+        >
+          {parseOptions(options)}
+        </SelectDropdown>
+        <i className="material-icons">keyboard_arrow_down</i>
+      </SelectLabel>
+    </Layout>
   );
 };
 

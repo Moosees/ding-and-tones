@@ -16,6 +16,11 @@ export const SelectDropdown = styled.select`
   &:focus:not(.focus-visible) {
     outline: none;
   }
+
+  &:disabled {
+    cursor: default;
+    opacity: ${({ gradient }) => (gradient ? '0.9' : '1')};
+  }
 `;
 
 export const SelectLabel = styled.label`
@@ -36,6 +41,7 @@ export const SelectLabel = styled.label`
   i {
     color: ${({ theme }) => theme.colorText};
     font-size: ${({ theme }) => theme.fzLarge};
+    opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
     position: absolute;
     right: ${({ gradient }) => (gradient ? '0px' : '5px')};
   }

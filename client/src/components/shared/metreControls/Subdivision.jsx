@@ -1,7 +1,6 @@
 import React from 'react';
 import { metreList } from '../../../assets/metre';
-import GradientSelect from '../select/GradientSelect';
-import InfoSelect from '../select/InfoSelect';
+import Select from '../select/Select';
 
 const subdivisionOptions = [
   { value: 4, label: '4ths', disabled: (minSubdivision) => minSubdivision > 4 },
@@ -27,10 +26,8 @@ const Subdivision = ({
     disabled: option.disabled(minSubdivision),
   }));
 
-  const Component = gradient ? GradientSelect : InfoSelect;
-
   return (
-    <Component
+    <Select
       gradient={gradient}
       hasLabel={hasLabel}
       value={subdivision}
@@ -38,7 +35,7 @@ const Subdivision = ({
       options={parsedOptions}
     >
       {!gradient && 'Subdivision: '}
-    </Component>
+    </Select>
   );
 };
 

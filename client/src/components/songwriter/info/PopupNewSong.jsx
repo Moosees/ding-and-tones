@@ -10,7 +10,7 @@ import InfoInput from '../../shared/infoBox/InfoInput';
 import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
-import InfoSelect from '../../shared/select/InfoSelect';
+import Select from '../../shared/select/Select';
 
 const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
   const [difficulty, setDifficulty] = useState(1);
@@ -64,14 +64,14 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         subdivision={subdivision}
         setSubdivision={setSubdivision}
       />
-      <InfoSelect
+      <Select
         hasLabel
         value={difficulty}
         handleChange={setDifficulty}
         options={optionsDifficulty}
       >
         {'Difficulty: '}
-      </InfoSelect>
+      </Select>
       <Buttons position="center">
         <BtnPrimary
           label="Confirm"

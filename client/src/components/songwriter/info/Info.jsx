@@ -8,7 +8,7 @@ import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/infoBox/InfoText';
-import InfoSelect from '../../shared/select/InfoSelect';
+import Select from '../../shared/select/Select';
 import PlayButton from '../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
 
@@ -60,13 +60,13 @@ const Info = ({
         >
           {'Title: ' + songInfo.title}
         </InfoText>
-        <InfoSelect
+        <Select
           value={songInfo.difficulty}
           handleChange={(value) => updateSongInfo({ difficulty: value })}
           options={optionsDifficulty}
         >
           {'Difficulty: '}
-        </InfoSelect>
+        </Select>
         <Buttons>
           <BtnPrimary
             disabled={

@@ -1,6 +1,6 @@
 import React from 'react';
 import { metreList } from '../../../assets/metre';
-import InfoSelect from '../select/InfoSelect';
+import Select from '../select/Select';
 
 const metreOptions = [
   {
@@ -33,7 +33,14 @@ const metreOptions = [
   },
 ];
 
-const Metre = ({ hasLabel, metre, setMetre, subdivision, setSubdivision }) => {
+const Metre = ({
+  gradient,
+  hasLabel,
+  metre,
+  setMetre,
+  subdivision,
+  setSubdivision,
+}) => {
   const handleTimeChange = (newMetre) => {
     const { minSubdivision } = metreList[newMetre];
 
@@ -45,14 +52,15 @@ const Metre = ({ hasLabel, metre, setMetre, subdivision, setSubdivision }) => {
   };
 
   return (
-    <InfoSelect
+    <Select
+      gradient={gradient}
       hasLabel={hasLabel}
       value={metre}
       handleChange={handleTimeChange}
       options={metreOptions}
     >
       {'Metre: '}
-    </InfoSelect>
+    </Select>
   );
 };
 
