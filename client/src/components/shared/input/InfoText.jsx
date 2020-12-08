@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BtnIcon from '../button/Icon';
-import { InfoContainer } from './infoBox.styles';
+import { InfoContainer } from '../layout/layout.styles';
 import InfoInput from './InfoInput';
 
 const InfoText = ({

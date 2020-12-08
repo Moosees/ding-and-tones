@@ -7,12 +7,12 @@ import useValidate from '../../../hooks/useValidate';
 import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
-import InfoText from '../../shared/infoBox/InfoText';
+import InfoText from '../../shared/input/InfoText';
 import Select from '../../shared/select/Select';
 import PlayButton from '../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
 
-const InfoContainer = styled.div`
+const SongInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -49,7 +49,7 @@ const Info = ({
 
   return (
     <>
-      <InfoContainer>
+      <SongInfoContainer>
         <InfoText
           handleChange={handleTitleChange}
           handleClose={resetTitle}
@@ -86,7 +86,7 @@ const Info = ({
           />
           <PlayButton />
         </Buttons>
-      </InfoContainer>
+      </SongInfoContainer>
       {newOpen && (
         <PopupNewSong
           onClose={() => setNewOpen(false)}

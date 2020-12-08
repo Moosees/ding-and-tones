@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { GradientButton } from '../button/button.styles';
-import { InfoContainer } from '../infoBox/infoBox.styles';
+import { InfoContainer } from '../layout/layout.styles';
 import { SelectDropdown, SelectLabel } from './select.styles';
 
 const parseOptions = (options) =>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
 import searchOptions from '../../../redux/search/search.options';
 import BtnPrimary from '../../shared/button/Primary';
-import InfoSearch from '../../shared/infoBox/InfoSearch';
+import InfoSearch from '../../shared/input/InfoSearch';
 import { SearchContainer } from './search.styles';
 
 const Search = ({ isSearching, isSignedIn, startSearch }) => {

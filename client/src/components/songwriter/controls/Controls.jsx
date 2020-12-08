@@ -5,7 +5,7 @@ import { addNewBar } from '../../../redux/song/song.actions';
 import { toggleEditSong } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
-import InfoBox from '../../shared/infoBox/InfoBox';
+import InfoBox from '../../shared/layout/InfoBox';
 import BpmSlider from '../bpmSlider/BpmSlider';
 import { ControlsContainer } from './controls.styles';
 import { createNewBar } from './controls.utils';

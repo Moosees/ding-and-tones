@@ -5,9 +5,7 @@
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Margin for info boxes
-
 * Transition mixin, border radius mixin?
-* InfoBox and gradient mix-ins
 
 * Dropdown list show all dyads and ding + note combinations?
 * Left and right hand recommendations for songwriter?

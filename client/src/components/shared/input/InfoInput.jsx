@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import BtnIcon from '../button/Icon';
-import { InfoContainer, TextInput, TextInputLabel } from './infoBox.styles';
+import { InfoContainer } from '../layout/layout.styles';
+import { TextInput, TextInputLabel } from './input.styles';
 
 const InfoInput = ({
   editOnly,

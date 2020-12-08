@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const InfoContainer = styled.div`
+export const ScaleInfoContainer = styled.div`
   align-self: stretch;
   display: flex;
   flex-direction: column;

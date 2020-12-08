@@ -5,8 +5,8 @@ import { saveUser, toggleAccount } from '../../../redux/user/user.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
-import InfoBox from '../../shared/infoBox/InfoBox';
-import InfoInput from '../../shared/infoBox/InfoInput';
+import InfoInput from '../../shared/input/InfoInput';
+import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 
 const PopupAccount = ({

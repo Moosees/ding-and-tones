@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
+import { InfoContainer } from '../layout/layout.styles';
 import Spinner from '../spinner/Spinner';
-import { InfoContainer, TextInput } from './infoBox.styles';
+import { TextInput } from './input.styles';
 
 const InfoSearch = ({
   isSearching,
