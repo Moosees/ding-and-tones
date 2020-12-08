@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import BtnIcon from '../button/Icon';
-import { InfoContainer } from '../layout/layout.styles';
+import { InfoLayout } from '../layout/layout.styles';
 import { TextInput, TextInputLabel } from './input.styles';
 
 const InfoInput = ({
@@ -25,7 +25,7 @@ const InfoInput = ({
   };
 
   return (
-    <InfoContainer>
+    <InfoLayout>
       <TextInputLabel>
         <TextInput
           autoFocus
@@ -44,7 +44,7 @@ const InfoInput = ({
           onClick={isValid ? onSave : onClose}
         />
       </TextInputLabel>
-    </InfoContainer>
+    </InfoLayout>
   );
 };
 

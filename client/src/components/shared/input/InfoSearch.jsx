@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
-import { InfoContainer } from '../layout/layout.styles';
+import { InfoLayout } from '../layout/layout.styles';
 import Spinner from '../spinner/Spinner';
 import { TextInput } from './input.styles';
 
@@ -22,7 +22,7 @@ const InfoSearch = ({
   }, [searchOption, startSearch, value]);
 
   return (
-    <InfoContainer>
+    <InfoLayout>
       <TextInput
         autoFocus
         onChange={(e) => setValue(e.target.value)}
@@ -30,7 +30,7 @@ const InfoSearch = ({
         value={value}
       />
       <Spinner isSpinning={isSearching} />
-    </InfoContainer>
+    </InfoLayout>
   );
 };
 

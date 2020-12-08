@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { GradientButton } from '../button/button.styles';
-import { InfoContainer } from '../layout/layout.styles';
+import { GradientLayout, InfoLayout } from '../layout/layout.styles';
 import { SelectDropdown, SelectLabel } from './select.styles';
 
 const parseOptions = (options) =>
@@ -51,10 +50,10 @@ const Select = ({
     }
   }, []);
 
-  const Layout = gradient ? GradientButton : InfoContainer;
+  const Layout = gradient ? GradientLayout : InfoLayout;
 
   return (
-    <Layout as="div" disabled={isSongPlaying}>
+    <Layout disabled={isSongPlaying}>
       <SelectLabel
         hasLabel={hasLabel}
         gradient={gradient}

@@ -7,7 +7,6 @@
 * Margin for info boxes
 * Transition mixin, border radius mixin?
 
-* Dropdown list show all dyads and ding + note combinations?
 * Left and right hand recommendations for songwriter?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Bar names or index visible (when not locked?)
@@ -19,14 +18,14 @@
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Make lock song more useful for playing song from screen, rename "lock" to something better
-* Drag target size for 16th subdivision?
 * Changing from focus to play mode should retain current focus?
+* Solo bar
 
 ## Bugs
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
-* Drag and drop need testing
+* Drag and drop need testing, drop target size for 16ths
 
 ## Design
 
@@ -34,16 +33,14 @@
 * Dynamic size for tonefields
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
-* Svgs instead of iconfont?
 * Load song button can be seen through table header
 * User can tab select :active outside of popups
-* Use InfoContainer for metre dropdown
-* Line breaks inside bars? Only for printing?
+* Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs
 
 ## User/Menu
 
-* Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in?
+* Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
 
@@ -51,6 +48,8 @@
 
 * ID and cache chords?
 * Check cache for possible chords to show in filter
+* Dropdown list show all dyads and ding + note combinations?
+* Sort chords
 
 ## Songwriter
 
@@ -77,12 +76,12 @@
 * Typescript and testing
 * Find songs by user (other than current user)
 * Chose between save and save as new?
+* Disable save button if there are no changes
 * Plus and minus one for bpm
-* Split MetreControls component?
 * Create scale from name and string
-* Ability to loop songs or repeat/solo bars
+* Loop songs or bars
 * Add play scale button and function
-* Play chords, also play them as arpeggios?
+* Play chords from chords page, also play them as arpeggios?
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Removing user should remove all users songs?
@@ -92,19 +91,16 @@
 * Likes and/or comments?
 * Move position map to reducer?
 * Handle extra/bottom notes/mutant drums
-* Disable save button if there are no changes
 * Custom chord inputs
 * Custom metres
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now
 * Multiple drums for chords, songs etc.
-* More drum alternatives?
+* More drum alternatives? Add synth/piano alternative?
 * Percussive hits on handpan - normalize handpan samples
 * Higher quality samples
 * Link drum and songwriter - animations?
-* Custom line-break bars for users to add to songwriter? Only for printing?
 * Songwriter bars alignment should change with big songs
-* Sort chords by type?
 * Interval colors for compound intervals?
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
 * Triplets, flams, etc. Value 9, 17 for triplets?

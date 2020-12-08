@@ -1,6 +1,29 @@
 import styled from 'styled-components';
 
-export const InfoContainer = styled.div`
+export const GradientLayout = styled.div`
+  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    #ccc 0%,
+    ${({ theme }) => theme.colorBox} 100%
+  );
+  border: ${({ theme }) => theme.borderLight};
+  border-radius: 4px;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  display: flex;
+  font-size: ${({ theme }) => theme.fzSmall};
+  padding: 1px 6px 1px 2px;
+  position: relative;
+  opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
+  transition: border 0.15s ease-in;
+
+  &:hover {
+    border: ${({ disabled, theme }) =>
+      !disabled ? theme.borderMedium : theme.borderLight};
+  }
+`;
+
+export const InfoLayout = styled.div`
   align-items: center;
   border: ${({ theme }) => theme.borderLight};
   box-shadow: ${({ theme }) => theme.shadowBtnLight};

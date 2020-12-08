@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GradientLayout } from '../layout/layout.styles';
 
 export const ButtonGroup = styled.div`
   align-items: center;
@@ -25,28 +26,10 @@ export const ControlsLabel = styled.span`
   padding-left: 5px;
 `;
 
-export const GradientButton = styled.button`
-  align-items: center;
-  background-image: linear-gradient(
-    to bottom,
-    #ccc 0%,
-    ${({ theme }) => theme.colorBox} 100%
-  );
-  border: ${({ theme }) => theme.borderLight};
-  border-radius: 4px;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  display: flex;
-  font-size: ${({ theme }) => theme.fzSmall};
+export const GradientButton = styled(GradientLayout)`
   min-width: 2rem;
   padding: 1px 4px;
-  position: relative;
-  opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
-  transition: border 0.15s ease-in;
-
-  &:hover {
-    border: ${({ disabled, theme }) =>
-      !disabled ? theme.borderMedium : theme.borderLight};
-  }
+  position: static;
 `;
 
 export const IconButton = styled.button`

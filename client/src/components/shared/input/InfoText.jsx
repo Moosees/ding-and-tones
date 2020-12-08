@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BtnIcon from '../button/Icon';
-import { InfoContainer } from '../layout/layout.styles';
+import { InfoLayout } from '../layout/layout.styles';
 import InfoInput from './InfoInput';
 
 const InfoText = ({
@@ -39,10 +39,10 @@ const InfoText = ({
           value={value}
         />
       ) : (
-        <InfoContainer>
+        <InfoLayout>
           {children}
           <BtnIcon title="Edit" icon="edit" onClick={() => setEditOpen(true)} />
-        </InfoContainer>
+        </InfoLayout>
       )}
     </>
   );
