@@ -35,8 +35,6 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         showIntervals: payload,
-        displayedNote:
-          payload || state.displayedChord ? state.displayedNote : 0,
       };
 
     case scaleTypes.FETCH_SUCCESSFUL:

@@ -19,18 +19,20 @@ const Intervals = ({
 }) => {
   return (
     <IntervalList>
-      <IntervalHeader>Select drum mode</IntervalHeader>
+      <IntervalHeader>
+        {displayedChord ? 'Select chord mode' : 'Select scale mode'}
+      </IntervalHeader>
       <CheckboxContainer>
         <Checkbox
           name="play"
           onChange={() => setShowIntervals(!showIntervals)}
-          label="Click to play"
+          label={displayedChord ? 'Show notes' : 'Click to play'}
           checked={!showIntervals}
         />
         <Checkbox
           name="focus"
           onChange={() => setShowIntervals(!showIntervals)}
-          label="Click to focus"
+          label={displayedChord ? 'Show intervals' : 'Click to focus'}
           checked={showIntervals}
         />
       </CheckboxContainer>

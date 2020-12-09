@@ -18,7 +18,6 @@
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Make lock song more useful for playing song from screen, rename "lock" to something better
-* Changing from focus to play mode should retain current focus?
 * Solo bar
 
 ## Bugs
@@ -48,7 +47,6 @@
 
 * ID and cache chords?
 * Check cache for possible chords to show in filter
-* Dropdown list show all dyads and ding + note combinations?
 * Sort chords
 
 ## Songwriter
@@ -57,6 +55,8 @@
 * What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen?
 * Transpose all notes of type?
 * Count number of bars for search results? Virtual field?
+* Dropdown list show all dyads and ding + note combinations?
+* Dropdown opens where there's space instead of just below beat
 
 ## State/Backend
 

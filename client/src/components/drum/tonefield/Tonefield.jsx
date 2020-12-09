@@ -29,17 +29,24 @@ const Tonefield = ({
   return (
     <g
       onClick={
-        !showIntervals ? handlePlay : displayedChord ? null : handleIntervals
+        !showNote
+          ? null
+          : displayedChord || !showIntervals
+          ? handlePlay
+          : handleIntervals
       }
       cx="0"
       cy="0"
       transform={`rotate(${rotate + 90}) translate(${translate})`}
       style={{
         fontSize: isDing ? '0.23rem' : '0.14rem',
-        cursor:
-          showNote && !(displayedChord && showIntervals)
-            ? 'pointer'
-            : 'default',
+        cursor: !showNote
+          ? 'default'
+          : displayedChord || !showIntervals
+          ? 'pointer'
+          : hasFocus
+          ? 'zoom-out'
+          : 'zoom-in',
       }}
     >
       <circle
