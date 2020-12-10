@@ -52,15 +52,14 @@ const Bar = ({
 
   return (
     <BarContainer isDragging={isDragging} ref={ref}>
-      {isEditingSong ? (
-        <BarControls barId={barId} dragRef={drag} isDragging={isDragging} />
-      ) : (
-        <BarInfo barId={barId} />
-      )}
+      <BarInfo barId={barId} index={index} />
       {filteredBeats && (
         <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
           {filteredBeats}
         </Beats>
+      )}
+      {isEditingSong && (
+        <BarControls barId={barId} dragRef={drag} isDragging={isDragging} />
       )}
     </BarContainer>
   );

@@ -2,22 +2,22 @@
 
 ## Current tasks
 
+* Add functionality to barInfo arrows
+* Make lock song more useful for playing song from screen, rename "lock" to something better, split barInfo for locked and unlocked
+
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Margin for info boxes
 * Transition mixin, border radius mixin?
 
-* Left and right hand recommendations for songwriter?
-* One-e-and-a style phonetic rhythm notation on bars?
-* Bar names or index visible (when not locked?)
-
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
 
+* One-e-and-a style phonetic rhythm notation on bars?
+* Left and right hand recommendations for songwriter?
 * Load song without scale
 * Save scale on client should be more functional?
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* Make lock song more useful for playing song from screen, rename "lock" to something better
 * Solo bar
 
 ## Bugs
