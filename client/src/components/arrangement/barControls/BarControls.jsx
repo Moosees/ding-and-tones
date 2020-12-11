@@ -4,13 +4,13 @@ import { v4 as uuid } from 'uuid';
 import {
   deleteBar,
   duplicateBar,
-  updateBarSubdivision,
+  updateBarSubdivision
 } from '../../../redux/song/song.actions';
 import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnGradient from '../../shared/button/Gradient';
 import BtnIcon from '../../shared/button/Icon';
 import Subdivision from '../../shared/metreControls/Subdivision';
-import { ControlsContainer, DragHandle } from './barControls.styles';
+import { ControlsContainer } from './barControls.styles';
 
 const copyBar = (barId, bars, beats) => {
   const newBarId = uuid();
@@ -34,9 +34,7 @@ const BarControls = ({
   bars,
   beats,
   deleteBar,
-  dragRef,
   duplicateBar,
-  isDragging,
   isSongPlaying,
   mutedBars,
   toggleMuteBar,
@@ -47,13 +45,6 @@ const BarControls = ({
 
   return (
     <ControlsContainer>
-      <DragHandle
-        disabled={isSongPlaying}
-        ref={dragRef}
-        isDragging={isDragging}
-      >
-        <i className="material-icons">drag_indicator</i>
-      </DragHandle>
       <BtnGradient
         disabled={isSongPlaying}
         label="Copy"

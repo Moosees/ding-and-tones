@@ -3,6 +3,7 @@
 ## Current tasks
 
 * Add functionality to barInfo arrows
+* Icons for delete and copy bar
 * Make lock song more useful for playing song from screen, rename "lock" to something better, split barInfo for locked and unlocked
 
 * New buttons for loading songs and confirm/cancel

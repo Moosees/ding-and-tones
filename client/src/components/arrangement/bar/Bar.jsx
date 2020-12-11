@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { ItemTypes } from '../../../assets/constants';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
+import BarInfoLocked from '../barInfo/BarInfoLocked';
 import { BarContainer, Beats } from './bar.styles';
 import { checkMeasureVsMetre, displayBeats } from './bar.utils';
 
@@ -52,15 +53,22 @@ const Bar = ({
 
   return (
     <BarContainer isDragging={isDragging} ref={ref}>
-      <BarInfo barId={barId} index={index} />
+      {isEditingSong ? (
+        <BarInfo
+          barId={barId}
+          index={index}
+          dragRef={drag}
+          isDragging={isDragging}
+        />
+      ) : (
+        <BarInfoLocked barId={barId} index={index} />
+      )}
       {filteredBeats && (
         <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
           {filteredBeats}
         </Beats>
       )}
-      {isEditingSong && (
-        <BarControls barId={barId} dragRef={drag} isDragging={isDragging} />
-      )}
+      {isEditingSong && <BarControls barId={barId} />}
     </BarContainer>
   );
 };
