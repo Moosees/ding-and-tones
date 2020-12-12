@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { GradientLayout, InfoLayout } from '../layout/layout.styles';
-import { SelectDropdown, SelectLabel } from './select.styles';
+import { InfoLayout } from '../layout/layout.styles';
+import { SelectDropdown, SelectLabel, SelectSmall } from './select.styles';
 
 const parseOptions = (options) =>
   options.map((option, i) => {
@@ -27,7 +27,7 @@ const Select = ({
   children,
   handleChange,
   hasLabel,
-  gradient,
+  small,
   isSongPlaying,
   options,
   value,
@@ -50,18 +50,14 @@ const Select = ({
     }
   }, []);
 
-  const Layout = gradient ? GradientLayout : InfoLayout;
+  const Layout = small ? SelectSmall : InfoLayout;
 
   return (
     <Layout disabled={isSongPlaying}>
-      <SelectLabel
-        hasLabel={hasLabel}
-        gradient={gradient}
-        disabled={isSongPlaying}
-      >
+      <SelectLabel hasLabel={hasLabel} small={small} disabled={isSongPlaying}>
         <span ref={labelRef}>{children}</span>
         <SelectDropdown
-          gradient={gradient}
+          small={small}
           hasLabel={hasLabel}
           disabled={isSongPlaying}
           value={value}

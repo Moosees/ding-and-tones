@@ -10,6 +10,7 @@ const BtnIcon = ({
   isSongPlaying,
   onClick,
   position,
+  small,
   title,
 }) => {
   return (
@@ -20,6 +21,7 @@ const BtnIcon = ({
       editOnly={editOnly}
       onClick={onClick}
       position={position}
+      small={small}
       title={title}
     >
       <i className="material-icons">{icon}</i>

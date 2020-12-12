@@ -2,10 +2,6 @@
 
 ## Current tasks
 
-* Add functionality to barInfo arrows
-* Icons for delete and copy bar
-* Make lock song more useful for playing song from screen, rename "lock" to something better, split barInfo for locked and unlocked
-
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Margin for info boxes
@@ -20,12 +16,15 @@
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Solo bar
+* Make lock song more useful for playing song from screen, rename "lock" to something better
+* Numbers ('Index') for tonefields
 
 ## Bugs
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * Drag and drop need testing, drop target size for 16ths
+* User can tab select :active outside of popups
 
 ## Design
 
@@ -34,9 +33,9 @@
 * Remake scale grid layout
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Load song button can be seen through table header
-* User can tab select :active outside of popups
 * Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs
+* Scrap gradient layout? New layout for bar info?
 
 ## User/Menu
 

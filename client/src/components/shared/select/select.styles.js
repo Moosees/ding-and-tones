@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+export const SelectSmall = styled.div`
+  align-items: center;
+  border: ${({ theme }) => theme.borderMedium};
+  border-radius: 4px;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  display: flex;
+  font-size: ${({ theme }) => theme.fzSmall};
+  padding: 1px 6px 1px 2px;
+  position: relative;
+  opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
+  transition: transform 0.1s ease-in;
+
+  &:hover {
+    transform: scale(${({ disabled, theme }) => (!disabled ? '1.05' : '1')});
+  }
+`;
+
 export const SelectDropdown = styled.select`
   appearance: none;
   background-color: transparent;
@@ -19,7 +36,7 @@ export const SelectDropdown = styled.select`
 
   &:disabled {
     cursor: default;
-    opacity: ${({ gradient }) => (gradient ? '0.9' : '1')};
+    opacity: ${({ small }) => (small ? '0.9' : '1')};
   }
 `;
 
@@ -27,7 +44,7 @@ export const SelectLabel = styled.label`
   align-items: center;
   background-color: transparent;
   display: flex;
-  height: ${({ gradient }) => (gradient ? 'unset' : '3.2rem')};
+  height: ${({ small }) => (small ? 'unset' : '3.2rem')};
   min-height: ${({ hasLabel }) => (hasLabel ? '3rem' : 'unset')};
   width: 100%;
 
@@ -43,6 +60,6 @@ export const SelectLabel = styled.label`
     font-size: ${({ theme }) => theme.fzLarge};
     opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
     position: absolute;
-    right: ${({ gradient }) => (gradient ? '0px' : '5px')};
+    right: ${({ small }) => (small ? '0px' : '5px')};
   }
 `;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { GradientLayout } from '../layout/layout.styles';
 
 export const ButtonGroup = styled.div`
   align-items: center;
@@ -26,12 +25,6 @@ export const ControlsLabel = styled.span`
   padding-left: 5px;
 `;
 
-export const GradientButton = styled(GradientLayout)`
-  min-width: 2rem;
-  padding: 1px 4px;
-  position: static;
-`;
-
 export const IconButton = styled.button`
   background-color: transparent;
   border: 0;
@@ -42,7 +35,8 @@ export const IconButton = styled.button`
 
   i {
     color: ${({ color, theme }) => (color ? theme[color] : theme.colorText)};
-    font-size: ${({ theme }) => theme.fzLarge};
+    font-size: ${({ theme, small }) =>
+      small ? theme.fzSmallIcon : theme.fzLarge};
     padding: 0.5rem;
     transition: transform 0.1s ease-in;
   }

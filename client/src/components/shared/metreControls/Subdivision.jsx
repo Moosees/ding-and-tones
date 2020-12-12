@@ -13,9 +13,9 @@ const subdivisionOptions = [
 ];
 
 const Subdivision = ({
-  gradient,
   hasLabel,
   metre,
+  small,
   subdivision,
   setSubdivision,
 }) => {
@@ -28,13 +28,13 @@ const Subdivision = ({
 
   return (
     <Select
-      gradient={gradient}
+      small={small}
       hasLabel={hasLabel}
       value={subdivision}
       handleChange={setSubdivision}
       options={parsedOptions}
     >
-      {!gradient && 'Subdivision: '}
+      {!small && 'Subdivision: '}
     </Select>
   );
 };

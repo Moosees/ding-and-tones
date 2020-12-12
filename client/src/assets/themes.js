@@ -39,6 +39,7 @@ export const mainTheme = {
   fzSmall: '1.2rem',
   fzMedium: '1.3rem',
   fzControls: '1.4rem',
+  fzSmallIcon: '1.6rem',
   fzLarge: '1.8rem',
   fzHeader: '2.4rem',
   paddingLarge: '3rem',
