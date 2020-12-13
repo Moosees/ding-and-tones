@@ -22,18 +22,18 @@ const TermsLink = styled.a`
 const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
-  useEffect(() => {
-    window.gapi.load('signin2', () => {
-      window.gapi.signin2.render('googleSignIn', {
-        width: 180,
-        height: 40,
-        longtitle: false,
-        theme: 'dark',
-        onsuccess: signIn,
-        onfailure: signOut,
-      });
-    });
-  }, [signIn, signOut]);
+  // useEffect(() => {
+  //   window.gapi.load('signin2', () => {
+  //     window.gapi.signin2.render('googleSignIn', {
+  //       width: 180,
+  //       height: 40,
+  //       longtitle: false,
+  //       theme: 'dark',
+  //       onsuccess: signIn,
+  //       onfailure: signOut,
+  //     });
+  //   });
+  // }, [signIn, signOut]);
 
   return (
     <Popup header="Sign in" onClose={onClose}>
@@ -42,7 +42,8 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
         <TermsLink onClick={() => setPrivacyOpen(true)}>
           terms and privacy policy.
         </TermsLink>
-        <div id="googleSignIn" />
+        {/* <div id="googleSignIn" /> */}
+        <button onClick={signIn}>Google Sign In</button>
         {privacyOpen && <Privacy />}
       </SignInContainer>
     </Popup>

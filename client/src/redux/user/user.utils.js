@@ -16,3 +16,7 @@ export const getGoogleError = ({ error }) => {
       return `Sign in failed!`;
   }
 };
+
+export const getMessageFromPopup = (event) => {
+  console.log(event.data.search);
+};

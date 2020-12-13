@@ -1,6 +1,6 @@
 import axios from 'axios';
 import userTypes from './user.types';
-import { getGoogleError } from './user.utils';
+import { getGoogleError, getMessageFromPopup } from './user.utils';
 
 export const saveUser = (newName, newAnon) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
@@ -43,34 +43,56 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (user) => (dispatch) => {
-  const idToken = user.getAuthResponse().id_token;
-  if (!idToken) return;
+// export const signIn = (user) => (dispatch) => {
+//   const idToken = user.getAuthResponse().id_token;
+//   if (!idToken) return;
 
-  axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+//   axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
 
+//   axios
+//     .post('/signIn')
+//     .then((res) => {
+//       if (res.status === 200) {
+//         const { name, anonymous, newUser } = res.data;
+//         dispatch({
+//           type: userTypes.SIGN_IN,
+//           payload: {
+//             alert: 'Signed in successfully!',
+//             user: {
+//               name,
+//               isAnonymous: anonymous,
+//               isSignedIn: user.isSignedIn(),
+//               accountOpen: newUser,
+//             },
+//           },
+//         });
+//       }
+//     })
+//     .catch((error) => {
+//       signOut();
+//     });
+// };
+
+export const signIn = () => (dispatch) => {
   axios
     .post('/signIn')
     .then((res) => {
-      if (res.status === 200) {
-        const { name, anonymous, newUser } = res.data;
-        dispatch({
-          type: userTypes.SIGN_IN,
-          payload: {
-            alert: 'Signed in successfully!',
-            user: {
-              name,
-              isAnonymous: anonymous,
-              isSignedIn: user.isSignedIn(),
-              accountOpen: newUser,
-            },
-          },
-        });
-      }
+      window.addEventListener('message', getMessageFromPopup);
+
+      const win = window.open(
+        res.data,
+        'GoogleSignIn',
+        'location=no,menubar=no'
+      );
+
+      if (win) win.opener = window;
     })
     .catch((error) => {
-      signOut();
+      console.log({ error });
     });
+  // .finally(() => {
+  //   window.removeEventListener('message', getMessageFromPopup);
+  // });
 };
 
 export const signOut = (error) => (dispatch) => {
