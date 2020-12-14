@@ -1,3 +1,4 @@
+const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
 const { getClient, getAuthUrl } = require('../utils/auth');
 
@@ -59,6 +60,18 @@ exports.saveUser = (req, res) => {
 //     .catch((error) => res.status(400).json());
 // };
 
-exports.signIn = (req, res) => {
-  res.json(getAuthUrl());
+exports.getGoogleURL = (req, res) => {
+  const client = new OAuth2Client(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_SECRET,
+    process.env.GOOGLE_REDIRECT
+  );
+
+  const authUrl = client.generateAuthUrl({
+    access_type: 'offline',
+    prompt: 'select_account',
+    scope: 'https://www.googleapis.com/auth/userinfo.profile',
+  });
+
+  res.json(authUrl);
 };

@@ -75,14 +75,18 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
 
 export const signIn = () => (dispatch) => {
   axios
-    .post('/signIn')
+    .get('/googleURL')
     .then((res) => {
       window.addEventListener('message', getMessageFromPopup);
 
+      const height = Math.min(window.screen.height, 500);
+      const top = window.screen.height / 2 - height / 2;
+      const width = Math.min(window.screen.width, 440);
+      const left = window.screen.width / 2 - width / 2;
       const win = window.open(
         res.data,
         'GoogleSignIn',
-        'location=no,menubar=no'
+        `location=no,menubar=no,status=no,status=no,toolbar=no,height=${height},width=${width},top=${top},left=${left}`
       );
 
       if (win) win.opener = window;
@@ -90,9 +94,6 @@ export const signIn = () => (dispatch) => {
     .catch((error) => {
       console.log({ error });
     });
-  // .finally(() => {
-  //   window.removeEventListener('message', getMessageFromPopup);
-  // });
 };
 
 export const signOut = (error) => (dispatch) => {
