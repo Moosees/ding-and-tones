@@ -1,6 +1,11 @@
 import axios from 'axios';
 import userTypes from './user.types';
-import { getGoogleError, getMessageFromPopup } from './user.utils';
+import {
+  getGoogleCode,
+  getGoogleError,
+  handleGooglePostMsg,
+  openGooglePopup,
+} from './user.utils';
 
 export const saveUser = (newName, newAnon) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
@@ -77,19 +82,12 @@ export const signIn = () => (dispatch) => {
   axios
     .get('/googleURL')
     .then((res) => {
-      window.addEventListener('message', getMessageFromPopup);
-
-      const height = Math.min(window.screen.height, 500);
-      const top = window.screen.height / 2 - height / 2;
-      const width = Math.min(window.screen.width, 440);
-      const left = window.screen.width / 2 - width / 2;
-      const win = window.open(
-        res.data,
-        'GoogleSignIn',
-        `location=no,menubar=no,status=no,status=no,toolbar=no,height=${height},width=${width},top=${top},left=${left}`
-      );
-
-      if (win) win.opener = window;
+      openGooglePopup(res.data);
+      return handleGooglePostMsg();
+    })
+    .then((msg) => {
+      const code = getGoogleCode(msg);
+      console.log(code);
     })
     .catch((error) => {
       console.log({ error });

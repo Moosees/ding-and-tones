@@ -5,8 +5,7 @@
 * Sign out on google popup errors and general sign in errors
 * Sign out on button click
 * Rework and add back sign in boundary?
-* Close google popup and remove event listener when signed in
-* Google url state matching
+* Google url state matching - security?
 * JWT?
 * Lazy load popup or app depending on route?
 * Style sign in button

@@ -71,6 +71,7 @@ exports.getGoogleURL = (req, res) => {
     access_type: 'offline',
     prompt: 'select_account',
     scope: 'https://www.googleapis.com/auth/userinfo.profile',
+    state: 'google',
   });
 
   res.json(authUrl);
