@@ -4,7 +4,6 @@ import {
   getGoogleCode,
   getGoogleError,
   handleGooglePostMsg,
-  openGooglePopup,
 } from './user.utils';
 
 export const saveUser = (newName, newAnon) => (dispatch, getState) => {
@@ -81,16 +80,13 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
 export const signIn = () => (dispatch) => {
   axios
     .get('/googleURL')
-    .then((res) => {
-      openGooglePopup(res.data);
-      return handleGooglePostMsg();
-    })
+    .then((res) => handleGooglePostMsg(res.data))
     .then((msg) => {
       const code = getGoogleCode(msg);
       console.log(code);
     })
     .catch((error) => {
-      console.log({ error });
+      signOut(error);
     });
 };
 

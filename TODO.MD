@@ -2,8 +2,8 @@
 
 ## Current tasks
 
-* Sign out on google popup errors and general sign in errors
-* Sign out on button click
+* Send code to backend
+* Sign out on button click - add back button
 * Rework and add back sign in boundary?
 * Google url state matching - security?
 * JWT?

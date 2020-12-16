@@ -1,9 +1,5 @@
 export const getGoogleError = ({ error }) => {
   switch (error) {
-    case 'idpiframe_initialization_failed':
-      return `Sign in failed!
-      Third party cookies must be enabled to sign in with google`;
-
     case 'popup_closed_by_user':
       return `Sign in failed!
       Popup was closed before you could be signed in`;
@@ -17,7 +13,7 @@ export const getGoogleError = ({ error }) => {
   }
 };
 
-export const openGooglePopup = (url) => {
+const openGooglePopup = (url) => {
   const height = Math.min(window.screen.height, 500);
   const top = window.screen.height / 2 - height / 2;
   const width = Math.min(window.screen.width, 440);
@@ -28,21 +24,38 @@ export const openGooglePopup = (url) => {
     `location=no,menubar=no,status=no,status=no,toolbar=no,height=${height},width=${width},top=${top},left=${left}`
   );
 
-  if (win) win.opener = window;
+  if (win) {
+    win.opener = window;
+    return win;
+  }
 };
 
-export const handleGooglePostMsg = () =>
-  new Promise((resolve, reject) => {
-    const getMessageFromPopup = (event) => {
-      if (!event.data.search) reject('Could not sign in');
+export const handleGooglePostMsg = (url) => {
+  const win = openGooglePopup(url);
 
-      resolve(event.data.search);
-      console.log('remove listener');
+  return new Promise((resolve, reject) => {
+    const interval = setInterval(() => {
+      if (win.closed) {
+        window.removeEventListener('message', getMessageFromPopup);
+        clearInterval(interval);
+        reject('popup_closed_by_user');
+      }
+    }, 500);
+
+    const getMessageFromPopup = (event) => {
+      if (!win || event.origin !== window.origin || !event.data.search) {
+        clearInterval(interval);
+        reject('access_denied');
+      }
+
       window.removeEventListener('message', getMessageFromPopup);
+      clearInterval(interval);
+      resolve(event.data.search);
     };
-    console.log('add listener');
+
     window.addEventListener('message', getMessageFromPopup);
   });
+};
 
 export const getGoogleCode = (msg) => {
   const state = (msg.match(/state=([^&]+)/) || [])[1];
