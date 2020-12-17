@@ -83,7 +83,27 @@ export const signIn = () => (dispatch) => {
     .then((res) => handleGooglePostMsg(res.data))
     .then((msg) => {
       const code = getGoogleCode(msg);
-      console.log(code);
+      console.log('sign in', code);
+      return axios.post('/signIn', { code });
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        const { name, anonymous, idToken, newUser } = res.data;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+
+        dispatch({
+          type: userTypes.SIGN_IN,
+          payload: {
+            alert: 'Signed in successfully!',
+            user: {
+              name,
+              isAnonymous: anonymous,
+              isSignedIn: true,
+              accountOpen: newUser,
+            },
+          },
+        });
+      }
     })
     .catch((error) => {
       signOut(error);
