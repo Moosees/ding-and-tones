@@ -83,7 +83,6 @@ export const signIn = () => (dispatch) => {
     .then((res) => handleGooglePostMsg(res.data))
     .then((msg) => {
       const code = getGoogleCode(msg);
-      console.log('sign in', code);
       return axios.post('/signIn', { code });
     })
     .then((res) => {

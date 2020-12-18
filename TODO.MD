@@ -2,11 +2,9 @@
 
 ## Current tasks
 
-* Send code to backend
 * Sign out on button click - add back button
 * Rework and add back sign in boundary?
-* Google url state matching - security?
-* JWT?
+* Session, JWT?
 * Lazy load popup or app depending on route?
 * Style sign in button
 

@@ -5,7 +5,7 @@ const GoogleResponse = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('window.location.origin: ', window.location.origin); // localhost3000
+    // console.log('window.location.origin: ', window.location.origin); // localhost3000
     if (!window.opener) return;
     window.opener.postMessage(location, window.location.origin);
     window.close();

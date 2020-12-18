@@ -26,45 +26,57 @@ exports.saveUser = (req, res) => {
 
 exports.signIn = (req, res) => {
   const { code } = req.body;
+  const client = getClient();
 
-  getClient()
+  client
     .getToken(decodeURIComponent(code))
-    .then((token) => {
-      console.log(token);
-      res.status(200).json();
-      // const { email, sub } = token.getPayload();
+    .then(async ({ tokens: { id_token } }) => {
+      const ticket = await client.verifyIdToken({
+        idToken: id_token,
+        audience: process.env.GOOGLE_CLIENT_ID,
+      });
+      const { email, sub } = ticket.getPayload();
 
-      // User.findOne({ sub })
-      //   .select('-_id anonymous name')
-      //   .exec((error, user) => {
-      //     if (error) return res.status(400).json();
-      //     if (user) return res.status(200).json(user);
+      User.findOne({ sub })
+        .select('-_id anonymous name')
+        .exec((error, user) => {
+          if (error) return res.status(400).json();
+          if (user)
+            return res
+              .status(200)
+              .json({
+                anonymous: user.anonymous,
+                idToken: id_token,
+                name: user.name,
+                newUser: false,
+              });
 
-      //     new User({
-      //       email,
-      //       sub,
-      //       name: email.split('@')[0],
-      //     }).save((error, user) =>
-      //       res.status(200).json({
-      //         anonymous: user.anonymous,
-      //         name: user.name,
-      //         newUser: true,
-      //       })
-      //     );
-      //   });
+          new User({
+            email,
+            sub,
+            name: email.split('@')[0],
+          }).save((error, user) =>
+            res.status(200).json({
+              anonymous: user.anonymous,
+              idToken: id_token,
+              name: user.name,
+              newUser: true,
+            })
+          );
+        });
     })
-    // .catch((error) => res.status(400).json());
-    .catch((error) => {
-      console.log(error);
-      res.status(400).json();
-    });
+    .catch((error) => res.status(400).json());
+  // .catch((error) => {
+  //   console.log(error);
+  //   res.status(400).json();
+  // });
 };
 
 exports.getGoogleURL = (req, res) => {
   const authUrl = getClient().generateAuthUrl({
     access_type: 'offline',
     prompt: 'select_account',
-    scope: 'https://www.googleapis.com/auth/userinfo.profile',
+    scope: 'email profile',
     state: 'google',
   });
 
