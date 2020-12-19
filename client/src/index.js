@@ -1,16 +1,13 @@
 import axios from 'axios';
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { mainTheme } from './assets/themes';
-import App from './components/app/App';
-import GoogleResponse from './components/app/GoogleResponse';
-import GlobalStyles from './globalStyles';
+import Loading from './components/shared/loading/Loading';
 import { API_ADDRESS } from './oauth';
-import { store } from './redux/store';
 import * as serviceWorker from './serviceWorker';
+
+const App = lazy(() => import('./components/app/App'));
+const GoogleResponse = lazy(() => import('./components/user/googleResponse/GoogleResponse'));
 
 axios.defaults.baseURL = process.env.API_ADDRESS || API_ADDRESS;
 axios.defaults.headers['Accept'] = 'application/json';
@@ -18,17 +15,12 @@ axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
 
 ReactDOM.render(
   <Router>
-    <Switch>
-      <Route exact path="/googleCB" children={<GoogleResponse />} />
-      <Route path="/">
-        <Provider store={store}>
-          <ThemeProvider theme={mainTheme}>
-            <GlobalStyles />
-            <App />
-          </ThemeProvider>
-        </Provider>
-      </Route>
-    </Switch>
+    <Suspense fallback={<Loading />}>
+      <Switch>
+        <Route exact path="/googleCB" children={<GoogleResponse />} />
+        <Route path="/" children={<App />} />
+      </Switch>
+    </Suspense>
   </Router>,
   document.getElementById('root')
 );
