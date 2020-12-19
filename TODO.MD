@@ -2,11 +2,9 @@
 
 ## Current tasks
 
-* Sign out on button click - add back button
+* Sign out on button click - add back button functionality
 * Rework and add back sign in boundary?
 * Session, JWT?
-* Lazy load popup or app depending on route?
-* Style sign in button
 
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
