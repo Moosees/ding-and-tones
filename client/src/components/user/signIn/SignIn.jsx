@@ -10,11 +10,7 @@ const SignIn = ({ isSignedIn, signOut }) => {
   return (
     <>
       {isSignedIn ? (
-        <BtnControls
-          label="Sign out"
-          icon="directions_run"
-          // onClick={handleSignOut}
-        />
+        <BtnControls label="Sign out" icon="directions_run" onClick={signOut} />
       ) : (
         <>
           <BtnControls

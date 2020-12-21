@@ -1,6 +1,6 @@
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
-const { getClient, getAuthUrl } = require('../utils/auth');
+const { getClient, getAuthUrl, generateJWT } = require('../utils/auth');
 
 exports.saveUser = (req, res) => {
   const userId = req.userId;
@@ -41,16 +41,17 @@ exports.signIn = (req, res) => {
         .select('-_id anonymous name')
         .exec((error, user) => {
           if (error) return res.status(400).json();
-          if (user)
-            return res
-              .status(200)
-              .json({
-                anonymous: user.anonymous,
-                idToken: id_token,
-                name: user.name,
-                newUser: false,
-              });
+          if (user) {
+            const idToken = generateJWT(sub);
+            return res.status(200).json({
+              anonymous: user.anonymous,
+              idToken,
+              name: user.name,
+              newUser: false,
+            });
+          }
 
+          const idToken = generateJWT(sub);
           new User({
             email,
             sub,
@@ -58,7 +59,7 @@ exports.signIn = (req, res) => {
           }).save((error, user) =>
             res.status(200).json({
               anonymous: user.anonymous,
-              idToken: id_token,
+              idToken,
               name: user.name,
               newUser: true,
             })

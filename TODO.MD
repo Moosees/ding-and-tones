@@ -2,9 +2,11 @@
 
 ## Current tasks
 
-* Sign out on button click - add back button functionality
+* JWT expiration
+* Token as httpOnly cookie
+* Sign out clear cookie
+* Clean up login code
 * Rework and add back sign in boundary?
-* Session, JWT?
 
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
