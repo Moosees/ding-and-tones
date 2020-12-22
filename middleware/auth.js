@@ -9,10 +9,10 @@ exports.checkAuth = (req, res, next) => {
   if (idToken === 'undefined')
     return res.status(403).json({ msg: 'No authorization' });
 
-  jwt.verify(idToken, process.env.JWT_SECRET, (error, sub) => {
+  jwt.verify(idToken, process.env.JWT_SECRET, (error, _id) => {
     if (error) res.status(403).json({ msg: 'No authorization' });
 
-    User.findOne({ sub }, '_id', (error, user) => {
+    User.findOne({ _id }, '_id', (error, user) => {
       if (error || !user)
         return res.status(403).json({ msg: 'User not found' });
 
@@ -28,10 +28,10 @@ exports.getUserId = (req, res, next) => {
 
   if (idToken === 'undefined') return next();
 
-  jwt.verify(idToken, process.env.JWT_SECRET, (error, sub) => {
+  jwt.verify(idToken, process.env.JWT_SECRET, (error, _id) => {
     if (error) res.status(403).json({ msg: 'No authorization' });
 
-    User.findOne({ sub }, '_id', (error, user) => {
+    User.findOne({ _id }, '_id', (error, user) => {
       if (error || !user) return res.status(400).json();
 
       req.userId = user._id;

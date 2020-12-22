@@ -4,10 +4,10 @@
 
 * JWT expiration
 * Token as httpOnly cookie
-* Sign out clear cookie
-* Clean up login code
+* Sign out clear cookie, fix signed out failed message
 * Rework and add back sign in boundary?
 
+* Hide name in searches right padding
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Margin for info boxes
@@ -40,7 +40,7 @@
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Load song button can be seen through table header
 * Line breaks inside bars? Only for printing? User added line breaks?
-* Errors from backend display on inputs
+* Errors from backend display on inputs (new user email in use, no songs/scales found etc.)
 * Scrap gradient layout? New layout for bar info?
 
 ## User/Menu
