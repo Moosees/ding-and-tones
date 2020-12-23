@@ -105,18 +105,16 @@ export const signIn = () => (dispatch) => {
       }
     })
     .catch((error) => {
-      signOut(error);
+      axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
+      return dispatch({
+        type: userTypes.GOOGLE_ERROR,
+        payload: { alert: getGoogleError(error) },
+      });
     });
 };
 
-export const signOut = (error) => (dispatch) => {
+export const signOut = () => (dispatch) => {
   axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
-
-  if (error)
-    return dispatch({
-      type: userTypes.GOOGLE_ERROR,
-      payload: { alert: getGoogleError(error) },
-    });
 
   dispatch({
     type: userTypes.SIGN_OUT,

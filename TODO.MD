@@ -2,11 +2,8 @@
 
 ## Current tasks
 
-* JWT expiration
-* Token as httpOnly cookie
-* Sign out clear cookie, fix signed out failed message
-* Rework and add back sign in boundary?
-
+* Make sure inputs have labels
+* Aria-label to menu button, or redesign?
 * Hide name in searches right padding
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
@@ -24,6 +21,8 @@
 * Solo bar
 * Make lock song more useful for playing song from screen, rename "lock" to something better
 * Numbers ('Index') for tonefields
+
+* Session for logged in users
 
 ## Bugs
 

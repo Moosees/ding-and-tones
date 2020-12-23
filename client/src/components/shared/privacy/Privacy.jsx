@@ -25,10 +25,10 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
     <PrivacyHeader>Ding and Tones vision</PrivacyHeader>
     <PrivacyParagraph>
       With this website I hope to provide solutions to common issues I see in
-      tonguedrum and handpan discussions online. How to find and make drum tabs,
-      what scale to chose, how to find chords on your drum and help with basic
-      music theory. I hope to do this in a way that is applicable no matter what
-      type of drum or scale you play. Enjoy!
+      tonguedrum and handpan discussions online. How to find, make and print
+      drum tabs, what scale to chose, how to find chords on your drum and help
+      with basic music theory. I hope to do this in a way that is applicable no
+      matter what type of drum or scale you play. Enjoy!
     </PrivacyParagraph>
     <PrivacyHeader>Collected data</PrivacyHeader>
     <PrivacyParagraph>
@@ -48,25 +48,11 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
       Also please keep offensive or disturbing content away and help keep this
       website a safe and including space.
     </PrivacyParagraph>
-    <PrivacyHeader>Cookies</PrivacyHeader>
-    <PrivacyParagraph>
-      This site uses Sign in with Google to handle users. Third party cookies
-      from Google are necessary for this to work. To find out more about this
-      please refer to{' '}
-      <a
-        href="https://policies.google.com/technologies/cookies"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Google's privacy policy
-      </a>
-      .
-    </PrivacyParagraph>
     <PrivacyHeader>Consent</PrivacyHeader>
     <PrivacyParagraph>
       By using this website you consent to these terms.
     </PrivacyParagraph>
-    <PrivacyParagraph>Last updated: 4 november 2020</PrivacyParagraph>
+    <PrivacyParagraph>Last updated: 23 december 2020</PrivacyParagraph>
   </TermsContainer>
 );
 
