@@ -1,10 +1,16 @@
 const express = require('express');
-const { saveUser, signIn } = require('../controllers/user');
+const {
+  updateUserInfo,
+  getGoogleToken,
+  getGoogleURL,
+  signInWithGoogle,
+} = require('../controllers/user');
 const { checkAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
-router.post('/signIn', signIn);
-router.post('/user', checkAuth, saveUser);
+router.get('/googleURL', getGoogleURL);
+router.post('/user', checkAuth, updateUserInfo);
+router.post('/signIn', signInWithGoogle);
 
 module.exports = router;

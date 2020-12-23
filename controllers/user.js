@@ -1,7 +1,8 @@
+const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
-const { getClient } = require('../utils/auth');
+const { getClient, getAuthUrl, generateJWT } = require('../utils/auth');
 
-exports.saveUser = (req, res) => {
+exports.updateUserInfo = (req, res) => {
   const userId = req.userId;
   const { anonymous, name } = req.body;
   const updated = Date.now();
@@ -23,38 +24,53 @@ exports.saveUser = (req, res) => {
     });
 };
 
-exports.signIn = (req, res) => {
-  const authHeader = req.get('authorization');
+exports.signInWithGoogle = async (req, res) => {
+  try {
+    const { code } = req.body;
+    const client = getClient();
 
-  if (!authHeader) return res.status(403).json({ msg: 'No authorization' });
-  
-  const idToken = authHeader.split(' ')[1];
-  getClient()
-    .verifyIdToken({
-      idToken,
+    const {
+      tokens: { id_token },
+    } = await client.getToken(decodeURIComponent(code));
+
+    const ticket = await client.verifyIdToken({
+      idToken: id_token,
       audience: process.env.GOOGLE_CLIENT_ID,
-    })
-    .then((ticket) => {
-      const { email, sub } = ticket.getPayload();
+    });
 
-      User.findOne({ sub })
-        .select('-_id anonymous name')
-        .exec((error, user) => {
-          if (error) return res.status(400).json();
-          if (user) return res.status(200).json(user);
+    const { email, sub } = ticket.getPayload();
 
-          new User({
-            email,
-            sub,
-            name: email.split('@')[0],
-          }).save((error, user) =>
-            res.status(200).json({
-              anonymous: user.anonymous,
-              name: user.name,
-              newUser: true,
-            })
-          );
-        });
-    })
-    .catch((error) => res.status(400).json());
+    let user = await User.findOne({ sub }).select('_id anonymous name').exec();
+
+    const newUser = !user;
+    if (!user) {
+      user = await new User({
+        email,
+        sub,
+        name: email.split('@')[0],
+      }).save();
+    }
+
+    const idToken = generateJWT(user._id.toString());
+
+    return res.status(200).json({
+      anonymous: user.anonymous,
+      idToken,
+      name: user.name,
+      newUser,
+    });
+  } catch (error) {
+    res.status(400).json();
+  }
+};
+
+exports.getGoogleURL = (req, res) => {
+  const authUrl = getClient().generateAuthUrl({
+    access_type: 'offline',
+    prompt: 'select_account',
+    scope: 'email profile',
+    state: 'google',
+  });
+
+  res.json(authUrl);
 };

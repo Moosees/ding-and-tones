@@ -2,6 +2,9 @@
 
 ## Current tasks
 
+* Make sure inputs have labels
+* Aria-label to menu button, or redesign?
+* Hide name in searches right padding
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Margin for info boxes
@@ -19,6 +22,8 @@
 * Make lock song more useful for playing song from screen, rename "lock" to something better
 * Numbers ('Index') for tonefields
 
+* Session for logged in users
+
 ## Bugs
 
 * React-to-print document.write warnings
@@ -34,7 +39,7 @@
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Load song button can be seen through table header
 * Line breaks inside bars? Only for printing? User added line breaks?
-* Errors from backend display on inputs
+* Errors from backend display on inputs (new user email in use, no songs/scales found etc.)
 * Scrap gradient layout? New layout for bar info?
 
 ## User/Menu

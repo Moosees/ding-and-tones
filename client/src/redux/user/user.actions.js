@@ -1,6 +1,10 @@
 import axios from 'axios';
 import userTypes from './user.types';
-import { getGoogleError } from './user.utils';
+import {
+  getGoogleCode,
+  getGoogleError,
+  handleGooglePostMsg,
+} from './user.utils';
 
 export const saveUser = (newName, newAnon) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
@@ -43,17 +47,49 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (user) => (dispatch) => {
-  const idToken = user.getAuthResponse().id_token;
-  if (!idToken) return;
+// export const signIn = (user) => (dispatch) => {
+//   const idToken = user.getAuthResponse().id_token;
+//   if (!idToken) return;
 
-  axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+//   axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
 
+//   axios
+//     .post('/signIn')
+//     .then((res) => {
+//       if (res.status === 200) {
+//         const { name, anonymous, newUser } = res.data;
+//         dispatch({
+//           type: userTypes.SIGN_IN,
+//           payload: {
+//             alert: 'Signed in successfully!',
+//             user: {
+//               name,
+//               isAnonymous: anonymous,
+//               isSignedIn: user.isSignedIn(),
+//               accountOpen: newUser,
+//             },
+//           },
+//         });
+//       }
+//     })
+//     .catch((error) => {
+//       signOut();
+//     });
+// };
+
+export const signIn = () => (dispatch) => {
   axios
-    .post('/signIn')
+    .get('/googleURL')
+    .then((res) => handleGooglePostMsg(res.data))
+    .then((msg) => {
+      const code = getGoogleCode(msg);
+      return axios.post('/signIn', { code });
+    })
     .then((res) => {
       if (res.status === 200) {
-        const { name, anonymous, newUser } = res.data;
+        const { name, anonymous, idToken, newUser } = res.data;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+
         dispatch({
           type: userTypes.SIGN_IN,
           payload: {
@@ -61,7 +97,7 @@ export const signIn = (user) => (dispatch) => {
             user: {
               name,
               isAnonymous: anonymous,
-              isSignedIn: user.isSignedIn(),
+              isSignedIn: true,
               accountOpen: newUser,
             },
           },
@@ -69,18 +105,16 @@ export const signIn = (user) => (dispatch) => {
       }
     })
     .catch((error) => {
-      signOut();
+      axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
+      return dispatch({
+        type: userTypes.GOOGLE_ERROR,
+        payload: { alert: getGoogleError(error) },
+      });
     });
 };
 
-export const signOut = (error) => (dispatch) => {
+export const signOut = () => (dispatch) => {
   axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
-
-  if (error)
-    return dispatch({
-      type: userTypes.GOOGLE_ERROR,
-      payload: { alert: getGoogleError(error) },
-    });
 
   dispatch({
     type: userTypes.SIGN_OUT,

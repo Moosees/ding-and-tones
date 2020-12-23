@@ -7,23 +7,10 @@ import PopupSignIn from './PopupSignIn';
 const SignIn = ({ isSignedIn, signOut }) => {
   const [popupOpen, setPopupOpen] = useState(false);
 
-  const handleSignOut = () => {
-    window.gapi.auth2
-      .getAuthInstance()
-      .signOut()
-      .then(() => {
-        signOut();
-      });
-  };
-
   return (
     <>
       {isSignedIn ? (
-        <BtnControls
-          label="Sign out"
-          icon="directions_run"
-          onClick={handleSignOut}
-        />
+        <BtnControls label="Sign out" icon="directions_run" onClick={signOut} />
       ) : (
         <>
           <BtnControls
