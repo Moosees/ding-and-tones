@@ -36,7 +36,7 @@ const PopupAccount = ({
         placeholder={usernameErrors.length ? usernameErrors[0] : 'Username:'}
         value={username}
       />
-      <InfoBox>
+      <InfoBox reverse>
         <Checkbox
           reverse
           label="Hide name in searches?"

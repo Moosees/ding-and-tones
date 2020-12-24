@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Hide name in searches right padding
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Margin for info boxes
