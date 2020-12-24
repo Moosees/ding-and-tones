@@ -10,7 +10,7 @@ const Label = styled.div`
   margin-bottom: 1rem;
   padding: 2rem 1.5rem;
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
     padding: 1.5rem 1rem;
   `}
 `;

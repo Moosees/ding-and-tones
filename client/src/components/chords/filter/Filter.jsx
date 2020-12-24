@@ -25,8 +25,8 @@ const CheckBoxes = styled.div`
   grid-template-columns: 100%;
   row-gap: 0.5rem;
 
-  ${({ theme }) => theme.mqSmaller`
-    font-size: ${theme.fzSmall};
+  ${({ theme }) => theme.mqW850`
+    row-gap: 1px;
   `}
 `;
 

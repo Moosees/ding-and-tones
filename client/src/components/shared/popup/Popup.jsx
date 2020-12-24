@@ -19,7 +19,6 @@ const Background = styled.div`
   border-radius: 50px;
   display: flex;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.fzMedium};
   justify-content: space-between;
   min-width: 26rem;
   padding: ${({ theme }) => theme.paddingLarge};
@@ -28,12 +27,12 @@ const Background = styled.div`
     margin-bottom: 1.2rem;
   }
 
-  ${({ theme }) => theme.mqMedium`
+  ${({ theme }) => theme.mqW1200`
     border-radius: 40px;
     padding: ${theme.paddingMedium};
   `}
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     border-radius: 20px;
     padding: ${theme.paddingSmall};
   `}

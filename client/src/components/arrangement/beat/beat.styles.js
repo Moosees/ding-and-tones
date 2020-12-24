@@ -7,9 +7,9 @@ const beatStyles = {
     16: '2.3',
   },
   fz: {
-    4: '1.2',
-    8: '1.1',
-    16: '1',
+    4: '12',
+    8: '11',
+    16: '10',
   },
   border: {
     4: 'solid',
@@ -37,7 +37,7 @@ export const BeatContainer = styled.div`
 `;
 
 export const BeatText = styled.div`
-  font-size: ${({ value }) => beatStyles.fz[value]}rem;
+  font-size: ${({ value }) => beatStyles.fz[value]}px;
   letter-spacing: -1px;
 `;
 
@@ -76,7 +76,7 @@ export const DropdownItem = styled.div`
   color: ${({ selected, theme }) =>
     selected ? theme.colorTextInverted : theme.colorText};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  font-size: ${({ theme }) => theme.fzSmall};
+  font-size: ${({ theme }) => theme.fzSmallest};
   padding: 2px 5px;
   position: relative;
   transition: background-color 0.2s ease;

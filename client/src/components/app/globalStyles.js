@@ -19,20 +19,31 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-size: 62.5%;
 
-    ${({ theme }) => theme.mqMedium`
+    ${({ theme }) => theme.mqW1200`
       font-size: 56.25%;
-  `}
+    `}
 
-    ${({ theme }) => theme.mqSmaller`
+    ${({ theme }) => theme.mqW850`
       font-size: 50%;
-      ${'' /* font-size: 43.75%; */}
-  `}
+    `}
+
+    ${({ theme }) => theme.mqW700`
+      font-size: 43.75%;
+    `}
   }
 
   body {
     background-color: ${({ theme }) => theme.colorBg};
     color: ${({ theme }) => theme.colorText};
     font-family: 'Roboto', sans-serif;
-    font-size: ${({ theme }) => theme.fzMedium};
+    font-size: ${({ theme }) => theme.fzSmaller};
+
+    ${({ theme }) => theme.mqW1200`
+      font-size: ${theme.fzSmall};
+    `}
+
+    ${({ theme }) => theme.mqW850`
+      font-size: 12px;
+    `}
   }
 `;

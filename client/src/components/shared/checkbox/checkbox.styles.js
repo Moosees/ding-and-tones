@@ -24,7 +24,7 @@ export const CheckboxLabel = styled.label`
   &:hover input ~ span {
     transform: scale(1.15);
 
-    ${({ theme }) => theme.mqMedium`
+    ${({ theme }) => theme.mqW1200`
     transform: unset;
     }
   `}
@@ -54,7 +54,7 @@ export const CheckboxInput = styled.span`
     width: 2rem;
   }
 
-  /* ${({ theme }) => theme.mqSmaller`
+  /* ${({ theme }) => theme.mqW850`
     height: 1.8rem;
     top: 2px;
     width: 1.8rem;

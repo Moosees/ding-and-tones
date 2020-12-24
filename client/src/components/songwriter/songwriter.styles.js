@@ -9,7 +9,7 @@ export const SongContainer = styled.div`
   padding: 2rem;
   width: 100%;
 
-  ${({ theme }) => theme.mqMedium`
+  ${({ theme }) => theme.mqW1200`
     padding: 1rem;
   `}
 `;
@@ -22,7 +22,7 @@ export const TopSection = styled.div`
   padding: 2rem 2rem 0;
   width: 100%;
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
     padding: 1rem 1rem 0;
   `}
 `;

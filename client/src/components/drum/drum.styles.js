@@ -5,11 +5,11 @@ export const DrumContainer = styled.div`
   margin: -3rem 0 3rem;
   width: 100%;
 
-  ${({ theme }) => theme.mqLarge`
+  ${({ theme }) => theme.mqW1300`
     margin: 0 0 2rem;
   `}
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
     margin: -1rem 0;
   `}
 `;

@@ -11,7 +11,7 @@ export const ControlsButton = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
-  font-size: ${({ theme }) => theme.fzControls};
+  font-size: ${({ theme }) => theme.fzSmall};
   padding: 0.5rem 2px;
   text-shadow: ${({ theme }) => theme.textShadowLight};
   transition: color 0.1s ease-in;
@@ -36,7 +36,7 @@ export const IconButton = styled.button`
   i {
     color: ${({ color, theme }) => (color ? theme[color] : theme.colorText)};
     font-size: ${({ theme, small }) =>
-      small ? theme.fzSmallIcon : theme.fzLarge};
+      small ? theme.fzMedium : theme.fzLarger};
     padding: 0.5rem;
     transition: transform 0.1s ease-in;
   }
@@ -68,7 +68,7 @@ export const NavButton = styled.button`
   border-top-right-radius: 10px;
   cursor: pointer;
   font-size: ${({ controls, theme }) =>
-    controls ? theme.fzMedium : theme.fzLarge};
+    controls ? theme.fzSmaller : theme.fzLarger};
   margin: -3px 2px 0;
   min-width: 6rem;
   padding: ${({ controls }) => (controls ? '0.4rem' : '0.4rem 1rem')};
@@ -95,7 +95,7 @@ export const PrimaryButton = styled.button`
   box-shadow: ${({ light, theme }) =>
     light ? theme.shadowBtnLight : theme.shadowBtnHeavy};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  font-size: ${({ theme }) => theme.fzMedium};
+  font-size: ${({ theme }) => theme.fzSmaller};
   margin: 0.5rem 3px;
   min-width: 8rem;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
@@ -107,7 +107,7 @@ export const PrimaryButton = styled.button`
       disabled ? theme.borderLight : theme.borderMedium};
   }
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
     margin: 3px;
     min-width: 6rem;
     padding: 3px 2px;

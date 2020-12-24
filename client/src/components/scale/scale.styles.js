@@ -7,12 +7,12 @@ export const ScaleContainer = styled.div`
   height: 100%;
   padding: ${({ theme }) => theme.paddingLarge};
 
-  ${({ theme }) => theme.mqMedium`
+  ${({ theme }) => theme.mqW1200`
     grid-template-columns: max-content min-content 1fr;
     padding: ${theme.paddingMedium};
   `}
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     padding: ${theme.paddingSmall};
   `}
 `;

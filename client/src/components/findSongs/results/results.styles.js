@@ -5,7 +5,7 @@ export const TableContainer = styled.div`
   overflow: auto;
   width: 90%;
 
-  ${({ theme }) => theme.mqMedium`
+  ${({ theme }) => theme.mqW1200`
     width: 100%;
   `}
 `;
@@ -68,6 +68,11 @@ export const ExpandedRow = styled.tr`
   td {
     padding-bottom: 0.7rem;
     width: 0.01%;
+    word-spacing: -1px;
+
+    ${({ theme }) => theme.mqW1200`
+      word-spacing: -2px;
+  `}
   }
 `;
 

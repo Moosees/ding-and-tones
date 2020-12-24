@@ -8,7 +8,7 @@ export const Viewport = styled.div`
   justify-content: center;
   width: 100vw;
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     height: calc(100vh + 5rem);
   `}
 
@@ -39,7 +39,7 @@ export const LayoutGrid = styled.div`
   position: relative;
   width: 100%;
 
-  ${({ theme }) => theme.mqLarge`
+  ${({ theme }) => theme.mqW1300`
     column-gap: 1rem;
     grid-template-columns: 32rem 1fr;
     grid-template-rows: minmax(32rem, 50%) 50%;
@@ -47,7 +47,7 @@ export const LayoutGrid = styled.div`
     padding: 4rem 1rem 1rem;
   `}
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
     display: block;
     padding: 3rem 0.5rem 0.5rem;
   `}
@@ -71,11 +71,11 @@ export const BorderContainer = styled.div`
   position: relative;
   width: 100%;
 
-  ${({ small, theme }) => theme.mqMedium`
+  ${({ small, theme }) => theme.mqW1200`
     border-radius: ${small ? '50' : '70'}px;
   `}
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
     border-radius: 45px;
     max-height: 99vh;
   `}
@@ -88,7 +88,7 @@ export const Copyright = styled.footer`
   padding: 2px;
   position: absolute;
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
   position: static;
 `}
 `;

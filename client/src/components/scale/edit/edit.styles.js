@@ -13,11 +13,11 @@ export const Notes = styled.div`
   max-width: 34rem;
   margin-bottom: 1rem;
 
-  ${({ theme }) => theme.mqMedium`
+  ${({ theme }) => theme.mqW1200`
     max-width: 30rem;
   `}
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     max-width: 28rem;
   `}
 `;
@@ -33,7 +33,6 @@ export const Note = styled.button`
   box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
-  font-size: ${({ theme }) => theme.fzSmall};
   height: 3rem;
   justify-content: center;
   margin: 4px;
@@ -48,11 +47,11 @@ export const Note = styled.button`
     outline: none;
   }
 
-  ${({ theme }) => theme.mqMedium`
+  ${({ theme }) => theme.mqW1200`
     margin: 3px;
   `}
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     margin: 2px;
   `}
 `;

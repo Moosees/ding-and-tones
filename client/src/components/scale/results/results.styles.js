@@ -11,7 +11,7 @@ export const ScaleList = styled.div`
   padding: 0 0.5rem;
   width: 100%;
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     max-height: 70vh;
   `}
 `;
@@ -34,15 +34,18 @@ export const ScaleContainer = styled.div`
 `;
 
 export const ScaleLabel = styled.span`
-  font-size: ${({ theme }) => theme.fzSmall};
 `;
 
 export const ScaleNotes = styled.span`
-  font-size: ${({ theme }) => theme.fzSmall};
-  word-spacing: -1px;
+  word-spacing: -2px;
+  font-size: ${(theme) => theme.fzSmallest};
 
-  ${({ theme }) => theme.mqLarge`
-    font-size: ${theme.fzSmaller};
+  ${({ theme }) => theme.mqW1200`
+    font-size: ${theme.fzSmallest};
+  `}
+
+  ${({ theme }) => theme.mqW850`
+    font-size: ${theme.fzSmall};
   `}
 `;
 

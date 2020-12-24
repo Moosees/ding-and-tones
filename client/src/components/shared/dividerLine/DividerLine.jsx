@@ -7,11 +7,11 @@ const VerticalLine = styled.div`
   margin: ${({ small }) => (small ? '0.5rem' : '3rem')};
   width: 1px;
 
-  ${({ small, theme }) => theme.mqLarge`
+  ${({ small, theme }) => theme.mqW1300`
     margin: ${small ? '2px' : '1rem'};
   `}
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     margin: 0.5rem;
   `}
 `;
@@ -22,7 +22,7 @@ const HorizontalLine = styled.div`
   margin: ${({ small }) => (small ? '0.5rem' : '3rem')};
   width: 75%;
 
-  ${({ theme }) => theme.mqLarge`
+  ${({ theme }) => theme.mqW1300`
     margin: 0.5rem;
   `}
 `;

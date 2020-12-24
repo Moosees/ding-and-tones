@@ -20,7 +20,7 @@ const AlertContainer = styled.div`
   position: absolute;
   z-index: 9999;
 
-  ${({ theme }) => theme.mqSmall`
+  ${({ theme }) => theme.mqW1000`
     background-color: ${theme.colorBox};
     border-radius: 10px;
     border: ${theme.borderMedium};
@@ -30,12 +30,7 @@ const AlertContainer = styled.div`
 `;
 
 const AlertText = styled.span`
-  font-size: ${({ theme }) => theme.fzMedium};
   margin: 0 1rem;
-
-  ${({ theme }) => theme.mqSmaller`
-    font-size: ${({ theme }) => theme.fzSmall};
-  `}
 `;
 
 export const AlertHandler = ({ msg, privacyOpen, setAlert }) => {

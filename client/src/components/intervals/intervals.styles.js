@@ -6,7 +6,6 @@ export const CheckboxContainer = styled.div`
 `;
 
 export const IntervalHeader = styled.h4`
-  font-size: ${({ theme }) => theme.fzMedium};
   margin: 3px 0;
   text-transform: uppercase;
 `;
@@ -19,7 +18,7 @@ export const IntervalList = styled.div`
   overflow: auto;
   padding: 0.5rem;
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     padding: 1rem 0.5rem;
   `}
 `;
@@ -42,7 +41,7 @@ export const Interval = styled.div`
   margin: 0.25rem;
   width: 2.2rem;
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     height: 1.6rem;
     width: 1.6rem;
   `}

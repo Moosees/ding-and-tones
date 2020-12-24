@@ -31,7 +31,7 @@ export const ListItem = styled.li`
     transform: scale(1.05);
   }
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     margin: 1px;
     padding: 2px;
   `}

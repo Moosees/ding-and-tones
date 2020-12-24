@@ -1,10 +1,11 @@
 import { css } from 'styled-components';
 
 const mqSizes = {
-  mqLarge: 1300,
-  mqMedium: 1200,
-  mqSmall: 1000,
-  mqSmaller: 850,
+  mqW1300: 1300,
+  mqW1200: 1200,
+  mqW1000: 1000,
+  mqW850: 850,
+  mqW700: 700,
 };
 
 const mediaQueries = Object.keys(mqSizes).reduce((acc, size) => {
@@ -35,16 +36,16 @@ export const mainTheme = {
   colorBtnConfirm: 'rgba(0, 150, 0, 0.9)',
   colorBtnClear: 'rgba(200, 30, 10, 0.4)',
   colorCheckbox: 'rgba(20, 240, 20, 0.9)',
-  fzSmaller: '1.1rem',
-  fzSmall: '1.2rem',
-  fzMedium: '1.3rem',
-  fzControls: '1.4rem',
-  fzSmallIcon: '1.6rem',
-  fzLarge: '1.8rem',
+  fzSmallest: '1.2rem',
+  fzSmaller: '1.3rem',
+  fzSmall: '1.4rem',
+  fzMedium: '1.6rem',
+  fzLarge: '1.7rem',
+  fzLarger: '1.8rem',
   fzHeader: '2.4rem',
-  paddingLarge: '3rem',
-  paddingMedium: '2rem',
   paddingSmall: '1rem',
+  paddingMedium: '2rem',
+  paddingLarge: '3rem',
   shadowLight: '0px 2px 5px 2px rgba(0, 0, 80, 0.25)',
   shadowHeavy: '0px 5px 10px 1px rgba(0, 0, 80, 0.25)',
   shadowBtnLight: '0px 2px 5px -1px rgba(0, 0, 80, 0.1)',

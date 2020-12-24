@@ -11,11 +11,11 @@ const ChordsContainer = styled.div`
   height: 100%;
   padding: ${({ theme }) => theme.paddingLarge};
 
-  ${({ theme }) => theme.mqMedium`
+  ${({ theme }) => theme.mqW1200`
     padding: ${theme.paddingMedium};
   `}
 
-  ${({ theme }) => theme.mqSmaller`
+  ${({ theme }) => theme.mqW850`
     padding: ${theme.paddingSmall};
   `}
 `;
