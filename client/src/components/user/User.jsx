@@ -15,6 +15,7 @@ const User = () => {
   return (
     <UserAnchor ref={menuRef}>
       <BtnNav
+        ariaLabel={'Menu'}
         disabled={false}
         isActive={menuOpen}
         label={<Logo />}

@@ -29,6 +29,7 @@ const InfoInput = ({
       <TextInputLabel>
         <TextInput
           autoFocus
+          aria-label={placeholder}
           errors={errors}
           onChange={handleChange}
           onKeyDown={handleKeyDown}

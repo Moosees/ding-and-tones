@@ -25,6 +25,7 @@ const InfoSearch = ({
     <InfoLayout>
       <TextInput
         autoFocus
+        aria-label={placeholder}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         value={value}

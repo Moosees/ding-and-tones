@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Make sure inputs have labels
-* Aria-label to menu button, or redesign?
 * Hide name in searches right padding
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
@@ -41,6 +39,7 @@
 * Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs (new user email in use, no songs/scales found etc.)
 * Scrap gradient layout? New layout for bar info?
+* Larger font size on mobile
 
 ## User/Menu
 

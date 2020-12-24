@@ -1,9 +1,14 @@
 import React from 'react';
 import { NavButton } from './button.styles';
 
-const BtnNav = ({ disabled, isActive, label, onClick }) => {
+const BtnNav = ({ ariaLabel, disabled, isActive, label, onClick }) => {
   return (
-    <NavButton isActive={isActive} disabled={disabled} onClick={onClick}>
+    <NavButton
+      aria-label={ariaLabel || label}
+      isActive={isActive}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {label}
     </NavButton>
   );
