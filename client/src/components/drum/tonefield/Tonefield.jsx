@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 
+
 const Tonefield = ({
   audioPath,
   color,
@@ -39,7 +40,7 @@ const Tonefield = ({
       cy="0"
       transform={`rotate(${rotate + 90}) translate(${translate})`}
       style={{
-        fontSize: isDing ? '0.23rem' : '0.14rem',
+        fontSize: isDing ? '2.3px' : '1.5px',
         cursor: !showNote
           ? 'default'
           : displayedChord || !showIntervals

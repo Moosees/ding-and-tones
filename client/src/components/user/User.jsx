@@ -10,7 +10,7 @@ import { UserAnchor, UserMenu } from './user.styles';
 // import BtnControls from '../shared/button/Controls';
 
 const User = () => {
-  const [menuOpen, setMenuOpen, menuRef] = useCloseOutside(false);
+  const [menuOpen, setMenuOpen, menuRef] = useCloseOutside(true);
 
   return (
     <UserAnchor ref={menuRef}>
