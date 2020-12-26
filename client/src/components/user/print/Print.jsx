@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BtnControls from '../../shared/button/Controls';
+import BtnMenu from '../../shared/button/Menu';
 import ReactToPrint from './ReactToPrint';
 
 const Print = () => {
@@ -7,7 +7,7 @@ const Print = () => {
 
   return (
     <>
-      <BtnControls
+      <BtnMenu
         label="Print song"
         icon="print"
         onClick={() => setShowPrint(true)}

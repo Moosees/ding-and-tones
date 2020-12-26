@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BtnControls from '../../shared/button/Controls';
+import BtnMenu from '../../shared/button/Menu';
 import PopupSound from './PopupSound';
 
 const Sound = () => {
@@ -7,7 +7,7 @@ const Sound = () => {
 
   return (
     <>
-      <BtnControls
+      <BtnMenu
         icon="hearing"
         iconAlign={-2}
         label="Sound setup"

@@ -8,7 +8,7 @@ export const ScaleInfoContainer = styled.div`
 
 export const ScaleLabel = styled.span`
   word-spacing: -1px;
-  font-size: ${(theme) => theme.fzSmallest};
+  font-size: ${({ theme }) => theme.fzSmallest};
 
   ${({ theme }) => theme.mqW1200`
     font-size: ${theme.fzSmaller};

@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Check button and icon size on smaller screens
+* Beat dropdown size on smaller screens
+* Info layout on smaller screens?
 * Mobile screens use two lines for intervals, check font size
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"

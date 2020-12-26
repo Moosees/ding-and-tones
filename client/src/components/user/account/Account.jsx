@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleAccount } from '../../../redux/user/user.actions';
-import BtnControls from '../../shared/button/Controls';
+import BtnMenu from '../../shared/button/Menu';
 import PopupAccount from './PopupAccount';
 
 const Account = ({ accountOpen, isSignedIn, toggleAccount }) => {
   return (
     <>
       {isSignedIn && (
-        <BtnControls
+        <BtnMenu
           label="Account"
           icon="person_outline"
           onClick={toggleAccount}

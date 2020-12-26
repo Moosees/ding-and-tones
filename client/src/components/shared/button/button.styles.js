@@ -7,7 +7,7 @@ export const ButtonGroup = styled.div`
   width: 100%;
 `;
 
-export const ControlsButton = styled.div`
+export const MenuButton = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -19,9 +19,13 @@ export const ControlsButton = styled.div`
   &:hover {
     color: ${({ theme }) => theme.colorBtnConfirm};
   }
+
+  ${({ theme }) => theme.mqW1000`
+    font-size: 12px;
+  `}
 `;
 
-export const ControlsLabel = styled.span`
+export const MenuLabel = styled.span`
   padding-left: 5px;
 `;
 
@@ -39,6 +43,10 @@ export const IconButton = styled.button`
       small ? theme.fzMedium : theme.fzLarger};
     padding: 0.5rem;
     transition: transform 0.1s ease-in;
+
+    ${({ theme, small }) => theme.mqW1000`
+      font-size ${small ? theme.fzLarge : theme.fzLargest}
+  `}
   }
 
   &:hover:not([disabled]) i {
@@ -67,11 +75,10 @@ export const NavButton = styled.button`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   cursor: pointer;
-  font-size: ${({ controls, theme }) =>
-    controls ? theme.fzSmaller : theme.fzLarger};
+  font-size: ${({ theme }) => theme.fzLarger};
   margin: -3px 2px 0;
   min-width: 6rem;
-  padding: ${({ controls }) => (controls ? '0.4rem' : '0.4rem 1rem')};
+  padding: 0.4rem 1rem;
   position: relative;
   text-shadow: ${({ theme }) => theme.textShadowLight};
   top: 3px;
@@ -95,7 +102,6 @@ export const PrimaryButton = styled.button`
   box-shadow: ${({ light, theme }) =>
     light ? theme.shadowBtnLight : theme.shadowBtnHeavy};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  font-size: ${({ theme }) => theme.fzSmaller};
   margin: 0.5rem 3px;
   min-width: 8rem;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
@@ -108,8 +114,9 @@ export const PrimaryButton = styled.button`
   }
 
   ${({ theme }) => theme.mqW1000`
+    border-radius: 4px;
     margin: 3px;
     min-width: 6rem;
-    padding: 3px 2px;
+    padding: 2px;
   `}
 `;

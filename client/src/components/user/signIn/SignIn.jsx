@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signOut } from '../../../redux/user/user.actions';
-import BtnControls from '../../shared/button/Controls';
+import BtnMenu from '../../shared/button/Menu';
 import PopupSignIn from './PopupSignIn';
 
 const SignIn = ({ isSignedIn, signOut }) => {
@@ -10,10 +10,10 @@ const SignIn = ({ isSignedIn, signOut }) => {
   return (
     <>
       {isSignedIn ? (
-        <BtnControls label="Sign out" icon="directions_run" onClick={signOut} />
+        <BtnMenu label="Sign out" icon="directions_run" onClick={signOut} />
       ) : (
         <>
-          <BtnControls
+          <BtnMenu
             label="Sign in"
             icon="login"
             iconJustify="-2"

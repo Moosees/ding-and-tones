@@ -33,12 +33,11 @@ export const ScaleContainer = styled.div`
   }
 `;
 
-export const ScaleLabel = styled.span`
-`;
+export const ScaleLabel = styled.span``;
 
 export const ScaleNotes = styled.span`
   word-spacing: -2px;
-  font-size: ${(theme) => theme.fzSmallest};
+  font-size: ${({ theme }) => theme.fzSmallest};
 
   ${({ theme }) => theme.mqW1200`
     font-size: ${theme.fzSmallest};

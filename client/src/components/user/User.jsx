@@ -7,7 +7,7 @@ import Print from './print/Print';
 import SignIn from './signIn/SignIn';
 import { UserAnchor, UserMenu } from './user.styles';
 // import Sound from './sound/Sound';
-// import BtnControls from '../shared/button/Controls';
+// import BtnMenu from '../shared/button/Menu';
 
 const User = () => {
   const [menuOpen, setMenuOpen, menuRef] = useCloseOutside(true);
@@ -24,8 +24,8 @@ const User = () => {
       {menuOpen && (
         <UserMenu>
           {/* <Sound /> */}
-          {/* <BtnControls label="Support me" icon="support" /> */}
-          {/* <BtnControls label="Help" icon="help_outline" /> */}
+          {/* <BtnMenu label="Support me" icon="support" /> */}
+          {/* <BtnMenu label="Help" icon="help_outline" /> */}
           <Print />
           <Account />
           <SignIn />
