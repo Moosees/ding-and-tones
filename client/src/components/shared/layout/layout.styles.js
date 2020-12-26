@@ -11,7 +11,6 @@ export const GradientLayout = styled.div`
   border-radius: 4px;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
-  font-size: ${({ theme }) => theme.fzSmallest};
   padding: 1px 6px 1px 2px;
   position: relative;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};

@@ -24,5 +24,4 @@ export const BarInfoContainer = styled.div`
 export const DragGradient = styled(GradientLayout)`
   cursor: ${({ disabled, isDragging }) =>
     disabled ? 'default' : isDragging ? 'grabbing' : 'grab'};
-  font-size: inherit;
 `;

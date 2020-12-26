@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Check button and icon size on smaller screens
-* Check gradient layout fz if it's used anywhere?
 * Mobile screens use two lines for intervals, check font size
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
