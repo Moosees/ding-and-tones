@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Beat dropdown size on smaller screens
 * Mobile screens use two lines for intervals, check font size
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"

@@ -83,14 +83,14 @@ export const BorderContainer = styled.div`
 
 export const Copyright = styled.footer`
   bottom: 0;
-  font-size: 1.2rem;
+  font-size: 11px;
   height: 2rem;
   padding: 2px;
   position: absolute;
 
   ${({ theme }) => theme.mqW1000`
-  position: static;
-`}
+    position: static;
+  `}
 `;
 
 export const PrivacyLink = styled.a`

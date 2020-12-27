@@ -89,4 +89,13 @@ export const DropdownItem = styled.div`
     background-color: ${theme.colorBtnHeavy};
   }
   `};
+
+  ${({ theme }) => theme.mqW1200`
+    font-size: ${theme.fzSmaller};
+  `}
+
+  ${({ theme }) => theme.mqW1000`
+    font-size: ${theme.fzMedium};
+    padding: 1px 5px;
+  `}
 `;
