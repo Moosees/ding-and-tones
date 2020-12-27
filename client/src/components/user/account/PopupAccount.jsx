@@ -30,6 +30,7 @@ const PopupAccount = ({
   return (
     <Popup header="Account" onClose={toggleAccount}>
       <InfoInput
+        large
         editOnly
         handleChange={setUsername}
         isValid={usernameValid}

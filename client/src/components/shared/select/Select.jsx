@@ -27,9 +27,10 @@ const Select = ({
   children,
   handleChange,
   hasLabel,
-  small,
   isSongPlaying,
+  large,
   options,
+  small,
   value,
 }) => {
   const labelRef = useRef();
@@ -53,7 +54,7 @@ const Select = ({
   const Layout = small ? SelectSmall : InfoLayout;
 
   return (
-    <Layout disabled={isSongPlaying}>
+    <Layout disabled={isSongPlaying} large={large}>
       <SelectLabel hasLabel={hasLabel} small={small} disabled={isSongPlaying}>
         <span ref={labelRef}>{children}</span>
         <SelectDropdown

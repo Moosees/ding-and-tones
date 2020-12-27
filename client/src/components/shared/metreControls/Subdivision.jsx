@@ -14,10 +14,11 @@ const subdivisionOptions = [
 
 const Subdivision = ({
   hasLabel,
+  large,
   metre,
+  setSubdivision,
   small,
   subdivision,
-  setSubdivision,
 }) => {
   const { minSubdivision } = metreList[metre];
 
@@ -28,6 +29,7 @@ const Subdivision = ({
 
   return (
     <Select
+      large={large}
       small={small}
       hasLabel={hasLabel}
       value={subdivision}

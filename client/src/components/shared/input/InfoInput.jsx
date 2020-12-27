@@ -8,6 +8,7 @@ const InfoInput = ({
   errors,
   handleChange,
   isValid,
+  large,
   onSave = () => {},
   onClose = () => {},
   placeholder,
@@ -25,7 +26,7 @@ const InfoInput = ({
   };
 
   return (
-    <InfoLayout>
+    <InfoLayout large={large}>
       <TextInputLabel>
         <TextInput
           autoFocus

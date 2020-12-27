@@ -2,12 +2,12 @@
 
 ## Current tasks
 
+* Hard-code message listener origin in production?
+
 * Beat dropdown size on smaller screens
-* Info layout on smaller screens?
 * Mobile screens use two lines for intervals, check font size
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
-* Margin for info boxes on popups
 * Transition mixin, border radius mixin?
 
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)

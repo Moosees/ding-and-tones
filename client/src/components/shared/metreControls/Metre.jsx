@@ -36,6 +36,7 @@ const metreOptions = [
 const Metre = ({
   gradient,
   hasLabel,
+  large,
   metre,
   setMetre,
   subdivision,
@@ -53,6 +54,7 @@ const Metre = ({
 
   return (
     <Select
+      large={large}
       gradient={gradient}
       hasLabel={hasLabel}
       value={metre}

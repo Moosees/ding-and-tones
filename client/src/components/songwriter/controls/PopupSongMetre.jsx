@@ -38,6 +38,7 @@ const PopupSongMetre = ({
   return (
     <Popup header="Metre" onClose={onClose}>
       <Metre
+        large
         hasLabel
         metre={newMetre}
         subdivision={newSubdivision}
@@ -45,12 +46,14 @@ const PopupSongMetre = ({
         setSubdivision={setNewSubdivision}
       />
       <Subdivision
+        large
         hasLabel
         metre={newMetre}
         subdivision={newSubdivision}
         setSubdivision={setNewSubdivision}
       />
       <InfoInput
+        large
         editOnly
         handleChange={setNewBpm}
         isValid={isNewBpmValid}

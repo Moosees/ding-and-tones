@@ -45,6 +45,7 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
   return (
     <Popup header="New song" onClose={onClose}>
       <InfoInput
+        large
         editOnly
         handleChange={setTitle}
         isValid={isTitleValid}
@@ -52,6 +53,7 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         value={title}
       />
       <Metre
+        large
         hasLabel
         metre={metre}
         subdivision={subdivision}
@@ -59,12 +61,14 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         setSubdivision={setSubdivision}
       />
       <Subdivision
+        large
         hasLabel
         metre={metre}
         subdivision={subdivision}
         setSubdivision={setSubdivision}
       />
       <Select
+        large
         hasLabel
         value={difficulty}
         handleChange={setDifficulty}
