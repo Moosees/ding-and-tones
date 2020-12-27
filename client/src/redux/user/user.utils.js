@@ -43,7 +43,12 @@ export const handleGooglePostMsg = (url) => {
     }, 500);
 
     const getMessageFromPopup = (event) => {
-      if (!win || event.origin !== window.origin || !event.data.search) {
+      const allowedOrigin =
+        process.env.NODE_ENV === 'production'
+          ? 'https://www.dingandtones.com'
+          : window.origin;
+
+      if (!win || event.origin !== allowedOrigin || !event.data.search) {
         clearInterval(interval);
         reject('access_denied');
       }

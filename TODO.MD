@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Hard-code message listener origin in production?
-
 * Beat dropdown size on smaller screens
 * Mobile screens use two lines for intervals, check font size
 * New buttons for loading songs and confirm/cancel
