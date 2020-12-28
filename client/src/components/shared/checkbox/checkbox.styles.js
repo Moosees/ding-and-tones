@@ -32,7 +32,7 @@ export const CheckboxLabel = styled.label`
 
 export const CheckboxInput = styled.span`
   background-color: ${({ theme }) => theme.colorBtnClear};
-  border-radius: 100px;
+  border-radius: 100%;
   height: 2rem;
   left: ${({ reverse }) => (reverse ? 'unset' : '0')};
   right: ${({ reverse }) => (reverse ? '0' : 'unset')};
@@ -44,7 +44,7 @@ export const CheckboxInput = styled.span`
   &::after {
     box-sizing: border-box;
     background-color: ${({ theme }) => theme.colorCheckbox};
-    border-radius: 100px;
+    border-radius: 100%;
     content: '';
     display: none;
     height: 2rem;

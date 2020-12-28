@@ -29,7 +29,7 @@ export const Note = styled.button`
     inScale
       ? '2px solid ' + theme.colorCheckbox
       : '1px solid ' + theme.colorBtnClear};
-  border-radius: 100px;
+  border-radius: 100%;
   box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
