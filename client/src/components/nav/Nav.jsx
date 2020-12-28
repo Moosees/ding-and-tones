@@ -19,18 +19,19 @@ const Nav = ({ mobile, scaleId, songId }) => {
 
   return (
     <Navbar>
-      <BtnNav
-        label="Scale"
-        isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
-        onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
-      />
-      {mobile ? (
+      {mobile && (
         <BtnNav
           label="Drum"
           isActive={'/drum' === pathname}
           onClick={() => push('/drum')}
         />
-      ) : (
+      )}
+      <BtnNav
+        label="Scale"
+        isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
+        onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
+      />
+      {!mobile && (
         <BtnNav
           label="Chords"
           isActive={'/chords' === pathname}

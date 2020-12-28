@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Numbers scale mode, move drum to left on mobile
+* Numbers scale mode
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Transition mixin, border radius mixin?

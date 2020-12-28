@@ -11,15 +11,15 @@ const Songwriter = lazy(() => import('../songwriter/Songwriter'));
 const Routes = ({ mobile }) => (
   <Suspense fallback={<Loading />}>
     <Switch>
+      {mobile && <Route exact path="/drum" children={<MobileDrum />} />}
       <Route exact path="/scale" children={<Scale />} />
       <Route path="/scale/:scaleId" children={<Scale />} />
-      {mobile && <Route exact path="/drum" children={<MobileDrum />} />}
       {!mobile && <Route exact path="/chords" children={<Chords />} />}
       <Route exact path="/song" children={<Songwriter />} />
       <Route path="/song/:songId" children={<Songwriter />} />
       <Route exact path="/find" children={<FindSongs />} />
       <Redirect from="/find/:songId" to="/song/:songId" />
-      <Redirect from="/" to="/scale" />
+      <Redirect from="/" to={mobile ? '/drum' : '/scale'} />
     </Switch>
   </Suspense>
 );
