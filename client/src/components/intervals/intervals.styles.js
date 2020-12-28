@@ -43,15 +43,13 @@ export const IntervalColor = styled.div`
   height: 2.2rem;
   justify-content: center;
   margin: 0.25rem;
-  position: relative;
   width: 2.2rem;
 
   span {
-    position: absolute;
+    position: relative;
     text-shadow: 1px 0 0px rgba(200, 200, 200, 0.55),
       -1px 0 0px rgba(200, 200, 200, 0.55), 0 1px 0px rgba(200, 200, 200, 0.55),
       0 -1px 0px rgba(200, 200, 200, 0.55);
-    top: 2px;
 
     ${({ theme }) => theme.mqW850`
       top: 1px;
