@@ -1,13 +1,21 @@
 import React from 'react';
 import { intervals } from '../../assets/intervals';
-import { Interval, IntervalContainer } from './intervals.styles';
+import {
+  IntervalBreakBox,
+  IntervalColor,
+  IntervalContainer,
+  IntervalText,
+} from './intervals.styles';
 
 export const getChordLegend = (intervalList) => {
   return intervalList.map((interval) => (
     <IntervalContainer key={interval}>
-      <Interval color={intervals[interval].color} />
-      {intervals[interval].name} ({intervals[interval].semitones} semitones)
-      <Interval color={intervals[interval].color} />
+      <IntervalColor color={intervals[interval].color} />
+      <IntervalBreakBox>
+        <IntervalText>{intervals[interval].name}</IntervalText>
+        <IntervalText>({intervals[interval].semitones} semitones)</IntervalText>
+      </IntervalBreakBox>
+      <IntervalColor color={intervals[interval].color} />
     </IntervalContainer>
   ));
 };
@@ -26,11 +34,25 @@ export const getScaleLegend = (note, scale, showIntervals) => {
 
     return (
       <IntervalContainer key={i}>
-        <Interval color={color} />
-        {showIntervals && semitones === 0
-          ? `${note} - Current Focus`
-          : `${note} - ${name}${modifier} (${semitones} steps)`}
-        <Interval color={color} />
+        <IntervalColor color={color}>
+          <span>{i}</span>
+        </IntervalColor>
+        <IntervalBreakBox>
+          {showIntervals && semitones === 0 ? (
+            <IntervalText>{note} - Current Focus</IntervalText>
+          ) : (
+            <>
+              <IntervalText>
+                {note} - {name}
+                {modifier}
+              </IntervalText>
+              <IntervalText>({semitones} steps)</IntervalText>
+            </>
+          )}
+        </IntervalBreakBox>
+        <IntervalColor color={color}>
+          <span>{i}</span>
+        </IntervalColor>
       </IntervalContainer>
     );
   });

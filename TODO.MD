@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Mobile screens use two lines for intervals, check font size
+* Numbers scale mode, move drum to left on mobile
 * New buttons for loading songs and confirm/cancel
 * Redesign "select drum mode"
 * Transition mixin, border radius mixin?
@@ -17,7 +17,6 @@
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Solo bar
 * Make lock song more useful for playing song from screen, rename "lock" to something better
-* Numbers ('Index') for tonefields
 
 * Session for logged in users
 
@@ -38,7 +37,7 @@
 * Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs (new user email in use, no songs/scales found etc.)
 * Scrap gradient layout? New layout for bar info?
-* Larger font size on mobile
+* Scale edit hover effect
 
 ## User/Menu
 
@@ -63,7 +62,7 @@
 
 ## State/Backend
 
-* Persist working state through local storage?
+* Persist working state through local storage? In session?
 * Prevent/warn transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
