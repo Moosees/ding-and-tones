@@ -2,23 +2,14 @@
 
 ## Current tasks
 
-* Numbers scale mode
-* New buttons for loading songs and confirm/cancel
-* Redesign "select drum mode"
-* Transition mixin, border radius mixin?
-
-* Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
-
+* Redesign "select drum mode", add numbers scale mode
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
 * Load song without scale
-* Save scale on client should be more functional?
-* Merge api status states (isFetching etc.) in client?
-* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* Solo bar
 * Make lock song more useful for playing song from screen, rename "lock" to something better
-
+* Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
 * Session for logged in users
+* Interval colors for compound intervals? Check if intervals are working as intended
 
 ## Bugs
 
@@ -35,9 +26,10 @@
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Load song button can be seen through table header
 * Line breaks inside bars? Only for printing? User added line breaks?
-* Errors from backend display on inputs (new user email in use, no songs/scales found etc.)
-* Scrap gradient layout? New layout for bar info?
+* Errors from backend display on inputs (new user email in use, no songs/scales found etc.) add type prop to responses?
 * Scale edit hover effect
+* New buttons for loading songs and confirm/cancel
+* Transition mixin, border radius mixin? All the mix-ins!
 
 ## User/Menu
 
@@ -59,6 +51,7 @@
 * Count number of bars for search results? Virtual field?
 * Dropdown list show all dyads and ding + note combinations?
 * Dropdown opens where there's space instead of just below beat
+* Solo bar
 
 ## State/Backend
 
@@ -72,6 +65,10 @@
 * Split save song controller?
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Redirect between chords and drum when resizing? Use same route for all screens?
+* Save scale on client should be more functional?
+* Merge api status states (isFetching etc.) in client?
+* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+* Move position map to reducer?
 
 ## Future plans
 
@@ -91,7 +88,6 @@
 * Keyboard shortcuts for playing drum (or songwriter)
 * Keyboard shortcuts for popups
 * Likes and/or comments?
-* Move position map to reducer?
 * Handle extra/bottom notes/mutant drums
 * Custom chord inputs
 * Custom metres
@@ -103,7 +99,6 @@
 * Higher quality samples
 * Link drum and songwriter - animations?
 * Songwriter bars alignment should change with big songs
-* Interval colors for compound intervals?
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
