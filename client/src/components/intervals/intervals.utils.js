@@ -1,5 +1,5 @@
 import React from 'react';
-import { intervals } from '../../assets/intervals';
+import { drumModes, intervals } from '../../assets/intervals';
 import {
   IntervalBreakBox,
   IntervalColor,
@@ -20,7 +20,7 @@ export const getChordLegend = (intervalList) => {
   ));
 };
 
-export const getScaleLegend = (note, scale, showIntervals) => {
+export const getScaleLegend = (note, scale, drumMode) => {
   const currentIntervals = scale[note].intervalMap;
 
   return currentIntervals.map(({ semitones, compound, note }, i) => {
@@ -38,7 +38,7 @@ export const getScaleLegend = (note, scale, showIntervals) => {
           <span>{i}</span>
         </IntervalColor>
         <IntervalBreakBox>
-          {showIntervals && semitones === 0 ? (
+          {false && drumMode === drumModes.INTERVALS && semitones === 0 ? (
             <IntervalText>{note} - Current Focus</IntervalText>
           ) : (
             <>

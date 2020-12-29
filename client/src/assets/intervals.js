@@ -1,3 +1,9 @@
+export const drumModes = {
+  NUMBERS: 1,
+  NOTES: 2,
+  INTERVALS: 3,
+};
+
 // prettier-ignore
 export const noteNameToValue = {
   'C1': 12,

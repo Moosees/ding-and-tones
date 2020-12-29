@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   audioPath: sound[0].path,
   displayedChord: null,
   displayedNote: 0,
-  showIntervals: false,
+  drumMode: 2,
 };
 
 const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -31,10 +31,10 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
         displayedNote: state.displayedNote === payload ? 0 : payload,
       };
 
-    case drumTypes.SET_SHOW_INTERVALS:
+    case drumTypes.SET_DRUM_MODE:
       return {
         ...state,
-        showIntervals: payload,
+        drumMode: payload,
       };
 
     case scaleTypes.FETCH_SUCCESSFUL:

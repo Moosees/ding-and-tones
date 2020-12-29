@@ -12,9 +12,9 @@ import Tonefield from './tonefield/Tonefield';
 const Drum = ({
   displayedChord,
   displayedNote,
+  drumMode,
   layout,
   scale,
-  showIntervals,
   style,
 }) => {
   const positionMap = useMemo(() => getPositionMap(layout, scale.length), [
@@ -40,7 +40,7 @@ const Drum = ({
                 note.note,
                 i,
                 scale[displayedNote].intervalMap,
-                showIntervals,
+                drumMode,
                 displayedChord
               )
             : ''
@@ -91,7 +91,7 @@ const Drum = ({
 const mapStateToProps = ({ drum, scale }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
-  showIntervals: drum.showIntervals,
+  drumMode: drum.drumMode,
   layout: scale.info.layout,
   scale: scale.notes.scaleFull,
 });

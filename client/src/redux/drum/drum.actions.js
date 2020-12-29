@@ -15,7 +15,7 @@ export const setDisplayedNote = (note) => ({
   payload: note,
 });
 
-export const setShowIntervals = (showIntervals) => ({
-  type: drumTypes.SET_SHOW_INTERVALS,
-  payload: showIntervals,
+export const setDrumMode = (drumMode) => ({
+  type: drumTypes.SET_DRUM_MODE,
+  payload: drumMode,
 });

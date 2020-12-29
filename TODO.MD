@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Redesign "select drum mode", add numbers scale mode
+* Hover show interval focus? Click on intervals to change focus? Set focus button?
+* Remove "current focus"? Chords + intervals show short name before long name? setDisplayedNote currently unused?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
 * Load song without scale
@@ -20,6 +21,7 @@
 
 ## Design
 
+* Redesign drum mode
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Remake scale grid layout
@@ -36,6 +38,7 @@
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
+* Interval color legend?
 
 ## Chords
 

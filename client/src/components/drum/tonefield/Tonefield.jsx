@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 
-
 const Tonefield = ({
   audioPath,
   color,
@@ -13,7 +12,6 @@ const Tonefield = ({
   noteIndex,
   position,
   setDisplayedNote,
-  showIntervals,
   showNote,
   text,
 }) => {
@@ -23,31 +21,19 @@ const Tonefield = ({
     new Audio(`${audioPath}/${note}.mp3`).play();
   };
 
-  const handleIntervals = () => {
-    setDisplayedNote(noteIndex);
-  };
+  // const handleIntervals = () => {
+  //   setDisplayedNote(noteIndex);
+  // };
 
   return (
     <g
-      onClick={
-        !showNote
-          ? null
-          : displayedChord || !showIntervals
-          ? handlePlay
-          : handleIntervals
-      }
+      onClick={showNote ? handlePlay : null}
       cx="0"
       cy="0"
       transform={`rotate(${rotate + 90}) translate(${translate})`}
       style={{
         fontSize: isDing ? '2.3px' : '1.5px',
-        cursor: !showNote
-          ? 'default'
-          : displayedChord || !showIntervals
-          ? 'pointer'
-          : hasFocus
-          ? 'zoom-out'
-          : 'zoom-in',
+        cursor: showNote ? 'pointer' : 'default',
       }}
     >
       <circle
@@ -71,7 +57,6 @@ const Tonefield = ({
 const mapStateToProps = ({ drum }) => ({
   audioPath: drum.audioPath,
   displayedChord: drum.displayedChord,
-  showIntervals: drum.showIntervals,
 });
 
 export default connect(mapStateToProps, { setDisplayedNote })(Tonefield);

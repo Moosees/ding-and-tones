@@ -1,5 +1,5 @@
 import { TRANSLATE_BASE } from '../../assets/constants';
-import { intervals } from '../../assets/intervals';
+import { drumModes, intervals } from '../../assets/intervals';
 
 export const getChordColor = (note, notesInScale) => {
   return intervals[notesInScale[note]].color;
@@ -32,17 +32,25 @@ export const getNoteText = (
   note,
   noteIndex,
   intervalMap,
-  showIntervals,
+  drumMode,
   displayedChord
 ) => {
-  // note names
-  if (!showIntervals) return intervalMap[noteIndex].note;
+  switch (drumMode) {
+    case drumModes.INTERVALS:
+      if (displayedChord)
+        return intervals[displayedChord.notesInScale[note]].nameShort;
 
-  // interval name for scale notes
-  if (!displayedChord) return getScaleNoteText(intervalMap[noteIndex]);
+      return getScaleNoteText(intervalMap[noteIndex]);
 
-  // interval name for chord notes
-  return intervals[displayedChord.notesInScale[note]].nameShort;
+    case drumModes.NOTES:
+      return intervalMap[noteIndex].note;
+
+    case drumModes.NUMBERS:
+      return noteIndex;
+
+    default:
+      return intervalMap[noteIndex].note;
+  }
 };
 
 const createRoundLayout = (numTones) => {
