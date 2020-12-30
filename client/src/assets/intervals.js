@@ -1,8 +1,9 @@
-export const drumModes = {
-  NUMBERS: 1,
-  NOTES: 2,
-  INTERVALS: 3,
-};
+export const drumModeList = ['NUMBERS', 'NOTES', 'INTERVALS'];
+
+export const drumModes = drumModeList.reduce((acc, mode) => {
+  acc[mode] = mode;
+  return acc;
+}, {});
 
 // prettier-ignore
 export const noteNameToValue = {

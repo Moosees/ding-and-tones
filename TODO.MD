@@ -21,7 +21,6 @@
 
 ## Design
 
-* Redesign drum mode
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Remake scale grid layout

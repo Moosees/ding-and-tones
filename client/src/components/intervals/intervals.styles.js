@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 
-export const CheckboxContainer = styled.div`
+export const DrumModeContainer = styled.div`
+  align-items: center;
   display: flex;
-  flex-direction: column;
-`;
-
-export const IntervalHeader = styled.h4`
+  justify-content: space-between;
   margin: 3px 0;
-  text-transform: uppercase;
+  min-width: 75%;
+
+  span {
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  ${({ theme }) => theme.mqW850`
+    margin: 0;
+    min-width: 90%;
+  `}
 `;
 
 export const IntervalList = styled.div`

@@ -1,13 +1,14 @@
+import { drumModes } from '../../assets/intervals';
 import { sound } from '../../assets/sound';
 import scaleTypes from '../scale/scale.types';
-import drumTypes from './drum.types';
 import songTypes from '../song/song.types';
+import drumTypes from './drum.types';
 
 const INITIAL_STATE = {
   audioPath: sound[0].path,
   displayedChord: null,
   displayedNote: 0,
-  drumMode: 2,
+  drumMode: drumModes.NOTES,
 };
 
 const drumReducer = (state = INITIAL_STATE, { type, payload }) => {

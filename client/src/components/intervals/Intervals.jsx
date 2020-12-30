@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import ScaleMode from './DrumMode';
-import { IntervalHeader, IntervalList } from './intervals.styles';
+import { IntervalList } from './intervals.styles';
 import { getChordLegend, getScaleLegend } from './intervals.utils';
 
 const Intervals = ({ displayedChord, displayedNote, scale, drumMode }) => {
@@ -10,7 +10,6 @@ const Intervals = ({ displayedChord, displayedNote, scale, drumMode }) => {
     <IntervalList>
       <ScaleMode />
       <DividerLine small />
-      <IntervalHeader>Intervals</IntervalHeader>
       {scale.length && displayedChord
         ? getChordLegend(displayedChord.intervals)
         : getScaleLegend(displayedNote, scale, drumMode)}
