@@ -8,16 +8,22 @@ import {
 } from './intervals.styles';
 
 export const getChordLegend = (intervalList) => {
-  return intervalList.map((interval) => (
-    <IntervalContainer key={interval}>
-      <IntervalColor color={intervals[interval].color} />
-      <IntervalBreakBox>
-        <IntervalText>{intervals[interval].name}</IntervalText>
-        <IntervalText>({intervals[interval].semitones} semitones)</IntervalText>
-      </IntervalBreakBox>
-      <IntervalColor color={intervals[interval].color} />
-    </IntervalContainer>
-  ));
+  return intervalList.map((interval) => {
+    const { color, name, nameShort, semitones } = intervals[interval];
+
+    return (
+      <IntervalContainer key={interval}>
+        <IntervalColor color={color} />
+        <IntervalBreakBox>
+          <IntervalText>{name}</IntervalText>
+          <IntervalText>
+            ({semitones} steps) {nameShort}
+          </IntervalText>
+        </IntervalBreakBox>
+        <IntervalColor color={color} />
+      </IntervalContainer>
+    );
+  });
 };
 
 export const getScaleLegend = (note, scale, drumMode) => {
@@ -30,6 +36,7 @@ export const getScaleLegend = (note, scale, drumMode) => {
     const interval = intervals[isCompound ? compound : semitones];
     const color = isInverted ? interval.colorInverted : interval.color;
     const name = isInverted ? interval.inverted : interval.name;
+    const nameShort = isInverted ? interval.invertedShort : interval.nameShort;
     const modifier = isBig ? (isInverted ? '-' : '+') : '';
 
     return (
@@ -46,7 +53,9 @@ export const getScaleLegend = (note, scale, drumMode) => {
                 {note} - {name}
                 {modifier}
               </IntervalText>
-              <IntervalText>({semitones} steps)</IntervalText>
+              <IntervalText>
+                ({semitones} steps) - {nameShort}
+              </IntervalText>
             </>
           )}
         </IntervalBreakBox>

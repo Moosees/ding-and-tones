@@ -3,7 +3,7 @@
 ## Current tasks
 
 * Hover show interval focus? Click on intervals to change focus? Set focus button?
-* Remove "current focus"? Chords + intervals show short name before long name? setDisplayedNote currently unused?
+* Remove "current focus"? setDisplayedNote currently unused?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
 * Load song without scale
