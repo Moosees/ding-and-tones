@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Hover show interval focus? Click on intervals to change focus? Set focus button?
-* Remove "current focus"? setDisplayedNote currently unused?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
 * Load song without scale
@@ -31,6 +29,7 @@
 * Scale edit hover effect
 * New buttons for loading songs and confirm/cancel
 * Transition mixin, border radius mixin? All the mix-ins!
+* Hover on drum shows all information about hovered note?
 
 ## User/Menu
 
@@ -44,6 +43,7 @@
 * ID and cache chords?
 * Check cache for possible chords to show in filter
 * Sort chords
+* Show chord notes in scale in interval list?
 
 ## Songwriter
 
