@@ -25,7 +25,6 @@ const openGooglePopup = (url) => {
   );
 
   if (win) {
-    win.opener = window;
     return win;
   }
 };
@@ -43,24 +42,20 @@ export const handleGooglePostMsg = (url) => {
     }, 500);
 
     const getMessageFromPopup = (event) => {
-      const allowedOrigins =
+      const allowedOrigin =
         process.env.NODE_ENV === 'production'
-          ? ['https://www.dingandtones.com', 'https://dingandtones.com']
-          : [window.origin];
+          ? 'https://www.dingandtones.com'
+          : 'http://localhost:3000';
 
-      if (
-        !win ||
-        !allowedOrigins.includes(event.origin) ||
-        !event.data.search
-      ) {
+      if (!win || allowedOrigin !== event.origin || !event.data.search) {
         window.removeEventListener('message', getMessageFromPopup);
         clearInterval(interval);
         reject('access_denied');
       } else {
-        window.removeEventListener('message', getMessageFromPopup);
-        clearInterval(interval);
         resolve(event.data.search);
       }
+      window.removeEventListener('message', getMessageFromPopup);
+      clearInterval(interval);
     };
 
     window.addEventListener('message', getMessageFromPopup);
