@@ -23,7 +23,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
       };
 
     case songTypes.FETCH_SUCCESSFUL:
-      return payload.scale
+      return payload.getScale && payload.scale
         ? {
             ...state,
             round: payload.scale.notes.round,

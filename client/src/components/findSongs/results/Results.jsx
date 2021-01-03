@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { difficultyByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
-import { deleteSongById } from '../../../redux/song/song.actions';
+import { deleteSongById, getSongById } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnIcon from '../../shared/button/Icon';
 import BtnPrimary from '../../shared/button/Primary';
@@ -16,6 +16,7 @@ const Results = ({
   isDeleting,
   isSearching,
   isSignedIn,
+  getSongById,
   songs,
 }) => {
   const { push: redirectTo } = useHistory();
@@ -53,39 +54,58 @@ const Results = ({
   const data = useMemo(() => [...songs], [songs]);
 
   const renderRowExpanded = useCallback(
-    ({ isOwner, scaleLabel, songId, title }) => (
-      <>
-        <td colSpan={2}>
-          <Buttons position="flex-start">
-            <BtnPrimary
-              light
-              label="Load with scale"
-              onClick={() => redirectTo(`/song/${songId}`)}
-            />
-            <BtnPrimary light label="Load w/o scale" disabled={true} />
-          </Buttons>
-        </td>
-        <td colSpan={1}>
-          {isOwner && isSignedIn ? (
-            <DeleteContainer>
-              <Confirmation
-                onConfirm={() => deleteSongById(songId)}
-                label={`Are you sure you want to delete "${title}"`}
-              >
-                <BtnIcon
-                  title={`Delete "${title}"`}
-                  icon="delete"
-                  disabled={isSearching || isDeleting}
-                  position="right"
-                />
-              </Confirmation>
-            </DeleteContainer>
-          ) : null}
-        </td>
-        <td colSpan={2}>{scaleLabel}</td>
-      </>
-    ),
-    [deleteSongById, isDeleting, isSearching, isSignedIn, redirectTo]
+    ({ isOwner, scaleLabel, songId, title }) => {
+      const loadSong = (songId, getScale) => {
+        getSongById(songId, getScale).then((res) => {
+          if (res) redirectTo(res);
+        });
+      };
+
+      return (
+        <>
+          <td colSpan={2}>
+            <Buttons position="flex-start">
+              <BtnPrimary
+                light
+                label="Load with scale"
+                onClick={() => loadSong(songId, true)}
+              />
+              <BtnPrimary
+                light
+                label="Load w/o scale"
+                onClick={() => loadSong(songId, false)}
+              />
+            </Buttons>
+          </td>
+          <td colSpan={1}>
+            {isOwner && isSignedIn ? (
+              <DeleteContainer>
+                <Confirmation
+                  onConfirm={() => deleteSongById(songId)}
+                  label={`Are you sure you want to delete "${title}"`}
+                >
+                  <BtnIcon
+                    title={`Delete "${title}"`}
+                    icon="delete"
+                    disabled={isSearching || isDeleting}
+                    position="right"
+                  />
+                </Confirmation>
+              </DeleteContainer>
+            ) : null}
+          </td>
+          <td colSpan={2}>{scaleLabel}</td>
+        </>
+      );
+    },
+    [
+      deleteSongById,
+      getSongById,
+      isDeleting,
+      isSearching,
+      isSignedIn,
+      redirectTo,
+    ]
   );
 
   const handleFetchMore = useCallback(
@@ -110,4 +130,6 @@ const mapStateToProps = ({ search, song, user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { deleteSongById })(Results);
+export default connect(mapStateToProps, { deleteSongById, getSongById })(
+  Results
+);

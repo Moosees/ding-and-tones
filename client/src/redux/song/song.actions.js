@@ -42,18 +42,19 @@ export const duplicateBar = (bar) => ({
   payload: bar, // { oldBarId, newBarId, newMeasure, newBeats }
 });
 
-export const getSongById = (songId) => (dispatch) => {
+export const getSongById = (songId, getScale = true) => (dispatch) => {
   dispatch({ type: songTypes.FETCH_STARTED });
 
-  axios
+  return axios
     .get(`/song/id/${songId}`)
     .then((res) => {
       if (res.status === 200) {
-        const fetchedSong = parseFetchedSong(res.data);
+        const fetchedSong = parseFetchedSong(res.data, getScale);
         dispatch({
           type: songTypes.FETCH_SUCCESSFUL,
           payload: fetchedSong,
         });
+        return Promise.resolve(`/song/${fetchedSong.ui.songId}`);
       }
     })
     .catch((error) => {
@@ -63,6 +64,7 @@ export const getSongById = (songId) => (dispatch) => {
           alert: error.response ? error.response.data.msg : 'Song not found',
         },
       });
+      return Promise.resolve();
     });
 };
 

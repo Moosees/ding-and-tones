@@ -2,12 +2,13 @@
 
 ## Current tasks
 
+* Check load song fom url functionality
+* When loading with scale, mark notes outside scale
+* Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
-* Load song without scale
 * Make lock song more useful for playing song from screen, rename "lock" to something better
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
-* Session for logged in users
 * Interval colors for compound intervals? Check if intervals are working as intended
 
 ## Bugs
@@ -49,7 +50,6 @@
 
 * Web worker?
 * What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen?
-* Transpose all notes of type?
 * Count number of bars for search results? Virtual field?
 * Dropdown list show all dyads and ding + note combinations?
 * Dropdown opens where there's space instead of just below beat
@@ -71,6 +71,7 @@
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Move position map to reducer?
+* Session for logged in users
 
 ## Future plans
 

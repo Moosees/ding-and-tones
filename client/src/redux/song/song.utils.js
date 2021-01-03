@@ -86,7 +86,7 @@ const parseScaleForLoadSong = (scale) => {
   return { info, notes: { round: [dings[0], ...round] } };
 };
 
-export const parseFetchedSong = (song) => {
+export const parseFetchedSong = (song, getScale) => {
   const {
     arrangement,
     bars,
@@ -107,6 +107,7 @@ export const parseFetchedSong = (song) => {
     arrangement,
     bars: parsedBars,
     beats: parsedBeats,
+    getScale,
     info,
     scale: parsedScale,
     ui: { composer, isOwner, songId },
