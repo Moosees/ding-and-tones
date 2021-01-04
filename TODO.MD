@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Check load song fom url functionality
 * When loading with scale, mark notes outside scale
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
@@ -13,6 +12,7 @@
 
 ## Bugs
 
+* Signing in with a song loaded that you own should update ownership
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * Drag and drop need testing, drop target size for 16ths
@@ -67,7 +67,7 @@
 * Split save song controller?
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Redirect between chords and drum when resizing? Use same route for all screens?
-* Save scale on client should be more functional?
+* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Move position map to reducer?

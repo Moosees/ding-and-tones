@@ -79,22 +79,25 @@ export const saveSong = ({ saveAs, title }) => (dispatch, getState) => {
   const { song, scale } = getState();
   const body = parseSongForSaving(song, scale, saveAs, title);
 
-  axios
+  return axios
     .post('/song', body)
     .then((res) => {
       if (res.status === 200) {
-        if (res.data.msg)
-          return dispatch({
+        if (res.data.msg) {
+          dispatch({
             type: songTypes.SAVE_ERROR,
             payload: {
               alert: res.data.msg,
             },
           });
-
-        dispatch({
-          type: songTypes.SAVE_SUCCESSFUL,
-          payload: { song: res.data, alert: `"${res.data.title}" saved` },
-        });
+          return Promise.resolve('');
+        } else {
+          dispatch({
+            type: songTypes.SAVE_SUCCESSFUL,
+            payload: { song: res.data, alert: `"${res.data.title}" saved` },
+          });
+          return Promise.resolve(`/song/${res.data.songId}`);
+        }
       }
     })
     .catch((error) => {
@@ -104,6 +107,7 @@ export const saveSong = ({ saveAs, title }) => (dispatch, getState) => {
           alert: error.response ? error.response.data.msg : 'Save failed',
         },
       });
+      return Promise.resolve('');
     });
 };
 

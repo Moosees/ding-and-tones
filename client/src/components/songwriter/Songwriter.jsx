@@ -27,7 +27,7 @@ const Songwriter = ({ getSongById, songUi }) => {
   }, [isWorking, replace, songId, songUi.songId]);
 
   useEffect(() => {
-    if (songId && songUi.songId !== songId && !isWorking) getSongById(songId);
+    if (songId && songUi.songId !== songId && !isWorking) getSongById(songId, true);
   }, [isWorking, getSongById, songId, songUi.songId]);
 
   return (

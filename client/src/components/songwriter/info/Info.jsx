@@ -43,8 +43,9 @@ const Info = ({
   const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
 
   const handleSave = () => {
-    saveSong({ saveAs: !isOwner, title });
-    replace('/song');
+    saveSong({ saveAs: !isOwner, title }).then((res) => {
+      if (res) replace(res);
+    });
   };
 
   return (
