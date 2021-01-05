@@ -12,30 +12,33 @@ const BeatDropdown = ({
   sound,
   updateBeat,
 }) => {
+  const { single, percussive, nonScale } = options;
+
   const handleClick = (newSound, selected, e) => {
     e.stopPropagation();
     updateBeat(beatId, newSound, selected);
   };
 
-  return (
-    <Dropdown>
-      {options.single &&
-        options.single.map(({ label, value }, i) => {
-          const selected = sound.includes(value);
+  const getOptions = () => {
+    const allOptions = [...percussive, ...single, ...nonScale];
+    if (allOptions.length)
+      return allOptions.map(({ label, value }, i) => {
+        const selected = sound.includes(value);
 
-          return (
-            <DropdownItem
-              disabled={sound.length >= 2 && !selected}
-              selected={selected}
-              key={i}
-              onClick={(e) => handleClick(value, selected, e)}
-            >
-              {label}
-            </DropdownItem>
-          );
-        })}
-    </Dropdown>
-  );
+        return (
+          <DropdownItem
+            disabled={sound.length >= 2 && !selected}
+            selected={selected}
+            key={i}
+            onClick={(e) => handleClick(value, selected, e)}
+          >
+            {label}
+          </DropdownItem>
+        );
+      });
+  };
+
+  return <Dropdown>{getOptions()}</Dropdown>;
 };
 
 const mapStateToProps = ({ ui }) => ({

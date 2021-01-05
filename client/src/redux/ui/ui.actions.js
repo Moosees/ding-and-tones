@@ -35,18 +35,19 @@ export const setSoundOptions = (scale) => (dispatch, getState) => {
     song: { beats },
   } = getState();
 
-  const optionsSingle = scale.map((note, i) => ({
+  const single = scale.map((note, i) => ({
     label: `${i} - ${note}`,
     value: `${i}`,
   }));
 
-  const optionsPercussive = [
+  const percussive = [
     // { label: 'Pause', value: '-' },
     { label: 'Loud Tak', value: 'T' },
     { label: 'Soft Tak', value: 't' },
   ];
 
-  const optionsOutsideScale = {};
+  const nonScale = [];
+  const nonScaleMap = {};
 
   Object.values(beats).forEach(({ sound }) => {
     sound.forEach((option) => {
@@ -54,25 +55,25 @@ export const setSoundOptions = (scale) => (dispatch, getState) => {
 
       if (
         Number.isFinite(numericOption) &&
-        numericOption >= optionsSingle.length &&
-        !optionsOutsideScale[numericOption]
-      )
-        optionsOutsideScale[numericOption] = {
+        numericOption >= single.length &&
+        !nonScaleMap[numericOption]
+      ) {
+        nonScaleMap[numericOption] = true;
+        nonScale.push({
           label: `${numericOption} Outside scale`,
           value: `${numericOption}`,
           outsideScale: true,
-        };
+        });
+      }
     });
   });
 
   dispatch({
     type: uiTypes.SET_SOUND_OPTIONS,
     payload: {
-      single: [
-        ...optionsPercussive,
-        ...optionsSingle,
-        ...Object.values(optionsOutsideScale),
-      ],
+      single,
+      percussive,
+      nonScale,
     },
   });
 };

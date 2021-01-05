@@ -11,7 +11,11 @@ const INITIAL_STATE = {
   isSongPlaying: false,
   mutedBars: {},
   privacyOpen: false,
-  soundOptions: {},
+  soundOptions: {
+    percussive: [],
+    single: [],
+    nonScale: [],
+  },
   textEditOpen: false,
 };
 
