@@ -15,7 +15,7 @@ const playBeatPromise = (beat, timeout, audio) =>
 
     if (!beat.mode || beat.mode === 'c')
       beat.sound.forEach((tone) => {
-        if (tone !== '-') new Audio(audio[tone]).play();
+        if (tone !== '-' && audio[tone]) new Audio(audio[tone]).play();
       });
 
     setTimeout(() => {

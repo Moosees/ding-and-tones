@@ -30,23 +30,51 @@ export const setPrivacyOpen = (privacyOpen) => ({
   payload: privacyOpen,
 });
 
-export const setSoundOptions = (scale) => (dispatch) => {
-  const options = {
-    single: [
-      // { label: 'Pause', value: '-' },
-      { label: 'Loud Tak', value: 'T' },
-      { label: 'Soft Tak', value: 't' },
-    ],
-  };
+export const setSoundOptions = (scale) => (dispatch, getState) => {
+  const {
+    song: { beats },
+  } = getState();
 
-  scale.forEach((note, i) => {
-    options.single.push({
-      label: `${i} - ${note}`,
-      value: `${i}`,
+  const optionsSingle = scale.map((note, i) => ({
+    label: `${i} - ${note}`,
+    value: `${i}`,
+  }));
+
+  const optionsPercussive = [
+    // { label: 'Pause', value: '-' },
+    { label: 'Loud Tak', value: 'T' },
+    { label: 'Soft Tak', value: 't' },
+  ];
+
+  const optionsOutsideScale = {};
+
+  Object.values(beats).forEach(({ sound }) => {
+    sound.forEach((option) => {
+      const numericOption = Number(option);
+
+      if (
+        Number.isFinite(numericOption) &&
+        numericOption >= optionsSingle.length &&
+        !optionsOutsideScale[numericOption]
+      )
+        optionsOutsideScale[numericOption] = {
+          label: `${numericOption} Outside scale`,
+          value: `${numericOption}`,
+          outsideScale: true,
+        };
     });
   });
 
-  dispatch({ type: uiTypes.SET_SOUND_OPTIONS, payload: options });
+  dispatch({
+    type: uiTypes.SET_SOUND_OPTIONS,
+    payload: {
+      single: [
+        ...optionsPercussive,
+        ...optionsSingle,
+        ...Object.values(optionsOutsideScale),
+      ],
+    },
+  });
 };
 
 export const toggleEditSong = () => ({

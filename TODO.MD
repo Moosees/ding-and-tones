@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* When loading with scale, mark notes outside scale
+* Mark beats with notes outside scale
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
@@ -49,7 +49,6 @@
 ## Songwriter
 
 * Web worker?
-* What happens when you change to a scale with less notes than pattern needs? Overflow notes doesn't play right now. What should happen?
 * Count number of bars for search results? Virtual field?
 * Dropdown list show all dyads and ding + note combinations?
 * Dropdown opens where there's space instead of just below beat
