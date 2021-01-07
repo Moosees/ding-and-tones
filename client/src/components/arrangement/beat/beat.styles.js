@@ -23,8 +23,12 @@ export const BeatContainer = styled.div`
   border: ${({ value }) => (value === 4 ? '2px' : '1px')};
   border-style: ${({ value }) => beatStyles.border[value]};
   border-radius: 100%;
-  border-color: ${({ theme, isBeatPlaying }) =>
-    isBeatPlaying ? theme.colorBeatActive : theme.colorBeat};
+  border-color: ${({ theme, hasNonScaleNote, isBeatPlaying }) =>
+    isBeatPlaying
+      ? theme.colorBeatActive
+      : hasNonScaleNote
+      ? theme.colorBtnClear
+      : theme.colorBeat};
   box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
   cursor: ${({ isLocked }) => (isLocked ? 'default' : 'pointer')};
   display: flex;
@@ -71,8 +75,12 @@ export const Dropdown = styled.div`
 `;
 
 export const DropdownItem = styled.div`
-  background-color: ${({ selected, theme }) =>
-    selected ? theme.colorBeat : 'transparent'};
+  background-color: ${({ hasNonScaleNote, selected, theme }) =>
+    selected
+      ? hasNonScaleNote
+        ? theme.colorBtnClear
+        : theme.colorBeat
+      : 'transparent'};
   color: ${({ selected, theme }) =>
     selected ? theme.colorTextInverted : theme.colorText};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};

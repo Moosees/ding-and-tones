@@ -12,20 +12,25 @@ const Beat = ({
   isEditingSong,
   isSongPlaying,
   setDropdownForBeat,
+  soundOptions,
 }) => {
   const { value, sound } = beats[beatId];
   const isBeatPlaying = beatId === currentBeat;
   const isDropdownOpen = beatId === dropdownBeatId;
 
+  const hasNonScaleNote = !sound.every((hit) => {
+    const numericHit = Number(hit);
+    return isNaN(numericHit) || numericHit < soundOptions.numNotesInScale;
+  });
+
   const openDropdown = (e) => {
     e.stopPropagation();
-    if (!isSongPlaying && isEditingSong) {
-      setDropdownForBeat(beatId);
-    }
+    if (!isSongPlaying && isEditingSong) setDropdownForBeat(beatId);
   };
 
   return (
     <BeatContainer
+      hasNonScaleNote={hasNonScaleNote}
       isLocked={!isEditingSong || isSongPlaying}
       isBeatPlaying={isBeatPlaying}
       value={value}
@@ -34,7 +39,13 @@ const Beat = ({
       <BeatText isBeatPlaying={isBeatPlaying} value={value}>
         {sound.join('+')}
       </BeatText>
-      {isDropdownOpen && <BeatDropdown beatId={beatId} sound={sound} />}
+      {isDropdownOpen && (
+        <BeatDropdown
+          beatId={beatId}
+          sound={sound}
+          hasNonScaleNote={hasNonScaleNote}
+        />
+      )}
     </BeatContainer>
   );
 };
@@ -45,6 +56,7 @@ const mapStateToProps = ({ song, ui }) => ({
   dropdownBeatId: ui.dropdownBeatId,
   isEditingSong: ui.isEditingSong,
   isSongPlaying: ui.isSongPlaying,
+  soundOptions: ui.soundOptions,
 });
 
 export default connect(mapStateToProps, { setDropdownForBeat })(Beat);

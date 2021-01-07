@@ -7,38 +7,46 @@ import { Dropdown, DropdownItem } from './beat.styles';
 const BeatDropdown = ({
   beatId,
   handleChange,
+  hasNonScaleNote,
   options,
   setDropdownForBeat,
   sound,
   updateBeat,
 }) => {
-  const { single, percussive, nonScale } = options;
-
   const handleClick = (newSound, selected, e) => {
     e.stopPropagation();
     updateBeat(beatId, newSound, selected);
   };
 
-  const getOptions = () => {
-    const allOptions = [...percussive, ...single, ...nonScale];
-    if (allOptions.length)
-      return allOptions.map(({ label, value }, i) => {
+  const renderOptions = () => {
+    const { single, percussive, nonScale } = options;
+
+    const parseOptionArray = (optionArray, hasNonScaleNote) => {
+      return optionArray.map(({ label, value }) => {
         const selected = sound.includes(value);
 
         return (
           <DropdownItem
             disabled={sound.length >= 2 && !selected}
             selected={selected}
-            key={i}
+            key={value}
+            hasNonScaleNote={hasNonScaleNote}
             onClick={(e) => handleClick(value, selected, e)}
           >
             {label}
           </DropdownItem>
         );
       });
+    };
+
+    return [
+      ...parseOptionArray(percussive),
+      ...parseOptionArray(single),
+      ...parseOptionArray(nonScale, hasNonScaleNote),
+    ];
   };
 
-  return <Dropdown>{getOptions()}</Dropdown>;
+  return <Dropdown>{renderOptions()}</Dropdown>;
 };
 
 const mapStateToProps = ({ ui }) => ({

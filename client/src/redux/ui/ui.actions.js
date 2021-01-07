@@ -71,6 +71,7 @@ export const setSoundOptions = (scale) => (dispatch, getState) => {
   dispatch({
     type: uiTypes.SET_SOUND_OPTIONS,
     payload: {
+      numNotesInScale: single.length,
       single,
       percussive,
       nonScale,
