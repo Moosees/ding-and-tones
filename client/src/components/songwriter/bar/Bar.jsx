@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { ItemTypes } from '../../../assets/constants';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
-import BarInfoLocked from '../barInfo/BarInfoLocked';
 import { BarContainer, Beats } from './bar.styles';
 import { checkMeasureVsMetre, displayBeats } from './bar.utils';
 
@@ -14,7 +13,6 @@ const Bar = ({
   beats,
   currentBar,
   index,
-  isEditingSong,
   isSongPlaying,
   moveBar,
   mutedBars,
@@ -53,22 +51,18 @@ const Bar = ({
 
   return (
     <BarContainer isDragging={isDragging} ref={ref}>
-      {isEditingSong ? (
-        <BarInfo
-          barId={barId}
-          index={index}
-          dragRef={drag}
-          isDragging={isDragging}
-        />
-      ) : (
-        <BarInfoLocked barId={barId} index={index} />
-      )}
+      <BarInfo
+        barId={barId}
+        index={index}
+        dragRef={drag}
+        isDragging={isDragging}
+      />
       {filteredBeats && (
         <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
           {filteredBeats}
         </Beats>
       )}
-      {isEditingSong && <BarControls barId={barId} />}
+      <BarControls barId={barId} />
     </BarContainer>
   );
 };
@@ -77,7 +71,6 @@ const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
   beats: song.beats,
   currentBar: ui.currentBar,
-  isEditingSong: ui.isEditingSong,
   isSongPlaying: ui.isSongPlaying,
   mutedBars: ui.mutedBars,
 });

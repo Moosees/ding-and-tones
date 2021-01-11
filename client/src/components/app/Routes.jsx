@@ -6,7 +6,7 @@ const Chords = lazy(() => import('../chords/Chords'));
 const FindSongs = lazy(() => import('../findSongs/FindSongs'));
 const MobileDrum = lazy(() => import('../mobileDrum/MobileDrum'));
 const Scale = lazy(() => import('../scale/Scale'));
-const Songwriter = lazy(() => import('../songwriter/Songwriter'));
+const Song = lazy(() => import('../song/Song'));
 
 const Routes = ({ mobile }) => (
   <Suspense fallback={<Loading />}>
@@ -15,8 +15,8 @@ const Routes = ({ mobile }) => (
       <Route exact path="/scale" children={<Scale />} />
       <Route path="/scale/:scaleId" children={<Scale />} />
       {!mobile && <Route exact path="/chords" children={<Chords />} />}
-      <Route exact path="/song" children={<Songwriter />} />
-      <Route path="/song/:songId" children={<Songwriter />} />
+      <Route exact path="/song" children={<Song />} />
+      <Route path="/song/:songId" children={<Song />} />
       <Route exact path="/find" children={<FindSongs />} />
       <Redirect from="/find/:songId" to="/song/:songId" />
       <Redirect from="/" to={mobile ? '/drum' : '/scale'} />

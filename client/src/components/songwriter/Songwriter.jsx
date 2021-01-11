@@ -1,62 +1,42 @@
 import React, { useEffect } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
 import { connect } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-import { getSongById } from '../../redux/song/song.actions';
-import Arrangement from '../arrangement/Arrangement';
-import DividerLine from '../shared/dividerLine/DividerLine';
-import Loading from '../shared/loading/Loading';
-import Controls from './controls/Controls';
-import Info from './info/Info';
-import {
-  BottomSection,
-  SongContainer,
-  TopColumn,
-  TopSection,
-} from './songwriter.styles';
+import { moveBarInArrangement } from '../../redux/song/song.actions';
+import { setSoundOptions } from '../../redux/ui/ui.actions';
+import { Bars } from './songwriter.styles';
+import Bar from './bar/Bar';
 
-const Songwriter = ({ getSongById, songUi }) => {
-  const { songId } = useParams();
-  const { replace } = useHistory();
-
-  const { isDeleting, isFetching, isSaving } = songUi;
-  const isWorking = isDeleting || isFetching || isSaving;
-
+const Songwriter = ({
+  arrangement,
+  scale,
+  setSoundOptions,
+  moveBarInArrangement,
+}) => {
   useEffect(() => {
-    if (!songId && songUi.songId && !isWorking)
-      replace(`/song/${songUi.songId}`);
-  }, [isWorking, replace, songId, songUi.songId]);
+    setSoundOptions(scale);
+  }, [scale, setSoundOptions]);
 
-  useEffect(() => {
-    if (songId && songUi.songId !== songId && !isWorking) getSongById(songId, true);
-  }, [isWorking, getSongById, songId, songUi.songId]);
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
 
   return (
-    <SongContainer>
-      {isFetching ? (
-        <Loading />
-      ) : (
-        <>
-          <TopSection>
-            <TopColumn>
-              <Info />
-            </TopColumn>
-            <DividerLine vertical small />
-            <TopColumn>
-              <Controls />
-            </TopColumn>
-          </TopSection>
-          <DividerLine />
-          <BottomSection>
-            <Arrangement />
-          </BottomSection>
-        </>
-      )}
-    </SongContainer>
+    <DndProvider backend={isTouch ? TouchBackend : HTML5Backend}>
+      <Bars>
+        {arrangement.map((bar, i) => (
+          <Bar key={bar} barId={bar} index={i} moveBar={moveBarInArrangement} />
+        ))}
+      </Bars>
+    </DndProvider>
   );
 };
 
-const mapStateToProps = ({ song }) => ({
-  songUi: song.ui,
+const mapStateToProps = ({ scale, song }) => ({
+  scale: scale.notes.round,
+  arrangement: song.arrangement,
 });
 
-export default connect(mapStateToProps, { getSongById })(Songwriter);
+export default connect(mapStateToProps, {
+  setSoundOptions,
+  moveBarInArrangement,
+})(Songwriter);

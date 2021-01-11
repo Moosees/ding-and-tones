@@ -9,7 +9,6 @@ const Beat = ({
   beats,
   currentBeat,
   dropdownBeatId,
-  isEditingSong,
   isSongPlaying,
   setDropdownForBeat,
   soundOptions,
@@ -25,13 +24,13 @@ const Beat = ({
 
   const openDropdown = (e) => {
     e.stopPropagation();
-    if (!isSongPlaying && isEditingSong) setDropdownForBeat(beatId);
+    if (!isSongPlaying) setDropdownForBeat(beatId);
   };
 
   return (
     <BeatContainer
       hasNonScaleNote={hasNonScaleNote}
-      isLocked={!isEditingSong || isSongPlaying}
+      isLocked={isSongPlaying}
       isBeatPlaying={isBeatPlaying}
       value={value}
       onClick={openDropdown}
@@ -54,7 +53,6 @@ const mapStateToProps = ({ song, ui }) => ({
   beats: song.beats,
   currentBeat: ui.currentBeat,
   dropdownBeatId: ui.dropdownBeatId,
-  isEditingSong: ui.isEditingSong,
   isSongPlaying: ui.isSongPlaying,
   soundOptions: ui.soundOptions,
 });

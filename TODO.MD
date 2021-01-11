@@ -2,12 +2,12 @@
 
 ## Current tasks
 
+* Songwriter and song viewer split, use printArrangement or make separate component for viewer?
+
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
-* Make lock song more useful for playing song from screen, rename "lock" to something better
 * Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
-* Interval colors for compound intervals? Check if intervals are working as intended
 
 ## Bugs
 
@@ -37,6 +37,7 @@
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Interval color legend?
+* Interval colors for compound intervals? Check if intervals are working as intended
 
 ## Chords
 

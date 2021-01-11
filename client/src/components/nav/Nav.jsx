@@ -39,7 +39,7 @@ const Nav = ({ mobile, scaleId, songId }) => {
         />
       )}
       <BtnNav
-        label="Songwriter"
+        label="Song"
         isActive={`/song${songId ? '/' + songId : ''}` === pathname}
         onClick={() => push(`/song${songId ? '/' + songId : ''}`)}
       />

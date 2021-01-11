@@ -14,7 +14,6 @@ const BarInfo = ({
   moveBarInArrangement,
   index,
   isDragging,
-  isEditingSong,
   isSongPlaying,
 }) => {
   const { metre } = bars[barId];
@@ -46,7 +45,6 @@ const BarInfo = ({
 const mapStateToProps = ({ song, ui }) => ({
   arrangement: song.arrangement,
   bars: song.bars,
-  isEditingSong: ui.isEditingSong,
   isSongPlaying: ui.isSongPlaying,
 });
 
