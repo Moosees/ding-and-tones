@@ -5,9 +5,14 @@ import { getSongById } from '../../redux/song/song.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import SongControls from '../songControls/SongControls';
+import SongView from '../songView/SongView';
 import Songwriter from '../songwriter/Songwriter';
-import { BottomSection, SongContainer, TopSection } from './song.styles';
-import PrintArrangement from '../printArrangement/PrintArrangement';
+import {
+  BottomSection,
+  SongContainer,
+  SongViewContainer,
+  TopSection,
+} from './song.styles';
 
 const Song = ({ getSongById, isEditingSong, songUi }) => {
   const { songId } = useParams();
@@ -27,19 +32,23 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
   }, [isWorking, getSongById, songId, songUi.songId]);
 
   return (
-    <SongContainer>
+    <>
       {isFetching ? (
         <Loading />
-      ) : (
-        <>
+      ) : isEditingSong ? (
+        <SongContainer>
           <TopSection>{<SongControls />}</TopSection>
           <DividerLine />
           <BottomSection>
-            {isEditingSong ? <Songwriter /> : <PrintArrangement />}
+            <Songwriter />
           </BottomSection>
-        </>
+        </SongContainer>
+      ) : (
+        <SongViewContainer>
+          <SongView />
+        </SongViewContainer>
       )}
-    </SongContainer>
+    </>
   );
 };
 

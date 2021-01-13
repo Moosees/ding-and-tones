@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import PrintArrangement from '../../printArrangement/PrintArrangement';
+import PrintView from '../../songView/PrintView';
 
 const ReactToPrint = ({ onAfterPrint }) => {
   const componentRef = useRef();
@@ -15,7 +15,7 @@ const ReactToPrint = ({ onAfterPrint }) => {
     handlePrint();
   }, [handlePrint]);
 
-  return <PrintArrangement ref={componentRef} />;
+  return <PrintView ref={componentRef} />;
 };
 
 export default ReactToPrint;

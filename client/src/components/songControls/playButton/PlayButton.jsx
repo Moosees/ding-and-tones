@@ -8,6 +8,7 @@ const PlayButton = ({
   audioPath,
   isPreparingSong,
   isSongPlaying,
+  light,
   mutedBars,
   scale,
   setIsSongPlaying,
@@ -20,6 +21,7 @@ const PlayButton = ({
 
   return (
     <BtnPrimary
+      light={light}
       disabled={isPreparingSong}
       onClick={handlePlayPause}
       label={isPreparingSong ? 'Preparing' : isSongPlaying ? 'Stop' : 'Play'}

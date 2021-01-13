@@ -2,12 +2,12 @@
 
 ## Current tasks
 
-* Songwriter and song viewer split, use printArrangement or make separate component for viewer?
+* Song viewer and print: bar numbers, play song animations, loading song sets mode to view?
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
-* Print - add bar numbers every 4? bars, add scale? Lazy load. Add more margins (with smaller bars)
+* Print - Lazy load. Add more margins (with smaller bars)?
 
 ## Bugs
 
@@ -38,6 +38,7 @@
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Interval color legend?
 * Interval colors for compound intervals? Check if intervals are working as intended
+* Always allow changing interval focus?
 
 ## Chords
 
@@ -53,6 +54,8 @@
 * Dropdown list show all dyads and ding + note combinations?
 * Dropdown opens where there's space instead of just below beat
 * Solo bar
+* Show latest changes (useful when copying and moving bars)
+* Undo changes
 
 ## State/Backend
 

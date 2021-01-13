@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTempoText } from '../../assets/tempo';
+import SongViewControls from '../songControls/SongViewControls';
 import Bar from './bar/Bar';
 import {
   Bars,
   Composer,
-  Footer,
-  PrintLayout,
+  Header,
+  SongLayout,
   Tempo,
   Title,
-} from './printArrangement.styles';
+} from './songView.styles';
 
-class PrintArrangement extends Component {
+class SongView extends Component {
   render() {
     const { arrangement, bpm, composer, title } = this.props;
 
@@ -20,15 +21,17 @@ class PrintArrangement extends Component {
     });
 
     return (
-      <PrintLayout>
-        <Title>{title}</Title>
-        {composer && composer !== 'Anonymous' && (
-          <Composer>Composer: {composer}</Composer>
-        )}
+      <SongLayout>
+        <Header>
+          <Title>{title}</Title>
+          {composer && composer !== 'Anonymous' && (
+            <Composer>Composer: {composer}</Composer>
+          )}
+          <SongViewControls />
+        </Header>
         <Tempo>{getTempoText(bpm)}</Tempo>
         <Bars>{bars}</Bars>
-        <Footer>Drum tab created with DingAndTones.com</Footer>
-      </PrintLayout>
+      </SongLayout>
     );
   }
 }
@@ -40,6 +43,4 @@ const mapStateToProps = ({ song }) => ({
   title: song.info.title,
 });
 
-export default connect(mapStateToProps, null, null, { forwardRef: true })(
-  PrintArrangement
-);
+export default connect(mapStateToProps)(SongView);

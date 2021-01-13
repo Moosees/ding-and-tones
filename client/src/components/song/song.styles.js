@@ -14,6 +14,17 @@ export const SongContainer = styled.div`
   `}
 `;
 
+export const SongViewContainer = styled.div`
+  height: 100%;
+  overflow: auto;
+  padding: 2rem;
+  width: 100%;
+
+  ${({ theme }) => theme.mqW1200`
+    padding: 1rem;
+  `}
+`;
+
 export const TopSection = styled.div`
   align-items: center;
   display: flex;
