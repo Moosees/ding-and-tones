@@ -36,7 +36,6 @@
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Interval color legend?
 * Interval colors for compound intervals? Check if intervals are working as intended
-* Always allow changing interval focus?
 
 ## Chords
 

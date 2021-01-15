@@ -34,7 +34,7 @@ export const IntervalList = styled.div`
 export const IntervalContainer = styled.div`
   align-items: center;
   border-bottom: ${({ theme }) => theme.borderLight};
-  cursor: ${({ intervals }) => (intervals ? 'pointer' : 'default')};
+  cursor: pointer;
   display: flex;
 
   &:last-child {

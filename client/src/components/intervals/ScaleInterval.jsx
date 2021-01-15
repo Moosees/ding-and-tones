@@ -52,8 +52,7 @@ const ScaleInterval = ({
   } = getIntervalProps(interval);
 
   const handleIntervalClick = () => {
-    if (drumMode === drumModes.INTERVALS && displayedNote !== scaleIndex)
-      setDisplayedNote(scaleIndex);
+    setDisplayedNote(displayedNote === scaleIndex ? 0 : scaleIndex);
   };
 
   return (
