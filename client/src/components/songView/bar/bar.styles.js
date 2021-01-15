@@ -58,6 +58,9 @@ export const BeatContainer = styled.div`
   text-align: center;
   width: ${({ value }) => beatStyles.heightWidth[value]}px;
 
+  ${({ isBeatPlaying, theme }) =>
+    isBeatPlaying && `border-color: ${theme.colorBeatActive};`}
+
   &:not(:first-child) {
     margin-left: ${({ addMarginLeft, value }) =>
       addMarginLeft ? '8px' : value === 4 ? '4px' : '2px'};

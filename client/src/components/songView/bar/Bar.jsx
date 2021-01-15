@@ -8,7 +8,7 @@ import {
   BeatsContainer,
 } from './bar.styles';
 
-const Bar = ({ barId, bars, beats, prevBar }) => {
+const Bar = ({ barId, bars, beats, currentBeat, prevBar }) => {
   const { metre, subdivision, measure } = bars[barId];
   const prevBarMetre = prevBar ? bars[prevBar].metre : null;
   const metreInfo = metreList[metre];
@@ -17,10 +17,12 @@ const Bar = ({ barId, bars, beats, prevBar }) => {
     .filter((beat) => beats[beat].value <= subdivision)
     .map((beat, i) => {
       const { value, sound } = beats[beat];
+      const isBeatPlaying = beat === currentBeat;
       return (
         <BeatContainer
           key={beat}
           value={value}
+          isBeatPlaying={isBeatPlaying}
           addMarginLeft={i && subdivision === 4}
         >
           <span>{sound !== '-' && sound.join('+')}</span>
@@ -38,9 +40,10 @@ const Bar = ({ barId, bars, beats, prevBar }) => {
   );
 };
 
-const mapStateToProps = ({ song }) => ({
+const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
   beats: song.beats,
+  currentBeat: ui.currentBeat,
 });
 
 export default connect(mapStateToProps)(Bar);

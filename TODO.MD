@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Song viewer and print: bar numbers, play song animations, loading song sets mode to view?
+* Song viewer and print: bar numbers, loading song sets mode to view?
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
