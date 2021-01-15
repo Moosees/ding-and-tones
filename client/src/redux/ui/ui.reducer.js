@@ -76,6 +76,9 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         mutedBars: updateMutedBars(state.mutedBars, payload),
       };
 
+    case songTypes.FETCH_SUCCESSFUL:
+      return { ...state, isEditingSong: false, mutedBars: {} };
+
     case songTypes.SET_STATE:
       return {
         ...state,

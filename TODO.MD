@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Song viewer and print: bar numbers, loading song sets mode to view?
-
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
@@ -114,3 +112,4 @@
 * Check text inputs for bad words?
 * Show name for your songs as "you"?
 * Print multiple songs on same page
+* Bar numbers on song viewer? Only long songs?
