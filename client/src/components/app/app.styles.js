@@ -12,7 +12,7 @@ export const Viewport = styled.div`
     height: calc(100vh + 5rem);
   `}
 
-  @media screen and (max-width: 800px) and (orientation: portrait) {
+  @media screen and (max-width: 1000px) and (orientation: portrait) {
     height: 100vw;
     left: 0;
     position: absolute;
@@ -47,7 +47,7 @@ export const LayoutGrid = styled.div`
     padding: 4rem 1rem 1rem;
   `}
 
-  ${({ theme }) => theme.mqW1000`
+  ${({ theme }) => theme.mqW750`
     display: block;
     padding: 3rem 0.5rem 0.5rem;
   `}

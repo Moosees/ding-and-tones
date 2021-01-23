@@ -38,7 +38,7 @@ const Layout = ({ setDropdownForBeat, setPrivacyOpen }) => {
   return (
     <Viewport onClick={handleViewport}>
       <LayoutGrid id="outsideTarget">
-        {width > 1000 && (
+        {width > 750 && (
           <>
             <Drum style={{ gridArea: 'drum' }} />
             <BorderContainer small style={{ gridArea: 'controls' }}>
@@ -47,10 +47,10 @@ const Layout = ({ setDropdownForBeat, setPrivacyOpen }) => {
           </>
         )}
         <SectionWithNav style={{ gridArea: 'main' }}>
-          <Nav mobile={width <= 1000} />
+          <Nav mobile={width <= 750} />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
-              <Routes mobile={width <= 1000} />
+              <Routes mobile={width <= 750} />
             </Suspense>
           </BorderContainer>
         </SectionWithNav>

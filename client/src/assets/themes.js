@@ -5,6 +5,7 @@ const mqSizes = {
   mqW1200: 1200,
   mqW1000: 1000,
   mqW850: 850,
+  mqW750: 750,
   mqW700: 700,
 };
 
