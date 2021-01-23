@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const DrumModeContainer = styled.div`
   align-items: center;
+  align-self: center;
   display: flex;
   justify-content: space-between;
   margin: 3px 0;
@@ -19,7 +20,6 @@ export const DrumModeContainer = styled.div`
 `;
 
 export const IntervalList = styled.div`
-  align-items: center;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -66,7 +66,9 @@ export const IntervalBreakBox = styled.div`
   display: flex;
   justify-content: center;
 
-  ${({ theme }) => theme.mqW1000`
+  ${({ isMobile }) =>
+    isMobile &&
+    `
     flex-direction: column;
   `}
 `;

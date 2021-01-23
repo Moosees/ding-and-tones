@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { drumModes, intervals } from '../../assets/intervals';
+import useDimensions from '../../hooks/useDimensions';
 import { setDisplayedNote } from '../../redux/drum/drum.actions';
 import {
   IntervalBreakBox,
@@ -50,6 +51,7 @@ const ScaleInterval = ({
     note,
     semitones,
   } = getIntervalProps(interval);
+  const [isMobile] = useDimensions();
 
   const handleIntervalClick = () => {
     setDisplayedNote(displayedNote === scaleIndex ? 0 : scaleIndex);
@@ -63,7 +65,7 @@ const ScaleInterval = ({
       <IntervalColor color={color}>
         <span>{scaleIndex}</span>
       </IntervalColor>
-      <IntervalBreakBox>
+      <IntervalBreakBox isMobile={isMobile}>
         {drumMode === drumModes.INTERVALS && semitones === 0 ? (
           <>
             <IntervalText>{note} - Root</IntervalText>

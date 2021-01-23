@@ -1,5 +1,6 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
+import useDimensions from '../../hooks/useDimensions';
 import { setDropdownForBeat, setPrivacyOpen } from '../../redux/ui/ui.actions';
 import Drum from '../drum/Drum';
 import Intervals from '../intervals/Intervals';
@@ -19,16 +20,7 @@ import PopupPrivacy from './PopupPrivacy';
 const Routes = lazy(() => import('./Routes'));
 
 const Layout = ({ setDropdownForBeat, setPrivacyOpen }) => {
-  const [width, setWidth] = useState(window ? window.innerWidth : 1200);
-
-  useEffect(() => {
-    if (window) {
-      const updateWidth = () => setWidth(window.innerWidth);
-
-      window.addEventListener('resize', updateWidth);
-      return () => window.removeEventListener('resize', updateWidth);
-    }
-  });
+  const [isMobile] = useDimensions();
 
   const handleViewport = (e) => {
     e.stopPropagation();
@@ -37,8 +29,8 @@ const Layout = ({ setDropdownForBeat, setPrivacyOpen }) => {
 
   return (
     <Viewport onClick={handleViewport}>
-      <LayoutGrid id="outsideTarget">
-        {width > 750 && (
+      <LayoutGrid id="outsideTarget" isMobile={isMobile}>
+        {!isMobile && (
           <>
             <Drum style={{ gridArea: 'drum' }} />
             <BorderContainer small style={{ gridArea: 'controls' }}>
@@ -47,10 +39,10 @@ const Layout = ({ setDropdownForBeat, setPrivacyOpen }) => {
           </>
         )}
         <SectionWithNav style={{ gridArea: 'main' }}>
-          <Nav mobile={width <= 750} />
+          <Nav mobile={isMobile} />
           <BorderContainer>
             <Suspense fallback={<Loading />}>
-              <Routes mobile={width <= 750} />
+              <Routes mobile={isMobile} />
             </Suspense>
           </BorderContainer>
         </SectionWithNav>

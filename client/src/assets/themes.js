@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 const mqSizes = {
+  mqW1400: 1400,
   mqW1300: 1300,
   mqW1200: 1200,
   mqW1000: 1000,

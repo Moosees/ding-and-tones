@@ -14,8 +14,8 @@ export const MobileContainer = styled.div`
   grid-template-areas:
     'drum chords'
     'intervals chords';
-  grid-template-columns: minmax(min-content, 25rem) 1fr;
-  grid-template-rows: 55% 45%;
+  grid-template-columns: minmax(min-content, 25rem) minmax(0, 1fr);
+  grid-template-rows: minmax(min-content, 25rem) minmax(0, 1fr);
   height: 100%;
   padding: 1.2rem 1rem;
   width: 100%;

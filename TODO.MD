@@ -2,6 +2,8 @@
 
 ## Current tasks
 
+* New mobile menu layout
+* Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
@@ -20,7 +22,6 @@
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Remake scale grid layout
-* Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Load song button can be seen through table header
 * Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs (new user email in use, no songs/scales found etc.) add type prop to responses?

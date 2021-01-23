@@ -3,9 +3,10 @@ import styled from 'styled-components';
 export const SongContainer = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: max-content min-content auto;
+  grid-template-rows: max-content min-content minmax(0, 1fr);
   height: 100%;
   justify-items: center;
+  max-height: 100%;
   padding: 2rem;
   width: 100%;
 
@@ -35,11 +36,4 @@ export const TopSection = styled.div`
   ${({ theme }) => theme.mqW1000`
     padding: 1rem 1rem 0;
   `}
-`;
-
-export const BottomSection = styled.div`
-  align-items: flex-start;
-  display: flex;
-  justify-content: center;
-  width: 100%;
 `;

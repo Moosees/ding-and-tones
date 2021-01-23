@@ -8,11 +8,11 @@ export const Viewport = styled.div`
   justify-content: center;
   width: 100vw;
 
-  ${({ theme }) => theme.mqW850`
+  ${({ theme }) => theme.mqW700`
     height: calc(100vh + 5rem);
   `}
 
-  @media screen and (max-width: 1000px) and (orientation: portrait) {
+  @media screen and (max-width: 700px) and (orientation: portrait) {
     height: 100vw;
     left: 0;
     position: absolute;
@@ -25,31 +25,43 @@ export const Viewport = styled.div`
 
 export const LayoutGrid = styled.div`
   align-items: center;
-  column-gap: 2rem;
   display: grid;
+  gap: 0 2rem;
   grid-template-areas:
     'drum main'
     'controls main';
   grid-template-columns: 35rem 1fr;
-  grid-template-rows: minmax(35rem, 50%) 50%;
+  grid-template-rows: minmax(35rem, 1fr) minmax(0, 1fr);
   height: 100%;
   max-height: 75rem;
   max-width: 160rem;
-  padding: 4rem 4rem 1rem;
+  padding: 4rem 4rem 2rem;
   position: relative;
   width: 100%;
 
-  ${({ theme }) => theme.mqW1300`
-    column-gap: 1rem;
-    grid-template-columns: 32rem 1fr;
-    grid-template-rows: minmax(32rem, 50%) 50%;
-    max-width: unset;
-    padding: 4rem 1rem 1rem;
+  ${({ theme }) => theme.mqW1400`
+    gap: 0 1rem;
+    padding: 4rem 1rem 2rem;
   `}
 
-  ${({ theme }) => theme.mqW750`
+  ${({ isMobile }) =>
+    isMobile
+      ? `
     display: block;
-    padding: 3rem 0.5rem 0.5rem;
+    padding: 3.2rem 0.4rem 0.4rem;
+  `
+      : `
+    @media screen and (orientation: portrait) {
+      gap: 2rem 0;
+      grid-template-areas:
+        'drum controls'
+        'main main';
+      grid-template-columns: minmax(35rem, 1fr) minmax(0, 1fr);
+      grid-template-rows: 35rem minmax(0, 1fr);
+      max-height: unset;
+      max-width: unset;
+      padding: 4rem 1rem 2rem;
+    }
   `}
 `;
 
@@ -86,9 +98,8 @@ export const Copyright = styled.footer`
   font-size: 11px;
   height: 2rem;
   padding: 2px;
-  position: absolute;
 
-  ${({ theme }) => theme.mqW1000`
+  ${({ theme }) => theme.mqW1200`
     position: static;
   `}
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const VerticalLine = styled.div`
+  align-self: center;
   border-left: 1px solid rgba(0, 0, 0, 0.2);
   height: 75%;
   margin: ${({ small }) => (small ? '0.5rem' : '3rem')};
@@ -17,6 +18,7 @@ const VerticalLine = styled.div`
 `;
 
 const HorizontalLine = styled.div`
+  align-self: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   height: 1px;
   margin: ${({ small }) => (small ? '0.5rem' : '3rem')};
