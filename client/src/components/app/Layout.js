@@ -41,7 +41,7 @@ const Layout = ({ setDropdownForBeat, setPrivacyOpen }) => {
         {width > 1000 && (
           <>
             <Drum style={{ gridArea: 'drum' }} />
-            <BorderContainer small>
+            <BorderContainer small style={{ gridArea: 'controls' }}>
               <Intervals />
             </BorderContainer>
           </>

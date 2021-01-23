@@ -12,7 +12,7 @@ export const DrumModeContainer = styled.div`
     text-transform: uppercase;
   }
 
-  ${({ theme }) => theme.mqW850`
+  ${({ theme }) => theme.mqW1000`
     margin: 0;
     min-width: 90%;
   `}
@@ -24,10 +24,6 @@ export const IntervalList = styled.div`
   flex-direction: column;
   height: 100%;
   padding: 0.5rem;
-
-  ${({ theme }) => theme.mqW850`
-    padding: 0.5rem;
-  `}
 `;
 
 export const IntervalContainer = styled.div`
@@ -70,7 +66,7 @@ export const IntervalBreakBox = styled.div`
   display: flex;
   justify-content: center;
 
-  ${({ theme }) => theme.mqW850`
+  ${({ theme }) => theme.mqW1000`
     flex-direction: column;
   `}
 `;
