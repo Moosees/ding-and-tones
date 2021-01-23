@@ -3,7 +3,6 @@ import React from 'react';
 const Logo = () => (
   <svg
     viewBox="-10 -10 20 20"
-    transform="rotate(90)"
     style={{ height: '3rem', margin: '-0.4rem 0 0' }}
   >
     <defs>
@@ -12,16 +11,12 @@ const Logo = () => (
         <stop offset="98%" stopColor="#626280" />
         <stop offset="100%" stopColor="#222" />
       </radialGradient>
-      <filter id="drumShadow">
-        <feDropShadow dx="0.5" dy="0" stdDeviation="0.25" floodOpacity="0.25" />
-      </filter>
     </defs>
     <circle
       r="9.2"
       cx="0"
       cy="0"
       fill="url(#drumGradient)"
-      filter="url(#drumShadow)"
     />
     <circle
       cx="0"
@@ -35,7 +30,7 @@ const Logo = () => (
     <circle
       cx="0"
       cy="0"
-      transform="rotate(0) translate(6.3)"
+      transform="rotate(90) translate(6.3)"
       r="1.6"
       stroke="#E57452"
       strokeWidth="0.2"
@@ -44,7 +39,7 @@ const Logo = () => (
     <circle
       cx="0"
       cy="0"
-      transform="rotate(45) translate(6.4)"
+      transform="rotate(135) translate(6.4)"
       r="1.6"
       stroke="#BC1527"
       strokeWidth="0.2"
@@ -53,7 +48,7 @@ const Logo = () => (
     <circle
       cx="0"
       cy="0"
-      transform="rotate(315) translate(6.4)"
+      transform="rotate(45) translate(6.4)"
       r="1.6"
       stroke="#FAC983"
       strokeWidth="0.2"
@@ -62,7 +57,7 @@ const Logo = () => (
     <circle
       cx="0"
       cy="0"
-      transform="rotate(135) translate(6.5)"
+      transform="rotate(225) translate(6.5)"
       r="1.8"
       stroke="#DCF0F7"
       strokeWidth="0.2"
@@ -71,7 +66,7 @@ const Logo = () => (
     <circle
       cx="0"
       cy="0"
-      transform="rotate(225) translate(6.5)"
+      transform="rotate(315) translate(6.5)"
       r="1.8"
       stroke="#E57452"
       strokeWidth="0.2"
