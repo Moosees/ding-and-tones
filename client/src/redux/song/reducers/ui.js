@@ -39,6 +39,9 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.SET_STATE:
       return { ...state, ...payload.ui };
 
+    case userTypes.SIGN_IN:
+      return { ...state, isOwner: payload.song.isOwner };
+
     case userTypes.SIGN_OUT:
       return { ...state, isOwner: false };
 

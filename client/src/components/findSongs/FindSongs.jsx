@@ -13,6 +13,7 @@ const FindSongsContainer = styled.div`
   flex-direction: column;
   height: 100%;
   padding: ${({ theme }) => theme.paddingLarge};
+  width: 100%;
 
   ${({ theme }) => theme.mqW1200`
     padding: ${theme.paddingMedium};

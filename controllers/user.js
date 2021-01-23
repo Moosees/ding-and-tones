@@ -26,7 +26,7 @@ exports.updateUserInfo = (req, res) => {
 
 exports.signInWithGoogle = async (req, res) => {
   try {
-    const { code } = req.body;
+    const { code, songId } = req.body;
     const client = getClient();
 
     const {
@@ -40,10 +40,12 @@ exports.signInWithGoogle = async (req, res) => {
 
     const { email, sub } = ticket.getPayload();
 
-    let user = await User.findOne({ sub }).select('_id anonymous name').exec();
+    let user = await User.findOne({ sub })
+      .select('_id anonymous name songs')
+      .exec();
 
     const newUser = !user;
-    if (!user) {
+    if (newUser) {
       user = await new User({
         email,
         sub,
@@ -51,11 +53,17 @@ exports.signInWithGoogle = async (req, res) => {
       }).save();
     }
 
+    let isOwner = false;
+    if (!newUser) {
+      isOwner = user.songs.includes(songId);
+    }
+
     const idToken = generateJWT(user._id.toString());
 
     return res.status(200).json({
       anonymous: user.anonymous,
       idToken,
+      isOwner,
       name: user.name,
       newUser,
     });

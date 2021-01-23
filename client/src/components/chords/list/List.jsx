@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
-import { ListContainer, ListItem, ScrollContainer } from './list.styles';
+import ScrollBox from '../../shared/scrollBox/ScrollBox';
+import { ListContainer, ListItem } from './list.styles';
 
 const List = ({ displayedChord, setDisplayedChord, foundChords }) => {
   return (
-    <ScrollContainer>
+    <ScrollBox>
       <ListContainer>
         {foundChords &&
           foundChords.map((chord, i) => {
@@ -22,7 +23,7 @@ const List = ({ displayedChord, setDisplayedChord, foundChords }) => {
             );
           })}
       </ListContainer>
-    </ScrollContainer>
+    </ScrollBox>
   );
 };
 

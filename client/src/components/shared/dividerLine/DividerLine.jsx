@@ -25,6 +25,10 @@ const HorizontalLine = styled.div`
   ${({ theme }) => theme.mqW1300`
     margin: 0.5rem;
   `}
+
+  ${({ theme }) => theme.mqW850`
+    margin: 1px;
+  `}
 `;
 
 const DividerLine = ({ vertical, small }) => {

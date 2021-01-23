@@ -9,11 +9,11 @@
 
 ## Bugs
 
-* Signing in with a song loaded that you own should update ownership
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * Drag and drop need testing, drop target size for 16ths
 * User can tab select :active outside of popups
+* Signing in randomly breaks, problem with getGoogleCode?
 
 ## Design
 

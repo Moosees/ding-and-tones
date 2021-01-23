@@ -47,53 +47,24 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     );
 };
 
-// export const signIn = (user) => (dispatch) => {
-//   const idToken = user.getAuthResponse().id_token;
-//   if (!idToken) return;
-
-//   axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
-
-//   axios
-//     .post('/signIn')
-//     .then((res) => {
-//       if (res.status === 200) {
-//         const { name, anonymous, newUser } = res.data;
-//         dispatch({
-//           type: userTypes.SIGN_IN,
-//           payload: {
-//             alert: 'Signed in successfully!',
-//             user: {
-//               name,
-//               isAnonymous: anonymous,
-//               isSignedIn: user.isSignedIn(),
-//               accountOpen: newUser,
-//             },
-//           },
-//         });
-//       }
-//     })
-//     .catch((error) => {
-//       signOut();
-//     });
-// };
-
-export const signIn = () => (dispatch) => {
+export const signIn = (songId) => (dispatch) => {
   axios
     .get('/googleURL')
     .then((res) => handleGooglePostMsg(res.data))
     .then((msg) => {
       const code = getGoogleCode(msg);
-      return axios.post('/signIn', { code });
+      return axios.post('/signIn', { code, songId });
     })
     .then((res) => {
       if (res.status === 200) {
-        const { name, anonymous, idToken, newUser } = res.data;
+        const { name, anonymous, idToken, newUser, isOwner } = res.data;
         axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
 
         dispatch({
           type: userTypes.SIGN_IN,
           payload: {
             alert: 'Signed in successfully!',
+            song: { isOwner },
             user: {
               name,
               isAnonymous: anonymous,

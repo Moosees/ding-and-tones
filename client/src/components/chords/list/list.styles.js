@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const ScrollContainer = styled.div`
-  height: 100%;
-  overflow: auto;
-`;
-
 export const ListContainer = styled.ul`
   align-content: center;
   align-items: center;

@@ -7,7 +7,6 @@ export const ScaleList = styled.div`
   display: flex;
   flex-direction: column;
   max-height: 40vh;
-  overflow: auto;
   padding: 0 0.5rem;
   width: 100%;
 
@@ -23,6 +22,7 @@ export const ScaleContainer = styled.div`
   justify-content: flex-start;
   padding-right: ${({ isOwner }) => (isOwner ? '2.2rem' : '0')};
   position: relative;
+  width: 100%;
 
   &:nth-child(even) {
     background-color: ${({ theme }) => theme.colorBtnLight};

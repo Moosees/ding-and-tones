@@ -1,27 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DividerLine from '../shared/dividerLine/DividerLine';
+import ScrollBox from '../shared/scrollBox/ScrollBox';
 import ChordInterval from './ChordInterval';
-import ScaleMode from './DrumMode';
+import DrumMode from './DrumMode';
 import { IntervalList } from './intervals.styles';
 import ScaleInterval from './ScaleInterval';
 
 const Intervals = ({ displayedChord, displayedNote, scale }) => {
   return (
     <IntervalList>
-      <ScaleMode />
+      <DrumMode />
       <DividerLine small />
-      {scale.length && displayedChord
-        ? displayedChord.intervals.map((interval, i) => (
-            <ChordInterval
-              key={i}
-              interval={interval}
-              note={displayedChord.notes[i]}
-            />
-          ))
-        : scale[displayedNote].intervalMap.map((interval, i) => (
-            <ScaleInterval key={i} scaleIndex={i} interval={interval} />
-          ))}
+      <ScrollBox>
+        {scale.length && displayedChord
+          ? displayedChord.intervals.map((interval, i) => (
+              <ChordInterval
+                key={i}
+                interval={interval}
+                note={displayedChord.notes[i]}
+              />
+            ))
+          : scale[displayedNote].intervalMap.map((interval, i) => (
+              <ScaleInterval key={i} scaleIndex={i} interval={interval} />
+            ))}
+      </ScrollBox>
     </IntervalList>
   );
 };

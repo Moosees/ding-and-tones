@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const TableContainer = styled.div`
-  height: 100%;
-  overflow: auto;
+  flex: 1 1 60%;
+  max-height: 85%;
   width: 90%;
 
   ${({ theme }) => theme.mqW1200`

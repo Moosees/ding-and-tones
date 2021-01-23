@@ -10,6 +10,7 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
+import ScrollBox from '../../shared/scrollBox/ScrollBox';
 
 const ControlsContainer = styled.div`
   align-items: center;
@@ -17,7 +18,6 @@ const ControlsContainer = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  overflow: auto;
 `;
 
 const CheckBoxes = styled.div`
@@ -67,7 +67,9 @@ const Filter = ({
         <BtnPrimary label="Clear" light onClick={handleClear} />
       </Buttons>
       <DividerLine small />
-      <CheckBoxes>{allChords}</CheckBoxes>
+      <ScrollBox>
+        <CheckBoxes>{allChords}</CheckBoxes>
+      </ScrollBox>
     </ControlsContainer>
   );
 };

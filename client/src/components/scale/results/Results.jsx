@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
 import BtnIcon from '../../shared/button/Icon';
 import Confirmation from '../../shared/popup/Confirmation';
+import ScrollBox from '../../shared/scrollBox/ScrollBox';
 import {
   ScaleContainer,
   ScaleLabel,
@@ -63,7 +64,11 @@ const Results = ({
       );
     });
 
-  return <ScaleList>{scales && getScales()}</ScaleList>;
+  return (
+    <ScaleList>
+      <ScrollBox>{scales && getScales()}</ScrollBox>
+    </ScaleList>
+  );
 };
 
 const mapStateToProps = ({ scale, search, user }) => ({

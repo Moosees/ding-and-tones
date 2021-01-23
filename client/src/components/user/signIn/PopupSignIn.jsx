@@ -6,7 +6,7 @@ import Privacy from '../../shared/privacy/Privacy';
 import GoogleIcon from './GoogleIcon.jsx';
 import { GoogleBtn, SignInContainer, TermsLink } from './signIn.styles';
 
-const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
+const SignIn = ({ isSignedIn, onClose, signIn, signOut, songId }) => {
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
         <TermsLink onClick={() => setPrivacyOpen(true)}>
           terms and privacy policy.
         </TermsLink>
-        <GoogleBtn onClick={signIn}>
+        <GoogleBtn onClick={() => signIn(songId)}>
           <GoogleIcon />
           <span>Sign in with Google</span>
         </GoogleBtn>
@@ -26,7 +26,8 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ song, user }) => ({
+  songId: song.ui.songId,
   isSignedIn: user.isSignedIn,
 });
 

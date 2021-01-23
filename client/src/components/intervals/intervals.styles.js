@@ -23,11 +23,10 @@ export const IntervalList = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: auto;
   padding: 0.5rem;
 
   ${({ theme }) => theme.mqW850`
-    padding: 1rem 0.5rem;
+    padding: 0.5rem;
   `}
 `;
 

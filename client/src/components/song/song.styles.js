@@ -16,7 +16,6 @@ export const SongContainer = styled.div`
 
 export const SongViewContainer = styled.div`
   height: 100%;
-  overflow: auto;
   padding: 2rem;
   width: 100%;
 
@@ -41,8 +40,6 @@ export const TopSection = styled.div`
 export const BottomSection = styled.div`
   align-items: flex-start;
   display: flex;
-  flex: 10 0;
   justify-content: center;
-  overflow: auto;
   width: 100%;
 `;

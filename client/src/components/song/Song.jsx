@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { getSongById } from '../../redux/song/song.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
+import ScrollBox from '../shared/scrollBox/ScrollBox';
 import SongControls from '../songControls/SongControls';
 import SongView from '../songView/SongView';
 import Songwriter from '../songwriter/Songwriter';
@@ -40,12 +41,16 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
           <TopSection>{<SongControls />}</TopSection>
           <DividerLine />
           <BottomSection>
-            <Songwriter />
+            <ScrollBox>
+              <Songwriter />
+            </ScrollBox>
           </BottomSection>
         </SongContainer>
       ) : (
         <SongViewContainer>
-          <SongView />
+          <ScrollBox>
+            <SongView />
+          </ScrollBox>
         </SongViewContainer>
       )}
     </>
