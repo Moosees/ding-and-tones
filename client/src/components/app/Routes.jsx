@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import useDimensions from '../../hooks/useDimensions';
 import Loading from '../shared/loading/Loading';
 
 const Chords = lazy(() => import('../chords/Chords'));
@@ -8,20 +9,24 @@ const MobileDrum = lazy(() => import('../mobileDrum/MobileDrum'));
 const Scale = lazy(() => import('../scale/Scale'));
 const Song = lazy(() => import('../song/Song'));
 
-const Routes = ({ mobile }) => (
-  <Suspense fallback={<Loading />}>
-    <Switch>
-      {mobile && <Route exact path="/drum" children={<MobileDrum />} />}
-      <Route exact path="/scale" children={<Scale />} />
-      <Route path="/scale/:scaleId" children={<Scale />} />
-      {!mobile && <Route exact path="/chords" children={<Chords />} />}
-      <Route exact path="/song" children={<Song />} />
-      <Route path="/song/:songId" children={<Song />} />
-      <Route exact path="/find" children={<FindSongs />} />
-      <Redirect from="/find/:songId" to="/song/:songId" />
-      <Redirect from="/" to={mobile ? '/drum' : '/scale'} />
-    </Switch>
-  </Suspense>
-);
+const Routes = () => {
+  const [isMobile] = useDimensions();
+
+  return (
+    <Suspense fallback={<Loading />}>
+      <Switch>
+        {isMobile && <Route exact path="/drum" children={<MobileDrum />} />}
+        <Route exact path="/scale" children={<Scale />} />
+        <Route path="/scale/:scaleId" children={<Scale />} />
+        {!isMobile && <Route exact path="/chords" children={<Chords />} />}
+        <Route exact path="/song" children={<Song />} />
+        <Route path="/song/:songId" children={<Song />} />
+        <Route exact path="/find" children={<FindSongs />} />
+        <Redirect from="/find/:songId" to="/song/:songId" />
+        <Redirect from="/" to={isMobile ? '/drum' : '/scale'} />
+      </Switch>
+    </Suspense>
+  );
+};
 
 export default Routes;

@@ -2,7 +2,9 @@
 
 ## Current tasks
 
+* useDimensions instances should use same event listeners
 * New mobile menu layout
+
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
@@ -29,6 +31,7 @@
 * New buttons for loading songs and confirm/cancel
 * Transition mixin, border radius mixin? All the mix-ins!
 * Hover on drum shows all information about hovered note?
+* Refactor styled-components
 
 ## User/Menu
 

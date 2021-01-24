@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import useDimensions from '../../hooks/useDimensions';
 import BtnNav from '../shared/button/Nav';
 import User from '../user/User';
 
@@ -13,13 +14,14 @@ const Navbar = styled.nav`
   position: absolute;
 `;
 
-const Nav = ({ mobile, scaleId, songId }) => {
+const Nav = ({ scaleId, songId }) => {
   const { push } = useHistory();
   const { pathname } = useLocation();
+  const [isMobile] = useDimensions();
 
   return (
     <Navbar>
-      {mobile && (
+      {isMobile && (
         <BtnNav
           label="Drum"
           isActive={'/drum' === pathname}
@@ -31,7 +33,7 @@ const Nav = ({ mobile, scaleId, songId }) => {
         isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
         onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
-      {!mobile && (
+      {!isMobile && (
         <BtnNav
           label="Chords"
           isActive={'/chords' === pathname}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import useDimensions from '../../../hooks/useDimensions';
 import { startSearch } from '../../../redux/search/search.actions';
 import { InfoLayout } from '../layout/layout.styles';
 import Spinner from '../spinner/Spinner';
@@ -12,6 +13,7 @@ const InfoSearch = ({
   startSearch,
 }) => {
   const [value, setValue] = useState('');
+  const [isMobile] = useDimensions();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -24,7 +26,7 @@ const InfoSearch = ({
   return (
     <InfoLayout>
       <TextInput
-        autoFocus
+        autoFocus={!isMobile}
         aria-label={placeholder}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
