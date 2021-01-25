@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { TouchBackend } from 'react-dnd-touch-backend';
+import React, { useEffect, lazy } from 'react';
 import { connect } from 'react-redux';
+import useDimensions from '../../hooks/useDimensions';
 import { moveBarInArrangement } from '../../redux/song/song.actions';
 import { setSoundOptions } from '../../redux/ui/ui.actions';
-import { Bars } from './songwriter.styles';
 import Bar from './bar/Bar';
+import { Bars } from './songwriter.styles';
+
+const MouseHandler = lazy(() => import('./dndHandlers/MouseHandler'));
+const TouchHandler = lazy(() => import('./dndHandlers/TouchHandler'));
 
 const Songwriter = ({
   arrangement,
@@ -14,14 +15,16 @@ const Songwriter = ({
   setSoundOptions,
   moveBarInArrangement,
 }) => {
+  const { isTouch } = useDimensions();
+
   useEffect(() => {
     setSoundOptions(scale);
   }, [scale, setSoundOptions]);
 
-  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+  const DndProvider = isTouch ? TouchHandler : MouseHandler;
 
   return (
-    <DndProvider backend={isTouch ? TouchBackend : HTML5Backend}>
+    <DndProvider>
       <Bars>
         {arrangement.map((bar, i) => (
           <Bar key={bar} barId={bar} index={i} moveBar={moveBarInArrangement} />

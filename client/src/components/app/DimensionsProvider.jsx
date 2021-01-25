@@ -22,8 +22,10 @@ const DimensionsProvider = ({ children }) => {
     }
   });
 
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
   return (
-    <DimensionsContext.Provider value={{ isMobile, height, width }}>
+    <DimensionsContext.Provider value={{ isMobile, isTouch, height, width }}>
       {children}
     </DimensionsContext.Provider>
   );

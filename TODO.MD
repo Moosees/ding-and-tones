@@ -16,6 +16,7 @@
 * Drag and drop need testing, drop target size for 16ths
 * User can tab select :active outside of popups
 * Signing in randomly breaks, problem with getGoogleCode?
+* Select offsetWidth doesn't set correctly on first load
 
 ## Design
 
