@@ -3,7 +3,7 @@ import React from 'react';
 const Logo = () => (
   <svg
     viewBox="-10 -10 20 20"
-    style={{ height: '3rem', margin: '-0.4rem 0 0' }}
+    style={{ margin: '-0.4rem 0 0' }}
   >
     <defs>
       <radialGradient id="drumGradient">

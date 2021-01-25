@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import useDimensions from '../../hooks/useDimensions';
 import BtnNav from '../shared/button/Nav';
 import User from '../user/User';
 
@@ -14,32 +13,22 @@ const Navbar = styled.nav`
   position: absolute;
 `;
 
-const Nav = ({ scaleId, songId }) => {
+const MenuMobile = ({ scaleId, songId }) => {
   const { push } = useHistory();
   const { pathname } = useLocation();
-  const { isMobile } = useDimensions();
 
   return (
     <Navbar>
-      {isMobile && (
-        <BtnNav
-          label="Drum"
-          isActive={'/drum' === pathname}
-          onClick={() => push('/drum')}
-        />
-      )}
+      <BtnNav
+        label="Drum"
+        isActive={'/drum' === pathname}
+        onClick={() => push('/drum')}
+      />
       <BtnNav
         label="Scale"
         isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
         onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
-      {!isMobile && (
-        <BtnNav
-          label="Chords"
-          isActive={'/chords' === pathname}
-          onClick={() => push('/chords')}
-        />
-      )}
       <BtnNav
         label="Song"
         isActive={`/song${songId ? '/' + songId : ''}` === pathname}
@@ -60,4 +49,4 @@ const mapStateToProps = ({ scale, song }) => ({
   songId: song.ui.songId,
 });
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(MenuMobile);

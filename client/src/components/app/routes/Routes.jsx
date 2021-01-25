@@ -1,13 +1,13 @@
 import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import useDimensions from '../../hooks/useDimensions';
-import Loading from '../shared/loading/Loading';
+import useDimensions from '../../../hooks/useDimensions';
+import Loading from '../../shared/loading/Loading';
 
-const Chords = lazy(() => import('../chords/Chords'));
-const FindSongs = lazy(() => import('../findSongs/FindSongs'));
-const MobileDrum = lazy(() => import('../mobileDrum/MobileDrum'));
-const Scale = lazy(() => import('../scale/Scale'));
-const Song = lazy(() => import('../song/Song'));
+const Chords = lazy(() => import('../../chords/Chords'));
+const FindSongs = lazy(() => import('../../findSongs/FindSongs'));
+const MobileDrum = lazy(() => import('../../mobileDrum/MobileDrum'));
+const Scale = lazy(() => import('../../scale/Scale'));
+const Song = lazy(() => import('../../song/Song'));
 
 const Routes = () => {
   const { isMobile } = useDimensions();

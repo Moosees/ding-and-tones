@@ -5,7 +5,7 @@ import { mainTheme } from '../../assets/themes';
 import { store } from '../../redux/store';
 import DimensionsProvider from './DimensionsProvider';
 import GlobalStyles from './globalStyles';
-import Layout from './Layout';
+import Layout from './layout/Layout';
 
 const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
   return (

@@ -16,6 +16,6 @@ export const UserMenu = styled.div`
   min-width: 10rem;
   padding: 0.5rem;
   position: absolute;
-  top: 3.2rem;
+  top: 3.4rem;
   z-index: 1000;
 `;

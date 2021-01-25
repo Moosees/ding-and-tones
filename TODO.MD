@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* New mobile menu layout
+* New mobile menu layout - started
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
@@ -16,7 +16,7 @@
 * Drag and drop need testing, drop target size for 16ths
 * User can tab select :active outside of popups
 * Signing in randomly breaks, problem with getGoogleCode?
-* Select offsetWidth doesn't set correctly on first load
+* Select offsetWidth doesn't set correctly on first load - sidestepped for now
 
 ## Design
 

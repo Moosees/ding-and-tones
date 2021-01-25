@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { ALERT_TIMEOUT } from '../../assets/constants';
-import { setAlert } from '../../redux/alert/alert.actions';
-import BtnPrimary from '../shared/button/Primary';
+import { ALERT_TIMEOUT } from '../../../assets/constants';
+import { setAlert } from '../../../redux/alert/alert.actions';
+import BtnPrimary from '../../shared/button/Primary';
 
 const AlertContainer = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colorBg};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-radius: 20px;
-  bottom: 0;
+  bottom: 20%;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   display: flex;
   left: 50%;

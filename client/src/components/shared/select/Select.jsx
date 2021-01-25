@@ -34,22 +34,22 @@ const Select = ({
   value,
 }) => {
   const labelRef = useRef();
-  const [labelWidth, setLabelWidth] = useState(0);
+  const [labelWidth, setLabelWidth] = useState(52);
 
-  useEffect(() => {
-    if (labelRef.current) {
-      setLabelWidth(labelRef.current.offsetWidth);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (labelRef.current) {
+  //     setLabelWidth(labelRef.current.offsetWidth);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (window && labelRef.current) {
-      const updateLabel = () => setLabelWidth(labelRef.current.offsetWidth);
+  // useEffect(() => {
+  //   if (window && labelRef.current) {
+  //     const updateLabel = () => setLabelWidth(labelRef.current.offsetWidth);
 
-      window.addEventListener('resize', updateLabel);
-      return () => window.removeEventListener('resize', updateLabel);
-    }
-  }, []);
+  //     window.addEventListener('resize', updateLabel);
+  //     return () => window.removeEventListener('resize', updateLabel);
+  //   }
+  // }, []);
 
   const Layout = small ? SelectSmall : InfoLayout;
 

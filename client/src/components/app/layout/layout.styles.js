@@ -23,7 +23,7 @@ export const Viewport = styled.div`
   }
 `;
 
-export const LayoutGrid = styled.div`
+export const LargeLayout = styled.div`
   align-items: center;
   display: grid;
   gap: 0 2rem;
@@ -44,26 +44,20 @@ export const LayoutGrid = styled.div`
     padding: 4rem 1rem 2rem;
   `}
 
-  ${({ isMobile }) =>
-    isMobile
-      ? `
-    display: block;
-    padding: 3.2rem 0.4rem 0.4rem;
-  `
-      : `
-    @media screen and (orientation: portrait) {
-      gap: 2rem 0;
-      grid-template-areas:
-        'drum controls'
-        'main main';
-      grid-template-columns: minmax(35rem, 1fr) minmax(0, 1fr);
-      grid-template-rows: 35rem minmax(0, 1fr);
-      max-height: unset;
-      max-width: unset;
-      padding: 4rem 1rem 2rem;
-    }
-  `}
+  @media screen and (orientation: portrait) {
+    gap: 2rem 0;
+    grid-template-areas:
+      'drum controls'
+      'main main';
+    grid-template-columns: minmax(35rem, 1fr) minmax(0, 1fr);
+    grid-template-rows: 35rem minmax(0, 1fr);
+    max-height: unset;
+    max-width: unset;
+    padding: 4rem 1rem 2rem;
+  }
 `;
+
+export const MobileLayout = styled.div``;
 
 export const SectionWithNav = styled.div`
   display: flex;
