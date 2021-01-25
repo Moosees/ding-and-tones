@@ -51,7 +51,7 @@ const ScaleInterval = ({
     note,
     semitones,
   } = getIntervalProps(interval);
-  const [isMobile] = useDimensions();
+  const { isMobile } = useDimensions();
 
   const handleIntervalClick = () => {
     setDisplayedNote(displayedNote === scaleIndex ? 0 : scaleIndex);

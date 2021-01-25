@@ -10,7 +10,7 @@ const Scale = lazy(() => import('../scale/Scale'));
 const Song = lazy(() => import('../song/Song'));
 
 const Routes = () => {
-  const [isMobile] = useDimensions();
+  const { isMobile } = useDimensions();
 
   return (
     <Suspense fallback={<Loading />}>

@@ -17,7 +17,7 @@ const Navbar = styled.nav`
 const Nav = ({ scaleId, songId }) => {
   const { push } = useHistory();
   const { pathname } = useLocation();
-  const [isMobile] = useDimensions();
+  const { isMobile } = useDimensions();
 
   return (
     <Navbar>

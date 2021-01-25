@@ -2,9 +2,7 @@
 
 ## Current tasks
 
-* useDimensions instances should use same event listeners
 * New mobile menu layout
-
 * Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?

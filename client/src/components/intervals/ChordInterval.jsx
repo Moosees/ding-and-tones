@@ -10,7 +10,7 @@ import {
 
 const ChordInterval = ({ interval, note }) => {
   const { color, name, nameShort, semitones } = intervals[interval];
-  const [isMobile] = useDimensions();
+  const { isMobile } = useDimensions();
 
   return (
     <IntervalContainer key={interval}>

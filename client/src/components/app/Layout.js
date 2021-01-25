@@ -20,7 +20,7 @@ import PopupPrivacy from './PopupPrivacy';
 const Routes = lazy(() => import('./Routes'));
 
 const Layout = ({ setDropdownForBeat, setPrivacyOpen }) => {
-  const [isMobile] = useDimensions();
+  const { isMobile } = useDimensions();
 
   const handleViewport = (e) => {
     e.stopPropagation();

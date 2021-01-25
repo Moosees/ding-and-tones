@@ -13,7 +13,7 @@ const InfoSearch = ({
   startSearch,
 }) => {
   const [value, setValue] = useState('');
-  const [isMobile] = useDimensions();
+  const { isMobile } = useDimensions();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
