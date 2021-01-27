@@ -3,17 +3,17 @@ import useCloseOutside from '../../hooks/useCloseOutside';
 import BtnNav from '../shared/button/Nav';
 import Account from './account/Account';
 import Logo from './Logo';
+import { MenuAnchor, MenuDropdown } from './menu.styles';
 import Print from './print/Print';
 import SignIn from './signIn/SignIn';
-import { UserAnchor, UserMenu } from './user.styles';
 // import Sound from './sound/Sound';
 // import BtnMenu from '../shared/button/Menu';
 
-const User = () => {
+const Menu = () => {
   const [menuOpen, setMenuOpen, menuRef] = useCloseOutside(true);
 
   return (
-    <UserAnchor ref={menuRef}>
+    <MenuAnchor ref={menuRef}>
       <BtnNav
         ariaLabel={'Menu'}
         disabled={false}
@@ -22,17 +22,17 @@ const User = () => {
         onClick={() => setMenuOpen(!menuOpen)}
       />
       {menuOpen && (
-        <UserMenu>
+        <MenuDropdown>
           {/* <Sound /> */}
           {/* <BtnMenu label="Support me" icon="support" /> */}
           {/* <BtnMenu label="Help" icon="help_outline" /> */}
           <Print />
           <Account />
           <SignIn />
-        </UserMenu>
+        </MenuDropdown>
       )}
-    </UserAnchor>
+    </MenuAnchor>
   );
 };
 
-export default User;
+export default Menu;

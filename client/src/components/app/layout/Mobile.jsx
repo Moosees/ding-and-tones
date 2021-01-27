@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import NavMobile from '../../nav/NavMobile';
+import MenuMobile from '../../menu/MenuMobile';
 import Loading from '../../shared/loading/Loading';
 import { MobileLayout } from './layout.styles';
 
@@ -8,7 +8,7 @@ const Routes = lazy(() => import('../routes/Routes'));
 const Mobile = () => {
   return (
     <MobileLayout>
-      <NavMobile />
+      <MenuMobile />
       <Suspense fallback={<Loading />}>
         <Routes />
       </Suspense>

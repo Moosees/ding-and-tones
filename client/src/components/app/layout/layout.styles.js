@@ -57,7 +57,12 @@ export const LargeLayout = styled.div`
   }
 `;
 
-export const MobileLayout = styled.div``;
+export const MobileLayout = styled.div`
+  height: 100%;
+  max-height: 700px;
+  padding: 1rem;
+  width: 100%;
+`;
 
 export const SectionWithNav = styled.div`
   display: flex;

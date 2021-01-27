@@ -1,46 +1,47 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
-import BtnNav from '../shared/button/Nav';
-import User from '../user/User';
+import BtnMenu from '../shared/button/Menu';
+import DividerLine from '../shared/dividerLine/DividerLine';
+import Account from './account/Account';
+import { MenuDropdown } from './menu.styles';
+import Print from './print/Print';
+import SignIn from './signIn/SignIn';
 
-const Navbar = styled.nav`
-  top: -3rem;
-  display: flex;
-  height: 3rem;
-  margin-left: 10rem;
-  position: absolute;
-`;
-
-const MenuMobile = ({ scaleId, songId }) => {
+const MobileDropdown = ({ scaleId, songId }) => {
   const { push } = useHistory();
   const { pathname } = useLocation();
 
   return (
-    <Navbar>
-      <BtnNav
+    <MenuDropdown>
+      <BtnMenu
         label="Drum"
         isActive={'/drum' === pathname}
         onClick={() => push('/drum')}
       />
-      <BtnNav
+      <BtnMenu
         label="Scale"
         isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
         onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
-      <BtnNav
+      <BtnMenu
         label="Song"
         isActive={`/song${songId ? '/' + songId : ''}` === pathname}
         onClick={() => push(`/song${songId ? '/' + songId : ''}`)}
       />
-      <BtnNav
+      <BtnMenu
         label="Find Songs"
         isActive={'/find' === pathname}
         onClick={() => push('/find')}
       />
-      <User />
-    </Navbar>
+      <DividerLine />
+      {/* <Sound /> */}
+      {/* <BtnMenu label="Support me" icon="support" /> */}
+      {/* <BtnMenu label="Help" icon="help_outline" /> */}
+      <Print />
+      <Account />
+      <SignIn />
+    </MenuDropdown>
   );
 };
 
@@ -49,4 +50,4 @@ const mapStateToProps = ({ scale, song }) => ({
   songId: song.ui.songId,
 });
 
-export default connect(mapStateToProps)(MenuMobile);
+export default connect(mapStateToProps)(MobileDropdown);

@@ -3,7 +3,10 @@
 ## Current tasks
 
 * New mobile menu layout - started
-* Chords, find and songwriter should mirror MobileDrum layout on smaller screens?
+* Same layout for all mobile pages
+* Add icons to mobile menu
+* Check alert, menu, privacy positions, fix scrolling on mobile
+
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?

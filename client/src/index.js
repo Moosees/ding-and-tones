@@ -7,7 +7,7 @@ import { API_ADDRESS } from './oauth';
 import * as serviceWorker from './serviceWorker';
 
 const App = lazy(() => import('./components/app/App'));
-const GoogleResponse = lazy(() => import('./components/user/googleResponse/GoogleResponse'));
+const GoogleResponse = lazy(() => import('./GoogleResponse'));
 
 axios.defaults.baseURL = process.env.API_ADDRESS || API_ADDRESS;
 axios.defaults.headers['Accept'] = 'application/json';
