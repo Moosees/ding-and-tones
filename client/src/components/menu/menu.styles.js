@@ -4,6 +4,7 @@ export const MenuAnchor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  max-width: 6rem;
   position: relative;
 `;
 
@@ -35,7 +36,7 @@ export const LogoContainer = styled.div`
   height: 5rem;
   justify-content: center;
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: -0.5rem;
+  top: -0.5rem;
   width: 5rem;
 `;

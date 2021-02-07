@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DrumContainer = styled.div`
+  display: flex;
   height: 100%;
   margin: -3rem 0 3rem;
   width: 100%;

@@ -14,17 +14,15 @@ export const MobileContainer = styled.div`
   grid-template-areas:
     'drum chords'
     'intervals chords';
-  grid-template-columns: minmax(min-content, 25rem) minmax(0, 1fr);
-  grid-template-rows: minmax(min-content, 25rem) minmax(0, 1fr);
+  grid-template-columns: minmax(min-content, 30rem) minmax(0, 1fr);
+  grid-template-rows: minmax(min-content, 30rem) minmax(0, 1fr);
   height: 100%;
   padding: 1.2rem 1rem;
   width: 100%;
 
-  /* @media screen and (max-width: 700px) and (orientation: portrait) {
-    grid-template-areas:
-      'intervals drum'
-      'chords chords';
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 35% 65%;
-  } */
+  ${({ theme }) => theme.mqW850`
+    grid-template-columns: minmax(min-content, 20rem) minmax(0, 1fr);
+    grid-template-rows: minmax(min-content, 1fr) minmax(0, 1fr);
+    padding: 0;
+  `}
 `;

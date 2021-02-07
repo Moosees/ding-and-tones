@@ -47,6 +47,7 @@ export const IntervalColor = styled.div`
   height: 2.2rem;
   justify-content: center;
   margin: 0.25rem;
+  min-width: 2.2rem;
   width: 2.2rem;
 
   span {
@@ -54,23 +55,21 @@ export const IntervalColor = styled.div`
     text-shadow: 1px 0 0px rgba(200, 200, 200, 0.55),
       -1px 0 0px rgba(200, 200, 200, 0.55), 0 1px 0px rgba(200, 200, 200, 0.55),
       0 -1px 0px rgba(200, 200, 200, 0.55);
-
-    ${({ theme }) => theme.mqW850`
-      top: 1px;
-    `}
   }
+
+  ${({ theme }) => theme.mqW850`  
+    height: 2rem;
+    margin: 1px;
+    min-width: 2rem;
+    width: 2rem;
+  `};
 `;
 
 export const IntervalBreakBox = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-
-  ${({ isMobile }) =>
-    isMobile &&
-    `
-    flex-direction: column;
-  `}
+  flex-wrap: wrap;
 `;
 
 export const IntervalText = styled.span`

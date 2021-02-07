@@ -1,23 +1,8 @@
 import React from 'react';
 
 const Logo = () => (
-  <svg
-    viewBox="-10 -10 20 20"
-    style={{ margin: '-0.4rem 0 0' }}
-  >
-    <defs>
-      <radialGradient id="drumGradient">
-        <stop offset="0%" stopColor="#8998aa" />
-        <stop offset="98%" stopColor="#626280" />
-        <stop offset="100%" stopColor="#222" />
-      </radialGradient>
-    </defs>
-    <circle
-      r="9.2"
-      cx="0"
-      cy="0"
-      fill="url(#drumGradient)"
-    />
+  <svg viewBox="-10 -10 20 20" style={{ margin: '-0.4rem 0 0', width: '100%' }}>
+    <circle r="9.2" cx="0" cy="0" fill="#626280" />
     <circle
       cx="0"
       cy="0"

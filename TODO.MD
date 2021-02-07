@@ -3,9 +3,9 @@
 ## Current tasks
 
 * New mobile menu layout - started
-* Same layout for all mobile pages
 * Add icons to mobile menu
-* Check alert, menu, privacy positions, fix scrolling on mobile
+* Add terms to mobile menu, copyright to menu?
+* Redirect between chords and drum when resizing? Use same route for all screens?
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
@@ -23,6 +23,7 @@
 
 ## Design
 
+* Z-index isolation for menu?
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Remake scale grid layout
@@ -71,7 +72,6 @@
 * Sorting search results in table
 * Split save song controller?
 * Remove isOwner from scale ui state or add ability to save scale changes
-* Redirect between chords and drum when resizing? Use same route for all screens?
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
 * Merge api status states (isFetching etc.) in client?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!

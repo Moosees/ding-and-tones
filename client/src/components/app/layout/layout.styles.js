@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Viewport = styled.div`
-  align-content: stretch;
-  align-items: center;
+  align-items: stretch;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -10,7 +9,6 @@ export const Viewport = styled.div`
   width: 100vw;
 
   ${({ theme }) => theme.mqW1200`
-    align-items: stretch;
     padding: 2px 2px 1rem;
   `}
 
@@ -28,18 +26,17 @@ export const Viewport = styled.div`
 export const LargeLayout = styled.div`
   align-items: center;
   display: grid;
+  flex-grow: 1;
   gap: 0 2rem;
   grid-template-areas:
     'drum main'
     'controls main';
   grid-template-columns: 35rem 1fr;
   grid-template-rows: minmax(35rem, 1fr) minmax(0, 1fr);
-  height: 100%;
   max-height: 75rem;
   max-width: 160rem;
   padding: 4rem 4rem 2rem;
   position: relative;
-  width: 100%;
 
   ${({ theme }) => theme.mqW1400`
     gap: 0 1rem;
@@ -63,7 +60,7 @@ export const MobileLayout = styled.div`
   border: ${({ theme }) => theme.borderLight};
   border-radius: 30px;
   box-shadow: ${({ theme }) => theme.shadowBtnLight};
-  flex-grow: 1;
+  height: 100%;
   max-height: 700px;
   padding: 0.5rem;
 `;

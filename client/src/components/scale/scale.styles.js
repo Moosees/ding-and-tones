@@ -4,6 +4,7 @@ export const ScaleContainer = styled.div`
   align-items: center;
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
+  grid-template-rows: 100%;
   height: 100%;
   padding: ${({ theme }) => theme.paddingLarge};
 

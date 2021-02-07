@@ -24,8 +24,11 @@ const AlertContainer = styled.div`
     background-color: ${theme.colorBox};
     border-radius: 10px;
     border: ${theme.borderMedium};
-    bottom: 3.5rem;
     padding: 0.7rem;
+    
+    @media screen and (orientation: landscape) {
+      bottom: 2rem;
+    }
   `}
 `;
 
