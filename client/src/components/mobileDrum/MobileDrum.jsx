@@ -11,9 +11,9 @@ const MobileDrum = () => {
       <SubContainer style={{ gridArea: 'intervals' }}>
         <Intervals />
       </SubContainer>
-      <SubContainer style={{ gridArea: 'chords' }}>
+      <div style={{ gridArea: 'chords' }}>
         <Chords />
-      </SubContainer>
+      </div>
     </MobileContainer>
   );
 };

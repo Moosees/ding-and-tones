@@ -19,4 +19,12 @@ export const MobileContainer = styled.div`
   height: 100%;
   padding: 1.2rem 1rem;
   width: 100%;
+
+  /* @media screen and (max-width: 700px) and (orientation: portrait) {
+    grid-template-areas:
+      'intervals drum'
+      'chords chords';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 35% 65%;
+  } */
 `;

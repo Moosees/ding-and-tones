@@ -22,13 +22,15 @@ const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
   return (
     <Viewport onClick={handleViewport} id="outsideTarget">
       {isMobile ? <Mobile /> : <Large />}
-      <Copyright>
-        Copyright &copy; 2021 Linus Almgren -{' '}
-        <PrivacyLink onClick={() => setPrivacyOpen(true)}>
-          Terms and privacy
-        </PrivacyLink>
-        <PopupPrivacy />
-      </Copyright>
+      {!isMobile && (
+        <Copyright>
+          Copyright &copy; 2021 Linus Almgren -{' '}
+          <PrivacyLink onClick={() => setPrivacyOpen(true)}>
+            Terms and privacy
+          </PrivacyLink>
+          <PopupPrivacy />
+        </Copyright>
+      )}
       <AlertHandler />
     </Viewport>
   );

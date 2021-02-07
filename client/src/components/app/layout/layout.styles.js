@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Viewport = styled.div`
+  align-content: stretch;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -8,8 +9,9 @@ export const Viewport = styled.div`
   justify-content: center;
   width: 100vw;
 
-  ${({ theme }) => theme.mqW700`
-    height: calc(100vh + 5rem);
+  ${({ theme }) => theme.mqW1200`
+    align-items: stretch;
+    padding: 2px 2px 1rem;
   `}
 
   @media screen and (max-width: 700px) and (orientation: portrait) {
@@ -58,10 +60,12 @@ export const LargeLayout = styled.div`
 `;
 
 export const MobileLayout = styled.div`
-  height: 100%;
+  border: ${({ theme }) => theme.borderLight};
+  border-radius: 30px;
+  box-shadow: ${({ theme }) => theme.shadowBtnLight};
+  flex-grow: 1;
   max-height: 700px;
-  padding: 1rem;
-  width: 100%;
+  padding: 0.5rem;
 `;
 
 export const SectionWithNav = styled.div`
@@ -93,13 +97,14 @@ export const BorderContainer = styled.div`
 `;
 
 export const Copyright = styled.footer`
-  bottom: 0;
+  align-self: center;
   font-size: 11px;
   height: 2rem;
   padding: 2px;
 
   ${({ theme }) => theme.mqW1200`
-    position: static;
+    height: 1rem;
+    padding: 0;
   `}
 `;
 
