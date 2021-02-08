@@ -23,6 +23,7 @@ export const IntervalList = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 40rem;
   padding: 0.5rem;
 `;
 

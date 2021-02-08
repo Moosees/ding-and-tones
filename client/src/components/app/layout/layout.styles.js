@@ -79,18 +79,10 @@ export const BorderContainer = styled.div`
   border-radius: ${({ small }) => (small ? '65' : '100')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   height: 100%;
+  max-height: ${({ small }) => (small ? '40rem' : 'unset')};
   overflow: hidden;
   position: relative;
   width: 100%;
-
-  ${({ small, theme }) => theme.mqW1200`
-    border-radius: ${small ? '50' : '70'}px;
-  `}
-
-  ${({ theme }) => theme.mqW1000`
-    border-radius: 45px;
-    max-height: 99vh;
-  `}
 `;
 
 export const Copyright = styled.footer`

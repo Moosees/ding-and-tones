@@ -3,9 +3,10 @@
 ## Current tasks
 
 * New mobile menu layout - started
-* Add icons to mobile menu
 * Add terms to mobile menu, copyright to menu?
 * Redirect between chords and drum when resizing? Use same route for all screens?
+* Update terms?
+* Clean up MQs
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
@@ -32,7 +33,7 @@
 * Errors from backend display on inputs (new user email in use, no songs/scales found etc.) add type prop to responses?
 * Scale edit hover effect
 * New buttons for loading songs and confirm/cancel
-* Transition mixin, border radius mixin? All the mix-ins!
+* Transition mixin? Border radius? Intervals height? All the mix-ins!
 * Hover on drum shows all information about hovered note?
 * Refactor styled-components
 
@@ -43,6 +44,7 @@
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Interval color legend?
 * Interval colors for compound intervals? Check if intervals are working as intended
+* Change setDropdown to something else?
 
 ## Chords
 

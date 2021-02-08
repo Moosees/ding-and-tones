@@ -4,6 +4,7 @@ export const SubContainer = styled.div`
   border: ${({ theme }) => theme.borderLight};
   border-radius: 30px;
   box-shadow: ${({ theme }) => theme.shadowBtnLight};
+  max-height: 40rem;
   overflow: hidden;
 `;
 
