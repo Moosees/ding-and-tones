@@ -3,10 +3,10 @@
 ## Current tasks
 
 * New mobile menu layout - started
-* Add terms to mobile menu, copyright to menu?
 * Redirect between chords and drum when resizing? Use same route for all screens?
-* Update terms?
 * Clean up MQs
+
+* Encrypt email addresses
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
@@ -36,6 +36,8 @@
 * Transition mixin? Border radius? Intervals height? All the mix-ins!
 * Hover on drum shows all information about hovered note?
 * Refactor styled-components
+* Active state for routes in mobile menu
+* Privacy date localization
 
 ## User/Menu
 

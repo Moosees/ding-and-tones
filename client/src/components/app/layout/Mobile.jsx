@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import MenuMobile from '../../menu/MenuMobile';
 import Loading from '../../shared/loading/Loading';
-import { MobileLayout } from './layout.styles';
+import { MobileCopyright, MobileLayout } from './layout.styles';
 
 const Routes = lazy(() => import('../routes/Routes'));
 
@@ -12,6 +12,7 @@ const Mobile = () => {
       <Suspense fallback={<Loading />}>
         <Routes />
       </Suspense>
+      <MobileCopyright>&copy; 2021 Linus Almgren</MobileCopyright>
     </MobileLayout>
   );
 };

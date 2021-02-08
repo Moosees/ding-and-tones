@@ -28,9 +28,9 @@ const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
           <PrivacyLink onClick={() => setPrivacyOpen(true)}>
             Terms and privacy
           </PrivacyLink>
-          <PopupPrivacy />
         </Copyright>
       )}
+      <PopupPrivacy />
       <AlertHandler />
     </Viewport>
   );

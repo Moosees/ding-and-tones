@@ -62,6 +62,7 @@ export const MobileLayout = styled.div`
   box-shadow: ${({ theme }) => theme.shadowBtnLight};
   height: 100%;
   max-height: 700px;
+  margin-bottom: 1rem;
   padding: 0.5rem;
 `;
 
@@ -90,14 +91,17 @@ export const Copyright = styled.footer`
   font-size: 11px;
   height: 2rem;
   padding: 2px;
-
-  ${({ theme }) => theme.mqW1200`
-    height: 1rem;
-    padding: 0;
-  `}
 `;
 
 export const PrivacyLink = styled.a`
   cursor: pointer;
   text-decoration: underline;
+`;
+
+export const MobileCopyright = styled.div`
+  bottom: 0;
+  padding: 1px;
+  position: absolute;
+  right: 0;
+  opacity: 0.6;
 `;

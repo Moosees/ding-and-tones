@@ -30,6 +30,10 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
       with basic music theory. I hope to do this in a way that is applicable no
       matter what type of drum or scale you play. Enjoy!
     </PrivacyParagraph>
+    <PrivacyHeader>Cookies</PrivacyHeader>
+    <PrivacyParagraph>
+      This website does not currently use any cookies.
+    </PrivacyParagraph>
     <PrivacyHeader>Collected data</PrivacyHeader>
     <PrivacyParagraph>
       Most of the website is usable without sharing any of your personal data.
@@ -37,22 +41,20 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
       this possible your email will be saved in our database, but not shared
       with other users or any third party.
     </PrivacyParagraph>
-    <PrivacyHeader>Collaboration</PrivacyHeader>
+    <PrivacyHeader>Content visibility</PrivacyHeader>
     <PrivacyParagraph>
-      Since the aim of this website is collaboration, songs and scales saved can
-      be used by other users as inspiration or building blocks for their own
-      creations. This will not modify the original creations, only the creator
-      is allowed to do that. When saving a song or a scale, it will be public
-      (though it can be anonymous if you chose). With this in mind, please don't
-      upload other peoples content, like songs or tutorials you didn't make.
-      Also please keep offensive or disturbing content away and help keep this
-      website a safe and including space.
+      Songs and scales saved will be visible to all other users of this website,
+      and other users can use existing songs as starting points when building
+      their own songs. This will not modify the original song. You have the
+      option to remain anonymous or share your username next to your creations.
+      Created content on this website can be removed if it contains offensive
+      language or is copied from another author without their permission.
     </PrivacyParagraph>
     <PrivacyHeader>Consent</PrivacyHeader>
     <PrivacyParagraph>
       By using this website you consent to these terms.
     </PrivacyParagraph>
-    <PrivacyParagraph>Last updated: 23 december 2020</PrivacyParagraph>
+    <PrivacyParagraph>Last updated: 8 february 2021</PrivacyParagraph>
   </TermsContainer>
 );
 
