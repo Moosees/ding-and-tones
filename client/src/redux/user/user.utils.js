@@ -1,12 +1,16 @@
-export const getGoogleError = ({ error }) => {
+export const getGoogleError = (error) => {
   switch (error) {
     case 'popup_closed_by_user':
       return `Sign in failed!
-      Popup was closed before you could be signed in`;
+      Popup was closed`;
 
     case 'access_denied':
       return `Sign in failed!
       Permission to access your profile was denied`;
+
+    case 'popup_disabled':
+      return `Sign in failed!
+      Popups blocked`;
 
     default:
       return `Sign in failed!`;
@@ -33,33 +37,47 @@ export const handleGooglePostMsg = (url) => {
   const win = openGooglePopup(url);
 
   return new Promise((resolve, reject) => {
-    const interval = setInterval(() => {
-      if (win.closed) {
-        window.removeEventListener('message', getMessageFromPopup);
-        clearInterval(interval);
-        reject('popup_closed_by_user');
+    let counter = 0;
+    const popupTimeout = setInterval(() => {
+      ++counter;
+
+      if (counter >= 6000 && !win) {
+        clearTimeout(popupTimeout);
+        reject('popup_disabled');
       }
-    }, 500);
 
-    const getMessageFromPopup = (event) => {
-      const allowedOrigin =
-        process.env.NODE_ENV === 'production'
-          ? 'https://www.dingandtones.com'
-          : 'http://localhost:3000';
+      if (win) {
+        clearTimeout(popupTimeout);
 
-      if (!win || allowedOrigin !== event.origin || !event.data.search) {
-        window.removeEventListener('message', getMessageFromPopup);
-        clearInterval(interval);
-        reject('access_denied');
-      } else {
-        resolve(event.data.search);
+        const closedInterval = setInterval(() => {
+          if (win.closed) {
+            window.removeEventListener('message', getMessageFromPopup);
+            clearInterval(closedInterval);
+            reject('popup_closed_by_user');
+          }
+        }, 500);
+
+        const getMessageFromPopup = (event) => {
+          const allowedOrigin =
+            process.env.NODE_ENV === 'production'
+              ? 'https://www.dingandtones.com'
+              : 'http://localhost:3000';
+
+          if (!win || allowedOrigin !== event.origin || !event.data.search) {
+            window.removeEventListener('message', getMessageFromPopup);
+            clearInterval(closedInterval);
+            reject('access_denied');
+          } else {
+            resolve(event.data.search);
+          }
+          window.removeEventListener('message', getMessageFromPopup);
+          clearInterval(closedInterval);
+        };
+
+        window.addEventListener('message', getMessageFromPopup);
       }
-      window.removeEventListener('message', getMessageFromPopup);
-      clearInterval(interval);
-    };
-
-    window.addEventListener('message', getMessageFromPopup);
-  });
+    });
+  }, 100);
 };
 
 export const getGoogleCode = (msg) => {
