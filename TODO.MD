@@ -3,7 +3,6 @@
 ## Current tasks
 
 * New mobile menu layout - started
-* Redirect between chords and drum when resizing? Use same route for all screens?
 * Clean up MQs
 
 * Encrypt email addresses

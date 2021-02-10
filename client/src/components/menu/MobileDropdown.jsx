@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { setPrivacyOpen } from '../../redux/ui/ui.actions';
 import BtnMenu from '../shared/button/Menu';
 import DividerLine from '../shared/dividerLine/DividerLine';
@@ -11,28 +11,28 @@ import SignIn from './signIn/SignIn';
 
 const MobileDropdown = ({ scaleId, setPrivacyOpen, songId }) => {
   const { push } = useHistory();
-  // const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
   return (
     <MenuDropdown>
       <BtnMenu
         label="Drum"
-        // isActive={'/drum' === pathname}
-        onClick={() => push('/drum')}
+        isActive={'/chords' === pathname}
+        onClick={() => push('/chords')}
       />
       <BtnMenu
         label="Scale"
-        // isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
+        isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
         onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
       <BtnMenu
         label="Song"
-        // isActive={`/song${songId ? '/' + songId : ''}` === pathname}
+        isActive={`/song${songId ? '/' + songId : ''}` === pathname}
         onClick={() => push(`/song${songId ? '/' + songId : ''}`)}
       />
       <BtnMenu
         label="Find Songs"
-        // isActive={'/find' === pathname}
+        isActive={'/find' === pathname}
         onClick={() => push('/find')}
       />
       <DividerLine />

@@ -9,6 +9,8 @@ export const ButtonGroup = styled.div`
 
 export const MenuButton = styled.div`
   align-items: center;
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colorBtnConfirm : 'unset'};
   cursor: pointer;
   display: flex;
   font-size: ${({ theme }) => theme.fzSmall};

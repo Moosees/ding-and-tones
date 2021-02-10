@@ -15,15 +15,18 @@ const Routes = () => {
   return (
     <Suspense fallback={<Loading />}>
       <Switch>
-        {isMobile && <Route exact path="/drum" children={<MobileDrum />} />}
         <Route exact path="/scale" children={<Scale />} />
         <Route path="/scale/:scaleId" children={<Scale />} />
-        {!isMobile && <Route exact path="/chords" children={<Chords />} />}
+        <Route
+          exact
+          path="/chords"
+          children={isMobile ? <MobileDrum /> : <Chords />}
+        />
         <Route exact path="/song" children={<Song />} />
         <Route path="/song/:songId" children={<Song />} />
         <Route exact path="/find" children={<FindSongs />} />
         <Redirect from="/find/:songId" to="/song/:songId" />
-        <Redirect from="/" to={isMobile ? '/drum' : '/scale'} />
+        <Redirect from="/" to="/scale" />
       </Switch>
     </Suspense>
   );
