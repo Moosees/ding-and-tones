@@ -10,7 +10,7 @@ const AlertContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBg};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-radius: 20px;
-  bottom: 20%;
+  bottom: 15%;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   display: flex;
   left: 50%;
@@ -20,15 +20,15 @@ const AlertContainer = styled.div`
   position: absolute;
   z-index: 9999;
 
-  ${({ theme }) => theme.mqW1000`
+  ${({ theme }) => theme.mqW1200`
     background-color: ${theme.colorBox};
     border-radius: 10px;
     border: ${theme.borderMedium};
     padding: 0.7rem;
-    
+
     @media screen and (orientation: landscape) {
-      bottom: 2rem;
-    }
+    bottom: 2rem;
+  }
   `}
 `;
 

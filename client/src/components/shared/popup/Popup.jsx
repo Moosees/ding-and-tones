@@ -21,7 +21,7 @@ const Background = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-width: 26rem;
-  padding: ${({ theme }) => theme.paddingLarge};
+  padding: var(--padding);
 
   & > *:last-child {
     margin-bottom: 1.2rem;
@@ -29,12 +29,10 @@ const Background = styled.div`
 
   ${({ theme }) => theme.mqW1200`
     border-radius: 40px;
-    padding: ${theme.paddingMedium};
   `}
 
   ${({ theme }) => theme.mqW850`
     border-radius: 20px;
-    padding: ${theme.paddingSmall};
   `}
 `;
 

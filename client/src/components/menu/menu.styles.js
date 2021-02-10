@@ -11,9 +11,9 @@ export const MenuAnchor = styled.div`
 export const MobileAnchor = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  right: 0;
-  position: relative;
-  top: 0;
+  right: 2px;
+  position: absolute;
+  top: 2px;
   z-index: 100;
 `;
 

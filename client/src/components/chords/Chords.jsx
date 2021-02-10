@@ -7,17 +7,9 @@ import List from './list/List';
 const ChordsContainer = styled.div`
   align-items: center;
   display: grid;
+  flex-grow: 1;
   grid-template-columns: max-content min-content 2fr;
-  height: 100%;
-  padding: ${({ theme }) => theme.paddingLarge};
-
-  ${({ theme }) => theme.mqW1200`
-    padding: ${theme.paddingMedium};
-  `}
-
-  ${({ theme }) => theme.mqW850`
-    padding: ${theme.paddingSmall};
-  `}
+  padding: var(--padding);
 `;
 
 const Chords = () => {

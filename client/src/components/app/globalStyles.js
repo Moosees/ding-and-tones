@@ -19,12 +19,18 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-size: 62.5%;
 
+    --padding: 3rem;
+
     ${({ theme }) => theme.mqW1200`
       font-size: 56.25%;
+
+      --padding: 2rem;
     `}
 
     ${({ theme }) => theme.mqW850`
       font-size: 50%;
+
+      --padding: 1rem;
     `}
 
     ${({ theme }) => theme.mqW700`

@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
 export const Viewport = styled.div`
-  align-items: stretch;
+  align-items: center;
   display: flex;
-  flex-direction: column;
   height: 100vh;
   justify-content: center;
   width: 100vw;
 
   ${({ theme }) => theme.mqW1200`
-    padding: 2px 2px 1rem;
+    padding: 5px 2px 2px;
   `}
 
   @media screen and (max-width: 700px) and (orientation: portrait) {
@@ -24,7 +23,6 @@ export const Viewport = styled.div`
 `;
 
 export const LargeLayout = styled.div`
-  align-items: center;
   display: grid;
   flex-grow: 1;
   gap: 0 2rem;
@@ -33,6 +31,7 @@ export const LargeLayout = styled.div`
     'controls main';
   grid-template-columns: 35rem 1fr;
   grid-template-rows: minmax(35rem, 1fr) minmax(0, 1fr);
+  height: 100%;
   max-height: 75rem;
   max-width: 160rem;
   padding: 4rem 4rem 2rem;
@@ -52,7 +51,6 @@ export const LargeLayout = styled.div`
     grid-template-rows: 35rem minmax(0, 1fr);
     max-height: unset;
     max-width: unset;
-    padding: 4rem 1rem 2rem;
   }
 `;
 
@@ -60,18 +58,18 @@ export const MobileLayout = styled.div`
   border: ${({ theme }) => theme.borderLight};
   border-radius: 30px;
   box-shadow: ${({ theme }) => theme.shadowBtnLight};
+  display: flex;
+  flex-grow: 1;
   height: 100%;
   max-height: 700px;
   margin-bottom: 1rem;
   padding: 0.5rem;
+  position: relative;
 `;
 
 export const SectionWithNav = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
   position: relative;
-  width: 100%;
 `;
 
 export const BorderContainer = styled.div`
@@ -79,18 +77,19 @@ export const BorderContainer = styled.div`
   border: ${({ theme }) => theme.borderHeavyDark};
   border-radius: ${({ small }) => (small ? '65' : '100')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
-  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
   max-height: ${({ small }) => (small ? '40rem' : 'unset')};
   overflow: hidden;
   position: relative;
-  width: 100%;
 `;
 
 export const Copyright = styled.footer`
-  align-self: center;
+  bottom: 0;
   font-size: 11px;
-  height: 2rem;
   padding: 2px;
+  position: absolute;
 `;
 
 export const PrivacyLink = styled.a`
@@ -102,6 +101,6 @@ export const MobileCopyright = styled.div`
   bottom: 0;
   padding: 1px;
   position: absolute;
-  right: 0;
-  opacity: 0.6;
+  right: 5%;
+  opacity: 0.4;
 `;

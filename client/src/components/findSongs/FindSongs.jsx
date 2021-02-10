@@ -11,17 +11,8 @@ const FindSongsContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: ${({ theme }) => theme.paddingLarge};
-  width: 100%;
-
-  ${({ theme }) => theme.mqW1200`
-    padding: ${theme.paddingMedium};
-  `}
-
-  ${({ theme }) => theme.mqW850`
-    padding: ${theme.paddingSmall};
-  `}
+  flex-grow: 1;
+  padding: var(--padding);
 `;
 
 const FindSongs = ({ startSearch, songsFetchTried }) => {
