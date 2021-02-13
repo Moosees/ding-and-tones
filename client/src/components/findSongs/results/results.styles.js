@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 export const TableContainer = styled.div`
-  flex: 1 1 60%;
-  max-height: 85%;
-  width: 90%;
+  max-height: 50rem;
+  width: 95%;
 
   ${({ theme }) => theme.mqW1200`
     width: 100%;
+  `}
+
+  ${({ theme }) => theme.mqW850`
+    max-height: 75vh;
   `}
 `;
 

@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export const SongLayout = styled.div`
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
-  width: 100%;
+  max-width: 100%;
 
   @media print {
     background-color: #fff;
     color: #000;
-    max-width: 100%;
+    display: block;
     margin: 1.6cm;
-    width: unset;
   }
 `;
 
@@ -48,7 +49,7 @@ export const Tempo = styled.h4`
 `;
 
 export const Bars = styled.ul`
-  display: block;
+  flex-grow: 1;
   max-width: 100%;
 `;
 

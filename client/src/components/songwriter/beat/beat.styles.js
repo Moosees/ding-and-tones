@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const beatStyles = {
   heightWidth: {
-    4: '2.8',
+    4: '2.7',
     8: '2.5',
     16: '2.3',
   },
@@ -38,11 +38,19 @@ export const BeatContainer = styled.div`
   margin-left: ${({ value }) => (value === 4 ? '4px' : '0')};
   position: relative;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
+
+  ${({ theme }) => theme.mqW850`
+    margin-left: 0;
+  `}
 `;
 
 export const BeatText = styled.div`
   font-size: ${({ value }) => beatStyles.fz[value]}px;
   letter-spacing: -1px;
+
+  ${({ theme }) => theme.mqW850`
+    letter-spacing: 0;
+  `}
 `;
 
 export const Dropdown = styled.div`

@@ -5,6 +5,10 @@ export const BarContainer = styled.div`
   flex-direction: column;
   margin: 0.5rem;
   opacity: ${({ isDragging }) => (isDragging ? '0.3' : '1')};
+
+  ${({ theme }) => theme.mqW850`
+    margin: 1px;
+  `}
 `;
 
 export const Beats = styled.div`
@@ -21,4 +25,8 @@ export const Beats = styled.div`
   opacity: ${({ isMuted }) => (isMuted ? '0.65' : '1')};
   padding: 0.5rem;
   transition: opacity 0.1s ease-in;
+
+  ${({ theme }) => theme.mqW850`
+    padding: 1px;
+  `}
 `;

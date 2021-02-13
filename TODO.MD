@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Rework scroll container?
 * Singleton (hook?) for drag and drop backend
 * Encrypt email addresses
 

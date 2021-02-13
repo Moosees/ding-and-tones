@@ -29,6 +29,5 @@ export const IntervalsContainer = styled.div`
 
 export const ChordsContainer = styled.div`
   display: flex;
-  max-height: 90vh;
   overflow: hidden;
 `;

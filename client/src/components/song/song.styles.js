@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const SongContainer = styled.div`
   display: grid;
   flex-grow: 1;
-  grid-template-columns: 100%;
   grid-template-rows: max-content min-content minmax(0, 1fr);
   justify-items: center;
   padding: var(--padding);
 `;
 
 export const SongViewContainer = styled.div`
+  display: flex;
   flex-grow: 1;
   padding: var(--padding);
 `;

@@ -11,7 +11,6 @@ const ContentDiv = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 `;
 
 const ScrollBox = ({ children }) => {

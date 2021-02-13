@@ -6,12 +6,12 @@ export const ScaleList = styled.div`
   border-right: 0;
   display: flex;
   flex-direction: column;
-  max-height: 40vh;
+  max-height: 40rem;
   padding: 0 0.5rem;
   width: 100%;
 
   ${({ theme }) => theme.mqW850`
-    max-height: 70vh;
+    max-height: 60vh;
   `}
 `;
 
@@ -51,7 +51,7 @@ export const ScaleNotes = styled.span`
 export const TextContainer = styled.div`
   align-items: center;
   display: flex;
-  flex: 1 0;
+  flex-grow: 1;
   justify-content: space-between;
   padding: 0.8rem 0.4rem;
 

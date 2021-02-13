@@ -5,7 +5,6 @@ export const ScaleContainer = styled.div`
   display: grid;
   flex-grow: 1;
   grid-template-columns: 1fr min-content 1fr;
-  grid-template-rows: 100%;
   padding: var(--padding);
 
   ${({ theme }) => theme.mqW1200`

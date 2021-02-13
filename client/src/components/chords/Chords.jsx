@@ -8,7 +8,7 @@ const ChordsContainer = styled.div`
   align-items: center;
   display: grid;
   flex-grow: 1;
-  grid-template-columns: max-content min-content 2fr;
+  grid-template-columns: max-content min-content 1fr;
   padding: var(--padding);
 `;
 

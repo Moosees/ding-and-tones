@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+export const WrapBox = styled.div`
+  max-height: 100%;
+  overflow: auto;
+`;
+
 export const ListContainer = styled.ul`
   align-content: center;
-  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  min-height: 100%;
 `;
 
 export const ListItem = styled.li`
@@ -18,7 +20,7 @@ export const ListItem = styled.li`
   box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
   cursor: pointer;
   list-style: none;
-  margin: 0.5rem;
+  margin: 2px;
   padding: 0.5rem;
   transition: transform 0.1s ease;
 
