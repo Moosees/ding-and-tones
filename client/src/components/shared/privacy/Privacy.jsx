@@ -36,10 +36,9 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
     </PrivacyParagraph>
     <PrivacyHeader>Collected data</PrivacyHeader>
     <PrivacyParagraph>
-      Most of the website is usable without sharing any of your personal data.
-      But if you want to save your songs or scales an account is needed. To make
-      this possible your email will be saved in our database, but not shared
-      with other users or any third party.
+      Most of the website is usable without logging in or sharing any of your
+      personal information. If you want to save songs or scales you can do so
+      using your Google account.
     </PrivacyParagraph>
     <PrivacyHeader>Content visibility</PrivacyHeader>
     <PrivacyParagraph>
@@ -47,14 +46,14 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
       and other users can use existing songs as starting points when building
       their own songs. This will not modify the original song. You have the
       option to remain anonymous or share your username next to your creations.
-      Created content on this website can be removed if it contains offensive
-      language or is copied from another author without their permission.
+      Saved content can be removed without warning if it's outside of the vision
+      of this website or warranted in some other way.
     </PrivacyParagraph>
     <PrivacyHeader>Consent</PrivacyHeader>
     <PrivacyParagraph>
       By using this website you consent to these terms.
     </PrivacyParagraph>
-    <PrivacyParagraph>Last updated: 8 february 2021</PrivacyParagraph>
+    <PrivacyParagraph>Last updated: 13 february 2021</PrivacyParagraph>
   </TermsContainer>
 );
 

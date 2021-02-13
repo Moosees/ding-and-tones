@@ -2,8 +2,7 @@
 
 ## Current tasks
 
-* Encrypt email addresses
-
+* Popup padding
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
@@ -27,7 +26,7 @@
 * Remake scale grid layout
 * Load song button can be seen through table header
 * Line breaks inside bars? Only for printing? User added line breaks?
-* Errors from backend display on inputs (new user email in use, no songs/scales found etc.) add type prop to responses?
+* Errors from backend display on inputs instead of alert?
 * Scale edit hover effect
 * New buttons for loading songs and confirm/cancel
 * Transition mixin? Border radius? Intervals height? All the mix-ins!

@@ -1,6 +1,7 @@
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
 const { getClient, getAuthUrl, generateJWT } = require('../utils/auth');
+const crypto = require('crypto');
 
 exports.updateUserInfo = (req, res) => {
   const userId = req.userId;
@@ -38,7 +39,7 @@ exports.signInWithGoogle = async (req, res) => {
       audience: process.env.GOOGLE_CLIENT_ID,
     });
 
-    const { email, sub } = ticket.getPayload();
+    const { sub } = ticket.getPayload();
 
     let user = await User.findOne({ sub })
       .select('_id anonymous name songs')
@@ -46,10 +47,10 @@ exports.signInWithGoogle = async (req, res) => {
 
     const newUser = !user;
     if (newUser) {
+      const randomId = crypto.randomBytes(3).toString('hex');
       user = await new User({
-        email,
         sub,
-        name: email.split('@')[0],
+        name: `user_${randomId}`,
       }).save();
     }
 
@@ -76,7 +77,7 @@ exports.getGoogleURL = (req, res) => {
   const authUrl = getClient().generateAuthUrl({
     access_type: 'offline',
     prompt: 'select_account',
-    scope: 'email profile',
+    scope: 'profile',
     state: 'google',
   });
 

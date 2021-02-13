@@ -11,11 +11,6 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  email: {
-    type: String,
-    trim: true,
-    required: true,
-  },
   maxSavedScales: {
     type: Number,
     default: 10,
