@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Singleton (hook?) for drag and drop backend
 * Encrypt email addresses
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?

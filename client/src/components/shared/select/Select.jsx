@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { InfoLayout } from '../layout/layout.styles';
 import { SelectDropdown, SelectLabel, SelectSmall } from './select.styles';
@@ -34,7 +34,7 @@ const Select = ({
   value,
 }) => {
   const labelRef = useRef();
-  const [labelWidth, setLabelWidth] = useState(52);
+  // const [labelWidth, _setLabelWidth] = useState(52);
 
   // useEffect(() => {
   //   if (labelRef.current) {
@@ -62,7 +62,7 @@ const Select = ({
           hasLabel={hasLabel}
           disabled={isSongPlaying}
           value={value}
-          labelWidth={labelWidth}
+          labelWidth={52}
           onChange={(e) => handleChange(e.target.value)}
         >
           {parseOptions(options)}
