@@ -5,7 +5,6 @@ import { updateMutedBars } from './ui.utils';
 const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
-  dropdownBeatId: null,
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,
@@ -31,12 +30,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         currentBeat: payload,
-      };
-
-    case uiTypes.SET_DROPDOWN_BEAT_ID:
-      return {
-        ...state,
-        dropdownBeatId: state.dropdownBeatId === payload ? null : payload,
       };
 
     case uiTypes.SET_IS_PREPARING_SONG:

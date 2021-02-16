@@ -10,18 +10,18 @@ import SignIn from './signIn/SignIn';
 // import BtnMenu from '../shared/button/Menu';
 
 const Menu = () => {
-  const [menuOpen, setMenuOpen, menuRef] = useCloseOutside(true);
+  const { isOpen, setIsOpen, insideRef } = useCloseOutside(true);
 
   return (
-    <MenuAnchor ref={menuRef}>
+    <MenuAnchor ref={insideRef}>
       <BtnNav
         ariaLabel={'Menu'}
         disabled={false}
-        isActive={menuOpen}
+        isActive={isOpen}
         label={<Logo />}
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={() => setIsOpen(!isOpen)}
       />
-      {menuOpen && (
+      {isOpen && (
         <MenuDropdown>
           {/* <Sound /> */}
           {/* <BtnMenu label="Support me" icon="support" /> */}

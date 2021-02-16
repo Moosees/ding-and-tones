@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Clean up useCloseOutside and menu/mobile menu
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
@@ -41,7 +42,6 @@
 * Don't render popups as children of buttons (no close and active state stuck)?
 * Interval color legend?
 * Interval colors for compound intervals? Check if intervals are working as intended
-* Change setDropdown to something else?
 
 ## Chords
 

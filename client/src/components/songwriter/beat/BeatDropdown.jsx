@@ -1,26 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import useCloseOutside from '../../../hooks/useCloseOutside';
 import { updateBeat } from '../../../redux/song/song.actions';
-import { setDropdownForBeat } from '../../../redux/ui/ui.actions';
 import { Dropdown, DropdownItem } from './beat.styles';
 
 const BeatDropdown = ({
   beatId,
+  btnRef,
   handleChange,
   hasNonScaleNote,
+  isOpenCallback,
   options,
-  setDropdownForBeat,
   sound,
   updateBeat,
 }) => {
-  const handleClick = (newSound, selected, e) => {
-    e.stopPropagation();
+  const { insideRef } = useCloseOutside(false, isOpenCallback, btnRef);
+  const { single, percussive, nonScale } = options;
+
+  const handleClick = (newSound, selected) => {
     updateBeat(beatId, newSound, selected);
   };
 
   const renderOptions = () => {
-    const { single, percussive, nonScale } = options;
-
     const parseOptionArray = (optionArray, hasNonScaleNote) => {
       return optionArray.map(({ label, value }) => {
         const selected = sound.includes(value);
@@ -46,13 +47,11 @@ const BeatDropdown = ({
     ];
   };
 
-  return <Dropdown>{renderOptions()}</Dropdown>;
+  return <Dropdown ref={insideRef}>{renderOptions()}</Dropdown>;
 };
 
 const mapStateToProps = ({ ui }) => ({
   options: ui.soundOptions,
 });
 
-export default connect(mapStateToProps, { setDropdownForBeat, updateBeat })(
-  BeatDropdown
-);
+export default connect(mapStateToProps, { updateBeat })(BeatDropdown);

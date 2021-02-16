@@ -7,7 +7,7 @@ import DimensionsProvider from './DimensionsProvider';
 import GlobalStyles from './globalStyles';
 import Layout from './layout/Layout';
 
-const App = ({ setDropdownForBeat, setPrivacyOpen }) => {
+const App = () => {
   return (
     <ReduxProvider store={store}>
       <DimensionsProvider>

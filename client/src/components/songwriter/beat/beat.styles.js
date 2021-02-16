@@ -18,6 +18,10 @@ const beatStyles = {
   },
 };
 
+export const BeatAnchor = styled.div`
+  position: relative;
+`;
+
 export const BeatContainer = styled.div`
   align-items: center;
   border: ${({ value }) => (value === 4 ? '2px' : '1px')};
@@ -36,7 +40,6 @@ export const BeatContainer = styled.div`
   justify-content: center;
   margin: 1px;
   margin-left: ${({ value }) => (value === 4 ? '4px' : '0')};
-  position: relative;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
 
   ${({ theme }) => theme.mqW850`

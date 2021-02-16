@@ -5,14 +5,14 @@ import { LogoContainer, MobileAnchor } from './menu.styles';
 import MobileDropdown from './MobileDropdown';
 
 const NavMobile = () => {
-  const [menuOpen, setMenuOpen, menuRef] = useCloseOutside(true);
+  const { isOpen, setIsOpen, insideRef } = useCloseOutside(true);
 
   return (
-    <MobileAnchor ref={menuRef}>
-      <LogoContainer onClick={() => setMenuOpen(!menuOpen)}>
+    <MobileAnchor ref={insideRef}>
+      <LogoContainer onClick={() => setIsOpen(!isOpen)}>
         <Logo />
       </LogoContainer>
-      {menuOpen && <MobileDropdown />}
+      {isOpen && <MobileDropdown />}
     </MobileAnchor>
   );
 };

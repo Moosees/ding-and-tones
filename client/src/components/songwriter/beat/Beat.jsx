@@ -1,60 +1,59 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { setDropdownForBeat } from '../../../redux/ui/ui.actions';
-import { BeatContainer, BeatText } from './beat.styles';
+import { BeatAnchor, BeatContainer, BeatText } from './beat.styles';
 import BeatDropdown from './BeatDropdown';
 
-const Beat = ({
-  beatId,
-  beats,
-  currentBeat,
-  dropdownBeatId,
-  isSongPlaying,
-  setDropdownForBeat,
-  soundOptions,
-}) => {
+const Beat = ({ beatId, beats, currentBeat, isSongPlaying, soundOptions }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const btnRef = useRef();
   const { value, sound } = beats[beatId];
   const isBeatPlaying = beatId === currentBeat;
-  const isDropdownOpen = beatId === dropdownBeatId;
+
+  useEffect(() => {
+    if (isSongPlaying) setIsOpen(false);
+  }, [setIsOpen, isSongPlaying]);
 
   const hasNonScaleNote = !sound.every((hit) => {
     const numericHit = Number(hit);
     return isNaN(numericHit) || numericHit < soundOptions.numNotesInScale;
   });
 
-  const openDropdown = (e) => {
-    e.stopPropagation();
-    if (!isSongPlaying) setDropdownForBeat(beatId);
+  const handleOpen = () => {
+    if (!isSongPlaying) setIsOpen(!isOpen);
   };
 
   return (
-    <BeatContainer
-      hasNonScaleNote={hasNonScaleNote}
-      isLocked={isSongPlaying}
-      isBeatPlaying={isBeatPlaying}
-      value={value}
-      onClick={openDropdown}
-    >
-      <BeatText isBeatPlaying={isBeatPlaying} value={value}>
-        {sound.join('+')}
-      </BeatText>
-      {isDropdownOpen && (
+    <BeatAnchor>
+      <BeatContainer
+        ref={btnRef}
+        hasNonScaleNote={hasNonScaleNote}
+        isLocked={isSongPlaying}
+        isBeatPlaying={isBeatPlaying}
+        value={value}
+        onClick={handleOpen}
+      >
+        <BeatText isBeatPlaying={isBeatPlaying} value={value}>
+          {sound.join('+')}
+        </BeatText>
+      </BeatContainer>
+      {isOpen && (
         <BeatDropdown
+          btnRef={btnRef}
           beatId={beatId}
           sound={sound}
           hasNonScaleNote={hasNonScaleNote}
+          isOpenCallback={setIsOpen}
         />
       )}
-    </BeatContainer>
+    </BeatAnchor>
   );
 };
 
 const mapStateToProps = ({ song, ui }) => ({
   beats: song.beats,
   currentBeat: ui.currentBeat,
-  dropdownBeatId: ui.dropdownBeatId,
   isSongPlaying: ui.isSongPlaying,
   soundOptions: ui.soundOptions,
 });
 
-export default connect(mapStateToProps, { setDropdownForBeat })(Beat);
+export default connect(mapStateToProps)(Beat);
