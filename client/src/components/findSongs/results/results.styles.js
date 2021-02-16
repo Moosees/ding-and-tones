@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 
 export const TableContainer = styled.div`
-  max-height: 50rem;
-  width: 95%;
-
-  ${({ theme }) => theme.mqW1200`
-    width: 100%;
-  `}
+  max-height: ${({ isMobile }) => (isMobile ? '600px' : '58rem')};
+  width: ${({ isMobile }) => (isMobile ? '100%' : '95%')};
 
   ${({ theme }) => theme.mqW850`
-    max-height: 75vh;
+    max-height: 78vh;
   `}
 `;
 

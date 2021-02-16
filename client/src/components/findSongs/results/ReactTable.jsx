@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useExpanded, useTable } from 'react-table';
+import useDimensions from '../../../hooks/useDimensions';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
 import {
   ExpandedRow,
@@ -20,9 +21,10 @@ const ReactTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
     prepareRow,
     visibleColumns,
   } = useTable({ columns, data }, useExpanded);
+  const { isMobile } = useDimensions();
 
   return (
-    <TableContainer>
+    <TableContainer isMobile={isMobile}>
       <ScrollBox>
         <Table {...getTableProps()}>
           <thead>

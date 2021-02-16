@@ -21,7 +21,7 @@ const Background = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-width: 26rem;
-  padding: var(--padding);
+  padding: 2rem;
 
   & > *:last-child {
     margin-bottom: 1.2rem;
