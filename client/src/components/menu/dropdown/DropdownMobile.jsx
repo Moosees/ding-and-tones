@@ -1,20 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { setPrivacyOpen } from '../../redux/ui/ui.actions';
-import BtnMenu from '../shared/button/Menu';
-import DividerLine from '../shared/dividerLine/DividerLine';
-import Account from './account/Account';
-import { MenuDropdown } from './menu.styles';
-import Print from './print/Print';
-import SignIn from './signIn/SignIn';
+import useCloseOutside from '../../../hooks/useCloseOutside';
+import { setPrivacyOpen } from '../../../redux/ui/ui.actions';
+import BtnMenu from '../../shared/button/Menu';
+import DividerLine from '../../shared/dividerLine/DividerLine';
+import Account from '../account/Account';
+import Print from '../print/Print';
+import SignIn from '../signIn/SignIn';
+import { DropdownContainer } from './dropdown.styles';
 
-const MobileDropdown = ({ scaleId, setPrivacyOpen, songId }) => {
+const DropdownMobile = ({
+  btnRef,
+  isOpenCb,
+  scaleId,
+  setPrivacyOpen,
+  songId,
+}) => {
   const { push } = useHistory();
   const { pathname } = useLocation();
+  const { insideRef } = useCloseOutside(isOpenCb, btnRef);
 
   return (
-    <MenuDropdown>
+    <DropdownContainer ref={insideRef}>
       <BtnMenu
         label="Drum"
         isActive={'/chords' === pathname}
@@ -43,7 +51,7 @@ const MobileDropdown = ({ scaleId, setPrivacyOpen, songId }) => {
       <Account />
       <SignIn />
       <BtnMenu label="Privacy" onClick={() => setPrivacyOpen(true)} />
-    </MenuDropdown>
+    </DropdownContainer>
   );
 };
 
@@ -52,4 +60,4 @@ const mapStateToProps = ({ scale, song }) => ({
   songId: song.ui.songId,
 });
 
-export default connect(mapStateToProps, { setPrivacyOpen })(MobileDropdown);
+export default connect(mapStateToProps, { setPrivacyOpen })(DropdownMobile);

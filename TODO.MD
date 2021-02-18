@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Clean up useCloseOutside and menu/mobile menu
+* Size of songwriter with few bars (dropdown outside parent)
+* Scale edit hover effect, bar hover effects
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Left and right hand recommendations for songwriter?
@@ -27,12 +28,9 @@
 * Load song button can be seen through table header
 * Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs instead of alert?
-* Scale edit hover effect
 * New buttons for loading songs and confirm/cancel
-* Transition mixin? Border radius? Intervals height? All the mix-ins!
 * Hover on drum shows all information about hovered note?
-* Refactor styled-components
-* Active state for routes in mobile menu
+* Refactor styled-components more, mix-ins or css variables?
 * Privacy date localization
 
 ## User/Menu

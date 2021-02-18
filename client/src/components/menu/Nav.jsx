@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import BtnNav from '../shared/button/Nav';
-import Menu from '../menu/Menu';
+import LogoBtn from './logo/LogoBtn';
 
 const Navbar = styled.nav`
   top: -3rem;
@@ -13,7 +13,7 @@ const Navbar = styled.nav`
   position: absolute;
 `;
 
-const NavLarge = ({ scaleId, songId }) => {
+const Nav = ({ scaleId, songId }) => {
   const { push } = useHistory();
   const { pathname } = useLocation();
 
@@ -39,7 +39,7 @@ const NavLarge = ({ scaleId, songId }) => {
         isActive={'/find' === pathname}
         onClick={() => push('/find')}
       />
-      <Menu />
+      <LogoBtn />
     </Navbar>
   );
 };
@@ -49,4 +49,4 @@ const mapStateToProps = ({ scale, song }) => ({
   songId: song.ui.songId,
 });
 
-export default connect(mapStateToProps)(NavLarge);
+export default connect(mapStateToProps)(Nav);

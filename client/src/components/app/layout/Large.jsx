@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import Drum from '../../drum/Drum';
 import Intervals from '../../intervals/Intervals';
-import NavLarge from '../../nav/NavLarge';
+import Nav from '../../menu/Nav';
 import Loading from '../../shared/loading/Loading';
 import { BorderContainer, LargeLayout, SectionWithNav } from './layout.styles';
 
@@ -15,7 +15,7 @@ const Large = () => {
         <Intervals />
       </BorderContainer>
       <SectionWithNav style={{ gridArea: 'main' }}>
-        <NavLarge />
+        <Nav />
         <BorderContainer>
           <Suspense fallback={<Loading />}>
             <Routes />

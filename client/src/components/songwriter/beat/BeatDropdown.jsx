@@ -9,12 +9,12 @@ const BeatDropdown = ({
   btnRef,
   handleChange,
   hasNonScaleNote,
-  isOpenCallback,
+  isOpenCb,
   options,
   sound,
   updateBeat,
 }) => {
-  const { insideRef } = useCloseOutside(false, isOpenCallback, btnRef);
+  const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const { single, percussive, nonScale } = options;
 
   const handleClick = (newSound, selected) => {

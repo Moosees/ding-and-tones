@@ -5,7 +5,7 @@ import BeatDropdown from './BeatDropdown';
 
 const Beat = ({ beatId, beats, currentBeat, isSongPlaying, soundOptions }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const btnRef = useRef();
+  const btnRef = useRef(null);
   const { value, sound } = beats[beatId];
   const isBeatPlaying = beatId === currentBeat;
 
@@ -42,7 +42,7 @@ const Beat = ({ beatId, beats, currentBeat, isSongPlaying, soundOptions }) => {
           beatId={beatId}
           sound={sound}
           hasNonScaleNote={hasNonScaleNote}
-          isOpenCallback={setIsOpen}
+          isOpenCb={setIsOpen}
         />
       )}
     </BeatAnchor>
