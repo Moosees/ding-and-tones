@@ -81,9 +81,6 @@ const ScaleInterval = ({
           </>
         )}
       </IntervalBreakBox>
-      <IntervalColor color={color}>
-        <span>{scaleIndex}</span>
-      </IntervalColor>
     </IntervalContainer>
   );
 };

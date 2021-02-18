@@ -8,6 +8,11 @@ export const SongContainer = styled.div`
   padding: var(--padding);
 `;
 
+export const SongEditContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
 export const SongViewContainer = styled.div`
   display: flex;
   flex-grow: 1;

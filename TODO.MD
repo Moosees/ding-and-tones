@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Size of songwriter with few bars (dropdown outside parent)
 * Scale edit hover effect, bar hover effects
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
@@ -32,6 +31,7 @@
 * Hover on drum shows all information about hovered note?
 * Refactor styled-components more, mix-ins or css variables?
 * Privacy date localization
+* Print footer on every page
 
 ## User/Menu
 

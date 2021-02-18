@@ -24,7 +24,11 @@ export const IntervalList = styled.div`
   flex-direction: column;
   flex-grow: 1;
   max-height: 40rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
+
+  ${({ theme }) => theme.mqW1200`
+    padding: 0.5rem;
+  `}
 `;
 
 export const IntervalContainer = styled.div`
@@ -35,7 +39,7 @@ export const IntervalContainer = styled.div`
 
   &:last-child {
     border-bottom: 0;
-    padding-bottom: 2px;
+    padding-bottom: 6px;
   }
 `;
 
@@ -67,9 +71,7 @@ export const IntervalColor = styled.div`
 `;
 
 export const IntervalBreakBox = styled.div`
-  align-items: center;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 `;
 

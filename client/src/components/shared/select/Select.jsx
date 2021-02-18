@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { InfoLayout } from '../layout/layout.styles';
 import { SelectDropdown, SelectLabel, SelectSmall } from './select.styles';
@@ -33,7 +33,7 @@ const Select = ({
   small,
   value,
 }) => {
-  const labelRef = useRef();
+  // const labelRef = useRef();
   // const [labelWidth, _setLabelWidth] = useState(52);
 
   // useEffect(() => {
@@ -56,7 +56,7 @@ const Select = ({
   return (
     <Layout disabled={isSongPlaying} large={large}>
       <SelectLabel hasLabel={hasLabel} small={small} disabled={isSongPlaying}>
-        <span ref={labelRef}>{children}</span>
+        <span>{children}</span>
         <SelectDropdown
           small={small}
           hasLabel={hasLabel}

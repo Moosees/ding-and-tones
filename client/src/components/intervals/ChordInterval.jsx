@@ -21,7 +21,6 @@ const ChordInterval = ({ interval, note }) => {
           ({semitones} steps) - {nameShort}
         </IntervalText>
       </IntervalBreakBox>
-      <IntervalColor color={color} />
     </IntervalContainer>
   );
 };

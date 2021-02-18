@@ -8,7 +8,12 @@ import ScrollBox from '../shared/scrollBox/ScrollBox';
 import SongControls from '../songControls/SongControls';
 import SongView from '../songView/SongView';
 import Songwriter from '../songwriter/Songwriter';
-import { SongContainer, SongViewContainer, TopSection } from './song.styles';
+import {
+  SongContainer,
+  SongEditContainer,
+  SongViewContainer,
+  TopSection,
+} from './song.styles';
 
 const Song = ({ getSongById, isEditingSong, songUi }) => {
   const { songId } = useParams();
@@ -35,9 +40,11 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
         <SongContainer>
           <TopSection>{<SongControls />}</TopSection>
           <DividerLine />
-          <ScrollBox>
-            <Songwriter />
-          </ScrollBox>
+          <SongEditContainer>
+            <ScrollBox>
+              <Songwriter />
+            </ScrollBox>
+          </SongEditContainer>
         </SongContainer>
       ) : (
         <SongViewContainer>

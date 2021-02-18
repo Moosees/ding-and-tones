@@ -23,6 +23,7 @@ export const IntervalsContainer = styled.div`
   border: ${({ theme }) => theme.borderLight};
   border-radius: 30px;
   box-shadow: ${({ theme }) => theme.shadowBtnLight};
+  display: flex;
   max-height: 40rem;
   overflow: hidden;
 `;

@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 const ScrollDiv = styled.div`
   max-height: 100%;
-  max-width: 100%;
   overflow-y: auto;
+  width: 100%;
 `;
 
 const ContentDiv = styled.div`
-  align-items: center;
   display: flex;
   flex-direction: column;
 `;

@@ -3,7 +3,7 @@ import { useReactToPrint } from 'react-to-print';
 import PrintView from '../../songView/PrintView';
 
 const ReactToPrint = ({ onAfterPrint }) => {
-  const componentRef = useRef();
+  const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     onAfterPrint: onAfterPrint,
