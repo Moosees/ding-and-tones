@@ -18,6 +18,7 @@ export const BarInfoContainer = styled.div`
 
   ${({ theme }) => theme.mqW700`
     font-size: ${theme.fzMedium};
+    padding: 0;
   `}
 `;
 

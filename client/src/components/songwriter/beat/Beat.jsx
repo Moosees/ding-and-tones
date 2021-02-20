@@ -29,6 +29,7 @@ const Beat = ({ beatId, beats, currentBeat, isSongPlaying, soundOptions }) => {
         hasNonScaleNote={hasNonScaleNote}
         isLocked={isSongPlaying}
         isBeatPlaying={isBeatPlaying}
+        isSongPlaying={isSongPlaying}
         value={value}
         onClick={handleOpen}
       >

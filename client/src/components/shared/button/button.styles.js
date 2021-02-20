@@ -44,7 +44,7 @@ export const IconButton = styled.button`
     font-size: ${({ theme, small }) =>
       small ? theme.fzMedium : theme.fzLarger};
     padding: 0.5rem;
-    transition: transform 0.1s ease-in;
+    transition: color 0.1s ease-in;
 
     ${({ theme, small }) => theme.mqW1000`
       font-size ${small ? theme.fzLarge : theme.fzLargest}
@@ -52,7 +52,7 @@ export const IconButton = styled.button`
   }
 
   &:hover:not([disabled]) i {
-    transform: scale(${({ editOnly }) => (!editOnly ? '1.15' : '1')});
+    ${({ editOnly, theme }) => !editOnly && `color: ${theme.colorBtnConfirm};`}
   }
 
   &:disabled {

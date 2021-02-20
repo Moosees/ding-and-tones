@@ -10,10 +10,10 @@ export const SelectSmall = styled.div`
   padding: 1px 6px 1px 2px;
   position: relative;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
-  transition: transform 0.1s ease-in;
+  transition: color 0.1s ease-in;
 
   &:hover {
-    transform: scale(${({ disabled, theme }) => (!disabled ? '1.05' : '1')});
+    ${({ disabled, theme }) => !disabled && `color: ${theme.colorBtnConfirm};`}
   }
 `;
 

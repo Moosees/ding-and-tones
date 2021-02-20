@@ -62,7 +62,7 @@ const Select = ({
           hasLabel={hasLabel}
           disabled={isSongPlaying}
           value={value}
-          labelWidth={52}
+          labelWidth={small ? 20 : 52}
           onChange={(e) => handleChange(e.target.value)}
         >
           {parseOptions(options)}

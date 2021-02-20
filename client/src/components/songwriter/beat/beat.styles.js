@@ -40,7 +40,13 @@ export const BeatContainer = styled.div`
   justify-content: center;
   margin: 1px;
   margin-left: ${({ value }) => (value === 4 ? '4px' : '0')};
+  transition: color 0.1s ease-in;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
+
+  &:hover {
+    ${({ isSongPlaying, theme }) =>
+      !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
+  }
 
   ${({ theme }) => theme.mqW850`
     margin-left: 0;
