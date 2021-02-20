@@ -2,9 +2,15 @@
 
 ## Current tasks
 
+* Left and right hand recommendations for songwriter - started
+* Hands in song viewer/print
+* Hands in songwriter
+* Get default hand when adding bars
+* Show hands on/off - song viewer and writer
+* Check if loaded songs has saved hands
+
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
-* Left and right hand recommendations for songwriter?
 * Print - Lazy load. Add more margins (with smaller bars)?
 
 ## Bugs
@@ -31,6 +37,7 @@
 * Refactor styled-components more, mix-ins or css variables?
 * Privacy date localization
 * Print footer on every page
+* Mouse pointer in song viewer
 
 ## User/Menu
 

@@ -18,6 +18,7 @@ const songSchema = new mongoose.Schema({
       sound: String,
       value: Number,
       mode: String,
+      hand: Number,
     },
   ],
   composer: {

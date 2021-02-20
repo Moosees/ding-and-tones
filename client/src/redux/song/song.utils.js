@@ -27,9 +27,15 @@ const parseBeatsForSaving = (arrangement, bars, beats) => {
     const { measure, subdivision } = bars[bar];
 
     measure.forEach((beat) => {
-      const { sound, value, mode } = beats[beat];
+      const { sound, value, mode, hand } = beats[beat];
       if (value <= subdivision)
-        parsedBeats.push({ sound: sound.join('+'), value, mode, _id: beat });
+        parsedBeats.push({
+          sound: sound.join('+'),
+          value,
+          hand,
+          mode,
+          _id: beat,
+        });
     });
 
     return parsedBeats;
@@ -69,9 +75,9 @@ const parseArrayToObject = (array) => {
 
 const parseBeatsForLoadSong = (beats) => {
   const parsedBeats = beats.map((beat) => {
-    const { sound, value, mode, _id } = beat;
+    const { sound, value, mode, hand, _id } = beat;
 
-    return { sound: sound.split('+'), value, mode, _id };
+    return { sound: sound.split('+'), value, mode, hand, _id };
   });
 
   return parseArrayToObject(parsedBeats);

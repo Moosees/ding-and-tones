@@ -27,3 +27,20 @@ export const difficultyByValue = optionsDifficulty.reduce((acc, current) => {
 }, {});
 
 export const scaleLayout = [{ value: 1, label: 'Round' }];
+
+export const hands = [
+  { value: 1, hand: 'Right', short: 'R' },
+  { value: 2, hand: 'Left', short: 'L' },
+  { value: 3, hand: 'Both', short: 'RL' },
+  // { value: 4, hand: 'Right flam', short: 'Rl' },
+];
+
+export const handByValue = hands.reduce((acc, current) => {
+  acc[current.value] = current.hand;
+  return acc;
+}, {});
+
+export const handShortByValue = hands.reduce((acc, current) => {
+  acc[current.value] = current.short;
+  return acc;
+}, {});
