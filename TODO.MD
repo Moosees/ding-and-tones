@@ -6,8 +6,7 @@
 * Hands in song viewer/print
 * Hands in songwriter
 * Get default hand when adding bars
-* Show hands on/off - song viewer and writer
-* Check if loaded songs has saved hands
+* Check if loaded songs has saved hands and set hands open accordingly
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?

@@ -9,6 +9,7 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
 import Select from '../../shared/select/Select';
+import EditButton from '../editButton/EditButton';
 import PlayButton from '../playButton/PlayButton';
 import PopupNewSong from './PopupNewSong';
 
@@ -85,6 +86,7 @@ const Info = ({
             label="New Song"
             onClick={() => setNewOpen(true)}
           />
+          <EditButton />
           <PlayButton />
         </Buttons>
       </SongInfoContainer>

@@ -38,7 +38,9 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
         <Loading />
       ) : isEditingSong ? (
         <SongContainer>
-          <TopSection>{<SongControls />}</TopSection>
+          <TopSection>
+            <SongControls />
+          </TopSection>
           <DividerLine />
           <SongEditContainer>
             <ScrollBox>

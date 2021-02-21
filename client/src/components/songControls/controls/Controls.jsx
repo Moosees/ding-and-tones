@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { metreList } from '../../../assets/metre';
 import { addNewBar } from '../../../redux/song/song.actions';
+import { toggleHandsOpen } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/layout/InfoBox';
 import BpmSlider from '../bpmSlider/BpmSlider';
-import EditButton from '../editButton/EditButton';
 import { ControlsContainer } from './controls.styles';
 import { createNewBar } from './controls.utils';
 import PopupNewBar from './PopupNewBar';
@@ -19,6 +19,7 @@ const Controls = ({
   isSongPlaying,
   subdivision,
   toggleEditSong,
+  toggleHandsOpen,
 }) => {
   const [metreOpen, setMetreOpen] = useState(false);
   const [newBarOpen, setNewBarOpen] = useState(false);
@@ -49,7 +50,11 @@ const Controls = ({
             onClick={() => setNewBarOpen(true)}
             handleNewBar={handleNewBar}
           />
-          <EditButton />
+          <BtnPrimary
+            label="Toggle Hands"
+            disabled={isSongPlaying}
+            onClick={toggleHandsOpen}
+          />
         </Buttons>
       </ControlsContainer>
       {metreOpen && <PopupSongMetre onClose={() => setMetreOpen(false)} />}
@@ -72,4 +77,5 @@ const mapStateToProps = ({ song, ui }) => ({
 
 export default connect(mapStateToProps, {
   addNewBar,
+  toggleHandsOpen,
 })(Controls);

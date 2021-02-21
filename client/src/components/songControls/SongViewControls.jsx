@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { toggleHandsOpen } from '../../redux/ui/ui.actions';
+import BtnPrimary from '../shared/button/Primary';
 import EditButton from './editButton/EditButton';
 import PlayButton from './playButton/PlayButton';
-import styled from 'styled-components';
 
 const ControlsContainer = styled.div`
   bottom: -2px;
@@ -13,13 +16,23 @@ const ControlsContainer = styled.div`
   }
 `;
 
-const SongViewControls = () => {
+const SongViewControls = ({ isSongPlaying, toggleHandsOpen }) => {
   return (
     <ControlsContainer>
       <PlayButton light />
+      <BtnPrimary
+        light
+        label="Toggle Hands"
+        disabled={isSongPlaying}
+        onClick={toggleHandsOpen}
+      />
       <EditButton light />
     </ControlsContainer>
   );
 };
 
-export default SongViewControls;
+const mapStateToProps = ({ ui }) => ({
+  isSongPlaying: ui.isSongPlaying,
+});
+
+export default connect(mapStateToProps, { toggleHandsOpen })(SongViewControls);

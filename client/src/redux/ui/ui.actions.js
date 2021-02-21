@@ -78,6 +78,10 @@ export const toggleEditSong = () => ({
   type: uiTypes.TOGGLE_EDIT_SONG,
 });
 
+export const toggleHandsOpen = () => ({
+  type: uiTypes.TOGGLE_HANDS_OPEN,
+});
+
 export const toggleMuteBar = (barId) => ({
   type: uiTypes.TOGGLE_MUTE_BAR,
   payload: barId,
