@@ -5,7 +5,7 @@ import { updateMutedBars } from './ui.utils';
 const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
-  handsOpen: false,
+  handsOpen: true,
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,

@@ -1,12 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { BeatAnchor, BeatContainer, BeatText } from './beat.styles';
+import { handShortByValue } from '../../../assets/constants';
+import {
+  BeatAnchor,
+  BeatContainer,
+  BeatText,
+  HandContainer,
+} from './beat.styles';
 import BeatDropdown from './BeatDropdown';
 
-const Beat = ({ beatId, beats, currentBeat, isSongPlaying, soundOptions }) => {
+const Beat = ({
+  beatId,
+  beats,
+  currentBeat,
+  handsOpen,
+  isSongPlaying,
+  soundOptions,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
-  const { value, sound } = beats[beatId];
+  const { value, sound, hand } = beats[beatId];
   const isBeatPlaying = beatId === currentBeat;
 
   useEffect(() => {
@@ -24,19 +37,22 @@ const Beat = ({ beatId, beats, currentBeat, isSongPlaying, soundOptions }) => {
 
   return (
     <BeatAnchor>
-      <BeatContainer
-        ref={btnRef}
-        hasNonScaleNote={hasNonScaleNote}
-        isLocked={isSongPlaying}
-        isBeatPlaying={isBeatPlaying}
-        isSongPlaying={isSongPlaying}
-        value={value}
-        onClick={handleOpen}
-      >
-        <BeatText isBeatPlaying={isBeatPlaying} value={value}>
-          {sound.join('+')}
-        </BeatText>
-      </BeatContainer>
+      <>
+        <BeatContainer
+          ref={btnRef}
+          hasNonScaleNote={hasNonScaleNote}
+          isLocked={isSongPlaying}
+          isBeatPlaying={isBeatPlaying}
+          isSongPlaying={isSongPlaying}
+          value={value}
+          onClick={handleOpen}
+        >
+          <BeatText isBeatPlaying={isBeatPlaying} value={value}>
+            {sound.join('+')}
+          </BeatText>
+        </BeatContainer>
+        {handsOpen && <HandContainer>{handShortByValue[hand]}</HandContainer>}
+      </>
       {isOpen && (
         <BeatDropdown
           btnRef={btnRef}
@@ -53,6 +69,7 @@ const Beat = ({ beatId, beats, currentBeat, isSongPlaying, soundOptions }) => {
 const mapStateToProps = ({ song, ui }) => ({
   beats: song.beats,
   currentBeat: ui.currentBeat,
+  handsOpen: ui.handsOpen,
   isSongPlaying: ui.isSongPlaying,
   soundOptions: ui.soundOptions,
 });

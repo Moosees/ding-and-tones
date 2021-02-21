@@ -4,7 +4,7 @@
 
 * Left and right hand recommendations for songwriter - started
 * Hands in song viewer/print
-* Hands in songwriter
+* Hands in beat dropdown
 * Get default hand when adding bars
 * Check if loaded songs has saved hands and set hands open accordingly
 

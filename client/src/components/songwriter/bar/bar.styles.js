@@ -12,7 +12,6 @@ export const BarContainer = styled.div`
 `;
 
 export const Beats = styled.div`
-  align-items: center;
   border: 1px solid
     ${({ theme, isPlaying }) =>
       isPlaying ? theme.colorBeatActive : theme.colorBeat};

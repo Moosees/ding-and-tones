@@ -19,6 +19,9 @@ const beatStyles = {
 };
 
 export const BeatAnchor = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   position: relative;
 `;
 
@@ -124,3 +127,5 @@ export const DropdownItem = styled.div`
     padding: 1px 5px;
   `}
 `;
+
+export const HandContainer = styled.div``;
