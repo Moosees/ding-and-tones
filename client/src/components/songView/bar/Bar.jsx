@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { handShortByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
 import {
   BarContainer,
   BarMetre,
   BeatContainer,
   BeatsContainer,
+  BeatText
 } from './bar.styles';
 
-const Bar = ({ barId, bars, beats, currentBeat, prevBar }) => {
+const Bar = ({ barId, bars, beats, currentBeat, handsOpen, prevBar }) => {
   const { metre, subdivision, measure } = bars[barId];
   const prevBarMetre = prevBar ? bars[prevBar].metre : null;
   const metreInfo = metreList[metre];
@@ -16,16 +18,18 @@ const Bar = ({ barId, bars, beats, currentBeat, prevBar }) => {
   const filteredBeats = measure
     .filter((beat) => beats[beat].value <= subdivision)
     .map((beat, i) => {
-      const { value, sound } = beats[beat];
+      const { value, sound, hand } = beats[beat];
       const isBeatPlaying = beat === currentBeat;
       return (
         <BeatContainer
           key={beat}
           value={value}
-          isBeatPlaying={isBeatPlaying}
           addMarginLeft={i && subdivision === 4}
         >
-          <span>{sound !== '-' && sound.join('+')}</span>
+          <BeatText isBeatPlaying={isBeatPlaying} value={value}>
+            {sound !== '-' && sound.join('+')}
+          </BeatText>
+          {handsOpen && <div>{handShortByValue[hand]}</div>}
         </BeatContainer>
       );
     });
@@ -44,6 +48,7 @@ const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
   beats: song.beats,
   currentBeat: ui.currentBeat,
+  handsOpen: ui.handsOpen,
 });
 
 export default connect(mapStateToProps)(Bar);

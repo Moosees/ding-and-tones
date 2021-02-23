@@ -28,10 +28,10 @@ export const BarContainer = styled.li`
   &:not(:last-child):after {
     border-right: 1px solid #000;
     content: '';
-    height: 42px;
+    height: 48%;
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 30px;
     width: 1px;
   }
 `;
@@ -44,31 +44,33 @@ export const BarMetre = styled.div`
 `;
 
 export const BeatsContainer = styled.div`
-  align-items: center;
   display: flex;
 `;
 
 export const BeatContainer = styled.div`
   align-items: center;
-  border: ${({ value }) => beatStyles.border[value]};
-  border-radius: 100%;
+  cursor: default;
   display: flex;
-  height: ${({ value }) => beatStyles.heightWidth[value]}px;
-  justify-content: center;
-  text-align: center;
-  width: ${({ value }) => beatStyles.heightWidth[value]}px;
-
-  ${({ isBeatPlaying, theme }) =>
-    isBeatPlaying && `border-color: ${theme.colorBeatActive};`}
+  flex-direction: column;
 
   &:not(:first-child) {
     margin-left: ${({ addMarginLeft, value }) =>
       addMarginLeft ? '8px' : value === 4 ? '4px' : '2px'};
   }
+`;
 
-  span {
-    font-size: ${({ value }) => beatStyles.fz[value]}px;
-    letter-spacing: -1px;
-    margin-left: -1px;
-  }
+export const BeatText = styled.div`
+  align-items: center;
+  border: ${({ value }) => beatStyles.border[value]};
+  border-radius: 100%;
+  display: flex;
+  font-size: ${({ value }) => beatStyles.fz[value]}px;
+  height: ${({ value }) => beatStyles.heightWidth[value]}px;
+  justify-content: center;
+  letter-spacing: -1px;
+  margin-left: -1px;
+  width: ${({ value }) => beatStyles.heightWidth[value]}px;
+
+  ${({ isBeatPlaying, theme }) =>
+    isBeatPlaying && `border-color: ${theme.colorBeatActive};`}
 `;
