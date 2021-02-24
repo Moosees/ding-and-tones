@@ -25,6 +25,15 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
         },
       };
 
+    case songTypes.UPDATE_HAND:
+      return {
+        ...state,
+        [payload.beatId]: {
+          ...state[payload.beatId],
+          hand: payload.selected ? undefined : payload.newHand,
+        },
+      };
+
     case songTypes.UPDATE_MEASURE:
       return {
         ...state,

@@ -16,12 +16,18 @@ const beatStyles = {
     8: 'solid',
     16: 'dashed',
   },
+  topOffset: {
+    4: '1px',
+    8: '2px',
+    16: '3px',
+  },
 };
 
 export const BeatAnchor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
 `;
 
@@ -43,6 +49,7 @@ export const BeatContainer = styled.div`
   justify-content: center;
   margin: 1px;
   margin-left: ${({ value }) => (value === 4 ? '4px' : '0')};
+  margin-top: ${({ value }) => beatStyles.topOffset[value]};
   transition: color 0.1s ease-in;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
 
@@ -59,10 +66,6 @@ export const BeatContainer = styled.div`
 export const BeatText = styled.div`
   font-size: ${({ value }) => beatStyles.fz[value]}px;
   letter-spacing: -1px;
-
-  ${({ theme }) => theme.mqW850`
-    letter-spacing: 0;
-  `}
 `;
 
 export const Dropdown = styled.div`
@@ -72,16 +75,14 @@ export const Dropdown = styled.div`
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.shadowLight};
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   padding: 4px 0;
   position: absolute;
-  text-align: center;
   top: 3rem;
   width: max-content;
   z-index: 100;
 
   &::before {
-    align-self: center;
     background-color: ${({ theme }) => theme.colorBg};
     border: ${({ theme }) => theme.borderHeavyLight};
     border-radius: 2px;
@@ -101,11 +102,13 @@ export const DropdownItem = styled.div`
         ? theme.colorBtnClear
         : theme.colorBeat
       : 'transparent'};
+  border-radius: 2px;
   color: ${({ selected, theme }) =>
     selected ? theme.colorTextInverted : theme.colorText};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   font-size: ${({ theme }) => theme.fzSmallest};
-  padding: 2px 5px;
+  margin: 1px;
+  padding: 2px;
   position: relative;
   transition: background-color 0.2s ease;
   z-index: 1000;
@@ -124,8 +127,12 @@ export const DropdownItem = styled.div`
 
   ${({ theme }) => theme.mqW1000`
     font-size: ${theme.fzMedium};
-    padding: 1px 5px;
   `}
 `;
 
-export const HandContainer = styled.div``;
+export const DropdownColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+`;

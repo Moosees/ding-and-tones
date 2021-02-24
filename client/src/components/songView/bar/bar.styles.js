@@ -16,6 +16,11 @@ const beatStyles = {
     8: '1px dotted #000',
     16: '1px dashed #000',
   },
+  topOffset: {
+    4: '0',
+    8: '1px',
+    16: '2px',
+  },
 };
 
 export const BarContainer = styled.li`
@@ -52,6 +57,8 @@ export const BeatContainer = styled.div`
   cursor: default;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  margin-top: ${({ value }) => beatStyles.topOffset[value]};
 
   &:not(:first-child) {
     margin-left: ${({ addMarginLeft, value }) =>

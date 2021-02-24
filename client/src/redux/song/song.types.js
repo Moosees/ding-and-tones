@@ -15,6 +15,7 @@ const songTypes = {
   SET_STATE: 'song/setState',
   UPDATE_BAR_SUBDIVISION: 'song/updateBarSubdivision',
   UPDATE_BEAT: 'song/updateBeat',
+  UPDATE_HAND: 'song/updateHand',
   UPDATE_MEASURE: 'song/updateMeasure',
   UPDATE_SONG_INFO: 'song/updateInfo',
 };

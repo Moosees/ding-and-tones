@@ -3,14 +3,15 @@
 ## Current tasks
 
 * Left and right hand recommendations for songwriter - started
-* Hands in beat dropdown
-* Get default hand when adding bars
-* Check if loaded songs has saved hands and set hands open accordingly
+* Refactor beat dropdown functions
 
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Print - Lazy load. Add more margins (with smaller bars)?
 * Print button in song viewer?
+* Use thunk and separate dispatches for alert
+* Get default hand when adding bars?
+* Check if loaded songs has saved hands and set hands open accordingly?
 
 ## Bugs
 
@@ -21,6 +22,7 @@
 * Signing in randomly breaks, problem with getGoogleCode?
 * Select offsetWidth doesn't set correctly on first load - sidestepped for now
 * Login popup and blockers...
+* Beat dropdown can expand outside parent on smaller screens
 
 ## Design
 

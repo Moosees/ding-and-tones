@@ -1,12 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
-import {
-  BeatAnchor,
-  BeatContainer,
-  BeatText,
-  HandContainer,
-} from './beat.styles';
+import { BeatAnchor, BeatContainer, BeatText } from './beat.styles';
 import BeatDropdown from './BeatDropdown';
 
 const Beat = ({
@@ -51,12 +46,13 @@ const Beat = ({
             {sound.join('+')}
           </BeatText>
         </BeatContainer>
-        {handsOpen && <HandContainer>{handShortByValue[hand]}</HandContainer>}
+        {handsOpen && <div>{handShortByValue[hand]}</div>}
       </>
       {isOpen && (
         <BeatDropdown
           btnRef={btnRef}
           beatId={beatId}
+          hand={hand}
           sound={sound}
           hasNonScaleNote={hasNonScaleNote}
           isOpenCb={setIsOpen}

@@ -121,7 +121,12 @@ export const updateBarSubdivision = (barId, newSubdivision) => ({
   payload: { barId, newSubdivision },
 });
 
-export const updateBeat = (beatId, newSound, selected) => ({
+export const updateHandForBeat = (beatId, newHand, selected) => ({
+  type: songTypes.UPDATE_HAND,
+  payload: { beatId, newHand, selected },
+});
+
+export const updateSoundForBeat = (beatId, newSound, selected) => ({
   type: songTypes.UPDATE_BEAT,
   payload: { beatId, newSound, selected },
 });
