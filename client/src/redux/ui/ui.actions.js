@@ -55,7 +55,7 @@ export const setSoundOptions = (scale) => (dispatch, getState) => {
       ) {
         nonScaleMap[numericOption] = true;
         nonScale.push({
-          label: `${numericOption} Outside scale`,
+          label: `${numericOption} - ?`,
           value: `${numericOption}`,
           outsideScale: true,
         });

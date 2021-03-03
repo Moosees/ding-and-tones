@@ -26,7 +26,7 @@ const BeatDropdown = ({
     optionArray.map(({ label, value }) => {
       const selected = sound.includes(value);
 
-      return (
+      return hasNonScaleNote && !selected ? null : (
         <DropdownItem
           disabled={sound.length >= 2 && !selected}
           selected={selected}
@@ -51,7 +51,15 @@ const BeatDropdown = ({
 
   return (
     <Dropdown ref={insideRef}>
-      <DropdownColumn>{parseOptions(options.single)}</DropdownColumn>
+      <DropdownColumn>
+        {parseOptions(options.single)}
+        {hasNonScaleNote && (
+          <>
+            <DividerLine small />
+            {parseOptions(options.nonScale, hasNonScaleNote)}
+          </>
+        )}
+      </DropdownColumn>
       <DropdownColumn>
         <DividerLine vertical small />
       </DropdownColumn>
@@ -59,12 +67,6 @@ const BeatDropdown = ({
         {parseOptions(options.percussive)}
         <DividerLine small />
         {handItems}
-        {hasNonScaleNote && (
-          <>
-            <DividerLine small />
-            {parseOptions(options.nonScale, hasNonScaleNote)}
-          </>
-        )}
       </DropdownColumn>
     </Dropdown>
   );
