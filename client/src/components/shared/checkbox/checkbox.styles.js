@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CheckboxLabel = styled.label`
+  align-items: center;
   cursor: pointer;
   display: flex;
   opacity: ${({ checked, small }) => (checked || small ? '1' : '0.75')};
@@ -37,7 +38,6 @@ export const CheckboxInput = styled.span`
   left: ${({ reverse }) => (reverse ? 'unset' : '0')};
   right: ${({ reverse }) => (reverse ? '0' : 'unset')};
   position: absolute;
-  top: 0;
   transition: transform 0.2s ease;
   width: ${({ small }) => (small ? '1.8' : '2')}rem;
 
@@ -49,19 +49,7 @@ export const CheckboxInput = styled.span`
     display: none;
     height: ${({ small }) => (small ? '1.8' : '2')}rem;
     position: absolute;
-    top: 0;
     left: 0;
     width: ${({ small }) => (small ? '1.8' : '2')}rem;
   }
-
-  /* ${({ theme }) => theme.mqW850`
-    height: 1.8rem;
-    top: 2px;
-    width: 1.8rem;
-
-    &::after {
-      height: 1.8rem;
-      width: 1.8rem;
-    } */
-  `}
 `;

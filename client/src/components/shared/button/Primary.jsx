@@ -5,7 +5,14 @@ import { PrimaryButton } from './button.styles';
 const BtnPrimary = ({ checkbox, checked, disabled, label, light, onClick }) => (
   <PrimaryButton disabled={disabled} light={light} onClick={onClick}>
     {checkbox ? (
-      <Checkbox small label={label} checked={checked} onChange={onClick} />
+      <Checkbox
+        small
+        checked={checked}
+        disabled={disabled}
+        label={label}
+        name={label}
+        onChange={onClick}
+      />
     ) : (
       label
     )}

@@ -9,7 +9,7 @@
 * Use thunk and separate dispatches for alert
 * Get default hand when adding bars?
 * Check if loaded songs has saved hands and set hands open accordingly?
-* Dropdown opens where there's space instead of just below beat
+* Dropdown opens where there's space instead of just below beat (can open outside parent on smaller screens)
 
 ## Bugs
 
@@ -20,7 +20,6 @@
 * Signing in randomly breaks, problem with getGoogleCode?
 * Select offsetWidth doesn't set correctly on first load - sidestepped for now
 * Login popup and blockers...
-* Beat dropdown can expand outside parent on smaller screens
 
 ## Design
 
