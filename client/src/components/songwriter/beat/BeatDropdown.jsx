@@ -13,7 +13,6 @@ const BeatDropdown = ({
   beatId,
   btnRef,
   hand,
-  handleChange,
   hasNonScaleNote,
   isOpenCb,
   options,
@@ -22,60 +21,53 @@ const BeatDropdown = ({
   updateSoundForBeat,
 }) => {
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
-  const { single, percussive, nonScale } = options;
 
-  const handleClick = (newSound, selected) => {
-    updateSoundForBeat(beatId, newSound, selected);
-  };
+  const parseOptions = (optionArray, hasNonScaleNote) =>
+    optionArray.map(({ label, value }) => {
+      const selected = sound.includes(value);
 
-  const renderOptions = () => {
-    const parseOptionArray = (optionArray, hasNonScaleNote) => {
-      return optionArray.map(({ label, value }) => {
-        const selected = sound.includes(value);
-
-        return (
-          <DropdownItem
-            disabled={sound.length >= 2 && !selected}
-            selected={selected}
-            key={value}
-            hasNonScaleNote={hasNonScaleNote}
-            onClick={() => handleClick(value, selected)}
-          >
-            {label}
-          </DropdownItem>
-        );
-      });
-    };
-
-    const parseHands = () => {
-      return hands.map(({ name, value }) => (
+      return (
         <DropdownItem
-          selected={value === hand}
+          disabled={sound.length >= 2 && !selected}
+          selected={selected}
           key={value}
-          onClick={() => updateHandForBeat(beatId, value, value === hand)}
+          hasNonScaleNote={hasNonScaleNote}
+          onClick={() => updateSoundForBeat(beatId, value, selected)}
         >
-          {name}
+          {label}
         </DropdownItem>
-      ));
-    };
+      );
+    });
 
-    return (
-      <>
-        <DropdownColumn>{parseOptionArray(single)}</DropdownColumn>
-        <DropdownColumn>
-          <DividerLine vertical small />
-        </DropdownColumn>
-        <DropdownColumn>
-          {parseOptionArray(percussive)}
-          {parseOptionArray(nonScale, hasNonScaleNote)}
-          <DividerLine small />
-          {parseHands()}
-        </DropdownColumn>
-      </>
-    );
-  };
+  const handItems = hands.map(({ name, value }) => (
+    <DropdownItem
+      selected={value === hand}
+      key={value}
+      onClick={() => updateHandForBeat(beatId, value, value === hand)}
+    >
+      {name}
+    </DropdownItem>
+  ));
 
-  return <Dropdown ref={insideRef}>{renderOptions()}</Dropdown>;
+  return (
+    <Dropdown ref={insideRef}>
+      <DropdownColumn>{parseOptions(options.single)}</DropdownColumn>
+      <DropdownColumn>
+        <DividerLine vertical small />
+      </DropdownColumn>
+      <DropdownColumn>
+        {parseOptions(options.percussive)}
+        <DividerLine small />
+        {handItems}
+        {hasNonScaleNote && (
+          <>
+            <DividerLine small />
+            {parseOptions(options.nonScale, hasNonScaleNote)}
+          </>
+        )}
+      </DropdownColumn>
+    </Dropdown>
+  );
 };
 
 const mapStateToProps = ({ ui }) => ({
