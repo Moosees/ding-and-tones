@@ -96,6 +96,7 @@ export const Dropdown = styled.div`
 `;
 
 export const DropdownItem = styled.div`
+  align-items: center;
   background-color: ${({ hasNonScaleNote, selected, theme }) =>
     selected
       ? hasNonScaleNote
@@ -106,7 +107,9 @@ export const DropdownItem = styled.div`
   color: ${({ selected, theme }) =>
     selected ? theme.colorTextInverted : theme.colorText};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  display: flex;
   font-size: ${({ theme }) => theme.fzSmallest};
+  justify-content: space-between;
   margin: 1px;
   opacity: ${({ disabled, selected }) => (disabled && !selected ? '0.6' : '1')};
   padding: 2px;
@@ -136,4 +139,8 @@ export const DropdownColumn = styled.div`
   flex-direction: column;
   flex-grow: 1;
   justify-content: center;
+`;
+
+export const HandIcon = styled.i`
+  font-size: inherit;
 `;

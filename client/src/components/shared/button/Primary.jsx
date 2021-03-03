@@ -1,9 +1,14 @@
 import React from 'react';
+import Checkbox from '../checkbox/Checkbox';
 import { PrimaryButton } from './button.styles';
 
-const BtnPrimary = ({ disabled, label, light, onClick }) => (
+const BtnPrimary = ({ checkbox, checked, disabled, label, light, onClick }) => (
   <PrimaryButton disabled={disabled} light={light} onClick={onClick}>
-    {label}
+    {checkbox ? (
+      <Checkbox small label={label} checked={checked} onChange={onClick} />
+    ) : (
+      label
+    )}
   </PrimaryButton>
 );
 

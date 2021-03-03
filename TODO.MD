@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Left and right hand recommendations for songwriter - started
-
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Print - Lazy load. Add more margins (with smaller bars)?
@@ -11,6 +9,7 @@
 * Use thunk and separate dispatches for alert
 * Get default hand when adding bars?
 * Check if loaded songs has saved hands and set hands open accordingly?
+* Dropdown opens where there's space instead of just below beat
 
 ## Bugs
 
@@ -37,6 +36,7 @@
 * Refactor styled-components more, mix-ins or css variables?
 * Privacy date localization
 * Print footer on every page
+* Checkbox hover effect, all transform: scale hovers...
 
 ## User/Menu
 
@@ -58,7 +58,6 @@
 * Web worker?
 * Count number of bars for search results? Virtual field?
 * Dropdown list show all dyads and ding + note combinations?
-* Dropdown opens where there's space instead of just below beat
 * Solo bar
 * Show latest changes (useful when copying and moving bars)
 * Undo changes

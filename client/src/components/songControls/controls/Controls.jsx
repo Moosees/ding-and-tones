@@ -15,6 +15,7 @@ import PopupSongMetre from './PopupSongMetre';
 const Controls = ({
   addNewBar,
   bpm,
+  handsOpen,
   metre,
   isSongPlaying,
   subdivision,
@@ -51,7 +52,9 @@ const Controls = ({
             handleNewBar={handleNewBar}
           />
           <BtnPrimary
-            label="Toggle Hands"
+            checkbox
+            checked={handsOpen}
+            label="Hands"
             disabled={isSongPlaying}
             onClick={toggleHandsOpen}
           />
@@ -72,6 +75,7 @@ const mapStateToProps = ({ song, ui }) => ({
   bpm: song.info.bpm,
   subdivision: song.info.subdivision,
   metre: song.info.metre,
+  handsOpen: ui.handsOpen,
   isSongPlaying: ui.isSongPlaying,
 });
 

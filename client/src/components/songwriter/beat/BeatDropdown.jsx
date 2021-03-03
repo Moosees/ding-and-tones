@@ -7,7 +7,12 @@ import {
   updateSoundForBeat,
 } from '../../../redux/song/song.actions';
 import DividerLine from '../../shared/dividerLine/DividerLine';
-import { Dropdown, DropdownColumn, DropdownItem } from './beat.styles';
+import {
+  Dropdown,
+  DropdownColumn,
+  DropdownItem,
+  HandIcon,
+} from './beat.styles';
 
 const BeatDropdown = ({
   beatId,
@@ -45,7 +50,8 @@ const BeatDropdown = ({
       key={value}
       onClick={() => updateHandForBeat(beatId, value, value === hand)}
     >
-      {name}
+      <span>{name}</span>
+      <HandIcon className="material-icons">pan_tool</HandIcon>
     </DropdownItem>
   ));
 

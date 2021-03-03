@@ -97,6 +97,7 @@ export const NavButton = styled.button`
 `;
 
 export const PrimaryButton = styled.button`
+  align-items: center;
   border: ${({ theme }) => theme.borderLight};
   background-color: ${({ light, theme }) =>
     light ? theme.colorBtnLight : theme.colorBtnHeavy};
@@ -104,6 +105,9 @@ export const PrimaryButton = styled.button`
   box-shadow: ${({ light, theme }) =>
     light ? theme.shadowBtnLight : theme.shadowBtnHeavy};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  display: flex;
+  height: 2.8rem;
+  justify-content: center;
   margin: 0.5rem 3px;
   min-width: 8rem;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
