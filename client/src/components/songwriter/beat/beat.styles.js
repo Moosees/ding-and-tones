@@ -108,9 +108,10 @@ export const DropdownItem = styled.div`
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   font-size: ${({ theme }) => theme.fzSmallest};
   margin: 1px;
+  opacity: ${({ disabled, selected }) => (disabled && !selected ? '0.6' : '1')};
   padding: 2px;
   position: relative;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
   z-index: 1000;
 
   ${({ disabled, theme }) =>
