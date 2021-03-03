@@ -13,6 +13,7 @@ const Beat = ({
   soundOptions,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const anchorRef = useRef(null);
   const btnRef = useRef(null);
   const { value, sound, hand } = beats[beatId];
   const isBeatPlaying = beatId === currentBeat;
@@ -31,7 +32,7 @@ const Beat = ({
   };
 
   return (
-    <BeatAnchor>
+    <BeatAnchor ref={anchorRef}>
       <>
         <BeatContainer
           ref={btnRef}
@@ -50,6 +51,7 @@ const Beat = ({
       </>
       {isOpen && (
         <BeatDropdown
+          anchorRef={anchorRef}
           btnRef={btnRef}
           beatId={beatId}
           hand={hand}

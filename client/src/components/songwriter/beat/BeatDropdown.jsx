@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { connect } from 'react-redux';
 import { hands } from '../../../assets/constants';
 import useCloseOutside from '../../../hooks/useCloseOutside';
@@ -7,6 +7,7 @@ import {
   updateSoundForBeat,
 } from '../../../redux/song/song.actions';
 import DividerLine from '../../shared/dividerLine/DividerLine';
+import { DropdownContext } from '../dropdownHandler/DropdownHandler';
 import {
   Dropdown,
   DropdownColumn,
@@ -15,6 +16,7 @@ import {
 } from './beat.styles';
 
 const BeatDropdown = ({
+  anchorRef,
   beatId,
   btnRef,
   hand,
@@ -26,6 +28,12 @@ const BeatDropdown = ({
   updateSoundForBeat,
 }) => {
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
+  const { borderHeight, listScroll } = useContext(DropdownContext);
+  const { offsetTop } = anchorRef.current;
+  const topPos = offsetTop - listScroll;
+  console.log('topPos', topPos);
+  console.log({ borderHeight });
+  console.log(topPos > borderHeight / 2 ? 'Open TOP' : 'Open BOTTOM');
 
   const parseOptions = (optionArray, hasNonScaleNote) =>
     optionArray.map(({ label, value }) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getSongById } from '../../redux/song/song.actions';
@@ -16,6 +16,7 @@ import {
 } from './song.styles';
 
 const Song = ({ getSongById, isEditingSong, songUi }) => {
+  const borderRef = useRef(null);
   const { songId } = useParams();
   const { replace } = useHistory();
 
@@ -42,9 +43,9 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
             <SongControls />
           </TopSection>
           <DividerLine />
-          <SongEditContainer>
+          <SongEditContainer ref={borderRef}>
             <ScrollBox>
-              <Songwriter />
+              <Songwriter borderRef={borderRef} />
             </ScrollBox>
           </SongEditContainer>
         </SongContainer>
