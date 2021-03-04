@@ -2,8 +2,6 @@
 
 ## Current tasks
 
-* Dropdown opens where there's space instead of just below beat (can open outside parent on smaller screens) - started
-
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Print - Lazy load. Add more margins (with smaller bars)?

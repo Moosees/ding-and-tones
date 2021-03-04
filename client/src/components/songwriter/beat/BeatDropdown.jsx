@@ -28,12 +28,10 @@ const BeatDropdown = ({
   updateSoundForBeat,
 }) => {
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
-  const { borderHeight, listScroll } = useContext(DropdownContext);
-  const { offsetTop } = anchorRef.current;
-  const topPos = offsetTop - listScroll;
-  console.log('topPos', topPos);
-  console.log({ borderHeight });
-  console.log(topPos > borderHeight / 2 ? 'Open TOP' : 'Open BOTTOM');
+  const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
+  const { offsetTop, offsetLeft } = anchorRef.current;
+  const openTop = offsetTop - listScroll > borderHeight / 2;
+  const openLeft = offsetLeft > borderWidth / 2;
 
   const parseOptions = (optionArray, hasNonScaleNote) =>
     optionArray.map(({ label, value }) => {
@@ -64,7 +62,7 @@ const BeatDropdown = ({
   ));
 
   return (
-    <Dropdown ref={insideRef}>
+    <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
       <DropdownColumn>
         {parseOptions(options.single)}
         {hasNonScaleNote && (

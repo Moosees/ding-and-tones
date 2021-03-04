@@ -78,20 +78,27 @@ export const Dropdown = styled.div`
   justify-content: center;
   padding: 4px 0;
   position: absolute;
-  top: 3rem;
+  transform: translateX(${({ openLeft }) => (openLeft ? '-2rem' : '2rem')});
   width: max-content;
   z-index: 100;
+
+  ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
 
   &::before {
     background-color: ${({ theme }) => theme.colorBg};
     border: ${({ theme }) => theme.borderHeavyLight};
-    border-radius: 2px;
-    border-width: 2px 0 0 2px;
+    border-radius: ${({ openTop }) =>
+      openTop
+        ? '50% 50% 50% 50% / 0% 0% 100% 100%'
+        : '50% 50% 50% 50% / 100% 100% 0% 0%'};
+    border-width: ${({ openTop }) =>
+      openTop ? '0 2px 2px 2px' : '2px 2px 0 2px'};
     content: '';
     padding: 0.5rem;
     position: absolute;
-    top: -0.7rem;
-    transform: rotate(45deg);
+    transform: translateX(${({ openLeft }) => (openLeft ? '2' : '-1.8')}rem);
+
+    ${({ openTop }) => (openTop ? 'bottom: -1.2rem;' : 'top: -1.2rem;')}
   }
 `;
 
