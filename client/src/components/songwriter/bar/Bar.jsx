@@ -28,7 +28,7 @@ const Bar = ({
 
   // react DnD
   const ref = useRef(null);
-  const [, drop] = useDrop({
+  const [, drop] = useDrop(() => ({
     accept: ItemTypes.BAR,
     hover(item, monitor) {
       if (!ref.current || isSongPlaying) return;
@@ -40,13 +40,15 @@ const Bar = ({
       moveBar(dragIndex, hoverIndex);
       item.index = hoverIndex;
     },
-  });
-  const [{ isDragging }, drag, preview] = useDrag({
+  }));
+
+  const [{ isDragging }, drag, preview] = useDrag(() => ({
     item: { type: ItemTypes.BAR, barId, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  });
+  }));
+
   preview(drop(ref));
 
   return (
