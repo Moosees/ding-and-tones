@@ -21,6 +21,18 @@ const beatStyles = {
     8: '2px',
     16: '3px',
   },
+  dropdownOffset: {
+    left: {
+      4: 'right: 0;',
+      8: 'right: -1px;',
+      16: 'right: -2px;',
+    },
+    right: {
+      4: 'left: -1px;',
+      8: 'left: -2px;',
+      16: 'left: -4px;',
+    },
+  },
 };
 
 export const BeatAnchor = styled.div`
@@ -63,9 +75,12 @@ export const BeatContainer = styled.div`
   `}
 `;
 
-export const BeatText = styled.div`
+export const BeatText = styled.span`
   font-size: ${({ value }) => beatStyles.fz[value]}px;
-  letter-spacing: -1px;
+
+  ${({ theme }) => theme.mqW850`
+    letter-spacing: -1px;
+  `}
 `;
 
 export const Dropdown = styled.div`
@@ -78,11 +93,20 @@ export const Dropdown = styled.div`
   justify-content: center;
   padding: 4px 0;
   position: absolute;
-  transform: translateX(${({ openLeft }) => (openLeft ? '-2rem' : '2rem')});
+  /* compensate for beat margin */
+  transform: translateX(
+    ${({ openLeft, value }) => (!openLeft && value === 4 ? '4px' : '0')}
+  );
   width: max-content;
   z-index: 100;
 
+  ${({ openLeft, value }) =>
+    beatStyles.dropdownOffset[openLeft ? 'left' : 'right'][value]}
   ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
+
+  ${({ theme }) => theme.mqW850`
+    transform: translateX(0);
+  `}
 
   &::before {
     background-color: ${({ theme }) => theme.colorBg};
@@ -96,8 +120,10 @@ export const Dropdown = styled.div`
     content: '';
     padding: 0.5rem;
     position: absolute;
-    transform: translateX(${({ openLeft }) => (openLeft ? '2' : '-1.8')}rem);
+    /* transform: translateX(${({ openLeft }) =>
+      openLeft ? '2.5' : '-2.5'}rem); */
 
+    ${({ openLeft }) => (openLeft ? 'right: 5%;' : 'left: 5%;')}
     ${({ openTop }) => (openTop ? 'bottom: -1.2rem;' : 'top: -1.2rem;')}
   }
 `;

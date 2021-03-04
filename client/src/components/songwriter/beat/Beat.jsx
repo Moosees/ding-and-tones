@@ -58,6 +58,7 @@ const Beat = ({
           sound={sound}
           hasNonScaleNote={hasNonScaleNote}
           isOpenCb={setIsOpen}
+          value={value}
         />
       )}
     </BeatAnchor>

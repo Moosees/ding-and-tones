@@ -26,6 +26,7 @@ const BeatDropdown = ({
   sound,
   updateHandForBeat,
   updateSoundForBeat,
+  value,
 }) => {
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
@@ -62,7 +63,12 @@ const BeatDropdown = ({
   ));
 
   return (
-    <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
+    <Dropdown
+      ref={insideRef}
+      openLeft={openLeft}
+      openTop={openTop}
+      value={value}
+    >
       <DropdownColumn>
         {parseOptions(options.single)}
         {hasNonScaleNote && (
