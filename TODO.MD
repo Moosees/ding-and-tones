@@ -2,39 +2,34 @@
 
 ## Current tasks
 
-* Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * One-e-and-a style phonetic rhythm notation on bars?
 * Print - Lazy load. Add more margins (with smaller bars)?
 * Print button in song viewer?
+* Typescript
 * Use thunk and separate dispatches for alert
-* Get default hand when adding bars?
-* Check if loaded songs has saved hands and set hands open accordingly?
+* Play song logic should be moved somewhere else?
+* Play song logic should be reworked with less forEach?
 
 ## Bugs
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
-* Drag and drop need testing, drop target size for 16ths
 * User can tab select :active outside of popups
-* Signing in randomly breaks, problem with getGoogleCode?
-* Select offsetWidth doesn't set correctly on first load - sidestepped for now
 * Login popup and blockers...
 
 ## Design
 
-* Z-index isolation for menu?
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
-* Remake scale grid layout
 * Load song button can be seen through table header
 * Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs instead of alert?
 * New buttons for loading songs and confirm/cancel
 * Hover on drum shows all information about hovered note?
 * Refactor styled-components more, mix-ins or css variables?
-* Privacy date localization
 * Print footer on every page
 * Checkbox hover effect, all transform: scale hovers...
+* Bar numbers on song viewer? Only long songs?
 
 ## User/Menu
 
@@ -50,46 +45,58 @@
 * Check cache for possible chords to show in filter
 * Sort chords
 * Show chord notes in scale in interval list?
+* Select chords to show in beat dropdown?
+* Play chords from chords page, also play them as arpeggios?
 
 ## Songwriter
 
-* Web worker?
-* Count number of bars for search results? Virtual field?
 * Dropdown list show all dyads and ding + note combinations?
-* Solo bar
+* Solo bars? Invert mute/solo?
 * Show latest changes (useful when copying and moving bars)
 * Undo changes
+* Looping
+* Get default hand when adding bars?
+* Check if loaded songs has saved hands and set hands open accordingly?
+* Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
+* Plus and minus one for bpm
 
-## State/Backend
+## State
 
 * Persist working state through local storage? In session?
-* Prevent/warn transition away from page if data isn't saved?
 * Merge ui reducer actions? Rework actions?
+* Merge api status states (isFetching etc.) in client?
+* Remove isOwner from scale ui state or add ability to save scale changes
+* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
+* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+* Move position map to reducer?
+
+## Back/frontend logic
+
+* Prevent/warn transition away from page if data isn't saved?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Change query string to keyword search? Add difficulty filter to searches
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
-* Sorting search results in table
 * Split save song controller?
-* Remove isOwner from scale ui state or add ability to save scale changes
-* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
-* Merge api status states (isFetching etc.) in client?
-* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* Move position map to reducer?
+* Sorting search results in table
 * Session for logged in users
+* Privacy date localization
+* Select boxes dynamic width
+* Web worker?
+* Count number of bars for search results? Virtual field?
+
+## Deps
+
+* Google-auth-library new major version
+* React-dnd new major version
 
 ## Future plans
 
-* Typescript and testing
+* Testing
 * Find songs by user (other than current user)
 * Chose between save and save as new?
 * Disable save button if there are no changes
-* Plus and minus one for bpm
 * Create scale from name and string
-* Loop songs or bars
 * Add play scale button and function
-* Play chords from chords page, also play them as arpeggios?
-* Play song logic should be moved somewhere else?
-* Play song logic should be reworked with less forEach?
 * Removing user should remove all users songs?
 * Keyboard shortcuts on new song (and other?) popup
 * Keyboard shortcuts for playing drum (or songwriter)
@@ -99,13 +106,12 @@
 * Custom chord inputs
 * Custom metres
 * Comparing scales using tables or other presentations
-* Logic for figuring out if a note is a sharp or flat - only flats for now
-* Multiple drums for chords, songs etc.
+* Logic for figuring out if a note is a sharp or flat - only flats for now, circle of fifths?
+* Multiple drums for chords, songs etc. Two track songwriter?
 * More drum alternatives? Add synth/piano alternative?
 * Percussive hits on handpan - normalize handpan samples
 * Higher quality samples
 * Link drum and songwriter - animations?
-* Songwriter bars alignment should change with big songs
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
@@ -116,4 +122,3 @@
 * Check text inputs for bad words?
 * Show name for your songs as "you"?
 * Print multiple songs on same page
-* Bar numbers on song viewer? Only long songs?
