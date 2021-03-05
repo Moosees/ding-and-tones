@@ -3,8 +3,6 @@
 ## Current tasks
 
 * One-e-and-a style phonetic rhythm notation on bars?
-* Print - Lazy load. Add more margins (with smaller bars)?
-* Print button in song viewer?
 * Typescript
 * Use thunk and separate dispatches for alert
 * Play song logic should be moved somewhere else?
@@ -27,7 +25,7 @@
 * New buttons for loading songs and confirm/cancel
 * Hover on drum shows all information about hovered note?
 * Refactor styled-components more, mix-ins or css variables?
-* Print footer on every page
+* Print footer on every page - print margins?
 * Checkbox hover effect, all transform: scale hovers...
 * Bar numbers on song viewer? Only long songs?
 

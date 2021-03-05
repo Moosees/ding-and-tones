@@ -16,13 +16,15 @@ const ControlsContainer = styled.div`
   }
 `;
 
-const SongViewControls = ({ isSongPlaying, toggleHandsOpen }) => {
+const SongViewControls = ({ handsOpen, isSongPlaying, toggleHandsOpen }) => {
   return (
     <ControlsContainer>
       <PlayButton light />
       <BtnPrimary
         light
-        label="Toggle Hands"
+        checkbox
+        checked={handsOpen}
+        label="Hands"
         disabled={isSongPlaying}
         onClick={toggleHandsOpen}
       />
@@ -32,6 +34,7 @@ const SongViewControls = ({ isSongPlaying, toggleHandsOpen }) => {
 };
 
 const mapStateToProps = ({ ui }) => ({
+  handsOpen: ui.handsOpen,
   isSongPlaying: ui.isSongPlaying,
 });
 

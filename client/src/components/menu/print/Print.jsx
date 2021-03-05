@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import BtnMenu from '../../shared/button/Menu';
-import ReactToPrint from './ReactToPrint';
+
+const ReactToPrint = lazy(() => import('./ReactToPrint'));
 
 const Print = () => {
   const [showPrint, setShowPrint] = useState(false);
@@ -14,7 +15,9 @@ const Print = () => {
       />
       {showPrint && (
         <div style={{ display: 'none' }}>
-          <ReactToPrint onAfterPrint={() => setShowPrint(false)} />
+          <Suspense>
+            <ReactToPrint onAfterPrint={() => setShowPrint(false)} />
+          </Suspense>
         </div>
       )}
     </>
