@@ -84,11 +84,6 @@
 * Web worker?
 * Count number of bars for search results? Virtual field?
 
-## Deps
-
-* Google-auth-library new major version
-* React-dnd new major version
-
 ## Future plans
 
 * Testing
