@@ -7,32 +7,44 @@ import {
   BarMetre,
   BeatContainer,
   BeatsContainer,
-  BeatText
+  BeatText,
 } from './bar.styles';
 
-const Bar = ({ barId, bars, beats, currentBeat, handsOpen, prevBar }) => {
+const Bar = ({
+  barId,
+  bars,
+  beats,
+  countOpen,
+  currentBeat,
+  handsOpen,
+  prevBar,
+}) => {
   const { metre, subdivision, measure } = bars[barId];
   const prevBarMetre = prevBar ? bars[prevBar].metre : null;
   const metreInfo = metreList[metre];
 
-  const filteredBeats = measure
-    .filter((beat) => beats[beat].value <= subdivision)
-    .map((beat, i) => {
-      const { value, sound, hand } = beats[beat];
+  const filteredBeats = measure.reduce((acc, beat, i) => {
+    const { value, sound, hand } = beats[beat];
+    if (value <= subdivision) {
       const isBeatPlaying = beat === currentBeat;
-      return (
+
+      acc.push(
         <BeatContainer
           key={beat}
           value={value}
           addMarginLeft={i && subdivision === 4}
         >
+          {countOpen && <div>{metreInfo.count[i]}</div>}
           <BeatText isBeatPlaying={isBeatPlaying} value={value}>
             {sound !== '-' && sound.join('+')}
           </BeatText>
           {handsOpen && <div>{handShortByValue[hand]}</div>}
         </BeatContainer>
       );
-    });
+    }
+
+    return acc;
+  }, []);
 
   return (
     <BarContainer>
@@ -47,6 +59,7 @@ const Bar = ({ barId, bars, beats, currentBeat, handsOpen, prevBar }) => {
 const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
   beats: song.beats,
+  countOpen: ui.countOpen,
   currentBeat: ui.currentBeat,
   handsOpen: ui.handsOpen,
 });

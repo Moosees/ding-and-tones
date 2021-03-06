@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { toggleHandsOpen } from '../../redux/ui/ui.actions';
+import { toggleCountOpen, toggleHandsOpen } from '../../redux/ui/ui.actions';
 import BtnPrimary from '../shared/button/Primary';
 import EditButton from './editButton/EditButton';
 import PlayButton from './playButton/PlayButton';
@@ -16,7 +16,13 @@ const ControlsContainer = styled.div`
   }
 `;
 
-const SongViewControls = ({ handsOpen, isSongPlaying, toggleHandsOpen }) => {
+const SongViewControls = ({
+  countOpen,
+  handsOpen,
+  isSongPlaying,
+  toggleCountOpen,
+  toggleHandsOpen,
+}) => {
   return (
     <ControlsContainer>
       <PlayButton light />
@@ -28,14 +34,25 @@ const SongViewControls = ({ handsOpen, isSongPlaying, toggleHandsOpen }) => {
         disabled={isSongPlaying}
         onClick={toggleHandsOpen}
       />
+      <BtnPrimary
+        light
+        checkbox
+        checked={countOpen}
+        label="Count"
+        disabled={isSongPlaying}
+        onClick={toggleCountOpen}
+      />
       <EditButton light />
     </ControlsContainer>
   );
 };
 
 const mapStateToProps = ({ ui }) => ({
+  countOpen: ui.countOpen,
   handsOpen: ui.handsOpen,
   isSongPlaying: ui.isSongPlaying,
 });
 
-export default connect(mapStateToProps, { toggleHandsOpen })(SongViewControls);
+export default connect(mapStateToProps, { toggleCountOpen, toggleHandsOpen })(
+  SongViewControls
+);

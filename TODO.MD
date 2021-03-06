@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Syllable counting - started
-* Count button and syllables in song viewer
 * Beat dropdown position and vertical text align for hands, make anchor only cover beat circle?
 * Copy bar should copy hands
 

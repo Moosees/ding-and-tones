@@ -29,16 +29,6 @@ export const BarContainer = styled.li`
   flex-direction: column;
   padding: 36px 8px 8px;
   position: relative;
-
-  &:not(:last-child):after {
-    border-right: 1px solid #000;
-    content: '';
-    height: 48%;
-    position: absolute;
-    right: 0;
-    top: 30px;
-    width: 1px;
-  }
 `;
 
 export const BarMetre = styled.div`
@@ -50,6 +40,17 @@ export const BarMetre = styled.div`
 
 export const BeatsContainer = styled.div`
   display: flex;
+  position: relative;
+
+  ${BarContainer}:not(:last-child) &:after {
+    border-right: 1px solid #000;
+    bottom: -2px;
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: -2px;
+    width: 1px;
+  }
 `;
 
 export const BeatContainer = styled.div`
@@ -57,7 +58,6 @@ export const BeatContainer = styled.div`
   cursor: default;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin-top: ${({ value }) => beatStyles.topOffset[value]};
 
   &:not(:first-child) {
