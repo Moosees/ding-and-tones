@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* One-e-and-a style phonetic rhythm notation on bars?
+* Syllable counting - started - show syllables in songwriter and viewer, button in viewer
 * Typescript
 * Use thunk and separate dispatches for alert
 * Play song logic should be moved somewhere else?
