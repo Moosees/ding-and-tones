@@ -24,7 +24,7 @@ const Bar = ({
     checkMeasureVsMetre(barId, measure, beats, subdivision, metre);
   }, [barId, measure, beats, subdivision, metre]);
 
-  const filteredBeats = displayBeats(measure, beats, subdivision);
+  const filteredBeats = displayBeats(measure, beats, subdivision, metre);
 
   // react DnD
   const ref = useRef(null);

@@ -39,7 +39,6 @@ export const BeatAnchor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: relative;
 `;
 

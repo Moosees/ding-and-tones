@@ -2,7 +2,11 @@
 
 ## Current tasks
 
-* Syllable counting - started - show syllables in songwriter and viewer, button in viewer
+* Syllable counting - started
+* Count button and syllables in song viewer
+* Beat dropdown position and vertical text align for hands, make anchor only cover beat circle?
+* Copy bar should copy hands
+
 * Typescript
 * Use thunk and separate dispatches for alert
 * Play song logic should be moved somewhere else?

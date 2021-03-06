@@ -7,6 +7,8 @@ import BeatDropdown from './BeatDropdown';
 const Beat = ({
   beatId,
   beats,
+  count,
+  countOpen,
   currentBeat,
   handsOpen,
   isSongPlaying,
@@ -34,6 +36,7 @@ const Beat = ({
   return (
     <BeatAnchor ref={anchorRef}>
       <>
+        {countOpen && <div>{count}</div>}
         <BeatContainer
           ref={btnRef}
           hasNonScaleNote={hasNonScaleNote}
@@ -67,6 +70,7 @@ const Beat = ({
 
 const mapStateToProps = ({ song, ui }) => ({
   beats: song.beats,
+  countOpen: ui.countOpen,
   currentBeat: ui.currentBeat,
   handsOpen: ui.handsOpen,
   isSongPlaying: ui.isSongPlaying,

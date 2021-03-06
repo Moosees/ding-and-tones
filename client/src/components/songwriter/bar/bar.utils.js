@@ -5,14 +5,15 @@ import { updateMeasure } from '../../../redux/song/song.actions';
 import { store } from '../../../redux/store';
 import Beat from '../beat/Beat';
 
-export const displayBeats = (measure, beats, barSubdivision) => {
+export const displayBeats = (measure, beats, barSubdivision, metre) => {
   const filteredBeats = [];
+  const { count } = metreList[metre];
 
-  measure.forEach((beat) => {
+  measure.forEach((beat, i) => {
     const { value } = beats[beat];
 
     if (value <= barSubdivision)
-      filteredBeats.push(<Beat key={beat} beatId={beat} />);
+      filteredBeats.push(<Beat key={beat} beatId={beat} count={count[i]} />);
   });
 
   return filteredBeats;
