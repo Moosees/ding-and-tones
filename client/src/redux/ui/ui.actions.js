@@ -74,6 +74,10 @@ export const setSoundOptions = (scale) => (dispatch, getState) => {
   });
 };
 
+export const toggleCountOpen = () => ({
+  type: uiTypes.TOGGLE_COUNT_OPEN,
+});
+
 export const toggleEditSong = () => ({
   type: uiTypes.TOGGLE_EDIT_SONG,
 });

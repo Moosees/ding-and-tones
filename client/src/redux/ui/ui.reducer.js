@@ -5,6 +5,7 @@ import { updateMutedBars } from './ui.utils';
 const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
+  countOpen: false,
   handsOpen: true,
   isEditingSong: true,
   isPreparingSong: false,
@@ -32,12 +33,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         currentBeat: payload,
       };
 
-    case uiTypes.TOGGLE_HANDS_OPEN:
-      return {
-        ...state,
-        handsOpen: !state.handsOpen,
-      };
-
     case uiTypes.SET_IS_PREPARING_SONG:
       return {
         ...state,
@@ -62,11 +57,23 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         soundOptions: payload,
       };
 
+    case uiTypes.TOGGLE_COUNT_OPEN:
+      return {
+        ...state,
+        countOpen: !state.countOpen,
+      };
+
     case uiTypes.TOGGLE_EDIT_SONG:
       return {
         ...state,
         isEditingSong: !state.isEditingSong,
         mutedBars: {},
+      };
+
+    case uiTypes.TOGGLE_HANDS_OPEN:
+      return {
+        ...state,
+        handsOpen: !state.handsOpen,
       };
 
     case uiTypes.TOGGLE_MUTE_BAR:
