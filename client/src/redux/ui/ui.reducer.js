@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   currentBar: null,
   currentBeat: null,
   countOpen: false,
-  handsOpen: true,
+  handsOpen: false,
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,

@@ -2,7 +2,7 @@
 
 ## Current tasks
 
-* Copy bar should copy hands
+* Change default song?
 * Typescript
 * Use thunk and separate dispatches for alert
 * Play song logic should be moved somewhere else?

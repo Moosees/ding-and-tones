@@ -19,9 +19,8 @@ const copyBar = (barId, bars, beats) => {
   bars[barId].measure.forEach((beat) => {
     const newBeatId = uuid();
     newBeats[newBeatId] = {
-      sound: beats[beat].sound,
-      value: beats[beat].value,
-      mode: beats[beat].mode,
+      ...beats[beat],
+      sound: [...beats[beat].sound],
     };
     newMeasure.push(newBeatId);
   });
