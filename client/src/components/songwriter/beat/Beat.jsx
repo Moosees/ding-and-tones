@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
-import { BeatCircle, BeatContainer, BeatText } from './beat.styles';
+import { BeatAnchor, BeatCircle, BeatContainer, BeatText } from './beat.styles';
 import BeatDropdown from './BeatDropdown';
 
 const Beat = ({
@@ -15,8 +15,8 @@ const Beat = ({
   soundOptions,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const anchorRef = useRef(null);
   const btnRef = useRef(null);
+  const dropdownPosRef = useRef(null);
   const { value, sound, hand } = beats[beatId];
   const isBeatPlaying = beatId === currentBeat;
 
@@ -34,24 +34,26 @@ const Beat = ({
   };
 
   return (
-    <BeatContainer ref={anchorRef}>
+    <BeatContainer ref={dropdownPosRef}>
       <>
         {countOpen && <div>{count}</div>}
-        <BeatCircle
-          ref={btnRef}
-          hasNonScaleNote={hasNonScaleNote}
-          isLocked={isSongPlaying}
-          isBeatPlaying={isBeatPlaying}
-          isSongPlaying={isSongPlaying}
-          value={value}
-          onClick={handleOpen}
-        >
-          <BeatText isBeatPlaying={isBeatPlaying} value={value}>
-            {sound.join('+')}
-          </BeatText>
+        <BeatAnchor>
+          <BeatCircle
+            ref={btnRef}
+            hasNonScaleNote={hasNonScaleNote}
+            isLocked={isSongPlaying}
+            isBeatPlaying={isBeatPlaying}
+            isSongPlaying={isSongPlaying}
+            value={value}
+            onClick={handleOpen}
+          >
+            <BeatText isBeatPlaying={isBeatPlaying} value={value}>
+              {sound.join('+')}
+            </BeatText>
+          </BeatCircle>
           {isOpen && (
             <BeatDropdown
-              anchorRef={anchorRef}
+              dropdownPosRef={dropdownPosRef}
               btnRef={btnRef}
               beatId={beatId}
               hand={hand}
@@ -61,7 +63,7 @@ const Beat = ({
               value={value}
             />
           )}
-        </BeatCircle>
+        </BeatAnchor>
         {handsOpen && <div>{handShortByValue[hand]}</div>}
       </>
     </BeatContainer>

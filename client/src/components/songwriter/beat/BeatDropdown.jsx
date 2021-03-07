@@ -16,9 +16,9 @@ import {
 } from './beat.styles';
 
 const BeatDropdown = ({
-  anchorRef,
   beatId,
   btnRef,
+  dropdownPosRef,
   hand,
   hasNonScaleNote,
   isOpenCb,
@@ -30,7 +30,7 @@ const BeatDropdown = ({
 }) => {
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
-  const { offsetTop, offsetLeft } = anchorRef.current;
+  const { offsetTop, offsetLeft } = dropdownPosRef.current;
   const openTop = offsetTop - listScroll > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 

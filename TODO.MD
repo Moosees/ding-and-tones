@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Fix beat dropdown position again...
 * Change default song?
 * Typescript
 * Use thunk and separate dispatches for alert

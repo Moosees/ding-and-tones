@@ -21,7 +21,7 @@ const DropdownHandler = ({ children, borderRef, listRef }) => {
       const onScroll = () => {
         if (timeout) clearTimeout(timeout);
         timeout = setTimeout(() => {
-          setListScroll(scrollEl.scrollTop + scrollEl.offsetTop);
+          setListScroll(scrollEl.scrollTop);
         }, 50);
       };
 

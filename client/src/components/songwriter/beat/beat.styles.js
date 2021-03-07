@@ -34,11 +34,18 @@ const beatStyles = {
     },
   },
 };
+export const BeatAnchor = styled.div`
+  /* align-items: center; */
+  /* display: flex; */
+  /* justify-content: center; */
+  position: relative;
+`;
 
 export const BeatContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const BeatCircle = styled.div`
@@ -60,7 +67,6 @@ export const BeatCircle = styled.div`
   margin: 1px;
   margin-left: ${({ value }) => (value === 4 ? '4px' : '0')};
   margin-top: ${({ value }) => beatStyles.topOffset[value]};
-  position: relative;
   transition: color 0.1s ease-in;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
 

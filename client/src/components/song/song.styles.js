@@ -10,6 +10,8 @@ export const SongContainer = styled.div`
 
 export const SongEditContainer = styled.div`
   display: flex;
+  /* offsetParent for beat dropdown */
+  position: relative;
   width: 100%;
 `;
 
