@@ -16,28 +16,29 @@ const beatStyles = {
     8: 'solid',
     16: 'dashed',
   },
-  topOffset: {
-    4: '1px',
-    8: '2px',
-    16: '3px',
-  },
-  dropdownOffset: {
-    left: {
-      4: 'right: 0;',
-      8: 'right: -1px;',
-      16: 'right: -2px;',
-    },
-    right: {
-      4: 'left: -1px;',
-      8: 'left: -2px;',
-      16: 'left: -4px;',
-    },
-  },
 };
+
+export const Arrow = styled.div`
+  background-color: ${({ theme }) => theme.colorBg};
+  border: ${({ theme }) => theme.borderHeavyLight};
+  border-radius: ${({ openTop }) =>
+    openTop
+      ? '50% 50% 50% 50% / 0% 0% 100% 100%'
+      : '50% 50% 50% 50% / 100% 100% 0% 0%'};
+  border-width: ${({ openTop }) =>
+    openTop ? '0 2px 2px 2px' : '2px 2px 0 2px'};
+  padding: 0.5rem;
+  position: absolute;
+  z-index: 200;
+
+  ${({ openTop }) => (openTop ? 'bottom: 2rem;' : 'top: 2rem;')}
+`;
+
 export const BeatAnchor = styled.div`
-  /* align-items: center; */
-  /* display: flex; */
-  /* justify-content: center; */
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
   position: relative;
 `;
 
@@ -45,7 +46,13 @@ export const BeatContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: ${({ value }) => (value === 4 ? '3px' : '0')};
   position: relative;
+
+  ${({ theme }) => theme.mqW850`
+    margin-left: 0;
+  `}
 `;
 
 export const BeatCircle = styled.div`
@@ -65,8 +72,6 @@ export const BeatCircle = styled.div`
   height: ${({ value }) => beatStyles.heightWidth[value]}rem;
   justify-content: center;
   margin: 1px;
-  margin-left: ${({ value }) => (value === 4 ? '4px' : '0')};
-  margin-top: ${({ value }) => beatStyles.topOffset[value]};
   transition: color 0.1s ease-in;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
 
@@ -74,14 +79,11 @@ export const BeatCircle = styled.div`
     ${({ isSongPlaying, theme }) =>
       !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
   }
-
-  ${({ theme }) => theme.mqW850`
-    margin-left: 0;
-  `}
 `;
 
 export const BeatText = styled.span`
-  font-size: ${({ value }) => beatStyles.fz[value]}px;
+  font-size: ${({ value }) => beatStyles.fz[value] || '12'}px;
+  white-space: pre-wrap;
 
   ${({ theme }) => theme.mqW850`
     letter-spacing: -1px;
@@ -101,29 +103,8 @@ export const Dropdown = styled.div`
   width: max-content;
   z-index: 100;
 
-  ${({ openLeft, value }) => (openLeft ? 'right: -4px;' : 'left: -4px;')}
+  ${({ openLeft }) => (openLeft ? 'right: 0;' : 'left: 0;')}
   ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
-
-  ${({ theme }) => theme.mqW850`
-    transform: translateX(0);
-  `}
-
-  &::before {
-    background-color: ${({ theme }) => theme.colorBg};
-    border: ${({ theme }) => theme.borderHeavyLight};
-    border-radius: ${({ openTop }) =>
-      openTop
-        ? '50% 50% 50% 50% / 0% 0% 100% 100%'
-        : '50% 50% 50% 50% / 100% 100% 0% 0%'};
-    border-width: ${({ openTop }) =>
-      openTop ? '0 2px 2px 2px' : '2px 2px 0 2px'};
-    content: '';
-    padding: 0.5rem;
-    position: absolute;
-
-    ${({ openLeft }) => (openLeft ? 'right: 5px;' : 'left: 5px;')}
-    ${({ openTop }) => (openTop ? 'bottom: -1.2rem;' : 'top: -1.2rem;')}
-  }
 `;
 
 export const DropdownItem = styled.div`

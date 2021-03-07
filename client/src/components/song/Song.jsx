@@ -42,7 +42,7 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
           <TopSection>
             <SongControls />
           </TopSection>
-          <DividerLine />
+          <DividerLine small />
           <SongEditContainer ref={borderRef}>
             <ScrollBox>
               <Songwriter borderRef={borderRef} />

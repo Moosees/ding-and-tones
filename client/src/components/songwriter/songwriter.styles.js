@@ -5,4 +5,9 @@ export const Bars = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  padding: 1rem 0;
+
+  ${({ theme }) => theme.mqW850`
+    padding: 3rem 0;
+  `}
 `;

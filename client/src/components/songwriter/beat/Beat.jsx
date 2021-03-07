@@ -34,9 +34,9 @@ const Beat = ({
   };
 
   return (
-    <BeatContainer ref={dropdownPosRef}>
+    <BeatContainer ref={dropdownPosRef} value={value}>
       <>
-        {countOpen && <div>{count}</div>}
+        {countOpen && <BeatText>{count}</BeatText>}
         <BeatAnchor>
           <BeatCircle
             ref={btnRef}
@@ -64,7 +64,7 @@ const Beat = ({
             />
           )}
         </BeatAnchor>
-        {handsOpen && <div>{handShortByValue[hand]}</div>}
+        {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}
       </>
     </BeatContainer>
   );

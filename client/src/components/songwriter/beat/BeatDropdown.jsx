@@ -9,6 +9,7 @@ import {
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { DropdownContext } from '../dropdownHandler/DropdownHandler';
 import {
+  Arrow,
   Dropdown,
   DropdownColumn,
   DropdownItem,
@@ -31,7 +32,7 @@ const BeatDropdown = ({
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
   const { offsetTop, offsetLeft } = dropdownPosRef.current;
-  const openTop = offsetTop - listScroll > borderHeight / 2;
+  const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 
   const parseOptions = (optionArray, hasNonScaleNote) =>
@@ -63,30 +64,33 @@ const BeatDropdown = ({
   ));
 
   return (
-    <Dropdown
-      ref={insideRef}
-      openLeft={openLeft}
-      openTop={openTop}
-      value={value}
-    >
-      <DropdownColumn>
-        {parseOptions(options.single)}
-        {hasNonScaleNote && (
-          <>
-            <DividerLine small />
-            {parseOptions(options.nonScale, hasNonScaleNote)}
-          </>
-        )}
-      </DropdownColumn>
-      <DropdownColumn>
-        <DividerLine vertical small />
-      </DropdownColumn>
-      <DropdownColumn>
-        {parseOptions(options.percussive)}
-        <DividerLine small />
-        {handItems}
-      </DropdownColumn>
-    </Dropdown>
+    <>
+      <Arrow openTop={openTop} />
+      <Dropdown
+        ref={insideRef}
+        openLeft={openLeft}
+        openTop={openTop}
+        value={value}
+      >
+        <DropdownColumn>
+          {parseOptions(options.single)}
+          {hasNonScaleNote && (
+            <>
+              <DividerLine small />
+              {parseOptions(options.nonScale, hasNonScaleNote)}
+            </>
+          )}
+        </DropdownColumn>
+        <DropdownColumn>
+          <DividerLine vertical small />
+        </DropdownColumn>
+        <DropdownColumn>
+          {parseOptions(options.percussive)}
+          <DividerLine small />
+          {handItems}
+        </DropdownColumn>
+      </Dropdown>
+    </>
   );
 };
 
