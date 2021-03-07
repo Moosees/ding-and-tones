@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
-import { BeatAnchor, BeatContainer, BeatText } from './beat.styles';
+import { BeatCircle, BeatContainer, BeatText } from './beat.styles';
 import BeatDropdown from './BeatDropdown';
 
 const Beat = ({
@@ -34,10 +34,10 @@ const Beat = ({
   };
 
   return (
-    <BeatAnchor ref={anchorRef}>
+    <BeatContainer ref={anchorRef}>
       <>
         {countOpen && <div>{count}</div>}
-        <BeatContainer
+        <BeatCircle
           ref={btnRef}
           hasNonScaleNote={hasNonScaleNote}
           isLocked={isSongPlaying}
@@ -49,22 +49,22 @@ const Beat = ({
           <BeatText isBeatPlaying={isBeatPlaying} value={value}>
             {sound.join('+')}
           </BeatText>
-        </BeatContainer>
+          {isOpen && (
+            <BeatDropdown
+              anchorRef={anchorRef}
+              btnRef={btnRef}
+              beatId={beatId}
+              hand={hand}
+              sound={sound}
+              hasNonScaleNote={hasNonScaleNote}
+              isOpenCb={setIsOpen}
+              value={value}
+            />
+          )}
+        </BeatCircle>
         {handsOpen && <div>{handShortByValue[hand]}</div>}
       </>
-      {isOpen && (
-        <BeatDropdown
-          anchorRef={anchorRef}
-          btnRef={btnRef}
-          beatId={beatId}
-          hand={hand}
-          sound={sound}
-          hasNonScaleNote={hasNonScaleNote}
-          isOpenCb={setIsOpen}
-          value={value}
-        />
-      )}
-    </BeatAnchor>
+    </BeatContainer>
   );
 };
 

@@ -2,10 +2,7 @@
 
 ## Current tasks
 
-* Syllable counting - started
-* Beat dropdown position and vertical text align for hands, make anchor only cover beat circle?
 * Copy bar should copy hands
-
 * Typescript
 * Use thunk and separate dispatches for alert
 * Play song logic should be moved somewhere else?

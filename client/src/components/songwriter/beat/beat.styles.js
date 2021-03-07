@@ -35,14 +35,13 @@ const beatStyles = {
   },
 };
 
-export const BeatAnchor = styled.div`
+export const BeatContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  position: relative;
 `;
 
-export const BeatContainer = styled.div`
+export const BeatCircle = styled.div`
   align-items: center;
   border: ${({ value }) => (value === 4 ? '2px' : '1px')};
   border-style: ${({ value }) => beatStyles.border[value]};
@@ -61,6 +60,7 @@ export const BeatContainer = styled.div`
   margin: 1px;
   margin-left: ${({ value }) => (value === 4 ? '4px' : '0')};
   margin-top: ${({ value }) => beatStyles.topOffset[value]};
+  position: relative;
   transition: color 0.1s ease-in;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
 
@@ -90,17 +90,12 @@ export const Dropdown = styled.div`
   box-shadow: ${({ theme }) => theme.shadowLight};
   display: flex;
   justify-content: center;
-  padding: 4px 0;
+  padding: 2px;
   position: absolute;
-  /* compensate for beat margin */
-  transform: translateX(
-    ${({ openLeft, value }) => (!openLeft && value === 4 ? '4px' : '0')}
-  );
   width: max-content;
   z-index: 100;
 
-  ${({ openLeft, value }) =>
-    beatStyles.dropdownOffset[openLeft ? 'left' : 'right'][value]}
+  ${({ openLeft, value }) => (openLeft ? 'right: -4px;' : 'left: -4px;')}
   ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
 
   ${({ theme }) => theme.mqW850`
@@ -119,10 +114,8 @@ export const Dropdown = styled.div`
     content: '';
     padding: 0.5rem;
     position: absolute;
-    /* transform: translateX(${({ openLeft }) =>
-      openLeft ? '2.5' : '-2.5'}rem); */
 
-    ${({ openLeft }) => (openLeft ? 'right: 5%;' : 'left: 5%;')}
+    ${({ openLeft }) => (openLeft ? 'right: 5px;' : 'left: 5px;')}
     ${({ openTop }) => (openTop ? 'bottom: -1.2rem;' : 'top: -1.2rem;')}
   }
 `;
