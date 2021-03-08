@@ -16,11 +16,6 @@ const beatStyles = {
     8: '1px dotted #000',
     16: '1px dashed #000',
   },
-  topOffset: {
-    4: '0',
-    8: '1px',
-    16: '2px',
-  },
 };
 
 export const BarContainer = styled.li`
@@ -53,12 +48,32 @@ export const BeatsContainer = styled.div`
   }
 `;
 
+export const BeatCircleWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+`;
+
+export const BeatCircle = styled.div`
+  align-items: center;
+  border: ${({ value }) => beatStyles.border[value]};
+  border-radius: 100%;
+  display: flex;
+  height: ${({ value }) => beatStyles.heightWidth[value]}px;
+  justify-content: center;
+  width: ${({ value }) => beatStyles.heightWidth[value]}px;
+
+  ${({ isBeatPlaying, theme }) =>
+    isBeatPlaying && `border-color: ${theme.colorBeatActive};`}
+`;
+
 export const BeatContainer = styled.div`
   align-items: center;
   cursor: default;
   display: flex;
   flex-direction: column;
-  margin-top: ${({ value }) => beatStyles.topOffset[value]};
+  justify-content: space-evenly;
 
   &:not(:first-child) {
     margin-left: ${({ addMarginLeft, value }) =>
@@ -66,18 +81,9 @@ export const BeatContainer = styled.div`
   }
 `;
 
-export const BeatText = styled.div`
-  align-items: center;
-  border: ${({ value }) => beatStyles.border[value]};
-  border-radius: 100%;
-  display: flex;
-  font-size: ${({ value }) => beatStyles.fz[value]}px;
-  height: ${({ value }) => beatStyles.heightWidth[value]}px;
-  justify-content: center;
+export const BeatText = styled.span`
+  font-size: ${({ value }) => beatStyles.fz[value] || 12}px;
   letter-spacing: -1px;
-  margin-left: -1px;
-  width: ${({ value }) => beatStyles.heightWidth[value]}px;
-
-  ${({ isBeatPlaying, theme }) =>
-    isBeatPlaying && `border-color: ${theme.colorBeatActive};`}
+  white-space: pre-wrap;
+  /* margin-left: -1px; */
 `;

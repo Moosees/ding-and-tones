@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Fix song viewer beat styles like in songwriter
 * Change default song?
 * Typescript
 * Use thunk and separate dispatches for alert
@@ -100,6 +99,7 @@
 * Handle extra/bottom notes/mutant drums
 * Custom chord inputs
 * Custom metres
+* Custom count for metres, more count styles
 * Comparing scales using tables or other presentations
 * Logic for figuring out if a note is a sharp or flat - only flats for now, circle of fifths?
 * Multiple drums for chords, songs etc. Two track songwriter?

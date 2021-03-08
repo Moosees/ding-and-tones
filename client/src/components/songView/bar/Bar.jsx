@@ -5,6 +5,8 @@ import { metreList } from '../../../assets/metre';
 import {
   BarContainer,
   BarMetre,
+  BeatCircle,
+  BeatCircleWrapper,
   BeatContainer,
   BeatsContainer,
   BeatText,
@@ -34,11 +36,13 @@ const Bar = ({
           value={value}
           addMarginLeft={i && subdivision === 4}
         >
-          {countOpen && <div>{metreInfo.count[i]}</div>}
-          <BeatText isBeatPlaying={isBeatPlaying} value={value}>
-            {sound !== '-' && sound.join('+')}
-          </BeatText>
-          {handsOpen && <div>{handShortByValue[hand]}</div>}
+          {countOpen && <BeatText>{metreInfo.count[i]}</BeatText>}
+          <BeatCircleWrapper>
+            <BeatCircle isBeatPlaying={isBeatPlaying} value={value}>
+              <BeatText>{sound !== '-' && sound.join('+')}</BeatText>
+            </BeatCircle>
+          </BeatCircleWrapper>
+          {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}
         </BeatContainer>
       );
     }
