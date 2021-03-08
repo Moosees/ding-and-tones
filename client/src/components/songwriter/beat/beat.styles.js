@@ -100,7 +100,6 @@ export const Dropdown = styled.div`
   justify-content: center;
   padding: 2px;
   position: absolute;
-  width: max-content;
   z-index: 100;
 
   ${({ openLeft }) => (openLeft ? 'right: 0;' : 'left: 0;')}
@@ -123,6 +122,7 @@ export const DropdownItem = styled.div`
   font-size: ${({ theme }) => theme.fzSmallest};
   justify-content: space-between;
   margin: 1px;
+  min-width: 6rem;
   opacity: ${({ disabled, selected }) => (disabled && !selected ? '0.6' : '1')};
   padding: 2px;
   position: relative;
@@ -149,7 +149,6 @@ export const DropdownItem = styled.div`
 export const DropdownColumn = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   justify-content: center;
 `;
 

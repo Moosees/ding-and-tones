@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Fix song viewer beat styles like in songwriter
-* Fix width of beat dropdown
 * Change default song?
 * Typescript
 * Use thunk and separate dispatches for alert
@@ -16,7 +15,6 @@
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * User can tab select :active outside of popups
 * Login popup and blockers...
-* Find song list leaks in safari
 
 ## Design
 

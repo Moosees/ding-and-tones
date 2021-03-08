@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const TableContainer = styled.div`
+  height: 100%;
   max-height: ${({ isMobile }) => (isMobile ? '600px' : '58rem')};
   width: ${({ isMobile }) => (isMobile ? '100%' : '95%')};
 
