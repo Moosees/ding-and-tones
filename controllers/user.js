@@ -59,11 +59,14 @@ exports.signInWithGoogle = async (req, res) => {
       isOwner = user.songs.includes(songId);
     }
 
-    const idToken = generateJWT(user._id.toString());
+    // const idToken = generateJWT(user._id.toString());
+    req.session.user = user._id;
+    console.log('_id', user._id);
+    console.log(req.session);
 
     return res.status(200).json({
       anonymous: user.anonymous,
-      idToken,
+      // idToken,
       isOwner,
       name: user.name,
       newUser,
@@ -71,6 +74,13 @@ exports.signInWithGoogle = async (req, res) => {
   } catch (error) {
     res.status(400).json();
   }
+};
+
+exports.signOut = (req, res) => {
+  req.session.user &&
+    req.session.destroy(() => {
+      res.status(200).json();
+    });
 };
 
 exports.getGoogleURL = (req, res) => {

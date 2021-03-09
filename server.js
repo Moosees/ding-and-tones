@@ -4,9 +4,29 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
+const redis = require('redis');
+const session = require('express-session');
+const connectRedis = require('connect-redis');
 
 const app = express();
 const port = 5000;
+
+// Session
+const RedisStore = connectRedis(session);
+const redisClient = redis.createClient();
+redisClient.on('connect', () => console.log('connected to redis'));
+redisClient.on('error', (error) => console.error(error));
+const sess = {
+  store: new RedisStore({ client: redisClient }),
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { httpOnly: false, maxAge: 8640000 },
+};
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+  sess.cookie.secure = true;
+}
 
 // Database
 mongoose
@@ -26,7 +46,8 @@ app.use(
     extended: true,
   })
 );
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(session(sess));
 
 // Routes
 const scaleRoutes = require('./routes/scale');

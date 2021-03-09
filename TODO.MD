@@ -2,6 +2,12 @@
 
 ## Current tasks
 
+* User sessions - started
+* Remove old auth middleware and add session on affected routes
+* Remove JWT
+* Sign out route
+* Set origin for production
+
 * Change default song?
 * Typescript
 * Use thunk and separate dispatches for alert
@@ -61,7 +67,7 @@
 
 ## State
 
-* Persist working state through local storage? In session?
+* Persist working state through local storage?
 * Merge ui reducer actions? Rework actions?
 * Merge api status states (isFetching etc.) in client?
 * Remove isOwner from scale ui state or add ability to save scale changes
@@ -77,7 +83,6 @@
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Split save song controller?
 * Sorting search results in table
-* Session for logged in users
 * Privacy date localization
 * Select boxes dynamic width
 * Web worker?

@@ -57,8 +57,7 @@ export const signIn = (songId) => (dispatch) => {
     })
     .then((res) => {
       if (res.status === 200) {
-        const { name, anonymous, idToken, newUser, isOwner } = res.data;
-        axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+        const { name, anonymous, newUser, isOwner } = res.data;
 
         dispatch({
           type: userTypes.SIGN_IN,
@@ -76,7 +75,6 @@ export const signIn = (songId) => (dispatch) => {
       }
     })
     .catch((error) => {
-      axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
       return dispatch({
         type: userTypes.GOOGLE_ERROR,
         payload: { alert: getGoogleError(error) },
@@ -85,8 +83,6 @@ export const signIn = (songId) => (dispatch) => {
 };
 
 export const signOut = () => (dispatch) => {
-  axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
-
   dispatch({
     type: userTypes.SIGN_OUT,
     payload: { alert: 'Signed out successfully!' },

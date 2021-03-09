@@ -11,7 +11,7 @@ const GoogleResponse = lazy(() => import('./GoogleResponse'));
 
 axios.defaults.baseURL = process.env.API_ADDRESS || API_ADDRESS;
 axios.defaults.headers['Accept'] = 'application/json';
-axios.defaults.headers.common['Authorization'] = 'Bearer undefined';
+axios.defaults.withCredentials = true;
 
 ReactDOM.render(
   <Router>
