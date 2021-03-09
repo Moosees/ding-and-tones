@@ -1,6 +1,6 @@
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
-const { getClient, getAuthUrl, generateJWT } = require('../utils/auth');
+const { getClient, getAuthUrl } = require('../utils/auth');
 const crypto = require('crypto');
 
 exports.updateUserInfo = (req, res) => {
@@ -59,14 +59,10 @@ exports.signInWithGoogle = async (req, res) => {
       isOwner = user.songs.includes(songId);
     }
 
-    // const idToken = generateJWT(user._id.toString());
     req.session.user = user._id;
-    console.log('_id', user._id);
-    console.log(req.session);
 
     return res.status(200).json({
       anonymous: user.anonymous,
-      // idToken,
       isOwner,
       name: user.name,
       newUser,

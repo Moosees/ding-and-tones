@@ -3,9 +3,9 @@
 ## Current tasks
 
 * User sessions - started
-* Remove old auth middleware and add session on affected routes
-* Remove JWT
+* Check session on page load
 * Set origin for production
+* Update terms cookie info
 
 * Change default song?
 * Typescript

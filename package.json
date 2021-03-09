@@ -20,7 +20,6 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "google-auth-library": "^7.0.2",
-    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.18",
     "redis": "^3.0.2"
   },
