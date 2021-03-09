@@ -83,10 +83,17 @@ export const signIn = (songId) => (dispatch) => {
 };
 
 export const signOut = () => (dispatch) => {
-  dispatch({
-    type: userTypes.SIGN_OUT,
-    payload: { alert: 'Signed out successfully!' },
-  });
+  axios
+    .post('/signOut')
+    .then((res) => {
+      if (res.status === 200 && !res.data.msg) {
+        dispatch({
+          type: userTypes.SIGN_OUT,
+          payload: { alert: 'Signed out successfully!' },
+        });
+      }
+    })
+    .catch((error) => {});
 };
 
 export const toggleAccount = () => ({

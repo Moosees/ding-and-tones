@@ -21,7 +21,7 @@ const sess = {
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { httpOnly: false, maxAge: 8640000 },
+  cookie: { httpOnly: true, maxAge: 8640000 },
 };
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);

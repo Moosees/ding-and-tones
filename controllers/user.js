@@ -78,15 +78,18 @@ exports.signInWithGoogle = async (req, res) => {
 
 exports.signOut = (req, res) => {
   req.session.user &&
-    req.session.destroy(() => {
-      res.status(200).json();
+    req.session.destroy((error) => {
+      if (error) {
+        res.status(200).json({ msg: 'Sign out failed' });
+      }
+      res.clearCookie('connect.sid').status(200).json();
     });
 };
 
 exports.getGoogleURL = (req, res) => {
   const authUrl = getClient().generateAuthUrl({
     access_type: 'offline',
-    prompt: 'select_account',
+    // prompt: 'consent',
     scope: 'profile',
     state: 'google',
   });

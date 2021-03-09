@@ -5,7 +5,6 @@
 * User sessions - started
 * Remove old auth middleware and add session on affected routes
 * Remove JWT
-* Sign out route
 * Set origin for production
 
 * Change default song?
