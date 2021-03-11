@@ -13,7 +13,9 @@ const port = 5000;
 
 // Session
 const RedisStore = connectRedis(session);
-const redisClient = redis.createClient();
+const redisClient = redis.createClient({
+  password: process.env.REDIS_PASSWORD,
+});
 redisClient.on('connect', () => console.log('connected to redis'));
 redisClient.on('error', (error) => console.error(error));
 const sess = {
@@ -46,7 +48,7 @@ app.use(
     extended: true,
   })
 );
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: process.env.ORIGIN }));
 app.use(session(sess));
 
 // Routes

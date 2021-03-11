@@ -2,10 +2,6 @@
 
 ## Current tasks
 
-* User sessions - started
-* Set origin for production
-* Update terms cookie info
-
 * Change default song?
 * Typescript
 * Use thunk and separate dispatches for alert

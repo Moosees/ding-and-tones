@@ -32,7 +32,8 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
     </PrivacyParagraph>
     <PrivacyHeader>Cookies</PrivacyHeader>
     <PrivacyParagraph>
-      This website does not currently use any cookies.
+      This website uses cookies to handle your user session. By signing in you
+      agree that this cookie can be saved on your device.
     </PrivacyParagraph>
     <PrivacyHeader>Collected data</PrivacyHeader>
     <PrivacyParagraph>
@@ -53,7 +54,7 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
     <PrivacyParagraph>
       By using this website you consent to these terms.
     </PrivacyParagraph>
-    <PrivacyParagraph>Last updated: 13 february 2021</PrivacyParagraph>
+    <PrivacyParagraph>Last updated: 12 march 2021</PrivacyParagraph>
   </TermsContainer>
 );
 
