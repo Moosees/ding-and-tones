@@ -6,6 +6,37 @@ import {
   handleGooglePostMsg,
 } from './user.utils';
 
+export const checkSession = () => (dispatch, getState) => {
+  dispatch({ type: userTypes.SESSION_STARTED });
+
+  const {
+    song: {
+      ui: { songId },
+    },
+  } = getState();
+
+  axios.post('/session', { songId }).then((res) => {
+    if (res.status === 200 && res.data.user) {
+      const { name, anonymous, isOwner } = res.data.user;
+
+      dispatch({
+        type: userTypes.SIGN_IN,
+        payload: {
+          alert: `Welcome back, ${name}`,
+          song: { isOwner },
+          user: {
+            name,
+            isAnonymous: anonymous,
+            isSignedIn: true,
+            accountOpen: false,
+          },
+        },
+      });
+    }
+    dispatch({ type: userTypes.SESSION_SUCCESSFUL });
+  });
+};
+
 export const saveUser = (newName, newAnon) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
 

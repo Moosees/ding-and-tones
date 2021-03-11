@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { connect } from 'react-redux';
+import { checkSession } from '../../../redux/user/user.actions';
 import BtnNav from '../../shared/button/Nav';
 import Dropdown from '../dropdown/Dropdown';
 import { MenuAnchor } from '../nav.styles';
@@ -6,9 +8,13 @@ import Logo from './Logo';
 // import Sound from './sound/Sound';
 // import BtnMenu from '../shared/button/Menu';
 
-const LogoBtn = () => {
+const LogoBtn = ({ checkSession }) => {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
+
+  useEffect(() => {
+    checkSession();
+  }, [checkSession]);
 
   return (
     <MenuAnchor>
@@ -25,4 +31,4 @@ const LogoBtn = () => {
   );
 };
 
-export default LogoBtn;
+export default connect(null, { checkSession })(LogoBtn);

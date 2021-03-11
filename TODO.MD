@@ -3,7 +3,6 @@
 ## Current tasks
 
 * User sessions - started
-* Check session on page load
 * Set origin for production
 * Update terms cookie info
 

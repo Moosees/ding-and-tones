@@ -3,6 +3,30 @@ const User = require('../models/user');
 const { getClient, getAuthUrl } = require('../utils/auth');
 const crypto = require('crypto');
 
+exports.checkSession = async (req, res) => {
+  if (!req.userId) return res.status(200).json({ user: null });
+
+  try {
+    const { anonymous, name, songs } = await User.findOne({
+      _id: req.userId,
+    })
+      .select('anonymous name songs')
+      .exec();
+
+    const isOwner = songs.includes(req.songId);
+
+    res.status(200).json({
+      user: {
+        anonymous,
+        isOwner,
+        name,
+      },
+    });
+  } catch (error) {
+    res.status(500).json();
+  }
+};
+
 exports.updateUserInfo = (req, res) => {
   const userId = req.userId;
   const { anonymous, name } = req.body;
