@@ -134,8 +134,9 @@ exports.saveSong = (req, res) => {
 
 exports.songSearch = (req, res) => {
   const userId = req.userId;
+  const searchTerm = req.params.searchTerm.toLowerCase();
 
-  Song.find({ queryString: { $regex: req.params.searchTerm.toLowerCase() } })
+  Song.find({ queryString: { $regex: searchTerm } })
     .populate('composer', '_id anonymous name')
     .select('_id scale.info info')
     .limit(20)

@@ -7,6 +7,7 @@ const dotenv = require('dotenv').config();
 const redis = require('redis');
 const session = require('express-session');
 const connectRedis = require('connect-redis');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const app = express();
 const port = 5000;
@@ -48,6 +49,7 @@ app.use(
     extended: true,
   })
 );
+app.use(mongoSanitize({ replaceWith: '_' }));
 app.use(cors({ credentials: true, origin: process.env.ORIGIN }));
 app.use(session(sess));
 
