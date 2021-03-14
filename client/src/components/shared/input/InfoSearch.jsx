@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import useDimensions from '../../../hooks/useDimensions';
 import { startSearch } from '../../../redux/search/search.actions';
@@ -10,9 +10,10 @@ const InfoSearch = ({
   isSearching,
   placeholder,
   searchOption,
+  setValue,
   startSearch,
+  value,
 }) => {
-  const [value, setValue] = useState('');
   const { isMobile } = useDimensions();
 
   useEffect(() => {

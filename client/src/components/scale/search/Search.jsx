@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
 import searchOptions from '../../../redux/search/search.options';
@@ -8,9 +8,23 @@ import InfoSearch from '../../shared/input/InfoSearch';
 import { SearchContainer } from './search.styles';
 
 const Search = ({ isSearching, isSignedIn, startSearch }) => {
+  const [value, setValue] = useState('');
+
+  const handleNewScalesClick = () => {
+    setValue('');
+    startSearch(searchOptions.scales.latest);
+  };
+
+  const handleMyScalesClick = () => {
+    setValue('');
+    startSearch(searchOptions.scales.me);
+  };
+
   return (
     <SearchContainer>
       <InfoSearch
+        value={value}
+        setValue={setValue}
         placeholder="Search scales"
         searchOption={searchOptions.scales.alphabetical}
       />
@@ -18,12 +32,12 @@ const Search = ({ isSearching, isSignedIn, startSearch }) => {
         <BtnPrimary
           disabled={isSearching}
           label="New Scales"
-          onClick={() => startSearch(searchOptions.scales.latest)}
+          onClick={handleNewScalesClick}
         />
         <BtnPrimary
           disabled={!isSignedIn || isSearching}
           label="My Scales"
-          onClick={() => startSearch(searchOptions.scales.me)}
+          onClick={handleMyScalesClick}
         />
       </Buttons>
     </SearchContainer>
