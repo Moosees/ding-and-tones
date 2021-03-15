@@ -8,6 +8,7 @@ import DividerLine from '../../shared/dividerLine/DividerLine';
 import Account from '../account/Account';
 import Print from '../print/Print';
 import SignIn from '../signIn/SignIn';
+import Sound from '../sound/Sound';
 import { DropdownContainer } from './dropdown.styles';
 
 const DropdownMobile = ({
@@ -44,7 +45,7 @@ const DropdownMobile = ({
         onClick={() => push('/find')}
       />
       <DividerLine />
-      {/* <Sound /> */}
+      <Sound />
       {/* <BtnMenu label="Support me" icon="support" /> */}
       {/* <BtnMenu label="Help" icon="help_outline" /> */}
       <Print />
