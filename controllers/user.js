@@ -109,7 +109,7 @@ exports.signOut = (req, res) => {
 exports.getGoogleURL = (req, res) => {
   const authUrl = getClient().generateAuthUrl({
     access_type: 'offline',
-    // prompt: 'consent',
+    prompt: 'consent',
     scope: 'profile',
     state: 'google',
   });
