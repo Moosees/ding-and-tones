@@ -1,5 +1,4 @@
 import axios from 'axios';
-import alertTypes from '../alert/alert.types';
 import searchOptions from './search.options';
 import searchTypes from './search.types';
 
@@ -46,16 +45,12 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
       if (res.status === 200)
         return dispatch({
           type: searchTypes.SEARCH_SUCCESSFUL,
-          payload: { ...res.data, ...extraPayload },
+          payload: { results: res.data, extraPayload },
         });
       if (res.status === 204) {
         dispatch({
           type: searchTypes.SEARCH_NOT_FOUND,
-          payload: extraPayload,
-        });
-        dispatch({
-          type: alertTypes.CREATE_ALERT,
-          payload: 'No results found',
+          payload: { extraPayload, alert: 'No results found' },
         });
       }
     })

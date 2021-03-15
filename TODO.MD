@@ -4,7 +4,6 @@
 
 * Change default song?
 * Typescript
-* Use thunk and separate dispatches for alert
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 

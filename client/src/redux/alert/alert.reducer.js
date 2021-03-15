@@ -1,6 +1,3 @@
-import scaleTypes from '../scale/scale.types';
-import songTypes from '../song/song.types';
-import userTypes from '../user/user.types';
 import alertTypes from './alert.types';
 
 const INITIAL_STATE = {
@@ -9,34 +6,20 @@ const INITIAL_STATE = {
 
 const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+    case alertTypes.CLEAR_ALERT:
+      return {
+        ...state,
+        msg: '',
+      };
+
     case alertTypes.CREATE_ALERT:
       return {
         ...state,
         msg: payload,
       };
 
-    case scaleTypes.DELETE_ERROR:
-    case songTypes.DELETE_ERROR:
-    case scaleTypes.FETCH_ERROR:
-    case songTypes.FETCH_ERROR:
-    case userTypes.GOOGLE_ERROR:
-    case scaleTypes.SAVE_ERROR:
-    case songTypes.SAVE_ERROR:
-    case userTypes.SAVE_ERROR:
-    case scaleTypes.DELETE_SUCCESSFUL:
-    case songTypes.DELETE_SUCCESSFUL:
-    case scaleTypes.LOAD_SCALE:
-    case scaleTypes.FETCH_SUCCESSFUL:
-    case songTypes.FETCH_SUCCESSFUL:
-    case scaleTypes.SAVE_SUCCESSFUL:
-    case songTypes.SAVE_SUCCESSFUL:
-    case userTypes.SAVE_SUCCESSFUL:
-    case userTypes.SIGN_IN:
-    case userTypes.SIGN_OUT:
-      return { ...state, msg: payload.alert };
-
     default:
-      return state;
+      return payload?.alert ? { ...state, msg: payload.alert } : state;
   }
 };
 

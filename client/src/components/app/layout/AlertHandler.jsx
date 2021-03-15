@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { ALERT_TIMEOUT } from '../../../assets/constants';
-import { setAlert } from '../../../redux/alert/alert.actions';
+import { clearAlert } from '../../../redux/alert/alert.actions';
 import BtnPrimary from '../../shared/button/Primary';
 
 const AlertContainer = styled.div`
@@ -36,20 +36,20 @@ const AlertText = styled.span`
   margin: 0 1rem;
 `;
 
-export const AlertHandler = ({ msg, privacyOpen, setAlert }) => {
+export const AlertHandler = ({ msg, privacyOpen, clearAlert }) => {
   useEffect(() => {
     if (msg) {
-      const timeout = setTimeout(() => setAlert(''), ALERT_TIMEOUT);
+      const timeout = setTimeout(() => clearAlert(), ALERT_TIMEOUT);
       return () => clearTimeout(timeout);
     }
-  }, [msg, setAlert]);
+  }, [msg, clearAlert]);
 
   return (
     <>
       {msg && !privacyOpen && (
         <AlertContainer>
           <AlertText>{msg}</AlertText>
-          <BtnPrimary light label="Ok!" onClick={() => setAlert(null)} />
+          <BtnPrimary light label="Ok!" onClick={clearAlert} />
         </AlertContainer>
       )}
     </>
@@ -61,4 +61,4 @@ const mapStateToProps = ({ alert, ui }) => ({
   privacyOpen: ui.privacyOpen,
 });
 
-export default connect(mapStateToProps, { setAlert })(AlertHandler);
+export default connect(mapStateToProps, { clearAlert })(AlertHandler);

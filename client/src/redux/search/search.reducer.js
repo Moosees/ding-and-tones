@@ -50,7 +50,7 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
     case searchTypes.SEARCH_NOT_FOUND:
       return {
         ...state,
-        ...payload,
+        ...payload.extraPayload,
         isSearching: false,
       };
 
@@ -63,7 +63,8 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
     case searchTypes.SEARCH_SUCCESSFUL:
       return {
         ...state,
-        ...payload,
+        ...payload.results,
+        ...payload.extraPayload,
         isSearching: false,
       };
 
