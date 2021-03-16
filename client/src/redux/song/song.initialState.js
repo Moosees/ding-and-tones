@@ -5,19 +5,22 @@ export const barsState = {
     metre: 's44',
     subdivision: 8,
     repeats: 1,
-    measure: ['aa', 'ab', 'ac', 'ad', 'ae', 'af', 'ag', 'ah'],
+    //prettier-ignore
+    measure: [{ beatId: 'aa', count: '1', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'ab', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'ac', count: '2', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'ad', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'ae', count: '3', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'af', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'ag', count: '4', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'ah', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }],
   },
   bar_b: {
     metre: 's44',
     subdivision: 8,
     repeats: 1,
-    measure: ['ba', 'bb', 'bc', 'bd', 'be', 'bf', 'bg', 'bh'],
+    //prettier-ignore
+    measure: [{ beatId: 'ba', count: '1', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'bb', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'bc', count: '2', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'bd', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'be', count: '3', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'bf', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'bg', count: '4', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'bh', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }],
   },
   bar_c: {
     metre: 's44',
     subdivision: 8,
     repeats: 1,
-    measure: ['ca', 'cb', 'cc', 'cd', 'ce', 'cf', 'cg', 'ch'],
+    //prettier-ignore
+    measure: [{ beatId: 'ca', count: '1', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'cb', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'cc', count: '2', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'cd', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'ce', count: '3', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'cf', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }, { beatId: 'cg', count: '4', value: 4 },{ beatId: null, count: 'e', value: 16 },{ beatId: 'ch', count: '&', value: 8 },{ beatId: null, count: 'a', value: 16 }],
   },
 };
 

@@ -1,3 +1,4 @@
+import { metreList } from '../../assets/metre';
 import { parseNotesForSaveScale } from '../scale/scale.utils';
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
@@ -11,9 +12,11 @@ export const moveBar = (arrangement, barIndex, targetIndex) => {
 const parseBarsForSaving = (arrangement, bars, beats) => {
   return arrangement.map((bar) => {
     const { measure, subdivision } = bars[bar];
-    const filteredMeasure = measure.filter(
-      (beat) => beats[beat].value <= subdivision
-    );
+    const filteredMeasure = measure.reduce((acc, { beatId }) => {
+      if (beatId && beats[beatId].value <= subdivision) acc.push(beatId);
+      return acc;
+    }, []);
+
     return {
       ...bars[bar],
       measure: filteredMeasure,
@@ -26,16 +29,17 @@ const parseBeatsForSaving = (arrangement, bars, beats) => {
   return arrangement.reduce((parsedBeats, bar) => {
     const { measure, subdivision } = bars[bar];
 
-    measure.forEach((beat) => {
-      const { sound, value, mode, hand } = beats[beat];
-      if (value <= subdivision)
+    measure.forEach(({ beatId }) => {
+      if (beatId && beats[beatId].value <= subdivision) {
+        const { sound, value, mode, hand } = beats[beatId];
         parsedBeats.push({
           sound: sound.join('+'),
           value,
           hand,
           mode,
-          _id: beat,
+          _id: beatId,
         });
+      }
     });
 
     return parsedBeats;
@@ -73,6 +77,30 @@ const parseArrayToObject = (array) => {
   }, {});
 };
 
+const parseMeasureForLoadSong = (measure, metre, subdivision) => {
+  const { template } = metreList[metre];
+  let measureIndex = 0;
+
+  return template.map((templateValue, i) => {
+    return {
+      count: metreList[metre].count[i],
+      value: template[i],
+      beatId: templateValue <= subdivision ? measure[measureIndex++] : null,
+    };
+  });
+};
+
+const parseBarsForLoadSong = (bars) => {
+  const parsedBars = bars.map((bar) => {
+    const { measure, metre, subdivision } = bar;
+    return {
+      ...bar,
+      measure: parseMeasureForLoadSong(measure, metre, subdivision),
+    };
+  });
+  return parseArrayToObject(parsedBars);
+};
+
 const parseBeatsForLoadSong = (beats) => {
   const parsedBeats = beats.map((beat) => {
     const { sound, value, mode, hand, _id } = beat;
@@ -104,7 +132,7 @@ export const parseFetchedSong = (song, getScale) => {
     songId,
   } = song;
 
-  const parsedBars = parseArrayToObject(bars);
+  const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
   const parsedScale = parseScaleForLoadSong(scale);
 

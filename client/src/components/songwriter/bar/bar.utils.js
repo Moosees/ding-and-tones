@@ -1,53 +1,25 @@
-import React from 'react';
 import { v4 as uuid } from 'uuid';
-import { metreList } from '../../../assets/metre';
 import { updateMeasure } from '../../../redux/song/song.actions';
 import { store } from '../../../redux/store';
-import Beat from '../beat/Beat';
 
-export const displayBeats = (measure, beats, barSubdivision, metre) => {
-  const filteredBeats = [];
-  const { count } = metreList[metre];
-
-  measure.forEach((beat, i) => {
-    const { value } = beats[beat];
-
-    if (value <= barSubdivision)
-      filteredBeats.push(<Beat key={beat} beatId={beat} count={count[i]} />);
-  });
-
-  return filteredBeats;
+export const filterBeats = (measure, barSubdivision) => {
+  return measure.filter(
+    ({ beatId, value }, i) => beatId && value <= barSubdivision
+  );
 };
 
-const updateBeats = (barId, measure, beats, barSubdivision, barMetre) => {
-  let beatIndex = 0;
-  const newMeasure = [];
+export const checkMeasure = (barId, measure, subdivision) => {
+  let updateState = false;
   const newBeats = {};
+  const newMeasure = measure.map((beat) => {
+    if (beat.beatId || beat.value > subdivision) return beat;
 
-  metreList[barMetre].template.forEach((metreValue) => {
-    const barBeat = measure[beatIndex];
+    updateState = true;
+    const newId = uuid();
+    newBeats[newId] = { sound: ['-'], value: beat.value, mode: 'c' };
 
-    if (barBeat && beats[barBeat].value === metreValue) {
-      newMeasure.push(barBeat);
-      ++beatIndex;
-    } else {
-      const newId = uuid();
-      newMeasure.push(newId);
-      newBeats[newId] = { sound: ['-'], value: metreValue, mode: 'c' };
-    }
+    return { ...beat, beatId: newId };
   });
 
-  store.dispatch(updateMeasure(barId, newMeasure, newBeats));
-};
-
-export const checkMeasureVsMetre = (
-  barId,
-  measure,
-  beats,
-  barSubdivision,
-  barMetre
-) => {
-  if (measure.length < metreList[barMetre].subdivisionCount[barSubdivision]) {
-    updateBeats(barId, measure, beats, barSubdivision, barMetre);
-  }
+  updateState && store.dispatch(updateMeasure(barId, newMeasure, newBeats));
 };

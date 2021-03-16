@@ -2,16 +2,17 @@ import { v4 as uuid } from 'uuid';
 import { metreList } from '../../../assets/metre';
 
 export const createNewBar = (metre, subdivision) => {
-  const { template, minSubdivision } = metreList[metre];
+  const { template, minSubdivision, count } = metreList[metre];
   const barId = uuid();
   const measure = [];
   const beats = {};
 
-  template.forEach((value) => {
+  template.forEach((value, i) => {
     const beatId = uuid();
-    measure.push(beatId);
+    measure.push({ beatId, count: count[i], value });
     beats[beatId] = {
       sound: value === 4 ? ['0'] : ['-'],
+      mode: 'c',
       value,
     };
   });

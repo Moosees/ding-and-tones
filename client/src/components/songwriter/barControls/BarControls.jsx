@@ -16,13 +16,17 @@ const copyBar = (barId, bars, beats) => {
   const newBeats = {};
   const newMeasure = [];
 
-  bars[barId].measure.forEach((beat) => {
-    const newBeatId = uuid();
-    newBeats[newBeatId] = {
-      ...beats[beat],
-      sound: [...beats[beat].sound],
-    };
-    newMeasure.push(newBeatId);
+  bars[barId].measure.forEach(({ beatId, count, value }) => {
+    let newBeatId = null;
+
+    if (beatId) {
+      newBeatId = uuid();
+      newBeats[newBeatId] = {
+        ...beats[beatId],
+        sound: [...beats[beatId].sound],
+      };
+    }
+    newMeasure.push({ beatId: newBeatId, count, value });
   });
   return { oldBarId: barId, newBarId, newMeasure, newBeats };
 };

@@ -4,27 +4,27 @@ import { connect } from 'react-redux';
 import { ItemTypes } from '../../../assets/constants';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
+import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
-import { checkMeasureVsMetre, displayBeats } from './bar.utils';
+import { checkMeasure, filterBeats } from './bar.utils';
 
 const Bar = ({
   barId,
   bars,
-  beats,
   currentBar,
   index,
   isSongPlaying,
   moveBar,
   mutedBars,
 }) => {
-  const { measure, subdivision, metre } = bars[barId];
+  const { measure, subdivision } = bars[barId];
   const isMuted = mutedBars[barId];
 
   useEffect(() => {
-    checkMeasureVsMetre(barId, measure, beats, subdivision, metre);
-  }, [barId, measure, beats, subdivision, metre]);
+    checkMeasure(barId, measure, subdivision);
+  }, [barId, measure, subdivision]);
 
-  const filteredBeats = displayBeats(measure, beats, subdivision, metre);
+  const filteredBeats = filterBeats(measure, subdivision);
 
   // react DnD
   const ref = useRef(null);
@@ -59,9 +59,11 @@ const Bar = ({
         dragRef={drag}
         isDragging={isDragging}
       />
-      {filteredBeats && (
+      {filteredBeats.length && (
         <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
-          {filteredBeats}
+          {filteredBeats.map((beat) => (
+            <Beat key={beat.beatId} beatId={beat.beatId} count={beat.count} />
+          ))}
         </Beats>
       )}
       <BarControls barId={barId} />
@@ -71,7 +73,6 @@ const Bar = ({
 
 const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
-  beats: song.beats,
   currentBar: ui.currentBar,
   isSongPlaying: ui.isSongPlaying,
   mutedBars: ui.mutedBars,

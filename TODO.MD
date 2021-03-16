@@ -5,6 +5,8 @@
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
+* Remove measure subdivision count?
+* Clean up beats and muted bars when deleting bars
 
 ## Bugs
 
@@ -12,6 +14,7 @@
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * User can tab select :active outside of popups
 * Login popup and blockers...
+* Cannot read property 'clientHeight' of null at DropdownHandler onResize()
 
 ## Design
 
