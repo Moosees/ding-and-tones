@@ -10,11 +10,10 @@ export const SongLayout = styled.div`
     background-color: #fff;
     color: #000;
     display: block;
-    margin: 1.6cm;
   }
 `;
 
-export const Header = styled.div`
+export const Header = styled.header`
   align-items: flex-end;
   display: flex;
   justify-content: space-between;
@@ -25,8 +24,9 @@ export const Title = styled.h1`
   font-size: 24px;
 
   @media print {
-    text-align: center;
     font-size: 32px;
+    margin-top: 1cm;
+    text-align: center;
   }
 `;
 
@@ -54,7 +54,8 @@ export const Bars = styled.ul`
 `;
 
 export const Footer = styled.footer`
-  font-size: 12px;
-  margin-left: 10px;
-  margin-top: 24px;
+  bottom: 0;
+  font-size: 10px;
+  position: fixed;
+  right: 0;
 `;

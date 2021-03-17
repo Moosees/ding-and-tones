@@ -7,6 +7,7 @@
 * Play song logic should be reworked with less forEach?
 * Remove measure subdivision count?
 * Clean up beats and muted bars when deleting bars
+* Save song as JSON?
 
 ## Bugs
 
@@ -30,6 +31,7 @@
 * Checkbox hover effect, all transform: scale hovers...
 * Bar numbers on song viewer? Only long songs?
 * Only small divider lines?
+* Interval list chord default cursor
 
 ## User/Menu
 

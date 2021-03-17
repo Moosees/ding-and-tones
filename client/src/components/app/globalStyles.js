@@ -54,4 +54,11 @@ export default createGlobalStyle`
       font-size: 12px;
     `}
   }
+
+  @media print {
+    @page {
+      margin: 1cm;
+      size: A4;
+    }
+  }
 `;
