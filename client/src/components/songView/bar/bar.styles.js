@@ -18,14 +18,6 @@ const beatStyles = {
   },
 };
 
-export const BarContainer = styled.li`
-  break-after: auto;
-  display: inline-flex;
-  flex-direction: column;
-  padding: 36px 8px 8px;
-  position: relative;
-`;
-
 export const BarMetre = styled.div`
   font-size: 12px;
   left: 10px;
@@ -33,18 +25,14 @@ export const BarMetre = styled.div`
   top: 16px;
 `;
 
-export const BeatsContainer = styled.div`
-  display: flex;
-  position: relative;
+export const BarDivider = styled.div`
+  align-self: stretch;
+  border-right: 1px solid #000;
+  margin-top: 14px;
+  width: 1px;
 
-  ${BarContainer}:not(:last-child) &:after {
-    border-right: 1px solid #000;
-    bottom: -2px;
-    content: '';
-    position: absolute;
-    right: -8px;
-    top: -2px;
-    width: 1px;
+  &:not(:first-child) {
+    margin-left: 4px;
   }
 `;
 
@@ -74,16 +62,12 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
-  &:not(:first-child) {
-    margin-left: ${({ addMarginLeft, value }) =>
-      addMarginLeft ? '8px' : value === 4 ? '4px' : '2px'};
-  }
+  margin: 16px 0 2px;
+  margin-left: ${({ value }) => (value === 4 ? '4px' : '2px')};
 `;
 
 export const BeatText = styled.span`
   font-size: ${({ value }) => beatStyles.fz[value] || 12}px;
   letter-spacing: -1px;
   white-space: pre-wrap;
-  /* margin-left: -1px; */
 `;

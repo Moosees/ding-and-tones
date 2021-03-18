@@ -41,7 +41,7 @@ export const Composer = styled.h2`
 
 export const Tempo = styled.h4`
   font-size: 14px;
-  margin: 12px 10px 4px;
+  margin: 20px 10px 10px;
 
   @media print {
     margin: 46px 10px 10px;
@@ -49,8 +49,12 @@ export const Tempo = styled.h4`
 `;
 
 export const Bars = styled.ul`
-  flex-grow: 1;
-  max-width: 100%;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  row-gap: 16px;
+  width: 100%;
 `;
 
 export const Footer = styled.footer`

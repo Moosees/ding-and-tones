@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTempoText } from '../../assets/tempo';
 import Bar from './bar/Bar';
+import { BarDivider } from './bar/bar.styles';
 import {
   Bars,
   Composer,
@@ -26,7 +27,10 @@ class PrintView extends Component {
           <Composer>Composer: {composer}</Composer>
         )}
         <Tempo>{getTempoText(bpm)}</Tempo>
-        <Bars>{bars}</Bars>
+        <Bars>
+          <BarDivider />
+          {bars}
+        </Bars>
         <Footer>Drum tab created with DingAndTones.com</Footer>
       </SongLayout>
     );

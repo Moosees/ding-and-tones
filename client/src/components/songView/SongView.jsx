@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getTempoText } from '../../assets/tempo';
 import SongViewControls from '../songControls/SongViewControls';
 import Bar from './bar/Bar';
+import { BarDivider } from './bar/bar.styles';
 import {
   Bars,
   Composer,
@@ -30,7 +31,10 @@ class SongView extends Component {
           <SongViewControls />
         </Header>
         <Tempo>{getTempoText(bpm)}</Tempo>
-        <Bars>{bars}</Bars>
+        <Bars>
+          <BarDivider />
+          {bars}
+        </Bars>
       </SongLayout>
     );
   }

@@ -2,12 +2,18 @@
 
 ## Current tasks
 
+* Song view and print continuous flow - started
+* Bar numbers on song viewer? Only long songs?
+* Add back metre on song view and print
+* Check print on real paper
+
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Remove measure subdivision count?
 * Clean up beats and muted bars when deleting bars
 * Save song as JSON?
+* Beat dropdown has option to select and replace sound
 
 ## Bugs
 
@@ -27,9 +33,7 @@
 * New buttons for loading songs and confirm/cancel
 * Hover on drum shows all information about hovered note?
 * Refactor styled-components more, mix-ins or css variables?
-* Print footer on every page - print margins?
 * Checkbox hover effect, all transform: scale hovers...
-* Bar numbers on song viewer? Only long songs?
 * Only small divider lines?
 * Interval list chord default cursor
 

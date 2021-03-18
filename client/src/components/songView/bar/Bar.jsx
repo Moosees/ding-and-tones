@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
 import {
-  BarContainer,
+  BarDivider,
   BarMetre,
   BeatCircle,
   BeatCircleWrapper,
   BeatContainer,
-  BeatsContainer,
   BeatText,
 } from './bar.styles';
 
@@ -36,7 +35,6 @@ const Bar = ({
         <BeatContainer
           key={beatId}
           value={value}
-          addMarginLeft={i && subdivision === 4}
         >
           {countOpen && <BeatText>{metreInfo.count[i]}</BeatText>}
           <BeatCircleWrapper>
@@ -53,12 +51,13 @@ const Bar = ({
   }, []);
 
   return (
-    <BarContainer>
-      <BarMetre>
+    <>
+      {/* <BarMetre>
         {(!prevBarMetre || prevBarMetre !== metre) && metreInfo.name}
-      </BarMetre>
-      <BeatsContainer>{filteredBeats}</BeatsContainer>
-    </BarContainer>
+      </BarMetre> */}
+      {filteredBeats}
+      <BarDivider />
+    </>
   );
 };
 
