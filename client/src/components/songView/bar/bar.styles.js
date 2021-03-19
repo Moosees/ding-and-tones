@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const beatStyles = {
   heightWidth: {
-    4: '24',
+    4: '26',
     8: '23',
     16: '22',
   },
@@ -19,16 +19,23 @@ const beatStyles = {
 };
 
 export const BarMetre = styled.div`
+  align-items: center;
+  align-self: stretch;
+  display: flex;
   font-size: 12px;
-  left: 10px;
-  position: absolute;
-  top: 16px;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 4px;
+
+  span:first-child {
+    border-bottom: 1px dotted #000;
+  }
 `;
 
 export const BarDivider = styled.div`
   align-self: stretch;
   border-right: 1px solid #000;
-  margin-top: 14px;
+  margin: 4px 0;
   width: 1px;
 
   &:not(:first-child) {
@@ -62,8 +69,9 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin: 16px 0 2px;
+  margin: 10px 0;
   margin-left: ${({ value }) => (value === 4 ? '4px' : '2px')};
+  position: relative;
 `;
 
 export const BeatText = styled.span`

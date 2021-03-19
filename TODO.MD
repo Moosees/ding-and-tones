@@ -4,7 +4,6 @@
 
 * Song view and print continuous flow - started
 * Bar numbers on song viewer? Only long songs?
-* Add back metre on song view and print
 * Check print on real paper
 
 * Typescript

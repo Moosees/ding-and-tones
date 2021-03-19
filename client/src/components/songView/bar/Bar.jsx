@@ -32,10 +32,7 @@ const Bar = ({
       const isBeatPlaying = beatId === currentBeat;
 
       acc.push(
-        <BeatContainer
-          key={beatId}
-          value={value}
-        >
+        <BeatContainer key={beatId} value={value}>
           {countOpen && <BeatText>{metreInfo.count[i]}</BeatText>}
           <BeatCircleWrapper>
             <BeatCircle isBeatPlaying={isBeatPlaying} value={value}>
@@ -52,9 +49,17 @@ const Bar = ({
 
   return (
     <>
-      {/* <BarMetre>
-        {(!prevBarMetre || prevBarMetre !== metre) && metreInfo.name}
-      </BarMetre> */}
+      {(!prevBarMetre || prevBarMetre !== metre) && (
+        <>
+          <BarMetre>
+            {metreInfo.name.split('/').map((substring) => (
+              <span>{substring}</span>
+            ))}
+          </BarMetre>
+          <BarDivider />
+        </>
+      )}
+
       {filteredBeats}
       <BarDivider />
     </>
