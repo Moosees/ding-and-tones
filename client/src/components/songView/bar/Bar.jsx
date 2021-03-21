@@ -24,11 +24,11 @@ const Bar = ({
   const prevBarMetre = prevBar ? bars[prevBar].metre : null;
   const metreInfo = metreList[metre];
 
-  const filteredBeats = measure.reduce((acc, { beatId, count }, i) => {
+  const filteredBeats = measure.reduce((acc, { beatId, count, value }, i) => {
     if (!beatId) return acc;
 
-    const { value, sound, hand } = beats[beatId];
     if (value <= subdivision) {
+      const { sound, hand } = beats[beatId];
       const isBeatPlaying = beatId === currentBeat;
 
       acc.push(
@@ -50,16 +50,12 @@ const Bar = ({
   return (
     <>
       {(!prevBarMetre || prevBarMetre !== metre) && (
-        <>
-          <BarMetre>
-            {metreInfo.name.split('/').map((substring) => (
-              <span>{substring}</span>
-            ))}
-          </BarMetre>
-          <BarDivider />
-        </>
+        <BarMetre>
+          {metreInfo.name.split('/').map((substring, i) => (
+            <span key={i}>{substring}</span>
+          ))}
+        </BarMetre>
       )}
-
       {filteredBeats}
       <BarDivider />
     </>

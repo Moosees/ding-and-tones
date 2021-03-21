@@ -81,7 +81,6 @@ const setupSong = ({ arrangement, bars, beats }, mutedBars) => {
       measure: measureFiltered,
     });
   });
-  console.log({ song });
 
   return song;
 };
