@@ -14,7 +14,7 @@ import {
 
 class PrintView extends Component {
   render() {
-    const { arrangement, bpm, composer, title } = this.props;
+    const { arrangement, bpm, composer, headersOpen, title } = this.props;
 
     const bars = arrangement.map((bar, i) => {
       return <Bar key={bar} barId={bar} prevBar={arrangement[i - 1] || null} />;
@@ -22,11 +22,15 @@ class PrintView extends Component {
 
     return (
       <SongLayout>
-        <Title>{title}</Title>
-        {composer && composer !== 'Anonymous' && (
-          <Composer>Composer: {composer}</Composer>
+        {headersOpen && (
+          <>
+            <Title>{title}</Title>
+            {composer && composer !== 'Anonymous' && (
+              <Composer>Composer: {composer}</Composer>
+            )}
+            <Tempo>{getTempoText(bpm)}</Tempo>
+          </>
         )}
-        <Tempo>{getTempoText(bpm)}</Tempo>
         <Bars>
           <BarDivider />
           {bars}
@@ -37,11 +41,12 @@ class PrintView extends Component {
   }
 }
 
-const mapStateToProps = ({ song }) => ({
+const mapStateToProps = ({ song, ui }) => ({
   arrangement: song.arrangement,
   bpm: song.info.bpm,
   composer: song.ui.composer,
   title: song.info.title,
+  headersOpen: ui.headersOpen,
 });
 
 export default connect(mapStateToProps, null, null, { forwardRef: true })(

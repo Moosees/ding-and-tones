@@ -15,7 +15,7 @@ import {
 
 class SongView extends Component {
   render() {
-    const { arrangement, bpm, composer, title } = this.props;
+    const { arrangement, bpm, composer, headersOpen, title } = this.props;
 
     const bars = arrangement.map((bar, i) => {
       return <Bar key={bar} barId={bar} prevBar={arrangement[i - 1] || null} />;
@@ -23,14 +23,20 @@ class SongView extends Component {
 
     return (
       <SongLayout>
-        <Header>
-          <Title>{title}</Title>
-          {composer && composer !== 'Anonymous' && (
-            <Composer>Composer: {composer}</Composer>
-          )}
+        {headersOpen ? (
+          <>
+            <Header>
+              <Title>{title}</Title>
+              {composer && composer !== 'Anonymous' && (
+                <Composer>Composer: {composer}</Composer>
+              )}
+              <SongViewControls />
+            </Header>
+            <Tempo>{getTempoText(bpm)}</Tempo>
+          </>
+        ) : (
           <SongViewControls />
-        </Header>
-        <Tempo>{getTempoText(bpm)}</Tempo>
+        )}
         <Bars>
           <BarDivider />
           {bars}
@@ -40,11 +46,12 @@ class SongView extends Component {
   }
 }
 
-const mapStateToProps = ({ song }) => ({
+const mapStateToProps = ({ song, ui }) => ({
   arrangement: song.arrangement,
   bpm: song.info.bpm,
   composer: song.ui.composer,
   title: song.info.title,
+  headersOpen: ui.headersOpen,
 });
 
 export default connect(mapStateToProps)(SongView);

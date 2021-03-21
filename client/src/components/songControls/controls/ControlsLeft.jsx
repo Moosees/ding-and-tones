@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
+import {
+  addNewBar,
+  saveSong,
+  updateSongInfo,
+} from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
 import Select from '../../shared/select/Select';
-import EditButton from '../editButton/EditButton';
-import PlayButton from '../playButton/PlayButton';
-import PopupNewSong from './PopupNewSong';
+import PopupNewBar from '../popups/PopupNewBar';
+import PopupNewSong from '../popups/PopupNewSong';
+import { ControlsContainer } from './controls.styles';
+import { createNewBar } from './controls.utils';
 
-const SongInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-const Info = ({
+const ControlsLeft = ({
+  addNewBar,
   arrangement,
   isOwner,
   isSaving,
@@ -29,7 +28,8 @@ const Info = ({
   songInfo,
   updateSongInfo,
 }) => {
-  const [newOpen, setNewOpen] = useState(false);
+  const [newSongOpen, setNewSongOpen] = useState(false);
+  const [newBarOpen, setNewBarOpen] = useState(false);
   const { replace } = useHistory();
 
   const [
@@ -41,6 +41,7 @@ const Info = ({
     setTitle,
   ] = useValidate('title', songInfo.title);
 
+  const { metre, subdivision } = songInfo;
   const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
 
   const handleSave = () => {
@@ -49,9 +50,13 @@ const Info = ({
     });
   };
 
+  const handleNewBar = (metre, subdivision) => {
+    addNewBar(createNewBar(metre, subdivision));
+  };
+
   return (
     <>
-      <SongInfoContainer>
+      <ControlsContainer>
         <InfoText
           handleChange={handleTitleChange}
           handleClose={resetTitle}
@@ -78,22 +83,37 @@ const Info = ({
               !isTitleValid ||
               !isSongSavable
             }
-            label={isOwner ? 'Save Changes' : 'Save'}
+            label={isOwner ? 'Save' : 'Save New'}
             onClick={handleSave}
           />
           <BtnPrimary
             disabled={isSongPlaying || isSaving || !isTitleValid}
             label="New Song"
-            onClick={() => setNewOpen(true)}
+            onClick={() => setNewSongOpen(true)}
           />
-          <EditButton />
-          <PlayButton />
+          <BtnPrimary
+            label="Add Bar"
+            disabled={isSongPlaying}
+            onClick={() => handleNewBar(metre, subdivision)}
+          />
+          <BtnPrimary
+            label="Custom Bar"
+            disabled={isSongPlaying}
+            onClick={() => setNewBarOpen(true)}
+            handleNewBar={handleNewBar}
+          />
         </Buttons>
-      </SongInfoContainer>
-      {newOpen && (
+      </ControlsContainer>
+      {newSongOpen && (
         <PopupNewSong
-          onClose={() => setNewOpen(false)}
+          onClose={() => setNewSongOpen(false)}
           updateValidation={setTitle}
+        />
+      )}
+      {newBarOpen && (
+        <PopupNewBar
+          onClose={() => setNewBarOpen(false)}
+          handleNewBar={handleNewBar}
         />
       )}
     </>
@@ -109,4 +129,8 @@ const mapStateToProps = ({ song, ui, user }) => ({
   isSignedIn: user.isSignedIn,
 });
 
-export default connect(mapStateToProps, { saveSong, updateSongInfo })(Info);
+export default connect(mapStateToProps, {
+  addNewBar,
+  saveSong,
+  updateSongInfo,
+})(ControlsLeft);

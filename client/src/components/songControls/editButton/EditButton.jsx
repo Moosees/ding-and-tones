@@ -12,7 +12,7 @@ const EditButton = ({
   return (
     <BtnPrimary
       light={light}
-      label={isEditingSong ? 'View Song' : 'Edit'}
+      label={isEditingSong ? 'Printview' : 'Edit'}
       disabled={isSongPlaying}
       onClick={toggleEditSong}
     />

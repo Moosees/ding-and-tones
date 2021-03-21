@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   currentBeat: null,
   countOpen: false,
   handsOpen: false,
+  headersOpen: true,
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,
@@ -61,6 +62,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         countOpen: !state.countOpen,
+      };
+
+    case uiTypes.TOGGLE_HEADERS_OPEN:
+      return {
+        ...state,
+        headersOpen: !state.headersOpen,
       };
 
     case uiTypes.TOGGLE_EDIT_SONG:

@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { toggleCountOpen, toggleHandsOpen } from '../../redux/ui/ui.actions';
+import {
+  toggleCountOpen,
+  toggleHandsOpen,
+  toggleHeadersOpen,
+} from '../../redux/ui/ui.actions';
 import BtnPrimary from '../shared/button/Primary';
 import EditButton from './editButton/EditButton';
 import PlayButton from './playButton/PlayButton';
@@ -11,6 +15,13 @@ const ControlsContainer = styled.div`
   display: flex;
   position: relative;
 
+  ${({ headersOpen }) =>
+    !headersOpen &&
+    `
+    align-self: center;
+    margin-bottom: 2px;
+    `}
+
   button {
     margin: 0 2px;
   }
@@ -19,12 +30,14 @@ const ControlsContainer = styled.div`
 const SongViewControls = ({
   countOpen,
   handsOpen,
+  headersOpen,
   isSongPlaying,
   toggleCountOpen,
   toggleHandsOpen,
+  toggleHeadersOpen,
 }) => {
   return (
-    <ControlsContainer>
+    <ControlsContainer headersOpen={headersOpen}>
       <PlayButton light />
       <BtnPrimary
         light
@@ -42,6 +55,14 @@ const SongViewControls = ({
         disabled={isSongPlaying}
         onClick={toggleCountOpen}
       />
+      <BtnPrimary
+        light
+        checkbox
+        checked={headersOpen}
+        label="Headers"
+        disabled={isSongPlaying}
+        onClick={toggleHeadersOpen}
+      />
       <EditButton light />
     </ControlsContainer>
   );
@@ -50,9 +71,12 @@ const SongViewControls = ({
 const mapStateToProps = ({ ui }) => ({
   countOpen: ui.countOpen,
   handsOpen: ui.handsOpen,
+  headersOpen: ui.headersOpen,
   isSongPlaying: ui.isSongPlaying,
 });
 
-export default connect(mapStateToProps, { toggleCountOpen, toggleHandsOpen })(
-  SongViewControls
-);
+export default connect(mapStateToProps, {
+  toggleCountOpen,
+  toggleHandsOpen,
+  toggleHeadersOpen,
+})(SongViewControls);

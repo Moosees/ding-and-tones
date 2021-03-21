@@ -78,6 +78,10 @@ export const toggleCountOpen = () => ({
   type: uiTypes.TOGGLE_COUNT_OPEN,
 });
 
+export const toggleHeadersOpen = () => ({
+  type: uiTypes.TOGGLE_HEADERS_OPEN,
+});
+
 export const toggleEditSong = () => ({
   type: uiTypes.TOGGLE_EDIT_SONG,
 });
