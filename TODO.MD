@@ -2,10 +2,6 @@
 
 ## Current tasks
 
-* Song view and print continuous flow - started
-* Bar numbers on song viewer? Only long songs?
-* Check print on real paper
-
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
@@ -13,6 +9,7 @@
 * Clean up beats and muted bars when deleting bars
 * Save song as JSON?
 * Beat dropdown has option to select and replace sound
+* Bar numbers on song viewer? Only long songs?
 
 ## Bugs
 

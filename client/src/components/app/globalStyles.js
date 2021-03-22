@@ -57,7 +57,7 @@ export default createGlobalStyle`
 
   @media print {
     @page {
-      margin: 1cm;
+      margin: 16mm 16mm 10mm;
       size: A4;
     }
   }
