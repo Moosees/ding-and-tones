@@ -126,9 +126,14 @@ export const updateHandForBeat = (beatId, newHand, selected) => ({
   payload: { beatId, newHand, selected },
 });
 
-export const updateSoundForBeat = (beatId, newSound, selected) => ({
+export const updateSoundForBeat = (
+  beatId,
+  newSound,
+  selected,
+  multiSelect
+) => ({
   type: songTypes.UPDATE_BEAT,
-  payload: { beatId, newSound, selected },
+  payload: { beatId, newSound, selected, multiSelect },
 });
 
 export const updateMeasure = (barId, newMeasure, newBeats) => ({

@@ -6,9 +6,10 @@ const uiTypes = {
   SET_PRIVACY_OPEN: 'ui/setPrivacyOpen',
   SET_SOUND_OPTIONS: 'ui/setSoundOptions',
   TOGGLE_COUNT_OPEN: 'ui/toggleCount',
-  TOGGLE_HEADERS_OPEN: 'ui/toggleHeaders',
   TOGGLE_EDIT_SONG: 'ui/toggleEditSong',
+  TOGGLE_HEADERS_OPEN: 'ui/toggleHeaders',
   TOGGLE_HANDS_OPEN: 'ui/toggleHands',
+  TOGGLE_MULTI_SELECT: 'ui/toggleMulti',
   TOGGLE_MUTE_BAR: 'ui/toggleMute',
 };
 

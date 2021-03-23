@@ -21,7 +21,11 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
           ...state[payload.beatId],
           sound: payload.selected
             ? removeSoundFromBeat(payload.newSound, state[payload.beatId].sound)
-            : addSoundToBeat(payload.newSound, state[payload.beatId].sound),
+            : addSoundToBeat(
+                payload.newSound,
+                state[payload.beatId].sound,
+                payload.multiSelect
+              ),
         },
       };
 

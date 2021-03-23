@@ -91,12 +91,14 @@ export const BeatText = styled.span`
 `;
 
 export const Dropdown = styled.div`
+  align-items: center;
   background-color: ${({ theme }) => theme.colorBg};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-width: 2px;
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.shadowLight};
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 2px;
   position: absolute;
@@ -104,6 +106,16 @@ export const Dropdown = styled.div`
 
   ${({ openLeft }) => (openLeft ? 'right: 0;' : 'left: 0;')}
   ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
+`;
+
+export const DropdownContent = styled.div`
+  display: flex;
+`
+
+export const DropdownColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const DropdownItem = styled.div`
@@ -144,12 +156,6 @@ export const DropdownItem = styled.div`
   ${({ theme }) => theme.mqW1000`
     font-size: ${theme.fzMedium};
   `}
-`;
-
-export const DropdownColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 `;
 
 export const HandIcon = styled.i`

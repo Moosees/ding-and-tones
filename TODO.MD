@@ -2,13 +2,13 @@
 
 ## Current tasks
 
+* Redesign checkboxes and checkbox buttons
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Remove measure subdivision count?
 * Clean up beats and muted bars when deleting bars
 * Save song as JSON?
-* Beat dropdown has option to select and replace sound
 * Bar numbers on song viewer? Only long songs?
 
 ## Bugs

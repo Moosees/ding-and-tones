@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,
+  multiSelect: false,
   mutedBars: {},
   privacyOpen: false,
   soundOptions: {
@@ -64,12 +65,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         countOpen: !state.countOpen,
       };
 
-    case uiTypes.TOGGLE_HEADERS_OPEN:
-      return {
-        ...state,
-        headersOpen: !state.headersOpen,
-      };
-
     case uiTypes.TOGGLE_EDIT_SONG:
       return {
         ...state,
@@ -77,10 +72,22 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         mutedBars: {},
       };
 
+    case uiTypes.TOGGLE_HEADERS_OPEN:
+      return {
+        ...state,
+        headersOpen: !state.headersOpen,
+      };
+
     case uiTypes.TOGGLE_HANDS_OPEN:
       return {
         ...state,
         handsOpen: !state.handsOpen,
+      };
+
+    case uiTypes.TOGGLE_MULTI_SELECT:
+      return {
+        ...state,
+        multiSelect: !state.multiSelect,
       };
 
     case uiTypes.TOGGLE_MUTE_BAR:

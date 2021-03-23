@@ -148,7 +148,9 @@ export const parseFetchedSong = (song, getScale) => {
   };
 };
 
-export const addSoundToBeat = (newSound, soundArray) => {
+export const addSoundToBeat = (newSound, soundArray, multiSelect) => {
+  if (!multiSelect) return [newSound];
+
   if (soundArray.length >= 2) return soundArray;
 
   return [...soundArray, newSound]
