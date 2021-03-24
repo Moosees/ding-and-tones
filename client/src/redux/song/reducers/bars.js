@@ -1,10 +1,14 @@
-import songTypes from '../song.types';
+import { filterState } from '../../store.utils';
 import { barsState } from '../song.initialState';
+import songTypes from '../song.types';
 
 const barsReducer = (state = barsState, { type, payload }) => {
   switch (type) {
     case songTypes.ADD_NEW_BAR:
       return { ...state, [payload.barId]: payload.bar };
+
+    case songTypes.DELETE_BAR:
+      return filterState(state, [payload.barToDelete]);
 
     case songTypes.DUPLICATE_BAR:
       const oldBar = state[payload.oldBarId];

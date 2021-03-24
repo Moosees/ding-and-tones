@@ -7,10 +7,20 @@ export const addNewBar = (barWithBeatsAndId) => ({
   payload: barWithBeatsAndId, // { bar, barId, beats }
 });
 
-export const deleteBar = (barId) => ({
-  type: songTypes.DELETE_BAR,
-  payload: barId,
-});
+export const deleteBar = (barId) => (dispatch, getState) => {
+  const {
+    song: { bars },
+  } = getState();
+  
+  const beatsToDelete = bars[barId].measure
+    .map((beat) => beat.beatId)
+    .filter((beat) => beat);
+
+  dispatch({
+    type: songTypes.DELETE_BAR,
+    payload: { barToDelete: barId, beatsToDelete },
+  });
+};
 
 export const deleteSongById = (songId) => (dispatch) => {
   dispatch({ type: songTypes.DELETE_STARTED });

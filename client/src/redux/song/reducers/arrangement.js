@@ -11,7 +11,7 @@ const arrangementReducer = (state = arrangementState, { type, payload }) => {
       return [...state, payload.newBarId];
 
     case songTypes.DELETE_BAR:
-      const arrFiltered = state.filter((bar) => bar !== payload);
+      const arrFiltered = state.filter((bar) => bar !== payload.barToDelete);
       return arrFiltered;
 
     case songTypes.MOVE_BAR:

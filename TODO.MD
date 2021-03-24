@@ -7,7 +7,6 @@
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Remove measure subdivision count?
-* Clean up beats and muted bars when deleting bars
 * Save song as JSON?
 * Bar numbers on song viewer? Only long songs?
 
@@ -24,7 +23,6 @@
 * Better Loading component - big spinner? Spinner on account page save
 * Dynamic size for tonefields
 * Load song button can be seen through table header
-* Line breaks inside bars? Only for printing? User added line breaks?
 * Errors from backend display on inputs instead of alert?
 * New buttons for loading songs and confirm/cancel
 * Hover on drum shows all information about hovered note?
@@ -119,3 +117,4 @@
 * Check text inputs for bad words?
 * Show name for your songs as "you"?
 * Print multiple songs on same page
+* User can add line breaks in songwriter?

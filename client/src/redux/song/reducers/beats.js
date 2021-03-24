@@ -1,3 +1,4 @@
+import { filterState } from '../../store.utils';
 import { beatsState } from '../song.initialState';
 import songTypes from '../song.types';
 import { addSoundToBeat, removeSoundFromBeat } from '../song.utils';
@@ -6,6 +7,9 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
   switch (type) {
     case songTypes.ADD_NEW_BAR:
       return { ...state, ...payload.beats };
+
+    case songTypes.DELETE_BAR:
+      return filterState(state, payload.beatsToDelete);
 
     case songTypes.DUPLICATE_BAR:
       return { ...state, ...payload.newBeats };

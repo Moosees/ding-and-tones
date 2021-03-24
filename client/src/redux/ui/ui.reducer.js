@@ -1,4 +1,5 @@
 import songTypes from '../song/song.types';
+import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
 import { updateMutedBars } from './ui.utils';
 
@@ -94,6 +95,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         mutedBars: updateMutedBars(state.mutedBars, payload),
+      };
+
+    case songTypes.DELETE_BAR:
+      return {
+        ...state,
+        mutedBars: filterState(state.mutedBars, payload.barToDelete),
       };
 
     case songTypes.FETCH_SUCCESSFUL:
