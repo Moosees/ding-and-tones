@@ -17,7 +17,7 @@
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * User can tab select :active outside of popups
 * Login popup and blockers...
-* Cannot read property 'clientHeight' of null at DropdownHandler onResize()
+* Cannot read property 'clientHeight' of null at DropdownHandler onResize() - fixed?
 
 ## Design
 

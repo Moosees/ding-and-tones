@@ -26,6 +26,8 @@ const DropdownHandler = ({ children, borderRef, listRef }) => {
       };
 
       const onResize = () => {
+        if (!borderRef.current || !listRef.current) return;
+
         setBorderHeight(borderRef.current.clientHeight);
         setBorderWidth(borderRef.current.clientWidth);
         setListHeight(listRef.current.scrollHeight);
