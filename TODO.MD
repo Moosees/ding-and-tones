@@ -2,7 +2,8 @@
 
 ## Current tasks
 
-* Redesign checkboxes and checkbox buttons
+* Redesign checkboxes and checkbox buttons - small and name props, button checkbox
+
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?

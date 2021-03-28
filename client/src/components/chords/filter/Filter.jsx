@@ -49,10 +49,9 @@ const Filter = ({
   const allChords = chordList.map((chord) => (
     <Checkbox
       key={chord.id}
-      name={chord.id}
       label={chord.name}
       checked={chord.isSelected}
-      onChange={(e) => toggleChordIsSelected(e.target.name, scale)}
+      onChange={() => toggleChordIsSelected(chord.id, scale)}
     />
   ));
 

@@ -1,55 +1,33 @@
 import styled from 'styled-components';
 
-export const CheckboxLabel = styled.label`
+export const CheckboxContainer = styled.button`
   align-items: center;
+  background: transparent;
+  border: 0;
   cursor: pointer;
   display: flex;
-  opacity: ${({ checked, small }) => (checked || small ? '1' : '0.75')};
-  padding: 0.2rem;
-  padding-left: ${({ reverse }) => (reverse ? '0.2rem' : '2.2rem')};
-  padding-right: ${({ reverse }) => (reverse ? '2.2rem' : '0.2rem')};
-  position: relative;
-  width: 100%;
+  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
-  input {
-    height: 0;
-    opacity: 0;
-    position: absolute;
-    width: 0;
-
-    &:checked ~ span::after {
-      display: block;
-    }
+  &:focus {
+    outline: 0;
   }
 
-  &:hover input ~ span {
-    transform: ${({ small }) => (small ? 'unset' : 'scale(1.15)')};
-
-    ${({ theme }) => theme.mqW1200`
-    transform: unset;
-    }
-  `}
+  &:hover div {
+    border: ${({ theme }) => theme.borderMedium};
+  }
 `;
 
-export const CheckboxInput = styled.span`
-  background-color: ${({ theme }) => theme.colorBtnClear};
+export const CheckboxIcon = styled.div`
+  background-color: ${({ checked, theme }) =>
+    checked ? theme.colorCheckbox : theme.colorBtnClear};
+  border: ${({ theme }) => theme.borderLight};
   border-radius: 100%;
   height: ${({ small }) => (small ? '1.8' : '2')}rem;
-  left: ${({ reverse }) => (reverse ? 'unset' : '0')};
-  right: ${({ reverse }) => (reverse ? '0' : 'unset')};
-  position: absolute;
-  transition: transform 0.2s ease;
+  margin: 1px;
+  opacity: 0.8;
   width: ${({ small }) => (small ? '1.8' : '2')}rem;
+`;
 
-  &::after {
-    box-sizing: border-box;
-    background-color: ${({ theme }) => theme.colorCheckbox};
-    border-radius: 100%;
-    content: '';
-    display: none;
-    height: ${({ small }) => (small ? '1.8' : '2')}rem;
-    position: absolute;
-    left: 0;
-    width: ${({ small }) => (small ? '1.8' : '2')}rem;
-  }
+export const CheckboxLabel = styled.span`
+  margin-left: 2px;
 `;

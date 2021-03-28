@@ -1,27 +1,16 @@
 import React from 'react';
-import { CheckboxInput, CheckboxLabel } from './checkbox.styles';
+import {
+  CheckboxContainer,
+  CheckboxIcon,
+  CheckboxLabel,
+} from './checkbox.styles';
 
-const Checkbox = ({
-  checked,
-  disabled,
-  label,
-  name,
-  onChange,
-  reverse,
-  small,
-}) => {
+const Checkbox = ({ checked, disabled, label, onChange, reverse, small }) => {
   return (
-    <CheckboxLabel checked={checked} reverse={reverse} small={small}>
-      <input
-        disabled={disabled}
-        type="checkbox"
-        name={name}
-        checked={checked}
-        onChange={onChange}
-      />
-      <CheckboxInput reverse={reverse} small={small} />
-      {label}
-    </CheckboxLabel>
+    <CheckboxContainer disabled={disabled} onClick={onChange} reverse={reverse}>
+      <CheckboxIcon checked={checked} small={small} />
+      <CheckboxLabel>{label}</CheckboxLabel>
+    </CheckboxContainer>
   );
 };
 
