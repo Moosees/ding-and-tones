@@ -6,7 +6,14 @@ export const CheckboxContainer = styled.button`
   border: 0;
   cursor: pointer;
   display: flex;
-  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
+
+  ${({ reverse }) =>
+    reverse &&
+    `
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;  
+  `}
 
   &:focus {
     outline: 0;

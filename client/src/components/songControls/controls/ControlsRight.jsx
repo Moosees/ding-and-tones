@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { metreList } from '../../../assets/metre';
 import { toggleCountOpen, toggleHandsOpen } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
-import BtnPrimary from '../../shared/button/Primary';
+import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoBox from '../../shared/layout/InfoBox';
 import BpmSlider from '../bpmSlider/BpmSlider';
 import EditButton from '../editButton/EditButton';
@@ -34,19 +34,19 @@ const ControlsRight = ({
         </InfoBox>
         <Buttons position="flex-start">
           <PlayButton />
-          <BtnPrimary
-            checkbox
+          <Checkbox
+            asBtn
             checked={handsOpen}
             label="Hands"
             disabled={isSongPlaying}
-            onClick={toggleHandsOpen}
+            onChange={toggleHandsOpen}
           />
-          <BtnPrimary
-            checkbox
+          <Checkbox
+            asBtn
             checked={countOpen}
             label="Count"
             disabled={isSongPlaying}
-            onClick={toggleCountOpen}
+            onChange={toggleCountOpen}
           />
           <EditButton />
         </Buttons>

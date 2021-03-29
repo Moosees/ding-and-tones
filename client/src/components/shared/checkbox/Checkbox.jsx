@@ -1,16 +1,33 @@
 import React from 'react';
+import { PrimaryButton } from '../button/button.styles';
 import {
   CheckboxContainer,
   CheckboxIcon,
   CheckboxLabel,
 } from './checkbox.styles';
 
-const Checkbox = ({ checked, disabled, label, onChange, reverse, small }) => {
+const Checkbox = ({
+  asBtn,
+  checked,
+  disabled,
+  label,
+  light,
+  onChange,
+  reverse,
+  small,
+}) => {
+  const Component = asBtn ? PrimaryButton : CheckboxContainer;
+
   return (
-    <CheckboxContainer disabled={disabled} onClick={onChange} reverse={reverse}>
-      <CheckboxIcon checked={checked} small={small} />
+    <Component
+      light={light}
+      disabled={disabled}
+      onClick={onChange}
+      reverse={reverse}
+    >
+      <CheckboxIcon checked={checked} small={small || asBtn} />
       <CheckboxLabel>{label}</CheckboxLabel>
-    </CheckboxContainer>
+    </Component>
   );
 };
 

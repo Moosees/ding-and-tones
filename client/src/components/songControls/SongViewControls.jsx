@@ -6,7 +6,7 @@ import {
   toggleHandsOpen,
   toggleHeadersOpen,
 } from '../../redux/ui/ui.actions';
-import BtnPrimary from '../shared/button/Primary';
+import Checkbox from '../shared/checkbox/Checkbox';
 import EditButton from './editButton/EditButton';
 import PlayButton from './playButton/PlayButton';
 
@@ -39,29 +39,29 @@ const SongViewControls = ({
   return (
     <ControlsContainer headersOpen={headersOpen}>
       <PlayButton light />
-      <BtnPrimary
+      <Checkbox
+        asBtn
         light
-        checkbox
         checked={handsOpen}
         label="Hands"
         disabled={isSongPlaying}
-        onClick={toggleHandsOpen}
+        onChange={toggleHandsOpen}
       />
-      <BtnPrimary
+      <Checkbox
+        asBtn
         light
-        checkbox
         checked={countOpen}
         label="Count"
         disabled={isSongPlaying}
-        onClick={toggleCountOpen}
+        onChange={toggleCountOpen}
       />
-      <BtnPrimary
+      <Checkbox
+        asBtn
         light
-        checkbox
         checked={headersOpen}
         label="Headers"
         disabled={isSongPlaying}
-        onClick={toggleHeadersOpen}
+        onChange={toggleHeadersOpen}
       />
       <EditButton light />
     </ControlsContainer>

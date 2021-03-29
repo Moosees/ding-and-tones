@@ -40,8 +40,8 @@ const PopupAccount = ({
       <InfoBox reverse>
         <Checkbox
           reverse
+          small
           label="Hide name in searches?"
-          name="anon"
           checked={anon}
           onChange={() => setAnon(!anon)}
         />

@@ -7,7 +7,7 @@ import {
   updateSoundForBeat,
 } from '../../../redux/song/song.actions';
 import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
-import BtnPrimary from '../../shared/button/Primary';
+import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { DropdownContext } from '../dropdownHandler/DropdownHandler';
 import {
@@ -63,9 +63,7 @@ const BeatDropdown = ({
     <DropdownItem
       selected={value === hand}
       key={value}
-      onClick={() =>
-        updateHandForBeat(beatId, value, value === hand)
-      }
+      onClick={() => updateHandForBeat(beatId, value, value === hand)}
     >
       <span>{name}</span>
       <HandIcon className="material-icons">pan_tool</HandIcon>
@@ -81,13 +79,13 @@ const BeatDropdown = ({
         openTop={openTop}
         value={value}
       >
-        <BtnPrimary
-          light
-          checkbox
+        <Checkbox
+          small
           checked={multiSelect}
           label="Chord"
-          onClick={toggleMultiSelect}
+          onChange={toggleMultiSelect}
         />
+        <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
             {parseOptions(options.single)}
