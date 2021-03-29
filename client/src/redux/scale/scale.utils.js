@@ -96,12 +96,23 @@ export const parseNotesForSaveScale = ({ round }) => ({
   round: round.slice(1),
 });
 
-export const transposeScaleToDestination = (scale, destination = 0) => {
+export const transposeRoundToDestination = (scale, destination = 0) => {
   return scale
     .map((note) => {
       const newValue = noteNameToValue[note] + destination;
       return newValue >= MIN_NOTE_VALUE && newValue <= MAX_NOTE_VALUE
         ? noteValueToName[newValue]
+        : null;
+    })
+    .filter((note) => note);
+};
+
+export const transposeMutantToDestination = (scale, destination = 0) => {
+  return scale
+    .map((note) => {
+      const newValue = noteNameToValue[note.note] + destination;
+      return newValue >= MIN_NOTE_VALUE && newValue <= MAX_NOTE_VALUE
+        ? { ...note, note: noteValueToName[newValue] }
         : null;
     })
     .filter((note) => note);

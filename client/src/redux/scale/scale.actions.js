@@ -5,7 +5,8 @@ import {
   createFullScaleFromNames,
   parseNotesForSaveScale,
   sortScaleByFreq,
-  transposeScaleToDestination,
+  transposeMutantToDestination,
+  transposeRoundToDestination,
 } from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
@@ -151,13 +152,18 @@ export const setScaleName = (name) => ({
 });
 
 export const transposeScale = (destination) => (dispatch, getState) => {
-  const { scale } = getState();
-  const newScale = transposeScaleToDestination(scale.notes.round, destination);
+  const {
+    scale: { notes },
+  } = getState();
+  const newRound = transposeRoundToDestination(notes.round, destination);
 
-  if (!newScale.length) return;
+  if (!newRound.length) return;
+
+  const newMutant = transposeMutantToDestination(notes.mutant, destination);
+  const newFull = createFullScaleFromNames(newRound, newMutant);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: newScale,
+    payload: { newRound, newMutant, newFull },
   });
 };
