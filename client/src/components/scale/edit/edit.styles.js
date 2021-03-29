@@ -27,8 +27,8 @@ export const Note = styled.button`
   background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid ${({ theme }) => theme.colorBtnClear};
   border-radius: 100%;
-  box-shadow: ${({ inRound, inMutant, theme }) =>
-    inRound || inMutant ? theme.shadowLight : 'none'};
+  box-shadow: ${({ inRound, inExtra, theme }) =>
+    inRound || inExtra ? theme.shadowLight : 'none'};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   height: 3rem;
@@ -43,8 +43,8 @@ export const Note = styled.button`
     border: 2px solid ${theme.colorCheckbox};
   `}
 
-  ${({ inMutant, theme }) =>
-    inMutant &&
+  ${({ inExtra, theme }) =>
+    inExtra &&
     `
     border: 2px dotted ${theme.colorBtnConfirm};
   `}

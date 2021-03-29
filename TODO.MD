@@ -2,12 +2,11 @@
 
 ## Current tasks
 
-* Handle extra/bottom notes/mutant drums - started
+* Handle extra/bottom notes - started
 * Beat dropdown
-* Show mutant notes in Drum - stated, need styling
-* Save and load mutant to/from db
-* Custom positions for mutant notes
-* Scale length for mutant and round notes separate
+* Show extra notes in Drum - stated, need styling
+* Save and load extra to/from db
+* Custom positions for extra notes
 
 * Typescript
 * Play song logic should be moved somewhere else?
@@ -126,3 +125,4 @@
 * Show name for your songs as "you"?
 * Print multiple songs on same page
 * User can add line breaks in songwriter?
+* Double dings and mutant drums

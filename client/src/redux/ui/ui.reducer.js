@@ -4,7 +4,7 @@ import uiTypes from './ui.types';
 import { updateMutedBars } from './ui.utils';
 
 const INITIAL_STATE = {
-  addMutant: false,
+  addExtraNotes: false,
   currentBar: null,
   currentBeat: null,
   countOpen: false,
@@ -74,6 +74,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         mutedBars: {},
       };
 
+    case uiTypes.TOGGLE_EXTRA_NOTES:
+      return {
+        ...state,
+        addExtraNotes: !state.addExtraNotes,
+      };
+
     case uiTypes.TOGGLE_HEADERS_OPEN:
       return {
         ...state,
@@ -90,12 +96,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         multiSelect: !state.multiSelect,
-      };
-
-    case uiTypes.TOGGLE_MUTANT:
-      return {
-        ...state,
-        addMutant: !state.addMutant,
       };
 
     case uiTypes.TOGGLE_MUTE_BAR:

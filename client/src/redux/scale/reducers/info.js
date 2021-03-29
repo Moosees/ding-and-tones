@@ -23,7 +23,7 @@ const infoReducer = (state = infoState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
-        label: createScaleLabel(payload.newMutant, payload.newRound),
+        label: createScaleLabel(payload.newExtra, payload.newRound),
         rootName: payload.newRound[0] ? payload.newRound[0].slice(0, -1) : '',
         rootValue: payload.newRound[0]
           ? noteNameToValue[payload.newRound[0]]

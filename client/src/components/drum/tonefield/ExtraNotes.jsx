@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 
-const Mutant = ({
+const ExtraNotes = ({
   audioPath,
   color,
   displayedChord,
@@ -30,4 +30,4 @@ const mapStateToProps = ({ drum }) => ({
   displayedChord: drum.displayedChord,
 });
 
-export default connect(mapStateToProps, { setDisplayedNote })(Mutant);
+export default connect(mapStateToProps, { setDisplayedNote })(ExtraNotes);

@@ -1,33 +1,33 @@
 import axios from 'axios';
 import scaleTypes from './scale.types';
 import {
-  addMutantPos,
+  addExtraNotesPos,
   createFullScaleFromNames,
   parseNotesForSaveScale,
   sortScaleByFreq,
-  transposeMutantToDestination,
+  transposeExtraToDestination,
   transposeRoundToDestination,
 } from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
   const {
     scale: { notes },
-    ui: { addMutant },
+    ui: { addExtraNotes },
   } = getState();
 
-  const newRound = addMutant
+  const newRound = addExtraNotes
     ? notes.round
     : sortScaleByFreq([...notes.round, newNote]);
-  const newMutant = addMutant
-    ? addMutantPos(
-        sortScaleByFreq([...notes.mutant.map(({ note }) => note), newNote])
+  const newExtra = addExtraNotes
+    ? addExtraNotesPos(
+        sortScaleByFreq([...notes.extra.map(({ note }) => note), newNote])
       )
-    : notes.mutant;
-  const newFull = createFullScaleFromNames(newRound, newMutant);
+    : notes.extra;
+  const newFull = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newMutant, newFull },
+    payload: { newRound, newExtra, newFull },
   });
 };
 
@@ -98,12 +98,12 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
     notes.round.length > 1
       ? notes.round.filter((note) => note !== noteToRemove)
       : notes.round;
-  const newMutant = notes.mutant.filter(({ note }) => note !== noteToRemove);
-  const newFull = createFullScaleFromNames(newRound, newMutant);
+  const newExtra = notes.extra.filter(({ note }) => note !== noteToRemove);
+  const newFull = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newMutant, newFull },
+    payload: { newRound, newExtra, newFull },
   });
 };
 
@@ -159,11 +159,11 @@ export const transposeScale = (destination) => (dispatch, getState) => {
 
   if (!newRound.length) return;
 
-  const newMutant = transposeMutantToDestination(notes.mutant, destination);
-  const newFull = createFullScaleFromNames(newRound, newMutant);
+  const newExtra = transposeExtraToDestination(notes.extra, destination);
+  const newFull = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newMutant, newFull },
+    payload: { newRound, newExtra, newFull },
   });
 };

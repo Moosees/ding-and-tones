@@ -22,7 +22,7 @@ export const DrumSvg = styled.svg`
   width: 100%;
 `;
 
-export const MutantContainer = styled.div`
+export const ExtraNotesContainer = styled.div`
   position: absolute;
   top: 0;
   width: 100%;

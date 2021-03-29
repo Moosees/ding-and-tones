@@ -11,18 +11,25 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import { EditContainer, Note, Notes } from './edit.styles';
 
-const getNotes = (round, mutant, fnAdd, fnRemove, isSongPlaying, addMutant) => {
+const getNotes = (
+  extra,
+  round,
+  fnAdd,
+  fnRemove,
+  isSongPlaying,
+  addExtraNotes
+) => {
+  const extraNotes = extra.map(({ note }) => note);
   const notes = [];
-  const mutantNotes = mutant.map(({ note }) => note);
 
   for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
     const noteName = noteValueToName[i];
     const isNoteInRound = round.includes(noteName);
-    const isNoteInMutant = mutantNotes.includes(noteName);
-    const isNoteInScale = isNoteInRound || isNoteInMutant;
+    const isNoteInExtra = extraNotes.includes(noteName);
+    const isNoteInScale = isNoteInRound || isNoteInExtra;
     const disabled =
-      (!isNoteInScale && addMutant && mutant.length >= 8) ||
-      (!isNoteInScale && !addMutant && round.length >= 14);
+      (!isNoteInScale && addExtraNotes && extra.length >= 8) ||
+      (!isNoteInScale && !addExtraNotes && round.length >= 14);
 
     const handleClick = isNoteInScale
       ? () => fnRemove(noteName)
@@ -33,7 +40,7 @@ const getNotes = (round, mutant, fnAdd, fnRemove, isSongPlaying, addMutant) => {
         disabled={disabled}
         key={i}
         inRound={isNoteInRound}
-        inMutant={isNoteInMutant}
+        inExtra={isNoteInExtra}
         onClick={handleClick}
       >
         <span>{noteName}</span>
@@ -44,10 +51,10 @@ const getNotes = (round, mutant, fnAdd, fnRemove, isSongPlaying, addMutant) => {
 };
 
 const Edit = ({
-  addMutant,
+  addExtraNotes,
   addNoteToScale,
+  extra,
   isSongPlaying,
-  mutant,
   removeNoteFromScale,
   round,
   transposeScale,
@@ -67,12 +74,12 @@ const Edit = ({
   };
 
   const notes = getNotes(
+    extra,
     round,
-    mutant,
     handleAdd,
     handleRemove,
     isSongPlaying,
-    addMutant
+    addExtraNotes
   );
 
   return (
@@ -97,9 +104,9 @@ const Edit = ({
 };
 
 const mapStateToProps = ({ scale, ui }) => ({
+  extra: scale.notes.extra,
   round: scale.notes.round,
-  mutant: scale.notes.mutant,
-  addMutant: ui.addMutant,
+  addExtraNotes: ui.addExtraNotes,
   isSongPlaying: ui.isSongPlaying,
 });
 

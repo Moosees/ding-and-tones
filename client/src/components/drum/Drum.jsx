@@ -1,21 +1,21 @@
 import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
-import { DrumContainer, DrumSvg, MutantContainer } from './drum.styles';
+import { DrumContainer, DrumSvg, ExtraNotesContainer } from './drum.styles';
 import {
   getChordColor,
   getNoteColor,
   getNoteText,
   getPositionMap,
 } from './drum.utils';
-import Mutant from './tonefield/Mutant';
+import ExtraNotes from './tonefield/ExtraNotes';
 import Tonefield from './tonefield/Tonefield';
 
 const Drum = ({
   displayedChord,
   displayedNote,
   drumMode,
+  extra,
   layout,
-  mutant,
   round,
   scale,
   style,
@@ -25,14 +25,14 @@ const Drum = ({
     round.length,
   ]);
 
-  const { roundTonefields, mutantTonefields } = scale.reduce(
+  const { roundTonefields, extraTonefields } = scale.reduce(
     (acc, note, i) => {
       const showNote =
         !displayedChord || displayedChord.notes.includes(note.noteShort);
-      const isMutantNote = i >= round.length;
+      const isExtraNote = i >= round.length;
 
-      const tonefield = isMutantNote ? (
-        <Mutant
+      const tonefield = isExtraNote ? (
+        <ExtraNotes
           key={`${note.note}${i}`}
           hasFocus={i === displayedNote}
           note={note.note}
@@ -89,19 +89,17 @@ const Drum = ({
         />
       );
 
-      acc[isMutantNote ? 'mutantTonefields' : 'roundTonefields'].push(
-        tonefield
-      );
+      acc[isExtraNote ? 'extraTonefields' : 'roundTonefields'].push(tonefield);
 
       return acc;
     },
-    { roundTonefields: [], mutantTonefields: [] }
+    { roundTonefields: [], extraTonefields: [] }
   );
 
   return (
     <DrumContainer style={style}>
-      {mutant.length > 0 && (
-        <MutantContainer>{mutantTonefields}</MutantContainer>
+      {extra.length > 0 && (
+        <ExtraNotesContainer>{extraTonefields}</ExtraNotesContainer>
       )}
       <DrumSvg viewBox="-10 -10 20 20">
         <defs>
@@ -137,8 +135,8 @@ const mapStateToProps = ({ drum, scale }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   drumMode: drum.drumMode,
+  extra: scale.notes.extra,
   layout: scale.info.layout,
-  mutant: scale.notes.mutant,
   round: scale.notes.round,
   scale: scale.notes.scaleFull,
 });

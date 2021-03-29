@@ -1,7 +1,7 @@
 import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
 import { noteNameToValue, noteValueToName } from '../../assets/intervals';
 
-export const addMutantPos = (sortedScale) => {
+export const addExtraNotesPos = (sortedScale) => {
   return sortedScale.map((note, i) => ({ note, pos: `A${i + 1}` }));
 };
 
@@ -55,12 +55,12 @@ const addIntervalMap = (scaleWithValues) => {
   });
 };
 
-export const createFullScaleFromNames = (round, mutant) => {
+export const createFullScaleFromNames = (round, extra) => {
   if (!round.length) return [];
 
   const roundWithValues = addNoteValueFromName(round);
-  const mutantWithValues = addNoteValueFromName(mutant.map(({ note }) => note));
-  const scaleFull = addIntervalMap([...roundWithValues, ...mutantWithValues]);
+  const extraWithValues = addNoteValueFromName(extra.map(({ note }) => note));
+  const scaleFull = addIntervalMap([...roundWithValues, ...extraWithValues]);
 
   return scaleFull;
 };
@@ -82,13 +82,13 @@ export const createFullScaleFromNames = (round, mutant) => {
 //   };
 // };
 
-export const createScaleLabel = (mutant, round) => {
-  const mutantLabel = mutant.length
-    ? `${mutant.map(({ note }) => note).join(' ')} `
+export const createScaleLabel = (extra, round) => {
+  const extraLabel = extra.length
+    ? `${extra.map(({ note }) => note).join(' ')} `
     : '';
   if (round.length === 0) return '';
-  if (round.length === 1) return `${mutantLabel}(${round[0]})`;
-  return `${mutantLabel}(${round[0]}) ${round.slice(1).join(' ')}`;
+  if (round.length === 1) return `${extraLabel}(${round[0]})`;
+  return `${extraLabel}(${round[0]}) ${round.slice(1).join(' ')}`;
 };
 
 export const parseNotesForSaveScale = ({ round }) => ({
@@ -107,7 +107,7 @@ export const transposeRoundToDestination = (scale, destination = 0) => {
     .filter((note) => note);
 };
 
-export const transposeMutantToDestination = (scale, destination = 0) => {
+export const transposeExtraToDestination = (scale, destination = 0) => {
   return scale
     .map((note) => {
       const newValue = noteNameToValue[note.note] + destination;

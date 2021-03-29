@@ -18,13 +18,13 @@ const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
           />
         ))
       : scale[displayedNote].intervalMap.map((interval, i) => {
-          const isMutantNote = i >= round.length;
+          const isExtraNote = i >= round.length;
           return (
             <ScaleInterval
               key={i}
               scaleIndex={i}
               interval={interval}
-              number={isMutantNote ? (i - round.length + 1) * -1 : i}
+              number={isExtraNote ? (i - round.length + 1) * -1 : i}
             />
           );
         });

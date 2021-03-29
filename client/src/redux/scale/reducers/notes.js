@@ -19,7 +19,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
       return {
         ...state,
         round: payload.newRound,
-        mutant: payload.newMutant,
+        extra: payload.newExtra,
         scaleFull: payload.newFull,
       };
 
