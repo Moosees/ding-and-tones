@@ -45,7 +45,8 @@ const Drum = ({
                   i,
                   scale[displayedNote].intervalMap,
                   drumMode,
-                  displayedChord
+                  displayedChord,
+                  (i - round.length + 1) * -1
                 )
               : ''
           }
@@ -65,9 +66,7 @@ const Drum = ({
           note={note.note}
           noteIndex={i}
           showNote={showNote}
-          position={
-            isMutantNote ? mutant[i - round.length].pos : positionMap[i]
-          }
+          position={positionMap[i]}
           text={
             showNote
               ? getNoteText(
@@ -75,7 +74,8 @@ const Drum = ({
                   i,
                   scale[displayedNote].intervalMap,
                   drumMode,
-                  displayedChord
+                  displayedChord,
+                  i
                 )
               : ''
           }

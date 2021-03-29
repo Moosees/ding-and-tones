@@ -8,7 +8,6 @@ const Tonefield = ({
   displayedChord,
   hasFocus,
   isDing,
-  isMutantNote,
   note,
   noteIndex,
   position,
@@ -31,11 +30,7 @@ const Tonefield = ({
       onClick={showNote ? handlePlay : null}
       cx="0"
       cy="0"
-      transform={
-        isMutantNote
-          ? undefined
-          : `rotate(${rotate + 90}) translate(${translate})`
-      }
+      transform={`rotate(${rotate + 90}) translate(${translate})`}
       style={{
         fontSize: isDing ? '2.3px' : '1.5px',
         cursor: showNote ? 'pointer' : 'default',
@@ -51,7 +46,7 @@ const Tonefield = ({
         textAnchor="middle"
         dy="0.3em"
         fill="#ccc"
-        transform={isMutantNote ? undefined : `rotate(-${rotate + 90})`}
+        transform={`rotate(-${rotate + 90})`}
       >
         {text}
       </text>

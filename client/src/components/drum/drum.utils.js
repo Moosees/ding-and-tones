@@ -33,7 +33,8 @@ export const getNoteText = (
   noteIndex,
   intervalMap,
   drumMode,
-  displayedChord
+  displayedChord,
+  noteNumber
 ) => {
   switch (drumMode) {
     case drumModes.INTERVALS:
@@ -46,7 +47,7 @@ export const getNoteText = (
       return intervalMap[noteIndex].note;
 
     case drumModes.NUMBERS:
-      return noteIndex;
+      return noteNumber;
 
     default:
       return intervalMap[noteIndex].note;
