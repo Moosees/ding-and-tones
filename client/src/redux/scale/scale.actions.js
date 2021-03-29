@@ -89,15 +89,20 @@ export const loadScale = (scale) => ({
 });
 
 export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
-  const { scale } = getState();
+  const {
+    scale: { notes },
+  } = getState();
 
-  if (scale.notes.round.length <= 1) return;
-
-  const newScale = scale.notes.round.filter((note) => note !== noteToRemove);
+  const newRound =
+    notes.round.length > 1
+      ? notes.round.filter((note) => note !== noteToRemove)
+      : notes.round;
+  const newMutant = notes.mutant.filter(({ note }) => note !== noteToRemove);
+  const newFull = createFullScaleFromNames(newRound, newMutant);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: newScale,
+    payload: { newRound, newMutant, newFull },
   });
 };
 

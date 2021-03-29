@@ -9,6 +9,7 @@
 * Show mutant notes in Drum - stated, need styling
 * Save and load mutant to/from db
 * Custom positions for mutant notes
+* Transpose scale with mutant notes
 
 * Typescript
 * Play song logic should be moved somewhere else?

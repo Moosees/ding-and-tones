@@ -100,7 +100,9 @@ const Drum = ({
 
   return (
     <DrumContainer style={style}>
-      {mutant.length && <MutantContainer>{mutantTonefields}</MutantContainer>}
+      {mutant.length > 0 && (
+        <MutantContainer>{mutantTonefields}</MutantContainer>
+      )}
       <DrumSvg viewBox="-10 -10 20 20">
         <defs>
           <radialGradient id="drumGradient">
