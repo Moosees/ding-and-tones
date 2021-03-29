@@ -38,8 +38,9 @@ const getIntervalProps = (interval) => {
 const ScaleInterval = ({
   displayedNote,
   drumMode,
-  scaleIndex,
   interval,
+  number,
+  scaleIndex,
   setDisplayedNote,
 }) => {
   const {
@@ -60,7 +61,7 @@ const ScaleInterval = ({
       onClick={handleIntervalClick}
     >
       <IntervalColor color={color}>
-        <span>{scaleIndex}</span>
+        <span>{number}</span>
       </IntervalColor>
       <IntervalBreakBox>
         {drumMode === drumModes.INTERVALS && semitones === 0 ? (

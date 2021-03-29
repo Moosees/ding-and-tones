@@ -5,7 +5,7 @@
 * Handle extra/bottom notes/mutant drums - started
 * Scale edit list mutant notes styled differently
 * Beat dropdown
-* Scale layout prop - not needed?
+* Scale layout prop - not needed? used for double ding?
 * Show mutant notes in Drum - stated, need styling
 * Save and load mutant to/from db
 * Custom positions for mutant notes
