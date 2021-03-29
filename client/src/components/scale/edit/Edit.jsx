@@ -11,12 +11,18 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import { EditContainer, Note, Notes } from './edit.styles';
 
-const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
+const getNotes = (round, mutant, fnAdd, fnRemove, isSongPlaying, addMutant) => {
   const notes = [];
+  const mutantNotes = mutant.map(({ note }) => note);
 
   for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
     const noteName = noteValueToName[i];
-    const isNoteInScale = scale.includes(noteName);
+    const isNoteInRound = round.includes(noteName);
+    const isNoteInMutant = mutantNotes.includes(noteName);
+    const isNoteInScale = isNoteInRound || isNoteInMutant;
+    const disabled =
+      (!isNoteInScale && addMutant && mutant.length >= 8) ||
+      (!isNoteInScale && !addMutant && round.length >= 14);
 
     const handleClick = isNoteInScale
       ? () => fnRemove(noteName)
@@ -24,9 +30,10 @@ const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
 
     notes.push(
       <Note
-        disabled={!isNoteInScale && scale.length >= 15}
+        disabled={disabled}
         key={i}
-        inScale={isNoteInScale}
+        inRound={isNoteInRound}
+        inMutant={isNoteInMutant}
         onClick={handleClick}
       >
         <span>{noteName}</span>
@@ -37,6 +44,7 @@ const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
 };
 
 const Edit = ({
+  addMutant,
   addNoteToScale,
   isSongPlaying,
   mutant,
@@ -44,8 +52,6 @@ const Edit = ({
   round,
   transposeScale,
 }) => {
-  const scale = [...mutant.map((note) => note.note), ...round];
-
   const handleAdd = (note) => {
     if (isSongPlaying) return;
     addNoteToScale(note);
@@ -60,7 +66,14 @@ const Edit = ({
     transposeScale(destination);
   };
 
-  const notes = getNotes(scale, handleAdd, handleRemove, isSongPlaying);
+  const notes = getNotes(
+    round,
+    mutant,
+    handleAdd,
+    handleRemove,
+    isSongPlaying,
+    addMutant
+  );
 
   return (
     <EditContainer>
@@ -86,6 +99,7 @@ const Edit = ({
 const mapStateToProps = ({ scale, ui }) => ({
   round: scale.notes.round,
   mutant: scale.notes.mutant,
+  addMutant: ui.addMutant,
   isSongPlaying: ui.isSongPlaying,
 });
 

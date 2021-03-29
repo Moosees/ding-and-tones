@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Handle extra/bottom notes/mutant drums - started
-* Scale edit list mutant notes styled differently
 * Beat dropdown
 * Show mutant notes in Drum - stated, need styling
 * Save and load mutant to/from db

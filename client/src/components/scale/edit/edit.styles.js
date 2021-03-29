@@ -25,12 +25,10 @@ export const Notes = styled.div`
 export const Note = styled.button`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.05);
-  border: ${({ inScale, theme }) =>
-    inScale
-      ? '2px solid ' + theme.colorCheckbox
-      : '1px solid ' + theme.colorBtnClear};
+  border: 1px solid ${({ theme }) => theme.colorBtnClear};
   border-radius: 100%;
-  box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
+  box-shadow: ${({ inRound, inMutant, theme }) =>
+    inRound || inMutant ? theme.shadowLight : 'none'};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   height: 3rem;
@@ -38,6 +36,18 @@ export const Note = styled.button`
   margin: 4px;
   transition: transform 0.1s ease;
   width: 3rem;
+
+  ${({ inRound, theme }) =>
+    inRound &&
+    `
+    border: 2px solid ${theme.colorCheckbox};
+  `}
+
+  ${({ inMutant, theme }) =>
+    inMutant &&
+    `
+    border: 2px dotted ${theme.colorBtnConfirm};
+  `}
 
   &:hover {
     transform: scale(${({ disabled }) => (disabled ? '1' : '1.1')});
