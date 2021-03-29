@@ -98,8 +98,6 @@ const Drum = ({
     { roundTonefields: [], mutantTonefields: [] }
   );
 
-  console.log({ mutant, roundTonefields });
-
   return (
     <DrumContainer style={style}>
       {mutant.length && <MutantContainer>{mutantTonefields}</MutantContainer>}

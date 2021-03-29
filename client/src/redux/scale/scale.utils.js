@@ -1,6 +1,10 @@
 import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
 import { noteNameToValue, noteValueToName } from '../../assets/intervals';
 
+export const addMutantPos = (sortedScale) => {
+  return sortedScale.map((note, i) => ({ note, pos: `A${i + 1}` }));
+};
+
 // const addNoteNameFromValue = (scale) => {
 //   return scale.map((noteValue) => {
 //     const note = noteValueToName(noteValue);
@@ -57,7 +61,6 @@ export const createFullScaleFromNames = (round, mutant) => {
   const roundWithValues = addNoteValueFromName(round);
   const mutantWithValues = addNoteValueFromName(mutant.map(({ note }) => note));
   const scaleFull = addIntervalMap([...roundWithValues, ...mutantWithValues]);
-  console.log({ scaleFull });
 
   return scaleFull;
 };
@@ -79,10 +82,13 @@ export const createFullScaleFromNames = (round, mutant) => {
 //   };
 // };
 
-export const createScaleLabel = (scale) => {
-  if (scale.length === 0) return '';
-  if (scale.length === 1) return `(${scale[0]})`;
-  return `(${scale[0]}) ${scale.slice(1).join(' ')}`;
+export const createScaleLabel = (mutant, round) => {
+  const mutantLabel = mutant.length
+    ? `${mutant.map(({ note }) => note).join(' ')} `
+    : '';
+  if (round.length === 0) return '';
+  if (round.length === 1) return `${mutantLabel}(${round[0]})`;
+  return `${mutantLabel}(${round[0]}) ${round.slice(1).join(' ')}`;
 };
 
 export const parseNotesForSaveScale = ({ round }) => ({

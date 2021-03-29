@@ -3,12 +3,12 @@
 ## Current tasks
 
 * Handle extra/bottom notes/mutant drums - started
-* Add notes - custom positions?
-* Scale label includes mutant notes
+* Scale edit list mutant notes styled differently
 * Beat dropdown
 * Scale layout prop - not needed?
-* Show mutant notes - stated, need styling
+* Show mutant notes in Drum - stated, need styling
 * Save and load mutant to/from db
+* Custom positions for mutant notes
 
 * Typescript
 * Play song logic should be moved somewhere else?

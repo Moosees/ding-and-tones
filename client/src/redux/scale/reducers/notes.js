@@ -18,8 +18,9 @@ const notesReducer = (state = notesState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
-        round: payload,
-        scaleFull: createFullScaleFromNames(payload),
+        round: payload.newRound,
+        mutant: payload.newMutant,
+        scaleFull: payload.newFull,
       };
 
     case songTypes.FETCH_SUCCESSFUL:

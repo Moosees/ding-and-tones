@@ -1,18 +1,32 @@
 import axios from 'axios';
 import scaleTypes from './scale.types';
 import {
+  addMutantPos,
+  createFullScaleFromNames,
   parseNotesForSaveScale,
   sortScaleByFreq,
   transposeScaleToDestination,
 } from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
-  const { scale } = getState();
-  const newScale = sortScaleByFreq([...scale.notes.round, newNote]);
+  const {
+    scale: { notes },
+    ui: { addMutant },
+  } = getState();
+
+  const newRound = addMutant
+    ? notes.round
+    : sortScaleByFreq([...notes.round, newNote]);
+  const newMutant = addMutant
+    ? addMutantPos(
+        sortScaleByFreq([...notes.mutant.map(({ note }) => note), newNote])
+      )
+    : notes.mutant;
+  const newFull = createFullScaleFromNames(newRound, newMutant);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: newScale,
+    payload: { newRound, newMutant, newFull },
   });
 };
 
