@@ -4,11 +4,10 @@
 
 * Handle extra/bottom notes/mutant drums - started
 * Add notes - custom positions?
-* Calculate interval maps - createFullScaleFromNames etc...
-* Scale label
+* Scale label includes mutant notes
 * Beat dropdown
-* Scale layout prop?
-* Show mutant notes
+* Scale layout prop - not needed?
+* Show mutant notes - stated, need styling
 * Save and load mutant to/from db
 
 * Typescript

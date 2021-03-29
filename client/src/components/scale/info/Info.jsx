@@ -60,7 +60,7 @@ const Info = ({
       <Buttons>
         <Checkbox
           asBtn
-          label="Mutant notes"
+          label="Mutant Notes"
           checked={addMutant}
           onChange={toggleMutant}
         />

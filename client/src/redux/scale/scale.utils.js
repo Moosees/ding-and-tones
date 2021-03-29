@@ -51,11 +51,13 @@ const addIntervalMap = (scaleWithValues) => {
   });
 };
 
-export const createFullScaleFromNames = (scale) => {
-  if (!scale.length) return [];
+export const createFullScaleFromNames = (round, mutant) => {
+  if (!round.length) return [];
 
-  const scaleWithValues = addNoteValueFromName(scale);
-  const scaleFull = addIntervalMap(scaleWithValues);
+  const roundWithValues = addNoteValueFromName(round);
+  const mutantWithValues = addNoteValueFromName(mutant.map(({ note }) => note));
+  const scaleFull = addIntervalMap([...roundWithValues, ...mutantWithValues]);
+  console.log({ scaleFull });
 
   return scaleFull;
 };

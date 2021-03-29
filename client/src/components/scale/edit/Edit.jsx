@@ -37,12 +37,15 @@ const getNotes = (scale, fnAdd, fnRemove, isSongPlaying) => {
 };
 
 const Edit = ({
-  scale,
   addNoteToScale,
   isSongPlaying,
+  mutant,
   removeNoteFromScale,
+  round,
   transposeScale,
 }) => {
+  const scale = [...mutant.map((note) => note.note), ...round];
+
   const handleAdd = (note) => {
     if (isSongPlaying) return;
     addNoteToScale(note);
@@ -81,7 +84,8 @@ const Edit = ({
 };
 
 const mapStateToProps = ({ scale, ui }) => ({
-  scale: scale.notes.round,
+  round: scale.notes.round,
+  mutant: scale.notes.mutant,
   isSongPlaying: ui.isSongPlaying,
 });
 
