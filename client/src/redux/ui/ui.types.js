@@ -10,6 +10,7 @@ const uiTypes = {
   TOGGLE_HEADERS_OPEN: 'ui/toggleHeaders',
   TOGGLE_HANDS_OPEN: 'ui/toggleHands',
   TOGGLE_MULTI_SELECT: 'ui/toggleMulti',
+  TOGGLE_MUTANT: 'ui/toggleMutant',
   TOGGLE_MUTE_BAR: 'ui/toggleMute',
 };
 

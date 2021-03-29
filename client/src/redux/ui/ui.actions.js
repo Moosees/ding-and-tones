@@ -94,6 +94,10 @@ export const toggleMultiSelect = () => ({
   type: uiTypes.TOGGLE_MULTI_SELECT,
 });
 
+export const toggleMutant = () => ({
+  type: uiTypes.TOGGLE_MUTANT,
+});
+
 export const toggleMuteBar = (barId) => ({
   type: uiTypes.TOGGLE_MUTE_BAR,
   payload: barId,

@@ -2,6 +2,15 @@
 
 ## Current tasks
 
+* Handle extra/bottom notes/mutant drums - started
+* Add notes - custom positions?
+* Calculate interval maps - createFullScaleFromNames etc...
+* Scale label
+* Beat dropdown
+* Scale layout prop?
+* Show mutant notes
+* Save and load mutant to/from db
+
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
@@ -95,7 +104,6 @@
 * Keyboard shortcuts for playing drum (or songwriter)
 * Keyboard shortcuts for popups
 * Likes and/or comments?
-* Handle extra/bottom notes/mutant drums
 * Custom chord inputs
 * Custom metres
 * Custom count for metres, more count styles

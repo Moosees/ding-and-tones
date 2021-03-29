@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useValidate from '../../../hooks/useValidate';
 import { saveScale, setScaleName } from '../../../redux/scale/scale.actions';
+import { toggleMutant } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
+import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoText from '../../shared/input/InfoText';
 import InfoBox from '../../shared/layout/InfoBox';
 import { ScaleInfoContainer, ScaleLabel } from './info.styles';
 
 const Info = ({
+  addMutant,
   isDeleting,
   isFetching,
   isSaving,
@@ -18,6 +21,7 @@ const Info = ({
   scale,
   scaleInfo,
   setScaleName,
+  toggleMutant,
 }) => {
   const { replace } = useHistory();
 
@@ -54,6 +58,12 @@ const Info = ({
         <ScaleLabel>{scaleInfo.label}</ScaleLabel>
       </InfoBox>
       <Buttons>
+        <Checkbox
+          asBtn
+          label="Mutant notes"
+          checked={addMutant}
+          onChange={toggleMutant}
+        />
         <BtnPrimary
           disabled={
             !isSignedIn || isDeleting || isFetching || isSaving || !isNameValid
@@ -66,16 +76,18 @@ const Info = ({
   );
 };
 
-const mapStateToProps = ({ scale, search, user }) => ({
+const mapStateToProps = ({ scale, search, ui, user }) => ({
   isDeleting: scale.ui.isDeleting,
   isFetching: scale.ui.isFetching,
   isSaving: scale.ui.isSaving,
   scale: scale.notes.round,
   scaleInfo: scale.info,
+  addMutant: ui.addMutant,
   isSignedIn: user.isSignedIn,
 });
 
 export default connect(mapStateToProps, {
   saveScale,
   setScaleName,
+  toggleMutant,
 })(Info);
