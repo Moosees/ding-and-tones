@@ -12,7 +12,8 @@ const notesReducer = (state = notesState, { type, payload }) => {
       return {
         ...state,
         round: scaleMerged,
-        scaleFull: createFullScaleFromNames(scaleMerged),
+        extra: payload.notes.extra,
+        scaleFull: createFullScaleFromNames(scaleMerged, payload.notes.extra),
       };
 
     case scaleTypes.UPDATE_SCALE:
@@ -28,7 +29,11 @@ const notesReducer = (state = notesState, { type, payload }) => {
         ? {
             ...state,
             round: payload.scale.notes.round,
-            scaleFull: createFullScaleFromNames(payload.scale.notes.round),
+            extra: payload.scale.notes.extra,
+            scaleFull: createFullScaleFromNames(
+              payload.scale.notes.round,
+              payload.scale.notes.extra
+            ),
           }
         : state;
 

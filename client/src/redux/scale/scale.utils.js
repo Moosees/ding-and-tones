@@ -91,9 +91,10 @@ export const createScaleLabel = (extra, round) => {
   return `${extraLabel}(${round[0]}) ${round.slice(1).join(' ')}`;
 };
 
-export const parseNotesForSaveScale = ({ round }) => ({
+export const parseNotesForSaveScale = ({ round, extra }) => ({
   dings: [round[0]],
   round: round.slice(1),
+  extra,
 });
 
 export const transposeRoundToDestination = (scale, destination = 0) => {

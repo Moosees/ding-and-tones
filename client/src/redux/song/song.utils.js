@@ -114,10 +114,10 @@ const parseBeatsForLoadSong = (beats) => {
 const parseScaleForLoadSong = (scale) => {
   const {
     info,
-    notes: { dings, round },
+    notes: { dings, round, extra },
   } = scale;
 
-  return { info, notes: { round: [dings[0], ...round] } };
+  return { info, notes: { round: [dings[0], ...round], extra } };
 };
 
 export const parseFetchedSong = (song, getScale) => {

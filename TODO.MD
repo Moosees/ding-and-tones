@@ -4,8 +4,6 @@
 
 * Handle extra/bottom notes - started
 * Custom positions for extra notes, move notes mode? A1 A2 B1..?
-* Save and load extra to/from db
-* Load song from URL infinite loop!!! - cause scale not found?
 
 * Typescript
 * Play song logic should be moved somewhere else?
