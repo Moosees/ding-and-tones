@@ -25,6 +25,7 @@ const Beat = ({
   }, [setIsOpen, isSongPlaying]);
 
   const hasNonScaleNote = !sound.every((hit) => {
+    if (!soundOptions.nonScaleMap) return false;
     return !soundOptions.nonScaleMap[hit];
   });
 

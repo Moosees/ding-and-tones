@@ -87,6 +87,7 @@
 * Web worker?
 * Count number of bars for search results? Virtual field?
 * Clean up getNoteText() and Tonefield in general
+* Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
 
 ## Future plans
 
