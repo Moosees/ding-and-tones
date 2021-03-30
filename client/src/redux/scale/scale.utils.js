@@ -2,7 +2,7 @@ import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
 import { noteNameToValue, noteValueToName } from '../../assets/intervals';
 
 export const addExtraNotesPos = (sortedScale) => {
-  return sortedScale.map((note, i) => ({ note, pos: `A${i + 1}` }));
+  return sortedScale.map((note, i) => ({ note, pos: i }));
 };
 
 // const addNoteNameFromValue = (scale) => {

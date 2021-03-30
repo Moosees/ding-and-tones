@@ -4,6 +4,7 @@
 
 * Handle extra/bottom notes - started
 * Custom positions for extra notes, move notes mode? A1 A2 B1..?
+* Scale extra note _id get sent with request
 
 * Typescript
 * Play song logic should be moved somewhere else?
@@ -34,6 +35,7 @@
 * Checkbox hover effect, all transform: scale hovers...
 * Only small divider lines?
 * Interval list chord default cursor
+* Extra notes look weird on mobile in portrait
 
 ## User/Menu
 

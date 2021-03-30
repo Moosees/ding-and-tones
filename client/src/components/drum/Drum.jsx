@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
-import { DrumContainer, DrumSvg, ExtraNotesContainer } from './drum.styles';
+import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
 import {
   getChordColor,
   getNoteColor,
@@ -96,35 +96,36 @@ const Drum = ({
 
   return (
     <DrumContainer style={style}>
-      {extra.length > 0 && (
-        <ExtraNotesContainer>{extraTonefields}</ExtraNotesContainer>
-      )}
-      <DrumSvg viewBox="-10 -10 20 20">
-        <defs>
-          <radialGradient id="drumGradient">
-            <stop offset="0%" stopColor="#8998aa" />
-            <stop offset="98%" stopColor="#626280" />
-            <stop offset="100%" stopColor="#222" />
-          </radialGradient>
-          <filter id="drumShadow">
-            <feDropShadow
-              dx="0"
-              dy="0.5"
-              stdDeviation="0.25"
-              floodColor="#000050"
-              floodOpacity="0.25"
-            />
-          </filter>
-        </defs>
-        <circle
-          r="9.2"
-          cx="0"
-          cy="0"
-          fill="url(#drumGradient)"
-          filter="url(#drumShadow)"
-        />
-        {roundTonefields}
-      </DrumSvg>
+      <DrumWrapper>
+        {extra.length > 0 && extraTonefields.reverse()}
+
+        <DrumSvg viewBox="-10 -10 20 20">
+          <defs>
+            <radialGradient id="drumGradient">
+              <stop offset="0%" stopColor="#8998aa" />
+              <stop offset="98%" stopColor="#626280" />
+              <stop offset="100%" stopColor="#222" />
+            </radialGradient>
+            <filter id="drumShadow">
+              <feDropShadow
+                dx="0"
+                dy="0.5"
+                stdDeviation="0.25"
+                floodColor="#000050"
+                floodOpacity="0.25"
+              />
+            </filter>
+          </defs>
+          <circle
+            r="9.2"
+            cx="0"
+            cy="0"
+            fill="url(#drumGradient)"
+            filter="url(#drumShadow)"
+          />
+          {roundTonefields}
+        </DrumSvg>
+      </DrumWrapper>
     </DrumContainer>
   );
 };

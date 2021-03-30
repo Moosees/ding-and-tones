@@ -9,11 +9,12 @@ export const ExtraContainer = styled.div`
   border-width: ${({ hasFocus }) => (hasFocus ? '5px' : '3px')};
   box-shadow: ${({ theme }) => theme.shadowLight};
   color: #ccc;
-  cursor: ${({ showNote }) => (showNote ? 'cursor' : 'default')};
+  cursor: ${({ showNote }) => (showNote ? 'pointer' : 'default')};
   display: flex;
   font-size: 2rem;
   height: 5rem;
   justify-content: center;
+  position: absolute;
   width: 5rem;
 
   ${({ theme }) => theme.mqW1200`

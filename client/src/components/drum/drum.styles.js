@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const DrumContainer = styled.div`
+  align-items: center;
   display: flex;
   height: 100%;
-  flex-direction: column;
+  justify-content: center;
   margin: -3rem 0 3rem;
-  position: relative;
   width: 100%;
 
   ${({ theme }) => theme.mqW1300`
@@ -22,21 +22,43 @@ export const DrumSvg = styled.svg`
   width: 100%;
 `;
 
-export const ExtraNotesContainer = styled.div`
-  align-items: center;
-  bottom: unset;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: -4rem;
+export const DrumWrapper = styled.div`
+  height: 100%;
+  max-height: 35rem;
+  max-width: 35rem;
+  position: relative;
   width: 100%;
 
-  ${({ theme }) => theme.mqW1200`
-    top: -2rem;
-  `}
-
-  ${({ theme }) => theme.mqW850`
-    bottom: -1rem;
-    top: unset;
-  `}
+  & div:nth-child(1) {
+    right: 5rem;
+    top: 1rem;
+  }
+  & div:nth-child(2) {
+    left: 5rem;
+    top: 1rem;
+  }
+  & div:nth-child(3) {
+    right: 0rem;
+    top: 7rem;
+  }
+  & div:nth-child(4) {
+    left: 0rem;
+    top: 7rem;
+  }
+  & div:nth-child(5) {
+    bottom: 7rem;
+    right: 0rem;
+  }
+  & div:nth-child(6) {
+    bottom: 7rem;
+    left: 0rem;
+  }
+  & div:nth-child(7) {
+    bottom: 1rem;
+    right: 5rem;
+  }
+  & div:nth-child(8) {
+    bottom: 1rem;
+    left: 5rem;
+  }
 `;
