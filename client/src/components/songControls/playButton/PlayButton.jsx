@@ -5,18 +5,18 @@ import BtnPrimary from '../../shared/button/Primary';
 import { playSong } from './playButton.utils';
 
 const PlayButton = ({
+  allSounds,
   audioPath,
   isPreparingSong,
   isSongPlaying,
   light,
   mutedBars,
-  scale,
   setIsSongPlaying,
   song,
 }) => {
   const handlePlayPause = () => {
     setIsSongPlaying(!isSongPlaying);
-    if (!isSongPlaying) playSong(scale, song, mutedBars, audioPath);
+    if (!isSongPlaying) playSong(allSounds, song, mutedBars, audioPath);
   };
 
   return (
@@ -34,7 +34,7 @@ const mapStateToProps = ({ drum, scale, song, ui }) => ({
   isPreparingSong: ui.isPreparingSong,
   isSongPlaying: ui.isSongPlaying,
   mutedBars: ui.mutedBars,
-  scale,
+  allSounds: ui.soundOptions.allSounds,
   song,
 });
 

@@ -30,13 +30,16 @@ export const setSoundOptions = (scaleRound, scaleExtra) => (
   getState
 ) => {
   const {
+    drum: { audioPath },
     song: { beats },
   } = getState();
 
   const allOptions = ['T', 't', '-'];
+  const allSounds = { T: '/audio/takLoud.mp3', t: '/audio/takSoft.mp3' };
 
   const round = scaleRound.map((note, i) => {
     allOptions.push(`${i}`);
+    allSounds[i] = `${audioPath}/${note}.mp3`;
     return {
       label: `${i} - ${note}`,
       value: `${i}`,
@@ -45,6 +48,7 @@ export const setSoundOptions = (scaleRound, scaleExtra) => (
 
   const extra = scaleExtra.map(({ note }, i) => {
     allOptions.push(`b${i + 1}`);
+    allSounds[`b${i + 1}`] = `${audioPath}/${note}.mp3`;
     return {
       label: `b${i + 1} - ${note}`,
       value: `b${i + 1}`,
@@ -76,6 +80,7 @@ export const setSoundOptions = (scaleRound, scaleExtra) => (
   dispatch({
     type: uiTypes.SET_SOUND_OPTIONS,
     payload: {
+      allSounds,
       extra,
       nonScaleMap,
       nonScale,

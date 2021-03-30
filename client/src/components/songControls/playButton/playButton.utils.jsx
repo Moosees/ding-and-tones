@@ -44,20 +44,9 @@ const createAudioPromise = (sound) =>
     audio.load();
   });
 
-const setupAudio = async (scale, audioPath) => {
-  const percussive = { T: '/audio/takLoud.mp3', t: '/audio/takSoft.mp3' };
-  const sounds = scale.map((note) => `${audioPath}/${note}.mp3`);
-  const audioPromises = [
-    ...sounds.map(createAudioPromise),
-    ...Object.values(percussive).map(createAudioPromise),
-  ];
-
-  await Promise.all(audioPromises);
-
-  return sounds.reduce((acc, note, i) => {
-    acc[i] = note;
-    return acc;
-  }, percussive);
+const setupAudio = async (allSounds) => {
+  const audioPromises = Object.values(allSounds).map(createAudioPromise);
+  return Promise.all(audioPromises);
 };
 
 const setupSong = ({ arrangement, bars, beats }, mutedBars) => {
@@ -86,16 +75,16 @@ const setupSong = ({ arrangement, bars, beats }, mutedBars) => {
 };
 
 // bpm always counts quarter notes right now
-export const playSong = async (scale, song, mutedBars, audioPath) => {
+export const playSong = async (allSounds, song, mutedBars, audioPath) => {
   store.dispatch(setIsPreparingSong(true));
-  const audio = await setupAudio(scale.notes.round, audioPath);
+  await setupAudio(allSounds);
   const arrangement = setupSong(song, mutedBars);
   store.dispatch(setIsPreparingSong(false));
 
   for (let bar of arrangement) {
     store.dispatch(setCurrentBar(bar.barId));
 
-    await playBar(bar, song.info.bpm, audio);
+    await playBar(bar, song.info.bpm, allSounds);
   }
 
   store.dispatch(setCurrentBeat(null));

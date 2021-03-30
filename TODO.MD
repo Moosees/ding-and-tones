@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Handle extra/bottom notes - started
-* Bottom notes in sound player
 * Custom positions for extra notes, move notes mode? A1 A2 B1..?
 * Save and load extra to/from db
 * Load song from URL infinite loop!!! - cause scale not found?
