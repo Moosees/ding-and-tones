@@ -25,15 +25,31 @@ export const setPrivacyOpen = (privacyOpen) => ({
   payload: privacyOpen,
 });
 
-export const setSoundOptions = (scale) => (dispatch, getState) => {
+export const setSoundOptions = (scaleRound, scaleExtra) => (
+  dispatch,
+  getState
+) => {
   const {
     song: { beats },
   } = getState();
 
-  const single = scale.map((note, i) => ({
-    label: `${i} - ${note}`,
-    value: `${i}`,
-  }));
+  const allOptions = ['T', 't', '-'];
+
+  const round = scaleRound.map((note, i) => {
+    allOptions.push(`${i}`);
+    return {
+      label: `${i} - ${note}`,
+      value: `${i}`,
+    };
+  });
+
+  const extra = scaleExtra.map(({ note }, i) => {
+    allOptions.push(`b${i + 1}`);
+    return {
+      label: `b${i + 1} - ${note}`,
+      value: `b${i + 1}`,
+    };
+  });
 
   const percussive = [
     // { label: 'Pause', value: '-' },
@@ -46,17 +62,11 @@ export const setSoundOptions = (scale) => (dispatch, getState) => {
 
   Object.values(beats).forEach(({ sound }) => {
     sound.forEach((option) => {
-      const numericOption = Number(option);
-
-      if (
-        Number.isFinite(numericOption) &&
-        numericOption >= single.length &&
-        !nonScaleMap[numericOption]
-      ) {
-        nonScaleMap[numericOption] = true;
+      if (!allOptions.includes(option) && !nonScaleMap[option]) {
+        nonScaleMap[option] = true;
         nonScale.push({
-          label: `${numericOption} - ?`,
-          value: `${numericOption}`,
+          label: `${option} - ?`,
+          value: option,
           outsideScale: true,
         });
       }
@@ -66,10 +76,11 @@ export const setSoundOptions = (scale) => (dispatch, getState) => {
   dispatch({
     type: uiTypes.SET_SOUND_OPTIONS,
     payload: {
-      numNotesInScale: single.length,
-      single,
-      percussive,
+      extra,
+      nonScaleMap,
       nonScale,
+      percussive,
+      round,
     },
   });
 };

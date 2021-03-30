@@ -45,7 +45,7 @@ const Drum = ({
                   scale[displayedNote].intervalMap,
                   drumMode,
                   displayedChord,
-                  (i - round.length + 1) * -1
+                  `b${i - round.length + 1}`
                 )
               : ''
           }

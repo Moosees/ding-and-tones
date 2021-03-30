@@ -18,7 +18,8 @@ const INITIAL_STATE = {
   privacyOpen: false,
   soundOptions: {
     percussive: [],
-    single: [],
+    round: [],
+    extra: [],
     nonScale: [],
   },
 };

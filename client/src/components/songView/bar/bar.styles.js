@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 const beatStyles = {
   heightWidth: {
-    4: '26',
-    8: '23',
-    16: '22',
+    4: '28',
+    8: '26',
+    16: '24',
   },
   fz: {
-    4: '13',
+    4: '12',
     8: '12',
     16: '11',
   },

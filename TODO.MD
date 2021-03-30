@@ -3,10 +3,10 @@
 ## Current tasks
 
 * Handle extra/bottom notes - started
-* Beat dropdown
+* Bottom notes in sound player
+* Custom positions for extra notes, move notes mode? A1 A2 B1..?
 * Save and load extra to/from db
-* Custom positions for extra notes
-* Use b[number] instead of negative number for extra notes?
+* Load song from URL infinite loop!!! - cause scale not found?
 
 * Typescript
 * Play song logic should be moved somewhere else?
@@ -14,6 +14,7 @@
 * Remove measure subdivision count?
 * Save song as JSON?
 * Bar numbers on song viewer? Only long songs?
+* Help menu for intervals, explain colors and chords
 
 ## Bugs
 
@@ -42,7 +43,6 @@
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 * Active state for nav buttons might not need the full pathname
 * Don't render popups as children of buttons (no close and active state stuck)?
-* Interval color legend?
 * Interval colors for compound intervals? Check if intervals are working as intended
 
 ## Chords
@@ -126,3 +126,4 @@
 * Print multiple songs on same page
 * User can add line breaks in songwriter?
 * Double dings and mutant drums
+* Print with notes instead of numbers

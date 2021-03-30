@@ -88,7 +88,7 @@ const BeatDropdown = ({
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
-            {parseOptions(options.single)}
+            {parseOptions(options.round)}
             {hasNonScaleNote && (
               <>
                 <DividerLine small />
@@ -100,6 +100,8 @@ const BeatDropdown = ({
             <DividerLine vertical small />
           </DropdownColumn>
           <DropdownColumn>
+            {parseOptions(options.extra)}
+            <DividerLine small />
             {parseOptions(options.percussive)}
             <DividerLine small />
             {handItems}

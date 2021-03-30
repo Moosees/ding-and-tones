@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 const beatStyles = {
   heightWidth: {
-    4: '2.7',
-    8: '2.5',
-    16: '2.3',
+    4: '3',
+    8: '2.8',
+    16: '2.6',
   },
   fz: {
-    4: '12',
-    8: '11',
-    16: '10',
+    4: '10',
+    8: '10',
+    16: '9',
   },
   border: {
     4: 'solid',
@@ -83,11 +83,8 @@ export const BeatCircle = styled.div`
 
 export const BeatText = styled.span`
   font-size: ${({ value }) => beatStyles.fz[value] || '12'}px;
+  letter-spacing: -1px;
   white-space: pre-wrap;
-
-  ${({ theme }) => theme.mqW850`
-    letter-spacing: -1px;
-  `}
 `;
 
 export const Dropdown = styled.div`
@@ -110,7 +107,7 @@ export const Dropdown = styled.div`
 
 export const DropdownContent = styled.div`
   display: flex;
-`
+`;
 
 export const DropdownColumn = styled.div`
   display: flex;

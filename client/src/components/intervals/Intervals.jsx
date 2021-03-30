@@ -24,7 +24,7 @@ const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
               key={i}
               scaleIndex={i}
               interval={interval}
-              number={isExtraNote ? (i - round.length + 1) * -1 : i}
+              number={isExtraNote ? `b${i - round.length + 1}` : i}
             />
           );
         });
