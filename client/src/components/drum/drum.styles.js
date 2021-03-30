@@ -23,7 +23,20 @@ export const DrumSvg = styled.svg`
 `;
 
 export const ExtraNotesContainer = styled.div`
+  align-items: center;
+  bottom: unset;
+  display: flex;
+  justify-content: center;
   position: absolute;
-  top: 0;
+  top: -4rem;
   width: 100%;
+
+  ${({ theme }) => theme.mqW1200`
+    top: -2rem;
+  `}
+
+  ${({ theme }) => theme.mqW850`
+    bottom: -1rem;
+    top: unset;
+  `}
 `;

@@ -36,7 +36,6 @@ const Drum = ({
           key={`${note.note}${i}`}
           hasFocus={i === displayedNote}
           note={note.note}
-          noteIndex={i}
           showNote={showNote}
           text={
             showNote
@@ -64,7 +63,6 @@ const Drum = ({
           hasFocus={i === displayedNote}
           isDing={i === 0}
           note={note.note}
-          noteIndex={i}
           showNote={showNote}
           position={positionMap[i]}
           text={

@@ -28,7 +28,7 @@ const getNotes = (
     const isNoteInExtra = extraNotes.includes(noteName);
     const isNoteInScale = isNoteInRound || isNoteInExtra;
     const disabled =
-      (!isNoteInScale && addExtraNotes && extra.length >= 8) ||
+      (!isNoteInScale && addExtraNotes && extra.length >= 6) ||
       (!isNoteInScale && !addExtraNotes && round.length >= 14);
 
     const handleClick = isNoteInScale

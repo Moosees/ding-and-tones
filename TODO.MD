@@ -4,9 +4,9 @@
 
 * Handle extra/bottom notes - started
 * Beat dropdown
-* Show extra notes in Drum - stated, need styling
 * Save and load extra to/from db
 * Custom positions for extra notes
+* Use b[number] instead of negative number for extra notes?
 
 * Typescript
 * Play song logic should be moved somewhere else?
@@ -22,7 +22,7 @@
 * User can tab select :active outside of popups
 * Login popup and blockers...
 * Cannot read property 'clientHeight' of null at DropdownHandler onResize() - fixed?
-* Why -1 in UPDATE_SCALE for scale label?
+* Why -1 in UPDATE_SCALE for scale label? Instead of false?
 
 ## Design
 

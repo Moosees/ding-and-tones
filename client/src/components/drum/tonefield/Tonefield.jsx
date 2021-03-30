@@ -5,13 +5,10 @@ import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 const Tonefield = ({
   audioPath,
   color,
-  displayedChord,
   hasFocus,
   isDing,
   note,
-  noteIndex,
   position,
-  setDisplayedNote,
   showNote,
   text,
 }) => {
@@ -20,10 +17,6 @@ const Tonefield = ({
   const handlePlay = () => {
     new Audio(`${audioPath}/${note}.mp3`).play();
   };
-
-  // const handleIntervals = () => {
-  //   setDisplayedNote(noteIndex);
-  // };
 
   return (
     <g
@@ -56,7 +49,6 @@ const Tonefield = ({
 
 const mapStateToProps = ({ drum }) => ({
   audioPath: drum.audioPath,
-  displayedChord: drum.displayedChord,
 });
 
 export default connect(mapStateToProps, { setDisplayedNote })(Tonefield);
