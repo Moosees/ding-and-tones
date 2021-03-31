@@ -4,6 +4,9 @@ const { parseScaleResponse } = require('../utils/scale');
 const { isValidObjectId } = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
 
+const scaleSelect =
+  '_id info notes.round notes.extra.pos notes.extra.note notes.dings author';
+
 exports.deleteScale = (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
@@ -34,7 +37,7 @@ exports.getScaleById = (req, res) => {
   if (!isValidObjectId(scaleId)) return res.status(404).json();
 
   Scale.findById(scaleId)
-    .select('_id info notes author')
+    .select(scaleSelect)
     .exec((error, scale) => {
       if (error) return res.status(400).json();
       if (!scale) return res.status(404).json();
@@ -48,7 +51,7 @@ exports.getScales = (req, res) => {
   const userId = req.userId;
 
   Scale.find({ author: { $ne: ObjectId(userId) } })
-    .select('_id info notes author')
+    .select(scaleSelect)
     .limit(20)
     .sort({ created: -1 })
     .exec((error, scales) => {
@@ -66,7 +69,7 @@ exports.getMyScales = (req, res) => {
   User.findById(userId)
     .populate({
       path: 'scales',
-      select: '_id info notes author',
+      select: scaleSelect,
       options: { limit: 20, sort: { created: -1 } },
     })
     .select('_id')
@@ -110,7 +113,7 @@ exports.scaleSearch = (req, res) => {
   const searchTerm = req.params.searchTerm.toLowerCase();
 
   Scale.find({ queryString: { $regex: searchTerm } })
-    .select('_id info notes author')
+    .select(scaleSelect)
     .limit(20)
     .sort({ 'info.name': 1, 'info.rootName': 1 })
     .exec((error, scales) => {

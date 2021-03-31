@@ -97,8 +97,7 @@ const Drum = ({
   return (
     <DrumContainer style={style}>
       <DrumWrapper>
-        {extra.length > 0 && extraTonefields.reverse()}
-
+        {extraTonefields.length > 0 && extraTonefields.reverse()}
         <DrumSvg viewBox="-10 -10 20 20">
           <defs>
             <radialGradient id="drumGradient">
