@@ -1,28 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { sound } from '../../../assets/sound';
 import { selectSoundSource } from '../../../redux/drum/drum.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Popup from '../../shared/popup/Popup';
-
-const AudioOption = styled.div`
-  background-color: ${({ theme }) => theme.colorBtnHeavy};
-  border: 2px solid
-    ${({ isSelected, theme }) =>
-      isSelected ? theme.colorBtnConfirm : theme.colorBtnLight};
-  border-radius: 10px;
-  box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
-  cursor: pointer;
-  margin: 0 0 0.75rem;
-  padding: 1rem;
-  transition: transform 0.1s ease;
-
-  &:hover {
-    transform: scale(1.03);
-  }
-`;
+import { AudioOption, Credits } from './sound.styles';
 
 const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
   const getAudioOptions = () =>
@@ -39,6 +22,16 @@ const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
   return (
     <Popup header="Sound" onClose={onClose}>
       {getAudioOptions()}
+      <Credits>
+        Handpan samples by{' '}
+        <a
+          href="https://www.instagram.com/connorshafran/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @connorshafran
+        </a>
+      </Credits>
       <Buttons position="center">
         <BtnPrimary light label="Close" onClick={onClose} />
       </Buttons>

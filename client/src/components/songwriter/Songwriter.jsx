@@ -11,6 +11,7 @@ const MouseHandler = lazy(() => import('./dndHandlers/MouseHandler'));
 const TouchHandler = lazy(() => import('./dndHandlers/TouchHandler'));
 
 const Songwriter = ({
+  audioPath,
   arrangement,
   borderRef,
   extra,
@@ -23,7 +24,7 @@ const Songwriter = ({
 
   useEffect(() => {
     setSoundOptions(scale, extra);
-  }, [scale, extra, setSoundOptions]);
+  }, [audioPath, scale, extra, setSoundOptions]);
 
   const DndProvider = isTouch ? TouchHandler : MouseHandler;
 
@@ -45,7 +46,8 @@ const Songwriter = ({
   );
 };
 
-const mapStateToProps = ({ scale, song }) => ({
+const mapStateToProps = ({ drum, scale, song }) => ({
+  audioPath: drum.audioPath,
   extra: scale.notes.extra,
   scale: scale.notes.round,
   arrangement: song.arrangement,

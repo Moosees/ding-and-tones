@@ -6,7 +6,6 @@ import { playSong } from './playButton.utils';
 
 const PlayButton = ({
   allSounds,
-  audioPath,
   isPreparingSong,
   isSongPlaying,
   light,
@@ -16,7 +15,7 @@ const PlayButton = ({
 }) => {
   const handlePlayPause = () => {
     setIsSongPlaying(!isSongPlaying);
-    if (!isSongPlaying) playSong(allSounds, song, mutedBars, audioPath);
+    if (!isSongPlaying) playSong(allSounds, song, mutedBars);
   };
 
   return (
@@ -30,7 +29,6 @@ const PlayButton = ({
 };
 
 const mapStateToProps = ({ drum, scale, song, ui }) => ({
-  audioPath: drum.audioPath,
   isPreparingSong: ui.isPreparingSong,
   isSongPlaying: ui.isSongPlaying,
   mutedBars: ui.mutedBars,

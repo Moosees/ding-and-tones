@@ -12,10 +12,15 @@ const playBeatPromise = (beat, timeout, audio) =>
     if (!store.getState().ui.isSongPlaying) return reject();
 
     store.dispatch(setCurrentBeat(beat.beatId));
+    const volume = beat.sound.length > 1 ? 0.8 : 1;
 
     if (!beat.mode || beat.mode === 'c')
       beat.sound.forEach((tone) => {
-        if (tone !== '-' && audio[tone]) new Audio(audio[tone]).play();
+        if (tone !== '-' && audio[tone]) {
+          const player = new Audio(audio[tone]);
+          player.volume = volume;
+          player.play();
+        }
       });
 
     setTimeout(() => {
@@ -75,7 +80,7 @@ const setupSong = ({ arrangement, bars, beats }, mutedBars) => {
 };
 
 // bpm always counts quarter notes right now
-export const playSong = async (allSounds, song, mutedBars, audioPath) => {
+export const playSong = async (allSounds, song, mutedBars) => {
   store.dispatch(setIsPreparingSong(true));
   await setupAudio(allSounds);
   const arrangement = setupSong(song, mutedBars);
