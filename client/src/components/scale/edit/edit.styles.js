@@ -10,16 +10,8 @@ export const Notes = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 34rem;
+  max-width: 36rem;
   margin-bottom: 1rem;
-
-  ${({ theme }) => theme.mqW1200`
-    max-width: 30rem;
-  `}
-
-  ${({ theme }) => theme.mqW850`
-    max-width: 28rem;
-  `}
 `;
 
 export const Note = styled.button`
