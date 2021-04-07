@@ -5,7 +5,7 @@ import { noteValueToName } from '../../../assets/intervals';
 import {
   addNoteToScale,
   removeNoteFromScale,
-  transposeScale,
+  transposeScale
 } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
@@ -69,10 +69,6 @@ const Edit = ({
     removeNoteFromScale(note);
   };
 
-  const handleTranspose = (destination) => {
-    transposeScale(destination);
-  };
-
   const notes = getNotes(
     extra,
     round,
@@ -88,15 +84,27 @@ const Edit = ({
       <Buttons position="center">
         <BtnPrimary
           disabled={isSongPlaying}
-          label="Up"
+          label="- 8va"
           light
-          onClick={() => handleTranspose(1)}
+          onClick={() => transposeScale(-12)}
         />
         <BtnPrimary
           disabled={isSongPlaying}
           label="Down"
           light
-          onClick={() => handleTranspose(-1)}
+          onClick={() => transposeScale(-1)}
+        />
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="Up"
+          light
+          onClick={() => transposeScale(1)}
+        />
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="+ 8va"
+          light
+          onClick={() => transposeScale(12)}
         />
       </Buttons>
     </EditContainer>

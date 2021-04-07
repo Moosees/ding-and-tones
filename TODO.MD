@@ -2,7 +2,6 @@
 
 ## Current tasks
 
-* Transpose octaves
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
