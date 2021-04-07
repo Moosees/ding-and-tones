@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Transpose octaves
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
@@ -10,6 +11,7 @@
 * Bar numbers on song viewer? Only long songs?
 * Help menu for intervals, explain colors and chords
 * Custom positions for extra notes, move notes mode? A1 A2 B1..?
+* Volume controls?
 
 ## Bugs
 
