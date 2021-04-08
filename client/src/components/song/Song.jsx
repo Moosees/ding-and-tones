@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getSongById } from '../../redux/song/song.actions';
+import { setSoundOptions } from '../../redux/ui/ui.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import ScrollBox from '../shared/scrollBox/ScrollBox';
@@ -15,7 +16,14 @@ import {
   TopSection,
 } from './song.styles';
 
-const Song = ({ getSongById, isEditingSong, songUi }) => {
+const Song = ({
+  audioPath,
+  getSongById,
+  isEditingSong,
+  notes,
+  setSoundOptions,
+  songUi,
+}) => {
   const borderRef = useRef(null);
   const { songId } = useParams();
   const { replace } = useHistory();
@@ -32,6 +40,10 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
     if (songId && songUi.songId !== songId && !isWorking)
       getSongById(songId, true);
   }, [isWorking, getSongById, songId, songUi.songId]);
+
+  useEffect(() => {
+    setSoundOptions(notes.round, notes.extra);
+  }, [audioPath, notes.round, notes.extra, setSoundOptions]);
 
   return (
     <>
@@ -60,9 +72,11 @@ const Song = ({ getSongById, isEditingSong, songUi }) => {
   );
 };
 
-const mapStateToProps = ({ song, ui }) => ({
-  isEditingSong: ui.isEditingSong,
+const mapStateToProps = ({ drum, scale, song, ui }) => ({
+  audioPath: drum.audioPath,
+  notes: scale.notes,
   songUi: song.ui,
+  isEditingSong: ui.isEditingSong,
 });
 
-export default connect(mapStateToProps, { getSongById })(Song);
+export default connect(mapStateToProps, { getSongById, setSoundOptions })(Song);
