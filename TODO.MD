@@ -2,6 +2,8 @@
 
 ## Current tasks
 
+* Custom positions for extra notes, move notes mode? A1 A2 B1..?
+
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
@@ -9,8 +11,8 @@
 * Save song as JSON?
 * Bar numbers on song viewer? Only long songs?
 * Help menu for intervals, explain colors and chords
-* Custom positions for extra notes, move notes mode? A1 A2 B1..?
 * Volume controls?
+* Should print view only break before fourths?
 
 ## Bugs
 

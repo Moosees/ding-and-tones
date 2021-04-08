@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useValidate from '../../../hooks/useValidate';
 import { saveScale, setScaleName } from '../../../redux/scale/scale.actions';
-import { toggleExtraNotes } from '../../../redux/ui/ui.actions';
+import {
+  toggleExtraNotes,
+  toggleExtraPosEdit,
+} from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
@@ -14,6 +17,7 @@ import { ScaleInfoContainer, ScaleLabel } from './info.styles';
 const Info = ({
   addExtraNotes,
   isDeleting,
+  isEditingExtraPos,
   isFetching,
   isSaving,
   isSignedIn,
@@ -21,6 +25,7 @@ const Info = ({
   scale,
   scaleInfo,
   setScaleName,
+  toggleExtraPosEdit,
   toggleExtraNotes,
 }) => {
   const { replace } = useHistory();
@@ -64,6 +69,12 @@ const Info = ({
           checked={addExtraNotes}
           onChange={toggleExtraNotes}
         />
+        <Checkbox
+          asBtn
+          label="Move Extra"
+          checked={isEditingExtraPos}
+          onChange={toggleExtraPosEdit}
+        />
         <BtnPrimary
           disabled={
             !isSignedIn || isDeleting || isFetching || isSaving || !isNameValid
@@ -83,11 +94,13 @@ const mapStateToProps = ({ scale, search, ui, user }) => ({
   scale: scale.notes.round,
   scaleInfo: scale.info,
   addExtraNotes: ui.addExtraNotes,
+  isEditingExtraPos: ui.isEditingExtraPos,
   isSignedIn: user.isSignedIn,
 });
 
 export default connect(mapStateToProps, {
   saveScale,
   setScaleName,
+  toggleExtraPosEdit,
   toggleExtraNotes,
 })(Info);

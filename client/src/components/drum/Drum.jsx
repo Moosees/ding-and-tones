@@ -7,7 +7,7 @@ import {
   getNoteText,
   getPositionMap,
 } from './drum.utils';
-import ExtraNotes from './tonefield/ExtraNotes';
+import ExtraNote from './tonefield/ExtraNote';
 import Tonefield from './tonefield/Tonefield';
 
 const Drum = ({
@@ -32,11 +32,12 @@ const Drum = ({
       const isExtraNote = i >= round.length;
 
       const tonefield = isExtraNote ? (
-        <ExtraNotes
+        <ExtraNote
           key={`${note.note}${i}`}
           hasFocus={i === displayedNote}
           note={note.note}
           showNote={showNote}
+          position={note.pos}
           text={
             showNote
               ? getNoteText(
@@ -129,7 +130,7 @@ const Drum = ({
   );
 };
 
-const mapStateToProps = ({ drum, scale }) => ({
+const mapStateToProps = ({ drum, scale, ui }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   drumMode: drum.drumMode,
@@ -137,6 +138,7 @@ const mapStateToProps = ({ drum, scale }) => ({
   layout: scale.info.layout,
   round: scale.notes.round,
   scale: scale.notes.scaleFull,
+  isEditingExtraPos: ui.isEditingExtraPos,
 });
 
 export default connect(mapStateToProps)(Drum);

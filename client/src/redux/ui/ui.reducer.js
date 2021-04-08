@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
+  isEditingExtraPos: false,
   isEditingSong: true,
   isPreparingSong: false,
   isSongPlaying: false,
@@ -73,6 +74,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         isEditingSong: !state.isEditingSong,
         mutedBars: {},
+      };
+
+    case uiTypes.TOGGLE_EXTRA_POS_EDIT:
+      return {
+        ...state,
+        isEditingExtraPos: !state.isEditingExtraPos,
       };
 
     case uiTypes.TOGGLE_EXTRA_NOTES:

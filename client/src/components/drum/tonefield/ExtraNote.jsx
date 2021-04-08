@@ -3,7 +3,16 @@ import { connect } from 'react-redux';
 import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 import { ExtraContainer } from './tonefield.styles';
 
-const ExtraNotes = ({ audioPath, color, hasFocus, note, showNote, text }) => {
+const ExtraNote = ({
+  audioPath,
+  color,
+  hasFocus,
+  note,
+  position,
+  showNote,
+  text,
+}) => {
+  console.log(position);
   const handlePlay = () => {
     new Audio(`${audioPath}/${note}.mp3`).play();
   };
@@ -24,4 +33,4 @@ const mapStateToProps = ({ drum }) => ({
   audioPath: drum.audioPath,
 });
 
-export default connect(mapStateToProps, { setDisplayedNote })(ExtraNotes);
+export default connect(mapStateToProps, { setDisplayedNote })(ExtraNote);

@@ -8,6 +8,7 @@ const uiTypes = {
   TOGGLE_COUNT_OPEN: 'ui/toggleCount',
   TOGGLE_EDIT_SONG: 'ui/toggleEditSong',
   TOGGLE_EXTRA_NOTES: 'ui/toggleExtra',
+  TOGGLE_EXTRA_POS_EDIT: 'ui/toggleEPE',
   TOGGLE_HEADERS_OPEN: 'ui/toggleHeaders',
   TOGGLE_HANDS_OPEN: 'ui/toggleHands',
   TOGGLE_MULTI_SELECT: 'ui/toggleMulti',

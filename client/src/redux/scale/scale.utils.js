@@ -19,9 +19,9 @@ export const addExtraNotesPos = (sortedScale) => {
 const addNoteValueFromName = (scale) => {
   return scale.map((note) => {
     return {
-      note,
-      noteShort: note.replace(/[0-9]/g, ''),
-      noteValue: noteNameToValue[note],
+      ...note,
+      noteShort: note.note.replace(/[0-9]/g, ''),
+      noteValue: noteNameToValue[note.note],
     };
   });
 };
@@ -58,8 +58,8 @@ const addIntervalMap = (scaleWithValues) => {
 export const createFullScaleFromNames = (round, extra) => {
   if (!round.length) return [];
 
-  const roundWithValues = addNoteValueFromName(round);
-  const extraWithValues = addNoteValueFromName(extra.map(({ note }) => note));
+  const roundWithValues = addNoteValueFromName(round.map((note) => ({ note })));
+  const extraWithValues = addNoteValueFromName(extra);
   const scaleFull = addIntervalMap([...roundWithValues, ...extraWithValues]);
 
   return scaleFull;
