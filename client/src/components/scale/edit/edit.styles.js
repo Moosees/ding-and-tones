@@ -57,3 +57,7 @@ export const Note = styled.button`
     margin: 2px;
   `}
 `;
+
+export const TextLabel = styled.p`
+  opacity: 0.7;
+`;

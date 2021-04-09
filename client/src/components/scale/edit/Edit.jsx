@@ -5,11 +5,17 @@ import { noteValueToName } from '../../../assets/intervals';
 import {
   addNoteToScale,
   removeNoteFromScale,
-  transposeScale
+  transposeScale,
 } from '../../../redux/scale/scale.actions';
+import {
+  toggleExtraNotes,
+  toggleExtraPosEdit,
+} from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
-import { EditContainer, Note, Notes } from './edit.styles';
+import Checkbox from '../../shared/checkbox/Checkbox';
+import DividerLine from '../../shared/dividerLine/DividerLine';
+import { EditContainer, Note, Notes, TextLabel } from './edit.styles';
 
 const getNotes = (
   extra,
@@ -54,9 +60,12 @@ const Edit = ({
   addExtraNotes,
   addNoteToScale,
   extra,
+  isEditingExtraPos,
   isSongPlaying,
   removeNoteFromScale,
   round,
+  toggleExtraNotes,
+  toggleExtraPosEdit,
   transposeScale,
 }) => {
   const handleAdd = (note) => {
@@ -80,7 +89,7 @@ const Edit = ({
 
   return (
     <EditContainer>
-      <Notes>{notes}</Notes>
+      <TextLabel>Transpose Scale</TextLabel>
       <Buttons position="center">
         <BtnPrimary
           disabled={isSongPlaying}
@@ -107,6 +116,26 @@ const Edit = ({
           onClick={() => transposeScale(12)}
         />
       </Buttons>
+      <DividerLine small />
+      <Notes>{notes}</Notes>
+      <DividerLine small />
+      <Buttons position="center">
+        <Checkbox
+          asBtn
+          light
+          label="Add"
+          checked={addExtraNotes}
+          onChange={toggleExtraNotes}
+        />
+        <Checkbox
+          asBtn
+          light
+          label="Move"
+          checked={isEditingExtraPos}
+          onChange={toggleExtraPosEdit}
+        />
+      </Buttons>
+      <TextLabel>Extra/Bottom Notes</TextLabel>
     </EditContainer>
   );
 };
@@ -115,11 +144,14 @@ const mapStateToProps = ({ scale, ui }) => ({
   extra: scale.notes.extra,
   round: scale.notes.round,
   addExtraNotes: ui.addExtraNotes,
+  isEditingExtraPos: ui.isEditingExtraPos,
   isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps, {
   addNoteToScale,
   removeNoteFromScale,
+  toggleExtraNotes,
+  toggleExtraPosEdit,
   transposeScale,
 })(Edit);
