@@ -9,6 +9,7 @@ import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
+import Move from '../move/Move';
 import Notes from '../notes/Notes';
 import { EditContainer, TextLabel } from './edit.styles';
 
@@ -23,7 +24,7 @@ const Edit = ({
   return (
     <EditContainer>
       {isEditingExtraPos ? (
-        <div />
+        <Move />
       ) : (
         <>
           <TextLabel>Transpose Scale</TextLabel>
