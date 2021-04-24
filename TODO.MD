@@ -3,8 +3,8 @@
 ## Current tasks
 
 * Custom positions for extra notes, move notes mode? - started
-* Move notes on mobile, needs to be on drum route instead of scale route
-* Show all positions when move mode is on and allow swapping notes
+* Add move notes component
+* Clean up console.logs
 
 * Typescript
 * Play song logic should be moved somewhere else?
@@ -24,6 +24,7 @@
 * Login popup and blockers...
 * Cannot read property 'clientHeight' of null at DropdownHandler onResize() - fixed?
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
+* Focus on extra notes on mobile doesn't really show up on drum
 
 ## Design
 
