@@ -53,26 +53,23 @@ export const PositionWrapper = styled.div`
 
 export const Note = styled.div`
   align-items: center;
-  background-color: #333;
+  background-color: ${({ isGrabbed }) => (isGrabbed ? '#333' : '#ccc')};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-radius: 100%;
-  color: #ccc;
+  color: ${({ isGrabbed }) => (isGrabbed ? '#ccc' : '#111')};
   cursor: pointer;
-  display: flex;
-  font-size: 2rem;
+  display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
   height: 4rem;
   justify-content: center;
   position: absolute;
   width: 4rem;
 
   ${({ theme }) => theme.mqW1200`
-    font-size: 1.8rem;
     height: 3rem;
     width: 3rem;
   `}
 
   ${({ theme }) => theme.mqW850`
-    font-size: 1.5rem;
     height: 2rem;
     width: 2rem;
   `}

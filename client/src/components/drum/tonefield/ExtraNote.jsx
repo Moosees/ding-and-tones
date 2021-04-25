@@ -12,7 +12,6 @@ const ExtraNote = ({
   showNote,
   text,
 }) => {
-  console.log(position);
   const handlePlay = () => {
     new Audio(`${audioPath}/${note}.mp3`).play();
   };

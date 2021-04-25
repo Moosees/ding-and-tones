@@ -3,8 +3,11 @@
 ## Current tasks
 
 * Custom positions for extra notes, move notes mode? - started
-* Add move notes component
-* Clean up console.logs
+* Move notes logic
+* Show correct positions on big drum
+* Style Move component
+* Clear move state when loading songs
+* Only allow move extra if extra notes exist
 
 * Typescript
 * Play song logic should be moved somewhere else?
@@ -15,6 +18,7 @@
 * Help menu for intervals, explain colors and chords
 * Volume controls?
 * Should print view only break before fourths?
+* Change root note
 
 ## Bugs
 
