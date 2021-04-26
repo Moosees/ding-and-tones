@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Custom positions for extra notes, move notes mode? - started
-* Move notes logic
 * Show correct positions on big drum
 * Style Move component
 * Clear move state when loading songs

@@ -16,6 +16,16 @@ const notesReducer = (state = notesState, { type, payload }) => {
         scaleFull: createFullScaleFromNames(scaleMerged, payload.notes.extra),
       };
 
+    case scaleTypes.MOVE_EXTRA_NOTES:
+      const movedExtra = state.extra.map(({ note, pos }) => {
+        if (payload.swap && pos === payload.newPos)
+          return { note, pos: payload.oldPos };
+        if (pos === payload.oldPos) return { note, pos: payload.newPos };
+        return { note, pos };
+      });
+
+      return { ...state, extra: movedExtra };
+
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,

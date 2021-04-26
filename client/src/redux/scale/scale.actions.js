@@ -89,6 +89,11 @@ export const loadScale = (scale) => ({
   },
 });
 
+export const moveExtraNotes = (oldPos, newPos, swap = false) => ({
+  type: scaleTypes.MOVE_EXTRA_NOTES,
+  payload: { oldPos, newPos, swap },
+});
+
 export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   const {
     scale: { notes },
