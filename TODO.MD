@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Custom positions for extra notes, move notes mode? - started
-* Show correct positions on big drum
 * Style Move component
 * Clear move state when loading songs
 * Only allow move extra if extra notes exist
@@ -18,6 +17,7 @@
 * Volume controls?
 * Should print view only break before fourths?
 * Change root note
+* Teleport popups to body?
 
 ## Bugs
 
@@ -42,6 +42,7 @@
 * Only small divider lines?
 * Interval list chord default cursor
 * Extra notes look weird on mobile in portrait
+* Delete hover color should be red
 
 ## User/Menu
 
@@ -70,6 +71,7 @@
 * Check if loaded songs has saved hands and set hands open accordingly?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * Plus and minus one for bpm
+* Move add bar controls to end of bar list?
 
 ## State
 

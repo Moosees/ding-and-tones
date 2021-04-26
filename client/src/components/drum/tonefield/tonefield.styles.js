@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+const extraPositions = [
+  'right: 5rem; top: 1rem;',
+  'left: 5rem; top: 1rem;',
+  'right: 0; top: 7rem;',
+  'left: 0; top: 7rem;',
+  'bottom: 7rem; right: 0;',
+  'bottom: 7rem; left: 0;',
+  'bottom: 1rem; right: 5rem;',
+  'bottom: 1rem; left: 5rem;',
+];
+
 export const ExtraContainer = styled.div`
   align-items: center;
   background-color: #333;
@@ -16,6 +27,8 @@ export const ExtraContainer = styled.div`
   justify-content: center;
   position: absolute;
   width: 5rem;
+
+  ${({ position }) => extraPositions[position]}
 
   ${({ theme }) => theme.mqW1200`
     border-width: ${({ hasFocus }) => (hasFocus ? '4px' : '2px')};

@@ -37,7 +37,7 @@ const Drum = ({
           hasFocus={i === displayedNote}
           note={note.note}
           showNote={showNote}
-          position={note.pos}
+          extraIndex={i - round.length}
           text={
             showNote
               ? getNoteText(
@@ -98,7 +98,7 @@ const Drum = ({
   return (
     <DrumContainer style={style}>
       <DrumWrapper>
-        {extraTonefields.length > 0 && extraTonefields.reverse()}
+        {extraTonefields}
         <DrumSvg viewBox="-10 -10 20 20">
           <defs>
             <radialGradient id="drumGradient">

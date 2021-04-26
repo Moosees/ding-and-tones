@@ -6,9 +6,10 @@ import { ExtraContainer } from './tonefield.styles';
 const ExtraNote = ({
   audioPath,
   color,
+  extra,
+  extraIndex,
   hasFocus,
   note,
-  position,
   showNote,
   text,
 }) => {
@@ -21,6 +22,7 @@ const ExtraNote = ({
       color={color}
       showNote={showNote}
       hasFocus={hasFocus}
+      position={extra[extraIndex].pos}
       onClick={showNote ? handlePlay : null}
     >
       {text}
@@ -28,8 +30,9 @@ const ExtraNote = ({
   );
 };
 
-const mapStateToProps = ({ drum }) => ({
+const mapStateToProps = ({ drum, scale }) => ({
   audioPath: drum.audioPath,
+  extra: scale.notes.extra,
 });
 
 export default connect(mapStateToProps, { setDisplayedNote })(ExtraNote);

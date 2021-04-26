@@ -28,37 +28,4 @@ export const DrumWrapper = styled.div`
   max-width: 35rem;
   position: relative;
   width: 100%;
-
-  & div:nth-child(1) {
-    right: 5rem;
-    top: 1rem;
-  }
-  & div:nth-child(2) {
-    left: 5rem;
-    top: 1rem;
-  }
-  & div:nth-child(3) {
-    right: 0rem;
-    top: 7rem;
-  }
-  & div:nth-child(4) {
-    left: 0rem;
-    top: 7rem;
-  }
-  & div:nth-child(5) {
-    bottom: 7rem;
-    right: 0rem;
-  }
-  & div:nth-child(6) {
-    bottom: 7rem;
-    left: 0rem;
-  }
-  & div:nth-child(7) {
-    bottom: 1rem;
-    right: 5rem;
-  }
-  & div:nth-child(8) {
-    bottom: 1rem;
-    left: 5rem;
-  }
 `;
