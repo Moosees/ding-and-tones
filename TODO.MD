@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Custom positions for extra notes, move notes mode? - started
-* Style Move component
 * Clear move state when loading songs
 * Only allow move extra if extra notes exist
 

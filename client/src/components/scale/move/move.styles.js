@@ -11,9 +11,10 @@ export const MoveContainer = styled.div`
 `;
 
 export const PositionWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colorBtnHeavy};
-  border: ${({ theme }) => theme.borderHeavyLight};
+  background: radial-gradient(#8998aa, #626280);
+  border: ${({ theme }) => theme.borderHeavyDark};
   border-radius: 100%;
+  box-shadow: ${({ theme }) => theme.shadowLight};
   height: 75%;
   width: 75%;
 
@@ -53,11 +54,11 @@ export const PositionWrapper = styled.div`
 
 export const Note = styled.div`
   align-items: center;
-  background-color: ${({ isGrabbed }) => (isGrabbed ? '#333' : '#ccc')};
+  background-color: ${({ isGrabbed }) => (!isGrabbed ? '#333' : '#ccc')};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-radius: 100%;
-  color: ${({ isGrabbed }) => (isGrabbed ? '#ccc' : '#111')};
-  cursor: pointer;
+  color: ${({ isGrabbed }) => (!isGrabbed ? '#ccc' : '#111')};
+  cursor: move;
   display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
   height: 4rem;
   justify-content: center;

@@ -4,6 +4,7 @@ export const EditContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const TextLabel = styled.p`
