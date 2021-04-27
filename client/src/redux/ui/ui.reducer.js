@@ -1,3 +1,4 @@
+import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
@@ -111,6 +112,9 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         mutedBars: updateMutedBars(state.mutedBars, payload),
       };
+
+    case scaleTypes.LOAD_SCALE:
+      return { ...state, isEditingExtraPos: false };
 
     case songTypes.DELETE_BAR:
       return {

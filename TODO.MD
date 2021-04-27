@@ -2,10 +2,6 @@
 
 ## Current tasks
 
-* Custom positions for extra notes, move notes mode? - started
-* Clear move state when loading songs
-* Only allow move extra if extra notes exist
-
 * Typescript
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?

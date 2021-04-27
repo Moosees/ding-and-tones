@@ -15,6 +15,7 @@ import { EditContainer, TextLabel } from './edit.styles';
 
 const Edit = ({
   addExtraNotes,
+  extra,
   isEditingExtraPos,
   isSongPlaying,
   toggleExtraNotes,
@@ -71,6 +72,7 @@ const Edit = ({
           asBtn
           light
           label="Move"
+          disabled={!extra.length}
           checked={isEditingExtraPos}
           onChange={toggleExtraPosEdit}
         />
@@ -81,6 +83,7 @@ const Edit = ({
 };
 
 const mapStateToProps = ({ scale, ui }) => ({
+  extra: scale.notes.extra,
   addExtraNotes: ui.addExtraNotes,
   isEditingExtraPos: ui.isEditingExtraPos,
   isSongPlaying: ui.isSongPlaying,
