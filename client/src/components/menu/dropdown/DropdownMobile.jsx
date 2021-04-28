@@ -22,27 +22,32 @@ const DropdownMobile = ({
   const { pathname } = useLocation();
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
 
+  const goTo = (url) => {
+    push(url);
+    isOpenCb();
+  };
+
   return (
     <DropdownContainer ref={insideRef}>
       <BtnMenu
         label="Drum"
         isActive={'/chords' === pathname}
-        onClick={() => push('/chords')}
+        onClick={() => goTo('/chords')}
       />
       <BtnMenu
         label="Scale"
         isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
-        onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
+        onClick={() => goTo(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
       <BtnMenu
         label="Song"
         isActive={`/song${songId ? '/' + songId : ''}` === pathname}
-        onClick={() => push(`/song${songId ? '/' + songId : ''}`)}
+        onClick={() => goTo(`/song${songId ? '/' + songId : ''}`)}
       />
       <BtnMenu
         label="Find Songs"
         isActive={'/find' === pathname}
-        onClick={() => push('/find')}
+        onClick={() => goTo('/find')}
       />
       <DividerLine />
       <Sound />

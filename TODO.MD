@@ -15,7 +15,6 @@
 * Volume controls?
 * Should print view only break before fourths?
 * Change root note
-* Close menus when selecting an option?
 
 ## Bugs
 

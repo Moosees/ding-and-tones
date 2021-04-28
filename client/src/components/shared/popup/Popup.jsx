@@ -11,7 +11,7 @@ const Popup = ({ children, header, onClose }) => {
 
   return createPortal(
     <Overlay ref={overlayRef} onClick={handleClick}>
-      <Background onClick={(e) => e.stopPropagation()}>
+      <Background>
         {header && <AccountHeader>{header}</AccountHeader>}
         {children}
       </Background>

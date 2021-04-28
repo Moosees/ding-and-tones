@@ -5,7 +5,12 @@ const useCloseOutside = (isOpenCb, btnRef) => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (btnRef?.current?.contains(e.target)) return;
+      if (
+        btnRef?.current?.contains(e.target) ||
+        document.getElementById('overlay').contains(e.target)
+      ) {
+        return;
+      }
 
       if (insideRef.current && !insideRef.current.contains(e.target))
         isOpenCb(false);
