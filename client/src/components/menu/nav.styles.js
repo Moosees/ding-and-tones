@@ -27,7 +27,7 @@ export const MenuDropdown = styled.div`
   padding: 0.5rem;
   position: absolute;
   top: 3.4rem;
-  z-index: 1000;
+  z-index: 900;
 `;
 
 export const LogoContainer = styled.div`

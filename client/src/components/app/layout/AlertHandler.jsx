@@ -18,7 +18,7 @@ const AlertContainer = styled.div`
   transform: translateX(-50%);
   padding: 1rem;
   position: absolute;
-  z-index: 9999;
+  z-index: 2000;
 
   ${({ theme }) => theme.mqW1200`
     background-color: ${theme.colorBox};

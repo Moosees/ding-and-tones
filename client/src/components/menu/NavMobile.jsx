@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { checkSession } from '../../redux/user/user.actions';
-import MobileDropdown from './dropdown/DropdownMobile';
+import DropdownMobile from './dropdown/DropdownMobile';
 import Logo from './logo/Logo';
 import { LogoContainer, MobileAnchor } from './nav.styles';
 
@@ -18,7 +18,7 @@ const NavMobile = ({ checkSession }) => {
       <LogoContainer ref={btnRef} onClick={() => setIsOpen(!isOpen)}>
         <Logo />
       </LogoContainer>
-      {isOpen && <MobileDropdown btnRef={btnRef} isOpenCb={setIsOpen} />}
+      {isOpen && <DropdownMobile btnRef={btnRef} isOpenCb={setIsOpen} />}
     </MobileAnchor>
   );
 };

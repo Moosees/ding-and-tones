@@ -1,19 +1,8 @@
 import React, { cloneElement, useState } from 'react';
-import styled from 'styled-components';
 import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import Popup from './Popup';
-
-const Label = styled.div`
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  padding: 2rem 1.5rem;
-
-  ${({ theme }) => theme.mqW1000`
-    padding: 1.5rem 1rem;
-  `}
-`;
+import { Label } from './popup.styles';
 
 const Confirmation = ({ children, header, label, onConfirm }) => {
   const [popupOpen, setPopupOpen] = useState(false);

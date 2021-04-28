@@ -136,7 +136,7 @@ export const DropdownItem = styled.div`
   padding: 2px;
   position: relative;
   transition: background-color 0.2s ease, opacity 0.2s ease;
-  z-index: 1000;
+  z-index: 300;
 
   ${({ disabled, theme }) =>
     !disabled &&

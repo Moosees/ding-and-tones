@@ -1,47 +1,6 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components';
-
-const Overlay = styled.div`
-  align-items: center;
-  background-color: rgba(20, 20, 20, 0.5);
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 999;
-`;
-
-const Background = styled.div`
-  background-color: ${({ theme }) => theme.colorBox};
-  border-radius: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 26rem;
-  padding: 2rem;
-
-  & > *:last-child {
-    margin-bottom: 1.2rem;
-  }
-
-  ${({ theme }) => theme.mqW1200`
-    border-radius: 40px;
-  `}
-
-  ${({ theme }) => theme.mqW850`
-    border-radius: 20px;
-  `}
-`;
-
-const AccountHeader = styled.h2`
-  align-self: center;
-  font-size: ${({ theme }) => theme.fzHeader};
-  margin-bottom: 0.5rem;
-  padding: 1rem;
-`;
+import { createPortal } from 'react-dom';
+import { AccountHeader, Background, Overlay } from './popup.styles';
 
 const Popup = ({ children, header, onClose }) => {
   const overlayRef = useRef(null);
@@ -50,13 +9,14 @@ const Popup = ({ children, header, onClose }) => {
     if (e.target === overlayRef.current) onClose();
   };
 
-  return (
+  return createPortal(
     <Overlay ref={overlayRef} onClick={handleClick}>
       <Background onClick={(e) => e.stopPropagation()}>
         {header && <AccountHeader>{header}</AccountHeader>}
         {children}
       </Background>
-    </Overlay>
+    </Overlay>,
+    document.getElementById('overlay')
   );
 };
 

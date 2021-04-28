@@ -2,23 +2,25 @@
 
 ## Current tasks
 
+* User can tab select :active outside of popups
+* Set focus when opening popups
+
 * Typescript
+* Clean up reducers and actions
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach?
 * Remove measure subdivision count?
-* Save song as JSON?
 * Bar numbers on song viewer? Only long songs?
 * Help menu for intervals, explain colors and chords
 * Volume controls?
 * Should print view only break before fourths?
 * Change root note
-* Teleport popups to body?
+* Close menus when selecting an option?
 
 ## Bugs
 
 * React-to-print document.write warnings
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
-* User can tab select :active outside of popups
 * Login popup and blockers...
 * Cannot read property 'clientHeight' of null at DropdownHandler onResize() - fixed?
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
@@ -43,7 +45,6 @@
 
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 * Active state for nav buttons might not need the full pathname
-* Don't render popups as children of buttons (no close and active state stuck)?
 * Interval colors for compound intervals? Check if intervals are working as intended
 
 ## Chords
@@ -67,11 +68,11 @@
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * Plus and minus one for bpm
 * Move add bar controls to end of bar list?
+* User can add line breaks in songwriter?
 
 ## State
 
-* Persist working state through local storage?
-* Merge ui reducer actions? Rework actions?
+* Persist working state through local storage? Redis?
 * Merge api status states (isFetching etc.) in client?
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
@@ -85,7 +86,6 @@
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Change query string to keyword search? Add difficulty filter to searches
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
-* Split save song controller?
 * Sorting search results in table
 * Privacy date localization
 * Select boxes dynamic width
@@ -93,6 +93,7 @@
 * Count number of bars for search results? Virtual field?
 * Clean up getNoteText() and Tonefield in general
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
+* Save song as JSON?
 
 ## Future plans
 
@@ -127,6 +128,5 @@
 * Check text inputs for bad words?
 * Show name for your songs as "you"?
 * Print multiple songs on same page
-* User can add line breaks in songwriter?
 * Double dings and mutant drums
 * Print with notes instead of numbers
