@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Prevent initial searches from triggering no results found alert
 * User can tab select :active outside of popups
 * Set focus when opening popups
 

@@ -1,17 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { transposeScale } from '../../../redux/scale/scale.actions';
 import {
   toggleExtraNotes,
   toggleExtraPosEdit,
 } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
-import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import Move from '../move/Move';
 import Notes from '../notes/Notes';
-import { EditContainer, TextLabel } from './edit.styles';
+import { EditContainer, EditContent, TextLabel } from './edit.styles';
 
 const Edit = ({
   addExtraNotes,
@@ -20,45 +18,10 @@ const Edit = ({
   isSongPlaying,
   toggleExtraNotes,
   toggleExtraPosEdit,
-  transposeScale,
 }) => {
   return (
     <EditContainer>
-      {isEditingExtraPos ? (
-        <Move />
-      ) : (
-        <>
-          <TextLabel>Transpose Scale</TextLabel>
-          <Buttons position="center">
-            <BtnPrimary
-              disabled={isSongPlaying}
-              label="- 8va"
-              light
-              onClick={() => transposeScale(-12)}
-            />
-            <BtnPrimary
-              disabled={isSongPlaying}
-              label="Down"
-              light
-              onClick={() => transposeScale(-1)}
-            />
-            <BtnPrimary
-              disabled={isSongPlaying}
-              label="Up"
-              light
-              onClick={() => transposeScale(1)}
-            />
-            <BtnPrimary
-              disabled={isSongPlaying}
-              label="+ 8va"
-              light
-              onClick={() => transposeScale(12)}
-            />
-          </Buttons>
-          <DividerLine small />
-          <Notes />
-        </>
-      )}
+      <EditContent>{isEditingExtraPos ? <Move /> : <Notes />}</EditContent>
       <DividerLine small />
       <Buttons position="center">
         <Checkbox
@@ -92,5 +55,4 @@ const mapStateToProps = ({ scale, ui }) => ({
 export default connect(mapStateToProps, {
   toggleExtraNotes,
   toggleExtraPosEdit,
-  transposeScale,
 })(Edit);

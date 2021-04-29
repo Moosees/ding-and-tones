@@ -5,8 +5,12 @@ import { noteValueToName } from '../../../assets/intervals';
 import {
   addNoteToScale,
   removeNoteFromScale,
+  transposeScale
 } from '../../../redux/scale/scale.actions';
-import { Note, NotesContainer } from './notes.styles';
+import Buttons from '../../shared/button/Buttons';
+import BtnPrimary from '../../shared/button/Primary';
+import DividerLine from '../../shared/dividerLine/DividerLine';
+import { Note, NotesList, TextLabel } from './notes.styles';
 
 const Notes = ({
   addExtraNotes,
@@ -15,6 +19,7 @@ const Notes = ({
   isSongPlaying,
   removeNoteFromScale,
   round,
+  transposeScale,
 }) => {
   const handleAdd = (note) => {
     if (isSongPlaying) return;
@@ -58,7 +63,39 @@ const Notes = ({
     return notes;
   };
 
-  return <NotesContainer>{getNotes()}</NotesContainer>;
+  return (
+    <>
+      <TextLabel>Transpose Scale</TextLabel>
+      <Buttons position="center">
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="- 8va"
+          light
+          onClick={() => transposeScale(-12)}
+        />
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="Down"
+          light
+          onClick={() => transposeScale(-1)}
+        />
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="Up"
+          light
+          onClick={() => transposeScale(1)}
+        />
+        <BtnPrimary
+          disabled={isSongPlaying}
+          label="+ 8va"
+          light
+          onClick={() => transposeScale(12)}
+        />
+      </Buttons>
+      <DividerLine small />
+      <NotesList>{getNotes()}</NotesList>
+    </>
+  );
 };
 
 const mapStateToProps = ({ scale, ui }) => ({
@@ -71,4 +108,5 @@ const mapStateToProps = ({ scale, ui }) => ({
 export default connect(mapStateToProps, {
   addNoteToScale,
   removeNoteFromScale,
+  transposeScale,
 })(Notes);

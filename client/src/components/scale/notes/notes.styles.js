@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NotesContainer = styled.div`
+export const NotesList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -50,4 +50,8 @@ export const Note = styled.button`
   ${({ theme }) => theme.mqW850`
     margin: 2px;
   `}
+`;
+
+export const TextLabel = styled.p`
+  opacity: 0.7;
 `;

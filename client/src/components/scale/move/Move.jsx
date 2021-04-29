@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { moveExtraNotes } from '../../../redux/scale/scale.actions';
+import { TextLabel } from '../edit/edit.styles';
 import { MoveContainer, Note, PositionWrapper } from './move.styles';
 
 const Move = ({ extra, moveExtraNotes }) => {
@@ -43,9 +44,14 @@ const Move = ({ extra, moveExtraNotes }) => {
   });
 
   return (
-    <MoveContainer>
-      <PositionWrapper>{notes}</PositionWrapper>
-    </MoveContainer>
+    <>
+      <MoveContainer>
+        <PositionWrapper>{notes}</PositionWrapper>
+      </MoveContainer>
+      <TextLabel>
+        {isGrabbing ? 'Pick destination' : 'Pick note to move'}
+      </TextLabel>
+    </>
   );
 };
 

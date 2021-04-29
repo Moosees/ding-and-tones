@@ -65,13 +65,7 @@ export const Note = styled.div`
   position: absolute;
   width: 4rem;
 
-  ${({ theme }) => theme.mqW1200`
-    height: 3rem;
-    width: 3rem;
-  `}
-
   ${({ theme }) => theme.mqW850`
-    height: 2rem;
-    width: 2rem;
+    border-width: 1px;
   `}
 `;
