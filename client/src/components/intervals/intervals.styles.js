@@ -47,27 +47,22 @@ export const IntervalColor = styled.div`
   align-items: center;
   background-color: ${({ color }) => color};
   cursor: default;
+  border: ${({ theme }) => theme.borderMedium};
   border-radius: 100%;
   display: flex;
-  height: 2.2rem;
+  height: 2.5rem;
   justify-content: center;
   margin: 0.25rem;
-  min-width: 2.2rem;
-  width: 2.2rem;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  width: 2.5rem;
 
   span {
+    color: #eee;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 0.8),
+      0 0 1px rgba(0, 0, 0, 0.5);
     position: relative;
-    text-shadow: 1px 0 0px rgba(200, 200, 200, 0.55),
-      -1px 0 0px rgba(200, 200, 200, 0.55), 0 1px 0px rgba(200, 200, 200, 0.55),
-      0 -1px 0px rgba(200, 200, 200, 0.55);
   }
-
-  ${({ theme }) => theme.mqW850`  
-    height: 2rem;
-    margin: 1px;
-    min-width: 2rem;
-    width: 2rem;
-  `};
 `;
 
 export const IntervalBreakBox = styled.div`
