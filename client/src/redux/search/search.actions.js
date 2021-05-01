@@ -2,7 +2,14 @@ import axios from 'axios';
 import searchOptions from './search.options';
 import searchTypes from './search.types';
 
-export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
+export const startSearch = (searchOption, searchTerm = '') => (
+  dispatch,
+  getState
+) => {
+  const {
+    search: { scalesFetchTried, songsFetchTried },
+  } = getState();
+
   dispatch({ type: searchTypes.SEARCH_STARTED });
 
   let query = '';
@@ -48,9 +55,18 @@ export const startSearch = (searchOption, searchTerm = '') => (dispatch) => {
           payload: { results: res.data, extraPayload },
         });
       if (res.status === 204) {
+        let alert = 'No results found';
+        
+        if (
+          (searchOption === searchOptions.scales.latest && !scalesFetchTried) ||
+          (searchOption === searchOptions.songs.latest && !songsFetchTried)
+        ) {
+          alert = '';
+        }
+
         dispatch({
           type: searchTypes.SEARCH_NOT_FOUND,
-          payload: { extraPayload, alert: 'No results found' },
+          payload: { extraPayload, alert },
         });
       }
     })
