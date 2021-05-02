@@ -53,13 +53,17 @@ export const IconButton = styled.button`
   `}
   }
 
+  &:focus:not(.focus-visible) {
+    outline: 0;
+  }
+
   &:hover:not([disabled]) i,
   &:focus:not([disabled]) i {
     ${({ editOnly, theme }) => !editOnly && `color: ${theme.colorBtnConfirm};`}
   }
 
-  &:focus {
-    outline: 0;
+  &:focus:not([disabled]) {
+    outline: ${({ theme }) => theme.borderMedium};
   }
 
   &:disabled {
@@ -69,10 +73,6 @@ export const IconButton = styled.button`
       opacity: 0.2;
     }
   }
-  /* 
-  &:focus:not(.focus-visible) {
-    outline: 0;
-  } */
 `;
 
 export const NavButton = styled.button`
