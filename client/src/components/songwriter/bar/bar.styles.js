@@ -21,7 +21,6 @@ export const Beats = styled.div`
   display: flex;
   justify-content: center;
   margin: 1px 2px 3px;
-  opacity: ${({ isMuted }) => (isMuted ? '0.65' : '1')};
   padding: 0.5rem;
   transition: opacity 0.1s ease-in;
 

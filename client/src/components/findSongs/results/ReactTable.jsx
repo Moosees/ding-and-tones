@@ -45,6 +45,7 @@ const ReactTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
               return (
                 <Fragment key={key}>
                   <TableRow
+                    tabIndex={0}
                     role={role}
                     onClick={() => row.toggleRowExpanded(!row.isExpanded)}
                   >

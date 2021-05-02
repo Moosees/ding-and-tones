@@ -20,11 +20,13 @@ export const ListItem = styled.li`
   box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
   cursor: pointer;
   list-style: none;
-  margin: 2px;
-  padding: 0.5rem;
+  margin: 3px;
+  padding: 0.6rem;
   transition: transform 0.1s ease;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: 0;
     transform: scale(1.05);
   }
 

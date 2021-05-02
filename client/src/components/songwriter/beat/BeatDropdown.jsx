@@ -46,6 +46,7 @@ const BeatDropdown = ({
 
       return hasNonScaleNote && !selected ? null : (
         <DropdownItem
+          tabIndex={0}
           disabled={multiSelect && sound.length >= 2 && !selected}
           selected={selected}
           key={value}
@@ -61,6 +62,7 @@ const BeatDropdown = ({
 
   const handItems = hands.map(({ name, value }) => (
     <DropdownItem
+      tabIndex={0}
       selected={value === hand}
       key={value}
       onClick={() => updateHandForBeat(beatId, value, value === hand)}

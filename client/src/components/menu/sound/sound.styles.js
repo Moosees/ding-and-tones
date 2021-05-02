@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AudioOption = styled.div`
+export const AudioOption = styled.button`
   background-color: ${({ theme }) => theme.colorBtnHeavy};
   border: 2px solid
     ${({ isSelected, theme }) =>
@@ -12,8 +12,10 @@ export const AudioOption = styled.div`
   padding: 1rem;
   transition: transform 0.1s ease;
 
-  &:hover {
-    transform: scale(1.03);
+  &:hover,
+  &:focus {
+    outline: 0;
+    transform: scale(1.04);
   }
 `;
 

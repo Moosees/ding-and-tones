@@ -2,10 +2,14 @@
 
 ## Current tasks
 
-* User can tab select :active outside of popups
-* Set focus when opening popups
-* Search hints should not be alerts
+* Add space and enter to tabIndexes (buttons inside li?)
+* Fix select layouts and add space and enter
+* Handle focus on modals
+* Keyboard navigation for table
+* Keyboard navigation for dropdown menu
+* Keyboard close beat dropdown
 
+* Search hints should not be alerts
 * Typescript
 * Clean up reducers and actions
 * Play song logic should be moved somewhere else?
@@ -16,6 +20,7 @@
 * Volume controls?
 * Should print view only break before fourths?
 * Change root note
+* Hover and tab focus for intervals?
 
 ## Bugs
 

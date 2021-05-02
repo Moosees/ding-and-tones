@@ -18,7 +18,9 @@ export const MenuButton = styled.div`
   text-shadow: ${({ theme }) => theme.textShadowLight};
   transition: color 0.1s ease-in;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: 0;
     color: ${({ theme }) => theme.colorBtnConfirm};
   }
 
@@ -51,8 +53,13 @@ export const IconButton = styled.button`
   `}
   }
 
-  &:hover:not([disabled]) i {
+  &:hover:not([disabled]) i,
+  &:focus:not([disabled]) i {
     ${({ editOnly, theme }) => !editOnly && `color: ${theme.colorBtnConfirm};`}
+  }
+
+  &:focus {
+    outline: 0;
   }
 
   &:disabled {
@@ -62,10 +69,10 @@ export const IconButton = styled.button`
       opacity: 0.2;
     }
   }
-
+  /* 
   &:focus:not(.focus-visible) {
-    outline: none;
-  }
+    outline: 0;
+  } */
 `;
 
 export const NavButton = styled.button`
@@ -87,11 +94,8 @@ export const NavButton = styled.button`
   transition: transform 0.1s ease-in;
   ${({ isActive }) => (isActive ? 'z-index: 10;' : '')}
 
-  &:focus:not(.focus-visible) {
-    outline: none;
-  }
-
-  &:hover {
+  &:hover, &:focus {
+    outline: 0;
     ${({ isActive }) => !isActive && 'transform: translateY(-2%) scale(1.04);'}
   }
 `;
@@ -114,9 +118,11 @@ export const PrimaryButton = styled.button`
   padding: 0.5rem 2px;
   transition: border 0.15s ease-in;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: 0;
     border: ${({ disabled, theme }) =>
-      disabled ? theme.borderLight : theme.borderMedium};
+      disabled ? theme.borderLight : theme.borderDark};
   }
 
   ${({ theme }) => theme.mqW1000`

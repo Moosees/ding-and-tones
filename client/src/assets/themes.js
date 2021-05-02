@@ -24,6 +24,7 @@ const colorGreyDark = '#333';
 export const mainTheme = {
   borderLight: '1px solid rgba(0,0,80,0.1)',
   borderMedium: '1px solid rgba(0,0,80,0.5)',
+  borderDark: '1px solid rgba(0,0,80,0.8)',
   borderHeavyDark: `3px solid ${colorGreyDark}`,
   borderHeavyLight: '3px solid #777',
   colorNavBorder: colorGreyDark, // same as borderHeavyDark!

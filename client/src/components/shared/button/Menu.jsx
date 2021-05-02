@@ -13,7 +13,7 @@ const BtnMenu = ({
   const { isMobile } = useDimensions();
 
   return (
-    <MenuButton isActive={isActive} onClick={onClick}>
+    <MenuButton tabIndex={0} isActive={isActive} onClick={onClick}>
       <i
         style={
           isMobile

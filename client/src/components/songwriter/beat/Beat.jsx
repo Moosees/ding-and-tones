@@ -11,6 +11,7 @@ const Beat = ({
   countOpen,
   currentBeat,
   handsOpen,
+  isMuted,
   isSongPlaying,
   soundOptions,
 }) => {
@@ -39,11 +40,13 @@ const Beat = ({
         {countOpen && <BeatText>{count}</BeatText>}
         <BeatAnchor>
           <BeatCircle
+            tabIndex={0}
             ref={btnRef}
             hasNonScaleNote={hasNonScaleNote}
             isLocked={isSongPlaying}
             isBeatPlaying={isBeatPlaying}
             isSongPlaying={isSongPlaying}
+            isMuted={isMuted}
             value={value}
             onClick={handleOpen}
           >

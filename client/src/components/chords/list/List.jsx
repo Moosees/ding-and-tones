@@ -13,6 +13,7 @@ const List = ({ displayedChord, setDisplayedChord, foundChords }) => {
               displayedChord && chord.nameShort === displayedChord.nameShort;
             return (
               <ListItem
+                tabIndex={0}
                 key={i}
                 isDisplayed={isDisplayed}
                 onClick={() => setDisplayedChord(isDisplayed ? null : chord)}

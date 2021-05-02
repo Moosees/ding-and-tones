@@ -56,7 +56,7 @@ const Results = ({
               />
             </Confirmation>
           )}
-          <TextContainer onClick={handleLoadScale}>
+          <TextContainer tabIndex={0} onClick={handleLoadScale}>
             <ScaleLabel>{`${rootName} ${name}`}</ScaleLabel>
             <ScaleNotes>{label}</ScaleNotes>
           </TextContainer>

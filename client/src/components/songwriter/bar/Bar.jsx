@@ -62,7 +62,12 @@ const Bar = ({
       {filteredBeats.length && (
         <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
           {filteredBeats.map((beat) => (
-            <Beat key={beat.beatId} beatId={beat.beatId} count={beat.count} />
+            <Beat
+              key={beat.beatId}
+              isMuted={isMuted}
+              beatId={beat.beatId}
+              count={beat.count}
+            />
           ))}
         </Beats>
       )}

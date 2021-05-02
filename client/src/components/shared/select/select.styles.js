@@ -12,8 +12,15 @@ export const SelectSmall = styled.div`
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   transition: color 0.1s ease-in;
 
-  &:hover {
-    ${({ disabled, theme }) => !disabled && `color: ${theme.colorBtnConfirm};`}
+  &:hover,
+  &:focus {
+    outline: 0;
+    ${({ disabled, theme }) =>
+      !disabled &&
+      `
+        border: ${theme.borderDark};
+        color: ${theme.colorBtnConfirm};
+      `}
   }
 `;
 
@@ -30,8 +37,8 @@ export const SelectDropdown = styled.select`
   width: 100%;
   z-index: 1;
 
-  &:focus:not(.focus-visible) {
-    outline: none;
+  &:focus {
+    outline: 0;
   }
 
   &:disabled {

@@ -19,8 +19,9 @@ export const CheckboxContainer = styled.button`
     outline: 0;
   }
 
-  &:hover div {
-    border: ${({ theme }) => theme.borderMedium};
+  &:hover div,
+  &:focus div {
+    border: ${({ theme }) => theme.borderDark};
   }
 `;
 

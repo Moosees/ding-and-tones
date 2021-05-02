@@ -35,12 +35,9 @@ export const Note = styled.button`
     border: 2px dotted ${theme.colorBtnConfirm};
   `}
 
-  &:hover {
+  &:hover, &:focus {
+    outline: 0;
     transform: scale(${({ disabled }) => (disabled ? '1' : '1.1')});
-  }
-
-  &:focus {
-    outline: none;
   }
 
   ${({ theme }) => theme.mqW1200`

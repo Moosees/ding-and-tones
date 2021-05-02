@@ -72,10 +72,13 @@ export const BeatCircle = styled.div`
   height: ${({ value }) => beatStyles.heightWidth[value]}rem;
   justify-content: center;
   margin: 1px;
+  opacity: ${({ isMuted }) => (isMuted ? '0.65' : '1')};
   transition: color 0.1s ease-in;
   width: ${({ value }) => beatStyles.heightWidth[value]}rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: 0;
     ${({ isSongPlaying, theme }) =>
       !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
   }
@@ -138,13 +141,12 @@ export const DropdownItem = styled.div`
   transition: background-color 0.2s ease, opacity 0.2s ease;
   z-index: 300;
 
-  ${({ disabled, theme }) =>
-    !disabled &&
-    `
-  &:hover {
-    background-color: ${theme.colorBtnHeavy};
+  &:hover,
+  &:focus {
+    outline: 0;
+    ${({ disabled, theme }) =>
+      !disabled && `background-color: ${theme.colorBtnHeavy};`};
   }
-  `};
 
   ${({ theme }) => theme.mqW1200`
     font-size: ${theme.fzSmaller};

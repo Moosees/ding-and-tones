@@ -7,7 +7,7 @@ export const TextInput = styled.input`
   width: 100%;
 
   &:focus {
-    outline: none;
+    outline: 0;
   }
 
   &::selection {

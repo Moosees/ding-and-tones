@@ -55,7 +55,9 @@ export const TextContainer = styled.div`
   justify-content: space-between;
   padding: 0.8rem 0.4rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: 0;
     color: ${({ theme }) => theme.colorBtnConfirm};
   }
 `;

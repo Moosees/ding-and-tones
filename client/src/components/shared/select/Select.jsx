@@ -54,10 +54,11 @@ const Select = ({
   const Layout = small ? SelectSmall : InfoLayout;
 
   return (
-    <Layout disabled={isSongPlaying} large={large}>
+    <Layout tabIndex={0} disabled={isSongPlaying} large={large}>
       <SelectLabel hasLabel={hasLabel} small={small} disabled={isSongPlaying}>
         <span>{children}</span>
         <SelectDropdown
+          tabIndex={-1}
           small={small}
           hasLabel={hasLabel}
           disabled={isSongPlaying}
