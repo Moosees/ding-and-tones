@@ -34,6 +34,13 @@ const Beat = ({
     if (!isSongPlaying) setIsOpen(!isOpen);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 32 || e.keyCode === 13) {
+      e.preventDefault();
+      handleOpen();
+    }
+  };
+
   return (
     <BeatContainer ref={dropdownPosRef} value={value}>
       <>
@@ -49,6 +56,7 @@ const Beat = ({
             isMuted={isMuted}
             value={value}
             onClick={handleOpen}
+            onKeyDown={handleKeyDown}
           >
             <BeatText isBeatPlaying={isBeatPlaying} value={value}>
               {sound.join('+')}

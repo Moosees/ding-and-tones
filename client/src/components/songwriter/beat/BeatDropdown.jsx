@@ -44,33 +44,59 @@ const BeatDropdown = ({
     optionArray.map(({ label, value }) => {
       const selected = sound.includes(value);
 
+      const isDisabled = multiSelect && sound.length >= 2 && !selected;
+
+      const handleClick = () => {
+        updateSoundForBeat(beatId, value, selected, multiSelect);
+      };
+
+      const handleKeyDown = (e) => {
+        if (e.keyCode === 32 || e.keyCode === 13) {
+          e.preventDefault();
+          handleClick();
+        }
+      };
+
       return hasNonScaleNote && !selected ? null : (
         <DropdownItem
-          tabIndex={0}
-          disabled={multiSelect && sound.length >= 2 && !selected}
+          tabIndex={isDisabled ? -1 : 0}
+          disabled={isDisabled}
           selected={selected}
           key={value}
           hasNonScaleNote={hasNonScaleNote}
-          onClick={() =>
-            updateSoundForBeat(beatId, value, selected, multiSelect)
-          }
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
         >
           {label}
         </DropdownItem>
       );
     });
 
-  const handItems = hands.map(({ name, value }) => (
-    <DropdownItem
-      tabIndex={0}
-      selected={value === hand}
-      key={value}
-      onClick={() => updateHandForBeat(beatId, value, value === hand)}
-    >
-      <span>{name}</span>
-      <HandIcon className="material-icons">pan_tool</HandIcon>
-    </DropdownItem>
-  ));
+  const handItems = hands.map(({ name, value }) => {
+    const handleClick = () => {
+      updateHandForBeat(beatId, value, value === hand);
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.keyCode === 32 || e.keyCode === 13) {
+        e.preventDefault();
+        handleClick();
+      }
+    };
+
+    return (
+      <DropdownItem
+        tabIndex={0}
+        selected={value === hand}
+        key={value}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+      >
+        <span>{name}</span>
+        <HandIcon className="material-icons">pan_tool</HandIcon>
+      </DropdownItem>
+    );
+  });
 
   return (
     <>

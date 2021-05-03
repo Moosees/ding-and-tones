@@ -41,6 +41,13 @@ const Results = ({
         push('/scale');
       };
 
+      const handleKeyDown = (e) => {
+        if (e.keyCode === 32 || e.keyCode === 13) {
+          e.preventDefault();
+          handleLoadScale();
+        }
+      };
+
       return (
         <ScaleContainer key={i} isOwner={isOwner && isSignedIn}>
           {isOwner && isSignedIn && (
@@ -56,7 +63,11 @@ const Results = ({
               />
             </Confirmation>
           )}
-          <TextContainer tabIndex={0} onClick={handleLoadScale}>
+          <TextContainer
+            tabIndex={0}
+            onClick={handleLoadScale}
+            onKeyDown={handleKeyDown}
+          >
             <ScaleLabel>{`${rootName} ${name}`}</ScaleLabel>
             <ScaleNotes>{label}</ScaleNotes>
           </TextContainer>

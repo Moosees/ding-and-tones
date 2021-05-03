@@ -2,12 +2,11 @@
 
 ## Current tasks
 
-* Add space and enter to tabIndexes (buttons inside li?)
 * Fix select layouts and add space and enter
+* Disable focus for icons attached to edit only text boxes
 * Handle focus on modals
-* Keyboard navigation for table
-* Keyboard navigation for dropdown menu
-* Keyboard close beat dropdown
+* Escape closes modals and beat dropdown
+* Better keyboard navigation for table and dropdown
 
 * Search hints should not be alerts
 * Typescript

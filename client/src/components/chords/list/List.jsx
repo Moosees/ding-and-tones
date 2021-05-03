@@ -12,13 +12,12 @@ const List = ({ displayedChord, setDisplayedChord, foundChords }) => {
             const isDisplayed =
               displayedChord && chord.nameShort === displayedChord.nameShort;
             return (
-              <ListItem
-                tabIndex={0}
-                key={i}
-                isDisplayed={isDisplayed}
-                onClick={() => setDisplayedChord(isDisplayed ? null : chord)}
-              >
-                {chord.name} ({chord.notes.join('-')})
+              <ListItem key={i} isDisplayed={isDisplayed}>
+                <button
+                  onClick={() => setDisplayedChord(isDisplayed ? null : chord)}
+                >
+                  {chord.name} ({chord.notes.join('-')})
+                </button>
               </ListItem>
             );
           })}

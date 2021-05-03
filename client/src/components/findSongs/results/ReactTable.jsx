@@ -42,11 +42,20 @@ const ReactTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
             {rows.map((row) => {
               prepareRow(row);
               const { key, role } = row.getRowProps();
+
+              const handleKeyDown = (e) => {
+                if (e.keyCode === 32 || e.keyCode === 13) {
+                  e.preventDefault();
+                  row.toggleRowExpanded(!row.isExpanded);
+                }
+              };
+
               return (
                 <Fragment key={key}>
                   <TableRow
                     tabIndex={0}
                     role={role}
+                    onKeyDown={handleKeyDown}
                     onClick={() => row.toggleRowExpanded(!row.isExpanded)}
                   >
                     {row.cells.map((cell) => (

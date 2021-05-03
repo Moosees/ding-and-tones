@@ -12,8 +12,20 @@ const BtnMenu = ({
 }) => {
   const { isMobile } = useDimensions();
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 32 || e.keyCode === 13) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
-    <MenuButton tabIndex={0} isActive={isActive} onClick={onClick}>
+    <MenuButton
+      tabIndex={0}
+      isActive={isActive}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+    >
       <i
         style={
           isMobile

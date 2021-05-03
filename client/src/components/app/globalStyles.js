@@ -10,6 +10,8 @@ export default createGlobalStyle`
   }
 
   button, label, input, select {
+    background-color: transparent;
+    border: 0;
     color: inherit;
     font-family: inherit;
     font-size: inherit;
