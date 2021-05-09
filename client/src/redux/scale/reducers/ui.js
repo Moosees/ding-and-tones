@@ -2,6 +2,7 @@ import songTypes from '../../song/song.types';
 import userTypes from '../../user/user.types';
 import { uiState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
+import { getPositionMap } from '../scale.utils';
 
 const uiReducer = (state = uiState, { type, payload }) => {
   switch (type) {
@@ -30,7 +31,12 @@ const uiReducer = (state = uiState, { type, payload }) => {
       };
 
     case scaleTypes.LOAD_SCALE:
-      return { ...state, isOwner: payload.isOwner, scaleId: payload.scaleId };
+      return {
+        ...state,
+        isOwner: payload.isOwner,
+        scaleId: payload.scaleId,
+        positionMap: payload.positionMap,
+      };
 
     case scaleTypes.SAVE_ERROR:
       return { ...state, isSaving: false };
@@ -44,10 +50,26 @@ const uiReducer = (state = uiState, { type, payload }) => {
         scaleId: payload.scaleId,
       };
 
-    case songTypes.FETCH_SUCCESSFUL:
-      return payload.getScale && payload.scale
-        ? { ...state, isOwner: false, scaleId: null }
-        : state;
+    case scaleTypes.UPDATE_SCALE:
+      return { ...state, positionMap: payload.newPositionMap };
+
+    case songTypes.FETCH_SUCCESSFUL: {
+      if (!payload.getScale || !payload.scale) return state;
+
+      const {
+        scale: {
+          info: { layout },
+          notes: { round },
+        },
+      } = payload;
+
+      return {
+        ...state,
+        isOwner: false,
+        scaleId: null,
+        positionMap: getPositionMap(layout, round.length),
+      };
+    }
 
     case userTypes.SIGN_OUT:
       return { ...state, isOwner: false };

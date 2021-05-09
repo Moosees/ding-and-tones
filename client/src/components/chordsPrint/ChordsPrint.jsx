@@ -1,9 +1,12 @@
 import React from 'react';
+import Chord from './chord/Chord';
+import Scale from './scale/Scale';
 
 const ChordsPrint = () => {
   return (
     <div>
-      <div></div>
+      <Scale />
+      <Chord />
     </div>
   );
 };

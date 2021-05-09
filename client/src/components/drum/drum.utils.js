@@ -1,4 +1,3 @@
-import { TRANSLATE_BASE } from '../../assets/constants';
 import { drumModes, intervals } from '../../assets/intervals';
 
 export const getChordColor = (note, notesInScale) => {
@@ -52,31 +51,4 @@ export const getNoteText = (
     default:
       return intervalMap[noteIndex].note;
   }
-};
-
-const createRoundLayout = (numTones) => {
-  const positionMap = [
-    { rotate: 0, translate: 0 },
-    { rotate: 0, translate: TRANSLATE_BASE },
-  ];
-  const spread = 360 / (numTones - 1);
-  let startMarker = 1;
-  let endMarker = numTones - 2;
-
-  while (startMarker <= endMarker) {
-    positionMap.push({
-      rotate: spread * startMarker++,
-      translate: TRANSLATE_BASE,
-    });
-    if (startMarker < endMarker)
-      positionMap.push({
-        rotate: spread * endMarker--,
-        translate: TRANSLATE_BASE,
-      });
-  }
-  return positionMap;
-};
-
-export const getPositionMap = (layout, numTones) => {
-  if (layout === 1) return createRoundLayout(numTones);
 };

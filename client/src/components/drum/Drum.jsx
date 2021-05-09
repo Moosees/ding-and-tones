@@ -1,12 +1,7 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
-import {
-  getChordColor,
-  getNoteColor,
-  getNoteText,
-  getPositionMap,
-} from './drum.utils';
+import { getChordColor, getNoteColor, getNoteText } from './drum.utils';
 import ExtraNote from './tonefield/ExtraNote';
 import Tonefield from './tonefield/Tonefield';
 
@@ -15,16 +10,11 @@ const Drum = ({
   displayedNote,
   drumMode,
   extra,
-  layout,
   round,
+  positionMap,
   scale,
   style,
 }) => {
-  const positionMap = useMemo(() => getPositionMap(layout, round.length), [
-    layout,
-    round.length,
-  ]);
-
   const { roundTonefields, extraTonefields } = scale.reduce(
     (acc, note, i) => {
       const showNote =
@@ -135,9 +125,9 @@ const mapStateToProps = ({ drum, scale, ui }) => ({
   displayedNote: drum.displayedNote,
   drumMode: drum.drumMode,
   extra: scale.notes.extra,
-  layout: scale.info.layout,
   round: scale.notes.round,
   scale: scale.notes.scaleFull,
+  positionMap: scale.ui.positionMap,
   isEditingExtraPos: ui.isEditingExtraPos,
 });
 

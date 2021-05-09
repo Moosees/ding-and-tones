@@ -1,4 +1,4 @@
-import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../assets/constants';
+import { MAX_NOTE_VALUE, MIN_NOTE_VALUE, TRANSLATE_BASE } from '../../assets/constants';
 import { noteNameToValue, noteValueToName } from '../../assets/intervals';
 
 export const addExtraNotesPos = (sortedScale) => {
@@ -132,4 +132,31 @@ export const removeDuplicateNotes = (scale) => {
 
 export const sortScaleByFreq = (scale) => {
   return scale.sort((a, b) => noteNameToValue[a] - noteNameToValue[b]);
+};
+
+const createRoundLayout = (numTones) => {
+  const positionMap = [
+    { rotate: 0, translate: 0 },
+    { rotate: 0, translate: TRANSLATE_BASE },
+  ];
+  const spread = 360 / (numTones - 1);
+  let startMarker = 1;
+  let endMarker = numTones - 2;
+
+  while (startMarker <= endMarker) {
+    positionMap.push({
+      rotate: spread * startMarker++,
+      translate: TRANSLATE_BASE,
+    });
+    if (startMarker < endMarker)
+      positionMap.push({
+        rotate: spread * endMarker--,
+        translate: TRANSLATE_BASE,
+      });
+  }
+  return positionMap;
+};
+
+export const getPositionMap = (layout, numTones) => {
+  if (layout === 1) return createRoundLayout(numTones);
 };

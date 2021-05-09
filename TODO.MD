@@ -15,6 +15,7 @@
 * Handle focus on modals
 * Escape closes modals and beat dropdown
 * Better keyboard navigation for table and dropdown
+* Add x close button to popups
 
 * Search hints should not be alerts
 * Typescript
@@ -89,7 +90,6 @@
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* Move position map to reducer?
 * Scale layout prop - not needed? used for double ding?
 
 ## Back/frontend logic

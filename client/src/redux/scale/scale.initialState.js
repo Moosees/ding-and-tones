@@ -22,5 +22,16 @@ export const uiState = {
   isFetching: false,
   isOwner: false,
   isSaving: false,
+  positionMap: [
+    { rotate: 0, translate: 0 },
+    { rotate: 0, translate: 6.6 },
+    { rotate: 45, translate: 6.6 },
+    { rotate: 315, translate: 6.6 },
+    { rotate: 90, translate: 6.6 },
+    { rotate: 270, translate: 6.6 },
+    { rotate: 135, translate: 6.6 },
+    { rotate: 225, translate: 6.6 },
+    { rotate: 180, translate: 6.6 },
+  ],
   scaleId: null,
 };

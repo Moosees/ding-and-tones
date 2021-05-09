@@ -3,31 +3,38 @@ import scaleTypes from './scale.types';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,
+  getPositionMap,
   parseNotesForSaveScale,
   sortScaleByFreq,
   transposeExtraToDestination,
-  transposeRoundToDestination,
+  transposeRoundToDestination
 } from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
   const {
-    scale: { notes },
+    scale: { info, notes, ui },
     ui: { addExtraNotes },
   } = getState();
 
   const newRound = addExtraNotes
     ? notes.round
     : sortScaleByFreq([...notes.round, newNote]);
+
+  const newPositionMap = addExtraNotes
+    ? ui.positionMap
+    : getPositionMap(info.layout, newRound.length);
+
   const newExtra = addExtraNotes
     ? addExtraNotesPos(
         sortScaleByFreq([...notes.extra.map(({ note }) => note), newNote])
       )
     : notes.extra;
+
   const newFull = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull },
+    payload: { newRound, newExtra, newFull, newPositionMap },
   });
 };
 
@@ -81,13 +88,24 @@ export const getScaleById = (scaleId) => (dispatch) => {
     });
 };
 
-export const loadScale = (scale) => ({
-  type: scaleTypes.LOAD_SCALE,
-  payload: {
-    ...scale,
-    alert: `"${scale.info.rootName} ${scale.info.name}" loaded`,
-  },
-});
+export const loadScale = (scale) => {
+  const {
+    info: { layout },
+    notes: { dings, round },
+  } = scale;
+  const numNotes = dings.length + round.length;
+
+  const positionMap = getPositionMap(layout, numNotes);
+
+  return {
+    type: scaleTypes.LOAD_SCALE,
+    payload: {
+      ...scale,
+      positionMap,
+      alert: `"${scale.info.rootName} ${scale.info.name}" loaded`,
+    },
+  };
+};
 
 export const moveExtraNotes = (oldPos, newPos, swap = false) => ({
   type: scaleTypes.MOVE_EXTRA_NOTES,
@@ -96,19 +114,26 @@ export const moveExtraNotes = (oldPos, newPos, swap = false) => ({
 
 export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   const {
-    scale: { notes },
+    scale: { info, notes, ui },
   } = getState();
 
   const newRound =
     notes.round.length > 1
       ? notes.round.filter((note) => note !== noteToRemove)
       : notes.round;
+
+  const newPositionMap =
+    notes.round.length === newRound.length
+      ? ui.positionMap
+      : getPositionMap(info.layout, newRound.length);
+
   const newExtra = notes.extra.filter(({ note }) => note !== noteToRemove);
+
   const newFull = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull },
+    payload: { newRound, newExtra, newFull, newPositionMap },
   });
 };
 
@@ -158,17 +183,23 @@ export const setScaleName = (name) => ({
 
 export const transposeScale = (destination) => (dispatch, getState) => {
   const {
-    scale: { notes },
+    scale: { info, notes, ui },
   } = getState();
   const newRound = transposeRoundToDestination(notes.round, destination);
 
   if (!newRound.length) return;
 
+  const newPositionMap =
+    notes.round.length === newRound.length
+      ? ui.positionMap
+      : getPositionMap(info.layout, newRound.length);
+
   const newExtra = transposeExtraToDestination(notes.extra, destination);
+
   const newFull = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull },
+    payload: { newRound, newExtra, newFull, newPositionMap },
   });
 };
