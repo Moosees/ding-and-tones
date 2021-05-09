@@ -2,7 +2,7 @@ import songTypes from '../../song/song.types';
 import userTypes from '../../user/user.types';
 import { uiState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
-import { getPositionMap } from '../scale.utils';
+import { createPositionMap } from '../scale.utils';
 
 const uiReducer = (state = uiState, { type, payload }) => {
   switch (type) {
@@ -67,7 +67,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
         ...state,
         isOwner: false,
         scaleId: null,
-        positionMap: getPositionMap(layout, round.length),
+        positionMap: createPositionMap(layout, round.length),
       };
     }
 

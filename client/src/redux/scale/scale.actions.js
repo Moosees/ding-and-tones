@@ -3,7 +3,7 @@ import scaleTypes from './scale.types';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,
-  getPositionMap,
+  createPositionMap,
   parseNotesForSaveScale,
   sortScaleByFreq,
   transposeExtraToDestination,
@@ -22,7 +22,7 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
 
   const newPositionMap = addExtraNotes
     ? ui.positionMap
-    : getPositionMap(info.layout, newRound.length);
+    : createPositionMap(info.layout, newRound.length);
 
   const newExtra = addExtraNotes
     ? addExtraNotesPos(
@@ -95,7 +95,7 @@ export const loadScale = (scale) => {
   } = scale;
   const numNotes = dings.length + round.length;
 
-  const positionMap = getPositionMap(layout, numNotes);
+  const positionMap = createPositionMap(layout, numNotes);
 
   return {
     type: scaleTypes.LOAD_SCALE,
@@ -125,7 +125,7 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   const newPositionMap =
     notes.round.length === newRound.length
       ? ui.positionMap
-      : getPositionMap(info.layout, newRound.length);
+      : createPositionMap(info.layout, newRound.length);
 
   const newExtra = notes.extra.filter(({ note }) => note !== noteToRemove);
 
@@ -192,7 +192,7 @@ export const transposeScale = (destination) => (dispatch, getState) => {
   const newPositionMap =
     notes.round.length === newRound.length
       ? ui.positionMap
-      : getPositionMap(info.layout, newRound.length);
+      : createPositionMap(info.layout, newRound.length);
 
   const newExtra = transposeExtraToDestination(notes.extra, destination);
 

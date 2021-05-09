@@ -157,6 +157,6 @@ const createRoundLayout = (numTones) => {
   return positionMap;
 };
 
-export const getPositionMap = (layout, numTones) => {
+export const createPositionMap = (layout, numTones) => {
   if (layout === 1) return createRoundLayout(numTones);
 };
