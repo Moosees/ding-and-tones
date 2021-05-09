@@ -1,7 +1,10 @@
 import React, { lazy, Suspense, useState } from 'react';
 import BtnMenu from '../../shared/button/Menu';
 
-const ReactToPrint = lazy(() => import('./ReactToPrint'));
+const PrintView = lazy(() => import('../../songView/PrintView'));
+const ReactToPrint = lazy(() =>
+  import('../../shared/reactToPrint/ReactToPrint')
+);
 
 const Print = () => {
   const [showPrint, setShowPrint] = useState(false);
@@ -14,11 +17,11 @@ const Print = () => {
         onClick={() => setShowPrint(true)}
       />
       {showPrint && (
-        <div style={{ display: 'none' }}>
-          <Suspense>
-            <ReactToPrint onAfterPrint={() => setShowPrint(false)} />
-          </Suspense>
-        </div>
+        <Suspense>
+          <ReactToPrint onAfterPrint={() => setShowPrint(false)}>
+            <PrintView />
+          </ReactToPrint>
+        </Suspense>
       )}
     </>
   );
