@@ -5,10 +5,12 @@
 * Print chords - started
 * Create mini drum with chords component
 * Create chord list printable view
-* Update ui to add chords to printable view
 * Update ui to go to chords print view or print selected chords
-* Update chord list with show and add to print buttons (more info?)
 * Rename song print view to tablature and move button to that page?
+* Style chord list
+* Change ScrollBox to list
+* Remove chords from print list
+* If no chords in print list, display help message instead of print button
 
 * Fix select layouts and add space and enter
 * Disable focus for icons attached to edit only text boxes

@@ -1,17 +1,6 @@
 import styled from 'styled-components';
 
-export const WrapBox = styled.div`
-  max-height: 100%;
-  overflow: auto;
-`;
-
-export const ListContainer = styled.ul`
-  align-content: center;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-export const ListItem = styled.li`
+export const ItemContainer = styled.li`
   list-style: none;
 
   button {
