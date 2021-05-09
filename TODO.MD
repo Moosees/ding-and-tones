@@ -5,13 +5,13 @@
 * Print chords - started
 * Create mini drum with chords component
 * Create chord list printable view
-* Update ui to go to chords print view or print selected chords
 * Rename song print view to tablature and move button to that page?
-* Style chord list
+* Style chord list and filter
 * Change ScrollBox to list
-* Remove chords from print list
+* Allow removing chords from print list
 * If no chords in print list, display help message instead of print button
 
+* Fix primary button focus after click
 * Fix select layouts and add space and enter
 * Disable focus for icons attached to edit only text boxes
 * Handle focus on modals
@@ -31,6 +31,7 @@
 * Should print view only break before fourths?
 * Change root note
 * Hover and tab focus for intervals?
+* Dry up print code
 
 ## Bugs
 
