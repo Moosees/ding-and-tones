@@ -1,5 +1,5 @@
 import React from 'react';
-import MiniDrum from '../miniDrum/MiniDrum';
+import MiniDrum from '../../drum/MiniDrum';
 
 const Chord = () => {
   return (
