@@ -3,6 +3,7 @@
 ## Current tasks
 
 * Print chords - started
+* Print chords scale text styles and header margins
 * Create logic for showing or hiding notes on MiniDrum
 * Style chord list and filter
 * Allow removing chords from print list
