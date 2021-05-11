@@ -11,7 +11,7 @@ import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
-import Print from '../print/Print';
+import PrintChordsBtn from '../printChordsBtn/PrintChordsBtn';
 
 const ControlsContainer = styled.div`
   align-items: center;
@@ -65,7 +65,7 @@ const Filter = ({
           onClick={() => setAllChordFiltersTo(true, scale)}
         />
         <BtnPrimary label="None" light onClick={handleClear} />
-        <Print />
+        <PrintChordsBtn />
       </Buttons>
       <DividerLine small />
       <ScrollBox>

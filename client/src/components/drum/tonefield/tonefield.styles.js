@@ -12,14 +12,14 @@ const extraPositions = [
 ];
 
 const miniExtraPositions = [
-  'right: 10%; top: 0;',
-  'left: 10%; top: 0;',
+  'right: 10%; top: 2%;',
+  'left: 10%; top: 2%;',
   'right: -5%; top: 20%;',
   'left: -5%; top: 20%;',
   'bottom: 20%; right: -5%;',
   'bottom: 20%; left: -5%;',
-  'bottom: 0; right: 10%;',
-  'bottom: 0; left: 10%;',
+  'bottom: 2%; right: 10%;',
+  'bottom: 2%; left: 10%;',
 ];
 
 export const ExtraContainer = styled.div`

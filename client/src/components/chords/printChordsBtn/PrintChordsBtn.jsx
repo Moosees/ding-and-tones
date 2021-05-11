@@ -6,21 +6,34 @@ const ReactToPrint = lazy(() =>
   import('../../shared/reactToPrint/ReactToPrint')
 );
 
-const Print = () => {
+const PrintChordsBtn = () => {
   const [showPrint, setShowPrint] = useState(false);
 
   return (
     <>
       <BtnPrimary label="Print" light onClick={() => setShowPrint(true)} />
-      {showPrint && (
+      <div
+        style={{
+          height: '100vh',
+          width: '100vw',
+          position: 'absolute',
+          left: '0',
+          top: '-30px',
+          backgroundColor: '#fff',
+          zIndex: '99999',
+        }}
+      >
+        <ChordsPrint />
+      </div>
+      {/* {showPrint && (
         <Suspense>
           <ReactToPrint onAfterPrint={() => setShowPrint(false)}>
             <ChordsPrint />
           </ReactToPrint>
         </Suspense>
-      )}
+      )} */}
     </>
   );
 };
 
-export default Print;
+export default PrintChordsBtn;

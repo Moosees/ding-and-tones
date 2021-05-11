@@ -4,10 +4,10 @@ import Scale from './scale/Scale';
 
 const ChordsPrint = () => {
   return (
-    <div>
+    <>
       <Scale />
       <ChordList />
-    </div>
+    </>
   );
 };
 
