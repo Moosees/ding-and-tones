@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MiniTonefield = ({ isDing, note, position, text = 'A2' }) => {
+const MiniTonefield = ({ isDing, note, position }) => {
   const { rotate, translate } = position;
 
   return (
@@ -25,7 +25,7 @@ const MiniTonefield = ({ isDing, note, position, text = 'A2' }) => {
         fill="#000"
         transform={`rotate(-${rotate + 90})`}
       >
-        {text}
+        {note}
       </text>
     </g>
   );

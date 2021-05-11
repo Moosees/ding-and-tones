@@ -6,13 +6,20 @@ import MiniTonefield from './tonefield/MiniTonefield';
 
 const MiniDrum = ({ notes, positionMap }) => {
   const { round, extra } = notes;
-  console.log({ round, extra });
+
   const roundTonefields = positionMap.map((tonefield, i) => {
-    return <MiniTonefield key={i} position={positionMap[i]} isDing={i === 0} />;
+    return (
+      <MiniTonefield
+        key={i}
+        note={round[i]}
+        position={positionMap[i]}
+        isDing={i === 0}
+      />
+    );
   });
 
-  const extraTonefields = extra.map((note, i) => {
-    return <MiniExtra key={i} note={note} />;
+  const extraTonefields = extra.map((extra, i) => {
+    return <MiniExtra key={i} extra={extra} />;
   });
 
   return (

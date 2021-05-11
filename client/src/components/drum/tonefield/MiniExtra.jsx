@@ -1,10 +1,10 @@
 import React from 'react';
 import { MiniExtraContainer } from './tonefield.styles';
 
-const MiniExtra = ({ note, showNote }) => {
+const MiniExtra = ({ extra, showNote }) => {
   return (
-    <MiniExtraContainer showNote={showNote} position={note.pos}>
-      {note.note}
+    <MiniExtraContainer showNote={showNote} position={extra.pos}>
+      {extra.note}
     </MiniExtraContainer>
   );
 };

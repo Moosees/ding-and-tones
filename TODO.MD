@@ -4,7 +4,6 @@
 
 * Print chords - started
 * Tweak MiniDrum container and create layout for showing a list of MiniDrums
-* Add note text to MiniDrum round tonefields
 * Create logic for showing or hiding notes on MiniDrum
 * Style chord list and filter
 * Allow removing chords from print list
