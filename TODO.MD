@@ -3,13 +3,13 @@
 ## Current tasks
 
 * Print chords - started
-* Create mini drum with chords component
-* Create chord list printable view
-* Rename song print view to tablature and move button to that page?
+* Tweak MiniDrum container and create layout for showing a list of MiniDrums
+* Add note text to MiniDrum round tonefields
+* Create logic for showing or hiding notes on MiniDrum
 * Style chord list and filter
-* Change ScrollBox to list
 * Allow removing chords from print list
 * If no chords in print list, display help message instead of print button
+* Rename song print view to tablature and move button to that page?
 
 * Fix primary button focus after click
 * Fix select layouts and add space and enter
@@ -32,6 +32,7 @@
 * Change root note
 * Hover and tab focus for intervals?
 * Dry up print code
+* Change ScrollBox to list?
 
 ## Bugs
 

@@ -11,6 +11,17 @@ const extraPositions = [
   'bottom: 1rem; left: 5rem;',
 ];
 
+const miniExtraPositions = [
+  'right: 10%; top: 0;',
+  'left: 10%; top: 0;',
+  'right: -5%; top: 20%;',
+  'left: -5%; top: 20%;',
+  'bottom: 20%; right: -5%;',
+  'bottom: 20%; left: -5%;',
+  'bottom: 0; right: 10%;',
+  'bottom: 0; left: 10%;',
+];
+
 export const ExtraContainer = styled.div`
   align-items: center;
   background-color: #333;
@@ -43,4 +54,21 @@ export const ExtraContainer = styled.div`
     height: 3rem;
     width: 3rem;
   `}
+`;
+
+export const MiniExtraContainer = styled.div`
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 100%;
+  color: #000;
+  cursor: default;
+  display: flex;
+  font-size: 20px;
+  height: 16%;
+  justify-content: center;
+  position: absolute;
+  width: 16%;
+
+  ${({ position }) => miniExtraPositions[position]}
 `;
