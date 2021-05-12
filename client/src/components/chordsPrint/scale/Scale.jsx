@@ -18,14 +18,41 @@ const Scale = ({ info, scale }) => {
     return <ListItem key={i}>{intervalName}</ListItem>;
   });
 
+  let prevInterval;
+  const relativeList = scale[0].intervalList.map((interval, i) => {
+    const intervalName =
+      interval > 0 ? intervals[interval - prevInterval].name : 'Root';
+    prevInterval = interval;
+
+    return <ListItem key={i}>{intervalName}</ListItem>;
+  });
+
   return (
     <ScaleContainer>
       <h1>{`${info.rootName} ${info.name}`}</h1>
       <h3>{info.label}</h3>
       <InfoContainer>
         <MiniDrum />
-        <List>{noteList}</List>
-        <List>{intervalList}</List>
+        <List>
+          <>
+            <ListItem>
+              <strong>Note</strong>
+            </ListItem>
+            {noteList}
+          </>
+        </List>
+        <List>
+          <ListItem>
+            <strong>Scale Interval</strong>
+          </ListItem>
+          <>{intervalList}</>
+        </List>
+        <List>
+          <ListItem>
+            <strong>Relative Interval</strong>
+          </ListItem>
+          <>{relativeList}</>
+        </List>
       </InfoContainer>
     </ScaleContainer>
   );
