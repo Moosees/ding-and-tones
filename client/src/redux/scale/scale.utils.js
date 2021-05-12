@@ -46,16 +46,14 @@ const addIntervalData = (note, relativeNote) => {
 
 const addIntervalMap = (scaleWithValues) => {
   return scaleWithValues.map((note) => {
-    const intervalList = [];
     const intervalMap = [];
 
     scaleWithValues.forEach((relativeNote) => {
       const currentInterval = addIntervalData(note, relativeNote);
-      intervalList.push(currentInterval.semitones);
       intervalMap.push(currentInterval);
     });
 
-    return { ...note, intervalList, intervalMap };
+    return { ...note, intervalMap };
   });
 };
 
