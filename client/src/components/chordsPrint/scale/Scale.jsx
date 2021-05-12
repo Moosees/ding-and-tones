@@ -60,7 +60,7 @@ const Scale = ({ info, scale }) => {
 
 const mapStateToProps = ({ scale }) => ({
   info: scale.info,
-  scale: scale.notes.scaleFull,
+  scale: scale.notes.scaleFull.all,
 });
 
 export default connect(mapStateToProps)(Scale);

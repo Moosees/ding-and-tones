@@ -126,7 +126,7 @@ const mapStateToProps = ({ drum, scale, ui }) => ({
   drumMode: drum.drumMode,
   extra: scale.notes.extra,
   round: scale.notes.round,
-  scale: scale.notes.scaleFull,
+  scale: scale.notes.scaleFull.all,
   positionMap: scale.ui.positionMap,
   isEditingExtraPos: ui.isEditingExtraPos,
 });

@@ -3,6 +3,7 @@
 ## Current tasks
 
 * Print chords - started
+* Mark root note in scaleFull and use in print chords Scale component
 * Print chords scale text styles and header margins
 * Create logic for showing or hiding notes on MiniDrum
 * Style chord list and filter
@@ -10,6 +11,8 @@
 * If no chords in print list, display help message instead of print button
 * Rename song print view to tablature and move button to that page?
 
+* Use new scaleFull outside print-chords
+* Are the separated positions needed in scaleFull?
 * Fix primary button focus after click
 * Fix select layouts and add space and enter
 * Disable focus for icons attached to edit only text boxes

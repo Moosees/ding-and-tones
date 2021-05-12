@@ -1,4 +1,8 @@
-import { MAX_NOTE_VALUE, MIN_NOTE_VALUE, TRANSLATE_BASE } from '../../assets/constants';
+import {
+  MAX_NOTE_VALUE,
+  MIN_NOTE_VALUE,
+  TRANSLATE_BASE,
+} from '../../assets/constants';
 import { noteNameToValue, noteValueToName } from '../../assets/intervals';
 
 export const addExtraNotesPos = (sortedScale) => {
@@ -55,12 +59,38 @@ const addIntervalMap = (scaleWithValues) => {
   });
 };
 
+const sortScaleByNoteValue = (scale) => {
+  return scale.sort((a, b) => a.noteValue - b.noteValue);
+};
+
+const separateScaleByPosition = (scale) => {
+  return scale.reduce(
+    (acc, note) => {
+      if (note.pos >= 0) {
+        acc.extra.push(note);
+      } else {
+        acc.round.push(note);
+      }
+
+      acc.all.push(note);
+
+      return acc;
+    },
+    { all: [], round: [], extra: [] }
+  );
+};
+
 export const createFullScaleFromNames = (round, extra) => {
   if (!round.length) return [];
 
   const roundWithValues = addNoteValueFromName(round.map((note) => ({ note })));
   const extraWithValues = addNoteValueFromName(extra);
-  const scaleFull = addIntervalMap([...roundWithValues, ...extraWithValues]);
+  const sortedScale = sortScaleByNoteValue([
+    ...roundWithValues,
+    ...extraWithValues,
+  ]);
+  const scaleMapped = addIntervalMap(sortedScale);
+  const scaleFull = separateScaleByPosition(scaleMapped);
 
   return scaleFull;
 };

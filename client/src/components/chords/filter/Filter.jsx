@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
   setAllChordFiltersTo,
-  toggleChordIsSelected
+  toggleChordIsSelected,
 } from '../../../redux/chords/chords.actions';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 import Buttons from '../../shared/button/Buttons';
@@ -77,7 +77,7 @@ const Filter = ({
 
 const mapStateToProps = ({ chords, scale }) => ({
   chordList: chords.chordList,
-  scale: scale.notes.scaleFull,
+  scale: scale.notes.scaleFull.all,
 });
 
 export default connect(mapStateToProps, {
