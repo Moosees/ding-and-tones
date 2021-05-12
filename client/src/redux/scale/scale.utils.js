@@ -44,11 +44,11 @@ const addIntervalData = (note, relativeNote) => {
   };
 };
 
-const addIntervalMap = (scaleWithValues) => {
-  return scaleWithValues.map((note) => {
+const addIntervalMap = (scale, rootValue) => {
+  return scale.map((note) => {
     const intervalMap = [];
 
-    scaleWithValues.forEach((relativeNote) => {
+    scale.forEach((relativeNote) => {
       const currentInterval = addIntervalData(note, relativeNote);
       intervalMap.push(currentInterval);
     });
@@ -63,16 +63,20 @@ const sortScaleByNoteValue = (scale) => {
 
 const addRootAndPosition = (scale) => {
   let rootFound = false;
+  let rootIndex;
 
-  return scale.map((note) => {
-    const isExtra = note.pos >= 0;
+  const scaleWithPos = scale.map(({ note, noteShort, noteValue, pos }, i) => {
+    const isExtra = pos >= 0;
 
     if (!rootFound && !isExtra) {
       rootFound = true;
-      return { ...note, isRoot: true, isExtra };
+      rootIndex = i;
+      return { note, noteShort, noteValue, isRoot: true, isExtra };
     }
-    return { ...note, isRoot: false, isExtra };
+    return { note, noteShort, noteValue, isRoot: false, isExtra };
   });
+
+  return { scaleWithPos, rootIndex };
 };
 
 export const createFullScaleFromNames = (round, extra) => {
@@ -84,10 +88,10 @@ export const createFullScaleFromNames = (round, extra) => {
     ...roundWithValues,
     ...extraWithValues,
   ]);
-  const scaleMapped = addIntervalMap(sortedScale);
-  const scaleFull = addRootAndPosition(scaleMapped);
+  const { rootIndex, scaleWithPos } = addRootAndPosition(sortedScale);
+  const scaleFull = addIntervalMap(scaleWithPos);
 
-  return scaleFull;
+  return { rootIndex, scaleFull };
 };
 
 // export const createScaleFromString = (scaleString) => {

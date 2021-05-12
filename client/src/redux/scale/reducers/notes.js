@@ -13,7 +13,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
         ...state,
         round: scaleMerged,
         extra: payload.notes.extra,
-        scaleFull: createFullScaleFromNames(scaleMerged, payload.notes.extra),
+        ...createFullScaleFromNames(scaleMerged, payload.notes.extra),
       };
 
     case scaleTypes.MOVE_EXTRA_NOTES:
@@ -31,7 +31,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
         ...state,
         round: payload.newRound,
         extra: payload.newExtra,
-        scaleFull: payload.newFull,
+        ...payload.newFull,
       };
 
     case songTypes.FETCH_SUCCESSFUL:
@@ -40,7 +40,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
             ...state,
             round: payload.scale.notes.round,
             extra: payload.scale.notes.extra,
-            scaleFull: createFullScaleFromNames(
+            ...createFullScaleFromNames(
               payload.scale.notes.round,
               payload.scale.notes.extra
             ),
