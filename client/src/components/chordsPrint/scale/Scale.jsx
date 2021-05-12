@@ -6,26 +6,33 @@ import { InfoContainer, List, ListItem, ScaleContainer } from './scale.styles';
 
 const Scale = ({ info, scale }) => {
   console.log({ info, scale });
-  const noteList = scale[0].intervalMap.map((note, i) => {
-    return <ListItem key={i}>{note.note}</ListItem>;
-  });
+  let prevSemitones = 0;
+  const lists = scale[0].intervalMap.reduce(
+    (lists, { compound, note, octaves, semitones }) => {
+      const scaleSteps = compound > 0 ? compound : octaves * 12;
 
-  const intervalList = scale[0].intervalList.map((interval, i) => {
-    let intervalName = intervals[interval % 12].name;
-    if (interval % 12 === 0) intervalName = 'Octave';
-    if (interval === 0) intervalName = 'Root';
+      const scaleInterval =
+        scaleSteps === 0 ? 'Root' : intervals[scaleSteps].name;
 
-    return <ListItem key={i}>{intervalName}</ListItem>;
-  });
+      const relativeSteps = semitones - prevSemitones;
 
-  let prevInterval;
-  const relativeList = scale[0].intervalList.map((interval, i) => {
-    const intervalName =
-      interval > 0 ? intervals[interval - prevInterval].name : 'Root';
-    prevInterval = interval;
+      lists.notes.push(note);
+      lists.scaleSteps.push(scaleSteps);
+      lists.scaleIntervals.push(scaleInterval);
+      lists.relativeSteps.push(relativeSteps);
+      prevSemitones = semitones;
 
-    return <ListItem key={i}>{intervalName}</ListItem>;
-  });
+      return lists;
+    },
+    {
+      notes: [],
+      scaleSteps: [],
+      scaleIntervals: [],
+      relativeSteps: [],
+    }
+  );
+
+  console.log({ lists });
 
   return (
     <ScaleContainer>
@@ -38,20 +45,40 @@ const Scale = ({ info, scale }) => {
             <ListItem>
               <strong>Note</strong>
             </ListItem>
-            {noteList}
+            {lists.notes.map((text, i) => (
+              <ListItem key={i}>{text}</ListItem>
+            ))}
           </>
         </List>
         <List>
           <ListItem>
-            <strong>Scale Interval</strong>
+            <strong>Steps</strong>
           </ListItem>
-          <>{intervalList}</>
+          <>
+            {lists.scaleSteps.map((text, i) => (
+              <ListItem key={i}>{text}</ListItem>
+            ))}
+          </>
         </List>
         <List>
           <ListItem>
-            <strong>Relative Interval</strong>
+            <strong>Interval</strong>
           </ListItem>
-          <>{relativeList}</>
+          <>
+            {lists.scaleIntervals.map((text, i) => (
+              <ListItem key={i}>{text}</ListItem>
+            ))}
+          </>
+        </List>
+        <List>
+          <ListItem>
+            <strong>+</strong>
+          </ListItem>
+          <>
+            {lists.relativeSteps.map((text, i) => (
+              <ListItem key={i}>{text}</ListItem>
+            ))}
+          </>
         </List>
       </InfoContainer>
     </ScaleContainer>
