@@ -63,21 +63,18 @@ const sortScaleByNoteValue = (scale) => {
   return scale.sort((a, b) => a.noteValue - b.noteValue);
 };
 
-const separateScaleByPosition = (scale) => {
-  return scale.reduce(
-    (acc, note) => {
-      if (note.pos >= 0) {
-        acc.extra.push(note);
-      } else {
-        acc.round.push(note);
-      }
+const addRootAndPosition = (scale) => {
+  let rootFound = false;
 
-      acc.all.push(note);
+  return scale.map((note) => {
+    const isExtra = note.pos >= 0;
 
-      return acc;
-    },
-    { all: [], round: [], extra: [] }
-  );
+    if (!rootFound && !isExtra) {
+      rootFound = true;
+      return { ...note, isRoot: true, isExtra };
+    }
+    return { ...note, isRoot: false, isExtra };
+  });
 };
 
 export const createFullScaleFromNames = (round, extra) => {
@@ -90,7 +87,7 @@ export const createFullScaleFromNames = (round, extra) => {
     ...extraWithValues,
   ]);
   const scaleMapped = addIntervalMap(sortedScale);
-  const scaleFull = separateScaleByPosition(scaleMapped);
+  const scaleFull = addRootAndPosition(scaleMapped);
 
   return scaleFull;
 };

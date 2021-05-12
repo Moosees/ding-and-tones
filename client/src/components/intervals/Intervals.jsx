@@ -42,7 +42,7 @@ const mapStateToProps = ({ scale, drum }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   round: scale.notes.round,
-  scale: scale.notes.scaleFull.all,
+  scale: scale.notes.scaleFull,
 });
 
 export default connect(mapStateToProps)(Intervals);
