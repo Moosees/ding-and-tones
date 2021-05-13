@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Print chords - started
-* Fix load song, scale reducer breaks it
 * Remove isOwner and scaleId when changing scale
 * Always use root instead of tonic?
 * Use new scaleFull outside print-chords

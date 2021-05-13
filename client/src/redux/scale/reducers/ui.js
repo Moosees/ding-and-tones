@@ -2,7 +2,6 @@ import songTypes from '../../song/song.types';
 import userTypes from '../../user/user.types';
 import { uiState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
-import { createPositionMap } from '../scale.utils';
 
 const uiReducer = (state = uiState, { type, payload }) => {
   switch (type) {
@@ -56,18 +55,11 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.FETCH_SUCCESSFUL: {
       if (!payload.getScale) return state;
 
-      const {
-        scale: {
-          info: { layout },
-          notes: { round },
-        },
-      } = payload;
-
       return {
         ...state,
         isOwner: false,
         scaleId: null,
-        positionMap: createPositionMap(layout, round.length),
+        positionMap: payload.scale.ui.positionMap,
       };
     }
 

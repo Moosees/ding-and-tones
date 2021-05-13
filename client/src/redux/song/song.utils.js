@@ -1,5 +1,5 @@
 import { metreList } from '../../assets/metre';
-import { parseNotesForSaveScale } from '../scale/scale.utils';
+import { parseNotesForSaveScale, parseScaleData } from '../scale/scale.utils';
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
   const arrCopy = [...arrangement];
@@ -112,29 +112,22 @@ const parseBeatsForLoadSong = (beats) => {
 };
 
 const parseScaleForLoadSong = (scale) => {
-  const {
-    info,
-    notes: { dings, round, extra },
-  } = scale;
+  const { newExtra, newRound, newFull, positionMap } = parseScaleData(scale);
 
-  return { info, notes: { round: [dings[0], ...round], extra } };
+  return {
+    info: scale.info,
+    ui: { positionMap },
+    notes: { round: newRound, extra: newExtra, ...newFull },
+  };
 };
 
 export const parseFetchedSong = (song, getScale) => {
-  const {
-    arrangement,
-    bars,
-    beats,
-    composer,
-    info,
-    isOwner,
-    scale,
-    songId,
-  } = song;
+  const { arrangement, bars, beats, composer, info, isOwner, scale, songId } =
+    song;
 
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
-  const parsedScale = parseScaleForLoadSong(scale);
+  const parsedScale = getScale ? parseScaleForLoadSong(scale) : {};
 
   return {
     alert: `"${song.info.title}" by ${song.composer} loaded`,

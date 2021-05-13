@@ -41,11 +41,19 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE:
-    case songTypes.FETCH_SUCCESSFUL:
       return {
         ...state,
         displayedChord: null,
         displayedNote: payload.newFull.rootIndex,
+      };
+
+    case songTypes.FETCH_SUCCESSFUL:
+      if (!payload.getScale) return state;
+
+      return {
+        ...state,
+        displayedChord: null,
+        displayedNote: payload.scale.notes.rootIndex,
       };
 
     default:

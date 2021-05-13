@@ -31,12 +31,12 @@ const infoReducer = (state = infoState, { type, payload }) => {
       };
 
     case songTypes.FETCH_SUCCESSFUL:
-      return payload.getScale
-        ? {
-            ...state,
-            ...payload.scale.info,
-          }
-        : state;
+      if (!payload.getScale) return state;
+
+      return {
+        ...state,
+        ...payload.scale.info,
+      };
 
     default:
       return state;

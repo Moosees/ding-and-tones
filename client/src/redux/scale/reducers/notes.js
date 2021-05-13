@@ -20,9 +20,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
 
       return {
         ...state,
-        round: payload.newRound,
-        extra: payload.newExtra,
-        ...payload.newFull,
+        ...payload.scale.notes,
       };
 
     case scaleTypes.MOVE_EXTRA_NOTES:
