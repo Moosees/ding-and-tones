@@ -3,7 +3,10 @@
 ## Current tasks
 
 * Print chords - started
-* Set ding as default focus
+* Saving scales (and songs?) does not update search properly
+* Fix load song, scale reducer breaks it
+* Remove isOwner and scaleId when changing scale
+* Always use root instead of tonic?
 * Use new scaleFull outside print-chords
 * Use root note in print chords Scale component
 * Print chords scale text styles and header margins
@@ -13,6 +16,7 @@
 * If no chords in print list, display help message instead of print button
 * Rename song print view to tablature and move button to that page?
 * Check if chords work with all scale modes
+* Clean up console logs
 
 * Fix primary button focus after click
 * Fix select layouts and add space and enter

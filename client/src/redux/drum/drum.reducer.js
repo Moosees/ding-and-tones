@@ -45,7 +45,7 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         displayedChord: null,
-        displayedNote: 0,
+        displayedNote: payload.newFull.rootIndex,
       };
 
     default:

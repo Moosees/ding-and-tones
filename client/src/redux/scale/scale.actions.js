@@ -5,9 +5,10 @@ import {
   createFullScaleFromNames,
   createPositionMap,
   parseNotesForSaveScale,
+  parseScaleData,
   sortScaleByFreq,
   transposeExtraToDestination,
-  transposeRoundToDestination
+  transposeRoundToDestination,
 } from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
@@ -72,10 +73,7 @@ export const getScaleById = (scaleId) => (dispatch) => {
       if (res.status === 200)
         dispatch({
           type: scaleTypes.FETCH_SUCCESSFUL,
-          payload: {
-            ...res.data,
-            alert: `"${res.data.info.rootName} ${res.data.info.name}" loaded`,
-          },
+          payload: parseScaleData(res.data),
         });
     })
     .catch((error) => {
@@ -89,22 +87,7 @@ export const getScaleById = (scaleId) => (dispatch) => {
 };
 
 export const loadScale = (scale) => {
-  const {
-    info: { layout },
-    notes: { dings, round },
-  } = scale;
-  const numNotes = dings.length + round.length;
-
-  const positionMap = createPositionMap(layout, numNotes);
-
-  return {
-    type: scaleTypes.LOAD_SCALE,
-    payload: {
-      ...scale,
-      positionMap,
-      alert: `"${scale.info.rootName} ${scale.info.name}" loaded`,
-    },
-  };
+  return { type: scaleTypes.LOAD_SCALE, payload: parseScaleData(scale) };
 };
 
 export const moveExtraNotes = (oldPos, newPos, swap = false) => ({
@@ -137,44 +120,46 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   });
 };
 
-export const saveScale = ({ name }) => (dispatch, getState) => {
-  dispatch({ type: scaleTypes.SAVE_STARTED });
+export const saveScale =
+  ({ name }) =>
+  (dispatch, getState) => {
+    dispatch({ type: scaleTypes.SAVE_STARTED });
 
-  const { scale } = getState();
-  const { info, notes } = scale;
-  const scaleUpdate = { info, notes: parseNotesForSaveScale(notes) };
-  if (name) scaleUpdate.info.name = name;
+    const { scale } = getState();
+    const { info, notes } = scale;
+    const scaleUpdate = { info, notes: parseNotesForSaveScale(notes) };
+    if (name) scaleUpdate.info.name = name;
 
-  axios
-    .post('/scale', scaleUpdate)
-    .then((res) => {
-      if (res.status === 200) {
-        if (res.data.msg)
-          return dispatch({
-            type: scaleTypes.SAVE_ERROR,
+    axios
+      .post('/scale', scaleUpdate)
+      .then((res) => {
+        if (res.status === 200) {
+          if (res.data.msg)
+            return dispatch({
+              type: scaleTypes.SAVE_ERROR,
+              payload: {
+                alert: res.data.msg,
+              },
+            });
+
+          dispatch({
+            type: scaleTypes.SAVE_SUCCESSFUL,
             payload: {
-              alert: res.data.msg,
+              ...parseScaleData(res.data),
+              alert: `"${res.data.info.rootName} ${res.data.info.name}" saved`,
             },
           });
-
+        }
+      })
+      .catch((error) => {
         dispatch({
-          type: scaleTypes.SAVE_SUCCESSFUL,
+          type: scaleTypes.SAVE_ERROR,
           payload: {
-            ...res.data,
-            alert: `"${res.data.info.rootName} ${res.data.info.name}" saved`,
+            alert: error.response ? error.response.data.msg : 'Save failed',
           },
         });
-      }
-    })
-    .catch((error) => {
-      dispatch({
-        type: scaleTypes.SAVE_ERROR,
-        payload: {
-          alert: error.response ? error.response.data.msg : 'Save failed',
-        },
       });
-    });
-};
+  };
 
 export const setScaleName = (name) => ({
   type: scaleTypes.SET_NAME,

@@ -54,7 +54,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
       return { ...state, positionMap: payload.newPositionMap };
 
     case songTypes.FETCH_SUCCESSFUL: {
-      if (!payload.getScale || !payload.scale) return state;
+      if (!payload.getScale) return state;
 
       const {
         scale: {

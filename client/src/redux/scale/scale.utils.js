@@ -107,6 +107,30 @@ export const createFullScaleFromNames = (round, extra) => {
   return { rootIndex, scaleFull };
 };
 
+export const parseScaleData = (scale) => {
+  const {
+    info,
+    isOwner,
+    scaleId,
+    notes: { dings, round, extra },
+  } = scale;
+
+  const roundMerged = [dings[0], ...round];
+
+  const positionMap = createPositionMap(info.layout, roundMerged.length);
+
+  return {
+    newRound: roundMerged,
+    newExtra: extra,
+    newFull: createFullScaleFromNames(roundMerged, extra),
+    positionMap,
+    info,
+    isOwner,
+    scaleId,
+    alert: `"${scale.info.rootName} ${scale.info.name}" loaded`,
+  };
+};
+
 // export const createScaleFromString = (scaleString) => {
 //   const scaleAry = scaleString.split(' ');
 //   const scaleFlat = removeSharps(scaleAry);
