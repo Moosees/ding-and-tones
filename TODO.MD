@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Print chords - started
-* Saving scales (and songs?) does not update search properly
 * Fix load song, scale reducer breaks it
 * Remove isOwner and scaleId when changing scale
 * Always use root instead of tonic?

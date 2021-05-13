@@ -29,7 +29,7 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
     case scaleTypes.SAVE_SUCCESSFUL:
       return {
         ...state,
-        scales: [payload, ...state.scales],
+        scales: [payload.searchData, ...state.scales],
       };
 
     case songTypes.SAVE_SUCCESSFUL:

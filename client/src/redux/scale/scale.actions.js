@@ -146,6 +146,7 @@ export const saveScale =
             type: scaleTypes.SAVE_SUCCESSFUL,
             payload: {
               ...parseScaleData(res.data),
+              searchData: res.data,
               alert: `"${res.data.info.rootName} ${res.data.info.name}" saved`,
             },
           });
