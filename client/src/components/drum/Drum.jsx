@@ -11,7 +11,6 @@ const Drum = ({
   drumMode,
   extra,
   round,
-  positionMap,
   scale,
   style,
 }) => {
@@ -19,66 +18,38 @@ const Drum = ({
     (acc, note, i) => {
       const showNote =
         !displayedChord || displayedChord.notes.includes(note.noteShort);
-      const isExtraNote = i >= round.length;
+        
+      const hasFocus = i === displayedNote;
 
-      const tonefield = isExtraNote ? (
-        <ExtraNote
-          key={`${note.note}${i}`}
-          hasFocus={i === displayedNote}
-          note={note.note}
-          showNote={showNote}
-          extraIndex={i - round.length}
-          text={
-            showNote
-              ? getNoteText(
-                  note.note,
-                  i,
-                  scale[displayedNote].intervalMap,
-                  drumMode,
-                  displayedChord,
-                  `b${i - round.length + 1}`
-                )
-              : ''
-          }
-          color={
-            showNote
-              ? displayedChord
-                ? getChordColor(note.note, displayedChord.notesInScale)
-                : getNoteColor(i, scale[displayedNote].intervalMap)
-              : '#666'
-          }
-        />
-      ) : (
-        <Tonefield
-          key={`${note.note}${i}`}
-          hasFocus={i === displayedNote}
-          isDing={i === 0}
-          note={note.note}
-          showNote={showNote}
-          position={positionMap[i]}
-          text={
-            showNote
-              ? getNoteText(
-                  note.note,
-                  i,
-                  scale[displayedNote].intervalMap,
-                  drumMode,
-                  displayedChord,
-                  i
-                )
-              : ''
-          }
-          color={
-            showNote
-              ? displayedChord
-                ? getChordColor(note.note, displayedChord.notesInScale)
-                : getNoteColor(i, scale[displayedNote].intervalMap)
-              : '#666'
-          }
-        />
+      const text = showNote
+        ? getNoteText(
+            note.note,
+            i,
+            scale[displayedNote].intervalMap,
+            drumMode,
+            displayedChord,
+            note.isExtra ? `b${note.localIndex + 1}` : note.localIndex
+          )
+        : '';
+      
+      const color = showNote
+        ? displayedChord
+          ? getChordColor(note.note, displayedChord.notesInScale)
+          : getNoteColor(i, scale[displayedNote].intervalMap)
+        : '#666';
+
+      const tonefieldData = {
+        showNote,
+        hasFocus,
+        note: note.note,
+        text,
+        color,
+        localIndex: note.localIndex,
+      };
+
+      acc[note.isExtra ? 'extraTonefields' : 'roundTonefields'].push(
+        tonefieldData
       );
-
-      acc[isExtraNote ? 'extraTonefields' : 'roundTonefields'].push(tonefield);
 
       return acc;
     },
@@ -88,7 +59,9 @@ const Drum = ({
   return (
     <DrumContainer style={style}>
       <DrumWrapper>
-        {extraTonefields}
+        {extraTonefields.map((data, i) => (
+          <ExtraNote key={i} {...data} />
+        ))}
         <DrumSvg viewBox="-10 -10 20 20">
           <defs>
             <radialGradient id="drumGradient">
@@ -113,7 +86,9 @@ const Drum = ({
             fill="url(#drumGradient)"
             filter="url(#drumShadow)"
           />
-          {roundTonefields}
+          {roundTonefields.map((data, i) => (
+            <Tonefield key={i} {...data} />
+          ))}
         </DrumSvg>
       </DrumWrapper>
     </DrumContainer>
@@ -127,7 +102,6 @@ const mapStateToProps = ({ drum, scale, ui }) => ({
   extra: scale.notes.extra,
   round: scale.notes.round,
   scale: scale.notes.scaleFull,
-  positionMap: scale.ui.positionMap,
   isEditingExtraPos: ui.isEditingExtraPos,
 });
 

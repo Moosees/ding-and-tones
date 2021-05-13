@@ -6,13 +6,14 @@ const Tonefield = ({
   audioPath,
   color,
   hasFocus,
-  isDing,
+  localIndex,
   note,
-  position,
+  positionMap,
   showNote,
   text,
 }) => {
-  const { rotate, translate } = position;
+  const { rotate, translate } = positionMap[localIndex];
+  const isDing = localIndex === 0;
 
   const handlePlay = () => {
     new Audio(`${audioPath}/${note}.mp3`).play();
@@ -47,8 +48,9 @@ const Tonefield = ({
   );
 };
 
-const mapStateToProps = ({ drum }) => ({
+const mapStateToProps = ({ drum, scale }) => ({
   audioPath: drum.audioPath,
+  positionMap: scale.ui.positionMap,
 });
 
 export default connect(mapStateToProps, { setDisplayedNote })(Tonefield);

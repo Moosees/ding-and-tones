@@ -28,8 +28,8 @@ const getScaleNoteText = (interval) => {
 };
 
 export const getNoteText = (
-  note,
-  noteIndex,
+  noteName,
+  scaleFullIndex,
   intervalMap,
   drumMode,
   displayedChord,
@@ -38,17 +38,19 @@ export const getNoteText = (
   switch (drumMode) {
     case drumModes.INTERVALS:
       if (displayedChord)
-        return intervals[displayedChord.notesInScale[note]].nameShort;
+        return intervals[displayedChord.notesInScale[noteName]].nameShort;
 
-      return getScaleNoteText(intervalMap[noteIndex]);
+      return getScaleNoteText(intervalMap[scaleFullIndex]);
 
     case drumModes.NOTES:
-      return intervalMap[noteIndex].note;
+      return noteName;
+    // return intervalMap[scaleFullIndex].note;
 
     case drumModes.NUMBERS:
       return noteNumber;
 
     default:
-      return intervalMap[noteIndex].note;
+      return noteName;
+    // return intervalMap[scaleFullIndex].note;
   }
 };

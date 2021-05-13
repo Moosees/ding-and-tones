@@ -7,8 +7,8 @@ const ExtraNote = ({
   audioPath,
   color,
   extra,
-  extraIndex,
   hasFocus,
+  localIndex,
   note,
   showNote,
   text,
@@ -22,7 +22,7 @@ const ExtraNote = ({
       color={color}
       showNote={showNote}
       hasFocus={hasFocus}
-      position={extra[extraIndex].pos}
+      position={extra[localIndex].pos}
       onClick={showNote ? handlePlay : null}
     >
       {text}

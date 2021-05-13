@@ -65,16 +65,25 @@ const addRootAndPosition = (scale) => {
   let rootFound = false;
   let rootIndex;
 
-  const scaleWithPos = scale.map(({ note, noteShort, noteValue, pos }, i) => {
-    const isExtra = pos >= 0;
+  const scaleWithPos = scale.map(
+    ({ localIndex, note, noteShort, noteValue, pos }, i) => {
+      const isExtra = pos >= 0;
 
-    if (!rootFound && !isExtra) {
-      rootFound = true;
-      rootIndex = i;
-      return { note, noteShort, noteValue, isRoot: true, isExtra };
+      if (!rootFound && !isExtra) {
+        rootFound = true;
+        rootIndex = i;
+        return {
+          note,
+          noteShort,
+          noteValue,
+          isRoot: true,
+          isExtra,
+          localIndex,
+        };
+      }
+      return { note, noteShort, noteValue, isRoot: false, isExtra, localIndex };
     }
-    return { note, noteShort, noteValue, isRoot: false, isExtra };
-  });
+  );
 
   return { scaleWithPos, rootIndex };
 };
@@ -82,8 +91,12 @@ const addRootAndPosition = (scale) => {
 export const createFullScaleFromNames = (round, extra) => {
   if (!round.length) return [];
 
-  const roundWithValues = addNoteValueFromName(round.map((note) => ({ note })));
-  const extraWithValues = addNoteValueFromName(extra);
+  const roundWithValues = addNoteValueFromName(
+    round.map((note, i) => ({ note, localIndex: i }))
+  );
+  const extraWithValues = addNoteValueFromName(
+    extra.map((note, i) => ({ ...note, localIndex: i }))
+  );
   const sortedScale = sortScaleByNoteValue([
     ...roundWithValues,
     ...extraWithValues,

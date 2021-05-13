@@ -3,7 +3,8 @@
 ## Current tasks
 
 * Print chords - started
-* Fix position map with extra notes, fix intervalMaps
+* Set ding as default focus
+* Use new scaleFull outside print-chords
 * Use root note in print chords Scale component
 * Print chords scale text styles and header margins
 * Create logic for showing or hiding notes on MiniDrum
@@ -11,9 +12,8 @@
 * Allow removing chords from print list
 * If no chords in print list, display help message instead of print button
 * Rename song print view to tablature and move button to that page?
+* Check if chords work with all scale modes
 
-* Move positionMap inside scaleFull?
-* Use new scaleFull outside print-chords
 * Fix primary button focus after click
 * Fix select layouts and add space and enter
 * Disable focus for icons attached to edit only text boxes
