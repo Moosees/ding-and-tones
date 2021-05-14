@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Print chords - started
-* Fix mutant scale fetch error
 * Always use root instead of tonic?
 * Use new scaleFull outside print-chords
 * Use root note in print chords Scale component
@@ -121,7 +120,7 @@
 * Testing
 * Find songs by user (other than current user)
 * Chose between save and save as new?
-* Disable save button if there are no changes
+* Disable save button if there are no changes - done for scales
 * Create scale from name and string
 * Add play scale button and function
 * Removing user should remove all users songs?

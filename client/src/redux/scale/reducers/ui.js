@@ -28,6 +28,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
         isFetching: false,
         isOwner: payload.isOwner,
         scaleId: payload.scaleId,
+        positionMap: payload.positionMap,
       };
 
     case scaleTypes.LOAD_SCALE:

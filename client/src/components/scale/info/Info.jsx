@@ -10,6 +10,7 @@ import InfoBox from '../../shared/layout/InfoBox';
 import { ScaleInfoContainer, ScaleLabel } from './info.styles';
 
 const Info = ({
+  hasChanges,
   isDeleting,
   isFetching,
   isSaving,
@@ -21,13 +22,8 @@ const Info = ({
 }) => {
   const { replace } = useHistory();
 
-  const [
-    name,
-    handleNameChange,
-    nameErrors,
-    isNameValid,
-    resetName,
-  ] = useValidate('title', scaleInfo.name);
+  const [name, handleNameChange, nameErrors, isNameValid, resetName] =
+    useValidate('title', scaleInfo.name);
 
   const handleScaleSave = () => {
     saveScale({ name });
@@ -43,7 +39,12 @@ const Info = ({
       <Buttons>
         <BtnPrimary
           disabled={
-            !isSignedIn || isDeleting || isFetching || isSaving || !isNameValid
+            !isSignedIn ||
+            isDeleting ||
+            isFetching ||
+            isSaving ||
+            !isNameValid ||
+            !hasChanges
           }
           label="Save Scale"
           onClick={handleScaleSave}
@@ -67,6 +68,7 @@ const Info = ({
 };
 
 const mapStateToProps = ({ scale, search, ui, user }) => ({
+  hasChanges: scale.ui.hasChanges,
   isDeleting: scale.ui.isDeleting,
   isFetching: scale.ui.isFetching,
   isSaving: scale.ui.isSaving,
