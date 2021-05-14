@@ -3,8 +3,6 @@
 ## Current tasks
 
 * Print chords - started
-* Always use root instead of tonic?
-* Use new scaleFull outside print-chords
 * Use root note in print chords Scale component
 * Print chords scale text styles and header margins
 * Create logic for showing or hiding notes on MiniDrum
@@ -13,6 +11,8 @@
 * If no chords in print list, display help message instead of print button
 * Rename song print view to tablature and move button to that page?
 * Check if chords work with all scale modes
+* Use new scaleFull outside print-chords - done?
+* Always use root instead of tonic?
 * Clean up console logs
 
 * Fix primary button focus after click
@@ -22,7 +22,9 @@
 * Escape closes modals and beat dropdown
 * Better keyboard navigation for table and dropdown
 * Add x close button to popups
+* Print keyboard shortcut
 
+* Menu button margin is too small, menu button is confusing without text?
 * Search hints should not be alerts
 * Typescript
 * Clean up reducers and actions
@@ -46,6 +48,7 @@
 * Cannot read property 'clientHeight' of null at DropdownHandler onResize() - fixed?
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Focus on extra notes on mobile doesn't really show up on drum
+* Save scale name issues
 
 ## Design
 

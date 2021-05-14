@@ -31,11 +31,11 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
       )
     : notes.extra;
 
-  const newFull = createFullScaleFromNames(newRound, newExtra);
+  const { newFull, newRoot } = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull, newPositionMap },
+    payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
   });
 };
 
@@ -112,55 +112,59 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
 
   const newExtra = notes.extra.filter(({ note }) => note !== noteToRemove);
 
-  const newFull = createFullScaleFromNames(newRound, newExtra);
+  const { newFull, newRoot } = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull, newPositionMap },
+    payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
   });
 };
 
-export const saveScale =
-  ({ name }) =>
-  (dispatch, getState) => {
-    dispatch({ type: scaleTypes.SAVE_STARTED });
+export const saveScale = (scaleName) => (dispatch, getState) => {
+  dispatch({ type: scaleTypes.SAVE_STARTED });
 
-    const { scale } = getState();
-    const { info, notes } = scale;
-    const scaleUpdate = { info, notes: parseNotesForSaveScale(notes) };
-    if (name) scaleUpdate.info.name = name;
+  const { scale } = getState();
+  const {
+    info: { label, layout, name, rootName, rootValue },
+    notes,
+  } = scale;
+  const scaleUpdate = {
+    info: { label, layout, name, rootName, rootValue },
+    notes: parseNotesForSaveScale(notes),
+  };
+  if (scaleName) scaleUpdate.info.name = scaleName;
 
-    axios
-      .post('/scale', scaleUpdate)
-      .then((res) => {
-        if (res.status === 200) {
-          if (res.data.msg)
-            return dispatch({
-              type: scaleTypes.SAVE_ERROR,
-              payload: {
-                alert: res.data.msg,
-              },
-            });
-
-          dispatch({
-            type: scaleTypes.SAVE_SUCCESSFUL,
+  axios
+    .post('/scale', scaleUpdate)
+    .then((res) => {
+      if (res.status === 200) {
+        if (res.data.msg)
+          return dispatch({
+            type: scaleTypes.SAVE_ERROR,
             payload: {
-              ...parseScaleData(res.data),
-              searchData: res.data,
-              alert: `"${res.data.info.rootName} ${res.data.info.name}" saved`,
+              alert: res.data.msg,
             },
           });
-        }
-      })
-      .catch((error) => {
+
         dispatch({
-          type: scaleTypes.SAVE_ERROR,
+          type: scaleTypes.SAVE_SUCCESSFUL,
           payload: {
-            alert: error.response ? error.response.data.msg : 'Save failed',
+            ...parseScaleData(res.data),
+            searchData: res.data,
+            alert: `"${res.data.info.rootName} ${res.data.info.name}" saved`,
           },
         });
+      }
+    })
+    .catch((error) => {
+      dispatch({
+        type: scaleTypes.SAVE_ERROR,
+        payload: {
+          alert: error.response ? error.response.data.msg : 'Save failed',
+        },
       });
-  };
+    });
+};
 
 export const setScaleName = (name) => ({
   type: scaleTypes.SET_NAME,
@@ -182,10 +186,10 @@ export const transposeScale = (destination) => (dispatch, getState) => {
 
   const newExtra = transposeExtraToDestination(notes.extra, destination);
 
-  const newFull = createFullScaleFromNames(newRound, newExtra);
+  const { newFull, newRoot } = createFullScaleFromNames(newRound, newExtra);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull, newPositionMap },
+    payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
   });
 };

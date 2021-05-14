@@ -6,15 +6,16 @@ export const infoState = {
   name: 'minor pentatonic',
   rootName: 'A',
   rootValue: 33,
+  rootIndex: 0,
 };
 
 export const notesState = {
   round: ['A2', 'C3', 'D3', 'E3', 'G3', 'A3', 'C4', 'D4', 'E4'],
   extra: [],
-  ...createFullScaleFromNames(
+  scaleFull: createFullScaleFromNames(
     ['A2', 'C3', 'D3', 'E3', 'G3', 'A3', 'C4', 'D4', 'E4'],
     []
-  ),
+  ).newFull,
 };
 
 export const uiState = {

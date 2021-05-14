@@ -44,7 +44,7 @@ const addIntervalData = (note, relativeNote) => {
   };
 };
 
-const addIntervalMap = (scale, rootValue) => {
+const addIntervalMap = (scale) => {
   return scale.map((note) => {
     const intervalMap = [];
 
@@ -63,7 +63,9 @@ const sortScaleByNoteValue = (scale) => {
 
 const addRootAndPosition = (scale) => {
   let rootFound = false;
-  let rootIndex;
+  let rootIndex = 0;
+  let rootValue = 36;
+  let rootName = 'C';
 
   const scaleWithPos = scale.map(
     ({ localIndex, note, noteShort, noteValue, pos }, i) => {
@@ -72,6 +74,9 @@ const addRootAndPosition = (scale) => {
       if (!rootFound && !isExtra) {
         rootFound = true;
         rootIndex = i;
+        rootValue = noteValue;
+        rootName = noteShort;
+
         return {
           note,
           noteShort,
@@ -85,7 +90,7 @@ const addRootAndPosition = (scale) => {
     }
   );
 
-  return { scaleWithPos, rootIndex };
+  return { scaleWithPos, rootIndex, rootValue, rootName };
 };
 
 export const createFullScaleFromNames = (round, extra) => {
@@ -101,10 +106,11 @@ export const createFullScaleFromNames = (round, extra) => {
     ...roundWithValues,
     ...extraWithValues,
   ]);
-  const { rootIndex, scaleWithPos } = addRootAndPosition(sortedScale);
+  const { rootIndex, rootValue, rootName, scaleWithPos } =
+    addRootAndPosition(sortedScale);
   const scaleFull = addIntervalMap(scaleWithPos);
 
-  return { rootIndex, scaleFull };
+  return { newRoot: { rootIndex, rootValue, rootName }, newFull: scaleFull };
 };
 
 export const parseScaleData = (scale) => {
@@ -118,11 +124,13 @@ export const parseScaleData = (scale) => {
   const roundMerged = [dings[0], ...round];
 
   const positionMap = createPositionMap(info.layout, roundMerged.length);
+  const { newFull, newRoot } = createFullScaleFromNames(roundMerged, extra);
 
   return {
     newRound: roundMerged,
     newExtra: extra,
-    newFull: createFullScaleFromNames(roundMerged, extra),
+    newFull,
+    newRoot,
     positionMap,
     info,
     isOwner,

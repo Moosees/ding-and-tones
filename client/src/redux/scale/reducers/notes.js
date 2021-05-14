@@ -12,7 +12,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
         ...state,
         round: payload.newRound,
         extra: payload.newExtra,
-        ...payload.newFull,
+        scaleFull: payload.newFull,
       };
 
     case songTypes.FETCH_SUCCESSFUL:

@@ -59,10 +59,17 @@ export const parseSongForSaving = (song, scale, saveAs, title) => {
     info,
     scale: {
       notes: parseNotesForSaveScale(notes),
-      info: scaleInfo,
+      info: {
+        name: scaleInfo.name,
+        label: scaleInfo.label,
+        layout: scaleInfo.layout,
+        rootValue: scaleInfo.rootValue,
+        rootName: scaleInfo.rootName,
+      },
     },
   };
   if (title) songUpdate.info.title = title;
+  console.log({ songUpdate });
 
   return {
     songId: isOwner && !saveAs ? songId : null,
@@ -112,12 +119,13 @@ const parseBeatsForLoadSong = (beats) => {
 };
 
 const parseScaleForLoadSong = (scale) => {
-  const { newExtra, newRound, newFull, positionMap } = parseScaleData(scale);
+  const { newExtra, newRound, newFull, newRoot, positionMap } =
+    parseScaleData(scale);
 
   return {
-    info: scale.info,
+    info: { ...scale.info, ...newRoot },
     ui: { positionMap },
-    notes: { round: newRound, extra: newExtra, ...newFull },
+    notes: { round: newRound, extra: newExtra, scaleFull: newFull },
   };
 };
 

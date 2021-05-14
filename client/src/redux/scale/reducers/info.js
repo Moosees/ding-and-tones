@@ -1,4 +1,3 @@
-import { noteNameToValue } from '../../../assets/intervals';
 import songTypes from '../../song/song.types';
 import { infoState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
@@ -23,11 +22,8 @@ const infoReducer = (state = infoState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
+        ...payload.newRoot,
         label: createScaleLabel(payload.newExtra, payload.newRound),
-        rootName: payload.newRound[0] ? payload.newRound[0].slice(0, -1) : '',
-        rootValue: payload.newRound[0]
-          ? noteNameToValue[payload.newRound[0]]
-          : -1,
       };
 
     case songTypes.FETCH_SUCCESSFUL:
