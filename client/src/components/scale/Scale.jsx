@@ -16,19 +16,19 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   const { scaleId } = useParams();
   const { replace } = useHistory();
 
-  const { isDeleting, isFetching, isSaving } = scaleUi;
+  const { hasChanges, isDeleting, isFetching, isSaving } = scaleUi;
   const isWorking = isDeleting || isFetching || isSaving;
 
   useEffect(() => {
-    if (!scaleId && scaleUi.scaleId && !isWorking) {
-      replace(`/scale/${scaleUi.scaleId}`);
-    }
-  }, [isWorking, replace, scaleId, scaleUi.scaleId]);
+    if (isWorking) return;
 
-  useEffect(() => {
-    if (scaleId && scaleUi.scaleId !== scaleId && !isWorking)
-      getScaleById(scaleId);
-  }, [isWorking, getScaleById, scaleId, scaleUi.scaleId]);
+    if (hasChanges) return replace('/scale');
+
+    if (!scaleId && scaleUi.scaleId)
+      return replace(`/scale/${scaleUi.scaleId}`);
+
+    if (scaleId && scaleUi.scaleId !== scaleId) getScaleById(scaleId);
+  }, [getScaleById, hasChanges, isWorking, replace, scaleId, scaleUi.scaleId]);
 
   useEffect(() => {
     if (!scalesFetchTried && !isWorking)

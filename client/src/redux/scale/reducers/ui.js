@@ -24,6 +24,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case scaleTypes.FETCH_SUCCESSFUL:
       return {
         ...state,
+        hasChanges: false,
         isFetching: false,
         isOwner: payload.isOwner,
         scaleId: payload.scaleId,
@@ -32,6 +33,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case scaleTypes.LOAD_SCALE:
       return {
         ...state,
+        hasChanges: false,
         isOwner: payload.isOwner,
         scaleId: payload.scaleId,
         positionMap: payload.positionMap,
@@ -44,19 +46,27 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case scaleTypes.SAVE_SUCCESSFUL:
       return {
         ...state,
+        hasChanges: false,
         isSaving: false,
         isOwner: payload.isOwner,
         scaleId: payload.scaleId,
       };
 
     case scaleTypes.UPDATE_SCALE:
-      return { ...state, positionMap: payload.newPositionMap };
+      return {
+        ...state,
+        positionMap: payload.newPositionMap,
+        hasChanges: true,
+        isOwner: false,
+        scaleId: null,
+      };
 
     case songTypes.FETCH_SUCCESSFUL: {
       if (!payload.getScale) return state;
 
       return {
         ...state,
+        hasChanges: false,
         isOwner: false,
         scaleId: null,
         positionMap: payload.scale.ui.positionMap,

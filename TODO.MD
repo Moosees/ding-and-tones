@@ -3,7 +3,7 @@
 ## Current tasks
 
 * Print chords - started
-* Remove isOwner and scaleId when changing scale
+* Fix mutant scale fetch error
 * Always use root instead of tonic?
 * Use new scaleFull outside print-chords
 * Use root note in print chords Scale component

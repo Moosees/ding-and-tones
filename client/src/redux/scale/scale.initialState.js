@@ -18,6 +18,7 @@ export const notesState = {
 };
 
 export const uiState = {
+  hasChanges: false,
   isDeleting: false,
   isFetching: false,
   isOwner: false,
