@@ -5,11 +5,11 @@ import MiniDrum from '../../drum/MiniDrum';
 import { InfoContainer, List, ListItem, ScaleContainer } from './scale.styles';
 
 const Scale = ({ info, scale }) => {
-  console.log({ info, scale });
-  let prevSemitones = 0;
-  const lists = scale[0].intervalMap.reduce(
+  let prevSemitones = scale[info.rootIndex].intervalMap[0].semitones;
+
+  const lists = scale[info.rootIndex].intervalMap.reduce(
     (lists, { compound, note, octaves, semitones }) => {
-      const scaleSteps = compound > 0 ? compound : octaves * 12;
+      const scaleSteps = compound > 0 ? compound : Math.min(octaves * 12, 12);
 
       const scaleInterval =
         scaleSteps === 0 ? 'Root' : intervals[scaleSteps].name;
@@ -17,8 +17,8 @@ const Scale = ({ info, scale }) => {
       const relativeSteps = semitones - prevSemitones;
 
       lists.notes.push(note);
-      lists.scaleSteps.push(scaleSteps);
       lists.scaleIntervals.push(scaleInterval);
+      // lists.scaleSteps.push(scaleSteps);
       lists.relativeSteps.push(relativeSteps);
       prevSemitones = semitones;
 
@@ -26,13 +26,11 @@ const Scale = ({ info, scale }) => {
     },
     {
       notes: [],
-      scaleSteps: [],
+      // scaleSteps: [],
       scaleIntervals: [],
       relativeSteps: [],
     }
   );
-
-  console.log({ lists });
 
   return (
     <ScaleContainer>
@@ -52,16 +50,6 @@ const Scale = ({ info, scale }) => {
         </List>
         <List>
           <ListItem>
-            <strong>Steps</strong>
-          </ListItem>
-          <>
-            {lists.scaleSteps.map((text, i) => (
-              <ListItem key={i}>{text}</ListItem>
-            ))}
-          </>
-        </List>
-        <List>
-          <ListItem>
             <strong>Interval</strong>
           </ListItem>
           <>
@@ -70,9 +58,19 @@ const Scale = ({ info, scale }) => {
             ))}
           </>
         </List>
+        {/* <List>
+          <ListItem>
+            <strong>Steps</strong>
+          </ListItem>
+          <>
+            {lists.scaleSteps.map((text, i) => (
+              <ListItem key={i}>{text}</ListItem>
+            ))}
+          </>
+        </List> */}
         <List>
           <ListItem>
-            <strong>+</strong>
+            <strong>Steps</strong>
           </ListItem>
           <>
             {lists.relativeSteps.map((text, i) => (
