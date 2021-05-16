@@ -3,8 +3,8 @@ import { MiniExtraContainer } from './tonefield.styles';
 
 const MiniExtra = ({ extra, showNote }) => {
   return (
-    <MiniExtraContainer showNote={showNote} position={extra.pos}>
-      {extra.note}
+    <MiniExtraContainer position={extra.pos}>
+      {showNote ? extra.note : ''}
     </MiniExtraContainer>
   );
 };

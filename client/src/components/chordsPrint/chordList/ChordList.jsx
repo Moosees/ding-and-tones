@@ -4,7 +4,6 @@ import Chord from './Chord';
 import { ChordListContainer } from './chordList.styles';
 
 const ChordList = ({ printList }) => {
-  console.log({ printList });
   return (
     <ChordListContainer>
       {printList.map((chord, i) => (

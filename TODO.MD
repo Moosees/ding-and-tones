@@ -3,14 +3,12 @@
 ## Current tasks
 
 * Print chords - started
-* Create logic for showing or hiding notes on MiniDrum
 * Style chord list and filter
 * Allow removing chords from print list
 * If no chords in print list, display help message instead of print button
 * Rename song print view to tablature and move button to that page?
 * Check if chords work with all scale modes
 * Use new scaleFull outside print-chords - done?
-* Always use root instead of tonic?
 * Clean up console logs
 * Add on/off state for print chords Scale info lists
 

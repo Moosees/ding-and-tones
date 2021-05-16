@@ -4,7 +4,7 @@ import { DrumSvg, MiniDrumContainer } from './drum.styles';
 import MiniExtra from './tonefield/MiniExtra';
 import MiniTonefield from './tonefield/MiniTonefield';
 
-const MiniDrum = ({ notes, positionMap }) => {
+const MiniDrum = ({ notes, showNoteList, positionMap }) => {
   const { round, extra } = notes;
 
   const roundTonefields = positionMap.map((tonefield, i) => {
@@ -14,12 +14,25 @@ const MiniDrum = ({ notes, positionMap }) => {
         note={round[i]}
         position={positionMap[i]}
         isDing={i === 0}
+        showNote={
+          !showNoteList ||
+          showNoteList.includes(round[i].substring(0, round[i].length - 1))
+        }
       />
     );
   });
 
   const extraTonefields = extra.map((extra, i) => {
-    return <MiniExtra key={i} extra={extra} />;
+    return (
+      <MiniExtra
+        key={i}
+        extra={extra}
+        showNote={
+          !showNoteList ||
+          showNoteList.includes(extra.note.substring(0, extra.note.length - 1))
+        }
+      />
+    );
   });
 
   return (
