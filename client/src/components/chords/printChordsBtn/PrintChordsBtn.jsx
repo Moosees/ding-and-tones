@@ -12,7 +12,7 @@ const PrintChordsBtn = () => {
   return (
     <>
       <BtnPrimary label="Print" light onClick={() => setShowPrint(true)} />
-      <div
+      {/* <div
         style={{
           height: '100vh',
           width: '100vw',
@@ -24,14 +24,14 @@ const PrintChordsBtn = () => {
         }}
       >
         <ChordsPrint />
-      </div>
-      {/* {showPrint && (
+      </div> */}
+      {showPrint && (
         <Suspense>
           <ReactToPrint onAfterPrint={() => setShowPrint(false)}>
             <ChordsPrint />
           </ReactToPrint>
         </Suspense>
-      )} */}
+      )}
     </>
   );
 };

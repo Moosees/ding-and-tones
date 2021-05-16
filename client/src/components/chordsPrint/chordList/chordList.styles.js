@@ -10,8 +10,7 @@ export const ChordContainer = styled.div`
   align-items: center;
   display: inline-flex;
   flex-direction: column;
-  margin: 2%;
-  width: 29%;
+  margin: 30px 28px 0;
 
   h3 {
     font-size: 18px;

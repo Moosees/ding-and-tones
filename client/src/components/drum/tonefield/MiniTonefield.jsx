@@ -9,7 +9,7 @@ const MiniTonefield = ({ isDing, note, position, showNote }) => {
       cy="0"
       transform={`rotate(${rotate + 90}) translate(${translate})`}
       style={{
-        fontSize: isDing ? '2.3px' : '1.5px',
+        fontSize: isDing ? '2.3' : '1.4',
         cursor: 'default',
       }}
     >
