@@ -64,7 +64,7 @@ export const MiniExtraContainer = styled.div`
   color: #000;
   cursor: default;
   display: flex;
-  font-size: 20px;
+  font-size: 15px;
   height: 16%;
   justify-content: center;
   position: absolute;

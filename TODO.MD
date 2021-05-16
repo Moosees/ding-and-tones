@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Print chords - started
-* Print chords scale text styles and header margins
 * Create logic for showing or hiding notes on MiniDrum
 * Style chord list and filter
 * Allow removing chords from print list
@@ -13,6 +12,7 @@
 * Use new scaleFull outside print-chords - done?
 * Always use root instead of tonic?
 * Clean up console logs
+* Add on/off state for print chords Scale info lists
 
 * Fix primary button focus after click
 * Fix select layouts and add space and enter

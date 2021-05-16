@@ -2,13 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { intervals } from '../../../assets/intervals';
 import MiniDrum from '../../drum/MiniDrum';
-import { InfoContainer, List, ListItem, ScaleContainer } from './scale.styles';
+import {
+  InfoContainer,
+  List,
+  ListItem,
+  NotesHeader,
+  ScaleContainer,
+  ScaleHeader,
+} from './scale.styles';
 
 const Scale = ({ info, scale }) => {
   let prevSemitones = scale[info.rootIndex].intervalMap[0].semitones;
 
   const lists = scale[info.rootIndex].intervalMap.reduce(
-    (lists, { compound, note, octaves, semitones }) => {
+    (lists, { compound, note, octaves, semitones }, i) => {
+      const noteNumber = scale[i].isExtra
+        ? `b${scale[i].localIndex + 1}`
+        : `${scale[i].localIndex}`;
+
       const scaleSteps = compound > 0 ? compound : Math.min(octaves * 12, 12);
 
       const scaleInterval =
@@ -16,6 +27,7 @@ const Scale = ({ info, scale }) => {
 
       const relativeSteps = semitones - prevSemitones;
 
+      lists.noteNumbers.push(noteNumber);
       lists.notes.push(note);
       lists.scaleIntervals.push(scaleInterval);
       // lists.scaleSteps.push(scaleSteps);
@@ -25,6 +37,7 @@ const Scale = ({ info, scale }) => {
       return lists;
     },
     {
+      noteNumbers: [],
       notes: [],
       // scaleSteps: [],
       scaleIntervals: [],
@@ -34,10 +47,20 @@ const Scale = ({ info, scale }) => {
 
   return (
     <ScaleContainer>
-      <h1>{`${info.rootName} ${info.name}`}</h1>
-      <h3>{info.label}</h3>
+      <ScaleHeader>{`${info.rootName} ${info.name}`}</ScaleHeader>
+      <NotesHeader>{info.label}</NotesHeader>
       <InfoContainer>
         <MiniDrum />
+        <List>
+          <>
+            <ListItem>
+              <strong>#</strong>
+            </ListItem>
+            {lists.noteNumbers.map((text, i) => (
+              <ListItem key={i}>{text}</ListItem>
+            ))}
+          </>
+        </List>
         <List>
           <>
             <ListItem>

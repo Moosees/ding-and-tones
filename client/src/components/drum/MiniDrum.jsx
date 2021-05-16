@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { DrumSvg } from './drum.styles';
+import { DrumSvg, MiniDrumContainer } from './drum.styles';
 import MiniExtra from './tonefield/MiniExtra';
 import MiniTonefield from './tonefield/MiniTonefield';
 
@@ -23,7 +23,7 @@ const MiniDrum = ({ notes, positionMap }) => {
   });
 
   return (
-    <div style={{ position: 'relative' }}>
+    <MiniDrumContainer>
       {extraTonefields}
       <DrumSvg viewBox="-10 -10 20 20">
         <circle
@@ -36,7 +36,7 @@ const MiniDrum = ({ notes, positionMap }) => {
         />
         {roundTonefields}
       </DrumSvg>
-    </div>
+    </MiniDrumContainer>
   );
 };
 

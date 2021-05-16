@@ -29,3 +29,9 @@ export const DrumWrapper = styled.div`
   position: relative;
   width: 100%;
 `;
+
+export const MiniDrumContainer = styled.div`
+  max-height: 200px;
+  max-width: 200px;
+  position: relative;
+`;
