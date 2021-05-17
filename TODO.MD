@@ -3,10 +3,8 @@
 ## Current tasks
 
 * Print chords - started
-* Clear print list when scale changes
 * Rename song print view to tablature and move button to that page?
 * Remove lazy for print song view
-* Check if chords work with all scale modes
 * Use new scaleFull outside print-chords - done?
 * Clean up console logs
 * Add on/off state for print chords Scale info lists
@@ -28,7 +26,7 @@
 * Play song logic should be reworked with less forEach?
 * Remove measure subdivision count?
 * Bar numbers on song viewer? Only long songs?
-* Help menu for intervals, explain colors and chords
+* Help menu for intervals, explain colors and chords, help msg for empty printList for chords
 * Volume controls?
 * Should print view only break before fourths?
 * Change root note
@@ -76,6 +74,7 @@
 * Show chord notes in scale in interval list?
 * Select chords to show in beat dropdown?
 * Play chords from chords page, also play them as arpeggios?
+* All root notes in chords should be focused?
 
 ## Songwriter
 
