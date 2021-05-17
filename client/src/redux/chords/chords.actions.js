@@ -5,6 +5,11 @@ export const addChordToPrintList = (chord) => ({
   payload: { chord },
 });
 
+export const removeChordFromPrintList = (chord) => ({
+  type: chordsTypes.REMOVE_CHORD_FROM_PRINT,
+  payload: { nameShort: chord.nameShort },
+});
+
 export const toggleChordIsSelected = (id, scale) => ({
   type: chordsTypes.SELECT_CHORD,
   payload: { id, scale },

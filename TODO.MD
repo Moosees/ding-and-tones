@@ -4,7 +4,7 @@
 
 * Print chords - started
 * Print button tries to print before component is mounted
-* Allow removing chords from print list
+* Clear print list when scale changes
 * If no chords in print list, display help message instead of print button
 * Rename song print view to tablature and move button to that page?
 * Check if chords work with all scale modes

@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addChordToPrintList } from '../../../redux/chords/chords.actions';
+import {
+  addChordToPrintList,
+  removeChordFromPrintList,
+} from '../../../redux/chords/chords.actions';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import { ItemContainer } from './list.styles';
@@ -10,11 +13,18 @@ const ListItem = ({
   chord,
   isDisplayed,
   printList,
+  removeChordFromPrintList,
   setDisplayedChord,
 }) => {
   const chordIsInPrintList = !printList.every(
     ({ nameShort }) => nameShort !== chord.nameShort
   );
+
+  const handleChordClick = () => {
+    chordIsInPrintList
+      ? removeChordFromPrintList(chord)
+      : addChordToPrintList(chord);
+  };
 
   return (
     <ItemContainer>
@@ -30,7 +40,7 @@ const ListItem = ({
         <Checkbox
           label="Print list"
           checked={chordIsInPrintList}
-          onChange={() => addChordToPrintList(chord)}
+          onChange={handleChordClick}
         />
       </div>
     </ItemContainer>
@@ -43,5 +53,6 @@ const mapStateToProps = ({ chords }) => ({
 
 export default connect(mapStateToProps, {
   addChordToPrintList,
+  removeChordFromPrintList,
   setDisplayedChord,
 })(ListItem);
