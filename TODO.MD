@@ -2,9 +2,6 @@
 
 ## Current tasks
 
-* Print chords - started
-* Add footer to chords print
-
 * Use new scaleFull outside print-chords - done?
 * Add on/off state for print chords Scale info lists
 * Fix primary button focus after click
