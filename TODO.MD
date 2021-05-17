@@ -3,8 +3,7 @@
 ## Current tasks
 
 * Print chords - started
-* Rename song print view to tablature and move button to that page?
-* Remove lazy for print song view
+* Add footer to chords print
 * Use new scaleFull outside print-chords - done?
 * Clean up console logs
 * Add on/off state for print chords Scale info lists

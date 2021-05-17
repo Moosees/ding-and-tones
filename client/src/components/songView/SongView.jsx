@@ -25,17 +25,21 @@ class SongView extends Component {
       <SongLayout>
         {headersOpen ? (
           <>
-            <Header>
-              <Title>{title}</Title>
-              {composer && composer !== 'Anonymous' && (
-                <Composer>Composer: {composer}</Composer>
-              )}
+            <Header headersOpen={headersOpen}>
+              <div>
+                <Title>{title}</Title>
+                {composer && composer !== 'Anonymous' && (
+                  <Composer>Composer: {composer}</Composer>
+                )}
+              </div>
               <SongViewControls />
             </Header>
             <Tempo>{getTempoText(bpm)}</Tempo>
           </>
         ) : (
-          <SongViewControls />
+          <Header headersOpen={headersOpen}>
+            <SongViewControls />
+          </Header>
         )}
         <Bars>
           <BarDivider />

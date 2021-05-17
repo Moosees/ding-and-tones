@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState } from 'react';
-import BtnMenu from '../../shared/button/Menu';
+import BtnPrimary from '../../shared/button/Primary';
+import PrintView from '../../songView/PrintView';
 
-const PrintView = lazy(() => import('../../songView/PrintView'));
 const ReactToPrint = lazy(() =>
   import('../../shared/reactToPrint/ReactToPrint')
 );
@@ -11,11 +11,7 @@ const Print = () => {
 
   return (
     <>
-      <BtnMenu
-        label="Print song"
-        icon="print"
-        onClick={() => setShowPrint(true)}
-      />
+      <BtnPrimary light label="Print" onClick={() => setShowPrint(true)} />
       {showPrint && (
         <Suspense>
           <ReactToPrint onAfterPrint={() => setShowPrint(false)}>

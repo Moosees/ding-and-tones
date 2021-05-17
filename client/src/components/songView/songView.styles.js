@@ -14,10 +14,12 @@ export const SongLayout = styled.div`
 `;
 
 export const Header = styled.header`
-  align-items: flex-end;
+  align-items: center;
   display: flex;
-  justify-content: space-between;
-  margin: 2rem 1rem 0;
+  justify-content: ${({ headersOpen }) =>
+    headersOpen ? 'space-between' : 'flex-end'};
+  margin: 2rem 1rem ${({ headersOpen }) => (headersOpen ? '0' : '1.5rem')};
+  width: 100%;
 `;
 
 export const Title = styled.h1`
@@ -32,6 +34,7 @@ export const Title = styled.h1`
 
 export const Composer = styled.h2`
   font-size: 16px;
+  font-weight: 400;
 
   @media print {
     margin-top: 12px;
