@@ -1,30 +1,23 @@
 import React, { lazy, Suspense, useState } from 'react';
+import { connect } from 'react-redux';
+import ChordsPrint from '../../chordsPrint/ChordsPrint';
 import BtnPrimary from '../../shared/button/Primary';
 
-const ChordsPrint = lazy(() => import('../../chordsPrint/ChordsPrint'));
 const ReactToPrint = lazy(() =>
   import('../../shared/reactToPrint/ReactToPrint')
 );
 
-const PrintChordsBtn = () => {
+const PrintChordsBtn = ({ printList }) => {
   const [showPrint, setShowPrint] = useState(false);
 
   return (
     <>
-      <BtnPrimary label="Print" light onClick={() => setShowPrint(true)} />
-      {/* <div
-        style={{
-          height: '100vh',
-          width: '100vw',
-          position: 'absolute',
-          left: '0',
-          top: '-30px',
-          backgroundColor: '#fff',
-          zIndex: '99999',
-        }}
-      >
-        <ChordsPrint />
-      </div> */}
+      <BtnPrimary
+        label="Print Chords"
+        disabled={!printList.length}
+        light
+        onClick={() => setShowPrint(true)}
+      />
       {showPrint && (
         <Suspense>
           <ReactToPrint onAfterPrint={() => setShowPrint(false)}>
@@ -36,4 +29,8 @@ const PrintChordsBtn = () => {
   );
 };
 
-export default PrintChordsBtn;
+const mapStateToProps = ({ chords }) => ({
+  printList: chords.printList,
+});
+
+export default connect(mapStateToProps)(PrintChordsBtn);

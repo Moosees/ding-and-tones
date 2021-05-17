@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
   setAllChordFiltersTo,
-  toggleChordIsSelected,
+  toggleChordIsSelected
 } from '../../../redux/chords/chords.actions';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 import Buttons from '../../shared/button/Buttons';
@@ -58,6 +58,12 @@ const Filter = ({
 
   return (
     <ControlsContainer>
+      <PrintChordsBtn />
+      <DividerLine small />
+      <ScrollBox>
+        <CheckBoxes>{allChords}</CheckBoxes>
+      </ScrollBox>
+      <DividerLine small />
       <Buttons>
         <BtnPrimary
           label="All"
@@ -65,12 +71,7 @@ const Filter = ({
           onClick={() => setAllChordFiltersTo(true, scale)}
         />
         <BtnPrimary label="None" light onClick={handleClear} />
-        <PrintChordsBtn />
       </Buttons>
-      <DividerLine small />
-      <ScrollBox>
-        <CheckBoxes>{allChords}</CheckBoxes>
-      </ScrollBox>
     </ControlsContainer>
   );
 };
