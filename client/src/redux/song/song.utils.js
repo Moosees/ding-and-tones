@@ -69,7 +69,6 @@ export const parseSongForSaving = (song, scale, saveAs, title) => {
     },
   };
   if (title) songUpdate.info.title = title;
-  console.log({ songUpdate });
 
   return {
     songId: isOwner && !saveAs ? songId : null,

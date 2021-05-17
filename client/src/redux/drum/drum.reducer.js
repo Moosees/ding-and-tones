@@ -49,7 +49,6 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case songTypes.FETCH_SUCCESSFUL:
       if (!payload.getScale) return state;
-      console.log(payload.scale);
 
       return {
         ...state,
