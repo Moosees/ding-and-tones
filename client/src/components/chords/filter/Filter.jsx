@@ -60,7 +60,7 @@ const Filter = ({
     <ControlsContainer>
       <PrintChordsBtn />
       <DividerLine small />
-      <ScrollBox>
+      <ScrollBox height="60">
         <CheckBoxes>{allChords}</CheckBoxes>
       </ScrollBox>
       <DividerLine small />

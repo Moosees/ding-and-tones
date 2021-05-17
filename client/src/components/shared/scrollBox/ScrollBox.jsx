@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ScrollDiv = styled.div`
-  max-height: 100%;
+  max-height: ${({ height }) => (height ? height : '100')}%;
   overflow-y: auto;
   width: 100%;
 `;
@@ -12,9 +12,9 @@ const ContentDiv = styled.div`
   flex-direction: column;
 `;
 
-const ScrollBox = ({ children }) => {
+const ScrollBox = ({ children, height }) => {
   return (
-    <ScrollDiv>
+    <ScrollDiv height={height}>
       <ContentDiv>{children}</ContentDiv>
     </ScrollDiv>
   );
