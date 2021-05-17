@@ -1,18 +1,28 @@
 import styled from 'styled-components';
 
 export const ItemContainer = styled.li`
+  align-items: center;
+  border: ${({ theme }) => theme.borderLight};
+  box-shadow: ${({ theme }) => theme.shadowBtnLight};
+  display: flex;
   list-style: none;
+  justify-content: space-between;
+  margin: 3px;
+  padding: 0.6rem;
 
+  div {
+    display: flex;
+
+    button {
+      margin: 0 4px;
+    }
+  }
+
+  /* 
   button {
     background-color: ${({ theme }) => theme.colorBtnLight};
-    border: 2px solid
-      ${({ isDisplayed, theme }) =>
-        isDisplayed ? theme.colorCheckbox : theme.colorBtnClear};
     border-radius: 3px;
-    box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
     cursor: pointer;
-    margin: 3px;
-    padding: 0.6rem;
     transition: transform 0.1s ease;
 
     &:hover,
@@ -25,5 +35,5 @@ export const ItemContainer = styled.li`
     margin: 1px;
     padding: 2px;
   `}
-  }
+  } */
 `;
