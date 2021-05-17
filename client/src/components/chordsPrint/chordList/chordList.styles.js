@@ -1,16 +1,11 @@
 import styled from 'styled-components';
 
-export const ChordListContainer = styled.div`
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
-`;
-
 export const ChordContainer = styled.div`
   align-items: center;
   display: inline-flex;
   flex-direction: column;
-  margin: 30px 28px 0;
+  margin: 30px 1% 0;
+  width: 31%;
 
   h3 {
     font-size: 18px;

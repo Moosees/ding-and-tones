@@ -65,10 +65,10 @@ export const MiniExtraContainer = styled.div`
   cursor: default;
   display: flex;
   font-size: 14px;
-  height: 33px;
+  height: 30px;
   justify-content: center;
   position: absolute;
-  width: 33px;
+  width: 30px;
 
   ${({ position }) => miniExtraPositions[position]}
 `;
