@@ -19,6 +19,7 @@ export const DrumContainer = styled.div`
 
 export const DrumSvg = styled.svg`
   height: 100%;
+  font-family: 'Sura', serif;
   width: 100%;
 `;
 

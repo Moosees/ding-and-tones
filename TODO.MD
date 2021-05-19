@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Update barMetre position if hands or count is open
 * Update react DnD
 * Use new scaleFull outside print-chords - done?
 * Add on/off state for print chords Scale info lists
@@ -145,3 +146,4 @@
 * Print multiple songs on same page
 * Double dings and mutant drums
 * Print with notes instead of numbers
+* Color for hands on tablature

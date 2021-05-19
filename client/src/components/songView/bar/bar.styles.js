@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 const beatStyles = {
   heightWidth: {
-    4: '28',
-    8: '26',
-    16: '24',
+    4: '26',
+    8: '24',
+    16: '23',
   },
   fz: {
     4: '12',
-    8: '12',
+    8: '11',
     16: '11',
   },
   border: {
@@ -28,7 +28,7 @@ export const BarMetre = styled.div`
   margin-left: 4px;
 
   span:first-child {
-    border-bottom: 1px dotted #000;
+    border-bottom: 1px solid #000;
   }
 `;
 
@@ -77,5 +77,6 @@ export const BeatContainer = styled.div`
 export const BeatText = styled.span`
   font-size: ${({ value }) => beatStyles.fz[value] || 12}px;
   letter-spacing: -1px;
+  margin-left: -1px;
   white-space: pre-wrap;
 `;

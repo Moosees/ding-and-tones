@@ -17,6 +17,10 @@ export default createGlobalStyle`
     font-size: inherit;
   }
 
+  h1, h2, h3, h4 {
+    font-weight: 500;
+  }
+
   html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -59,7 +63,7 @@ export default createGlobalStyle`
 
   @media print {
     @page {
-      margin: 16mm 16mm 10mm;
+      margin: 12mm;
       size: A4;
     }
   }

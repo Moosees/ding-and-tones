@@ -17,6 +17,7 @@ export const Note = styled.button`
     inRound || inExtra ? theme.shadowLight : 'none'};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
+  font-family: 'Sura', serif;
   height: 3rem;
   justify-content: center;
   margin: 4px;
