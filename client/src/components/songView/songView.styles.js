@@ -61,8 +61,8 @@ export const Bars = styled.ul`
 `;
 
 export const Footer = styled.footer`
-  bottom: 0;
+  bottom: 2mm;
   font-size: 10px;
   position: fixed;
-  right: 0;
+  right: 2mm;
 `;

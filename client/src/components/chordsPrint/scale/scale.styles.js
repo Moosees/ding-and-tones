@@ -16,7 +16,7 @@ export const InfoContainer = styled.div`
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 0 10px;
 
   &:first-of-type {
     margin-left: 40px;
@@ -28,11 +28,11 @@ export const ListItem = styled.li`
 `;
 
 export const ScaleHeader = styled.h1`
-  font-size: 30px;
-  margin-bottom: 6px;
+  font-size: 26px;
+  margin-bottom: 4px;
 `;
 
 export const NotesHeader = styled.h2`
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 12px;
 `;

@@ -2,10 +2,11 @@
 
 ## Current tasks
 
+* Show print list and change order of chords?
 * Update barMetre position if hands or count is open
 * Update react DnD
 * Use new scaleFull outside print-chords - done?
-* Add on/off state for print chords Scale info lists
+* Add on/off state for print chords Scale info lists?
 * Fix primary button focus after click
 * Fix select layouts and add space and enter
 * Disable focus for icons attached to edit only text boxes
