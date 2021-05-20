@@ -29,10 +29,5 @@ export const ListItem = styled.li`
 
 export const ScaleHeader = styled.h1`
   font-size: 26px;
-  margin-bottom: 4px;
-`;
-
-export const NotesHeader = styled.h2`
-  font-size: 14px;
   margin-bottom: 12px;
 `;

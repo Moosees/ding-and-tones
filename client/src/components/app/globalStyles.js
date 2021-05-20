@@ -64,6 +64,7 @@ export default createGlobalStyle`
   @media print {
     @page {
       margin: 0;
+      size: A4;
 
       & :footer, & :header {
         display: none;
@@ -71,7 +72,7 @@ export default createGlobalStyle`
     }
 
     body {
-      margin: 12mm;
+      margin: 10mm 12mm;
     }
   }
 `;

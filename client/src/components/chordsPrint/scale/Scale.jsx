@@ -6,7 +6,6 @@ import {
   InfoContainer,
   List,
   ListItem,
-  NotesHeader,
   ScaleContainer,
   ScaleHeader,
 } from './scale.styles';
@@ -48,7 +47,6 @@ const Scale = ({ info, scale }) => {
   return (
     <ScaleContainer>
       <ScaleHeader>{`${info.rootName} ${info.name}`}</ScaleHeader>
-      <NotesHeader>{info.label}</NotesHeader>
       <InfoContainer>
         <MiniDrum />
         <List>
