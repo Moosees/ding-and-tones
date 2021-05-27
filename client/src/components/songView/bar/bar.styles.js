@@ -26,6 +26,7 @@ export const BarMetre = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-left: 4px;
+  transform: translateY(${({ offset }) => offset}px);
 
   span:first-child {
     border-bottom: 1px solid #000;

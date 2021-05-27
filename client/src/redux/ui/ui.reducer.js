@@ -2,10 +2,11 @@ import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
-import { updateMutedBars } from './ui.utils';
+import { getBarMetreOffset, updateMutedBars } from './ui.utils';
 
 const INITIAL_STATE = {
   addExtraNotes: false,
+  barMetreOffset: 0,
   currentBar: null,
   currentBeat: null,
   countOpen: false,
@@ -64,11 +65,18 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         soundOptions: payload,
       };
 
-    case uiTypes.TOGGLE_COUNT_OPEN:
+    case uiTypes.TOGGLE_COUNT_OPEN: {
+      const barMetreOffset = getBarMetreOffset({
+        countOpen: !state.countOpen,
+        handsOpen: state.handsOpen,
+      });
+
       return {
         ...state,
         countOpen: !state.countOpen,
+        barMetreOffset,
       };
+    }
 
     case uiTypes.TOGGLE_EDIT_SONG:
       return {
@@ -95,11 +103,18 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         headersOpen: !state.headersOpen,
       };
 
-    case uiTypes.TOGGLE_HANDS_OPEN:
+    case uiTypes.TOGGLE_HANDS_OPEN: {
+      const barMetreOffset = getBarMetreOffset({
+        countOpen: state.countOpen,
+        handsOpen: !state.handsOpen,
+      });
+
       return {
         ...state,
         handsOpen: !state.handsOpen,
+        barMetreOffset,
       };
+    }
 
     case uiTypes.TOGGLE_MULTI_SELECT:
       return {
@@ -132,11 +147,18 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         mutedBars: {},
       };
 
-    case songTypes.UPDATE_HAND:
+    case songTypes.UPDATE_HAND: {
+      const barMetreOffset = getBarMetreOffset({
+        countOpen: state.countOpen,
+        handsOpen: true,
+      });
+
       return {
         ...state,
         handsOpen: true,
+        barMetreOffset,
       };
+    }
 
     default:
       return state;

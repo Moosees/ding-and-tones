@@ -13,6 +13,7 @@ import {
 
 const Bar = ({
   barId,
+  barMetreOffset,
   bars,
   beats,
   countOpen,
@@ -50,7 +51,7 @@ const Bar = ({
   return (
     <>
       {(!prevBarMetre || prevBarMetre !== metre) && (
-        <BarMetre>
+        <BarMetre offset={barMetreOffset}>
           {metreInfo.name.split('/').map((substring, i) => (
             <span key={i}>{substring}</span>
           ))}
@@ -65,6 +66,7 @@ const Bar = ({
 const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
   beats: song.beats,
+  barMetreOffset: ui.barMetreOffset,
   countOpen: ui.countOpen,
   currentBeat: ui.currentBeat,
   handsOpen: ui.handsOpen,

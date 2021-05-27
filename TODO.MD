@@ -3,7 +3,6 @@
 ## Current tasks
 
 * Show print list and change order of chords?
-* Update barMetre position if hands or count is open
 * Update react DnD
 * Use new scaleFull outside print-chords - done?
 * Add on/off state for print chords Scale info lists?
@@ -42,6 +41,7 @@
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Focus on extra notes on mobile doesn't really show up on drum
 * Save scale name issues
+* Safari print popup bug
 
 ## Design
 
