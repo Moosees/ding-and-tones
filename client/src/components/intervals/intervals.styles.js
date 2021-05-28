@@ -5,7 +5,7 @@ export const DrumModeContainer = styled.div`
   align-self: center;
   display: flex;
   justify-content: space-between;
-  margin: 3px 0;
+  margin: 0 0 4px;
   min-width: 75%;
 
   span {
@@ -14,12 +14,13 @@ export const DrumModeContainer = styled.div`
   }
 
   ${({ theme }) => theme.mqW1000`
-    margin: 0;
+    margin: 0 0 2px;
     min-width: 90%;
   `}
 `;
 
 export const IntervalList = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;

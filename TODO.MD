@@ -2,9 +2,16 @@
 
 ## Current tasks
 
-* Show print list and change order of chords?
-* Update react DnD
+* Quick help buttons - started
+* Add help modal
+* Add help topic selector
+* Intervals explain colors and focus
+* Print help explains page scale
+* Chords print also show current print list?
+
 * Use new scaleFull outside print-chords - done?
+* Print list change order of chords?
+* Update react DnD
 * Add on/off state for print chords Scale info lists?
 * Fix primary button focus after click
 * Fix select layouts and add space and enter
@@ -23,7 +30,6 @@
 * Play song logic should be reworked with less forEach?
 * Remove measure subdivision count?
 * Bar numbers on song viewer? Only long songs?
-* Help menu for intervals, explain colors and chords, help msg for empty printList for chords
 * Volume controls?
 * Should print view only break before fourths?
 * Change root note
