@@ -6,6 +6,7 @@
 * Add help modal
 * Add help topic selector
 * Intervals explain colors and focus
+* Add colors to intervals help
 * Print help explains page scale
 * Chords print also show current print list?
 
