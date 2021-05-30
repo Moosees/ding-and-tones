@@ -7,6 +7,7 @@
 * Add help topic selector
 * Intervals explain colors and focus
 * Add colors to intervals help
+* Use "root/tonic" for all drum modes or use "click to set" for all
 * Print help explains page scale
 * Chords print also show current print list?
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { helpTopics } from '../../assets/help';
 import BtnHelp from '../shared/button/Help';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import ScrollBox from '../shared/scrollBox/ScrollBox';
@@ -32,7 +33,7 @@ const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
 
   return (
     <IntervalList>
-      <BtnHelp topic="intervals" />
+      <BtnHelp topic={helpTopics.INTERVALS} />
       <DrumMode />
       <DividerLine small />
       <ScrollBox>{intervals}</ScrollBox>
