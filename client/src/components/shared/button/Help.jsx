@@ -1,13 +1,16 @@
 import React from 'react';
 import { helpContent } from '../../../assets/help';
+import Tooltip from '../tooltip/Tooltip';
 import BtnIcon from './Icon';
 
-const Help = ({ topic }) => {
-  const openHelp = () => {
-    console.log(helpContent[topic]);
-  };
+const Btn = () => <BtnIcon icon="help_outline" />;
 
-  return <BtnIcon icon="help_outline" onClick={openHelp} />;
+const Help = ({ topic }) => {
+  return (
+    <Tooltip parent={Btn}>
+      <div>{helpContent[topic].heading}</div>
+    </Tooltip>
+  );
 };
 
 export default Help;
