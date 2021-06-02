@@ -11,6 +11,7 @@
 * Print help explains page scale
 * Chords print also show current print list?
 
+* Use Tooltip component for beat dropdown?
 * Use new scaleFull outside print-chords - done?
 * Print list change order of chords?
 * Update react DnD
