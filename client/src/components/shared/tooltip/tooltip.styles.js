@@ -11,7 +11,7 @@ export const Arrow = styled.div`
   padding: 5px;
   position: absolute;
   top: calc(50% - 7px);
-  z-index: 200;
+  z-index: 60;
 
   ${({ left }) => (left ? 'left: -11px;' : 'right: -11px;')}
 `;
@@ -32,10 +32,15 @@ export const PopupContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2px;
+  max-width: 30%;
+  padding: 1rem;
   position: absolute;
-  z-index: 100;
+  z-index: 50;
 
   ${({ left }) => (left ? 'left: 30%;' : 'right: 30%;')}
-  ${({ top }) => (top ? 'top: 40%;' : 'bottom: 40%;')}
+  ${({ top }) => (top ? 'top: 20%;' : 'bottom: 20%;')}
+    
+  ${({ theme }) => theme.mqW850`
+    max-width: 50%;
+  `}
 `;

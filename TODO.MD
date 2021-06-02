@@ -3,15 +3,13 @@
 ## Current tasks
 
 * Quick help buttons - started
-* Add help modal
-* Add help topic selector
-* Intervals explain colors and focus
 * Add colors to intervals help
 * Use "root/tonic" for all drum modes or use "click to set" for all
 * Print help explains page scale
 * Chords print also show current print list?
-
+* Remove dynamic position from help tooltips? (tablet opens on top)
 * Use Tooltip component for beat dropdown?
+
 * Use new scaleFull outside print-chords - done?
 * Print list change order of chords?
 * Update react DnD

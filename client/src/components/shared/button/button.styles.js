@@ -132,3 +132,9 @@ export const PrimaryButton = styled.button`
     padding: 2px;
   `}
 `;
+
+export const HelpContainer = styled.div`
+  p {
+    margin-top: 3px;
+  }
+`;
