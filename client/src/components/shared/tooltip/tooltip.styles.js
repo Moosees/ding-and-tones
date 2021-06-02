@@ -13,7 +13,7 @@ export const Arrow = styled.div`
   top: calc(50% - 7px);
   z-index: 200;
 
-  ${({ left }) => (left ? 'left: -12px;' : 'right: -12px;')}
+  ${({ left }) => (left ? 'left: -11px;' : 'right: -11px;')}
 `;
 
 export const TooltipAnchor = styled.div`

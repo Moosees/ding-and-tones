@@ -8,7 +8,6 @@ const Tooltip = ({ children, parent }) => {
   const anchorRef = useRef(null);
 
   const handleClick = (e) => {
-    e.preventDefault();
     setIsOpen(!isOpen);
   };
 
