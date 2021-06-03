@@ -4,12 +4,15 @@
 
 * Quick help buttons - started
 * Add colors to intervals help
-* Use "root/tonic" for all drum modes or use "click to set" for all
 * Print help explains page scale
 * Chords print also show current print list?
 * Remove dynamic position from help tooltips? (tablet opens on top)
 * Use Tooltip component for beat dropdown?
 
+* Remove + or - (octaves) from drum, check if intervals for chords work
+* Interval list chord default cursor
+* Clicking on non standard root note in interval list should reset root to the correct note
+* Add more text labels like in Edit scale component?
 * Use new scaleFull outside print-chords - done?
 * Print list change order of chords?
 * Update react DnD
@@ -61,7 +64,6 @@
 * Refactor styled-components more, mix-ins or css variables?
 * Checkbox hover effect, all transform: scale hovers...
 * Only small divider lines?
-* Interval list chord default cursor
 * Extra notes look weird on mobile in portrait
 * Delete hover color should be red
 
@@ -69,7 +71,7 @@
 
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 * Active state for nav buttons might not need the full pathname
-* Interval colors for compound intervals? Check if intervals are working as intended
+* Add "big" intervals mode
 
 ## Chords
 
