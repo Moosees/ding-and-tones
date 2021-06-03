@@ -10,8 +10,8 @@
 * Use Tooltip component for beat dropdown?
 
 * Remove + or - (octaves) from drum, check if intervals for chords work
-* Interval list chord default cursor
 * Clicking on non standard root note in interval list should reset root to the correct note
+* All root notes in chords should be focused on drum (or none)?
 * Add more text labels like in Edit scale component?
 * Use new scaleFull outside print-chords - done?
 * Print list change order of chords?
@@ -81,7 +81,6 @@
 * Show chord notes in scale in interval list?
 * Select chords to show in beat dropdown?
 * Play chords from chords page, also play them as arpeggios?
-* All root notes in chords should be focused?
 
 ## Songwriter
 

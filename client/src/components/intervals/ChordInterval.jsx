@@ -11,7 +11,7 @@ const ChordInterval = ({ interval, note }) => {
   const { color, name, nameShort, semitones } = intervals[interval];
 
   return (
-    <IntervalContainer key={interval}>
+    <IntervalContainer key={interval} isChord={true}>
       <IntervalColor color={color} />
       <IntervalBreakBox>
         <IntervalText>

@@ -35,7 +35,7 @@ export const IntervalList = styled.div`
 export const IntervalContainer = styled.div`
   align-items: center;
   border-bottom: ${({ theme }) => theme.borderLight};
-  cursor: pointer;
+  cursor: ${({ isChord }) => (isChord ? 'default' : 'pointer')};
   display: flex;
 
   &:last-child {
