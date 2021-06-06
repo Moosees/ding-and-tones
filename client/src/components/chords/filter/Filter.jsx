@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { helpTopics } from '../../../assets/help';
 import {
   setAllChordFiltersTo,
-  toggleChordIsSelected
+  toggleChordIsSelected,
 } from '../../../redux/chords/chords.actions';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 import Buttons from '../../shared/button/Buttons';
+import Help from '../../shared/button/Help';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
@@ -58,7 +60,10 @@ const Filter = ({
 
   return (
     <ControlsContainer>
-      <PrintChordsBtn />
+      <Buttons>
+        <PrintChordsBtn />
+        <Help topic={helpTopics.CHORDS} />
+      </Buttons>
       <DividerLine small />
       <ScrollBox height="60">
         <CheckBoxes>{allChords}</CheckBoxes>

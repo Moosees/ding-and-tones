@@ -3,6 +3,8 @@
 ## Current tasks
 
 * Quick help buttons - started
+* Add logic for opening tooltip to the left
+* Prevent tooltip from opening off screen
 * Add colors to intervals help
 * Print help explains page scale
 * Chords print also show current print list?

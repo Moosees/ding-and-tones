@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { TooltipAnchor } from './tooltip.styles';
+import { TooltipBtnWrapper, TooltipContainer } from './tooltip.styles';
 import TooltipPopup from './TooltipPopup';
 
 const Tooltip = ({ children, parent }) => {
@@ -19,20 +19,19 @@ const Tooltip = ({ children, parent }) => {
   };
 
   return (
-    <>
-      <TooltipAnchor
+    <TooltipContainer ref={anchorRef}>
+      <TooltipBtnWrapper
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        ref={anchorRef}
       >
         <Parent />
-      </TooltipAnchor>
+      </TooltipBtnWrapper>
       {isOpen && (
         <TooltipPopup anchorRef={anchorRef} isOpenCb={setIsOpen}>
           {children}
         </TooltipPopup>
       )}
-    </>
+    </TooltipContainer>
   );
 };
 

@@ -1,8 +1,13 @@
 export const helpTopics = {
+  CHORDS: 'chords',
   INTERVALS: 'intervals',
 };
 
 export const helpContent = {
+  chords: {
+    title: 'Chords tips',
+    content: [''],
+  },
   intervals: {
     title: 'Intervals tips',
     content: [
