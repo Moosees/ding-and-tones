@@ -3,7 +3,7 @@
 ## Current tasks
 
 * Quick help buttons - started
-* Prevent tooltip from opening off screen
+* Prevent tooltip from opening off screen - mediaQuery? no header on smaller screens?
 * Add colors to intervals help
 * Print help explains page scale
 * Chords print also show current print list?

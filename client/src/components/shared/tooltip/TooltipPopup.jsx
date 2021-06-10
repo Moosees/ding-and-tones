@@ -11,7 +11,7 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
   const rect = anchorRef.current.getBoundingClientRect();
   const openRight = rect.left + rect.width / 2 < width / 2;
   const vertPos = openRight ? rect.right + 20 : rect.left + 20;
-  // const top = rect.top + rect.height / 2 < height / 2;
+  const top = rect.top + rect.height / 2;
 
   const handleClick = (e) => {
     isOpenCb(false);
@@ -21,7 +21,7 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
     <PopupContainer
       openRight={openRight}
       vertPos={vertPos}
-      top={rect.top}
+      top={top}
       ref={insideRef}
     >
       <Arrow openRight={openRight} />

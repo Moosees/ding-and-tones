@@ -43,8 +43,9 @@ export const PopupContainer = styled.div`
   max-width: 30%;
   padding: 1rem;
   position: absolute;
-  z-index: 50;
   top: ${({ top }) => top}px;
+  transform: translateY(-50%);
+  z-index: 50;
 
   ${({ vertPos, openRight }) =>
     `${openRight ? 'left: ' : 'right: '}${vertPos}px;`}
