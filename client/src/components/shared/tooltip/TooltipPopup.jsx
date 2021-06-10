@@ -9,7 +9,8 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
   const { insideRef } = useCloseOutside(isOpenCb, anchorRef);
   const { width } = useDimensions();
   const rect = anchorRef.current.getBoundingClientRect();
-  const arrowLeft = rect.left + rect.width / 2 < width / 2;
+  const openRight = rect.left + rect.width / 2 < width / 2;
+  const vertPos = openRight ? rect.right + 20 : rect.left + 20;
   // const top = rect.top + rect.height / 2 < height / 2;
 
   const handleClick = (e) => {
@@ -17,8 +18,13 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
   };
 
   return createPortal(
-    <PopupContainer left={rect.right + 20} top={rect.top} ref={insideRef}>
-      <Arrow arrowLeft={arrowLeft} />
+    <PopupContainer
+      openRight={openRight}
+      vertPos={vertPos}
+      top={rect.top}
+      ref={insideRef}
+    >
+      <Arrow openRight={openRight} />
       {children}
       <BtnIcon icon="close" onClick={handleClick} />
     </PopupContainer>,
