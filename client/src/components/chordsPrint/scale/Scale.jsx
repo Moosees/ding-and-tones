@@ -19,16 +19,15 @@ const Scale = ({ info, scale }) => {
         ? `b${scale[i].localIndex + 1}`
         : `${scale[i].localIndex}`;
 
-      const scaleSteps = compound > 0 ? compound : Math.min(octaves * 12, 12);
-
-      const scaleInterval =
-        scaleSteps === 0 ? 'Root' : intervals[scaleSteps].name;
+      // const scaleSteps = compound > 0 ? compound : Math.min(octaves * 12, 12);
 
       const relativeSteps = semitones - prevSemitones;
+      const isOctave = semitones % 12 === 0 && semitones !== 0;
+      const { name } = intervals[isOctave ? 12 : compound];
 
       lists.noteNumbers.push(noteNumber);
       lists.notes.push(note);
-      lists.scaleIntervals.push(scaleInterval);
+      lists.scaleIntervals.push(name);
       // lists.scaleSteps.push(scaleSteps);
       lists.relativeSteps.push(relativeSteps);
       prevSemitones = semitones;

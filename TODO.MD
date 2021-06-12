@@ -10,7 +10,8 @@
 * Remove dynamic position from help tooltips? (tablet opens on top)
 * Use Tooltip component for beat dropdown?
 
-* Print chords scale root is broken!
+* Print chords scale relative steps should be negative before tonic?
+* Use current interval focus instead of rootIndex for tonic in print chords?
 * Clicking on non standard root note in interval list should reset root to the correct note
 * All root notes in chords should be focused on drum (or none)?
 * Add more text labels like in Edit scale component?
