@@ -2,6 +2,7 @@
 
 ## Current tasks
 
+* Fix rootIndex updating
 * Quick help buttons - started
 * Prevent tooltip from opening off screen - mediaQuery? no header on smaller screens?
 * Add colors to intervals help
@@ -12,7 +13,6 @@
 
 * Print chords scale relative steps should be negative before tonic?
 * Use current interval focus instead of rootIndex for tonic in print chords?
-* Clicking on non standard root note in interval list should reset root to the correct note
 * All root notes in chords should be focused on drum (or none)?
 * Add more text labels like in Edit scale component?
 * Use new scaleFull outside print-chords - done?

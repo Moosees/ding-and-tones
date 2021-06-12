@@ -20,12 +20,20 @@ export const selectSoundSource = (audioPath) => ({
   payload: audioPath,
 });
 
-export const setDisplayedChord = (chord) => ({
-  type: drumTypes.SET_DISPLAYED_CHORD,
-  payload: chord,
-});
+export const setDisplayedChord = (chord) => (dispatch, getState) => {
+  const { scale } = getState();
 
-export const setDisplayedNote = (note) => ({
-  type: drumTypes.SET_DISPLAYED_NOTE,
-  payload: note,
-});
+  dispatch({
+    type: drumTypes.SET_DISPLAYED_CHORD,
+    payload: { chord, rootIndex: scale.info.rootIndex },
+  });
+};
+
+export const setDisplayedNote = (note) => (dispatch, getState) => {
+  const { scale } = getState();
+
+  dispatch({
+    type: drumTypes.SET_DISPLAYED_NOTE,
+    payload: { note, rootIndex: scale.info.rootIndex },
+  });
+};

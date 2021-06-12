@@ -22,14 +22,19 @@ const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
     case drumTypes.SET_DISPLAYED_CHORD:
       return {
         ...state,
-        displayedChord: payload,
-        displayedNote: payload ? payload.rootInScale : 0,
+        displayedChord: payload.chord,
+        displayedNote: payload.chord
+          ? payload.chord.rootInScale
+          : payload.rootIndex,
       };
 
     case drumTypes.SET_DISPLAYED_NOTE:
       return {
         ...state,
-        displayedNote: state.displayedNote === payload ? 0 : payload,
+        displayedNote:
+          state.displayedNote === payload.note
+            ? payload.rootIndex
+            : payload.note,
       };
 
     case drumTypes.SET_DRUM_MODE:
