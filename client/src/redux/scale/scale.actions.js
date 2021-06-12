@@ -124,12 +124,9 @@ export const saveScale = (scaleName) => (dispatch, getState) => {
   dispatch({ type: scaleTypes.SAVE_STARTED });
 
   const { scale } = getState();
-  const {
-    info: { label, layout, name, rootName, rootValue },
-    notes,
-  } = scale;
+  const { info, notes } = scale;
   const scaleUpdate = {
-    info: { label, layout, name, rootName, rootValue },
+    info,
     notes: parseNotesForSaveScale(notes),
   };
   if (scaleName) scaleUpdate.info.name = scaleName;

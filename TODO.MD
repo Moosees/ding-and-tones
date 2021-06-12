@@ -42,6 +42,7 @@
 * Hover and tab focus for intervals?
 * Dry up print code
 * Change ScrollBox to list?
+* Clean up rootIndex in parseScaleData
 
 ## Bugs
 

@@ -126,7 +126,7 @@ export const parseScaleData = (scale) => {
   const positionMap = createPositionMap(info.layout, roundMerged.length);
   const { newFull, newRoot } = createFullScaleFromNames(roundMerged, extra);
 
-  return {
+  const parsedScaleData = {
     newRound: roundMerged,
     newExtra: extra,
     newFull,
@@ -137,6 +137,12 @@ export const parseScaleData = (scale) => {
     scaleId,
     alert: `"${scale.info.rootName} ${scale.info.name}" loaded`,
   };
+
+  if (parsedScaleData.info.rootIndex === undefined) {
+    parsedScaleData.info.rootIndex = newRoot.rootIndex;
+  }
+
+  return parsedScaleData;
 };
 
 // export const createScaleFromString = (scaleString) => {

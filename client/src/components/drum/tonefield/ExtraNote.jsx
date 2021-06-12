@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 import { ExtraContainer } from './tonefield.styles';
 
 const ExtraNote = ({
@@ -35,4 +34,4 @@ const mapStateToProps = ({ drum, scale }) => ({
   extra: scale.notes.extra,
 });
 
-export default connect(mapStateToProps, { setDisplayedNote })(ExtraNote);
+export default connect(mapStateToProps)(ExtraNote);

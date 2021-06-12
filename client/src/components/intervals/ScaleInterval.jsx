@@ -37,7 +37,7 @@ const ScaleInterval = ({
   const { color, modifier, name, nameShort, note, semitones } =
     getIntervalProps(interval);
   const handleIntervalClick = () => {
-    setDisplayedNote(displayedNote === scaleIndex ? 0 : scaleIndex);
+    setDisplayedNote(scaleIndex);
   };
 
   return (

@@ -29,6 +29,7 @@ const scaleSchema = new mongoose.Schema({
       type: Number,
       required: true,
     },
+    rootIndex: Number,
   },
   notes: {
     dings: [String],

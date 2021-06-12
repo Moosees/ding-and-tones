@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDisplayedNote } from '../../../redux/drum/drum.actions';
 
 const Tonefield = ({
   audioPath,
@@ -53,4 +52,4 @@ const mapStateToProps = ({ drum, scale }) => ({
   positionMap: scale.ui.positionMap,
 });
 
-export default connect(mapStateToProps, { setDisplayedNote })(Tonefield);
+export default connect(mapStateToProps)(Tonefield);
