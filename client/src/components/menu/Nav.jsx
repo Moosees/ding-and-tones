@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import BtnNav from '../shared/button/Nav';
-import LogoBtn from './logo/LogoBtn';
+import User from './user/User';
 
 const Navbar = styled.nav`
   top: -3rem;
@@ -39,7 +39,7 @@ const Nav = ({ scaleId, songId }) => {
         isActive={'/find' === pathname}
         onClick={() => push('/find')}
       />
-      <LogoBtn />
+      <User />
     </Navbar>
   );
 };

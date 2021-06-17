@@ -4,11 +4,10 @@ import { checkSession } from '../../../redux/user/user.actions';
 import BtnNav from '../../shared/button/Nav';
 import Dropdown from '../dropdown/Dropdown';
 import { MenuAnchor } from '../nav.styles';
-import Logo from './Logo';
 // import Sound from './sound/Sound';
 // import BtnMenu from '../shared/button/Menu';
 
-const LogoBtn = ({ checkSession }) => {
+const User = ({ checkSession }) => {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
 
@@ -17,18 +16,20 @@ const LogoBtn = ({ checkSession }) => {
   }, [checkSession]);
 
   return (
-    <MenuAnchor>
+    <div>
+      <MenuAnchor>
+        {isOpen && <Dropdown btnRef={btnRef} isOpenCb={setIsOpen} />}
+      </MenuAnchor>
       <BtnNav
-        ariaLabel={'Menu'}
+        ariaLabel={'User'}
         disabled={false}
         isActive={isOpen}
-        label={<Logo />}
         onClick={() => setIsOpen(!isOpen)}
         ref={btnRef}
+        label="User"
       />
-      {isOpen && <Dropdown btnRef={btnRef} isOpenCb={setIsOpen} />}
-    </MenuAnchor>
+    </div>
   );
 };
 
-export default connect(null, { checkSession })(LogoBtn);
+export default connect(null, { checkSession })(User);

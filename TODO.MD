@@ -2,13 +2,12 @@
 
 ## Current tasks
 
-* Fix rootIndex updating
 * Quick help buttons - started
 * Prevent tooltip from opening off screen - mediaQuery? no header on smaller screens?
+* Remove dynamic position from help tooltips? (tablet opens on top)
 * Add colors to intervals help
 * Print help explains page scale
 * Chords print also show current print list?
-* Remove dynamic position from help tooltips? (tablet opens on top)
 * Use Tooltip component for beat dropdown?
 
 * Print chords scale relative steps should be negative before tonic?
@@ -28,7 +27,6 @@
 * Add x close button to popups
 * Print keyboard shortcut
 
-* Menu button margin is too small, menu button is confusing without text?
 * Search hints should not be alerts
 * Typescript
 * Clean up reducers and actions
