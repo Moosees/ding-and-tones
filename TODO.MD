@@ -16,7 +16,7 @@
 * Add more text labels like in Edit scale component?
 * Use new scaleFull outside print-chords - done?
 * Print list change order of chords?
-* Update react DnD
+* Add drag and drop
 * Add on/off state for print chords Scale info lists?
 * Fix primary button focus after click
 * Fix select layouts and add space and enter

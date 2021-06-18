@@ -23,6 +23,6 @@ export const BarInfoContainer = styled.div`
 `;
 
 export const DragGradient = styled(GradientLayout)`
-  cursor: ${({ disabled, isDragging }) =>
-    disabled ? 'default' : isDragging ? 'grabbing' : 'grab'};
+  /* cursor: ${({ disabled, isDragging }) =>
+    disabled ? 'default' : isDragging ? 'grabbing' : 'grab'}; */
 `;

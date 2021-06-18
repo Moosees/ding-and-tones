@@ -10,10 +10,8 @@ const BarInfo = ({
   barId,
   bars,
   beats,
-  dragRef,
   moveBarInArrangement,
   index,
-  isDragging,
   isSongPlaying,
 }) => {
   const { metre } = bars[barId];
@@ -25,11 +23,7 @@ const BarInfo = ({
         disabled={index === 0}
         onClick={() => moveBarInArrangement(index, index - 1)}
       />
-      <DragGradient
-        disabled={isSongPlaying}
-        ref={dragRef}
-        isDragging={isDragging}
-      >
+      <DragGradient>
         Metre: {metreList[metre].nameShort} - Bar: {index + 1}/
         {arrangement.length}
       </DragGradient>

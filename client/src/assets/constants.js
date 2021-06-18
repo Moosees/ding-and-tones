@@ -8,11 +8,6 @@ export const MAX_NOTE_VALUE = 72;
 // alerts
 export const ALERT_TIMEOUT = 5000;
 
-// reactDnD
-export const ItemTypes = {
-  BAR: 'bar',
-};
-
 // app values
 export const optionsDifficulty = [
   { value: 1, label: 'Beginner' },

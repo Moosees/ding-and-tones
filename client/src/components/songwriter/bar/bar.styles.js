@@ -4,7 +4,6 @@ export const BarContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   margin: 0.5rem;
-  opacity: ${({ isDragging }) => (isDragging ? '0.3' : '1')};
 
   ${({ theme }) => theme.mqW850`
     margin: 1px;

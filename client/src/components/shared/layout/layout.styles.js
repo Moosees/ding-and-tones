@@ -9,17 +9,18 @@ export const GradientLayout = styled.div`
   );
   border: ${({ theme }) => theme.borderLight};
   border-radius: 4px;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  cursor: default;
+  /* cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}; */
   display: flex;
   padding: 1px 6px 1px 2px;
   position: relative;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   transition: border 0.15s ease-in;
 
-  &:hover {
+  /* &:hover {
     border: ${({ disabled, theme }) =>
-      !disabled ? theme.borderMedium : theme.borderLight};
-  }
+    !disabled ? theme.borderMedium : theme.borderLight};
+  } */
 `;
 
 export const InfoLayout = styled.div`
