@@ -15,6 +15,10 @@ export const Arrow = styled.div`
   z-index: 60;
 
   ${({ openRight }) => (openRight ? 'left: -11px;' : 'right: -11px;')}
+
+  ${({ theme }) => theme.mqW850`
+    display: none;
+  `}
 `;
 
 export const TooltipContainer = styled.div`
@@ -51,6 +55,11 @@ export const PopupContainer = styled.div`
     `${openRight ? 'left: ' : 'right: '}${vertPos}px;`}
 
   ${({ theme }) => theme.mqW850`
-    max-width: 50%;
+    bottom: 10%;
+    left: 10%;
+    max-width: 80%;
+    right: 10%;
+    top: unset;
+    transform: translateY(0);
   `}
 `;

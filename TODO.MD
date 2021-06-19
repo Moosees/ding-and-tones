@@ -3,8 +3,6 @@
 ## Current tasks
 
 * Quick help buttons - started
-* Prevent tooltip from opening off screen - mediaQuery? no header on smaller screens?
-* Remove dynamic position from help tooltips? (tablet opens on top)
 * Add colors to intervals help
 
 * Use Tooltip component for beat dropdown?
@@ -65,6 +63,7 @@
 * Only small divider lines?
 * Extra notes look weird on mobile in portrait
 * Delete hover color should be red
+* Chords Filter on mobile position and button size
 
 ## User/Menu
 
