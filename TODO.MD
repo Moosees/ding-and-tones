@@ -6,10 +6,8 @@
 * Prevent tooltip from opening off screen - mediaQuery? no header on smaller screens?
 * Remove dynamic position from help tooltips? (tablet opens on top)
 * Add colors to intervals help
-* Print help explains page scale
-* Chords print also show current print list?
-* Use Tooltip component for beat dropdown?
 
+* Use Tooltip component for beat dropdown?
 * Print chords scale relative steps should be negative before tonic?
 * Use current interval focus instead of rootIndex for tonic in print chords?
 * All root notes in chords should be focused on drum (or none)?
