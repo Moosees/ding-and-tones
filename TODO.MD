@@ -2,9 +2,15 @@
 
 ## Current tasks
 
-* Quick help buttons - started
-* Add colors to intervals help
+* Scales as refs - started
+* Send scale id with request
+* Handle search results without scales
+* Update db models
+* Update route controllers
+* Fallback for old db posts
+* Option to save song without scale?
 
+* Add colors to intervals help
 * Use Tooltip component for beat dropdown?
 * Print chords scale relative steps should be negative before tonic?
 * Use current interval focus instead of rootIndex for tonic in print chords?
