@@ -58,34 +58,7 @@ const songSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  scale: {
-    info: {
-      label: { type: String, required: true },
-      layout: { type: Number, required: true },
-      name: {
-        type: String,
-        trim: true,
-        required: true,
-        minlength: 4,
-        maxlength: 20,
-      },
-      rootName: {
-        type: String,
-        trim: true,
-        required: true,
-      },
-      rootValue: {
-        type: Number,
-        required: true,
-      },
-      rootIndex: Number,
-    },
-    notes: {
-      dings: [String],
-      round: [String],
-      extra: [{ note: String, pos: Number }],
-    },
-  },
+  scale: { type: ObjectId, ref: 'Scale' },
   updated: {
     type: Date,
     default: Date.now,

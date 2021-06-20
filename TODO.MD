@@ -5,8 +5,7 @@
 * Scales as refs - started
 * Send scale id with request
 * Handle search results without scales
-* Update db models
-* Update route controllers
+* Update route controllers - search and load
 * Fallback for old db posts
 * Option to save song without scale?
 
