@@ -5,11 +5,13 @@
 * Scales as refs - started
 * Send scale id with request
 * Handle search results without scales
-* Update route controllers - search and load
-* Get all scales and users with one query
+* Update route controllers - load song
+* Update route controllers - search
+* Get all scales and users with one query - merge results
 * Fallback for old db posts
 * Option to save song without scale?
 * Handle errors
+* Refactor searches to separate model file?
 * Clean up code
 
 * Clean up TODO.MD
