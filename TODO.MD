@@ -6,9 +6,15 @@
 * Send scale id with request
 * Handle search results without scales
 * Update route controllers - search and load
+* Get all scales and users with one query
 * Fallback for old db posts
 * Option to save song without scale?
+* Handle errors
+* Clean up code
 
+* Clean up TODO.MD
+* Cache users in scale searches
+* Add option persist session for 30 days
 * Add colors to intervals help
 * Use Tooltip component for beat dropdown?
 * Print chords scale relative steps should be negative before tonic?

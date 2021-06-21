@@ -1,5 +1,6 @@
 const Song = require('../models/song');
 const User = require('../models/user');
+const Scale = require('../models/scale');
 const { parseGetResponse, parseSearchResponse } = require('../utils/song');
 const { isValidObjectId } = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
@@ -27,33 +28,58 @@ exports.deleteSong = (req, res) => {
     });
 };
 
-exports.getMySongs = (req, res) => {
+exports.getMySongs = async (req, res) => {
   const userId = req.userId;
 
-  User.findById(userId)
-    .populate({
-      path: 'songs',
-      select: '_id scale.info info',
-      options: { limit: 20, sort: { updated: -1 } },
-    })
-    .select('_id name')
-    .exec((error, user) => {
-      if (error) return res.status(400).json();
-      if (!user.songs.length) return res.status(204).json();
+  // User.findById(userId)
+  //   .populate({
+  //     path: 'songs',
+  //     select: '_id scale.info info',
+  //     options: { limit: 20, sort: { updated: -1 } },
+  //   })
+  //   .select('_id name')
+  //   .exec((error, user) => {
+  //     if (error) return res.status(400).json();
+  //     if (!user.songs.length) return res.status(204).json();
 
-      const data = user.songs.map((song) =>
-        parseSearchResponse(
-          {
-            _id: song._id,
-            scale: song.scale,
-            info: song.info,
-            composer: { _id: user._id, anonymous: false, name: user.name },
-          },
-          userId
-        )
-      );
-      res.status(200).json({ songs: data });
-    });
+  //     const data = user.songs.map((song) =>
+  //       parseSearchResponse(
+  //         {
+  //           _id: song._id,
+  //           scale: song.scale,
+  //           info: song.info,
+  //           composer: { _id: user._id, anonymous: false, name: user.name },
+  //         },
+  //         userId
+  //       )
+  //     );
+  //     res.status(200).json({ songs: data });
+  //   });
+
+  const user = await User.findById(userId).select('_id name songs').exec();
+
+  const songs = await Song.find({ _id: { $in: user.songs } })
+    .limit(20)
+    .sort({ updated: -1 })
+    .select('_id info scale')
+    .exec();
+
+  const scaleIds = Object.values(
+    songs.reduce((acc, song) => {
+      if (song.scale && !acc[song.scale.toString()]) {
+        acc[song.scale.toString()] = song.scale;
+      }
+      return acc;
+    }, {})
+  );
+
+  const scales = await Scale.find({ _id: { $in: scaleIds } })
+    .select('_id info')
+    .exec();
+
+  console.log(scales);
+
+  res.status(200).json({ songs: [] });
 };
 
 exports.getSongById = (req, res) => {
@@ -77,18 +103,20 @@ exports.getSongById = (req, res) => {
 exports.getSongs = (req, res) => {
   const userId = req.userId;
 
-  Song.find({ composer: { $ne: ObjectId(userId) } })
-    .populate('composer', '_id anonymous name')
-    .select('_id scale.info info')
-    .limit(20)
-    .sort({ updated: -1 })
-    .exec((error, songs) => {
-      if (error) return res.status(400).json();
-      if (!songs.length) return res.status(204).json();
+  // Song.find({ composer: { $ne: ObjectId(userId) } })
+  //   .populate('composer', '_id anonymous name')
+  //   .select('_id scale.info info')
+  //   .limit(20)
+  //   .sort({ updated: -1 })
+  //   .exec((error, songs) => {
+  //     if (error) return res.status(400).json();
+  //     if (!songs.length) return res.status(204).json();
 
-      const data = songs.map((song) => parseSearchResponse(song, userId));
-      res.status(200).json({ songs: data });
-    });
+  //     const data = songs.map((song) => parseSearchResponse(song, userId));
+  //     res.status(200).json({ songs: data });
+  //   });
+
+  res.status(200).json({ songs: [] });
 };
 
 exports.saveSong = (req, res) => {
