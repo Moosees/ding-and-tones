@@ -1,5 +1,5 @@
 import { metreList } from '../../assets/metre';
-import { parseNotesForSaveScale, parseScaleData } from '../scale/scale.utils';
+import { parseScaleData } from '../scale/scale.utils';
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
   const arrCopy = [...arrangement];
@@ -47,31 +47,32 @@ const parseBeatsForSaving = (arrangement, bars, beats) => {
 };
 
 export const parseSongForSaving = (song, scale, saveAs, title) => {
-  const { arrangement, bars, beats, info, ui } = song;
-  const { isOwner, songId } = ui;
-  const { notes, info: scaleInfo } = scale;
+  const {
+    arrangement,
+    bars,
+    beats,
+    info,
+    ui: { isOwner, songId },
+  } = song;
+  const {
+    info: { rootName, name, label },
+    ui: { scaleId },
+  } = scale;
   const parsedBars = parseBarsForSaving(arrangement, bars, beats);
   const parsedBeats = parseBeatsForSaving(arrangement, bars, beats);
   const songUpdate = {
     arrangement,
     bars: parsedBars,
     beats: parsedBeats,
+    scale: scaleId,
     info,
-    scale: {
-      notes: parseNotesForSaveScale(notes),
-      info: {
-        name: scaleInfo.name,
-        label: scaleInfo.label,
-        layout: scaleInfo.layout,
-        rootValue: scaleInfo.rootValue,
-        rootName: scaleInfo.rootName,
-      },
-    },
   };
   if (title) songUpdate.info.title = title;
 
   return {
     songId: isOwner && !saveAs ? songId : null,
+    scaleName: `${rootName} ${name}`,
+    scaleLabel: label,
     songUpdate,
   };
 };

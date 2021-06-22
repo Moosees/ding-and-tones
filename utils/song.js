@@ -24,7 +24,7 @@ exports.parseGetResponse = (songObject, userId) => {
   };
 };
 
-exports.parseSearchResponse = (songObject, userId) => {
+exports.parseSearchResponse = (songObject, userId, scaleName, scaleLabel) => {
   const {
     _id,
     composer,
@@ -36,9 +36,10 @@ exports.parseSearchResponse = (songObject, userId) => {
 
   return {
     isOwner,
+    scaleId: scale,
     songId: _id,
-    scaleLabel: scale.info.label,
-    scaleName: `${scale.info.rootName} ${scale.info.name}`,
+    scaleLabel: scale ? scaleLabel : '',
+    scaleName: scale ? scaleName : 'N/A',
     composer:
       isOwner || (composer && !composer.anonymous)
         ? composer.name

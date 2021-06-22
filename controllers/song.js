@@ -150,7 +150,7 @@ exports.getSongs = async (req, res) => {
 
 exports.saveSong = (req, res) => {
   const userId = req.userId;
-  const { songId, songUpdate } = req.body;
+  const { songId, songUpdate, scaleName, scalel} = req.body;
 
   if (songUpdate.arrangement.length < 1 || songUpdate.arrangement.length > 100)
     return res.status(400).json();
@@ -162,7 +162,7 @@ exports.saveSong = (req, res) => {
   if (songId && !isValidObjectId(songId)) return res.status(400).json();
   if (!songId) newSong = true;
 
-  songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${songUpdate.scale.info.rootName.toLowerCase()} ${songUpdate.scale.info.name.toLowerCase()}`;
+  songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${scaleName.toLowerCase()}`;
 
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
     .setOptions({
@@ -175,7 +175,7 @@ exports.saveSong = (req, res) => {
     .select('_id scale.info info')
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
-      const data = parseSearchResponse(song, userId);
+      const data = parseSearchResponse(song, userId, scaleName, scaleLabel);
       if (!newSong) return res.status(200).json(data);
 
       User.findByIdAndUpdate(userId, {
