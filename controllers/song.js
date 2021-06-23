@@ -108,8 +108,17 @@ exports.getMySongs = async (req, res) => {
 
   const scales = await getScalesForSongSearches(songs);
 
-  const resData = songs.map((song) => ({}));
-  res.status(200).json({ songs: [] });
+  const resData = songs.map(({ info, _id, scale }) => ({
+    songId: _id,
+    scaleId: scale,
+    composer: 'You',
+    title: info.title,
+    difficulty: info.difficulty,
+    metre: info.metre,
+    ...scales[scale ? scale : 'noScale'],
+  }));
+
+  res.status(200).json({ songs: resData });
 };
 
 exports.getSongs = async (req, res) => {
@@ -142,7 +151,6 @@ exports.getSongs = async (req, res) => {
     metre: info.metre,
     ...scales[scale ? scale : 'noScale'],
   }));
-  console.log(resData[0]);
 
   res.status(200).json({ songs: resData });
 };
