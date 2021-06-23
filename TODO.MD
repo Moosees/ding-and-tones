@@ -7,7 +7,7 @@
 * Save song controller
 * Song search (and save) receive data on client
 * Disable load song with scale button for songs without scales
-* Remove parseSearchResponse and add isOwner to search responses
+* Remove parseSearchResponse
 * Check if songs without scales work
 * Send scale id with load song request
 * Update route controllers - load song
