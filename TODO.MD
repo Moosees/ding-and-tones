@@ -15,7 +15,6 @@
 * Fallback for old db posts
 * Option to save song without scale?
 * Handle errors
-* Move search logic to separate model file?
 * Clean up code
 
 * Clean up TODO.MD

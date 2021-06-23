@@ -5,6 +5,7 @@ const { parseGetResponse, parseSearchResponse } = require('../utils/song');
 const { isValidObjectId } = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
 
+// Song searches
 const getScalesForSongSearches = async (songs) => {
   const scaleIds = Object.values(
     songs.reduce((acc, song) => {
@@ -51,26 +52,21 @@ const getComposersForSongSearches = async (songs) => {
   }, {});
 };
 
-exports.deleteSong = (req, res) => {
-  const songId = req.params.songId;
+exports.songSearch = (req, res) => {
   const userId = req.userId;
+  const searchTerm = req.params.searchTerm.toLowerCase();
 
-  if (!isValidObjectId(songId)) return res.status(400).json();
+  Song.find({ queryString: { $regex: searchTerm } })
+    .populate('composer', '_id anonymous name')
+    .select('_id scale.info info')
+    .limit(20)
+    .sort({ 'info.title': 1 })
+    .exec((error, songs) => {
+      if (error) return res.status(400).json();
+      if (!songs.length) return res.status(204).json();
 
-  Song.findOneAndDelete({ _id: songId, composer: userId })
-    .select('_id info.title')
-    .exec((error, song) => {
-      if (error || !song) return res.status(400).json();
-
-      User.findByIdAndUpdate(userId, {
-        $pull: { songs: song._id },
-      })
-        .setOptions({ new: true })
-        .exec((error) => {
-          if (error) return res.status(400).json();
-
-          res.status(200).json(song);
-        });
+      const data = songs.map((song) => parseSearchResponse(song, userId));
+      res.status(200).json({ songs: data });
     });
 };
 
@@ -111,27 +107,9 @@ exports.getMySongs = async (req, res) => {
     .exec();
 
   const scales = await getScalesForSongSearches(songs);
-  console.log(scales);
 
+  const resData = songs.map((song) => ({}));
   res.status(200).json({ songs: [] });
-};
-
-exports.getSongById = (req, res) => {
-  const songId = req.params.songId;
-  const userId = req.userId;
-
-  if (!isValidObjectId(songId)) return res.status(404).json();
-
-  Song.findById(songId)
-    .populate('composer', '_id anonymous name')
-    .select('_id arrangement bars beats info scale')
-    .exec((error, song) => {
-      if (error) return res.status(400).json();
-      if (!song) return res.status(404).json();
-
-      const data = parseGetResponse(song, userId);
-      res.status(200).json(data);
-    });
 };
 
 exports.getSongs = async (req, res) => {
@@ -169,6 +147,7 @@ exports.getSongs = async (req, res) => {
   res.status(200).json({ songs: resData });
 };
 
+// Song save, load and delete
 exports.saveSong = (req, res) => {
   const userId = req.userId;
   const { songId, songUpdate, scaleName, scaleLabel } = req.body;
@@ -210,20 +189,43 @@ exports.saveSong = (req, res) => {
     });
 };
 
-exports.songSearch = (req, res) => {
+exports.getSongById = (req, res) => {
+  const songId = req.params.songId;
   const userId = req.userId;
-  const searchTerm = req.params.searchTerm.toLowerCase();
 
-  Song.find({ queryString: { $regex: searchTerm } })
+  if (!isValidObjectId(songId)) return res.status(404).json();
+
+  Song.findById(songId)
     .populate('composer', '_id anonymous name')
-    .select('_id scale.info info')
-    .limit(20)
-    .sort({ 'info.title': 1 })
-    .exec((error, songs) => {
+    .select('_id arrangement bars beats info scale')
+    .exec((error, song) => {
       if (error) return res.status(400).json();
-      if (!songs.length) return res.status(204).json();
+      if (!song) return res.status(404).json();
 
-      const data = songs.map((song) => parseSearchResponse(song, userId));
-      res.status(200).json({ songs: data });
+      const data = parseGetResponse(song, userId);
+      res.status(200).json(data);
+    });
+};
+
+exports.deleteSong = (req, res) => {
+  const songId = req.params.songId;
+  const userId = req.userId;
+
+  if (!isValidObjectId(songId)) return res.status(400).json();
+
+  Song.findOneAndDelete({ _id: songId, composer: userId })
+    .select('_id info.title')
+    .exec((error, song) => {
+      if (error || !song) return res.status(400).json();
+
+      User.findByIdAndUpdate(userId, {
+        $pull: { songs: song._id },
+      })
+        .setOptions({ new: true })
+        .exec((error) => {
+          if (error) return res.status(400).json();
+
+          res.status(200).json(song);
+        });
     });
 };
