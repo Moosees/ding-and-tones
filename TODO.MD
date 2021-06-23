@@ -3,12 +3,12 @@
 ## Current tasks
 
 * Scales as refs - started
+* Get all scales and users with one query - merge results
+* Handle search results without scales, add scaleId to found songs list, prevent load with scale
+* Update route controllers - search
+* Check params for parseSearchResponse calls
 * Send scale id with load song request
 * Update route controllers - load song
-* Update route controllers - search
-* Handle search results without scales, add scaleId to found songs list, prevent load with scale
-* Get all scales and users with one query - merge results
-* Check params for parseSearchResponse calls
 * Fallback for old db posts
 * Option to save song without scale?
 * Handle errors

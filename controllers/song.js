@@ -19,7 +19,14 @@ const getScalesForSongSearches = async (songs) => {
     .select('_id info')
     .exec();
 
-  return scales;
+  return scales.reduce((acc, scale) => {
+    acc[scale._id] = {
+      scaleId: scale._id,
+      scaleLabel: scale.info.label,
+      scaleName: `${scale.info.rootName} ${scale.info.name}`,
+    };
+    return acc;
+  }, {});
 };
 
 const getComposersForSongSearches = async (songs) => {
@@ -36,7 +43,10 @@ const getComposersForSongSearches = async (songs) => {
     .select('_id anonymous name')
     .exec();
 
-  return composers;
+  return composers.reduce((acc, user) => {
+    acc[user._id] = user.anonymous ? 'Anonymous' : user.name;
+    return acc;
+  }, {});
 };
 
 exports.deleteSong = (req, res) => {
@@ -142,15 +152,20 @@ exports.getSongs = async (req, res) => {
   const scales = await getScalesForSongSearches(songs);
 
   const composers = await getComposersForSongSearches(songs);
-
+  console.log(scales);
   console.log(composers);
+
+  const resData = songs.map((song, i) => {
+    if (i === 0) console.log(song);
+    return;
+  });
 
   res.status(200).json({ songs: [] });
 };
 
 exports.saveSong = (req, res) => {
   const userId = req.userId;
-  const { songId, songUpdate, scaleName, scalel} = req.body;
+  const { songId, songUpdate, scaleName, scaleLabel } = req.body;
 
   if (songUpdate.arrangement.length < 1 || songUpdate.arrangement.length > 100)
     return res.status(400).json();
