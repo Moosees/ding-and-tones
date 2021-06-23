@@ -19,14 +19,16 @@ const getScalesForSongSearches = async (songs) => {
     .select('_id info')
     .exec();
 
-  return scales.reduce((acc, scale) => {
-    acc[scale._id] = {
-      scaleId: scale._id,
-      scaleLabel: scale.info.label,
-      scaleName: `${scale.info.rootName} ${scale.info.name}`,
-    };
-    return acc;
-  }, {});
+  return scales.reduce(
+    (acc, scale) => {
+      acc[scale._id] = {
+        scaleLabel: scale.info.label,
+        scaleName: `${scale.info.rootName} ${scale.info.name}`,
+      };
+      return acc;
+    },
+    { noScale: { scaleLabel: '', scaleName: 'N/A' } }
+  );
 };
 
 const getComposersForSongSearches = async (songs) => {
@@ -152,15 +154,19 @@ exports.getSongs = async (req, res) => {
   const scales = await getScalesForSongSearches(songs);
 
   const composers = await getComposersForSongSearches(songs);
-  console.log(scales);
-  console.log(composers);
 
-  const resData = songs.map((song, i) => {
-    if (i === 0) console.log(song);
-    return;
-  });
+  const resData = songs.map(({ info, _id, composer, scale }, i) => ({
+    songId: _id,
+    scaleId: scale,
+    composer: composers[composer],
+    title: info.title,
+    difficulty: info.difficulty,
+    metre: info.metre,
+    ...scales[scale ? scale : 'noScale'],
+  }));
+  console.log(resData[0]);
 
-  res.status(200).json({ songs: [] });
+  res.status(200).json({ songs: resData });
 };
 
 exports.saveSong = (req, res) => {
