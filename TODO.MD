@@ -3,17 +3,16 @@
 ## Current tasks
 
 * Scales as refs - started
-* Song search controller
 * Save song controller
 * Song search (and save) receive data on client
 * Disable load song with scale button for songs without scales
 * Remove parseSearchResponse
-* Check if songs without scales work
 * Send scale id with load song request
 * Update route controllers - load song
-* Fallback for old db posts
+* Update old db posts
 * Option to save song without scale?
 * Handle errors
+* Fallbacks if composer or scale has been deleted
 * Clean up code
 
 * Clean up TODO.MD
@@ -164,7 +163,6 @@
 * Favorite songs/scales
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
 * Check text inputs for bad words?
-* Show name for your songs as "you"?
 * Print multiple songs on same page
 * Double dings and mutant drums
 * Print with notes instead of numbers

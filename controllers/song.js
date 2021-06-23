@@ -52,22 +52,49 @@ const getComposersForSongSearches = async (songs) => {
   }, {});
 };
 
-exports.songSearch = (req, res) => {
+exports.songSearch = async (req, res) => {
   const userId = req.userId;
   const searchTerm = req.params.searchTerm.toLowerCase();
 
-  Song.find({ queryString: { $regex: searchTerm } })
-    .populate('composer', '_id anonymous name')
-    .select('_id scale.info info')
+  // Song.find({ queryString: { $regex: searchTerm } })
+  //   .populate('composer', '_id anonymous name')
+  //   .select('_id scale.info info')
+  //   .limit(20)
+  //   .sort({ 'info.title': 1 })
+  //   .exec((error, songs) => {
+  //     if (error) return res.status(400).json();
+  //     if (!songs.length) return res.status(204).json();
+
+  //     const data = songs.map((song) => parseSearchResponse(song, userId));
+  //     res.status(200).json({ songs: data });
+  //   });
+
+  const songs = await Song.find({ queryString: { $regex: searchTerm } })
     .limit(20)
     .sort({ 'info.title': 1 })
-    .exec((error, songs) => {
-      if (error) return res.status(400).json();
-      if (!songs.length) return res.status(204).json();
+    .select('_id info composer scale')
+    .exec();
 
-      const data = songs.map((song) => parseSearchResponse(song, userId));
-      res.status(200).json({ songs: data });
-    });
+  const scales = await getScalesForSongSearches(songs);
+
+  const composers = await getComposersForSongSearches(songs);
+
+  const resData = songs.map(({ info, _id, composer, scale }) => {
+    const isOwner = composer.equals(userId);
+    
+    return {
+      songId: _id,
+      scaleId: scale,
+      composer: isOwner ? 'You' : composers[composer],
+      isOwner,
+      title: info.title,
+      difficulty: info.difficulty,
+      metre: info.metre,
+      ...scales[scale ? scale : 'noScale'],
+    };
+  });
+
+  res.status(200).json({ songs: resData });
 };
 
 exports.getMySongs = async (req, res) => {
