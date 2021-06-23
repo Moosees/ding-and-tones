@@ -121,7 +121,7 @@ exports.getMySongs = async (req, res) => {
   res.status(200).json({ songs: resData });
 };
 
-exports.getSongs = async (req, res) => {
+exports.getNewSongs = async (req, res) => {
   const userId = req.userId;
 
   const songs = await Song.find({ composer: { $ne: ObjectId(userId) } })

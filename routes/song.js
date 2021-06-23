@@ -1,7 +1,7 @@
 const express = require('express');
 const {
   getSongById,
-  getSongs,
+  getNewSongs,
   saveSong,
   songSearch,
   deleteSong,
@@ -13,7 +13,7 @@ const { checkNumVsMaxSongs } = require('../middleware/user');
 const router = express.Router();
 
 // Public
-router.get('/song', getUserId, getSongs);
+router.get('/song', getUserId, getNewSongs);
 router.get('/song/a/:searchTerm', getUserId, songSearch);
 router.get('/song/id/:songId', getUserId, getSongById);
 // router.get('/song/random', getRandomSong);
