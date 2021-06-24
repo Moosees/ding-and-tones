@@ -55,7 +55,6 @@ export const parseSongForSaving = (song, scale, saveAs, title) => {
     ui: { isOwner, songId },
   } = song;
   const {
-    info: { rootName, name, label },
     ui: { scaleId },
   } = scale;
   const parsedBars = parseBarsForSaving(arrangement, bars, beats);
@@ -71,8 +70,6 @@ export const parseSongForSaving = (song, scale, saveAs, title) => {
 
   return {
     songId: isOwner && !saveAs ? songId : null,
-    scaleName: `${rootName} ${name}`,
-    scaleLabel: label,
     songUpdate,
   };
 };

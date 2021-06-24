@@ -81,7 +81,7 @@ exports.songSearch = async (req, res) => {
 
   const resData = songs.map(({ info, _id, composer, scale }) => {
     const isOwner = composer.equals(userId);
-    
+
     return {
       songId: _id,
       scaleId: scale,
@@ -185,9 +185,9 @@ exports.getNewSongs = async (req, res) => {
 };
 
 // Song save, load and delete
-exports.saveSong = (req, res) => {
+exports.saveSong = async (req, res) => {
   const userId = req.userId;
-  const { songId, songUpdate, scaleName, scaleLabel } = req.body;
+  const { songId, songUpdate } = req.body;
 
   if (songUpdate.arrangement.length < 1 || songUpdate.arrangement.length > 100)
     return res.status(400).json();
@@ -199,7 +199,13 @@ exports.saveSong = (req, res) => {
   if (songId && !isValidObjectId(songId)) return res.status(400).json();
   if (!songId) newSong = true;
 
-  songUpdate.queryString = `${songUpdate.info.title.toLowerCase()} ${scaleName.toLowerCase()}`;
+  const scale =
+    songUpdate.scale &&
+    (await Scale.findById(songUpdate.scale).select('_id info').exec());
+
+  songUpdate.queryString = scale
+    ? `${songUpdate.info.title.toLowerCase()} ${scale.rootName.toLowerCase()} ${scale.name.toLowerCase()}`
+    : songUpdate.info.title.toLowerCase();
 
   Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
     .setOptions({
@@ -208,12 +214,23 @@ exports.saveSong = (req, res) => {
       setDefaultsOnInsert: true,
       runValidators: true,
     })
-    .populate('composer', '_id anonymous name')
-    .select('_id scale.info info')
+    .select('_id info')
     .exec((error, song) => {
       if (error || !song) return res.status(400).json();
-      const data = parseSearchResponse(song, userId, scaleName, scaleLabel);
-      if (!newSong) return res.status(200).json(data);
+
+      const resData = {
+        songId: song._id,
+        scaleId: song.scale,
+        composer: 'You',
+        isOwner: true,
+        title: song.info.title,
+        difficulty: song.info.difficulty,
+        metre: song.info.metre,
+        scaleName: scale ? `${scale.rootName} ${scale.name}` : 'N/A',
+        scaleLabel: scale ? scale.label : '',
+      };
+
+      if (!newSong) return res.status(200).json({ song: resData });
 
       User.findByIdAndUpdate(userId, {
         $push: { songs: song._id },
@@ -221,7 +238,7 @@ exports.saveSong = (req, res) => {
         .setOptions({ new: true })
         .exec((error) => {
           if (error) return res.status(400).json();
-          res.status(200).json(data);
+          res.status(200).json({ song: resData });
         });
     });
 };

@@ -3,16 +3,16 @@
 ## Current tasks
 
 * Scales as refs - started
-* Save song controller
 * Song search (and save) receive data on client
 * Disable load song with scale button for songs without scales
-* Remove parseSearchResponse
 * Send scale id with load song request
 * Update route controllers - load song
 * Update old db posts
 * Option to save song without scale?
+* Async await refactor for save song (and other controllers)?
 * Handle errors
 * Fallbacks if composer or scale has been deleted
+* Populate user when doing auth check instead of inside controllers
 * Clean up code
 
 * Clean up TODO.MD

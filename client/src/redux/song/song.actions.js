@@ -108,9 +108,12 @@ export const saveSong =
           } else {
             dispatch({
               type: songTypes.SAVE_SUCCESSFUL,
-              payload: { song: res.data, alert: `"${res.data.title}" saved` },
+              payload: {
+                song: res.data.song,
+                alert: `"${res.data.title}" saved`,
+              },
             });
-            return Promise.resolve(`/song/${res.data.songId}`);
+            return Promise.resolve(`/song/${res.data.song.songId}`);
           }
         }
       })
