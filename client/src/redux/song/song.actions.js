@@ -110,7 +110,7 @@ export const saveSong =
               type: songTypes.SAVE_SUCCESSFUL,
               payload: {
                 song: res.data.song,
-                alert: `"${res.data.title}" saved`,
+                alert: `"${res.data.song.title}" saved`,
               },
             });
             return Promise.resolve(`/song/${res.data.song.songId}`);

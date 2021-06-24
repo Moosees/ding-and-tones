@@ -3,9 +3,7 @@
 ## Current tasks
 
 * Scales as refs - started
-* Song search (and save) receive data on client
-* Disable load song with scale button for songs without scales
-* Send scale id with load song request
+* Disable load song with scale button for songs without scaleId
 * Update route controllers - load song
 * Update old db posts
 * Option to save song without scale?
