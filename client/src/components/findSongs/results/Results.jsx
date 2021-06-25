@@ -54,7 +54,7 @@ const Results = ({
   const data = useMemo(() => [...songs], [songs]);
 
   const renderRowExpanded = useCallback(
-    ({ isOwner, scaleLabel, songId, title }) => {
+    ({ isOwner, scaleLabel, songId, title, scaleId }) => {
       const loadSong = (songId, getScale) => {
         getSongById(songId, getScale).then((res) => {
           if (res) redirectTo(res);
@@ -67,14 +67,16 @@ const Results = ({
             <Buttons position="flex-start">
               <BtnPrimary
                 light
-                label="Load with scale"
-                onClick={() => loadSong(songId, true)}
-              />
-              <BtnPrimary
-                light
                 label="Load w/o scale"
                 onClick={() => loadSong(songId, false)}
               />
+              {scaleId && (
+                <BtnPrimary
+                  light
+                  label="Load with scale"
+                  onClick={() => loadSong(songId, true)}
+                />
+              )}
             </Buttons>
           </td>
           <td colSpan={1}>
