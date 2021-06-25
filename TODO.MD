@@ -3,7 +3,7 @@
 ## Current tasks
 
 * Scales as refs - started
-* Update route controllers - load song
+* Load song with scale action
 * Update old db posts
 * Option to save song without scale?
 * Async await refactor for save song (and other controllers)?

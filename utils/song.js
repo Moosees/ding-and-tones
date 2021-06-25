@@ -1,4 +1,5 @@
 const parseScaleForSongFetch = ({
+  _id,
   info,
   notes: { dings = [], round = [], extra = [] },
 }) => {
@@ -7,7 +8,11 @@ const parseScaleForSongFetch = ({
     pos,
   }));
 
-  return { info, notes: { dings, round, extra: extraParsed } };
+  return {
+    info,
+    notes: { dings, round, extra: extraParsed },
+    ui: { scaleId: _id },
+  };
 };
 
 exports.parseGetResponse = (songObject, userId) => {
@@ -20,7 +25,7 @@ exports.parseGetResponse = (songObject, userId) => {
     bars,
     beats,
     info,
-    scale: parseScaleForSongFetch(scale),
+    scale: scale && parseScaleForSongFetch(scale),
   };
 };
 

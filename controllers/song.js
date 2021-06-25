@@ -251,7 +251,8 @@ exports.getSongById = (req, res) => {
 
   Song.findById(songId)
     .populate('composer', '_id anonymous name')
-    .select('_id arrangement bars beats info scale')
+    .populate('scale', '_id info notes')
+    .select('_id arrangement bars beats info')
     .exec((error, song) => {
       if (error) return res.status(400).json();
       if (!song) return res.status(404).json();
