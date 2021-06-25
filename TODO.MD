@@ -3,16 +3,15 @@
 ## Current tasks
 
 * Scales as refs - started
-* Load song with scale action
-* Update old db posts
-* Option to save song without scale?
 * Async await refactor for save song (and other controllers)?
 * Handle errors
 * Fallbacks if composer or scale has been deleted
-* Populate user when doing auth check instead of inside controllers
-* Clean up code
 
 * Clean up TODO.MD
+* Populate user when doing auth check instead of inside controllers
+* Clean up code
+* Update old db posts
+* Option to save song without scale?
 * Cache users in scale searches
 * Add option persist session for 30 days
 * Add colors to intervals help

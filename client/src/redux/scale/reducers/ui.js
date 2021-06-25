@@ -69,8 +69,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
         ...state,
         hasChanges: false,
         isOwner: false,
-        scaleId: null,
-        positionMap: payload.scale.ui.positionMap,
+        ...payload.scale.ui,
       };
     }
 

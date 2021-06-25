@@ -121,7 +121,7 @@ const parseScaleForLoadSong = (scale) => {
 
   return {
     info: { ...scale.info, ...newRoot },
-    ui: { positionMap },
+    ui: { positionMap, scaleId: scale.ui.scaleId },
     notes: { round: newRound, extra: newExtra, scaleFull: newFull },
   };
 };
