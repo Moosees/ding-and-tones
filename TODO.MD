@@ -3,9 +3,9 @@
 ## Current tasks
 
 * Scales as refs - started
-* Async await refactor for save song (and other controllers)?
 * Handle errors
 * Fallbacks if composer or scale has been deleted
+* Check if load song works if you are not the composer
 
 * Clean up TODO.MD
 * Populate user when doing auth check instead of inside controllers

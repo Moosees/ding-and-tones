@@ -186,61 +186,64 @@ exports.getNewSongs = async (req, res) => {
 
 // Song save, load and delete
 exports.saveSong = async (req, res) => {
-  const userId = req.userId;
-  const { songId, songUpdate } = req.body;
+  try {
+    const userId = req.userId;
+    const { songId, songUpdate } = req.body;
+    songUpdate.composer = userId;
+    songUpdate.updated = Date.now();
+    let newSong = false;
 
-  if (songUpdate.arrangement.length < 1 || songUpdate.arrangement.length > 100)
-    return res.status(400).json();
+    if (songUpdate.arrangement.length > 100)
+      return res.status(400).json({ msg: 'Song is too long' });
+    if (songUpdate.arrangement.length < 1)
+      return res.status(400).json({ msg: 'Song needs at least one bar' });
+    if (songId && !isValidObjectId(songId)) return res.status(404).json();
 
-  songUpdate.composer = userId;
-  songUpdate.updated = Date.now();
-  let newSong = false;
+    if (!songId) newSong = true;
 
-  if (songId && !isValidObjectId(songId)) return res.status(400).json();
-  if (!songId) newSong = true;
+    const scale =
+      songUpdate.scale &&
+      (await Scale.findById(songUpdate.scale).select('_id info').exec());
 
-  const scale =
-    songUpdate.scale &&
-    (await Scale.findById(songUpdate.scale).select('_id info').exec());
+    songUpdate.queryString = scale
+      ? `${songUpdate.info.title.toLowerCase()} ${scale.info.rootName.toLowerCase()} ${scale.info.name.toLowerCase()}`
+      : songUpdate.info.title.toLowerCase();
 
-  songUpdate.queryString = scale
-    ? `${songUpdate.info.title.toLowerCase()} ${scale.rootName.toLowerCase()} ${scale.name.toLowerCase()}`
-    : songUpdate.info.title.toLowerCase();
+    const song = await Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
+      .setOptions({
+        new: true,
+        upsert: true,
+        setDefaultsOnInsert: true,
+        runValidators: true,
+      })
+      .select('_id info')
+      .exec();
 
-  Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
-    .setOptions({
-      new: true,
-      upsert: true,
-      setDefaultsOnInsert: true,
-      runValidators: true,
-    })
-    .select('_id info')
-    .exec((error, song) => {
-      if (error || !song) return res.status(400).json();
+    if (!song) return res.status(404).json();
 
-      const resData = {
-        songId: song._id,
-        scaleId: song.scale,
-        composer: 'You',
-        isOwner: true,
-        title: song.info.title,
-        difficulty: song.info.difficulty,
-        metre: song.info.metre,
-        scaleName: scale ? `${scale.rootName} ${scale.name}` : 'N/A',
-        scaleLabel: scale ? scale.label : '',
-      };
-
-      if (!newSong) return res.status(200).json({ song: resData });
-
-      User.findByIdAndUpdate(userId, {
+    newSong &&
+      (await User.findByIdAndUpdate(userId, {
         $push: { songs: song._id },
       })
         .setOptions({ new: true })
-        .exec((error) => {
-          if (error) return res.status(400).json();
-          res.status(200).json({ song: resData });
-        });
-    });
+        .exec());
+
+    const resData = {
+      songId: song._id,
+      scaleId: song.scale,
+      composer: 'You',
+      isOwner: true,
+      title: song.info.title,
+      difficulty: song.info.difficulty,
+      metre: song.info.metre,
+      scaleName: scale ? `${scale.rootName} ${scale.name}` : 'N/A',
+      scaleLabel: scale ? scale.label : '',
+    };
+
+    res.status(200).json({ song: resData });
+  } catch (error) {
+    res.status(500).json();
+  }
 };
 
 exports.getSongById = (req, res) => {
