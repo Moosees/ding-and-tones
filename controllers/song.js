@@ -183,6 +183,7 @@ exports.saveSong = async (req, res) => {
 
     const scale =
       songUpdate.scale &&
+      isValidObjectId(songUpdate.scale) &&
       (await Scale.findById(songUpdate.scale).select('_id info').exec());
 
     songUpdate.queryString = scale

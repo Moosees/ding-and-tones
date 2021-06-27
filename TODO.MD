@@ -3,10 +3,7 @@
 ## Current tasks
 
 * Scales as refs - started
-* Fallbacks if composer or scale has been deleted
-* Check if load song works if you are not the composer
-* Clean up code
-* Update old db posts
+* Check if deleted composers or scales break song searches or fetches
 
 * Clean up TODO.MD
 * Populate user when doing auth check instead of inside controllers - where?
@@ -58,6 +55,7 @@
 * Focus on extra notes on mobile doesn't really show up on drum
 * Save scale name issues
 * Safari print popup bug
+* Saving a new copy of a song you didn't compose sends a get request to the new song
 
 ## Design
 
