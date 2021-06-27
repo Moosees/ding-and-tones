@@ -3,14 +3,13 @@
 ## Current tasks
 
 * Scales as refs - started
-* Handle errors
 * Fallbacks if composer or scale has been deleted
 * Check if load song works if you are not the composer
-
-* Clean up TODO.MD
-* Populate user when doing auth check instead of inside controllers
 * Clean up code
 * Update old db posts
+
+* Clean up TODO.MD
+* Populate user when doing auth check instead of inside controllers - where?
 * Option to save song without scale?
 * Cache users in scale searches
 * Add option persist session for 30 days
