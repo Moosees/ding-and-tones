@@ -132,14 +132,14 @@ export const parseFetchedSong = (song, getScale) => {
 
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
-  const parsedScale = getScale ? parseScaleForLoadSong(scale) : {};
+  const parsedScale = getScale && scale ? parseScaleForLoadSong(scale) : {};
 
   return {
     alert: `"${song.info.title}" by ${song.composer} loaded`,
     arrangement,
     bars: parsedBars,
     beats: parsedBeats,
-    getScale,
+    getScale: getScale && scale,
     info,
     scale: parsedScale,
     ui: { composer, isOwner, songId },

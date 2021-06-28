@@ -3,11 +3,12 @@
 ## Current tasks
 
 * Scales as refs - started
-* Check if deleted composers or scales break song searches or fetches
+* Remove load with scale (and add name) if scale is not found for searches
 
 * Clean up TODO.MD
 * Populate user when doing auth check instead of inside controllers - where?
 * Option to save song without scale?
+* Remind user that scale needs to be saved separately, or save scale with song?
 * Cache users in scale searches
 * Add option persist session for 30 days
 * Add colors to intervals help
@@ -28,6 +29,7 @@
 * Better keyboard navigation for table and dropdown
 * Add x close button to popups
 * Print keyboard shortcut
+* Deal with deleted composers
 
 * Search hints should not be alerts
 * Typescript
