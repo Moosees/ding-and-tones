@@ -21,7 +21,7 @@
     "express-mongo-sanitize": "^2.1.0",
     "express-session": "^1.17.2",
     "google-auth-library": "^7.1.2",
-    "mongoose": "^5.12.14",
+    "mongoose": "^5.13.0",
     "redis": "^3.1.2"
   },
   "devDependencies": {
