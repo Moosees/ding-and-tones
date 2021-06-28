@@ -79,16 +79,17 @@ exports.songSearch = async (req, res) => {
 
     const resData = songs.map(({ info, _id, composer, scale }) => {
       const isOwner = composer.equals(userId);
+      const hasScale = !!scales[scale];
 
       return {
         songId: _id,
-        scaleId: scale,
+        scaleId: hasScale && scale,
         composer: isOwner ? 'You' : composers[composer],
         isOwner,
         title: info.title,
         difficulty: info.difficulty,
         metre: info.metre,
-        ...scales[scale ? scale : 'noScale'],
+        ...scales[hasScale ? scale : 'noScale'],
       };
     });
 
@@ -114,16 +115,19 @@ exports.getMySongs = async (req, res) => {
 
     const scales = await getScalesForSongSearches(songs);
 
-    const resData = songs.map(({ info, _id, scale }) => ({
-      songId: _id,
-      scaleId: scale,
-      composer: 'You',
-      isOwner: true,
-      title: info.title,
-      difficulty: info.difficulty,
-      metre: info.metre,
-      ...scales[scale ? scale : 'noScale'],
-    }));
+    const resData = songs.map(({ info, _id, scale }) => {
+      const hasScale = !!scales[scale];
+      return {
+        songId: _id,
+        scaleId: hasScale && scale,
+        composer: 'You',
+        isOwner: true,
+        title: info.title,
+        difficulty: info.difficulty,
+        metre: info.metre,
+        ...scales[hasScale ? scale : 'noScale'],
+      };
+    });
 
     res.status(200).json({ songs: resData });
   } catch (error) {
@@ -147,16 +151,20 @@ exports.getNewSongs = async (req, res) => {
 
     const composers = await getComposersForSongSearches(songs);
 
-    const resData = songs.map(({ info, _id, composer, scale }, i) => ({
-      songId: _id,
-      scaleId: scale,
-      composer: composers[composer],
-      isOwner: false,
-      title: info.title,
-      difficulty: info.difficulty,
-      metre: info.metre,
-      ...scales[scale ? scale : 'noScale'],
-    }));
+    const resData = songs.map(({ info, _id, composer, scale }, i) => {
+      const hasScale = !!scales[scale];
+
+      return {
+        songId: _id,
+        scaleId: hasScale && scale,
+        composer: composers[composer],
+        isOwner: false,
+        title: info.title,
+        difficulty: info.difficulty,
+        metre: info.metre,
+        ...scales[hasScale ? scale : 'noScale'],
+      };
+    });
 
     res.status(200).json({ songs: resData });
   } catch (error) {

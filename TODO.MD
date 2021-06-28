@@ -2,9 +2,6 @@
 
 ## Current tasks
 
-* Scales as refs - started
-* Remove load with scale (and add name) if scale is not found for searches
-
 * Clean up TODO.MD
 * Populate user when doing auth check instead of inside controllers - where?
 * Option to save song without scale?
