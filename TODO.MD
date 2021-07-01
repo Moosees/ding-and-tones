@@ -1,81 +1,81 @@
 # DING AND TONES TODO LIST
 
-## Current tasks
+## Save song update
 
-* Clean up TODO.MD
-* Populate user when doing auth check instead of inside controllers - where?
-* Option to save song without scale?
-* Remind user that scale needs to be saved separately, or save scale with song?
-* Cache users in scale searches
-* Add option persist session for 30 days
-* Add colors to intervals help
-* Use Tooltip component for beat dropdown?
-* Print chords scale relative steps should be negative before tonic?
-* Use current interval focus instead of rootIndex for tonic in print chords?
-* All root notes in chords should be focused on drum (or none)?
-* Add more text labels like in Edit scale component?
-* Use new scaleFull outside print-chords - done?
-* Print list change order of chords?
-* Add drag and drop
-* Add on/off state for print chords Scale info lists?
-* Fix primary button focus after click
-* Fix select layouts and add space and enter
-* Disable focus for icons attached to edit only text boxes
-* Handle focus on modals
-* Escape closes modals and beat dropdown
-* Better keyboard navigation for table and dropdown
-* Add x close button to popups
-* Print keyboard shortcut
-* Deal with deleted composers
+* New save popup, show what scale will get saved with song
+* Warn user if saving song will change the scale assigned to the song
+* Warn user if trying to save or load a song with a deleted scale
 
-* Search hints should not be alerts
-* Typescript
-* Clean up reducers and actions
+## Typescript client update
+
+* Update state
+* Update components
 * Play song logic should be moved somewhere else?
-* Play song logic should be reworked with less forEach?
-* Remove measure subdivision count?
-* Bar numbers on song viewer? Only long songs?
-* Volume controls?
-* Should print view only break before fourths?
-* Change root note
-* Hover and tab focus for intervals?
-* Dry up print code
-* Change ScrollBox to list?
-* Clean up rootIndex in parseScaleData
+* Play song logic should be reworked with less forEach? Play song class
+
+## Updates in need of planning
+
+* Styled-components, mix-ins and css variables
+* Testing
 
 ## Bugs
 
-* Print button tries to print before component is mounted - fixed?
-* React-to-print document.write warnings
+* Save scale name issues
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
-* Login popup and blockers...
-* Cannot read property 'clientHeight' of null at DropdownHandler onResize() - fixed?
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Focus on extra notes on mobile doesn't really show up on drum
-* Save scale name issues
-* Safari print popup bug
+* Safari print popup bug - print dialog is not blocking/waiting
 * Saving a new copy of a song you didn't compose sends a get request to the new song
 
 ## Design
 
 * Better Loading component - big spinner? Spinner on account page save
-* Dynamic size for tonefields
 * Load song button can be seen through table header
 * Errors from backend display on inputs instead of alert?
 * New buttons for loading songs and confirm/cancel
-* Hover on drum shows all information about hovered note?
-* Refactor styled-components more, mix-ins or css variables?
 * Checkbox hover effect, all transform: scale hovers...
 * Only small divider lines?
-* Extra notes look weird on mobile in portrait
 * Delete hover color should be red
-* Chords Filter on mobile position and button size
+* Add more text labels like in Edit scale component?
+* Search hints should not be alerts
+* Change ScrollBox to list?
+
+## Focus and keyboard
+
+* Disable focus for icons attached to edit only text boxes
+* Add x close button to popups and esc closes
+* Fix primary button focus after click
+* Handle focus on modals
+* Escape closes modals and beat dropdown
+* Fix select layouts and add space and enter
+* Better keyboard navigation for table and dropdown
+* Print keyboard shortcut
+* Keyboard shortcuts on new song (and other?) popup
+* Keyboard shortcuts for playing drum (or songwriter)
 
 ## User/Menu
 
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 * Active state for nav buttons might not need the full pathname
+
+## Drum
+
+* Dynamic size for tonefields
+* Hover on drum shows all information about hovered note?
+* Extra notes look weird on mobile in portrait
+
+## Intervals
+
+* Hover and tab focus for intervals?
 * Add "big" intervals mode
+* Add colors to intervals help
+
+## Scale
+
+* Change root note
+* Double ding and mutant scales
+* Add play scale button and function
+* Create scale from name and string
 
 ## Chords
 
@@ -85,6 +85,11 @@
 * Show chord notes in scale in interval list?
 * Select chords to show in beat dropdown?
 * Play chords from chords page, also play them as arpeggios?
+* Print chords scale relative steps should be negative before tonic?
+* All root notes in chords should be focused on drum (or none)?
+* Print list change order of chords?
+* Print chords without scale info?
+* Chords Filter on mobile position and button size
 
 ## Songwriter
 
@@ -99,6 +104,12 @@
 * Plus and minus one for bpm
 * Move add bar controls to end of bar list?
 * User can add line breaks in songwriter?
+* Use Tooltip component for beat dropdown?
+* Add drag and drop
+* Bar numbers on song viewer? Only long songs?
+* Volume controls?
+* Should print view only break before fourths?
+* Color for hands on tablature
 
 ## State
 
@@ -108,34 +119,36 @@
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Scale layout prop - not needed? used for double ding?
-
-## Back/frontend logic
-
 * Prevent/warn transition away from page if data isn't saved?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
-* Change query string to keyword search? Add difficulty filter to searches
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Sorting search results in table
 * Privacy date localization
 * Select boxes dynamic width
-* Web worker?
-* Count number of bars for search results? Virtual field?
 * Clean up getNoteText() and Tonefield in general
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
 * Save song as JSON?
+* Use new scaleFull outside print-chords - done?
+* Remove measure subdivision count?
+* Clean up rootIndex in parseScaleData
+
+## API
+
+* Change query string to keyword search? Add difficulty filter to searches
+* Count number of bars for search results? Virtual field?
+* Auth middleware populates current user
+* Cache users in scale searches
+* Add option persist session for 30 days
+* Deal with deleted composers
+* Typescript
 
 ## Future plans
 
-* Testing
+* Web worker?
 * Find songs by user (other than current user)
 * Chose between save and save as new?
 * Disable save button if there are no changes - done for scales
-* Create scale from name and string
-* Add play scale button and function
 * Removing user should remove all users songs?
-* Keyboard shortcuts on new song (and other?) popup
-* Keyboard shortcuts for playing drum (or songwriter)
-* Keyboard shortcuts for popups
 * Likes and/or comments?
 * Custom chord inputs
 * Custom metres
@@ -156,6 +169,4 @@
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
 * Check text inputs for bad words?
 * Print multiple songs on same page
-* Double dings and mutant drums
 * Print with notes instead of numbers
-* Color for hands on tablature
