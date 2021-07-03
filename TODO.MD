@@ -2,7 +2,6 @@
 
 ## Save song update
 
-* Fetch song getScale should be boolean
 * Song without scales should send null as scaleId
 * New save popup, show what scale will get saved with song
 * Warn user if saving song will change the scale assigned to the song
