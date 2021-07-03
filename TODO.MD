@@ -2,7 +2,6 @@
 
 ## Save song update
 
-* Song without scales should send null as scaleId
 * New save popup, show what scale will get saved with song
 * Warn user if saving song will change the scale assigned to the song
 * Warn user if trying to save or load a song with a deleted scale
@@ -28,6 +27,7 @@
 * Focus on extra notes on mobile doesn't really show up on drum
 * Safari print popup bug - print dialog is not blocking/waiting
 * Saving a new copy of a song you didn't compose sends a get request to the new song
+* DropdownHandler memory leak when loading song by url with id
 
 ## Design
 
