@@ -21,6 +21,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
     case songTypes.FETCH_SUCCESSFUL:
+      console.log({ payload });
       return { ...state, ...payload.ui, isFetching: false };
 
     case songTypes.SAVE_ERROR:
@@ -28,12 +29,14 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.SAVE_STARTED:
       return { ...state, isSaving: true };
     case songTypes.SAVE_SUCCESSFUL:
+      console.log({ payload });
       return {
         ...state,
         composer: payload.song.composer,
         isOwner: payload.song.isOwner,
         isSaving: false,
         songId: payload.song.songId,
+        scaleId: payload.song.scaleId,
       };
 
     case songTypes.SET_STATE:

@@ -142,7 +142,7 @@ export const parseFetchedSong = (song, getScale) => {
     getScale: getScale && scale,
     info,
     scale: parsedScale,
-    ui: { composer, isOwner, songId },
+    ui: { composer, isOwner, songId, scaleId: scale.ui.scaleId },
   };
 };
 
