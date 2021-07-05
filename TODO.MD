@@ -2,7 +2,6 @@
 
 ## Save song update
 
-* Add popup
 * Show what scale will get saved with song in popup
 * Show all info about song in popup?
 * Use popupSaveSong if scale change might happen on save
