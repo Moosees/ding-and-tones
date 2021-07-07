@@ -2,13 +2,12 @@
 
 ## Save song update
 
-* Show what scale will get saved with song in popup
-* Show all info about song in popup?
+* Fix new save without scale
 * Use popupSaveSong if scale change might happen on save
 * Quick save button if song owner and no scale changes?
 * Remember saved scale option?
-* Warn user if trying to save or load a song with a deleted scale - outside scope of update?
 * Clean up code
+* Warn user if trying to save or load a song with a deleted scale - outside scope of update? Try fetching scale before save?
 
 ## Typescript client update
 

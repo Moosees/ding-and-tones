@@ -6,7 +6,7 @@ import useValidate from '../../../hooks/useValidate';
 import {
   addNewBar,
   saveSong,
-  updateSongInfo
+  updateSongInfo,
 } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
@@ -46,12 +46,16 @@ const ControlsLeft = ({
   const { metre, subdivision } = songInfo;
   const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
 
+  const saveSongCb = () => {
+    saveSong({ saveAs: !isOwner, title }).then((res) => {
+      setSaveSongOpen(false);
+      if (res) replace(res);
+    });
+  };
+
   const handleSave = () => {
     if (isOwner) {
-      saveSong({ saveAs: !isOwner, title }).then((res) => {
-        if (res) replace(res);
-      });
-      return;
+      return saveSongCb();
     }
 
     setSaveSongOpen(true);
@@ -124,7 +128,11 @@ const ControlsLeft = ({
         />
       )}
       {saveSongOpen && (
-        <PopupSaveSong onClose={() => setSaveSongOpen(false)} title={title} />
+        <PopupSaveSong
+          onClose={() => setSaveSongOpen(false)}
+          onSave={saveSongCb}
+          title={title}
+        />
       )}
     </>
   );
