@@ -5,9 +5,17 @@ import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 
-const PopupSaveSong = ({ onClose, onSave, scaleId, scaleName, title }) => {
+const PopupSaveSong = ({
+  hasNewScale,
+  onClose,
+  onSave,
+  scaleId,
+  scaleName,
+  title,
+}) => {
   return (
     <Popup header="Save song" onClose={onClose}>
+      {hasNewScale && <p>Current scale does not match saved scale</p>}
       <InfoBox>Title: {title}</InfoBox>
       <InfoBox>Scale: {scaleId ? scaleName : 'N/A - Scale not saved'}</InfoBox>
       <Buttons position="center">

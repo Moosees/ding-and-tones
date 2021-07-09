@@ -2,8 +2,7 @@
 
 ## Save song update
 
-* Use popupSaveSong if scale change might happen on save
-* Quick save button if song owner and no scale changes?
+* Allow user to save with new scale or keep saved scale
 * Remember saved scale option?
 * Clean up code
 * Warn user if trying to save or load a song with a deleted scale - outside scope of update? Try fetching scale before save?

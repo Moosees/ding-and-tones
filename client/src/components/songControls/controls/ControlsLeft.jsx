@@ -21,6 +21,7 @@ import { createNewBar } from './controls.utils';
 const ControlsLeft = ({
   addNewBar,
   arrangement,
+  hasNewScale,
   isOwner,
   isSaving,
   isSignedIn,
@@ -54,7 +55,7 @@ const ControlsLeft = ({
   };
 
   const handleSave = () => {
-    if (isOwner) {
+    if (isOwner && !hasNewScale) {
       return saveSongCb();
     }
 
@@ -132,13 +133,15 @@ const ControlsLeft = ({
           onClose={() => setSaveSongOpen(false)}
           onSave={saveSongCb}
           title={title}
+          hasNewScale={hasNewScale}
         />
       )}
     </>
   );
 };
 
-const mapStateToProps = ({ song, ui, user }) => ({
+const mapStateToProps = ({ scale, song, ui, user }) => ({
+  hasNewScale: scale.ui.scaleId !== song.ui.scaleId,
   arrangement: song.arrangement,
   songInfo: song.info,
   isOwner: song.ui.isOwner,
