@@ -219,7 +219,7 @@ exports.saveSong = async (req, res) => {
 
     const resData = {
       songId: song._id,
-      scaleId: scale._id,
+      scaleId: scale ? scale._id : null,
       composer: 'You',
       isOwner: true,
       title: song.info.title,

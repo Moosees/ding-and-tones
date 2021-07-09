@@ -2,7 +2,6 @@
 
 ## Save song update
 
-* Fix new save without scale
 * Use popupSaveSong if scale change might happen on save
 * Quick save button if song owner and no scale changes?
 * Remember saved scale option?
