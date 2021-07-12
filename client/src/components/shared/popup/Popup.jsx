@@ -1,5 +1,8 @@
 import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
+import Buttons from './modules/Buttons';
+import Paragraph from './modules/Paragraph';
+import SubHeading from './modules/SubHeading';
 import { AccountHeader, Background, Overlay } from './popup.styles';
 
 const Popup = ({ children, header, onClose }) => {
@@ -19,5 +22,9 @@ const Popup = ({ children, header, onClose }) => {
     document.getElementById('overlay')
   );
 };
+
+Popup.Paragraph = Paragraph;
+Popup.SubHeading = SubHeading;
+Popup.Buttons = Buttons;
 
 export default Popup;

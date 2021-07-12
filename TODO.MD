@@ -2,7 +2,6 @@
 
 ## Save song update
 
-* Style save song popup
 * Clean up code
 
 ## Typescript client update

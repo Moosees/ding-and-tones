@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
@@ -22,9 +21,12 @@ const PopupSaveSong = ({
 
   return (
     <Popup header="Save song" onClose={onClose}>
-      <p>Title: {title}</p>
-      <p>
-        Scale:
+      <Popup.Paragraph>
+        <Popup.SubHeading>Song Title:</Popup.SubHeading>
+        {title}
+      </Popup.Paragraph>
+      <Popup.Paragraph>
+        <Popup.SubHeading>Linked Scale:</Popup.SubHeading>
         {oldScaleId && (
           <Checkbox
             label={oldScaleName}
@@ -40,15 +42,15 @@ const PopupSaveSong = ({
           />
         )}
         <Checkbox
-          label="No preferred scale"
+          label="No linked scale"
           checked={!selectedScale}
           onChange={() => setSelectedScale(null)}
         />
-      </p>
-      <Buttons position="center">
+      </Popup.Paragraph>
+      <Popup.Buttons>
         <BtnPrimary label="Save" onClick={() => onSave(selectedScale)} />
         <BtnPrimary light label="Cancel" onClick={onClose} />
-      </Buttons>
+      </Popup.Buttons>
     </Popup>
   );
 };
