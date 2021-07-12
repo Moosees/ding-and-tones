@@ -37,6 +37,8 @@ const uiReducer = (state = uiState, { type, payload }) => {
         isSaving: false,
         songId: payload.song.songId,
         scaleId: payload.song.scaleId,
+        scaleName: payload.song.scaleName,
+        scaleLabel: payload.song.scaleLabel,
       };
 
     case songTypes.SET_STATE:

@@ -133,6 +133,14 @@ export const parseFetchedSong = (song, getScale) => {
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
   const parsedScale = getScale && scale ? parseScaleForLoadSong(scale) : {};
+  const savedScale =
+    scale && scale.ui && scale.info
+      ? {
+          scaleId: scale.ui.scaleId,
+          scaleName: `${scale.info.rootName} ${scale.info.name}`,
+          scaleLabel: scale.info.label,
+        }
+      : { scaleId: null, scaleName: '', scaleLabel: '' };
 
   return {
     alert: `"${song.info.title}" by ${song.composer} loaded`,
@@ -142,7 +150,7 @@ export const parseFetchedSong = (song, getScale) => {
     getScale: scale && getScale,
     info,
     scale: parsedScale,
-    ui: { composer, isOwner, songId, scaleId: scale?.ui?.scaleId || null },
+    ui: { composer, isOwner, songId, ...savedScale },
   };
 };
 

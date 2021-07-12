@@ -67,4 +67,6 @@ export const uiState = {
   isOwner: false,
   songId: null,
   scaleId: null,
+  scaleName: '',
+  scaleLabel: '',
 };
