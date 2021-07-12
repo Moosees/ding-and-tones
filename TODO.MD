@@ -4,8 +4,6 @@
 
 * Change scale logic
 * Style save song popup
-* Get name of old scale
-* Remember saved scale option?
 * Clean up code
 
 ## Typescript client update
@@ -113,6 +111,7 @@
 * Volume controls?
 * Should print view only break before fourths?
 * Color for hands on tablature
+* Remember saved scale option for save song popup
 
 ## State
 

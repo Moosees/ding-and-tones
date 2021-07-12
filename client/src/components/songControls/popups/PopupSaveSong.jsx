@@ -11,41 +11,36 @@ const PopupSaveSong = ({
   newScaleId,
   newScaleName,
   oldScaleId,
+  oldScaleName,
   onClose,
   onSave,
   title,
 }) => {
   const [selectedScale, setSelectedScale] = useState(
-    isFirstSave ? newScaleId : oldScaleId
+    isFirstSave && !oldScaleId ? newScaleId : oldScaleId
   );
 
   return (
     <Popup header="Save song" onClose={onClose}>
       <p>Title: {title}</p>
-      {!isFirstSave && hasNewScale && (
-        <p>
-          Loaded scale does not match scale assigned to song, do you want to
-          change assigned scale?
-        </p>
-      )}
       <p>
         Scale:
-        {!isFirstSave && oldScaleId && (
+        {oldScaleId && (
           <Checkbox
-            label="Keep - saved scale name"
+            label={oldScaleName}
             checked={selectedScale === oldScaleId}
             onChange={() => setSelectedScale(oldScaleId)}
           />
         )}
-        {newScaleId && (
+        {hasNewScale && newScaleId && (
           <Checkbox
-            label={`${isFirstSave ? '' : 'Change - '}${newScaleName}`}
+            label={newScaleName}
             checked={selectedScale === newScaleId}
             onChange={() => setSelectedScale(newScaleId)}
           />
         )}
         <Checkbox
-          label="Don't assign a scale to song"
+          label="No preferred scale"
           checked={!selectedScale}
           onChange={() => setSelectedScale(null)}
         />
@@ -62,6 +57,7 @@ const mapStateToProps = ({ scale, song }) => ({
   newScaleId: scale.ui.scaleId,
   newScaleName: `${scale.info.rootName} ${scale.info.name}`,
   oldScaleId: song.ui.scaleId,
+  oldScaleName: song.ui.scaleName,
 });
 
-export default connect(mapStateToProps, {})(PopupSaveSong);
+export default connect(mapStateToProps)(PopupSaveSong);
