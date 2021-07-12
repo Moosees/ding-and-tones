@@ -46,7 +46,7 @@ const PopupSaveSong = ({
         />
       </p>
       <Buttons position="center">
-        <BtnPrimary label="Save" onClick={onSave} />
+        <BtnPrimary label="Save" onClick={() => onSave(selectedScale)} />
         <BtnPrimary light label="Cancel" onClick={onClose} />
       </Buttons>
     </Popup>

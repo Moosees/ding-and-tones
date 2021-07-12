@@ -47,8 +47,8 @@ const ControlsLeft = ({
   const { metre, subdivision } = songInfo;
   const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
 
-  const saveSongCb = () => {
-    saveSong({ saveAs: !isOwner, title }).then((res) => {
+  const saveSongCb = (scaleId) => {
+    saveSong({ saveAs: !isOwner, title, scaleId }).then((res) => {
       setSaveSongOpen(false);
       if (res) replace(res);
     });

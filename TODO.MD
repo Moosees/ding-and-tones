@@ -2,7 +2,6 @@
 
 ## Save song update
 
-* Change scale logic
 * Style save song popup
 * Clean up code
 
