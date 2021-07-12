@@ -2,10 +2,11 @@
 
 ## Save song update
 
-* Allow user to save with new scale or keep saved scale
+* Change scale logic
+* Style save song popup
+* Get name of old scale
 * Remember saved scale option?
 * Clean up code
-* Warn user if trying to save or load a song with a deleted scale - outside scope of update? Try fetching scale before save?
 
 ## Typescript client update
 
@@ -142,6 +143,7 @@
 * Cache users in scale searches
 * Add option persist session for 30 days
 * Deal with deleted composers
+* Warn user if trying to save or load a song with a deleted scale
 * Typescript
 
 ## Future plans

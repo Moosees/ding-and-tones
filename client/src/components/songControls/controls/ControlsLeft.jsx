@@ -134,6 +134,7 @@ const ControlsLeft = ({
           onSave={saveSongCb}
           title={title}
           hasNewScale={hasNewScale}
+          isFirstSave={!isOwner}
         />
       )}
     </>
