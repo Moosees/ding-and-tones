@@ -1,5 +1,12 @@
 # DING AND TONES TODO LIST
 
+## Mobile tweaks
+
+* Focus on extra notes on mobile doesn't really show up on drum
+* Beat dropdown margins
+* Print chords button overflow
+* Disable pull down refresh?
+
 ## Typescript client update
 
 * Update state
@@ -17,7 +24,6 @@
 * Save scale name issues
 * Scale name edit remembers input even if scales changes - fix with scale save changes update?
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
-* Focus on extra notes on mobile doesn't really show up on drum
 * Safari print popup bug - print dialog is not blocking/waiting
 * Song search results doesn't update if save song changes assigned scale
 
