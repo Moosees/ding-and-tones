@@ -39,6 +39,7 @@ const DropdownHandler = ({ children, borderRef, listRef }) => {
       onResize();
 
       return () => {
+        timeout && clearTimeout(timeout);
         scrollEl.removeEventListener('scroll', onScroll);
         window.removeEventListener('resize', onResize);
       };
