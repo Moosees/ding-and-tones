@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Buttons from './modules/Buttons';
-import Paragraph from './modules/Paragraph';
+import Section from './modules/Section';
 import SubHeading from './modules/SubHeading';
 import { AccountHeader, Background, Overlay } from './popup.styles';
 
@@ -23,7 +23,7 @@ const Popup = ({ children, header, onClose }) => {
   );
 };
 
-Popup.Paragraph = Paragraph;
+Popup.Section = Section;
 Popup.SubHeading = SubHeading;
 Popup.Buttons = Buttons;
 

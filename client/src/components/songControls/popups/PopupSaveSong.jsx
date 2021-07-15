@@ -21,11 +21,11 @@ const PopupSaveSong = ({
 
   return (
     <Popup header="Save song" onClose={onClose}>
-      <Popup.Paragraph>
+      <Popup.Section>
         <Popup.SubHeading>Song Title:</Popup.SubHeading>
         {title}
-      </Popup.Paragraph>
-      <Popup.Paragraph>
+      </Popup.Section>
+      <Popup.Section>
         <Popup.SubHeading>Linked Scale:</Popup.SubHeading>
         {oldScaleId && (
           <Checkbox
@@ -46,7 +46,7 @@ const PopupSaveSong = ({
           checked={!selectedScale}
           onChange={() => setSelectedScale(null)}
         />
-      </Popup.Paragraph>
+      </Popup.Section>
       <Popup.Buttons>
         <BtnPrimary label="Save" onClick={() => onSave(selectedScale)} />
         <BtnPrimary light label="Cancel" onClick={onClose} />
