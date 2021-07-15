@@ -19,7 +19,6 @@
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Focus on extra notes on mobile doesn't really show up on drum
 * Safari print popup bug - print dialog is not blocking/waiting
-* Saving a new copy of a song you didn't compose sends a get request to the new song
 
 ## Design
 

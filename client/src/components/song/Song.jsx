@@ -37,8 +37,9 @@ const Song = ({
   }, [isWorking, replace, songId, songUi.songId]);
 
   useEffect(() => {
-    if (songId && songUi.songId !== songId && !isWorking)
+    if (songId && !songUi.songId && !isWorking) {
       getSongById(songId, true);
+    }
   }, [isWorking, getSongById, songId, songUi.songId]);
 
   useEffect(() => {
