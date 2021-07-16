@@ -26,6 +26,7 @@
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Safari print popup bug - print dialog is not blocking/waiting
 * Song search results doesn't update if save song changes assigned scale
+* Intervals for extra tonefields lower than round have the wrong numbers in interval list
 
 ## Design
 
@@ -39,6 +40,7 @@
 * Add more text labels like in Edit scale component?
 * Search hints should not be alerts
 * Change ScrollBox to list?
+* Use drop shadows for tonefield focus?
 
 ## Focus and keyboard
 
