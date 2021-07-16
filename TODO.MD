@@ -2,7 +2,6 @@
 
 ## Mobile tweaks
 
-* Focus on extra notes on mobile doesn't really show up on drum
 * Beat dropdown margins
 * Print chords button overflow
 * Disable pull down refresh?
