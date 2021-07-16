@@ -5,10 +5,11 @@ import Filter from './filter/Filter';
 import List from './list/List';
 
 const ChordsContainer = styled.div`
-  align-items: center;
+  align-content: center;
   display: grid;
   flex-grow: 1;
   grid-template-columns: max-content min-content 1fr;
+  grid-template-rows: 95%;
   padding: var(--padding);
 `;
 

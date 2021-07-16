@@ -65,7 +65,7 @@ const Filter = ({
         <Help topic={helpTopics.CHORDS} />
       </Buttons>
       <DividerLine small />
-      <ScrollBox height="60">
+      <ScrollBox height="75">
         <CheckBoxes>{allChords}</CheckBoxes>
       </ScrollBox>
       <DividerLine small />

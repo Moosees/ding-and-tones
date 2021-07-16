@@ -90,7 +90,6 @@
 * All root notes in chords should be focused on drum (or none)?
 * Print list change order of chords?
 * Print chords without scale info?
-* Chords Filter on mobile position and button size
 
 ## Songwriter
 

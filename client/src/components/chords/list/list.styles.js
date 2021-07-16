@@ -17,23 +17,4 @@ export const ItemContainer = styled.li`
       margin: 0 4px;
     }
   }
-
-  /* 
-  button {
-    background-color: ${({ theme }) => theme.colorBtnLight};
-    border-radius: 3px;
-    cursor: pointer;
-    transition: transform 0.1s ease;
-
-    &:hover,
-    &:focus {
-      outline: 0;
-      transform: scale(1.05);
-    }
-
-    ${({ theme }) => theme.mqW850`
-    margin: 1px;
-    padding: 2px;
-  `}
-  } */
 `;
