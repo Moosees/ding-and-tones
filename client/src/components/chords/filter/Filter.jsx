@@ -60,7 +60,7 @@ const Filter = ({
 
   return (
     <ControlsContainer>
-      <Buttons>
+      <Buttons position="center">
         <PrintChordsBtn />
         <Help topic={helpTopics.CHORDS} />
       </Buttons>

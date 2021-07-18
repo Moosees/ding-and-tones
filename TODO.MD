@@ -3,7 +3,6 @@
 ## Mobile tweaks
 
 * Beat dropdown margins
-* Print chords button overflow
 * Disable pull down refresh?
 
 ## Typescript client update

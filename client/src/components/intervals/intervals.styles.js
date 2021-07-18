@@ -20,7 +20,6 @@ export const DrumModeContainer = styled.div`
 `;
 
 export const IntervalList = styled.div`
-  align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;

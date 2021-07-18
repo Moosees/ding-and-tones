@@ -25,13 +25,13 @@ export const TooltipContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  width: 100%;
 `;
 
 export const TooltipBtnWrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+  width: 100%;
 `;
 
 export const PopupContainer = styled.div`
