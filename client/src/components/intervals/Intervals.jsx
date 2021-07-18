@@ -20,13 +20,15 @@ const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
           />
         ))
       : scale[displayedNote].intervalMap.map((interval, i) => {
-          const isExtraNote = i >= round.length;
+          const { isExtra, localIndex } = scale[i];
+          const number = isExtra ? `b${localIndex + 1}` : localIndex;
+          
           return (
             <ScaleInterval
               key={i}
               scaleIndex={i}
               interval={interval}
-              number={isExtraNote ? `b${i - round.length + 1}` : i}
+              number={number}
             />
           );
         });

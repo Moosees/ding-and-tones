@@ -25,7 +25,6 @@
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Safari print popup bug - print dialog is not blocking/waiting
 * Song search results doesn't update if save song changes assigned scale
-* Intervals for extra tonefields lower than round have the wrong numbers in interval list
 
 ## Design
 
@@ -70,6 +69,7 @@
 * Hover and tab focus for intervals?
 * Add "big" intervals mode
 * Add colors to intervals help
+* One less plus for octaves in interval list?
 
 ## Scale
 
