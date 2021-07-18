@@ -2,7 +2,6 @@
 
 ## Mobile tweaks
 
-* Beat dropdown margins
 * Disable pull down refresh?
 
 ## Typescript client update

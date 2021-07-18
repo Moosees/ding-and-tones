@@ -134,7 +134,7 @@ export const DropdownItem = styled.div`
   font-size: ${({ theme }) => theme.fzSmallest};
   justify-content: space-between;
   margin: 1px;
-  min-width: 6rem;
+  min-width: 7rem;
   opacity: ${({ disabled, selected }) => (disabled && !selected ? '0.6' : '1')};
   padding: 2px;
   position: relative;
@@ -154,6 +154,10 @@ export const DropdownItem = styled.div`
 
   ${({ theme }) => theme.mqW1000`
     font-size: ${theme.fzMedium};
+  `}
+
+  ${({ theme }) => theme.mqW850`
+    padding: 1px;
   `}
 `;
 
