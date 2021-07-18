@@ -1,9 +1,5 @@
 # DING AND TONES TODO LIST
 
-## Mobile tweaks
-
-* Disable pull down refresh?
-
 ## Typescript client update
 
 * Update state
@@ -92,6 +88,8 @@
 ## Songwriter
 
 * Dropdown list show all dyads and ding + note combinations?
+* Use Tooltip component for beat dropdown?
+* Make dropdown higher z than controls, remove need for padding
 * Solo bars? Invert mute/solo?
 * Show latest changes (useful when copying and moving bars)
 * Undo changes
@@ -102,7 +100,6 @@
 * Plus and minus one for bpm
 * Move add bar controls to end of bar list?
 * User can add line breaks in songwriter?
-* Use Tooltip component for beat dropdown?
 * Add drag and drop
 * Bar numbers on song viewer? Only long songs?
 * Volume controls?
