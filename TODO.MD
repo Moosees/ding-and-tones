@@ -6,6 +6,7 @@
 * Add key event listeners for hands
 * Event listeners work for both single and chord mode
 * Escape close dropdown
+* Clean up code
 
 ## Typescript client update
 
