@@ -1,5 +1,12 @@
 # DING AND TONES TODO LIST
 
+## Beat dropdown keyboard
+
+* Add key event listeners for each sound
+* Add key event listeners for hands
+* Event listeners work for both single and chord mode
+* Escape close dropdown
+
 ## Typescript client update
 
 * Update state
@@ -40,12 +47,12 @@
 * Add x close button to popups and esc closes
 * Fix primary button focus after click
 * Handle focus on modals
-* Escape closes modals and beat dropdown
+* Escape closes modals
 * Fix select layouts and add space and enter
 * Better keyboard navigation for table and dropdown
 * Print keyboard shortcut
 * Keyboard shortcuts on new song (and other?) popup
-* Keyboard shortcuts for playing drum (or songwriter)
+* Keyboard shortcuts for playing drum
 
 ## User/Menu
 
