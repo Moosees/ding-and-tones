@@ -135,6 +135,7 @@
 * Use new scaleFull outside print-chords - done?
 * Remove measure subdivision count?
 * Clean up rootIndex in parseScaleData
+* Trim titles and names before checking length
 
 ## API
 
