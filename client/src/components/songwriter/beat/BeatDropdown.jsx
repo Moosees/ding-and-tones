@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { hands } from '../../../assets/constants';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import {
   updateHandForBeat,
@@ -40,6 +41,20 @@ const BeatDropdown = ({
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 
+  const keyboardCbs = {};
+
+  useEffect(() => {
+    const keyboardListener = (e) => {
+      if (!keyboardCbs[e.keyCode]) return;
+
+      keyboardCbs[e.keyCode]();
+    };
+
+    document.addEventListener('keydown', keyboardListener);
+
+    return () => document.removeEventListener('keydown', keyboardListener);
+  }, []);
+
   const parseOptions = (optionArray, hasNonScaleNote) =>
     optionArray.map(({ label, value }) => {
       const selected = sound.includes(value);
@@ -49,6 +64,10 @@ const BeatDropdown = ({
       const handleClick = () => {
         updateSoundForBeat(beatId, value, selected, multiSelect);
       };
+
+      if (!hasNonScaleNote) {
+        keyboardCbs[beatOptionToKeyCode[value]] = handleClick;
+      }
 
       const handleKeyDown = (e) => {
         if (e.keyCode === 32 || e.keyCode === 13) {

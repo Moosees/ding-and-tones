@@ -2,9 +2,9 @@
 
 ## Beat dropdown keyboard
 
-* Add key event listeners for each sound
 * Add key event listeners for hands
 * Event listeners work for both single and chord mode
+* Fix selection bugs. Memoization?
 * Escape close dropdown
 * Clean up code
 
