@@ -3,7 +3,7 @@ export const beatOptionToKeyCode = {
   'lh': 78, // n
   'rh': 77, // m
   t: 65, // a
-  s: 83, // s
+  T: 83, // s
   0: 68, // d
   1: 49, // digits
   2: 50,
