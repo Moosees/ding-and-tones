@@ -143,15 +143,20 @@ export const updateHandForBeat = (beatId, newHand, selected) => ({
   payload: { beatId, newHand, selected },
 });
 
-export const updateSoundForBeat = (
-  beatId,
-  newSound,
-  selected,
-  multiSelect
-) => ({
-  type: songTypes.UPDATE_BEAT,
-  payload: { beatId, newSound, selected, multiSelect },
-});
+export const updateSoundForBeat =
+  (beatId, newSound) => (dispatch, getState) => {
+    const {
+      song: { beats },
+      ui: { multiSelect },
+    } = getState();
+
+    const selected = beats[beatId].sound.includes(newSound);
+
+    dispatch({
+      type: songTypes.UPDATE_BEAT,
+      payload: { beatId, newSound, selected, multiSelect },
+    });
+  };
 
 export const updateMeasure = (barId, newMeasure, newBeats) => ({
   type: songTypes.UPDATE_MEASURE,

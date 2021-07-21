@@ -4,8 +4,8 @@
 
 * Add key event listeners for hands
 * Event listeners work for both single and chord mode
-* Fix selection bugs. Memoization?
 * Escape close dropdown
+* useEffect dependency warning? Split dropdown and dropdown item components?
 * Clean up code
 
 ## Typescript client update

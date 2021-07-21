@@ -62,7 +62,7 @@ const BeatDropdown = ({
       const isDisabled = multiSelect && sound.length >= 2 && !selected;
 
       const handleClick = () => {
-        updateSoundForBeat(beatId, value, selected, multiSelect);
+        updateSoundForBeat(beatId, value);
       };
 
       if (!hasNonScaleNote) {
