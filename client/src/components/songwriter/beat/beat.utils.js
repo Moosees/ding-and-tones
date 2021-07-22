@@ -9,7 +9,7 @@ export const createKeyboardCbs = (
 ) => {
   console.log({ round, extra, percussive });
   const handCbs = hands.map(({ short, value }) => ({
-    [beatOptionToKeyCode[short]]: handCb(beatId, value),
+    [beatOptionToKeyCode[short]]: () => handCb(beatId, value),
   }));
   console.log({ handCbs });
 };

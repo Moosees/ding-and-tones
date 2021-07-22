@@ -110,7 +110,7 @@ const BeatDropdown = ({
 
   const handItems = hands.map(({ name, value }) => {
     const handleClick = () => {
-      updateHandForBeat(beatId, value, value === hand);
+      updateHandForBeat(beatId, value);
     };
 
     const handleKeyDown = (e) => {
