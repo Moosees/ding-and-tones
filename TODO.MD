@@ -2,10 +2,10 @@
 
 ## Beat dropdown keyboard
 
-* Add key event listeners for hands
-* Event listeners work for both single and chord mode
-* Escape close dropdown
+* Add key event listeners for hands - started, update redux action
 * useEffect dependency warning? Split dropdown and dropdown item components?
+* Escape close dropdown
+* Add help for keyboard shortcuts
 * Clean up code
 
 ## Typescript client update

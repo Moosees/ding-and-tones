@@ -1,7 +1,7 @@
 export const beatOptionToKeyCode = {
-  'bh': 66, // b
-  'lh': 78, // n
-  'rh': 77, // m
+  RL: 66, // b
+  L: 78, // n
+  R: 77, // m
   t: 65, // a
   T: 83, // s
   0: 68, // d

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
@@ -19,6 +19,7 @@ import {
   DropdownItem,
   HandIcon,
 } from './beat.styles';
+import { createKeyboardCbs } from './beat.utils';
 
 const BeatDropdown = ({
   beatId,
@@ -40,6 +41,22 @@ const BeatDropdown = ({
   const { offsetTop, offsetLeft } = dropdownPosRef.current;
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
+
+  const cbs = useMemo(() => {
+    console.log('memo');
+    createKeyboardCbs(beatId, updateSoundForBeat, updateHandForBeat, {
+      round: options.round,
+      extra: options.extra,
+      percussive: options.percussive,
+    });
+  }, [
+    beatId,
+    updateSoundForBeat,
+    updateHandForBeat,
+    options.round,
+    options.extra,
+    options.percussive,
+  ]);
 
   const keyboardCbs = {};
 
