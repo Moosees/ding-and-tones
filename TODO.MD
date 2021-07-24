@@ -2,7 +2,7 @@
 
 ## Beat dropdown keyboard
 
-* Add key event listeners for hands - started
+* Use new keyboard listeners
 * useEffect dependency warning? Split dropdown and dropdown item components?
 * Escape close dropdown
 * Add help for keyboard shortcuts

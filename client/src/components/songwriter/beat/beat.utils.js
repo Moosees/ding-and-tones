@@ -12,4 +12,9 @@ export const createKeyboardCbs = (
     [beatOptionToKeyCode[short]]: () => handCb(beatId, value),
   }));
   console.log({ handCbs });
+
+  const soundCbs = [...round, ...extra].map(({ value }) => ({
+    [beatOptionToKeyCode[value]]: () => soundCb(beatId, value),
+  }));
+  console.log({ soundCbs });
 };
