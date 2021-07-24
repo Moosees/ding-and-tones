@@ -7,14 +7,18 @@ export const createKeyboardCbs = (
   handCb,
   { round, extra, percussive }
 ) => {
-  console.log({ round, extra, percussive });
-  const handCbs = hands.map(({ short, value }) => ({
-    [beatOptionToKeyCode[short]]: () => handCb(beatId, value),
-  }));
-  console.log({ handCbs });
+  const handCbs = hands.reduce((acc, { short, value }) => {
+    const key = beatOptionToKeyCode[short];
+    return { ...acc, [key]: () => handCb(beatId, value) };
+  }, {});
 
-  const soundCbs = [...round, ...extra].map(({ value }) => ({
-    [beatOptionToKeyCode[value]]: () => soundCb(beatId, value),
-  }));
-  console.log({ soundCbs });
+  const soundCbs = [...round, ...extra, ...percussive].reduce(
+    (acc, { value }) => {
+      const key = beatOptionToKeyCode[value];
+      return { ...acc, [key]: () => soundCb(beatId, value) };
+    },
+    {}
+  );
+
+  return { ...handCbs, ...soundCbs };
 };

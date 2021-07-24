@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { hands } from '../../../assets/constants';
-import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import {
   updateHandForBeat,
@@ -42,9 +41,8 @@ const BeatDropdown = ({
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 
-  const cbs = useMemo(() => {
-    console.log('memo');
-    createKeyboardCbs(beatId, updateSoundForBeat, updateHandForBeat, {
+  const keyboardCbs = useMemo(() => {
+    return createKeyboardCbs(beatId, updateSoundForBeat, updateHandForBeat, {
       round: options.round,
       extra: options.extra,
       percussive: options.percussive,
@@ -58,8 +56,6 @@ const BeatDropdown = ({
     options.percussive,
   ]);
 
-  const keyboardCbs = {};
-
   useEffect(() => {
     const keyboardListener = (e) => {
       if (!keyboardCbs[e.keyCode]) return;
@@ -70,7 +66,7 @@ const BeatDropdown = ({
     document.addEventListener('keydown', keyboardListener);
 
     return () => document.removeEventListener('keydown', keyboardListener);
-  }, []);
+  }, [keyboardCbs]);
 
   const parseOptions = (optionArray, hasNonScaleNote) =>
     optionArray.map(({ label, value }) => {
@@ -81,10 +77,6 @@ const BeatDropdown = ({
       const handleClick = () => {
         updateSoundForBeat(beatId, value);
       };
-
-      if (!hasNonScaleNote) {
-        keyboardCbs[beatOptionToKeyCode[value]] = handleClick;
-      }
 
       const handleKeyDown = (e) => {
         if (e.keyCode === 32 || e.keyCode === 13) {
