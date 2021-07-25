@@ -1,24 +1,22 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { hands } from '../../../assets/constants';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import {
   updateHandForBeat,
-  updateSoundForBeat,
+  updateSoundForBeat
 } from '../../../redux/song/song.actions';
 import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { DropdownContext } from '../dropdownHandler/DropdownHandler';
+import HandItems from '../dropdownItems/HandItems';
 import {
   Arrow,
   Dropdown,
   DropdownColumn,
-  DropdownContent,
-  DropdownItem,
-  HandIcon,
-} from './beat.styles';
-import { createKeyboardCbs } from './beat.utils';
+  DropdownContent
+} from './beatDropdown.styles';
+import { createKeyboardCbs } from './beatDropdown.utils.js';
 
 const BeatDropdown = ({
   beatId,
@@ -100,32 +98,6 @@ const BeatDropdown = ({
       );
     });
 
-  const handItems = hands.map(({ name, value }) => {
-    const handleClick = () => {
-      updateHandForBeat(beatId, value);
-    };
-
-    const handleKeyDown = (e) => {
-      if (e.keyCode === 32 || e.keyCode === 13) {
-        e.preventDefault();
-        handleClick();
-      }
-    };
-
-    return (
-      <DropdownItem
-        tabIndex={0}
-        selected={value === hand}
-        key={value}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-      >
-        <span>{name}</span>
-        <HandIcon className="material-icons">pan_tool</HandIcon>
-      </DropdownItem>
-    );
-  });
-
   return (
     <>
       <Arrow openTop={openTop} />
@@ -160,7 +132,7 @@ const BeatDropdown = ({
             <DividerLine small />
             {parseOptions(options.percussive)}
             <DividerLine small />
-            {handItems}
+            <HandItems beatId={beatId} hand={hand} />
           </DropdownColumn>
         </DropdownContent>
       </Dropdown>

@@ -2,7 +2,8 @@
 
 ## Beat dropdown keyboard
 
-* useEffect dependency warning? Split dropdown and dropdown item components?
+* Move soundOptions to new component
+* Get relevant state (hand, other?) from redux instead of props for beat dropdown and items
 * Escape close dropdown
 * Add help for keyboard shortcuts
 * Clean up code

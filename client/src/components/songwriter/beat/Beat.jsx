@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import { BeatAnchor, BeatCircle, BeatContainer, BeatText } from './beat.styles';
-import BeatDropdown from './BeatDropdown';
+import BeatDropdown from '../beatDropdown/BeatDropdown';
 
 const Beat = ({
   beatId,
