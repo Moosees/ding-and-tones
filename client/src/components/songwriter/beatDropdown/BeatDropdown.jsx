@@ -10,6 +10,7 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { DropdownContext } from '../dropdownHandler/DropdownHandler';
 import HandItems from '../dropdownItems/HandItems';
+import SoundItems from '../dropdownItems/SoundItems';
 import {
   Arrow,
   Dropdown,
@@ -66,38 +67,6 @@ const BeatDropdown = ({
     return () => document.removeEventListener('keydown', keyboardListener);
   }, [keyboardCbs]);
 
-  const parseOptions = (optionArray, hasNonScaleNote) =>
-    optionArray.map(({ label, value }) => {
-      const selected = sound.includes(value);
-
-      const isDisabled = multiSelect && sound.length >= 2 && !selected;
-
-      const handleClick = () => {
-        updateSoundForBeat(beatId, value);
-      };
-
-      const handleKeyDown = (e) => {
-        if (e.keyCode === 32 || e.keyCode === 13) {
-          e.preventDefault();
-          handleClick();
-        }
-      };
-
-      return hasNonScaleNote && !selected ? null : (
-        <DropdownItem
-          tabIndex={isDisabled ? -1 : 0}
-          disabled={isDisabled}
-          selected={selected}
-          key={value}
-          hasNonScaleNote={hasNonScaleNote}
-          onClick={handleClick}
-          onKeyDown={handleKeyDown}
-        >
-          {label}
-        </DropdownItem>
-      );
-    });
-
   return (
     <>
       <Arrow openTop={openTop} />
@@ -116,11 +85,22 @@ const BeatDropdown = ({
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
-            {parseOptions(options.round)}
+            <SoundItems
+              multiSelect={multiSelect}
+              sound={sound}
+              beatId={beatId}
+              optionList={options.round}
+            />
             {hasNonScaleNote && (
               <>
                 <DividerLine small />
-                {parseOptions(options.nonScale, hasNonScaleNote)}
+                <SoundItems
+                  multiSelect={multiSelect}
+                  sound={sound}
+                  beatId={beatId}
+                  optionList={options.nonScale}
+                  hasNonScaleNote
+                />
               </>
             )}
           </DropdownColumn>
@@ -128,9 +108,19 @@ const BeatDropdown = ({
             <DividerLine vertical small />
           </DropdownColumn>
           <DropdownColumn>
-            {parseOptions(options.extra)}
+            <SoundItems
+              multiSelect={multiSelect}
+              sound={sound}
+              beatId={beatId}
+              optionList={options.extra}
+            />
             <DividerLine small />
-            {parseOptions(options.percussive)}
+            <SoundItems
+              multiSelect={multiSelect}
+              sound={sound}
+              beatId={beatId}
+              optionList={options.percussive}
+            />
             <DividerLine small />
             <HandItems beatId={beatId} hand={hand} />
           </DropdownColumn>

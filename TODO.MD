@@ -2,9 +2,8 @@
 
 ## Beat dropdown keyboard
 
-* Move soundOptions to new component
 * Get relevant state (hand, other?) from redux instead of props for beat dropdown and items
-* Escape close dropdown
+* Escape close dropdown, toggle chord mode key?
 * Add help for keyboard shortcuts
 * Clean up code
 
