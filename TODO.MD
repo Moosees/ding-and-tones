@@ -2,7 +2,6 @@
 
 ## Beat dropdown keyboard
 
-* Get relevant state (hand, other?) from redux instead of props for beat dropdown and items
 * Add help for keyboard shortcuts
 * Clean up code
 

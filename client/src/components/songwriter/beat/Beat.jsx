@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
-import { BeatAnchor, BeatCircle, BeatContainer, BeatText } from './beat.styles';
 import BeatDropdown from '../beatDropdown/BeatDropdown';
+import { BeatAnchor, BeatCircle, BeatContainer, BeatText } from './beat.styles';
 
 const Beat = ({
   beatId,
@@ -67,11 +67,8 @@ const Beat = ({
               dropdownPosRef={dropdownPosRef}
               btnRef={btnRef}
               beatId={beatId}
-              hand={hand}
-              sound={sound}
               hasNonScaleNote={hasNonScaleNote}
               isOpenCb={setIsOpen}
-              value={value}
             />
           )}
         </BeatAnchor>

@@ -24,16 +24,13 @@ const BeatDropdown = ({
   beatId,
   btnRef,
   dropdownPosRef,
-  hand,
   hasNonScaleNote,
   isOpenCb,
   multiSelect,
   options,
-  sound,
   toggleMultiSelect,
   updateHandForBeat,
   updateSoundForBeat,
-  value,
 }) => {
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
@@ -82,12 +79,7 @@ const BeatDropdown = ({
   return (
     <>
       <Arrow openTop={openTop} />
-      <Dropdown
-        ref={insideRef}
-        openLeft={openLeft}
-        openTop={openTop}
-        value={value}
-      >
+      <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
         <Checkbox
           small
           checked={multiSelect}
@@ -97,18 +89,11 @@ const BeatDropdown = ({
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
-            <SoundItems
-              multiSelect={multiSelect}
-              sound={sound}
-              beatId={beatId}
-              optionList={options.round}
-            />
+            <SoundItems beatId={beatId} optionList={options.round} />
             {hasNonScaleNote && (
               <>
                 <DividerLine small />
                 <SoundItems
-                  multiSelect={multiSelect}
-                  sound={sound}
                   beatId={beatId}
                   optionList={options.nonScale}
                   hasNonScaleNote
@@ -120,21 +105,11 @@ const BeatDropdown = ({
             <DividerLine vertical small />
           </DropdownColumn>
           <DropdownColumn>
-            <SoundItems
-              multiSelect={multiSelect}
-              sound={sound}
-              beatId={beatId}
-              optionList={options.extra}
-            />
+            <SoundItems beatId={beatId} optionList={options.extra} />
             <DividerLine small />
-            <SoundItems
-              multiSelect={multiSelect}
-              sound={sound}
-              beatId={beatId}
-              optionList={options.percussive}
-            />
+            <SoundItems beatId={beatId} optionList={options.percussive} />
             <DividerLine small />
-            <HandItems beatId={beatId} hand={hand} />
+            <HandItems beatId={beatId} />
           </DropdownColumn>
         </DropdownContent>
       </Dropdown>

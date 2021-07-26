@@ -5,12 +5,14 @@ import { DropdownItem } from './dropdownItems.styles';
 
 const SoundItems = ({
   beatId,
+  beats,
   hasNonScaleNote,
   multiSelect,
   optionList,
-  sound,
   updateSoundForBeat,
 }) => {
+  const { sound } = beats[beatId];
+
   const soundItems = optionList.map(({ label, value }) => {
     const selected = sound.includes(value);
 
@@ -45,4 +47,9 @@ const SoundItems = ({
   return <>{soundItems}</>;
 };
 
-export default connect(null, { updateSoundForBeat })(SoundItems);
+const mapStateToProps = ({ song, ui }) => ({
+  beats: song.beats,
+  multiSelect: ui.multiSelect,
+});
+
+export default connect(mapStateToProps, { updateSoundForBeat })(SoundItems);
