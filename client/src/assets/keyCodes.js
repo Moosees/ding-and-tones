@@ -1,4 +1,5 @@
 export const beatOptionToKeyCode = {
+  chord: 67, // c
   RL: 66, // b
   L: 78, // n
   R: 77, // m

@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import {
   updateHandForBeat,
-  updateSoundForBeat
+  updateSoundForBeat,
 } from '../../../redux/song/song.actions';
 import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
 import Checkbox from '../../shared/checkbox/Checkbox';
@@ -15,7 +16,7 @@ import {
   Arrow,
   Dropdown,
   DropdownColumn,
-  DropdownContent
+  DropdownContent,
 } from './beatDropdown.styles';
 import { createKeyboardCbs } from './beatDropdown.utils.js';
 
@@ -57,6 +58,17 @@ const BeatDropdown = ({
 
   useEffect(() => {
     const keyboardListener = (e) => {
+      if (e.keyCode === beatOptionToKeyCode['chord']) {
+        toggleMultiSelect();
+        return;
+      }
+
+      if (e.keyCode === 27) {
+        // escape
+        isOpenCb(false);
+        return;
+      }
+
       if (!keyboardCbs[e.keyCode]) return;
 
       keyboardCbs[e.keyCode]();
@@ -65,7 +77,7 @@ const BeatDropdown = ({
     document.addEventListener('keydown', keyboardListener);
 
     return () => document.removeEventListener('keydown', keyboardListener);
-  }, [keyboardCbs]);
+  }, [keyboardCbs, isOpenCb, toggleMultiSelect]);
 
   return (
     <>
