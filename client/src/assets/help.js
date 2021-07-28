@@ -1,6 +1,7 @@
 export const helpTopics = {
   CHORDS: 'chords',
   INTERVALS: 'intervals',
+  BEATS: 'beats',
 };
 
 export const helpContent = {
@@ -22,6 +23,15 @@ export const helpContent = {
       'Red to orange colors indicate consonance, using them in chords or succession creates harmonic and pleasant sounds.',
       'Orange to white to blue colors indicate dissonance, using them can create tension or add character to your music.',
       "The colors are only guidelines, don't let them limit how you play!",
+    ],
+  },
+  beats: {
+    title: 'Beats tips',
+    content: [
+      'Keyboard shortcuts help when adding notes:',
+      'Use "d" for ding and "a" or "s" for taks.',
+      '1-9 for normal tonefields.',
+      'Use q-p for extra/bottom notes and "b", "n", "m" for hands!',
     ],
   },
 };
