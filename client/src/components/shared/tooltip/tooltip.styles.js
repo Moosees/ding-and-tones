@@ -12,7 +12,7 @@ export const Arrow = styled.div`
   padding: 5px;
   position: absolute;
   top: calc(50% - 7px);
-  z-index: 60;
+  z-index: 80;
 
   ${({ openRight }) => (openRight ? 'left: -11px;' : 'right: -11px;')}
 
@@ -49,7 +49,7 @@ export const PopupContainer = styled.div`
   position: absolute;
   top: ${({ top }) => top}px;
   transform: translateY(-50%);
-  z-index: 50;
+  z-index: 90;
 
   ${({ vertPos, openRight }) =>
     `${openRight ? 'left: ' : 'right: '}${vertPos}px;`}

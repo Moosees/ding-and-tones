@@ -29,7 +29,7 @@ export const Arrow = styled.div`
     openTop ? '0 2px 2px 2px' : '2px 2px 0 2px'};
   padding: 0.5rem;
   position: absolute;
-  z-index: 200;
+  z-index: 20;
 
   ${({ openTop }) => (openTop ? 'bottom: 2rem;' : 'top: 2rem;')}
 `;
@@ -102,7 +102,7 @@ export const Dropdown = styled.div`
   justify-content: center;
   padding: 2px;
   position: absolute;
-  z-index: 100;
+  z-index: 10;
 
   ${({ openLeft }) => (openLeft ? 'right: 0;' : 'left: 0;')}
   ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}

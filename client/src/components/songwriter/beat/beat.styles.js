@@ -73,21 +73,3 @@ export const BeatText = styled.span`
   letter-spacing: -1px;
   white-space: pre-wrap;
 `;
-
-export const Dropdown = styled.div`
-  align-items: center;
-  background-color: ${({ theme }) => theme.colorBg};
-  border: ${({ theme }) => theme.borderHeavyLight};
-  border-width: 2px;
-  border-radius: 10px;
-  box-shadow: ${({ theme }) => theme.shadowLight};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2px;
-  position: absolute;
-  z-index: 100;
-
-  ${({ openLeft }) => (openLeft ? 'right: 0;' : 'left: 0;')}
-  ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
-`;

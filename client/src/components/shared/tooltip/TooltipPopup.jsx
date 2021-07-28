@@ -10,8 +10,18 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
   const { width } = useDimensions();
   const rect = anchorRef.current.getBoundingClientRect();
   const openRight = rect.left + rect.width / 2 < width / 2;
-  const vertPos = openRight ? rect.right + 20 : rect.left + 20;
+  const vertPos = openRight
+    ? rect.right + 20
+    : document.body.clientWidth - rect.left + 20;
   const top = rect.top + rect.height / 2;
+
+  console.log({
+    right: rect.right,
+    left: rect.left,
+    openRight,
+    vertPos,
+    docWidth: document.body.clientWidth,
+  });
 
   const handleClick = (e) => {
     isOpenCb(false);

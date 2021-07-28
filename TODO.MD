@@ -2,8 +2,7 @@
 
 ## Beat dropdown keyboard
 
-* Fix tooltip left and z pos
-* Custom ref for popup anchor
+* Help chords key
 * Clean up code
 
 ## Typescript client update
@@ -39,6 +38,7 @@
 * Search hints should not be alerts
 * Change ScrollBox to list?
 * Use drop shadows for tonefield focus?
+* Custom ref for popup anchor
 
 ## Focus and keyboard
 
