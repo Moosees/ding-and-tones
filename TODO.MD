@@ -2,7 +2,8 @@
 
 ## Beat dropdown keyboard
 
-* Add help for keyboard shortcuts
+* Fix tooltip left and z pos
+* Custom ref for popup anchor
 * Clean up code
 
 ## Typescript client update

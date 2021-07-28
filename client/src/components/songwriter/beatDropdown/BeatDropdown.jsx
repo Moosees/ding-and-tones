@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
+import { helpTopics } from '../../../assets/help';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import {
@@ -7,6 +8,8 @@ import {
   updateSoundForBeat,
 } from '../../../redux/song/song.actions';
 import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
+import Buttons from '../../shared/button/Buttons';
+import Help from '../../shared/button/Help';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { DropdownContext } from '../dropdownHandler/DropdownHandler';
@@ -80,12 +83,15 @@ const BeatDropdown = ({
     <>
       <Arrow openTop={openTop} />
       <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
-        <Checkbox
-          small
-          checked={multiSelect}
-          label="Chord"
-          onChange={toggleMultiSelect}
-        />
+        <Buttons position="space-around">
+          <Checkbox
+            small
+            checked={multiSelect}
+            label="Chord"
+            onChange={toggleMultiSelect}
+          />
+          <Help topic={helpTopics.BEATS} />
+        </Buttons>
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
