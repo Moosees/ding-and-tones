@@ -26,12 +26,13 @@ export const helpContent = {
     ],
   },
   beats: {
-    title: 'Beats tips',
+    title: 'Note selection tips',
     content: [
       'Keyboard shortcuts help when adding notes:',
       'Use "d" for ding and "a" or "s" for taks.',
-      '1-9 for normal tonefields.',
-      'Use q-p for extra/bottom notes and "b", "n", "m" for hands!',
+      '"1" - "9" for normal tonefields.',
+      'Use "q" - "p" for extra/bottom notes,',
+      '"c" toggles chord mode and "b", "n", "m" changes hands.',
     ],
   },
 };

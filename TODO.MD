@@ -1,10 +1,5 @@
 # DING AND TONES TODO LIST
 
-## Beat dropdown keyboard
-
-* Help chords key
-* Clean up code
-
 ## Typescript client update
 
 * Update state
@@ -176,3 +171,4 @@
 * Print multiple songs on same page
 * Print with notes instead of numbers
 * Dark mode
+* Markdown for help topics
