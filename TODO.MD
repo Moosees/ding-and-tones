@@ -1,5 +1,13 @@
 # DING AND TONES TODO LIST
 
+## Drum and misc keyboard
+
+* Keyboard shortcuts for playing drum
+* Add x close button to popups and esc closes
+* Escape closes modals
+* Fix select layouts and add space and enter
+* Help for drum keyboard?
+
 ## Typescript client update
 
 * Update state
@@ -38,16 +46,13 @@
 ## Focus and keyboard
 
 * Disable focus for icons attached to edit only text boxes
-* Add x close button to popups and esc closes
 * Fix primary button focus after click
 * Handle focus on modals
-* Escape closes modals
-* Fix select layouts and add space and enter
 * Better keyboard navigation for table and dropdown
 * Print keyboard shortcut
 * Keyboard shortcuts on new song (and other?) popup
-* Keyboard shortcuts for playing drum
 * Move focus to beat when closing dropdown?
+* Only show keyboard help on non touch?
 
 ## User/Menu
 
