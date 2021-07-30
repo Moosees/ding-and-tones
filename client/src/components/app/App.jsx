@@ -3,9 +3,9 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../../assets/themes';
 import { store } from '../../redux/store';
-import DimensionsProvider from './DimensionsProvider';
 import GlobalStyles from './globalStyles';
 import Layout from './layout/Layout';
+import DimensionsProvider from './providers/DimensionsProvider';
 
 const App = () => {
   return (

@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import useDimensions from '../../../hooks/useDimensions';
 import { setPrivacyOpen } from '../../../redux/ui/ui.actions';
-import AlertHandler from './AlertHandler';
+import AlertHandler from '../handlers/AlertHandler';
+import PopupPrivacy from '../handlers/PopupPrivacy';
 import Large from './Large';
 import { Copyright, PrivacyLink, Viewport } from './layout.styles';
 import Mobile from './Mobile';
-import PopupPrivacy from './PopupPrivacy';
 
 const App = ({ setPrivacyOpen }) => {
   const { isMobile } = useDimensions();
