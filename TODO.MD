@@ -2,7 +2,7 @@
 
 ## Drum and misc keyboard
 
-* Keyboard shortcuts for playing drum
+* Change when soundOptions is (re)generated
 * Add x close button to popups and esc closes
 * Escape closes modals
 * Fix select layouts and add space and enter

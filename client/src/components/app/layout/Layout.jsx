@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import useDimensions from '../../../hooks/useDimensions';
+import useKeysPlayDrum from '../../../hooks/useKeysPlayDrum';
 import { setPrivacyOpen } from '../../../redux/ui/ui.actions';
 import AlertHandler from '../handlers/AlertHandler';
 import PopupPrivacy from '../handlers/PopupPrivacy';
@@ -10,6 +11,7 @@ import Mobile from './Mobile';
 
 const App = ({ setPrivacyOpen }) => {
   const { isMobile } = useDimensions();
+  useKeysPlayDrum();
 
   return (
     <Viewport id="outsideTarget">
