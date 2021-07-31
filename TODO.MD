@@ -3,7 +3,6 @@
 ## Drum and misc keyboard
 
 * Change when soundOptions is (re)generated
-* Disable keyboard playing when input is active
 * Add x close button to popups and esc closes
 * Escape closes modals
 * Fix select layouts and add space and enter

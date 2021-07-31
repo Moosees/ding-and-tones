@@ -18,6 +18,8 @@ const InfoInput = ({
   useEffect(() => () => onClose, [onClose]);
 
   const handleKeyDown = (e) => {
+    e.stopPropagation();
+
     // enter
     if (e.keyCode === 13) return onSave();
 

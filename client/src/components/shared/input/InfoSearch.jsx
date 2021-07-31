@@ -32,6 +32,7 @@ const InfoSearch = ({
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         value={value}
+        onKeyDown={(e) => e.stopPropagation()}
       />
       <Spinner isSpinning={isSearching} />
     </InfoLayout>
