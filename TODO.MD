@@ -2,12 +2,10 @@
 
 ## Drum and misc keyboard
 
-* Change when soundOptions is (re)generated
 * Add x close button to popups and esc closes
 * Escape closes modals
 * Fix select layouts and add space and enter
 * Help for drum keyboard?
-* Add centralized app (handlers etc.) setup
 
 ## Typescript client update
 
