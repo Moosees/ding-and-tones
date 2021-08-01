@@ -1,14 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { InfoLayout } from '../layout/layout.styles';
-import { SelectDropdown, SelectLabel } from './select.styles';
+import {
+  SelectDropdown,
+  SelectLabel,
+  SelectLayoutSmall,
+} from './select.styles';
 import { parseOptions } from './select.utils';
 
-const Select = ({ children, handleChange, isSongPlaying, options, value }) => {
+const SelectSmall = ({
+  handleChange,
+  isSongPlaying,
+  options,
+  value,
+}) => {
   return (
-    <InfoLayout disabled={isSongPlaying} large={large}>
+    <SelectLayoutSmall disabled={isSongPlaying} large={large}>
       <SelectLabel hasLabel={hasLabel} small={small} disabled={isSongPlaying}>
-        <span>{children}</span>
         <SelectDropdown
           small={small}
           hasLabel={hasLabel}
@@ -21,7 +28,7 @@ const Select = ({ children, handleChange, isSongPlaying, options, value }) => {
         </SelectDropdown>
         <i className="material-icons">keyboard_arrow_down</i>
       </SelectLabel>
-    </InfoLayout>
+    </SelectLayoutSmall>
   );
 };
 
@@ -29,4 +36,4 @@ const mapStateToProps = ({ ui }) => ({
   isSongPlaying: ui.isSongPlaying,
 });
 
-export default connect(mapStateToProps)(Select);
+export default connect(mapStateToProps)(SelectSmall);

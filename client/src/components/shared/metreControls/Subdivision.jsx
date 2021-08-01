@@ -1,6 +1,7 @@
 import React from 'react';
 import { metreList } from '../../../assets/metre';
 import Select from '../select/Select';
+import SelectSmall from '../select/SelectSmall';
 
 const subdivisionOptions = [
   { value: 4, label: '4ths', disabled: (minSubdivision) => minSubdivision > 4 },
@@ -12,14 +13,7 @@ const subdivisionOptions = [
   },
 ];
 
-const Subdivision = ({
-  hasLabel,
-  large,
-  metre,
-  setSubdivision,
-  small,
-  subdivision,
-}) => {
+const Subdivision = ({ metre, setSubdivision, small, subdivision }) => {
   const { minSubdivision } = metreList[metre];
 
   const parsedOptions = subdivisionOptions.map((option) => ({
@@ -27,17 +21,16 @@ const Subdivision = ({
     disabled: option.disabled(minSubdivision),
   }));
 
+  const SelectComponent = small ? SelectSmall : Select;
+
   return (
-    <Select
-      large={large}
-      small={small}
-      hasLabel={hasLabel}
+    <SelectComponent
       value={subdivision}
       handleChange={setSubdivision}
       options={parsedOptions}
     >
       {!small && 'Subdivision: '}
-    </Select>
+    </SelectComponent>
   );
 };
 

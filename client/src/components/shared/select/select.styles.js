@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SelectSmall = styled.div`
+export const SelectLayoutSmall = styled.div`
   align-items: center;
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 4px;

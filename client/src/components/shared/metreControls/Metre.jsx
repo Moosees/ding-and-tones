@@ -33,15 +33,7 @@ const metreOptions = [
   },
 ];
 
-const Metre = ({
-  gradient,
-  hasLabel,
-  large,
-  metre,
-  setMetre,
-  subdivision,
-  setSubdivision,
-}) => {
+const Metre = ({ metre, setMetre, subdivision, setSubdivision }) => {
   const handleTimeChange = (newMetre) => {
     const { minSubdivision } = metreList[newMetre];
 
@@ -54,9 +46,6 @@ const Metre = ({
 
   return (
     <Select
-      large={large}
-      gradient={gradient}
-      hasLabel={hasLabel}
       value={metre}
       handleChange={handleTimeChange}
       options={metreOptions}

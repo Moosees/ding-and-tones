@@ -2,7 +2,8 @@
 
 ## Drum and misc keyboard
 
-* Fix select layouts and add space and enter to open
+* Fix Select
+* Fix SelectSmall
 * Help for drum keyboard?
 
 ## Typescript client update
