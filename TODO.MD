@@ -2,8 +2,9 @@
 
 ## Drum and misc keyboard
 
-* Add x close button to popups and esc closes
-* Escape closes modals
+* Add useEscToClose on Tooltip (and modals?)
+* Add x close button to popups
+* Esc removes focus from input
 * Fix select layouts and add space and enter
 * Help for drum keyboard?
 
