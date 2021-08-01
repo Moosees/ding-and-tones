@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Buttons from './modules/Buttons';
 import Section from './modules/Section';
@@ -6,6 +6,16 @@ import SubHeading from './modules/SubHeading';
 import { AccountHeader, Background, Overlay } from './popup.styles';
 
 const Popup = ({ children, header, onClose }) => {
+  useEffect(() => {
+    const closeOnEsc = (e) => {
+      if (e.keyCode === 27) onClose();
+    };
+
+    document.addEventListener('keydown', closeOnEsc);
+
+    return () => document.removeEventListener('keydown', closeOnEsc);
+  });
+
   const overlayRef = useRef(null);
 
   const handleClick = (e) => {
