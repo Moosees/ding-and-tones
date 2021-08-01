@@ -17,9 +17,6 @@ const User = ({ checkSession }) => {
 
   return (
     <div>
-      <MenuAnchor>
-        {isOpen && <Dropdown btnRef={btnRef} isOpenCb={setIsOpen} />}
-      </MenuAnchor>
       <BtnNav
         ariaLabel={'User'}
         disabled={false}
@@ -28,6 +25,9 @@ const User = ({ checkSession }) => {
         ref={btnRef}
         label="User"
       />
+      <MenuAnchor>
+        {isOpen && <Dropdown btnRef={btnRef} isOpenCb={setIsOpen} />}
+      </MenuAnchor>
     </div>
   );
 };

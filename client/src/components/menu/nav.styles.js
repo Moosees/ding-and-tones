@@ -6,6 +6,7 @@ export const MenuAnchor = styled.div`
   flex-direction: column;
   max-width: 6rem;
   position: relative;
+  top: -100%;
 `;
 
 export const MobileAnchor = styled.div`
