@@ -1,11 +1,13 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import useDimensions from '../../../hooks/useDimensions';
 import BtnIcon from '../button/Icon';
 import { Arrow, PopupContainer } from './tooltip.styles';
 
 const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
+  useCloseOnEsc(() => isOpenCb(false));
   const { insideRef } = useCloseOutside(isOpenCb, anchorRef);
   const { width } = useDimensions();
   const rect = anchorRef.current.getBoundingClientRect();

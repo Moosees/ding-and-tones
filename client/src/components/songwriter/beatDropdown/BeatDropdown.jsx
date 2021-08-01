@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { helpTopics } from '../../../assets/help';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
+import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import {
   updateHandForBeat,
-  updateSoundForBeat,
+  updateSoundForBeat
 } from '../../../redux/song/song.actions';
 import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
@@ -19,7 +20,7 @@ import {
   Arrow,
   Dropdown,
   DropdownColumn,
-  DropdownContent,
+  DropdownContent
 } from './beatDropdown.styles';
 import { createKeyboardCbs } from './beatDropdown.utils.js';
 
@@ -35,6 +36,7 @@ const BeatDropdown = ({
   updateHandForBeat,
   updateSoundForBeat,
 }) => {
+  useCloseOnEsc(() => isOpenCb(false));
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
   const { offsetTop, offsetLeft } = dropdownPosRef.current;
@@ -60,12 +62,6 @@ const BeatDropdown = ({
     const keyboardListener = (e) => {
       if (e.keyCode === beatOptionToKeyCode['chord']) {
         toggleMultiSelect();
-        return;
-      }
-
-      if (e.keyCode === 27) {
-        // escape
-        isOpenCb(false);
         return;
       }
 

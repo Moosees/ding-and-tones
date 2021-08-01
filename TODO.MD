@@ -2,10 +2,8 @@
 
 ## Drum and misc keyboard
 
-* Add useEscToClose on Tooltip (and modals?)
-* Add x close button to popups
-* Esc removes focus from input
-* Fix select layouts and add space and enter
+* Esc removes focus from input with editOnly prop
+* Fix select layouts and add space and enter to open
 * Help for drum keyboard?
 
 ## Typescript client update
@@ -42,6 +40,7 @@
 * Change ScrollBox to list?
 * Use drop shadows for tonefield focus?
 * Custom ref for popup anchor
+* Add x close button to popups?
 
 ## Focus and keyboard
 
