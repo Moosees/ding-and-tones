@@ -2,7 +2,6 @@
 
 ## Drum and misc keyboard
 
-* Esc removes focus from input with editOnly prop
 * Fix select layouts and add space and enter to open
 * Help for drum keyboard?
 
