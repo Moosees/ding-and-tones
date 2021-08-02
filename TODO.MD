@@ -4,7 +4,8 @@
 
 * Fix Select
 * Fix SelectSmall
-* Help for drum keyboard?
+* Help for drum keyboard - scale help
+* Editable InfoBoxes always display label on border
 
 ## Typescript client update
 
