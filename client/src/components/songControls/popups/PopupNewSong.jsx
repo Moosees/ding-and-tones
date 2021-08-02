@@ -71,9 +71,8 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         value={difficulty}
         handleChange={setDifficulty}
         options={optionsDifficulty}
-      >
-        {'Difficulty: '}
-      </Select>
+        label="Difficulty: "
+      />
       <Buttons position="center">
         <BtnPrimary
           label="Confirm"

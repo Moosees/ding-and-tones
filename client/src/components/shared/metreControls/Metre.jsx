@@ -49,9 +49,8 @@ const Metre = ({ metre, setMetre, subdivision, setSubdivision }) => {
       value={metre}
       handleChange={handleTimeChange}
       options={metreOptions}
-    >
-      {'Metre: '}
-    </Select>
+      label="Metre: "
+    />
   );
 };
 

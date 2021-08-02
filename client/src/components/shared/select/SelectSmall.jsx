@@ -7,21 +7,15 @@ import {
 } from './select.styles';
 import { parseOptions } from './select.utils';
 
-const SelectSmall = ({
-  handleChange,
-  isSongPlaying,
-  options,
-  value,
-}) => {
+const SelectSmall = ({ handleChange, isSongPlaying, options, value }) => {
   return (
-    <SelectLayoutSmall disabled={isSongPlaying} large={large}>
-      <SelectLabel hasLabel={hasLabel} small={small} disabled={isSongPlaying}>
+    <SelectLayoutSmall disabled={isSongPlaying}>
+      <SelectLabel small disabled={isSongPlaying}>
         <SelectDropdown
-          small={small}
-          hasLabel={hasLabel}
+          small
           disabled={isSongPlaying}
           value={value}
-          labelWidth={small ? 20 : 52}
+          labelWidth={20}
           onChange={(e) => handleChange(e.target.value)}
         >
           {parseOptions(options)}

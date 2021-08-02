@@ -83,9 +83,8 @@ const ControlsLeft = ({
           value={songInfo.difficulty}
           handleChange={(value) => updateSongInfo({ difficulty: value })}
           options={optionsDifficulty}
-        >
-          {'Difficulty: '}
-        </Select>
+          label="Difficulty: "
+        />
         <Buttons>
           <BtnPrimary
             disabled={

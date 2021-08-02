@@ -4,17 +4,16 @@ import { InfoLayout } from '../layout/layout.styles';
 import { SelectDropdown, SelectLabel } from './select.styles';
 import { parseOptions } from './select.utils';
 
-const Select = ({ children, handleChange, isSongPlaying, options, value }) => {
+const Select = ({ label, handleChange, isSongPlaying, options, value }) => {
   return (
-    <InfoLayout disabled={isSongPlaying} large={large}>
-      <SelectLabel hasLabel={hasLabel} small={small} disabled={isSongPlaying}>
-        <span>{children}</span>
+    <InfoLayout disabled={isSongPlaying} large>
+      <SelectLabel hasLabel disabled={isSongPlaying}>
+        <span>{label}</span>
         <SelectDropdown
-          small={small}
-          hasLabel={hasLabel}
+          hasLabel
           disabled={isSongPlaying}
           value={value}
-          labelWidth={small ? 20 : 52}
+          labelWidth={52}
           onChange={(e) => handleChange(e.target.value)}
         >
           {parseOptions(options)}

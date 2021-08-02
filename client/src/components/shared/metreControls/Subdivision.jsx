@@ -28,9 +28,8 @@ const Subdivision = ({ metre, setSubdivision, small, subdivision }) => {
       value={subdivision}
       handleChange={setSubdivision}
       options={parsedOptions}
-    >
-      {!small && 'Subdivision: '}
-    </SelectComponent>
+      label={small ? null : 'Subdivision: '}
+    />
   );
 };
 
