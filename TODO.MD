@@ -3,7 +3,6 @@
 ## Drum and misc keyboard
 
 * Fix Select
-* Fix SelectSmall
 * Help for drum keyboard - scale help
 * Editable InfoBoxes always display label on border
 

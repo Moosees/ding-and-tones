@@ -1,50 +1,62 @@
 import styled from 'styled-components';
 
-export const SelectLayoutSmall = styled.div`
+export const SelectLabelSmall = styled.label`
   align-items: center;
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 4px;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   font-size: ${({ theme }) => theme.fzSmallest};
-  padding: 1px 6px 1px 2px;
   position: relative;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
-  transition: color 0.1s ease-in;
+  transition: border-color 0.1s ease-in;
+
+  select {
+    padding: 1px 1.6rem 1px 1rem;
+  }
+
+  i {
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+  }
 
   &:hover,
-  &:focus {
+  &:focus-within {
     outline: 0;
     ${({ disabled, theme }) =>
       !disabled &&
       `
-        border: ${theme.borderDark};
-        color: ${theme.colorBtnConfirm};
-      `}
+        border-color: ${theme.colorBtnConfirm};
+
+        i {
+          color: ${theme.colorBtnConfirm};
+        }
+    `}
   }
 `;
 
 export const SelectDropdown = styled.select`
   appearance: none;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  display: block;
-  height: 100%;
-  padding-left: ${({ hasLabel, labelWidth }) =>
-    !hasLabel ? labelWidth + 3 : '0'}px;
-  padding-right: 1rem;
-  width: 100%;
-  z-index: 1;
+  /* background-color: transparent; */
+  /* border: 0; */
+  cursor: inherit;
+  /* display: inline-block; */
+  /* height: 100%; */
+  /* width: 100%; */
+  /* z-index: 1; */
+  /* position: relative; */
+  /* right: 0; */
+  /* left: 0; */
 
   &:focus {
     outline: 0;
   }
-
+  /* 
   &:disabled {
     cursor: default;
     opacity: ${({ small }) => (small ? '0.9' : '1')};
-  }
+  } */
 `;
 
 export const SelectLabel = styled.label`
