@@ -44,7 +44,7 @@ export const SelectDropdown = styled.select`
   /* display: inline-block; */
   /* height: 100%; */
   /* width: 100%; */
-  /* z-index: 1; */
+  z-index: 1;
   /* position: relative; */
   /* right: 0; */
   /* left: 0; */
