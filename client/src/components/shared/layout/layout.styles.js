@@ -41,9 +41,19 @@ export const InfoLayout = styled.div`
   position: relative;
   width: 100%;
 
-  ${({ theme }) => theme.mqW1000`
-    border-radius: 4px;
-  `}
+  & > span {
+    bottom: 3rem;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    transition: opacity 0.2s ease;
+
+    ${({ theme }) => theme.mqW1200`
+      bottom: 2.9rem;
+      font-size: ${theme.fzSmaller};
+      opacity: 0.8;
+    `}
+  }
 
   ${({ theme }) => theme.mqW850`
     max-height: 3.5rem;

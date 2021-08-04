@@ -50,13 +50,6 @@ export const SelectDropdown = styled.select`
 `;
 
 export const SelectLabel = styled(InfoLayout)`
-  span {
-    bottom: 3rem;
-    left: 0;
-    opacity: 0.6;
-    position: absolute;
-  }
-
   i {
     color: ${({ theme }) => theme.colorText};
     font-size: 2.4rem;

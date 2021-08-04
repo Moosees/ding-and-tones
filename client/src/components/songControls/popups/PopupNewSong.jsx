@@ -49,7 +49,7 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         editOnly
         handleChange={setTitle}
         isValid={isTitleValid}
-        placeholder={titleErrors.length ? titleErrors[0] : 'Song title:'}
+        label={titleErrors.length ? titleErrors[0] : 'Song title:'}
         value={title}
       />
       <Metre

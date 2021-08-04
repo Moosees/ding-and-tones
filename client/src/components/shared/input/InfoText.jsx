@@ -10,7 +10,7 @@ const InfoText = ({
   handleClose = () => {},
   handleSave = () => {},
   isValid = true,
-  placeholder = '',
+  label = '',
   value = '',
 }) => {
   const [editOpen, setEditOpen] = useState(false);
@@ -35,11 +35,12 @@ const InfoText = ({
           isValid={isValid}
           onClose={onClose}
           onSave={onSave}
-          placeholder={placeholder}
+          label={label}
           value={value}
         />
       ) : (
         <InfoLayout>
+          <span>{label}</span>
           {children}
           <BtnIcon title="Edit" icon="edit" onClick={() => setEditOpen(true)} />
         </InfoLayout>

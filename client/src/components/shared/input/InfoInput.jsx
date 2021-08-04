@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import BtnIcon from '../button/Icon';
 import { InfoLayout } from '../layout/layout.styles';
-import { TextInput, TextInputLabel } from './input.styles';
+import { TextInput } from './input.styles';
 
 const InfoInput = ({
   editOnly,
   errors,
   handleChange,
   isValid,
+  label,
   large,
   onSave = () => {},
   onClose = () => {},
-  placeholder,
   value,
 }) => {
   // cleanup
@@ -28,26 +28,23 @@ const InfoInput = ({
   };
 
   return (
-    <InfoLayout large={large}>
-      <TextInputLabel>
-        <TextInput
-          autoFocus
-          aria-label={placeholder}
-          errors={errors}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          placeholder={''}
-          value={value}
-        />
-        <span>{placeholder}</span>
-        <BtnIcon
-          color={isValid ? 'BtnConfirm' : 'BtnClear'}
-          editOnly={editOnly}
-          icon={isValid ? 'check_circle_outline' : 'not_interested'}
-          title={isValid ? 'Save' : 'Cancel'}
-          onClick={isValid ? onSave : onClose}
-        />
-      </TextInputLabel>
+    <InfoLayout as="label" large={large}>
+      <TextInput
+        autoFocus
+        aria-label={label}
+        errors={errors}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        value={value}
+      />
+      <span>{label}</span>
+      <BtnIcon
+        color={isValid ? 'BtnConfirm' : 'BtnClear'}
+        editOnly={editOnly}
+        icon={isValid ? 'check_circle_outline' : 'not_interested'}
+        title={isValid ? 'Save' : 'Cancel'}
+        onClick={isValid ? onSave : onClose}
+      />
     </InfoLayout>
   );
 };

@@ -34,7 +34,7 @@ const PopupAccount = ({
         editOnly
         handleChange={setUsername}
         isValid={usernameValid}
-        placeholder={usernameErrors.length ? usernameErrors[0] : 'Username:'}
+        label={usernameErrors.length ? usernameErrors[0] : 'Username:'}
         value={username}
       />
       <InfoBox reverse>

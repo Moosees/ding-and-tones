@@ -57,7 +57,7 @@ const PopupSongMetre = ({
         editOnly
         handleChange={setNewBpm}
         isValid={isNewBpmValid}
-        placeholder={newBpmErrors.length ? newBpmErrors[0] : 'Bpm:'}
+        label={newBpmErrors.length ? newBpmErrors[0] : 'Bpm:'}
         value={newBpm}
       />
       <Buttons position="center">

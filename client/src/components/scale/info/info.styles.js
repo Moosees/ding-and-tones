@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { InfoLayout } from '../../shared/layout/layout.styles';
 
 export const ScaleInfoContainer = styled.div`
   align-self: stretch;
@@ -6,7 +7,7 @@ export const ScaleInfoContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ScaleLabel = styled.span`
+export const ScaleLabel = styled(InfoLayout)`
   word-spacing: -1px;
   font-size: ${({ theme }) => theme.fzSmallest};
 

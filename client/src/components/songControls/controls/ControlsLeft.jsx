@@ -74,10 +74,10 @@ const ControlsLeft = ({
           handleClose={resetTitle}
           handleSave={() => updateSongInfo({ title })}
           isValid={isTitleValid}
-          placeholder={titleErrors.length ? titleErrors[0] : 'Song title:'}
+          label={titleErrors.length ? titleErrors[0] : 'Song title:'}
           value={title}
         >
-          {'Title: ' + songInfo.title}
+          {songInfo.title}
         </InfoText>
         <Select
           value={songInfo.difficulty}

@@ -6,7 +6,6 @@ import { saveScale, setScaleName } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
-import InfoBox from '../../shared/layout/InfoBox';
 import { ScaleInfoContainer, ScaleLabel } from './info.styles';
 
 const Info = ({
@@ -55,14 +54,12 @@ const Info = ({
         handleClose={resetName}
         handleSave={handleNameSave}
         isValid={isNameValid}
-        placeholder={nameErrors.length ? nameErrors[0] : 'Scale name:'}
+        label={nameErrors.length ? nameErrors[0] : 'Scale name:'}
         value={name}
       >
-        {`Scale: ${scaleInfo.rootName} ${scaleInfo.name}`}
+        {`${scaleInfo.rootName} ${scaleInfo.name}`}
       </InfoText>
-      <InfoBox>
-        <ScaleLabel>{scaleInfo.label}</ScaleLabel>
-      </InfoBox>
+      <ScaleLabel>{scaleInfo.label}</ScaleLabel>
     </ScaleInfoContainer>
   );
 };

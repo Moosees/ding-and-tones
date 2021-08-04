@@ -25,7 +25,7 @@ const InfoSearch = ({
   }, [searchOption, startSearch, value]);
 
   return (
-    <InfoLayout>
+    <InfoLayout as="label">
       <TextInput
         autoFocus={!isMobile}
         aria-label={placeholder}
