@@ -2,6 +2,7 @@ export const helpTopics = {
   CHORDS: 'chords',
   INTERVALS: 'intervals',
   BEATS: 'beats',
+  SCALE: 'scale',
 };
 
 export const helpContent = {
@@ -33,6 +34,14 @@ export const helpContent = {
       '"1" - "9" for normal tonefields.',
       'Use "q" - "p" for extra/bottom notes,',
       '"c" toggles chord mode and "b", "n", "m" changes hands.',
+    ],
+  },
+  scale: {
+    title: 'Scale tips',
+    content: [
+      'Normal notes are added around the drum in ascending pitch with the lowest note as Ding.',
+      'Extra notes can be moved around and can be lower, higher or mixed in with your normal notes.',
+      'Use your keyboard to play the drum, try "1" - "0", "q" - "p" for notes, "a" - "s" for taks and "d" to play the Ding.',
     ],
   },
 };
