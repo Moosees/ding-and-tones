@@ -3,7 +3,7 @@
 ## Drum and misc keyboard
 
 * Editable InfoBoxes always display label on border
-* Select label and arrow pos on small screens
+* Select label pos on small screens
 * Help for drum keyboard - scale help
 
 ## Typescript client update

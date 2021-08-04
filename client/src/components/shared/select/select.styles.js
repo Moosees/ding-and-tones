@@ -59,9 +59,14 @@ export const SelectLabel = styled(InfoLayout)`
 
   i {
     color: ${({ theme }) => theme.colorText};
+    font-size: 2.4rem;
     opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
     position: absolute;
-    right: 5px;
+    right: 4px;
+
+    ${({ theme }) => theme.mqW1000`
+      right: 3px;
+    `}
   }
 
   &:hover i,
