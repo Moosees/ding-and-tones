@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { InfoLayout } from '../layout/layout.styles';
 
 export const SelectLabelSmall = styled.label`
   align-items: center;
@@ -37,48 +38,34 @@ export const SelectLabelSmall = styled.label`
 `;
 
 export const SelectDropdown = styled.select`
+  align-self: stretch;
   appearance: none;
-  /* background-color: transparent; */
-  /* border: 0; */
   cursor: inherit;
-  /* display: inline-block; */
-  /* height: 100%; */
-  /* width: 100%; */
+  width: 100%;
   z-index: 1;
-  /* position: relative; */
-  /* right: 0; */
-  /* left: 0; */
 
   &:focus {
     outline: 0;
   }
-  /* 
-  &:disabled {
-    cursor: default;
-    opacity: ${({ small }) => (small ? '0.9' : '1')};
-  } */
 `;
 
-export const SelectLabel = styled.label`
-  align-items: center;
-  background-color: transparent;
-  display: flex;
-  height: ${({ small }) => (small ? 'unset' : '3.2rem')};
-  min-height: ${({ hasLabel }) => (hasLabel ? '3rem' : 'unset')};
-  width: 100%;
-
+export const SelectLabel = styled(InfoLayout)`
   span {
-    bottom: ${({ hasLabel }) => (hasLabel ? '3rem' : 'unset')};
-    left: ${({ hasLabel }) => (hasLabel ? '0' : 'unset')};
-    opacity: ${({ hasLabel }) => (hasLabel ? '0.6' : '1')};
+    bottom: 3rem;
+    left: 0;
+    opacity: 0.6;
     position: absolute;
   }
 
   i {
     color: ${({ theme }) => theme.colorText};
-    font-size: ${({ theme }) => theme.fzLarger};
     opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
     position: absolute;
-    right: ${({ small }) => (small ? '0px' : '5px')};
+    right: 5px;
+  }
+
+  &:hover i,
+  &:focus-within i {
+    color: ${({ theme }) => theme.colorBtnConfirm};
   }
 `;

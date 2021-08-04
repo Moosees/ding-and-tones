@@ -2,9 +2,10 @@
 
 ## Drum and misc keyboard
 
-* Fix Select
-* Help for drum keyboard - scale help
 * Editable InfoBoxes always display label on border
+* Select label and arrow pos on small screens
+* Large prop for Selects in popups
+* Help for drum keyboard - scale help
 
 ## Typescript client update
 
@@ -41,6 +42,7 @@
 * Use drop shadows for tonefield focus?
 * Custom ref for popup anchor
 * Add x close button to popups?
+* Beat slider focus styles
 
 ## Focus and keyboard
 
