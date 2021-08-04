@@ -25,6 +25,7 @@ const Subdivision = ({ metre, setSubdivision, small, subdivision }) => {
 
   return (
     <SelectComponent
+      large
       value={subdivision}
       handleChange={setSubdivision}
       options={parsedOptions}

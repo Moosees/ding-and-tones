@@ -46,6 +46,7 @@ const Metre = ({ metre, setMetre, subdivision, setSubdivision }) => {
 
   return (
     <Select
+      large
       value={metre}
       handleChange={handleTimeChange}
       options={metreOptions}

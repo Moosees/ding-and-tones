@@ -4,7 +4,6 @@
 
 * Editable InfoBoxes always display label on border
 * Select label and arrow pos on small screens
-* Large prop for Selects in popups
 * Help for drum keyboard - scale help
 
 ## Typescript client update

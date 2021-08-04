@@ -53,21 +53,18 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
         value={title}
       />
       <Metre
-        large
-        hasLabel
         metre={metre}
         subdivision={subdivision}
         setMetre={setMetre}
         setSubdivision={setSubdivision}
       />
       <Subdivision
-        large
-        hasLabel
         metre={metre}
         subdivision={subdivision}
         setSubdivision={setSubdivision}
       />
       <Select
+        large
         value={difficulty}
         handleChange={setDifficulty}
         options={optionsDifficulty}
