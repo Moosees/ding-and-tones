@@ -2,7 +2,7 @@
 
 ## Drum and misc keyboard
 
-* Help for drum keyboard - scale help
+* Clean up code
 
 ## Typescript client update
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
 import { saveScale, setScaleName } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
+import Help from '../../shared/button/Help';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
 import { ScaleInfoContainer, ScaleLabel } from './info.styles';
@@ -36,6 +38,7 @@ const Info = ({
   return (
     <ScaleInfoContainer>
       <Buttons>
+        <Help topic={helpTopics.SCALE} />
         <BtnPrimary
           disabled={
             !isSignedIn ||
