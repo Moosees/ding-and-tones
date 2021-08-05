@@ -7,7 +7,7 @@ export const ScaleInfoContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ScaleLabel = styled(InfoLayout)`
+export const ScaleNotes = styled(InfoLayout)`
   word-spacing: -1px;
   font-size: ${({ theme }) => theme.fzSmallest};
 

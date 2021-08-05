@@ -8,7 +8,7 @@ import Buttons from '../../shared/button/Buttons';
 import Help from '../../shared/button/Help';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
-import { ScaleInfoContainer, ScaleLabel } from './info.styles';
+import { ScaleInfoContainer, ScaleNotes } from './info.styles';
 
 const Info = ({
   hasChanges,
@@ -62,7 +62,10 @@ const Info = ({
       >
         {`${scaleInfo.rootName} ${scaleInfo.name}`}
       </InfoText>
-      <ScaleLabel>{scaleInfo.label}</ScaleLabel>
+      <ScaleNotes>
+        <span>Notes:</span>
+        {scaleInfo.label}
+      </ScaleNotes>
     </ScaleInfoContainer>
   );
 };

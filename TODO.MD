@@ -1,9 +1,5 @@
 # DING AND TONES TODO LIST
 
-## Drum and misc keyboard
-
-* Clean up code
-
 ## Typescript client update
 
 * Update state
