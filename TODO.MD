@@ -1,5 +1,12 @@
 # DING AND TONES TODO LIST
 
+## Song on drum update
+
+* Keep track of currently played notes
+* Tonefields check currently played notes
+* Style for played tonefield, inverted color? animation?
+* Play button on drum route for mobile
+
 ## Typescript client update
 
 * Update state
@@ -9,7 +16,6 @@
 
 ## Updates in need of planning
 
-* Link drum and songwriter - animations?
 * Styled-components, mix-ins and css variables
 * Testing
 * Private songs
