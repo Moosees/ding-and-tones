@@ -3,9 +3,9 @@
 ## Song on drum update
 
 * Keep track of currently played notes
-* Tonefields check currently played notes
 * Style for played tonefield, inverted color? animation?
 * Play button on drum route for mobile
+* Move tonefield logic inside tonefields?
 
 ## Typescript client update
 

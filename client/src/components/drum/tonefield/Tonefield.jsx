@@ -13,7 +13,6 @@ const Tonefield = ({
 }) => {
   const { rotate, translate } = positionMap[localIndex];
   const isDing = localIndex === 0;
-  console.log(note);
 
   const handlePlay = () => {
     new Audio(`${audioPath}/${note}.mp3`).play();
