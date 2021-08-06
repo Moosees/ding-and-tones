@@ -9,8 +9,10 @@
 
 ## Updates in need of planning
 
+* Link drum and songwriter - animations?
 * Styled-components, mix-ins and css variables
 * Testing
+* Private songs
 
 ## Bugs
 
@@ -36,6 +38,7 @@
 * Custom ref for popup anchor
 * Add x close button to popups?
 * Beat slider focus styles
+* Select boxes dynamic width
 
 ## Focus and keyboard
 
@@ -44,9 +47,10 @@
 * Handle focus on modals
 * Better keyboard navigation for table and dropdown
 * Print keyboard shortcut
-* Keyboard shortcuts on new song (and other?) popup
+* Keyboard shortcuts on new song (and other?) popup - done?
 * Move focus to beat when closing dropdown?
 * Only show keyboard help on non touch?
+* No auto focus on search inputs?
 
 ## User/Menu
 
@@ -72,6 +76,10 @@
 * Double ding and mutant scales
 * Add play scale button and function
 * Create scale from name and string
+* Remove isOwner from scale ui state or add ability to save scale changes
+* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
+* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+* Scale layout prop - not needed? used for double ding?
 
 ## Chords
 
@@ -108,20 +116,15 @@
 * Color for hands on tablature
 * Remember saved scale option for save song popup
 
-## State
+## State and search
 
 * Persist working state through local storage? Redis?
 * Merge api status states (isFetching etc.) in client?
-* Remove isOwner from scale ui state or add ability to save scale changes
-* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
-* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* Scale layout prop - not needed? used for double ding?
 * Prevent/warn transition away from page if data isn't saved?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Sorting search results in table
 * Privacy date localization
-* Select boxes dynamic width
 * Clean up getNoteText() and Tonefield in general
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
 * Save song as JSON?
@@ -158,7 +161,6 @@
 * More drum alternatives? Add synth/piano alternative?
 * Percussive hits on handpan - normalize handpan samples
 * Higher quality samples
-* Link drum and songwriter - animations?
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
