@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   barMetreOffset: 0,
   currentBar: null,
   currentBeat: null,
+  currentNotes: [],
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
@@ -39,6 +40,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         currentBeat: payload,
+      };
+
+    case uiTypes.SET_CURRENT_NOTES:
+      return {
+        ...state,
+        currentNotes: payload,
       };
 
     case uiTypes.SET_IS_PREPARING_SONG:

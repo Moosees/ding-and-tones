@@ -10,6 +10,11 @@ export const setCurrentBeat = (beatId) => ({
   payload: beatId,
 });
 
+export const setCurrentNotes = (notes) => ({
+  type: uiTypes.SET_CURRENT_NOTE,
+  payload: notes,
+});
+
 export const setIsPreparingSong = (isPreparingSong) => ({
   type: uiTypes.SET_IS_PREPARING_SONG,
   payload: isPreparingSong,
@@ -25,70 +30,68 @@ export const setPrivacyOpen = (privacyOpen) => ({
   payload: privacyOpen,
 });
 
-export const setSoundOptions = (scaleRound, scaleExtra) => (
-  dispatch,
-  getState
-) => {
-  const {
-    drum: { audioPath },
-    song: { beats },
-  } = getState();
+export const setSoundOptions =
+  (scaleRound, scaleExtra) => (dispatch, getState) => {
+    const {
+      drum: { audioPath },
+      song: { beats },
+    } = getState();
 
-  const allOptions = ['T', 't', '-'];
-  const allSounds = { T: '/audio/takLoud.mp3', t: '/audio/takSoft.mp3' };
+    const allOptions = ['T', 't', '-'];
+    const allSounds = { T: '/audio/takLoud.mp3', t: '/audio/takSoft.mp3' };
 
-  const round = scaleRound.map((note, i) => {
-    allOptions.push(`${i}`);
-    allSounds[i] = `${audioPath}/${note}.mp3`;
-    return {
-      label: `${i} - ${note}`,
-      value: `${i}`,
-    };
-  });
-
-  const extra = scaleExtra.map(({ note }, i) => {
-    allOptions.push(`b${i + 1}`);
-    allSounds[`b${i + 1}`] = `${audioPath}/${note}.mp3`;
-    return {
-      label: `b${i + 1} - ${note}`,
-      value: `b${i + 1}`,
-    };
-  });
-
-  const percussive = [
-    // { label: 'Pause', value: '-' },
-    { label: 'Loud Tak', value: 'T' },
-    { label: 'Soft Tak', value: 't' },
-  ];
-
-  const nonScale = [];
-  const nonScaleMap = {};
-
-  Object.values(beats).forEach(({ sound }) => {
-    sound.forEach((option) => {
-      if (!allOptions.includes(option) && !nonScaleMap[option]) {
-        nonScaleMap[option] = true;
-        nonScale.push({
-          label: `${option} - ?`,
-          value: option,
-          outsideScale: true,
-        });
-      }
+    const round = scaleRound.map((note, i) => {
+      allOptions.push(`${i}`);
+      allSounds[i] = `${audioPath}/${note}.mp3`;
+      return {
+        label: `${i} - ${note}`,
+        value: `${i}`,
+      };
     });
-  });
 
-  dispatch({
-    type: uiTypes.SET_SOUND_OPTIONS,
-    payload: {
-      allSounds,
-      extra,
-      nonScaleMap,
-      nonScale,
-      percussive,
-      round,
-    },
-  });
-};
+    const extra = scaleExtra.map(({ note }, i) => {
+      allOptions.push(`b${i + 1}`);
+      allSounds[`b${i + 1}`] = `${audioPath}/${note}.mp3`;
+      return {
+        label: `b${i + 1} - ${note}`,
+        value: `b${i + 1}`,
+      };
+    });
+
+    const percussive = [
+      // { label: 'Pause', value: '-' },
+      { label: 'Loud Tak', value: 'T' },
+      { label: 'Soft Tak', value: 't' },
+    ];
+
+    const nonScale = [];
+    const nonScaleMap = {};
+
+    Object.values(beats).forEach(({ sound }) => {
+      sound.forEach((option) => {
+        if (!allOptions.includes(option) && !nonScaleMap[option]) {
+          nonScaleMap[option] = true;
+          nonScale.push({
+            label: `${option} - ?`,
+            value: option,
+            outsideScale: true,
+          });
+        }
+      });
+    });
+
+    dispatch({
+      type: uiTypes.SET_SOUND_OPTIONS,
+      payload: {
+        allSounds,
+        extra,
+        nonScaleMap,
+        nonScale,
+        percussive,
+        round,
+      },
+    });
+  };
 
 export const toggleCountOpen = () => ({
   type: uiTypes.TOGGLE_COUNT_OPEN,
