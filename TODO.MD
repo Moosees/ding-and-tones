@@ -6,6 +6,7 @@
 * Track Taks like tonefields
 * Play button on drum route for mobile
 * Move tonefield logic inside tonefields?
+* Clean up code
 
 ## Typescript client update
 
@@ -68,6 +69,7 @@
 * Dynamic size for tonefields
 * Hover on drum shows all information about hovered note?
 * Extra notes look weird on mobile in portrait
+* Option to turn off/use same color for tonefield borders
 
 ## Intervals
 
