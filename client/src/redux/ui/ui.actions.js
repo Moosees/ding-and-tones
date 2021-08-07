@@ -5,14 +5,9 @@ export const setCurrentBar = (barId) => ({
   payload: barId,
 });
 
-export const setCurrentBeat = (beatId) => ({
+export const setCurrentBeat = (beatId, sound) => ({
   type: uiTypes.SET_CURRENT_BEAT,
-  payload: beatId,
-});
-
-export const setCurrentNotes = (notes) => ({
-  type: uiTypes.SET_CURRENT_NOTE,
-  payload: notes,
+  payload: { beatId, sound },
 });
 
 export const setIsPreparingSong = (isPreparingSong) => ({

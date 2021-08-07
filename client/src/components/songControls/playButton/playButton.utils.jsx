@@ -11,7 +11,7 @@ const playBeatPromise = (beat, timeout, audio) =>
   new Promise((resolve, reject) => {
     if (!store.getState().ui.isSongPlaying) return reject();
 
-    store.dispatch(setCurrentBeat(beat.beatId));
+    store.dispatch(setCurrentBeat(beat.beatId, beat.sound));
     const volume = beat.sound.length > 1 ? 0.55 : 0.8;
 
     if (!beat.mode || beat.mode === 'c')

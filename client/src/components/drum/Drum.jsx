@@ -6,7 +6,7 @@ import ExtraNote from './tonefield/ExtraNote';
 import Tonefield from './tonefield/Tonefield';
 
 const Drum = ({
-  currentNotes,
+  currentSound,
   displayedChord,
   displayedNote,
   drumMode,
@@ -20,8 +20,17 @@ const Drum = ({
       const showNote =
         !displayedChord || displayedChord.notes.includes(note.noteShort);
 
-      const isPlaying = currentNotes.includes(note.noteValue);
-      console.log({ note, isPlaying });
+      const noteNumber = note.isExtra
+        ? `b${note.localIndex + 1}`
+        : '' + note.localIndex;
+
+      const isPlaying = currentSound.includes(noteNumber);
+
+      isPlaying &&
+        console.log({
+          currentSound,
+          noteNumber,
+        });
 
       const hasFocus = i === displayedNote;
 
@@ -32,7 +41,7 @@ const Drum = ({
             scale[displayedNote].intervalMap,
             drumMode,
             displayedChord,
-            note.isExtra ? `b${note.localIndex + 1}` : note.localIndex
+            noteNumber
           )
         : '';
 
@@ -106,7 +115,7 @@ const mapStateToProps = ({ drum, scale, ui }) => ({
   extra: scale.notes.extra,
   round: scale.notes.round,
   scale: scale.notes.scaleFull,
-  currentNotes: ui.currentNotes,
+  currentSound: ui.currentSound,
   isEditingExtraPos: ui.isEditingExtraPos,
 });
 
