@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
 import { getChordColor, getNoteColor, getNoteText } from './drum.utils';
 import ExtraNote from './tonefield/ExtraNote';
+import Tak from './tonefield/Tak';
 import Tonefield from './tonefield/Tonefield';
 
 const Drum = ({
@@ -100,6 +101,8 @@ const Drum = ({
             fill="url(#drumGradient)"
             filter="url(#drumShadow)"
           />
+          <Tak hand="L" />
+          <Tak hand="R" />
           {roundTonefields.map((data, i) => (
             <Tonefield key={i} {...data} />
           ))}
