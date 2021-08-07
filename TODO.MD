@@ -3,8 +3,7 @@
 ## Song on drum update
 
 * Track Taks like tonefields
-* Play button on drum route for mobile
-* Move tonefield logic inside tonefields?
+* Play button on drum route for mobile - make sure it's safe if songwriter is not loaded yet
 * Clean up code
 
 ## Typescript client update
@@ -69,6 +68,7 @@
 * Hover on drum shows all information about hovered note?
 * Extra notes look weird on mobile in portrait
 * Option to turn off/use same color for tonefield borders
+* Clean up tonefield logic
 
 ## Intervals
 
