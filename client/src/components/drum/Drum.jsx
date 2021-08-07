@@ -58,6 +58,7 @@ const Drum = ({
         text,
         color,
         localIndex: note.localIndex,
+        isPlaying,
       };
 
       acc[note.isExtra ? 'extraTonefields' : 'roundTonefields'].push(

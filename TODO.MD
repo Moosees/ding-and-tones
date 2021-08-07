@@ -2,7 +2,6 @@
 
 ## Song on drum update
 
-* Style for played tonefield, inverted color? animation?
 * Track Taks like tonefields
 * Play button on drum route for mobile
 * Move tonefield logic inside tonefields?

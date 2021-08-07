@@ -7,6 +7,7 @@ const ExtraNote = ({
   color,
   extra,
   hasFocus,
+  isPlaying,
   localIndex,
   note,
   showNote,
@@ -19,6 +20,7 @@ const ExtraNote = ({
   return (
     <ExtraContainer
       color={color}
+      isPlaying={isPlaying}
       showNote={showNote}
       hasFocus={hasFocus}
       position={extra[localIndex].pos}

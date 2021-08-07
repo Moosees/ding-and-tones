@@ -5,6 +5,7 @@ const Tonefield = ({
   audioPath,
   color,
   hasFocus,
+  isPlaying,
   localIndex,
   note,
   positionMap,
@@ -33,12 +34,12 @@ const Tonefield = ({
         r={isDing ? '2.5' : '1.5'}
         stroke={color}
         strokeWidth={hasFocus ? '0.5' : '0.2'}
-        fill="#333"
+        fill={isPlaying ? '#ccc' : '#333'}
       />
       <text
         textAnchor="middle"
         dy="0.3em"
-        fill="#ccc"
+        fill={isPlaying ? '#333' : '#ccc'}
         transform={`rotate(-${rotate + 90})`}
       >
         {text}

@@ -24,13 +24,13 @@ const miniExtraPositions = [
 
 export const ExtraContainer = styled.div`
   align-items: center;
-  background-color: #333;
+  background-color: ${({ isPlaying }) => (isPlaying ? '#ccc' : '#333')};
   border-color: ${({ color }) => color};
   border-radius: 100%;
   border-style: solid;
   border-width: ${({ hasFocus }) => (hasFocus ? '6px' : '3px')};
   box-shadow: ${({ theme }) => theme.shadowLight};
-  color: #ccc;
+  color: ${({ isPlaying }) => (isPlaying ? '#333' : '#ccc')};
   cursor: ${({ showNote }) => (showNote ? 'pointer' : 'default')};
   display: flex;
   font-family: 'Sura', serif;
