@@ -3,6 +3,7 @@
 ## Song on drum update
 
 * Play button on drum route for mobile - make sure it's safe if songwriter is not loaded yet
+* Display played tonefield on drum when using keyboard to play
 * Clean up code
 
 ## Typescript client update
@@ -17,6 +18,8 @@
 * Styled-components, mix-ins and css variables
 * Testing
 * Private songs
+* Persist session for 30? days, optional
+* Add sound sample set to song db model and/or scale?
 
 ## Bugs
 
@@ -70,7 +73,8 @@
 * Clean up tonefield logic
 * Clean up Tak logic
 * Prevent soft and loud taks on same beat?
-* Use center Tak for non assigned hand taks? For all Taks?
+* Add central Tak for non assigned hand taks? For all Taks?
+* Animation for tonefields being played
 
 ## Intervals
 
@@ -148,7 +152,6 @@
 * Count number of bars for search results? Virtual field?
 * Auth middleware populates current user
 * Cache users in scale searches
-* Add option persist session for 30 days
 * Deal with deleted composers
 * Warn user if trying to save or load a song with a deleted scale
 * Typescript
