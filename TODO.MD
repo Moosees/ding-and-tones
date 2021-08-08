@@ -69,6 +69,7 @@
 * Option to turn off/use same color for tonefield borders
 * Clean up tonefield logic
 * Clean up Tak logic
+* Prevent soft and loud taks on same beat?
 * Use center Tak for non assigned hand taks? For all Taks?
 
 ## Intervals
