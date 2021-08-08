@@ -1,5 +1,6 @@
 // controls how far tonefield are from center of the drum
 export const TRANSLATE_BASE = 6.6;
+export const TRANSLATE_TAK = TRANSLATE_BASE / 2 + 0.5;
 
 // C2 to C5
 export const MIN_NOTE_VALUE = 24;

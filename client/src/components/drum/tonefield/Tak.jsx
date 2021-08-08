@@ -1,20 +1,43 @@
-import React from 'react';
-import { TRANSLATE_BASE } from '../../../assets/constants';
+import React, { useMemo } from 'react';
+import { connect } from 'react-redux';
+import { hands, TRANSLATE_TAK } from '../../../assets/constants';
 
-const Tak = ({ hand }) => {
-  const isPlaying = true;
-  const isSoftTak = true;
-  const offset = TRANSLATE_BASE / 2 + 0.5;
+const Tak = ({ beats, currentBeat, currentSound, hand }) => {
+  const validHandValues = useMemo(() => {
+    const oppositeHand = hand === 'L' ? 'R' : 'L';
+
+    const values = hands
+      .filter((hand) => hand.short !== oppositeHand)
+      .map((hand) => hand.value);
+
+    hand === 'L' && values.push(undefined);
+
+    return values;
+  }, [hand]);
+
+  const isSoftTak = currentSound.includes('t');
+  const isLoudTak = currentSound.includes('T');
+  const isTak = isSoftTak || isLoudTak;
+
+  const isPlaying = isTak && validHandValues.includes(beats[currentBeat].hand);
 
   return (
     <circle
-      r={isSoftTak ? '0.9' : '1.1'}
+      r={isLoudTak ? '1.1' : '0.9'}
       cx="0"
       cy="0"
-      transform={`translate(${hand === 'L' ? offset : offset * -1})`}
+      transform={`translate(${
+        hand === 'R' ? TRANSLATE_TAK : TRANSLATE_TAK * -1
+      })`}
       fill={isPlaying ? '#ccc' : 'transparent'}
     />
   );
 };
 
-export default Tak;
+const mapStateToProps = ({ song, ui }) => ({
+  beats: song.beats,
+  currentBeat: ui.currentBeat,
+  currentSound: ui.currentSound,
+});
+
+export default connect(mapStateToProps)(Tak);
