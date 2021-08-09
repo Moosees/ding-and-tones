@@ -30,7 +30,6 @@ const InfoInput = ({
   return (
     <InfoLayout as="label" large={large}>
       <TextInput
-        autoFocus
         aria-label={label}
         errors={errors}
         onChange={handleChange}

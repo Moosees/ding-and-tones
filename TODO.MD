@@ -51,7 +51,6 @@
 * Keyboard shortcuts on new song (and other?) popup - done?
 * Move focus to beat when closing dropdown?
 * Only show keyboard help on non touch?
-* No auto focus on search inputs?
 
 ## User/Menu
 
