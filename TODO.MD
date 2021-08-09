@@ -2,7 +2,6 @@
 
 ## Song on drum update
 
-* Set default hand to prevent crash when manually playing taks
 * Reset drum after stopping manual drum play
 * Clean up code
 

@@ -19,7 +19,8 @@ const Tak = ({ beats, currentBeat, currentSound, hand }) => {
   const isLoudTak = currentSound.includes('T');
   const isTak = isSoftTak || isLoudTak;
 
-  const isPlaying = isTak && validHandValues.includes(beats[currentBeat].hand);
+  const isPlaying =
+    isTak && validHandValues.includes(beats[currentBeat]?.hand ?? 2);
 
   return (
     <circle
