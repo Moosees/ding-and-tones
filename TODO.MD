@@ -2,7 +2,6 @@
 
 ## Song on drum update
 
-* Play button on drum route for mobile - make sure it's safe if songwriter is not loaded yet
 * Display played tonefield on drum when using keyboard to play
 * Clean up code
 
@@ -75,6 +74,7 @@
 * Prevent soft and loud taks on same beat?
 * Add central Tak for non assigned hand taks? For all Taks?
 * Animation for tonefields being played
+* Play button as icon (on mobile drum route)
 
 ## Intervals
 
