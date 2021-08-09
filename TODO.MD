@@ -2,7 +2,6 @@
 
 ## Song on drum update
 
-* Reset drum after stopping manual drum play
 * Clean up code
 
 ## Typescript client update
