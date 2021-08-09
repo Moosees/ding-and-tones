@@ -2,7 +2,8 @@
 
 ## Song on drum update
 
-* Display played tonefield on drum when using keyboard to play
+* Set default hand to prevent crash when manually playing taks
+* Reset drum after stopping manual drum play
 * Clean up code
 
 ## Typescript client update

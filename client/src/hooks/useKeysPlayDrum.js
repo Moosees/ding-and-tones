@@ -1,15 +1,21 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { beatOptionToKeyCode } from '../assets/keyCodes';
+import { setCurrentBeat } from '../redux/ui/ui.actions';
 
 const useKeysPlayDrum = () => {
+  const dispatch = useDispatch();
   const sounds = useSelector(({ ui }) => ui.soundOptions.allSounds);
 
   useEffect(() => {
     const keyboardCbs = Object.keys(sounds || {}).reduce((acc, soundKey) => {
       const cbKey = beatOptionToKeyCode[soundKey];
+      const cbFunc = () => {
+        dispatch(setCurrentBeat(null, soundKey));
+        new Audio(sounds[soundKey]).play();
+      };
 
-      return { ...acc, [cbKey]: () => new Audio(sounds[soundKey]).play() };
+      return { ...acc, [cbKey]: cbFunc };
     }, {});
 
     const keyboardListener = (e) => {
@@ -21,7 +27,7 @@ const useKeysPlayDrum = () => {
     document.addEventListener('keydown', keyboardListener);
 
     return () => document.removeEventListener('keydown', keyboardListener);
-  }, [sounds]);
+  }, [dispatch, sounds]);
 };
 
 export default useKeysPlayDrum;
