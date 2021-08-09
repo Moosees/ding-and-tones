@@ -27,12 +27,6 @@ const Drum = ({
 
       const isPlaying = currentSound.includes(noteNumber);
 
-      isPlaying &&
-        console.log({
-          currentSound,
-          noteNumber,
-        });
-
       const hasFocus = i === displayedNote;
 
       const text = showNote

@@ -13,7 +13,7 @@ const useKeysPlayDrum = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (!isSongPlaying) dispatch(setCurrentBeat(null, []));
+      if (!isSongPlaying) dispatch(setCurrentBeat(null, null));
     }, 500);
 
     return () => clearTimeout(timeout);
@@ -23,7 +23,7 @@ const useKeysPlayDrum = () => {
     const keyboardCbs = Object.keys(sounds || {}).reduce((acc, soundKey) => {
       const cbKey = beatOptionToKeyCode[soundKey];
       const cbFunc = () => {
-        dispatch(setCurrentBeat(null, soundKey));
+        dispatch(setCurrentBeat(null, [soundKey]));
         setKeypress((keypress) => !keypress);
         new Audio(sounds[soundKey]).play();
       };

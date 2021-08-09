@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   barMetreOffset: 0,
   currentBar: null,
   currentBeat: null,
-  currentSound: ['0', '2', 'b1'],
+  currentSound: [],
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
