@@ -1,5 +1,11 @@
 # DING AND TONES TODO LIST
 
+## Small changes
+
+* Add sound sample set to song db model and/or scale?
+* Add likes to songs db model
+* Trim titles and names before checking length
+
 ## Typescript client update
 
 * Update state
@@ -13,15 +19,16 @@
 * Testing
 * Private songs
 * Persist session for 30? days, optional
-* Add sound sample set to song db model and/or scale?
 
 ## Bugs
 
 * Save scale name issues
-* Scale name edit remembers input even if scales changes - fix with scale save changes update?
+* Scale name edit remembers input even if scales changes - fix with scale save changes update? (loading scale and clicking edit name provides wrong name)
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Safari print popup bug - print dialog is not blocking/waiting
 * Song search results doesn't update if save song changes assigned scale
+* If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
+* Songs without users show up without composer name (and not Anonymous either)
 
 ## Design
 
@@ -33,7 +40,7 @@
 * Only small divider lines?
 * Delete hover color should be red
 * Add more text labels like in Edit scale component?
-* Search hints should not be alerts
+* Search result hints should not be alerts
 * Change ScrollBox to list?
 * Use drop shadows for tonefield focus?
 * Custom ref for popup anchor
@@ -138,11 +145,11 @@
 * Use new scaleFull outside print-chords - done?
 * Remove measure subdivision count?
 * Clean up rootIndex in parseScaleData
-* Trim titles and names before checking length
 
 ## API
 
-* Change query string to keyword search? Add difficulty filter to searches
+* Change query string to keyword search? Atlas search?
+* Add difficulty filter to searches
 * Count number of bars for search results? Virtual field?
 * Auth middleware populates current user
 * Cache users in scale searches
