@@ -37,6 +37,7 @@ const scaleSchema = new mongoose.Schema({
     extra: [{ note: String, pos: Number }],
   },
   queryString: String,
+  soundSet: { type: Number, default: 0 },
 });
 
 scaleSchema

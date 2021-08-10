@@ -2,8 +2,6 @@
 
 ## Small changes
 
-* Add sound sample set to song db model and/or scale?
-* Add likes to songs db model
 * Trim titles and names before checking length
 
 ## Typescript client update
