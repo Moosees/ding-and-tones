@@ -44,7 +44,7 @@
 
 * Disable focus for icons attached to edit only text boxes
 * Fix primary button focus after click
-* Handle focus on modals
+* Handle focus on modals - enter should confirm modal? enter should exit from input?
 * Better keyboard navigation for table and dropdown
 * Print keyboard shortcut
 * Keyboard shortcuts on new song (and other?) popup - done?
