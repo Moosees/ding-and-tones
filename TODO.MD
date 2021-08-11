@@ -28,6 +28,7 @@
 * Better Loading component - big spinner? Spinner on account page save
 * Load song button can be seen through table header
 * Errors from backend display on inputs instead of alert?
+* Red borders on errors?
 * New buttons for loading songs and confirm/cancel
 * Checkbox hover effect, all transform: scale hovers...
 * Only small divider lines?
