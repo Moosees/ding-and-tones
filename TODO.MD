@@ -1,13 +1,12 @@
 # DING AND TONES TODO LIST
 
-* add validation type for scale name
-
 ## Typescript client update
 
 * Update state
 * Update components
 * Play song logic should be moved somewhere else?
 * Play song logic should be reworked with less forEach? Play song class
+* Validation types enum
 
 ## Updates in need of planning
 

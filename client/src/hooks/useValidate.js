@@ -32,6 +32,10 @@ const validateInput = (value, validationType) => {
       errors = validateString(value, 'Title', 4, 30);
       break;
 
+    case 'name':
+      errors = validateString(value, 'Name', 4, 30);
+      break;
+
     case 'username':
       errors = validateString(value, 'Username', 4, 20);
       break;
