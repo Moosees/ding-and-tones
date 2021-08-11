@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
 
 const validateInput = (value, validationType) => {
+  const num = /^[\d]+$/g;
   const alphaNum = /^[.,_-\w\s]+$/g;
   let errors = [];
 
   switch (validationType) {
-    case 'bpm':
+    case 'bpm': {
+      if (!num.test(value)) {
+        errors.push('Please enter a whole number');
+        break;
+      }
       if (value < 40) errors.push('Min 40 bpm');
       if (value > 180) errors.push('Max 180 bpm');
       break;
+    }
 
     case 'title': {
       const trimmedValue = value.trim();
@@ -19,13 +25,14 @@ const validateInput = (value, validationType) => {
       break;
     }
 
-    case 'username':
+    case 'username': {
       const trimmedValue = value.trim();
       if (!alphaNum.test(trimmedValue))
         errors.push('Username cannot contain special characters');
       if (trimmedValue.length < 4) errors.push('Username is too short');
       if (trimmedValue.length > 20) errors.push('Username is too long');
       break;
+    }
 
     default:
       errors = ['Type is unknown'];

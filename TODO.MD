@@ -1,7 +1,5 @@
 # DING AND TONES TODO LIST
 
-* Validate bpm should check if input is a number
-
 ## Typescript client update
 
 * Update state
