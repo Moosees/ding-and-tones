@@ -1,6 +1,6 @@
 # DING AND TONES TODO LIST
 
-Fix bpm popup crash
+* Validate bpm should check if input is a number
 
 ## Typescript client update
 

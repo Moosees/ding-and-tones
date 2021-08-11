@@ -10,18 +10,21 @@ const validateInput = (value, validationType) => {
       if (value > 180) errors.push('Max 180 bpm');
       break;
 
-    case 'title':
-      if (!alphaNum.test(value))
+    case 'title': {
+      const trimmedValue = value.trim();
+      if (!alphaNum.test(trimmedValue))
         errors.push('Title cannot contain special characters');
-      if (value.length < 4) errors.push('Title is too short');
-      if (value.length > 30) errors.push('Title is too long');
+      if (trimmedValue.length < 4) errors.push('Title is too short');
+      if (trimmedValue.length > 30) errors.push('Title is too long');
       break;
+    }
 
     case 'username':
-      if (!alphaNum.test(value))
+      const trimmedValue = value.trim();
+      if (!alphaNum.test(trimmedValue))
         errors.push('Username cannot contain special characters');
-      if (value.length < 4) errors.push('Username is too short');
-      if (value.length > 20) errors.push('Username is too long');
+      if (trimmedValue.length < 4) errors.push('Username is too short');
+      if (trimmedValue.length > 20) errors.push('Username is too long');
       break;
 
     default:
@@ -41,7 +44,7 @@ const useValidate = (validationType, defaultValue) => {
     setIsValid(false);
 
     const timeout = setTimeout(() => {
-      const newErrors = validateInput(value.trim(), validationType);
+      const newErrors = validateInput(value, validationType);
       setErrors(newErrors);
 
       if (!newErrors.length) setIsValid(true);
