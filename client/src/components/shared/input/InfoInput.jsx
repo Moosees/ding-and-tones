@@ -4,6 +4,7 @@ import { InfoLayout } from '../layout/layout.styles';
 import { TextInput } from './input.styles';
 
 const InfoInput = ({
+  autoFocus,
   editOnly,
   errors,
   handleChange,
@@ -30,6 +31,7 @@ const InfoInput = ({
   return (
     <InfoLayout as="label" large={large}>
       <TextInput
+        autoFocus={!editOnly || autoFocus}
         aria-label={label}
         errors={errors}
         onChange={handleChange}

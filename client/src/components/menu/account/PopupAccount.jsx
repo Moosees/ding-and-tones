@@ -30,6 +30,7 @@ const PopupAccount = ({
   return (
     <Popup header="Account" onClose={toggleAccount}>
       <InfoInput
+        autoFocus
         large
         editOnly
         handleChange={setUsername}

@@ -1,5 +1,7 @@
 # DING AND TONES TODO LIST
 
+Fix bpm popup crash
+
 ## Typescript client update
 
 * Update state

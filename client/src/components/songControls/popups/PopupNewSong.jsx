@@ -45,6 +45,7 @@ const PopupNewSong = ({ onClose, setSongState, updateValidation }) => {
   return (
     <Popup header="New song" onClose={onClose}>
       <InfoInput
+        autoFocus
         large
         editOnly
         handleChange={setTitle}
