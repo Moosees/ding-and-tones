@@ -1,7 +1,5 @@
 # DING AND TONES TODO LIST
 
-* Singleton for filter
-
 ## Typescript client update
 
 * Update state
