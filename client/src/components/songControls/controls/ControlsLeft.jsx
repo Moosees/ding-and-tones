@@ -35,14 +35,8 @@ const ControlsLeft = ({
   const [saveSongOpen, setSaveSongOpen] = useState(false);
   const { replace } = useHistory();
 
-  const [
-    title,
-    handleTitleChange,
-    titleErrors,
-    isTitleValid,
-    resetTitle,
-    setTitle,
-  ] = useValidate('title', songInfo.title);
+  const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
+    useValidate('title', songInfo.title);
 
   const { metre, subdivision } = songInfo;
   const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
@@ -115,12 +109,7 @@ const ControlsLeft = ({
           />
         </Buttons>
       </ControlsContainer>
-      {newSongOpen && (
-        <PopupNewSong
-          onClose={() => setNewSongOpen(false)}
-          updateValidation={setTitle}
-        />
-      )}
+      {newSongOpen && <PopupNewSong onClose={() => setNewSongOpen(false)} />}
       {newBarOpen && (
         <PopupNewBar
           onClose={() => setNewBarOpen(false)}
