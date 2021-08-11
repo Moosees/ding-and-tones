@@ -1,8 +1,20 @@
 import { useEffect, useState } from 'react';
 
+const validateString = (value, name, min, max) => {
+  const alphaNum = /^[.,_-\w\s]+$/g;
+  const errors = [];
+  const trimmedValue = value.trim();
+
+  if (!alphaNum.test(trimmedValue))
+    errors.push(`${name} cannot contain special characters`);
+  if (trimmedValue.length < min) errors.push(`${name} is too short`);
+  if (trimmedValue.length > max) errors.push(`${name} is too long`);
+
+  return errors;
+};
+
 const validateInput = (value, validationType) => {
   const num = /^[\d]+$/g;
-  const alphaNum = /^[.,_-\w\s]+$/g;
   let errors = [];
 
   switch (validationType) {
@@ -16,23 +28,13 @@ const validateInput = (value, validationType) => {
       break;
     }
 
-    case 'title': {
-      const trimmedValue = value.trim();
-      if (!alphaNum.test(trimmedValue))
-        errors.push('Title cannot contain special characters');
-      if (trimmedValue.length < 4) errors.push('Title is too short');
-      if (trimmedValue.length > 30) errors.push('Title is too long');
+    case 'title':
+      errors = validateString(value, 'Title', 4, 30);
       break;
-    }
 
-    case 'username': {
-      const trimmedValue = value.trim();
-      if (!alphaNum.test(trimmedValue))
-        errors.push('Username cannot contain special characters');
-      if (trimmedValue.length < 4) errors.push('Username is too short');
-      if (trimmedValue.length > 20) errors.push('Username is too long');
+    case 'username':
+      errors = validateString(value, 'Username', 4, 20);
       break;
-    }
 
     default:
       errors = ['Type is unknown'];

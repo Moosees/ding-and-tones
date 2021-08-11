@@ -1,5 +1,7 @@
 # DING AND TONES TODO LIST
 
+* add validation type for scale name
+
 ## Typescript client update
 
 * Update state
