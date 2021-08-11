@@ -41,7 +41,7 @@ const useValidate = (validationType, defaultValue) => {
     setIsValid(false);
 
     const timeout = setTimeout(() => {
-      const newErrors = validateInput(value, validationType);
+      const newErrors = validateInput(value.trim(), validationType);
       setErrors(newErrors);
 
       if (!newErrors.length) setIsValid(true);

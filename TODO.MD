@@ -1,9 +1,5 @@
 # DING AND TONES TODO LIST
 
-## Small changes
-
-* Trim titles and names before checking length
-
 ## Typescript client update
 
 * Update state
