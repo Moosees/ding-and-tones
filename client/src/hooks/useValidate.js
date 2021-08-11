@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import Filter from 'bad-words';
+
+const filter = new Filter();
 
 const validateString = (value, name, min, max) => {
   const alphaNum = /^[.,_-\w\s]+$/g;
@@ -7,8 +10,9 @@ const validateString = (value, name, min, max) => {
 
   if (!alphaNum.test(trimmedValue))
     errors.push(`${name} cannot contain special characters`);
-  if (trimmedValue.length < min) errors.push(`${name} is too short`);
   if (trimmedValue.length > max) errors.push(`${name} is too long`);
+  if (trimmedValue.length < min) errors.push(`${name} is too short`);
+  if (filter.isProfane(trimmedValue)) errors.push('No profane words please');
 
   return errors;
 };

@@ -1,5 +1,7 @@
 # DING AND TONES TODO LIST
 
+* Singleton for filter
+
 ## Typescript client update
 
 * Update state
@@ -150,6 +152,7 @@
 * Deal with deleted composers
 * Warn user if trying to save or load a song with a deleted scale
 * Typescript
+* Better profanity filter on save requests
 
 ## Future plans
 
@@ -175,7 +178,6 @@
 * Increase max save limits for older accounts
 * Favorite songs/scales
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
-* Check text inputs for bad words?
 * Print multiple songs on same page
 * Print with notes instead of numbers
 * Dark mode
