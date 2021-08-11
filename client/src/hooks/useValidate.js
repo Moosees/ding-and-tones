@@ -48,6 +48,10 @@ const useValidate = (validationType, defaultValue) => {
   const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
+    setValue(defaultValue || '');
+  }, [defaultValue]);
+
+  useEffect(() => {
     setIsValid(false);
 
     const timeout = setTimeout(() => {

@@ -16,8 +16,6 @@
 
 ## Bugs
 
-* Save scale name issues
-* Scale name edit remembers input even if scales changes - fix with scale save changes update? (loading scale and clicking edit name provides wrong name)
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Safari print popup bug - print dialog is not blocking/waiting
 * Song search results doesn't update if save song changes assigned scale
