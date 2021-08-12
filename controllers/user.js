@@ -3,7 +3,7 @@ const User = require('../models/user');
 const { getClient, getAuthUrl } = require('../utils/auth');
 const crypto = require('crypto');
 
-const day = 8640000;
+const day = 1000 * 60 * 60 * 24;
 
 exports.checkSession = async (req, res) => {
   if (!req.userId) return res.status(200).json({ user: null });
@@ -86,8 +86,8 @@ exports.signInWithGoogle = async (req, res) => {
     }
 
     req.session.user = user._id;
-    const expirationTime = persistSession ? day * 30 : day;
-    req.session.cookie.expires = new Date(Date.now() + expirationTime);
+    const sessionTtl = persistSession ? day * 30 : day;
+    req.session.cookie.maxAge = sessionTtl;
 
     return res.status(200).json({
       anonymous: user.anonymous,
