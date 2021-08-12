@@ -78,13 +78,13 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (songId) => (dispatch) => {
+export const signIn = (songId, persistSession) => (dispatch) => {
   axios
     .get('/googleURL')
     .then((res) => handleGooglePostMsg(res.data))
     .then((msg) => {
       const code = getGoogleCode(msg);
-      return axios.post('/signIn', { code, songId });
+      return axios.post('/signIn', { code, songId, persistSession });
     })
     .then((res) => {
       if (res.status === 200) {

@@ -1,15 +1,15 @@
 export const getGoogleError = (error) => {
   switch (error) {
     case 'popup_closed_by_user':
-      return `Sign in failed!
+      return `Sign in failed
       Popup was closed`;
 
     case 'access_denied':
-      return `Sign in failed!
-      Permission to access your profile was denied`;
+      return `Sign in failed
+      Could not access profile, please try again`;
 
     case 'popup_disabled':
-      return `Sign in failed!
+      return `Sign in failed
       Popups blocked`;
 
     default:

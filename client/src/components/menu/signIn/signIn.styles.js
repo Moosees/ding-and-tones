@@ -22,6 +22,7 @@ export const GoogleBtn = styled.button`
   cursor: pointer;
   display: inline-block;
   height: 40px;
+  margin: 1rem 0 2rem;
   padding-left: 8px;
   padding-right: 8px;
   white-space: nowrap;

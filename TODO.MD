@@ -1,7 +1,5 @@
 # DING AND TONES TODO LIST
 
-* Add persist session checkbox to login popup
-
 ## Typescript client update
 
 * Update state
