@@ -1,5 +1,7 @@
 # DING AND TONES TODO LIST
 
+* Add persist session checkbox to login popup
+
 ## Typescript client update
 
 * Update state
@@ -13,7 +15,6 @@
 * Styled-components, mix-ins and css variables
 * Testing
 * Private songs
-* Persist session for 30? days, optional
 
 ## Bugs
 
@@ -22,6 +23,7 @@
 * Song search results doesn't update if save song changes assigned scale
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)
+* Google login sometimes aborts login prematurely
 
 ## Design
 

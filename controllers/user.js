@@ -3,6 +3,8 @@ const User = require('../models/user');
 const { getClient, getAuthUrl } = require('../utils/auth');
 const crypto = require('crypto');
 
+const day = 8640000;
+
 exports.checkSession = async (req, res) => {
   if (!req.userId) return res.status(200).json({ user: null });
 
@@ -51,7 +53,7 @@ exports.updateUserInfo = (req, res) => {
 
 exports.signInWithGoogle = async (req, res) => {
   try {
-    const { code, songId } = req.body;
+    const { code, songId, persistSession } = req.body;
     const client = getClient();
 
     const {
@@ -84,6 +86,8 @@ exports.signInWithGoogle = async (req, res) => {
     }
 
     req.session.user = user._id;
+    const expirationTime = persistSession ? day * 30 : day;
+    req.session.cookie.expires = new Date(Date.now() + expirationTime);
 
     return res.status(200).json({
       anonymous: user.anonymous,
