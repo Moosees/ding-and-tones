@@ -4,16 +4,13 @@ export const getGoogleError = (error) => {
       return `Sign in failed
       Popup was closed`;
 
-    case 'access_denied':
-      return `Sign in failed
-      Could not access profile, please try again`;
-
     case 'popup_disabled':
       return `Sign in failed
-      Popups blocked`;
+      Popup blocked`;
 
     default:
-      return `Sign in failed!`;
+      return `Sign in failed
+      Please try again`;
   }
 };
 
@@ -47,15 +44,10 @@ export const handleGooglePostMsg = (url) => {
           ? 'https://www.dingandtones.com'
           : 'http://localhost:3000';
 
-      runCleanup();
-
-      if (!win || allowedOrigin !== event.origin || !event.data.search) {
-        // console.log({ win, event });
-        reject('access_denied');
-        return;
+      if (win && allowedOrigin === event.origin && event.data.search) {
+        runCleanup();
+        resolve(event.data.search);
       }
-
-      resolve(event.data.search);
     };
 
     const runCleanup = () => {
