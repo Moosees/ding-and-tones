@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { updateSongInfo } from '../../../redux/song/song.actions';
+import './slider-override.css';
 
 const Mark = styled.span`
   color: ${({ theme }) => theme.colorText};
@@ -41,7 +42,11 @@ const BpmSlider = ({ bpm, updateSongInfo, isSongPlaying }) => (
     railStyle={{
       backgroundColor: 'rgba(0,0,60,0.3)',
     }}
-    style={{ backgroundColor: 'rgba(0,0,0,0)', marginTop: '-5px' }}
+    style={{
+      backgroundColor: 'rgba(0,0,0,0)',
+      cursor: 'pointer',
+      marginTop: '-5px',
+    }}
   />
 );
 

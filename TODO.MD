@@ -24,21 +24,19 @@
 
 ## Design
 
+* Search result hints should not be alerts
+* Errors from backend display on inputs instead of alert?
 * Better Loading component - big spinner? Spinner on account page save
 * Load song button can be seen through table header
-* Errors from backend display on inputs instead of alert?
 * Red borders on errors?
 * New buttons for loading songs and confirm/cancel
 * Checkbox hover effect, all transform: scale hovers...
 * Only small divider lines?
-* Delete hover color should be red
 * Add more text labels like in Edit scale component?
-* Search result hints should not be alerts
 * Change ScrollBox to list?
 * Use drop shadows for tonefield focus?
 * Custom ref for popup anchor
 * Add x close button to popups?
-* Beat slider focus styles
 * Select boxes dynamic width
 
 ## Focus and keyboard
