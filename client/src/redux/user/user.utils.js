@@ -38,41 +38,51 @@ export const handleGooglePostMsg = (url) => {
 
   return new Promise((resolve, reject) => {
     let counter = 0;
-    const popupTimeout = setInterval(() => {
+    let popupTimeout;
+    let closedInterval;
+
+    const getMessageFromPopup = (event) => {
+      const allowedOrigin =
+        process.env.NODE_ENV === 'production'
+          ? 'https://www.dingandtones.com'
+          : 'http://localhost:3000';
+
+      runCleanup();
+
+      if (!win || allowedOrigin !== event.origin || !event.data.search) {
+        // console.log({ win, event });
+        reject('access_denied');
+        return;
+      }
+
+      resolve(event.data.search);
+    };
+
+    const runCleanup = () => {
+      window.removeEventListener('message', getMessageFromPopup);
+      if (popupTimeout) clearTimeout(popupTimeout);
+      if (closedInterval) clearInterval(closedInterval);
+    };
+
+    popupTimeout = setInterval(() => {
       ++counter;
 
       if (counter >= 6000 && !win) {
-        clearTimeout(popupTimeout);
+        runCleanup();
         reject('popup_disabled');
+        return;
       }
 
       if (win) {
-        clearTimeout(popupTimeout);
+        popupTimeout && clearTimeout(popupTimeout);
 
-        const closedInterval = setInterval(() => {
+        closedInterval = setInterval(() => {
           if (win.closed) {
-            window.removeEventListener('message', getMessageFromPopup);
-            clearInterval(closedInterval);
+            runCleanup();
             reject('popup_closed_by_user');
+            return;
           }
         }, 500);
-
-        const getMessageFromPopup = (event) => {
-          const allowedOrigin =
-            process.env.NODE_ENV === 'production'
-              ? 'https://www.dingandtones.com'
-              : 'http://localhost:3000';
-
-          if (!win || allowedOrigin !== event.origin || !event.data.search) {
-            window.removeEventListener('message', getMessageFromPopup);
-            clearInterval(closedInterval);
-            reject('access_denied');
-          } else {
-            resolve(event.data.search);
-          }
-          window.removeEventListener('message', getMessageFromPopup);
-          clearInterval(closedInterval);
-        };
 
         window.addEventListener('message', getMessageFromPopup);
       }
