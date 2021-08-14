@@ -69,7 +69,7 @@ const Filter = ({
         <CheckBoxes>{allChords}</CheckBoxes>
       </ScrollBox>
       <DividerLine small />
-      <Buttons>
+      <Buttons position="center">
         <BtnPrimary
           label="All"
           light

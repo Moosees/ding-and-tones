@@ -29,6 +29,11 @@ export const DrumWrapper = styled.div`
   max-width: 35rem;
   position: relative;
   width: 100%;
+
+  ${({ theme }) => theme.mqW1200`
+    max-height: 28rem;
+    max-width: 28rem;
+  `}
 `;
 
 export const MiniDrumContainer = styled.div`

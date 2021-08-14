@@ -2,17 +2,16 @@
 
 ## Mobile design update
 
+* Chords/drum - chord list at bottom for landscape small screens?
 * Scale - split into two routes? Vertical layout?
-* Chords/drum - list and filters, vertical layout?
 * Songwriter - controls/bars, scroll or fixed pos?
 * Find songs - only minor changes?
 * Mobile alert position
 * Mobile copyright message position
 * Mobile menu position
 * Possible to use app in portrait mode
-* Extra notes look weird on mobile in portrait
-* Drum displayed on all routes? Show/hide drum?
 * Play button as icon (on mobile drum route)? Not needed after update?
+* Clean up code - remove css comments etc.
 
 ## Typescript client update
 

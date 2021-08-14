@@ -42,7 +42,7 @@ export const LargeLayout = styled.div`
 `;
 
 export const MobileLayout = styled.div`
-  /* display: flex; */
+  display: flex;
   height: 100%;
   overflow: hidden auto;
   padding: 0.5rem;

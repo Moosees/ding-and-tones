@@ -1,23 +1,26 @@
 import React from 'react';
-import Chords from '../chords/Chords';
+import Filter from '../chords/filter/Filter';
+import List from '../chords/list/List';
 import Drum from '../drum/Drum';
 import Intervals from '../intervals/Intervals';
 import {
-  ChordsContainer,
-  IntervalsContainer,
-  MobileContainer,
+  GridContainer,
+  MobileContainer
 } from './mobileDrum.styles';
 
 const MobileDrum = () => {
   return (
     <MobileContainer>
       <Drum style={{ gridArea: 'drum' }} />
-      <IntervalsContainer style={{ gridArea: 'intervals' }}>
+      <GridContainer style={{ gridArea: 'intervals' }}>
         <Intervals />
-      </IntervalsContainer>
-      <ChordsContainer style={{ gridArea: 'chords' }}>
-        <Chords />
-      </ChordsContainer>
+      </GridContainer>
+      <GridContainer style={{ gridArea: 'filter' }}>
+        <Filter />
+      </GridContainer>
+      <GridContainer style={{ gridArea: 'chords' }}>
+        <List />
+      </GridContainer>
     </MobileContainer>
   );
 };
