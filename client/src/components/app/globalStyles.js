@@ -24,6 +24,8 @@ export default createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
 
     --padding: 2rem;
 

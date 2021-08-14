@@ -12,7 +12,7 @@ const App = ({ setPrivacyOpen }) => {
   const { isMobile } = useDimensions();
 
   return (
-    <Viewport id="outsideTarget">
+    <Viewport id="outsideTarget" isMobile={isMobile}>
       {isMobile ? <Mobile /> : <Large />}
       {!isMobile && (
         <Copyright>

@@ -3,23 +3,10 @@ import styled from 'styled-components';
 export const Viewport = styled.div`
   align-items: center;
   display: flex;
-  height: 100vh;
   justify-content: center;
-  width: 100vw;
-
-  ${({ theme }) => theme.mqW1200`
-    padding: 5px 2px 2px;
-  `}
-
-  @media screen and (max-width: 700px) and (orientation: portrait) {
-    height: 100vw;
-    left: 0;
-    position: absolute;
-    top: 100%;
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-  }
+  height: 100%;
+  position: fixed;
+  width: 100%;
 `;
 
 export const LargeLayout = styled.div`
@@ -55,16 +42,12 @@ export const LargeLayout = styled.div`
 `;
 
 export const MobileLayout = styled.div`
-  border: ${({ theme }) => theme.borderLight};
-  border-radius: 30px;
-  box-shadow: ${({ theme }) => theme.shadowBtnLight};
-  display: flex;
-  flex-grow: 1;
+  /* display: flex; */
   height: 100%;
-  max-height: 700px;
-  margin-bottom: 1rem;
+  overflow: hidden auto;
   padding: 0.5rem;
   position: relative;
+  width: 100%;
 `;
 
 export const SectionWithNav = styled.div`
