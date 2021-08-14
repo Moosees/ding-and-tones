@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MobileContainer = styled.div`
+export const ChordsGrid = styled.div`
   align-items: stretch;
   display: grid;
   flex-grow: 1;

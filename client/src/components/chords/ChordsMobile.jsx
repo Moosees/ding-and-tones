@@ -1,16 +1,13 @@
 import React from 'react';
-import Filter from '../chords/filter/Filter';
-import List from '../chords/list/List';
 import Drum from '../drum/Drum';
 import Intervals from '../intervals/Intervals';
-import {
-  GridContainer,
-  MobileContainer
-} from './mobileDrum.styles';
+import { ChordsGrid, GridContainer } from './chordsMobile.styles';
+import Filter from './filter/Filter';
+import List from './list/List';
 
-const MobileDrum = () => {
+const ChordsMobile = () => {
   return (
-    <MobileContainer>
+    <ChordsGrid>
       <Drum style={{ gridArea: 'drum' }} />
       <GridContainer style={{ gridArea: 'intervals' }}>
         <Intervals />
@@ -21,8 +18,8 @@ const MobileDrum = () => {
       <GridContainer style={{ gridArea: 'chords' }}>
         <List />
       </GridContainer>
-    </MobileContainer>
+    </ChordsGrid>
   );
 };
 
-export default MobileDrum;
+export default ChordsMobile;
