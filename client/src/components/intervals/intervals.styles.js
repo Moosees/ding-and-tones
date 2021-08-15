@@ -27,7 +27,8 @@ export const IntervalList = styled.div`
   padding: 0.5rem 1.5rem;
 
   ${({ theme }) => theme.mqW1200`
-    padding: 0.5rem;
+    max-height: unset;
+    padding: 0.5rem;  
   `}
 `;
 

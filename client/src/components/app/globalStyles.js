@@ -28,17 +28,20 @@ export default createGlobalStyle`
     min-height: -webkit-fill-available;
 
     --padding: 2rem;
+    --drum-size: 35rem;
 
     ${({ theme }) => theme.mqW1200`
       font-size: 56.25%;
 
       --padding: 1rem;
+      --drum-size: 28rem;
     `}
 
     ${({ theme }) => theme.mqW850`
       font-size: 50%;
 
       --padding: 0.5rem;
+      --drum-size: 22rem;
     `}
 
     ${({ theme }) => theme.mqW700`

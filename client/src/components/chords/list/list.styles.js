@@ -17,4 +17,8 @@ export const ItemContainer = styled.li`
       margin: 0 4px;
     }
   }
+
+  ${({ theme }) => theme.mqW850`
+    margin: 1px; 
+  `}
 `;

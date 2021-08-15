@@ -12,6 +12,7 @@
 * Possible to use app in portrait mode
 * Play button as icon (on mobile drum route)? Not needed after update?
 * Clean up code - remove css comments etc.
+* Show alert if device is in portrait mode
 
 ## Typescript client update
 

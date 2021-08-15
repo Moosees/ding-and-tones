@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import useDimensions from '../../../hooks/useDimensions';
 import {
   addChordToPrintList,
   removeChordFromPrintList,
@@ -16,6 +17,8 @@ const ListItem = ({
   removeChordFromPrintList,
   setDisplayedChord,
 }) => {
+  const { isMobile } = useDimensions();
+
   const chordIsInPrintList = !printList.every(
     ({ nameShort }) => nameShort !== chord.nameShort
   );
@@ -38,7 +41,7 @@ const ListItem = ({
           onChange={() => setDisplayedChord(isDisplayed ? null : chord)}
         />
         <Checkbox
-          label="Print list"
+          label={isMobile ? 'Print' : 'Print list'}
           checked={chordIsInPrintList}
           onChange={handleChordClick}
         />

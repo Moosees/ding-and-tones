@@ -8,9 +8,19 @@ export const ChordsGrid = styled.div`
   grid-template-areas:
     'drum drum chords'
     'intervals filter chords';
-  grid-template-columns: 1fr 1fr 2fr;
-  grid-template-rows: 28rem 34rem;
+  grid-template-columns: 3fr 3fr 5fr;
+  grid-template-rows: var(--drum-size);
+  height: 100%;
   margin: auto 0;
+
+  ${({ theme }) => theme.mqW850`
+    gap: 0 0.5rem;
+  `}
+
+  ${({ theme }) => theme.mqW700`
+    gap: 0;
+    grid-template-columns: 3fr 3fr 5fr;
+  `}
 `;
 
 export const GridContainer = styled.div`
