@@ -2,7 +2,6 @@
 
 ## Mobile design update
 
-* Chords/drum - chord list at bottom for landscape small screens?
 * Scale - split into two routes? Vertical layout?
 * Songwriter - controls/bars, scroll or fixed pos?
 * Find songs - only minor changes?

@@ -21,6 +21,14 @@ export const ChordsGrid = styled.div`
     gap: 0;
     grid-template-columns: 3fr 3fr 5fr;
   `}
+
+  @media (orientation: portrait) {
+    grid-template-areas:
+      'drum intervals'
+      'filter chords';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 3fr;
+  }
 `;
 
 export const GridContainer = styled.div`
