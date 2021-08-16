@@ -6,7 +6,6 @@ import {
 } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
-import DividerLine from '../../shared/dividerLine/DividerLine';
 import Move from '../move/Move';
 import Notes from '../notes/Notes';
 import { EditContainer, EditContent, TextLabel } from './edit.styles';
@@ -22,7 +21,6 @@ const Edit = ({
   return (
     <EditContainer>
       <EditContent>{isEditingExtraPos ? <Move /> : <Notes />}</EditContent>
-      <DividerLine small />
       <Buttons position="center">
         <Checkbox
           asBtn

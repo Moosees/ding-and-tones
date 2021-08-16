@@ -5,7 +5,7 @@ import { noteValueToName } from '../../../assets/intervals';
 import {
   addNoteToScale,
   removeNoteFromScale,
-  transposeScale
+  transposeScale,
 } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
@@ -94,6 +94,7 @@ const Notes = ({
       </Buttons>
       <DividerLine small />
       <NotesList>{getNotes()}</NotesList>
+      <DividerLine small />
     </>
   );
 };

@@ -2,30 +2,32 @@ import styled from 'styled-components';
 
 export const ScaleContainer = styled.div`
   align-items: center;
-  display: grid;
+  display: flex;
   flex-grow: 1;
-  grid-template-columns: 1fr min-content 1fr;
   padding: var(--padding);
 
-  ${({ theme }) => theme.mqW1200`
-    grid-template-columns: max-content min-content 1fr;
-  `}
-
   @media (orientation: portrait) {
-    align-content: start;
-    grid-template-columns: 100%;
-    grid-template-rows: max-content 0px;
-    height: 100%;
+    flex-direction: column;
     padding: 0 0.5rem;
-
-    & > div {
-      border-bottom: ${({ theme }) => theme.borderMedium};
-    }
   }
 `;
 
 export const Section = styled.div`
   align-items: center;
   display: flex;
+  flex: 1;
   flex-direction: column;
+  height: 100%;
+  justify-content: center;
+
+  @media (orientation: portrait) {
+    min-height: 0;
+    width: 100%;
+
+    &:first-child {
+      min-height: auto;
+      border-bottom: ${({ theme }) => theme.borderMedium};
+      flex: 0;
+    }
+  }
 `;

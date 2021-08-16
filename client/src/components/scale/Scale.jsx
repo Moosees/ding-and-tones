@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import useDimensions from '../../hooks/useDimensions';
 import { getScaleById } from '../../redux/scale/scale.actions';
 import { startSearch } from '../../redux/search/search.actions';
 import searchOptions from '../../redux/search/search.options';
@@ -15,6 +16,7 @@ import Search from './search/Search';
 const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
   const { scaleId } = useParams();
   const { replace } = useHistory();
+  const { isMobile } = useDimensions();
 
   const { hasChanges, isDeleting, isFetching, isSaving } = scaleUi;
   const isWorking = isDeleting || isFetching || isSaving;
@@ -48,7 +50,7 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
           </>
         )}
       </Section>
-      <DividerLine vertical />
+      {!isMobile && <DividerLine vertical />}
       <Section>
         {!scalesFetchTried ? (
           <Loading />

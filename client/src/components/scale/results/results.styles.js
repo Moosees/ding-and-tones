@@ -6,13 +6,8 @@ export const ScaleList = styled.div`
   border-right: 0;
   display: flex;
   flex-direction: column;
-  max-height: 40rem;
   padding: 0 0.5rem;
   width: 100%;
-
-  ${({ theme }) => theme.mqW850`
-    max-height: 60vh;
-  `}
 `;
 
 export const ScaleContainer = styled.div`

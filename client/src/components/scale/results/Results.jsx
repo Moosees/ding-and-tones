@@ -76,9 +76,9 @@ const Results = ({
     });
 
   return (
-    <ScaleList>
-      <ScrollBox>{scales && getScales()}</ScrollBox>
-    </ScaleList>
+    <ScrollBox>
+      <ScaleList>{scales && getScales()}</ScaleList>
+    </ScrollBox>
   );
 };
 
