@@ -8,6 +8,10 @@ export const BarContainer = styled.div`
   ${({ theme }) => theme.mqW850`
     margin: 1px;
   `}
+
+  @media (orientation: portrait) {
+    margin: 0;
+  }
 `;
 
 export const Beats = styled.div`
@@ -26,4 +30,8 @@ export const Beats = styled.div`
   ${({ theme }) => theme.mqW850`
     padding: 1px;
   `}
+
+  @media (orientation: portrait) {
+    margin: 0 2px 0 0;
+  }
 `;

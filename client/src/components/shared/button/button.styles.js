@@ -5,6 +5,10 @@ export const ButtonGroup = styled.div`
   display: flex;
   justify-content: ${({ position }) => (position ? position : 'flex-end')};
   width: 100%;
+
+  @media (orientation: portrait) {
+    justify-content: center;
+  }
 `;
 
 export const MenuButton = styled.div`

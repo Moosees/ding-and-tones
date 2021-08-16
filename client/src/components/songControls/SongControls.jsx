@@ -1,24 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
+import useDimensions from '../../hooks/useDimensions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import ControlsLeft from './controls/ControlsLeft';
 import ControlsRight from './controls/ControlsRight';
+import styled from 'styled-components';
 
-export const TopColumn = styled.div`
+const ControlsContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  max-width: 80rem;
   width: 100%;
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
 `;
 
 const SongControls = () => {
+  const { isMobile } = useDimensions();
+
   return (
-    <>
-      <TopColumn>
-        <ControlsLeft />
-      </TopColumn>
-      <DividerLine vertical small />
-      <TopColumn>
-        <ControlsRight />
-      </TopColumn>
-    </>
+    <ControlsContainer>
+      <ControlsLeft />
+      {!isMobile && <DividerLine vertical small />}
+      <ControlsRight />
+    </ControlsContainer>
   );
 };
 

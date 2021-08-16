@@ -66,6 +66,10 @@ export const BeatCircle = styled.div`
     ${({ isSongPlaying, theme }) =>
       !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
   }
+
+  @media (orientation: portrait) {
+    margin: 0;
+  }
 `;
 
 export const BeatText = styled.span`

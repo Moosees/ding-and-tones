@@ -2,12 +2,12 @@
 
 ## Mobile design update
 
-* Songwriter - portrait
 * Mobile alert position
 * Mobile copyright message position
 * Mobile menu position
-* Clean up code - remove css comments etc.
 * Show alert if device is in portrait mode
+* Only apply @media portrait styles to smaller screens
+* Clean up code - remove css comments etc.
 
 ## Typescript client update
 
@@ -31,6 +31,7 @@
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)
 * Invalid song ID urls infinite loop
+* Violation 'click' handler took xxx ms when going to song route
 
 ## Design
 

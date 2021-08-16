@@ -11,8 +11,7 @@ import Songwriter from '../songwriter/Songwriter';
 import {
   SongContainer,
   SongEditContainer,
-  SongViewContainer,
-  TopSection
+  SongViewContainer
 } from './song.styles';
 
 const Song = ({ getSongById, isEditingSong, notes, songUi }) => {
@@ -40,9 +39,7 @@ const Song = ({ getSongById, isEditingSong, notes, songUi }) => {
         <Loading />
       ) : isEditingSong ? (
         <SongContainer>
-          <TopSection>
-            <SongControls />
-          </TopSection>
+          <SongControls />
           <DividerLine small />
           <SongEditContainer ref={borderRef}>
             <ScrollBox>
