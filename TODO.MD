@@ -2,13 +2,13 @@
 
 ## Mobile design update
 
-* Songwriter - controls/bars, scroll or fixed pos? portrait
 * Find songs - only minor changes? portrait
 * Mobile alert position
 * Mobile copyright message position
 * Mobile menu position
 * Clean up code - remove css comments etc.
 * Show alert if device is in portrait mode
+* Check all ScrollBoxes - remove height prop, remove height on parent where needed
 
 ## Typescript client update
 
@@ -39,16 +39,16 @@
 * Better Loading component - big spinner? Spinner on account page save
 * Load song button can be seen through table header
 * Red borders on errors?
-* New buttons for loading songs and confirm/cancel
 * Checkbox hover effect, all transform: scale hovers...
 * Only small divider lines?
 * Add more text labels like in Edit scale component?
-* Change ScrollBox to list?
 * Use drop shadows for tonefield focus?
 * Custom ref for popup anchor
 * Add x close button to popups?
 * Select boxes dynamic width
 * Found chords styles on smaller screens
+* New buttons for loading songs and confirm/cancel
+* BtnPrimary on mobile
 
 ## Focus and keyboard
 
