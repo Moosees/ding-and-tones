@@ -32,9 +32,8 @@ export const ChordsGrid = styled.div`
 `;
 
 export const GridContainer = styled.div`
-  border: ${({ theme }) => theme.borderLight};
-  border-radius: 10px;
-  box-shadow: ${({ theme }) => theme.shadowBtnLight};
+  border-top: ${({ theme }) => theme.borderLight};
+  border-left: ${({ theme }) => theme.borderLight};
   display: flex;
   justify-content: center;
   overflow: hidden;

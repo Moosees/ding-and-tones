@@ -2,16 +2,13 @@
 
 ## Mobile design update
 
-* Songwriter - controls/bars, scroll or fixed pos?
-* Find songs - only minor changes?
+* Songwriter - controls/bars, scroll or fixed pos? portrait
+* Find songs - only minor changes? portrait
 * Mobile alert position
 * Mobile copyright message position
 * Mobile menu position
-* Possible to use app in portrait mode
-* Play button as icon (on mobile drum route)? Not needed after update?
 * Clean up code - remove css comments etc.
 * Show alert if device is in portrait mode
-* Drum/Chords borders
 
 ## Typescript client update
 
@@ -51,6 +48,7 @@
 * Custom ref for popup anchor
 * Add x close button to popups?
 * Select boxes dynamic width
+* Found chords styles on smaller screens
 
 ## Focus and keyboard
 
