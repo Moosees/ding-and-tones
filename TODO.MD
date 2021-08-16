@@ -2,7 +2,6 @@
 
 ## Mobile design update
 
-* Mobile menu position
 * Show alert if device is in portrait mode
 * Only apply @media portrait styles to smaller screens
 * Clean up code - remove css comments etc.

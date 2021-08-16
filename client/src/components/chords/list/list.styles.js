@@ -32,4 +32,13 @@ export const ItemContainer = styled.li`
       flex-direction: column;
     }
   }
+
+  &:first-child {
+    border-top: ${({ theme }) => theme.borderLight};
+    margin-top: 5rem;
+  }
+
+  &:last-child {
+    margin-bottom: 5rem;
+  }
 `;
