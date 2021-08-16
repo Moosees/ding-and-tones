@@ -76,7 +76,7 @@ export const getSongById =
             alert: error.response ? error.response.data.msg : 'Song not found',
           },
         });
-        return Promise.resolve();
+        return Promise.resolve('/song');
       });
   };
 

@@ -21,8 +21,8 @@
 * Song search results doesn't update if save song changes assigned scale
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)
-* Invalid song ID urls infinite loop
 * Violation 'click' handler took xxx ms when going to song route (big songs)
+* Invalid scale ID urls infinite loop
 
 ## Design
 
