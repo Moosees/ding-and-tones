@@ -2,7 +2,6 @@
 
 ## Mobile design update
 
-* Show alert if device is in portrait mode
 * Clean up code - remove css comments etc.
 
 ## Typescript client update
@@ -27,7 +26,7 @@
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)
 * Invalid song ID urls infinite loop
-* Violation 'click' handler took xxx ms when going to song route
+* Violation 'click' handler took xxx ms when going to song route (big songs)
 
 ## Design
 
@@ -143,6 +142,7 @@
 * Use new scaleFull outside print-chords - done?
 * Remove measure subdivision count?
 * Clean up rootIndex in parseScaleData
+* Show alert if device is in portrait mode
 
 ## API
 
