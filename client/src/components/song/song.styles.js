@@ -7,7 +7,7 @@ export const SongContainer = styled.div`
   justify-items: center;
   padding: var(--padding);
 
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) and (max-width: 1000) {
     padding: 3px 0;
   }
 `;

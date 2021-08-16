@@ -23,7 +23,7 @@ export const ItemContainer = styled.li`
     margin: 1px; 
   `}
 
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) and (max-width: 1000) {
     border: 0;
     border-bottom: ${({ theme }) => theme.borderLight};
     padding: 0 1px;

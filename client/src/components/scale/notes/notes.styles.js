@@ -7,7 +7,7 @@ export const NotesList = styled.div`
   max-width: 36rem;
   margin-bottom: 1rem;
 
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) and (max-width: 1000) {
     margin: 0;
     max-width: 50rem;
   }

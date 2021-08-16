@@ -12,7 +12,7 @@ const ControlsContainer = styled.div`
   max-width: 80rem;
   width: 100%;
 
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) and (max-width: 1000) {
     flex-direction: column;
   }
 `;

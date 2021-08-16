@@ -22,7 +22,7 @@ export const ChordsGrid = styled.div`
     grid-template-columns: 3fr 3fr 5fr;
   `}
 
-  @media (orientation: portrait) {
+  @media screen and (orientation: portrait) {
     grid-template-areas:
       'drum intervals'
       'filter chords';
