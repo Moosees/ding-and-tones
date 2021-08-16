@@ -2,13 +2,12 @@
 
 ## Mobile design update
 
-* Find songs - only minor changes? portrait
+* Songwriter - portrait
 * Mobile alert position
 * Mobile copyright message position
 * Mobile menu position
 * Clean up code - remove css comments etc.
 * Show alert if device is in portrait mode
-* Check all ScrollBoxes - remove height prop, remove height on parent where needed
 
 ## Typescript client update
 

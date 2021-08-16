@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const ScaleList = styled.div`
-  border: ${({ theme }) => theme.borderMedium};
-  border-left: 0;
-  border-right: 0;
+  border-bottom: ${({ theme }) => theme.borderMedium};
+  border-top: ${({ theme }) => theme.borderMedium};
   display: flex;
   flex-direction: column;
   padding: 0 0.5rem;

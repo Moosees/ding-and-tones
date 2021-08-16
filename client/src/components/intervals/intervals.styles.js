@@ -23,11 +23,9 @@ export const IntervalList = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  max-height: 40rem;
   padding: 0.5rem 1.5rem;
 
   ${({ theme }) => theme.mqW1200`
-    max-height: unset;
     padding: 0.5rem;  
   `}
 `;

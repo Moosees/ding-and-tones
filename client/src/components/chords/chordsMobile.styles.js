@@ -39,6 +39,10 @@ export const GridContainer = styled.div`
   overflow: hidden;
 
   & > * {
-    flex-grow: 1;
+    flex: 1;
+  }
+
+  &:last-child {
+    border-top: 0;
   }
 `;
