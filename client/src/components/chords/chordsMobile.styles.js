@@ -41,8 +41,4 @@ export const GridContainer = styled.div`
   & > * {
     flex: 1;
   }
-
-  &:last-child {
-    border-top: 0;
-  }
 `;

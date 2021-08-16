@@ -16,13 +16,20 @@ export const ItemContainer = styled.li`
     button {
       margin: 0 4px;
     }
-
-    @media (orientation: portrait) {
-      flex-direction: column;
-    }
   }
 
   ${({ theme }) => theme.mqW850`
+    box-shadow: none;
     margin: 1px; 
   `}
+
+  @media (orientation: portrait) {
+    border: 0;
+    border-bottom: ${({ theme }) => theme.borderLight};
+    padding: 0 1px;
+
+    div {
+      flex-direction: column;
+    }
+  }
 `;
