@@ -58,7 +58,7 @@ export const SectionWithNav = styled.div`
 export const BorderContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBox};
   border: ${({ theme }) => theme.borderHeavyDark};
-  border-radius: 65px;
+  border-radius: ${({ small }) => (small ? '58' : '65')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   display: flex;
   flex-grow: 1;
