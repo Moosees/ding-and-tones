@@ -49,6 +49,10 @@ export default createGlobalStyle`
 
       --padding: 1px;
     `}
+    
+    @media (orientation: portrait) {
+      --padding: 0;
+    }
   }
 
   body {

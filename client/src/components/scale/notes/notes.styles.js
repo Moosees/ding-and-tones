@@ -6,6 +6,11 @@ export const NotesList = styled.div`
   justify-content: center;
   max-width: 36rem;
   margin-bottom: 1rem;
+
+  @media (orientation: portrait) {
+    margin: 0;
+    max-width: 50rem;
+  }
 `;
 
 export const Note = styled.button`

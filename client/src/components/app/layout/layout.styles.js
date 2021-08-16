@@ -45,7 +45,7 @@ export const MobileLayout = styled.div`
   display: flex;
   height: 100%;
   overflow: hidden auto;
-  padding: 0.5rem;
+  padding: var(--padding);
   position: relative;
   width: 100%;
 `;

@@ -37,8 +37,7 @@ const Info = ({
 
   return (
     <ScaleInfoContainer>
-      <Buttons>
-        <Help topic={helpTopics.SCALE} />
+      <Buttons position="center">
         <BtnPrimary
           disabled={
             !isSignedIn ||
@@ -51,6 +50,7 @@ const Info = ({
           label="Save Scale"
           onClick={handleScaleSave}
         />
+        <Help topic={helpTopics.SCALE} />
       </Buttons>
       <InfoText
         handleChange={handleNameChange}

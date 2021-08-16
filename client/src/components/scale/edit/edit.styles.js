@@ -18,6 +18,11 @@ export const EditContent = styled.div`
   ${({ theme }) => theme.mqW850`
     min-height: 27rem;
   `}
+
+  @media (orientation: portrait) {
+    min-height: unset;
+    width: 50rem;
+  }
 `;
 
 export const TextLabel = styled.p`
