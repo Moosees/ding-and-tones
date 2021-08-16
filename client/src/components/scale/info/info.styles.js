@@ -6,7 +6,7 @@ export const ScaleInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (orientation: portrait) and (max-width: 1000) {
+  @media screen and (orientation: portrait) and (max-width: 1000px) {
     align-self: center;
     width: 90%;
   }

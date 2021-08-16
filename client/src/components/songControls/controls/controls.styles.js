@@ -9,7 +9,7 @@ export const ControlsContainer = styled.div`
     padding: 0 0.5rem;
   `}
 
-  @media screen and (orientation: portrait) and (max-width: 1000) {
+  @media screen and (orientation: portrait) and (max-width: 1000px) {
     max-width: 80vw;
   }
 `;

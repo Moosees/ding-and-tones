@@ -67,7 +67,7 @@ export const BeatCircle = styled.div`
       !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
   }
 
-  @media screen and (orientation: portrait) and (max-width: 1000) {
+  @media screen and (orientation: portrait) and (max-width: 1000px) {
     margin: 0;
   }
 `;

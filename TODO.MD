@@ -1,9 +1,5 @@
 # DING AND TONES TODO LIST
 
-## Mobile design update
-
-* Clean up code - remove css comments etc.
-
 ## Typescript client update
 
 * Update state
@@ -14,7 +10,7 @@
 
 ## Updates in need of planning
 
-* Styled-components, mix-ins and css variables
+* Styled-components, mix-ins and css variables - portrait mq as mixin
 * Testing
 * Private songs
 

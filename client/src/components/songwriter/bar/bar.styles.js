@@ -9,7 +9,7 @@ export const BarContainer = styled.div`
     margin: 1px;
   `}
 
-  @media screen and (orientation: portrait) and (max-width: 1000) {
+  @media screen and (orientation: portrait) and (max-width: 1000px) {
     margin: 0;
   }
 `;
@@ -31,7 +31,7 @@ export const Beats = styled.div`
     padding: 1px;
   `}
 
-  @media screen and (orientation: portrait) and (max-width: 1000) {
+  @media screen and (orientation: portrait) and (max-width: 1000px) {
     margin: 0 2px 0 0;
   }
 `;

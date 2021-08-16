@@ -50,7 +50,7 @@ export default createGlobalStyle`
       --padding: 1px;
     `}
     
-    @media (orientation: portrait) and (max-width: 1000) {
+    @media (orientation: portrait) and (max-width: 1000px) {
       --padding: 0;
     }
   }
