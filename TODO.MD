@@ -2,8 +2,6 @@
 
 ## Mobile design update
 
-* Mobile alert position
-* Mobile copyright message position
 * Mobile menu position
 * Show alert if device is in portrait mode
 * Only apply @media portrait styles to smaller screens

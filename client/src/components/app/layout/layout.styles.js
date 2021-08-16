@@ -83,7 +83,7 @@ export const PrivacyLink = styled.a`
 export const MobileCopyright = styled.div`
   bottom: 0;
   padding: 1px;
-  position: absolute;
+  position: fixed;
   right: 5%;
   opacity: 0.4;
 `;
