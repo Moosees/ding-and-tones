@@ -40,6 +40,10 @@ export const IntervalContainer = styled.div`
     border-bottom: 0;
     padding-bottom: 6px;
   }
+
+  ${({ theme }) => theme.mqW850`
+    min-height: 5rem;
+  `}
 `;
 
 export const IntervalColor = styled.div`
@@ -67,6 +71,14 @@ export const IntervalColor = styled.div`
 export const IntervalBreakBox = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+
+  ${({ theme }) => theme.mqW850`
+    min-height: 5rem;
+    flex-direction: column;
+    flex-wrap: unset;
+    margin-left: 0.5rem;
+  `}
 `;
 
 export const IntervalText = styled.span`
