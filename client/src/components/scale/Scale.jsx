@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import useDimensions from '../../hooks/useDimensions';
@@ -13,29 +13,55 @@ import Results from './results/Results';
 import { ScaleContainer, Section } from './scale.styles';
 import Search from './search/Search';
 
-const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
+const Scale = ({
+  getScaleById,
+  isSearching,
+  scalesFetchTried,
+  scaleUi,
+  startSearch,
+}) => {
   const { scaleId } = useParams();
   const { replace } = useHistory();
   const { isMobile } = useDimensions();
+  const [newId, setNewId] = useState(false);
 
   const { hasChanges, isDeleting, isFetching, isSaving } = scaleUi;
-  const isWorking = isDeleting || isFetching || isSaving;
+  const isWorking = isDeleting || isFetching || isSaving || newId;
 
   useEffect(() => {
-    if (isWorking) return;
+    if (isWorking || hasChanges) return;
 
-    if (hasChanges) return replace('/scale');
+    const getScaleByUrl = async () => {
+      const url = await getScaleById(scaleId);
+      replace(url);
+      setNewId(false);
+    };
 
-    if (!scaleId && scaleUi.scaleId)
-      return replace(`/scale/${scaleUi.scaleId}`);
-
-    if (scaleId && scaleUi.scaleId !== scaleId) getScaleById(scaleId);
+    if (scaleId && !scaleUi.scaleId) {
+      setNewId(true);
+      getScaleByUrl();
+    }
   }, [getScaleById, hasChanges, isWorking, replace, scaleId, scaleUi.scaleId]);
 
   useEffect(() => {
-    if (!scalesFetchTried && !isWorking)
-      startSearch(searchOptions.scales.latest);
-  }, [isWorking, scalesFetchTried, startSearch]);
+    if (isWorking || !hasChanges) return;
+
+    replace('/scale');
+  }, [hasChanges, isWorking, replace]);
+
+  useEffect(() => {
+    if (isWorking || hasChanges) return;
+
+    if (!scaleId && scaleUi.scaleId) {
+      replace(`/scale/${scaleUi.scaleId}`);
+    }
+  }, [getScaleById, hasChanges, isWorking, replace, scaleId, scaleUi.scaleId]);
+
+  useEffect(() => {
+    if (scalesFetchTried || isSearching || isWorking) return;
+
+    startSearch(searchOptions.scales.latest);
+  }, [isSearching, isWorking, scalesFetchTried, startSearch]);
 
   return (
     <ScaleContainer>
@@ -67,6 +93,7 @@ const Scale = ({ getScaleById, scalesFetchTried, scaleUi, startSearch }) => {
 
 const mapStateToProps = ({ scale, search }) => ({
   scaleUi: scale.ui,
+  isSearching: search.isSearching,
   scalesFetchTried: search.scalesFetchTried,
 });
 

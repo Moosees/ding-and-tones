@@ -67,14 +67,17 @@ export const deleteScaleById = (scaleId) => (dispatch) => {
 export const getScaleById = (scaleId) => (dispatch) => {
   dispatch({ type: scaleTypes.FETCH_STARTED });
 
-  axios
+  return axios
     .get(`/scale/id/${scaleId}`)
     .then((res) => {
-      if (res.status === 200)
+      if (res.status === 200) {
         dispatch({
           type: scaleTypes.FETCH_SUCCESSFUL,
           payload: parseScaleData(res.data),
         });
+
+        return Promise.resolve(`/scale/${res.data.scaleId}`);
+      }
     })
     .catch((error) => {
       dispatch({
@@ -83,6 +86,8 @@ export const getScaleById = (scaleId) => (dispatch) => {
           alert: error.response ? error.response.data.msg : 'Scale not found',
         },
       });
+
+      return Promise.resolve('/scale');
     });
 };
 
