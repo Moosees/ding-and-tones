@@ -23,6 +23,8 @@
 * Songs without users show up without composer name (and not Anonymous either)
 * Violation 'click' handler took xxx ms when going to song route (big songs)
 * Scale/song url not found alerts not showing
+* iPhones squash interval list
+* Safari sound player permissions
 
 ## Design
 
@@ -41,6 +43,8 @@
 * Found chords styles on smaller screens
 * New buttons for loading songs and confirm/cancel
 * BtnPrimary on mobile
+* Scale route on landscape mobile doesn't fit on left side
+* Chords route on landscape mobile doesn't fit on left side
 
 ## Focus and keyboard
 
