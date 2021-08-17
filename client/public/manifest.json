@@ -1,7 +1,7 @@
 {
-  "short_name": "Ding",
+  "short_name": "dingandtones",
   "name": "Ding and Tones",
-  "orientation": "landscape",
+  "orientation": "any",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
