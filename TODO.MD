@@ -16,14 +16,15 @@
 
 ## Bugs
 
-* Why -1 in UPDATE_SCALE for scale label? Instead of false?
+* Safari sound player permissions
 * Safari print popup bug - print dialog is not blocking/waiting
+* Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Song search results doesn't update if save song changes assigned scale
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)
 * Violation 'click' handler took xxx ms when going to song route (big songs)
 * Scale/song url not found alerts not showing
-* Safari sound player permissions
+* iPhone portrait scale route gets squashed
 
 ## Design
 
