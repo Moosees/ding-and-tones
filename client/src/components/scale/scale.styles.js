@@ -11,7 +11,7 @@ export const ScaleContainer = styled.div`
     padding: 0 0.5rem;
   }
 
-  @media screen and (orientation: landscape) and (max-width: 750px) {
+  @media screen and (orientation: landscape) and (max-height: 400px) {
     align-items: flex-start;
     overflow: auto;
   }
@@ -36,7 +36,7 @@ export const Section = styled.div`
     }
   }
 
-  @media screen and (orientation: landscape) and (max-width: 750px) {
+  @media screen and (orientation: landscape) and (max-height: 400px) {
     height: auto;
   }
 `;

@@ -30,7 +30,7 @@ export const ChordsGrid = styled.div`
     grid-template-rows: 2fr 3fr;
   }
 
-  @media screen and (orientation: landscape) and (max-width: 750px) {
+  @media screen and (orientation: landscape) and (max-height: 400px) {
     height: auto;
   }
 `;
@@ -46,7 +46,7 @@ export const GridContainer = styled.div`
     flex: 1;
   }
 
-  @media screen and (orientation: landscape) and (max-width: 750px) {
+  @media screen and (orientation: landscape) and (max-height: 400px) {
     overflow: auto;
   }
 `;
