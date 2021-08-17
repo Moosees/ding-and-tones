@@ -29,6 +29,10 @@ export const ChordsGrid = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2fr 3fr;
   }
+
+  @media screen and (orientation: landscape) and (max-width: 750px) {
+    height: auto;
+  }
 `;
 
 export const GridContainer = styled.div`
@@ -40,5 +44,9 @@ export const GridContainer = styled.div`
 
   & > * {
     flex: 1;
+  }
+
+  @media screen and (orientation: landscape) and (max-width: 750px) {
+    overflow: auto;
   }
 `;
