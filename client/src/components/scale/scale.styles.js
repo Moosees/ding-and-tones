@@ -28,11 +28,11 @@ export const Section = styled.div`
 
   @media screen and (orientation: portrait) and (max-width: 1000px) {
     flex: 1;
+    padding: 0.5rem 0;
     width: 100%;
 
     &:last-child {
       border-top: ${({ theme }) => theme.borderMedium};
-      flex: 2;
       overflow: hidden;
     }
   }
