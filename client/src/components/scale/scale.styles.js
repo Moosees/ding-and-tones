@@ -8,6 +8,7 @@ export const ScaleContainer = styled.div`
 
   @media screen and (orientation: portrait) and (max-width: 1000px) {
     flex-direction: column;
+    height: 100%;
     padding: 0 0.5rem;
   }
 
@@ -26,13 +27,13 @@ export const Section = styled.div`
   justify-content: center;
 
   @media screen and (orientation: portrait) and (max-width: 1000px) {
-    min-height: 0;
+    flex: 1;
     width: 100%;
 
-    &:first-child {
-      min-height: auto;
-      border-bottom: ${({ theme }) => theme.borderMedium};
-      flex: 0;
+    &:last-child {
+      border-top: ${({ theme }) => theme.borderMedium};
+      flex: 2;
+      overflow: hidden;
     }
   }
 
