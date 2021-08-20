@@ -51,6 +51,8 @@ export const mainTheme = {
   shadowHeavy: '0px 5px 10px 1px rgba(0, 0, 80, 0.25)',
   shadowBtnLight: '0px 2px 5px -1px rgba(0, 0, 80, 0.1)',
   shadowBtnHeavy: '0px 2px 5px -1px rgba(0, 0, 80, 0.2)',
+  shadowPlaying:
+    '0px 0px 0px 2px rgba(0, 0, 20, 0.95), 0px 0px 1px 6px rgba(230, 20, 10, 0.65)',
   textShadowLight: '0px 2px 4px rgba(0, 0, 80, 0.15)',
   ...mediaQueries,
 };

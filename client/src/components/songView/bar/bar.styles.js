@@ -61,7 +61,9 @@ export const BeatCircle = styled.div`
   width: ${({ value }) => beatStyles.heightWidth[value]}px;
 
   ${({ isBeatPlaying, theme }) =>
-    isBeatPlaying && `border-color: ${theme.colorBeatActive};`}
+    isBeatPlaying &&
+    `border-color: ${theme.colorBeatActive};
+      box-shadow: ${theme.shadowPlaying};`}
 `;
 
 export const BeatContainer = styled.div`

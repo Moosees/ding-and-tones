@@ -50,7 +50,8 @@ export const BeatCircle = styled.div`
       : hasNonScaleNote
       ? theme.colorBtnClear
       : theme.colorBeat};
-  box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
+  box-shadow: ${({ theme, isBeatPlaying }) =>
+    isBeatPlaying ? theme.shadowPlaying : theme.shadowBtnHeavy};
   cursor: ${({ isLocked }) => (isLocked ? 'default' : 'pointer')};
   display: flex;
   height: ${({ value }) => beatStyles.heightWidth[value]}rem;
