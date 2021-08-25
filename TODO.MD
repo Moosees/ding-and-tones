@@ -1,5 +1,16 @@
 # DING AND TONES TODO LIST
 
+## Private songs
+
+* Search results respect private
+* Songs from URLs respect private
+* Owned songs override private
+* Open save song settings at will
+* Move add bar controls to end of bar list
+* Toggle private in save song settings
+* Chose between save and save as new?
+* "Remember saved scale" option for save song popup?
+
 ## Typescript client update
 
 * Update state
@@ -12,7 +23,11 @@
 
 * Styled-components, mix-ins and css variables - portrait mq as mixin
 * Testing
-* Private songs
+* Persist working state through local storage? Redis?
+* Disable save button if there are no changes
+* Bar numbers on song viewer? Only long songs?
+* Volume controls?
+* Should print view only break before fourths?
 
 ## Bugs
 
@@ -43,8 +58,6 @@
 * Found chords styles on smaller screens
 * New buttons for loading songs and confirm/cancel
 * BtnPrimary on mobile
-* Scale route on landscape mobile doesn't fit on left side
-* Chords route on landscape mobile doesn't fit on left side
 
 ## Focus and keyboard
 
@@ -117,19 +130,13 @@
 * Check if loaded songs has saved hands and set hands open accordingly?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
 * Plus and minus one for bpm
-* Move add bar controls to end of bar list?
 * User can add line breaks in songwriter?
 * Add drag and drop
-* Bar numbers on song viewer? Only long songs?
-* Volume controls?
-* Should print view only break before fourths?
 * Color for hands on tablature
-* Remember saved scale option for save song popup
 * Clicks on sounds in beat dropdown plays sound selected
 
 ## State and search
 
-* Persist working state through local storage? Redis?
 * Merge api status states (isFetching etc.) in client?
 * Prevent/warn transition away from page if data isn't saved?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
@@ -142,7 +149,6 @@
 * Use new scaleFull outside print-chords - done?
 * Remove measure subdivision count?
 * Clean up rootIndex in parseScaleData
-* Show alert if device is in portrait mode
 
 ## API
 
@@ -151,8 +157,6 @@
 * Count number of bars for search results? Virtual field?
 * Auth middleware populates current user
 * Cache users in scale searches
-* Deal with deleted composers
-* Warn user if trying to save or load a song with a deleted scale
 * Typescript
 * Better profanity filter on save requests
 
@@ -160,9 +164,7 @@
 
 * Web worker?
 * Find songs by user (other than current user)
-* Chose between save and save as new?
-* Disable save button if there are no changes - done for scales
-* Removing user should remove all users songs?
+* Remove users - Removing user should remove all users songs?
 * Likes and/or comments?
 * Custom chord inputs
 * Custom metres
