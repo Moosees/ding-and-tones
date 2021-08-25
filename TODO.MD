@@ -10,21 +10,40 @@
 * Toggle private in save song settings
 * Chose between save and save as new?
 * "Remember saved scale" option for save song popup?
+* Update privacy
+* Clean up code
+
+## Local storage
+
+* Local storage hook
+* Detect if song has unsaved changes
+* Disable save button if there are no changes
+* Save to ls if song has unsaved changes
+* Debounce ls saves?
+* Don't clear songId if song is changed? Only on save?
+* Persist changes on redis session? Viable? Interval?
+* Prevent/warn transition away from page if data isn't saved?
 
 ## Typescript client update
 
 * Update state
 * Update components
-* Play song logic should be moved somewhere else?
+* Play song logic should be moved somewhere else? Hook?
 * Play song logic should be reworked with less forEach? Play song class
+* Middleware driven state reducers?
 * Validation types enum
+* Clean up tonefield logic
+* Clean up Tak logic
+* Use new scaleFull outside print-chords - done?
+* Clean up getNoteText() and Tonefield in general
+* Merge api status states (isFetching etc.) in client?
+* Clean up rootIndex in parseScaleData
+* Remove measure subdivision count?
 
 ## Updates in need of planning
 
-* Styled-components, mix-ins and css variables - portrait mq as mixin
+* Styled-components, mix-ins and css variables - portrait mq as mixin - mobile first?
 * Testing
-* Persist working state through local storage? Redis?
-* Disable save button if there are no changes
 * Bar numbers on song viewer? Only long songs?
 * Volume controls?
 * Should print view only break before fourths?
@@ -80,8 +99,6 @@
 * Dynamic size for tonefields
 * Hover on drum shows all information about hovered note?
 * Option to turn off/use same color for tonefield borders
-* Clean up tonefield logic
-* Clean up Tak logic
 * Prevent soft and loud taks on same beat?
 * Add central Tak for non assigned hand taks? For all Taks?
 * Animation for tonefields being played
@@ -100,9 +117,10 @@
 * Add play scale button and function
 * Create scale from name and string
 * Remove isOwner from scale ui state or add ability to save scale changes
-* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? Sign in should update scale ownership
+* Sign in should update scale ownership
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Scale layout prop - not needed? used for double ding?
+* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
 
 ## Chords
 
@@ -119,7 +137,6 @@
 
 ## Songwriter
 
-* Dropdown list show all dyads and ding + note combinations?
 * Use Tooltip component for beat dropdown?
 * Make dropdown higher z than controls, remove need for padding
 * Solo bars? Invert mute/solo?
@@ -137,18 +154,12 @@
 
 ## State and search
 
-* Merge api status states (isFetching etc.) in client?
-* Prevent/warn transition away from page if data isn't saved?
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Sorting search results in table
 * Privacy date localization
-* Clean up getNoteText() and Tonefield in general
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
 * Save song as JSON?
-* Use new scaleFull outside print-chords - done?
-* Remove measure subdivision count?
-* Clean up rootIndex in parseScaleData
 
 ## API
 
