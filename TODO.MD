@@ -4,12 +4,14 @@
 
 * Search results respect private
 * Songs from URLs respect private
-* Owned songs override private
+* Owned songs override private - search and url
 * Open save song settings at will
 * Move add bar controls to end of bar list
+* Send private status to client and update settings
 * Toggle private in save song settings
 * Chose between save and save as new?
 * "Remember saved scale" option for save song popup?
+* Show if song owned song is private in search results?
 * Update privacy
 * Clean up code
 
@@ -59,6 +61,7 @@
 * Violation 'click' handler took xxx ms when going to song route (big songs)
 * Scale/song url not found alerts not showing
 * Printing on mobile prints entire app and not just iframe
+* Songs with deleted scales can still be found in song searches with scale name
 
 ## Design
 
