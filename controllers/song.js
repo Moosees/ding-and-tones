@@ -65,7 +65,9 @@ exports.songSearch = async (req, res) => {
     const userId = req.userId;
     const searchTerm = req.params.searchTerm.toLowerCase();
 
-    const songs = await Song.find({ queryString: { $regex: searchTerm } })
+    const songs = await Song.find({
+      $and: [{ private: false }, { queryString: { $regex: searchTerm } }],
+    })
       .limit(20)
       .sort({ 'info.title': 1 })
       .select('_id info composer scale')
@@ -139,7 +141,9 @@ exports.getNewSongs = async (req, res) => {
   try {
     const userId = req.userId;
 
-    const songs = await Song.find({ composer: { $ne: ObjectId(userId) } })
+    const songs = await Song.find({
+      $and: [{ private: false }, { composer: { $ne: ObjectId(userId) } }],
+    })
       .select('_id composer info scale')
       .limit(20)
       .sort({ updated: -1 })

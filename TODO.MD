@@ -2,7 +2,6 @@
 
 ## Private songs
 
-* Search results respect private
 * Songs from URLs respect private
 * Owned songs override private - search and url
 * Open save song settings at will
