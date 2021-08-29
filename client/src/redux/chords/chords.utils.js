@@ -1,5 +1,9 @@
 import { MAX_NOTE_VALUE } from '../../assets/constants';
-import { noteNameToValue, noteValueToName } from '../../assets/intervals';
+import {
+  getNoteLabelFromName,
+  noteNameToValue,
+  noteValueToName,
+} from '../../assets/intervals';
 
 /**
  * Get the notes that builds a specific chord
@@ -91,14 +95,23 @@ const findOneChord = (scale, chord) => {
     const foundChord = chordExists(scale, currentChord);
     if (foundChord) {
       const { rootAry, foundNotes } = foundChord;
-      const name = `${currentChord.notes[0]} ${chord.name}`;
-      const nameShort = `${currentChord.notes[0]}${chord.nameShort}`;
+      const rootNote = currentChord.notes[0];
+      const rootSharp = getNoteLabelFromName(`${rootNote}1`, true).slice(0, -1);
+
+      const name = `${rootNote} ${chord.name}`;
+      const nameSharp = `${rootSharp} ${chord.name}`;
+      const nameShort = `${rootNote}${chord.nameShort}`;
+      const nameShortSharp = `${rootSharp}${chord.nameShort}`;
+
       const rootInScale = scale.findIndex(
         (el) => el.note === Object.keys(rootAry[0])[0]
       );
+
       foundChords.push({
         name,
+        nameSharp,
         nameShort,
+        nameShortSharp,
         intervals: currentChord.intervals,
         notes: currentChord.notes,
         notesInScale: foundNotes,

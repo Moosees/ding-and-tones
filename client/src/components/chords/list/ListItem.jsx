@@ -31,6 +31,8 @@ const ListItem = ({
       : addChordToPrintList(chord);
   };
 
+  const chordName = sharpNotes ? chord.nameSharp : chord.name;
+
   const chordNotes = chord.notes
     .map((note) => getNoteLabelFromName(`${note}1`, sharpNotes).slice(0, -1))
     .join(', ');
@@ -38,7 +40,7 @@ const ListItem = ({
   return (
     <ItemContainer>
       <span>
-        <strong>{chord.name}</strong> - {chordNotes}
+        <strong>{chordName}</strong> - {chordNotes}
       </span>
       <div>
         <Checkbox
