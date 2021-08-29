@@ -188,6 +188,37 @@ export const noteValueToName = {
 //   'A#5': 'Bb5',
 // };
 
+export const flatToSharp = {
+  Db1: 'C#1',
+  Eb1: 'D#1',
+  Gb1: 'F#1',
+  Ab1: 'G#1',
+  Bb1: 'A#1',
+  Db2: 'C#2',
+  Eb2: 'D#2',
+  Gb2: 'F#2',
+  Ab2: 'G#2',
+  Bb2: 'A#2',
+  Db3: 'C#3',
+  Eb3: 'D#3',
+  Gb3: 'F#3',
+  Ab3: 'G#3',
+  Bb3: 'A#3',
+  Db4: 'C#4',
+  Eb4: 'D#4',
+  Gb4: 'F#4',
+  Ab4: 'G#4',
+  Bb4: 'A#4',
+  Db5: 'C#5',
+  Eb5: 'D#5',
+  Gb5: 'F#5',
+  Ab5: 'G#5',
+  Bb5: 'A#5',
+};
+
+export const getNoteLabelFromName = (noteName, sharpNotes) =>
+  sharpNotes && flatToSharp[noteName] ? flatToSharp[noteName] : noteName;
+
 export const intervals = {
   0: {
     name: 'Tonic',
