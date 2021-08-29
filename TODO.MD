@@ -2,6 +2,7 @@
 
 * Chord names with sharps
 * Scale info name and notes with sharps
+* MiniDrum with sharps
 
 ## Local storage
 
@@ -141,6 +142,7 @@
 * User can add line breaks in songwriter?
 * Add drag and drop
 * Color for hands on tablature
+* Option to add note names to tablature
 * Clicks on sounds in beat dropdown plays sound selected
 
 ## State and search
