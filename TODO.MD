@@ -1,7 +1,5 @@
 # DING AND TONES TODO LIST
 
-* Logic for figuring out if a note is a sharp or flat - only flats for now, circle of fifths?
-
 ## Local storage
 
 * Local storage hook
@@ -160,6 +158,7 @@
 * Cache users in scale searches
 * Typescript
 * Better profanity filter on save requests
+* Store notes in db as note values instead of note names
 
 ## Future plans
 
@@ -186,3 +185,4 @@
 * Print with notes instead of numbers
 * Dark mode
 * Markdown for help topics
+* Logic for figuring out if a note is a sharp or flat - circle of fifths + maj/min detection
