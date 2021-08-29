@@ -3,7 +3,11 @@ import {
   MIN_NOTE_VALUE,
   TRANSLATE_BASE,
 } from '../../assets/constants';
-import { noteNameToValue, noteValueToName } from '../../assets/intervals';
+import {
+  getNoteLabelFromName,
+  noteNameToValue,
+  noteValueToName,
+} from '../../assets/intervals';
 
 export const addExtraNotesPos = (sortedScale) => {
   return sortedScale.map((note, i) => ({ note, pos: i }));
@@ -61,7 +65,7 @@ const sortScaleByNoteValue = (scale) => {
   return scale.sort((a, b) => a.noteValue - b.noteValue);
 };
 
-const addRootAndPosition = (scale) => {
+const addRootAndPosition = (scale, sharpNotes) => {
   let rootFound = false;
   let rootIndex = 0;
   let rootValue = 36;
@@ -75,7 +79,10 @@ const addRootAndPosition = (scale) => {
         rootFound = true;
         rootIndex = i;
         rootValue = noteValue;
-        rootName = noteShort;
+        rootName = getNoteLabelFromName(
+          noteValueToName[noteValue],
+          sharpNotes
+        ).slice(0, -1);
 
         return {
           note,
@@ -93,7 +100,7 @@ const addRootAndPosition = (scale) => {
   return { scaleWithPos, rootIndex, rootValue, rootName };
 };
 
-export const createFullScaleFromNames = (round, extra) => {
+export const createFullScaleFromNames = (round, extra, sharpNotes) => {
   if (!round.length) return [];
 
   const roundWithValues = addNoteValueFromName(
@@ -106,8 +113,10 @@ export const createFullScaleFromNames = (round, extra) => {
     ...roundWithValues,
     ...extraWithValues,
   ]);
-  const { rootIndex, rootValue, rootName, scaleWithPos } =
-    addRootAndPosition(sortedScale);
+  const { rootIndex, rootValue, rootName, scaleWithPos } = addRootAndPosition(
+    sortedScale,
+    sharpNotes
+  );
   const scaleFull = addIntervalMap(scaleWithPos);
 
   return { newRoot: { rootIndex, rootValue, rootName }, newFull: scaleFull };
@@ -124,7 +133,11 @@ export const parseScaleData = (scale) => {
   const roundMerged = [dings[0], ...round];
 
   const positionMap = createPositionMap(info.layout, roundMerged.length);
-  const { newFull, newRoot } = createFullScaleFromNames(roundMerged, extra);
+  const { newFull, newRoot } = createFullScaleFromNames(
+    roundMerged,
+    extra,
+    info.sharpNotes
+  );
 
   const parsedScaleData = {
     newRound: roundMerged,
@@ -162,13 +175,25 @@ export const parseScaleData = (scale) => {
 //   };
 // };
 
-export const createScaleLabel = (extra, round) => {
-  const extraLabel = extra.length
-    ? `${extra.map(({ note }) => note).join(' ')} `
-    : '';
+export const createScaleLabel = (extra, round, sharpNotes) => {
   if (round.length === 0) return '';
+
+  const rootNote = getNoteLabelFromName(round[0], sharpNotes);
+
+  const extraLabel = extra.length
+    ? `${extra
+        .map(({ note }) => getNoteLabelFromName(note, sharpNotes))
+        .join(' ')} `
+    : '';
+
   if (round.length === 1) return `${extraLabel}(${round[0]})`;
-  return `${extraLabel}(${round[0]}) ${round.slice(1).join(' ')}`;
+
+  const roundLabel = round
+    .slice(1)
+    .map((note) => getNoteLabelFromName(note, sharpNotes))
+    .join(' ');
+
+  return `${extraLabel}(${rootNote}) ${roundLabel}`;
 };
 
 export const parseNotesForSaveScale = ({ round, extra }) => ({

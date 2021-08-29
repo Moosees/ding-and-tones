@@ -22,14 +22,18 @@ const infoReducer = (state = infoState, { type, payload }) => {
     case scaleTypes.TOGGLE_SHARPS:
       return {
         ...state,
-        sharpNotes: !state.sharpNotes,
+        ...payload,
       };
 
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
         ...payload.newRoot,
-        label: createScaleLabel(payload.newExtra, payload.newRound),
+        label: createScaleLabel(
+          payload.newExtra,
+          payload.newRound,
+          state.sharpNotes
+        ),
       };
 
     case songTypes.FETCH_SUCCESSFUL:

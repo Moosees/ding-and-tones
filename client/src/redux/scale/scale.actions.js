@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import scaleTypes from './scale.types';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,
   createPositionMap,
+  createScaleLabel,
   parseNotesForSaveScale,
   parseScaleData,
   sortScaleByFreq,
@@ -31,7 +33,11 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
       )
     : notes.extra;
 
-  const { newFull, newRoot } = createFullScaleFromNames(newRound, newExtra);
+  const { newFull, newRoot } = createFullScaleFromNames(
+    newRound,
+    newExtra,
+    info.sharpNotes
+  );
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
@@ -117,7 +123,11 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
 
   const newExtra = notes.extra.filter(({ note }) => note !== noteToRemove);
 
-  const { newFull, newRoot } = createFullScaleFromNames(newRound, newExtra);
+  const { newFull, newRoot } = createFullScaleFromNames(
+    newRound,
+    newExtra,
+    info.sharpNotes
+  );
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
@@ -173,9 +183,26 @@ export const setScaleName = (name) => ({
   payload: name,
 });
 
-export const toggleSharps = () => ({
-  type: scaleTypes.TOGGLE_SHARPS,
-});
+export const toggleSharps = () => (dispatch, getState) => {
+  const {
+    scale: {
+      info: { rootValue, sharpNotes },
+      notes: { round, extra },
+    },
+  } = getState();
+
+  const label = createScaleLabel(extra, round, !sharpNotes);
+
+  const rootName = getNoteLabelFromName(
+    noteValueToName[rootValue],
+    !sharpNotes
+  ).slice(0, -1);
+
+  dispatch({
+    type: scaleTypes.TOGGLE_SHARPS,
+    payload: { label, rootName, sharpNotes: !sharpNotes },
+  });
+};
 
 export const transposeScale = (destination) => (dispatch, getState) => {
   const {
@@ -192,7 +219,11 @@ export const transposeScale = (destination) => (dispatch, getState) => {
 
   const newExtra = transposeExtraToDestination(notes.extra, destination);
 
-  const { newFull, newRoot } = createFullScaleFromNames(newRound, newExtra);
+  const { newFull, newRoot } = createFullScaleFromNames(
+    newRound,
+    newExtra,
+    info.sharpNotes
+  );
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
