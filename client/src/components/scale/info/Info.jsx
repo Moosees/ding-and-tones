@@ -24,7 +24,7 @@ const Info = ({
   const { replace } = useHistory();
 
   const [name, handleNameChange, nameErrors, isNameValid, resetName] =
-    useValidate('name', scaleInfo.name);
+    useValidate('scaleName', scaleInfo.name);
 
   const handleScaleSave = () => {
     saveScale(name);

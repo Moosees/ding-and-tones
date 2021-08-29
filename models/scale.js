@@ -17,7 +17,7 @@ const scaleSchema = new mongoose.Schema({
       type: String,
       trim: true,
       required: true,
-      minlength: 4,
+      minlength: 3,
       maxlength: 20,
     },
     rootName: {

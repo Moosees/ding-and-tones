@@ -1,17 +1,6 @@
 # DING AND TONES TODO LIST
 
-## Private songs
-
-* Search results respect private
-* Songs from URLs respect private
-* Owned songs override private
-* Open save song settings at will
-* Move add bar controls to end of bar list
-* Toggle private in save song settings
-* Chose between save and save as new?
-* "Remember saved scale" option for save song popup?
-* Update privacy
-* Clean up code
+* Logic for figuring out if a note is a sharp or flat - only flats for now, circle of fifths?
 
 ## Local storage
 
@@ -77,6 +66,7 @@
 * Found chords styles on smaller screens
 * New buttons for loading songs and confirm/cancel
 * BtnPrimary on mobile
+* Explanation for disabled buttons
 
 ## Focus and keyboard
 
@@ -181,7 +171,6 @@
 * Custom metres
 * Custom count for metres, more count styles
 * Comparing scales using tables or other presentations
-* Logic for figuring out if a note is a sharp or flat - only flats for now, circle of fifths?
 * Multiple drums for chords, songs etc. Two track songwriter?
 * More drum alternatives? Add synth/piano alternative?
 * Percussive hits on handpan - normalize handpan samples

@@ -17,7 +17,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(4);
 
-  const [title, setTitle, titleErrors, isTitleValid] = useValidate('title');
+  const [title, setTitle, titleErrors, isTitleValid] = useValidate('songTitle');
   const { push } = useHistory();
 
   const handleConfirm = () => {

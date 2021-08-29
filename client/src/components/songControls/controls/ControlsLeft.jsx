@@ -36,7 +36,7 @@ const ControlsLeft = ({
   const { replace } = useHistory();
 
   const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
-    useValidate('title', songInfo.title);
+    useValidate('songTitle', songInfo.title);
 
   const { metre, subdivision } = songInfo;
   const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
