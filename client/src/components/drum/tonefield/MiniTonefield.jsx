@@ -1,6 +1,7 @@
 import React from 'react';
+import { getNoteLabelFromName } from '../../../assets/intervals';
 
-const MiniTonefield = ({ isDing, note, position, showNote }) => {
+const MiniTonefield = ({ isDing, note, position, sharpNotes, showNote }) => {
   const { rotate, translate } = position;
 
   return (
@@ -25,7 +26,7 @@ const MiniTonefield = ({ isDing, note, position, showNote }) => {
         fill="#000"
         transform={`rotate(-${rotate + 90})`}
       >
-        {showNote ? note : ''}
+        {showNote ? getNoteLabelFromName(note, sharpNotes) : ''}
       </text>
     </g>
   );

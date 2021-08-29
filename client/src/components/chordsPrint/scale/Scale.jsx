@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { intervals } from '../../../assets/intervals';
+import { getNoteLabelFromName, intervals } from '../../../assets/intervals';
 import MiniDrum from '../../drum/MiniDrum';
 import {
   InfoContainer,
@@ -26,7 +26,7 @@ const Scale = ({ info, scale }) => {
       const { name } = intervals[isOctave ? 12 : compound];
 
       lists.noteNumbers.push(noteNumber);
-      lists.notes.push(note);
+      lists.notes.push(getNoteLabelFromName(note, info.sharpNotes));
       lists.scaleIntervals.push(name);
       // lists.scaleSteps.push(scaleSteps);
       lists.relativeSteps.push(relativeSteps);

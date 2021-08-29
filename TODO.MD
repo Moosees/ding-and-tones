@@ -1,7 +1,6 @@
 # DING AND TONES TODO LIST
 
-* Scale info name and notes with sharps
-* MiniDrum with sharps
+* Scale info name and notes with sharps - check chords print for scale name
 
 ## Local storage
 

@@ -1,10 +1,11 @@
 import React from 'react';
+import { getNoteLabelFromName } from '../../../assets/intervals';
 import { MiniExtraContainer } from './tonefield.styles';
 
-const MiniExtra = ({ extra, showNote }) => {
+const MiniExtra = ({ extra, sharpNotes, showNote }) => {
   return (
     <MiniExtraContainer position={extra.pos}>
-      {showNote ? extra.note : ''}
+      {showNote ? getNoteLabelFromName(extra.note, sharpNotes) : ''}
     </MiniExtraContainer>
   );
 };
