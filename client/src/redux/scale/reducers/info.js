@@ -19,6 +19,12 @@ const infoReducer = (state = infoState, { type, payload }) => {
         name: payload,
       };
 
+    case scaleTypes.TOGGLE_SHARPS:
+      return {
+        ...state,
+        sharpNotes: !state.sharpNotes,
+      };
+
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,

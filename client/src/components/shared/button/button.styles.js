@@ -117,7 +117,7 @@ export const PrimaryButton = styled.button`
   height: 2.8rem;
   justify-content: center;
   margin: 0.5rem 3px;
-  min-width: 8rem;
+  min-width: 7.5rem;
   opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
   padding: 0.5rem 2px;
   transition: border 0.15s ease-in;
@@ -129,9 +129,13 @@ export const PrimaryButton = styled.button`
       disabled ? theme.borderLight : theme.borderDark};
   }
 
+  ${({ theme }) => theme.mqW1200`
+    margin: 3px;
+    min-width: 7rem;
+  `}
+
   ${({ theme }) => theme.mqW1000`
     border-radius: 4px;
-    margin: 3px;
     min-width: 6rem;
     padding: 2px;
   `}

@@ -173,6 +173,10 @@ export const setScaleName = (name) => ({
   payload: name,
 });
 
+export const toggleSharps = () => ({
+  type: scaleTypes.TOGGLE_SHARPS,
+});
+
 export const transposeScale = (destination) => (dispatch, getState) => {
   const {
     scale: { info, notes, ui },

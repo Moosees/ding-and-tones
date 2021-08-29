@@ -11,6 +11,7 @@ const scaleTypes = {
   SAVE_STARTED: 'scale/saveStarted',
   SAVE_SUCCESSFUL: 'scale/saveSuccessful',
   SET_NAME: 'scale/setName',
+  TOGGLE_SHARPS: 'scale/toggleSharps',
   UPDATE_SCALE: 'scale/update',
 };
 

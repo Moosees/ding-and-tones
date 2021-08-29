@@ -5,6 +5,7 @@ import { noteValueToName } from '../../../assets/intervals';
 import {
   addNoteToScale,
   removeNoteFromScale,
+  toggleSharps,
   transposeScale,
 } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
@@ -19,6 +20,7 @@ const Notes = ({
   isSongPlaying,
   removeNoteFromScale,
   round,
+  toggleSharps,
   transposeScale,
 }) => {
   const handleAdd = (note) => {
@@ -81,6 +83,12 @@ const Notes = ({
         />
         <BtnPrimary
           disabled={isSongPlaying}
+          label="#/b"
+          light
+          onClick={toggleSharps}
+        />
+        <BtnPrimary
+          disabled={isSongPlaying}
           label="Up"
           light
           onClick={() => transposeScale(1)}
@@ -109,5 +117,6 @@ const mapStateToProps = ({ scale, ui }) => ({
 export default connect(mapStateToProps, {
   addNoteToScale,
   removeNoteFromScale,
+  toggleSharps,
   transposeScale,
 })(Notes);
