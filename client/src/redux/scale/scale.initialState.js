@@ -7,6 +7,7 @@ export const infoState = {
   rootName: 'A',
   rootValue: 33,
   rootIndex: 0,
+  sharpNotes: false,
 };
 
 export const notesState = {
