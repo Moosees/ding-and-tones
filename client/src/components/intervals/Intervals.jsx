@@ -12,7 +12,13 @@ import DrumMode from './DrumMode';
 import { IntervalList } from './intervals.styles';
 import ScaleInterval from './ScaleInterval';
 
-const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
+const Intervals = ({
+  displayedChord,
+  displayedNote,
+  round,
+  scale,
+  sharpNotes,
+}) => {
   const { isMobile } = useDimensions();
 
   const intervals =
@@ -22,6 +28,7 @@ const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
             key={i}
             interval={interval}
             note={displayedChord.notes[i]}
+            sharpNotes={sharpNotes}
           />
         ))
       : scale[displayedNote].intervalMap.map((interval, i) => {
@@ -34,6 +41,7 @@ const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
               scaleIndex={i}
               interval={interval}
               number={number}
+              sharpNotes={sharpNotes}
             />
           );
         });
@@ -54,6 +62,7 @@ const Intervals = ({ displayedChord, displayedNote, round, scale }) => {
 const mapStateToProps = ({ scale, drum }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
+  sharpNotes: scale.info.sharpNotes,
   round: scale.notes.round,
   scale: scale.notes.scaleFull,
 });

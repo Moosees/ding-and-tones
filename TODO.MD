@@ -1,5 +1,8 @@
 # DING AND TONES TODO LIST
 
+* Chord names with sharps
+* Scale info name and notes with sharps
+
 ## Local storage
 
 * Local storage hook

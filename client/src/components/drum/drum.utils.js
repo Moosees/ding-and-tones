@@ -1,4 +1,8 @@
-import { drumModes, intervals } from '../../assets/intervals';
+import {
+  drumModes,
+  getNoteLabelFromName,
+  intervals,
+} from '../../assets/intervals';
 
 export const getChordColor = (note, notesInScale) => {
   return intervals[notesInScale[note]].color;
@@ -29,7 +33,8 @@ export const getNoteText = (
   intervalMap,
   drumMode,
   displayedChord,
-  noteNumber
+  noteNumber,
+  sharpNotes
 ) => {
   switch (drumMode) {
     case drumModes.INTERVALS:
@@ -39,7 +44,7 @@ export const getNoteText = (
       return getScaleNoteText(intervalMap[scaleFullIndex]);
 
     case drumModes.NOTES:
-      return noteName;
+      return getNoteLabelFromName(noteName, sharpNotes);
     // return intervalMap[scaleFullIndex].note;
 
     case drumModes.NUMBERS:

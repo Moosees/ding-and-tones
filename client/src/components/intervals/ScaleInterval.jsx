@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { intervals } from '../../assets/intervals';
+import { getNoteLabelFromName, intervals } from '../../assets/intervals';
 import { setDisplayedNote } from '../../redux/drum/drum.actions';
 import {
   IntervalBreakBox,
@@ -32,6 +32,7 @@ const ScaleInterval = ({
   interval,
   number,
   scaleIndex,
+  sharpNotes,
   setDisplayedNote,
 }) => {
   const { color, modifier, name, nameShort, note, semitones } =
@@ -47,7 +48,7 @@ const ScaleInterval = ({
       </IntervalColor>
       <IntervalBreakBox>
         <IntervalText>
-          {note} - {name}
+          {getNoteLabelFromName(note, sharpNotes)} - {name}
           {modifier}
         </IntervalText>
         <IntervalText>

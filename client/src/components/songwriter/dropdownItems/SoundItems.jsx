@@ -9,11 +9,12 @@ const SoundItems = ({
   hasNonScaleNote,
   multiSelect,
   optionList,
+  sharpNotes,
   updateSoundForBeat,
 }) => {
   const { sound } = beats[beatId];
 
-  const soundItems = optionList.map(({ label, value }) => {
+  const soundItems = optionList.map(({ label, labelSharp, value }) => {
     const selected = sound.includes(value);
 
     const isDisabled = multiSelect && sound.length >= 2 && !selected;
@@ -39,7 +40,7 @@ const SoundItems = ({
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        {label}
+        {sharpNotes ? labelSharp : label}
       </DropdownItem>
     );
   });
@@ -47,7 +48,8 @@ const SoundItems = ({
   return <>{soundItems}</>;
 };
 
-const mapStateToProps = ({ song, ui }) => ({
+const mapStateToProps = ({ scale, song, ui }) => ({
+  sharpNotes: scale.info.sharpNotes,
   beats: song.beats,
   multiSelect: ui.multiSelect,
 });

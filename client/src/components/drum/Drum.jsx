@@ -14,6 +14,7 @@ const Drum = ({
   extra,
   round,
   scale,
+  sharpNotes,
   style,
 }) => {
   const { roundTonefields, extraTonefields } = scale.reduce(
@@ -36,7 +37,8 @@ const Drum = ({
             scale[displayedNote].intervalMap,
             drumMode,
             displayedChord,
-            noteNumber
+            noteNumber,
+            sharpNotes
           )
         : '';
 
@@ -110,6 +112,7 @@ const mapStateToProps = ({ drum, scale, ui }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   drumMode: drum.drumMode,
+  sharpNotes: scale.info.sharpNotes,
   extra: scale.notes.extra,
   round: scale.notes.round,
   scale: scale.notes.scaleFull,

@@ -1,3 +1,4 @@
+import { getNoteLabelFromName } from '../../assets/intervals';
 import uiTypes from './ui.types';
 
 export const setCurrentBar = (barId) => ({
@@ -40,6 +41,7 @@ export const setSoundOptions =
       allSounds[i] = `${audioPath}/${note}.mp3`;
       return {
         label: `${i} - ${note}`,
+        labelSharp: `${i} - ${getNoteLabelFromName(note, true)}`,
         value: `${i}`,
       };
     });
@@ -49,14 +51,15 @@ export const setSoundOptions =
       allSounds[`b${i + 1}`] = `${audioPath}/${note}.mp3`;
       return {
         label: `b${i + 1} - ${note}`,
+        labelSharp: `b${i + 1} - ${getNoteLabelFromName(note, true)}`,
         value: `b${i + 1}`,
       };
     });
 
     const percussive = [
       // { label: 'Pause', value: '-' },
-      { label: 'Loud Tak', value: 'T' },
-      { label: 'Soft Tak', value: 't' },
+      { label: 'Loud Tak', labelSharp: 'Loud Tak', value: 'T' },
+      { label: 'Soft Tak', labelSharp: 'Soft Tak', value: 't' },
     ];
 
     const nonScale = [];
@@ -68,6 +71,7 @@ export const setSoundOptions =
           nonScaleMap[option] = true;
           nonScale.push({
             label: `${option} - ?`,
+            labelSharp: `${option} - ?`,
             value: option,
             outsideScale: true,
           });

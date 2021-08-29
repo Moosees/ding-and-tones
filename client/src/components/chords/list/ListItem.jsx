@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getNoteLabelFromName } from '../../../assets/intervals';
 import useDimensions from '../../../hooks/useDimensions';
 import {
   addChordToPrintList,
@@ -16,6 +17,7 @@ const ListItem = ({
   printList,
   removeChordFromPrintList,
   setDisplayedChord,
+  sharpNotes,
 }) => {
   const { isMobile } = useDimensions();
 
@@ -29,10 +31,14 @@ const ListItem = ({
       : addChordToPrintList(chord);
   };
 
+  const chordNotes = chord.notes
+    .map((note) => getNoteLabelFromName(`${note}1`, sharpNotes).slice(0, -1))
+    .join(', ');
+
   return (
     <ItemContainer>
       <span>
-        <strong>{chord.name}</strong> - {chord.notes.join(', ')}
+        <strong>{chord.name}</strong> - {chordNotes}
       </span>
       <div>
         <Checkbox
@@ -50,8 +56,9 @@ const ListItem = ({
   );
 };
 
-const mapStateToProps = ({ chords }) => ({
+const mapStateToProps = ({ chords, scale }) => ({
   printList: chords.printList,
+  sharpNotes: scale.info.sharpNotes,
 });
 
 export default connect(mapStateToProps, {

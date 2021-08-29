@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../../assets/constants';
-import { noteValueToName } from '../../../assets/intervals';
+import {
+  getNoteLabelFromName,
+  noteValueToName
+} from '../../../assets/intervals';
 import {
   addNoteToScale,
   removeNoteFromScale,
   toggleSharps,
-  transposeScale,
+  transposeScale
 } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
@@ -20,6 +23,7 @@ const Notes = ({
   isSongPlaying,
   removeNoteFromScale,
   round,
+  sharpNotes,
   toggleSharps,
   transposeScale,
 }) => {
@@ -58,7 +62,7 @@ const Notes = ({
           inExtra={isNoteInExtra}
           onClick={handleClick}
         >
-          <span>{noteName}</span>
+          <span>{getNoteLabelFromName(noteName, sharpNotes)}</span>
         </Note>
       );
     }
@@ -108,6 +112,7 @@ const Notes = ({
 };
 
 const mapStateToProps = ({ scale, ui }) => ({
+  sharpNotes: scale.info.sharpNotes,
   extra: scale.notes.extra,
   round: scale.notes.round,
   addExtraNotes: ui.addExtraNotes,
