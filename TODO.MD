@@ -161,6 +161,7 @@
 * Better profanity filter on save requests
 * Store notes in db as note values instead of note names
 * Store sharp notes in scale state?
+* Clean up all sharp note functions
 
 ## Future plans
 
