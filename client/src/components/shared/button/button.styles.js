@@ -118,7 +118,7 @@ export const PrimaryButton = styled.button`
   justify-content: center;
   margin: 0.5rem 3px;
   min-width: 7.5rem;
-  opacity: ${({ disabled }) => (disabled ? '0.7' : '1')};
+  opacity: ${({ disabled }) => (disabled ? '0.4' : '1')};
   padding: 0.5rem 2px;
   transition: border 0.15s ease-in;
 
