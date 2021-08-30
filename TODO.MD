@@ -29,6 +29,7 @@
 
 ## Updates in need of planning
 
+* Validate scales before saving, at least 5 tones?
 * Styled-components, mix-ins and css variables - portrait mq as mixin - mobile first?
 * Testing
 * Bar numbers on song viewer? Only long songs?
