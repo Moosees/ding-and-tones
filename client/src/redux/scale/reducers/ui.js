@@ -71,6 +71,10 @@ const uiReducer = (state = uiState, { type, payload }) => {
         positionMap: [{ rotate: 0, translate: 0 }],
       };
 
+    case scaleTypes.SET_NAME:
+    case scaleTypes.TOGGLE_SHARPS:
+      return { ...state, isOwner: false, scaleId: null, hasChanges: true };
+
     case songTypes.FETCH_SUCCESSFUL: {
       if (!payload.getScale) return state;
 
