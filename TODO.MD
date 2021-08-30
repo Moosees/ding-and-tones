@@ -1,5 +1,7 @@
 # DING AND TONES TODO LIST
 
+* Disabled buttons
+
 ## Local storage
 
 * Local storage hook

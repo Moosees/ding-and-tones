@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
-import { saveScale, setScaleName } from '../../../redux/scale/scale.actions';
+import {
+  newScale,
+  saveScale,
+  setScaleName,
+} from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
 import Help from '../../shared/button/Help';
 import BtnPrimary from '../../shared/button/Primary';
@@ -16,6 +20,7 @@ const Info = ({
   isFetching,
   isSaving,
   isSignedIn,
+  newScale,
   saveScale,
   scale,
   scaleInfo,
@@ -35,9 +40,20 @@ const Info = ({
     if (isNameValid) setScaleName(name);
   };
 
+  const handleNewScale = () => {
+    newScale();
+    replace('/scale');
+  };
+
   return (
     <ScaleInfoContainer>
       <Buttons position="center">
+        <BtnPrimary
+          disabled={isDeleting || isFetching || isSaving}
+          label="New Scale"
+          onClick={handleNewScale}
+          light
+        />
         <BtnPrimary
           disabled={
             !isSignedIn ||
@@ -81,6 +97,7 @@ const mapStateToProps = ({ scale, search, ui, user }) => ({
 });
 
 export default connect(mapStateToProps, {
+  newScale,
   saveScale,
   setScaleName,
 })(Info);

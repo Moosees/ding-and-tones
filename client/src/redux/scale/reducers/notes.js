@@ -1,6 +1,7 @@
 import songTypes from '../../song/song.types';
 import { notesState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
+import { createFullScaleFromNames } from '../scale.utils';
 
 const notesReducer = (state = notesState, { type, payload }) => {
   switch (type) {
@@ -13,6 +14,14 @@ const notesReducer = (state = notesState, { type, payload }) => {
         round: payload.newRound,
         extra: payload.newExtra,
         scaleFull: payload.newFull,
+      };
+
+    case scaleTypes.NEW_SCALE:
+      return {
+        ...state,
+        round: ['A3'],
+        extra: [],
+        scaleFull: createFullScaleFromNames(['A3'], []).newFull,
       };
 
     case songTypes.FETCH_SUCCESSFUL:

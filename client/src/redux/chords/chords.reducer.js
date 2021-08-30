@@ -5,7 +5,7 @@ import chordsTypes from './chords.types';
 import {
   findAllChords,
   setAllIsSelected,
-  updateIsSelected
+  updateIsSelected,
 } from './chords.utils';
 
 const INITIAL_STATE = {
@@ -58,6 +58,7 @@ const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case scaleTypes.FETCH_SUCCESSFUL:
+    case scaleTypes.NEW_SCALE:
     case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE:
       return { ...state, foundChords: [], printList: [] };

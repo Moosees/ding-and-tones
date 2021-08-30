@@ -62,6 +62,15 @@ const uiReducer = (state = uiState, { type, payload }) => {
         scaleId: null,
       };
 
+    case scaleTypes.NEW_SCALE:
+      return {
+        ...state,
+        isOwner: false,
+        scaleId: null,
+        hasChanges: false,
+        positionMap: [{ rotate: 0, translate: 0 }],
+      };
+
     case songTypes.FETCH_SUCCESSFUL: {
       if (!payload.getScale) return state;
 

@@ -13,6 +13,17 @@ const infoReducer = (state = infoState, { type, payload }) => {
         ...payload.info,
       };
 
+    case scaleTypes.NEW_SCALE:
+      return {
+        ...state,
+        label: '(A3)',
+        layout: 1,
+        name: 'New Scale',
+        rootIndex: 0,
+        rootValue: 45,
+        rootName: 'A',
+      };
+
     case scaleTypes.SET_NAME:
       return {
         ...state,
