@@ -179,6 +179,7 @@
 * Percussive hits on handpan - normalize handpan samples
 * Higher quality samples
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
+* Alert mouse over or tap inside stops timer?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
 * Automate created and updates posts for db documents
