@@ -248,12 +248,16 @@ exports.getSongById = (req, res) => {
   Song.findById(songId)
     .populate('composer', '_id anonymous name')
     .populate('scale', '_id info notes')
-    .select('_id arrangement bars beats info')
+    .select('_id arrangement bars beats info private')
     .exec((error, song) => {
       if (error) return res.status(500).json();
       if (!song) return res.status(404).json();
 
       const data = parseGetResponse(song, userId);
+
+      if (data.private && !userId) return res.status(401).json();
+      if (data.private && !data.isOwner) return res.status(403).json();
+
       res.status(200).json(data);
     });
 };
