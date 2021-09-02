@@ -66,7 +66,7 @@ exports.songSearch = async (req, res) => {
     const searchTerm = req.params.searchTerm.toLowerCase();
 
     const songs = await Song.find({
-      $and: [{ private: false }, { queryString: { $regex: searchTerm } }],
+      $and: [{ isPrivate: false }, { queryString: { $regex: searchTerm } }],
     })
       .limit(20)
       .sort({ 'info.title': 1 })
@@ -142,7 +142,7 @@ exports.getNewSongs = async (req, res) => {
     const userId = req.userId;
 
     const songs = await Song.find({
-      $and: [{ private: false }, { composer: { $ne: ObjectId(userId) } }],
+      $and: [{ isPrivate: false }, { composer: { $ne: ObjectId(userId) } }],
     })
       .select('_id composer info scale')
       .limit(20)
@@ -248,15 +248,15 @@ exports.getSongById = (req, res) => {
   Song.findById(songId)
     .populate('composer', '_id anonymous name')
     .populate('scale', '_id info notes')
-    .select('_id arrangement bars beats info private')
+    .select('_id arrangement bars beats info isPrivate')
     .exec((error, song) => {
       if (error) return res.status(500).json();
       if (!song) return res.status(404).json();
 
       const data = parseGetResponse(song, userId);
 
-      if (data.private && !userId) return res.status(401).json();
-      if (data.private && !data.isOwner) return res.status(403).json();
+      if (data.isPrivate && !userId) return res.status(401).json();
+      if (data.isPrivate && !data.isOwner) return res.status(403).json();
 
       res.status(200).json(data);
     });

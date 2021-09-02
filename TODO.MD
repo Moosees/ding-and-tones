@@ -4,9 +4,9 @@
 
 * Open save song settings at will
 * Move add bar controls to end of bar list
-* Add private to song state
 * Toggle private in save song settings
 * Chose between save and save as new?
+* Send isPrivate when saving song
 * "Remember saved scale" option for save song popup?
 * Show if owned song is private in search results?
 * Update privacy

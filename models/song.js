@@ -54,13 +54,13 @@ const songSchema = new mongoose.Schema({
       maxlength: 30,
     },
   },
+  isPrivate: {
+    type: Boolean,
+    default: false,
+  },
   score: {
     type: Number,
     default: 0,
-  },
-  private: {
-    type: Boolean,
-    default: false,
   },
   scale: { type: ObjectId, ref: 'Scale' },
   updated: {

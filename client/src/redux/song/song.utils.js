@@ -124,8 +124,17 @@ const parseScaleForLoadSong = (scale) => {
 };
 
 export const parseFetchedSong = (song, getScale) => {
-  const { arrangement, bars, beats, composer, info, isOwner, scale, songId } =
-    song;
+  const {
+    arrangement,
+    bars,
+    beats,
+    composer,
+    info,
+    isOwner,
+    isPrivate,
+    scale,
+    songId,
+  } = song;
 
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
@@ -147,7 +156,7 @@ export const parseFetchedSong = (song, getScale) => {
     getScale: scale && getScale,
     info,
     scale: parsedScale,
-    ui: { composer, isOwner, songId, ...savedScale },
+    ui: { composer, isOwner, songId, isPrivate, ...savedScale },
   };
 };
 

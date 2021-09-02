@@ -65,6 +65,7 @@ export const uiState = {
   isFetching: false,
   isSaving: false,
   isOwner: false,
+  isPrivate: false,
   songId: null,
   scaleId: null,
   scaleName: '',
