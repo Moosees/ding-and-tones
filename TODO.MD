@@ -2,8 +2,8 @@
 
 ## Private songs
 
-* Open save song settings at will
 * Move add bar controls to end of bar list
+* Open save song settings at will - new button
 * Toggle private in save song settings
 * Chose between save and save as new?
 * "Remember saved scale" option for save song popup?
@@ -196,3 +196,4 @@
 * Print with notes instead of numbers
 * Dark mode
 * Markdown for help topics
+* Howler?
