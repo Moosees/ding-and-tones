@@ -1,5 +1,8 @@
 # DING AND TONES TODO LIST
 
+* Disable print button when song is playing
+* Solo bars
+
 ## Local storage
 
 * Local storage hook
@@ -128,10 +131,9 @@
 
 * Use Tooltip component for beat dropdown?
 * Make dropdown higher z than controls, remove need for padding
-* Solo bars? Invert mute/solo?
 * Show latest changes (useful when copying and moving bars)
 * Undo changes
-* Looping
+* Looping, named bars? Sequencer?
 * Get default hand when adding bars?
 * Check if loaded songs has saved hands and set hands open accordingly?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
@@ -191,3 +193,4 @@
 * Dark mode
 * Markdown for help topics
 * Logic for figuring out if a note is a sharp or flat - circle of fifths + maj/min detection
+* Howler?
