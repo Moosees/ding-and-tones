@@ -4,22 +4,18 @@ import { useHistory } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import {
-  addNewBar,
   saveSong,
-  updateSongInfo,
+  updateSongInfo
 } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
 import Select from '../../shared/select/Select';
-import PopupNewBar from '../popups/PopupNewBar';
 import PopupNewSong from '../popups/PopupNewSong';
 import PopupSaveSong from '../popups/PopupSaveSong';
 import { ControlsContainer } from './controls.styles';
-import { createNewBar } from './controls.utils';
 
 const ControlsLeft = ({
-  addNewBar,
   arrangement,
   hasNewScale,
   isOwner,
@@ -31,14 +27,12 @@ const ControlsLeft = ({
   updateSongInfo,
 }) => {
   const [newSongOpen, setNewSongOpen] = useState(false);
-  const [newBarOpen, setNewBarOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);
   const { replace } = useHistory();
 
   const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
     useValidate('title', songInfo.title);
 
-  const { metre, subdivision } = songInfo;
   const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
 
   const saveSongCb = (scaleId) => {
@@ -54,10 +48,6 @@ const ControlsLeft = ({
     }
 
     setSaveSongOpen(true);
-  };
-
-  const handleNewBar = (metre, subdivision) => {
-    addNewBar(createNewBar(metre, subdivision));
   };
 
   return (
@@ -96,26 +86,9 @@ const ControlsLeft = ({
             label="New Song"
             onClick={() => setNewSongOpen(true)}
           />
-          <BtnPrimary
-            label="Add Bar"
-            disabled={isSongPlaying}
-            onClick={() => handleNewBar(metre, subdivision)}
-          />
-          <BtnPrimary
-            label="Custom Bar"
-            disabled={isSongPlaying}
-            onClick={() => setNewBarOpen(true)}
-            handleNewBar={handleNewBar}
-          />
         </Buttons>
       </ControlsContainer>
       {newSongOpen && <PopupNewSong onClose={() => setNewSongOpen(false)} />}
-      {newBarOpen && (
-        <PopupNewBar
-          onClose={() => setNewBarOpen(false)}
-          handleNewBar={handleNewBar}
-        />
-      )}
       {saveSongOpen && (
         <PopupSaveSong
           onClose={() => setSaveSongOpen(false)}
@@ -140,7 +113,6 @@ const mapStateToProps = ({ scale, song, ui, user }) => ({
 });
 
 export default connect(mapStateToProps, {
-  addNewBar,
   saveSong,
   updateSongInfo,
 })(ControlsLeft);
