@@ -1,40 +1,47 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { metreList } from '../../../assets/metre';
 import { addNewBar } from '../../../redux/song/song.actions';
-import BtnPrimary from '../../shared/button/Primary';
+import Buttons from '../../shared/button/Buttons';
+import { AddBarBtn, AddBarContainer } from './addBar.styles';
 import { createNewBar } from './addBar.utils';
 import PopupNewBar from './PopupNewBar';
 
 const AddBar = ({ addNewBar, isSongPlaying, songInfo }) => {
   const [newBarOpen, setNewBarOpen] = useState(false);
   const { metre, subdivision } = songInfo;
+  const { nameShort } = metreList[metre];
 
   const handleNewBar = (metre, subdivision) => {
     addNewBar(createNewBar(metre, subdivision));
   };
 
   return (
-    <>
-      <div>
-        <BtnPrimary
-          label="Add Bar"
+    <AddBarContainer>
+      <p>Add bar</p>
+      <Buttons>
+        <AddBarBtn
           disabled={isSongPlaying}
+          isSongPlaying={isSongPlaying}
           onClick={() => handleNewBar(metre, subdivision)}
-        />
-        <BtnPrimary
-          label="Custom Bar"
+        >
+          {nameShort}
+        </AddBarBtn>
+        <AddBarBtn
           disabled={isSongPlaying}
+          isSongPlaying={isSongPlaying}
           onClick={() => setNewBarOpen(true)}
-          handleNewBar={handleNewBar}
-        />
-      </div>
+        >
+          X/X
+        </AddBarBtn>
+      </Buttons>
       {newBarOpen && (
         <PopupNewBar
           onClose={() => setNewBarOpen(false)}
           handleNewBar={handleNewBar}
         />
       )}
-    </>
+    </AddBarContainer>
   );
 };
 

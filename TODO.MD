@@ -2,7 +2,6 @@
 
 ## Private songs
 
-* New buttons for new bars
 * Open save song settings at will - new button
 * Toggle private in save song settings
 * Chose between save and save as new?
