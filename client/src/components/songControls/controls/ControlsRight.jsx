@@ -32,7 +32,7 @@ const ControlsRight = ({
         <InfoBox>
           <BpmSlider />
         </InfoBox>
-        <Buttons position="flex-start">
+        <Buttons position="center">
           <PlayButton />
           <Checkbox
             asBtn

@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import {
-  saveSong,
-  updateSongInfo
-} from '../../../redux/song/song.actions';
+import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
@@ -33,7 +30,14 @@ const ControlsLeft = ({
   const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
     useValidate('title', songInfo.title);
 
-  const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
+  const isArrangementValid =
+    arrangement.length >= 1 && arrangement.length <= 100;
+  const disableSaveSong =
+    !isSignedIn ||
+    isSongPlaying ||
+    isSaving ||
+    !isTitleValid ||
+    !isArrangementValid;
 
   const saveSongCb = (scaleId) => {
     saveSong({ saveAs: !isOwner, title, scaleId }).then((res) => {
@@ -43,7 +47,7 @@ const ControlsLeft = ({
   };
 
   const handleSave = () => {
-    if (isOwner && !hasNewScale) {
+    if (!hasNewScale) {
       return saveSongCb();
     }
 
@@ -69,16 +73,15 @@ const ControlsLeft = ({
           options={optionsDifficulty}
           label="Difficulty: "
         />
-        <Buttons>
+        <Buttons position="center">
           <BtnPrimary
-            disabled={
-              !isSignedIn ||
-              isSongPlaying ||
-              isSaving ||
-              !isTitleValid ||
-              !isSongSavable
-            }
-            label={isOwner ? 'Save' : 'Save New'}
+            disabled={disableSaveSong}
+            label={isOwner ? 'Save As' : 'Save New'}
+            onClick={() => setSaveSongOpen(true)}
+          />
+          <BtnPrimary
+            disabled={!isOwner || disableSaveSong}
+            label="Save"
             onClick={handleSave}
           />
           <BtnPrimary

@@ -2,12 +2,12 @@
 
 ## Private songs
 
-* Open save song settings at will - new button
 * Toggle private in save song settings
 * Chose between save and save as new?
 * "Remember saved scale" option for save song popup?
 * Show if owned song is private in search results?
 * Update privacy
+* Set all Buttons to center as default position?
 * Clean up code
 
 ## Local storage
