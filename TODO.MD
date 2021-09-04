@@ -2,6 +2,7 @@
 
 * Disable print button when song is playing
 * Solo bars
+* Cursor for dropdowns
 
 ## Local storage
 
