@@ -13,6 +13,7 @@ const songTypes = {
   SAVE_STARTED: 'song/saveStarted',
   SAVE_SUCCESSFUL: 'song/saveSuccessful',
   SET_STATE: 'song/setState',
+  TOGGLE_PRIVATE_SONG: 'song/togglePrivate',
   UPDATE_BAR_SUBDIVISION: 'song/updateBarSubdivision',
   UPDATE_BEAT: 'song/updateBeat',
   UPDATE_HAND: 'song/updateHand',

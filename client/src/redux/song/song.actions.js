@@ -149,6 +149,10 @@ export const setSongState = (song) => ({
   payload: song,
 });
 
+export const togglePrivateSong = () => ({
+  type: songTypes.TOGGLE_PRIVATE_SONG,
+});
+
 export const updateBarSubdivision = (barId, newSubdivision) => ({
   type: songTypes.UPDATE_BAR_SUBDIVISION,
   payload: { barId, newSubdivision },
