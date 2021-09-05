@@ -127,6 +127,7 @@
 * All root notes in chords should be focused on drum (or none)?
 * Print list change order of chords?
 * Print chords without scale info?
+* Scale degrees as chord prefix. And sorting? And filters?
 
 ## Songwriter
 
