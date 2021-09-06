@@ -7,7 +7,7 @@ import Popup from '../../shared/popup/Popup';
 
 const PopupSaveSong = ({
   hasNewScale,
-  isFirstSave,
+  isOwner,
   isPrivate,
   newScaleId,
   newScaleName,
@@ -19,7 +19,7 @@ const PopupSaveSong = ({
   togglePrivateSong,
 }) => {
   const [selectedScale, setSelectedScale] = useState(
-    isFirstSave && !oldScaleId ? newScaleId : oldScaleId
+    !isOwner && !oldScaleId ? newScaleId : oldScaleId
   );
 
   return (
@@ -59,7 +59,15 @@ const PopupSaveSong = ({
         />
       </Popup.Section>
       <Popup.Buttons>
-        <BtnPrimary label="Save" onClick={() => onSave(selectedScale)} />
+        <BtnPrimary
+          label="Save New"
+          onClick={() => onSave(selectedScale, true)}
+        />
+        <BtnPrimary
+          label="Save"
+          disabled={!isOwner}
+          onClick={() => onSave(selectedScale, false)}
+        />
         <BtnPrimary light label="Cancel" onClick={onClose} />
       </Popup.Buttons>
     </Popup>
@@ -69,6 +77,7 @@ const PopupSaveSong = ({
 const mapStateToProps = ({ scale, song }) => ({
   newScaleId: scale.ui.scaleId,
   newScaleName: `${scale.info.rootName} ${scale.info.name}`,
+  isOwner: song.ui.isOwner,
   isPrivate: song.ui.isPrivate,
   oldScaleId: song.ui.scaleId,
   oldScaleName: song.ui.scaleName,

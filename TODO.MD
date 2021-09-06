@@ -2,7 +2,6 @@
 
 ## Private songs
 
-* Chose between save and save as new?
 * "Remember saved scale" option for save song popup?
 * Show if owned song is private in search results?
 * Update privacy

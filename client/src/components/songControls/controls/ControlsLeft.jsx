@@ -39,8 +39,8 @@ const ControlsLeft = ({
     !isTitleValid ||
     !isArrangementValid;
 
-  const saveSongCb = (scaleId) => {
-    saveSong({ saveAs: !isOwner, title, scaleId }).then((res) => {
+  const saveSongCb = (scaleId, saveAs) => {
+    saveSong({ saveAs, title, scaleId }).then((res) => {
       setSaveSongOpen(false);
       if (res) replace(res);
     });
@@ -76,7 +76,7 @@ const ControlsLeft = ({
         <Buttons position="center">
           <BtnPrimary
             disabled={disableSaveSong}
-            label={isOwner ? 'Save As' : 'Save New'}
+            label="Save As"
             onClick={() => setSaveSongOpen(true)}
           />
           <BtnPrimary
@@ -98,7 +98,6 @@ const ControlsLeft = ({
           onSave={saveSongCb}
           title={title}
           hasNewScale={hasNewScale}
-          isFirstSave={!isOwner}
         />
       )}
     </>
