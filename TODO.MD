@@ -2,7 +2,6 @@
 
 ## Private songs
 
-* "Remember saved scale" option for save song popup?
 * Show if owned song is private in search results?
 * Update privacy
 * Set all Buttons to center as default position?

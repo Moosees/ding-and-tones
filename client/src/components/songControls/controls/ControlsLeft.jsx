@@ -14,12 +14,12 @@ import { ControlsContainer } from './controls.styles';
 
 const ControlsLeft = ({
   arrangement,
-  hasNewScale,
   isOwner,
   isSaving,
   isSignedIn,
   isSongPlaying,
   saveSong,
+  songScaleId,
   songInfo,
   updateSongInfo,
 }) => {
@@ -44,14 +44,6 @@ const ControlsLeft = ({
       setSaveSongOpen(false);
       if (res) replace(res);
     });
-  };
-
-  const handleSave = () => {
-    if (!hasNewScale) {
-      return saveSongCb();
-    }
-
-    setSaveSongOpen(true);
   };
 
   return (
@@ -82,7 +74,7 @@ const ControlsLeft = ({
           <BtnPrimary
             disabled={!isOwner || disableSaveSong}
             label="Save"
-            onClick={handleSave}
+            onClick={() => saveSongCb(songScaleId, false)}
           />
           <BtnPrimary
             disabled={isSongPlaying || isSaving || !isTitleValid}
@@ -97,7 +89,6 @@ const ControlsLeft = ({
           onClose={() => setSaveSongOpen(false)}
           onSave={saveSongCb}
           title={title}
-          hasNewScale={hasNewScale}
         />
       )}
     </>
@@ -105,7 +96,7 @@ const ControlsLeft = ({
 };
 
 const mapStateToProps = ({ scale, song, ui, user }) => ({
-  hasNewScale: scale.ui.scaleId !== song.ui.scaleId,
+  songScaleId: song.ui.scaleId,
   arrangement: song.arrangement,
   songInfo: song.info,
   isOwner: song.ui.isOwner,

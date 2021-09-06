@@ -6,7 +6,6 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
 
 const PopupSaveSong = ({
-  hasNewScale,
   isOwner,
   isPrivate,
   newScaleId,
@@ -21,6 +20,7 @@ const PopupSaveSong = ({
   const [selectedScale, setSelectedScale] = useState(
     !isOwner && !oldScaleId ? newScaleId : oldScaleId
   );
+  const hasNewScale = newScaleId !== oldScaleId;
 
   return (
     <Popup header="Save song" onClose={onClose}>
@@ -40,14 +40,14 @@ const PopupSaveSong = ({
         <Popup.SubHeading>Linked Scale:</Popup.SubHeading>
         {oldScaleId && (
           <Checkbox
-            label={oldScaleName}
+            label={`${oldScaleName} (keep scale)`}
             checked={selectedScale === oldScaleId}
             onChange={() => setSelectedScale(oldScaleId)}
           />
         )}
         {hasNewScale && newScaleId && (
           <Checkbox
-            label={newScaleName}
+            label={`${newScaleName} (change scale)`}
             checked={selectedScale === newScaleId}
             onChange={() => setSelectedScale(newScaleId)}
           />
