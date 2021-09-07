@@ -69,6 +69,7 @@
 * New buttons for loading songs and confirm/cancel
 * BtnPrimary on mobile
 * Explanation for disabled buttons
+* Slider disabled cursor
 
 ## Focus and keyboard
 
