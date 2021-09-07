@@ -32,7 +32,7 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
         subdivision={subdivision}
         setSubdivision={setSubdivision}
       />
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary label="Confirm" onClick={handleConfirm} />
         <BtnPrimary light label="Cancel" onClick={onClose} />
       </Buttons>

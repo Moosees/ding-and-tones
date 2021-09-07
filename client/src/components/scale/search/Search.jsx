@@ -28,7 +28,7 @@ const Search = ({ isSearching, isSignedIn, startSearch }) => {
         placeholder="Search scales"
         searchOption={searchOptions.scales.alphabetical}
       />
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary
           disabled={isSearching}
           label="New Scales"

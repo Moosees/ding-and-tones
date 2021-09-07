@@ -60,7 +60,7 @@ const Filter = ({
 
   return (
     <ControlsContainer>
-      <Buttons position="center">
+      <Buttons>
         <PrintChordsBtn />
         <Help topic={helpTopics.CHORDS} />
       </Buttons>
@@ -69,7 +69,7 @@ const Filter = ({
         <CheckBoxes>{allChords}</CheckBoxes>
       </ScrollBox>
       <DividerLine small />
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary
           label="All"
           light

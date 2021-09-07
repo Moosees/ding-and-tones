@@ -2,9 +2,7 @@
 
 ## Private songs
 
-* Show if owned song is private in search results?
 * Update privacy
-* Set all Buttons to center as default position?
 * Clean up code
 
 ## Local storage
@@ -155,6 +153,7 @@
 * Privacy date localization
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
 * Save song as JSON?
+* Show if owned song is private in search results?
 
 ## API
 

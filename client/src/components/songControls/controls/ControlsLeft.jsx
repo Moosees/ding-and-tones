@@ -65,7 +65,7 @@ const ControlsLeft = ({
           options={optionsDifficulty}
           label="Difficulty: "
         />
-        <Buttons position="center">
+        <Buttons>
           <BtnPrimary
             disabled={disableSaveSong}
             label="Save As"

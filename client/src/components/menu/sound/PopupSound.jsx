@@ -32,7 +32,7 @@ const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
           @connorshafran
         </a>
       </Credits>
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary light label="Close" onClick={onClose} />
       </Buttons>
     </Popup>

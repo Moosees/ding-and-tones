@@ -37,7 +37,7 @@ const Info = ({
 
   return (
     <ScaleInfoContainer>
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary
           disabled={
             !isSignedIn ||
