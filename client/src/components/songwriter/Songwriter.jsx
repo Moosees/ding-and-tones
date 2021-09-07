@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { moveBarInArrangement } from '../../redux/song/song.actions';
+import AddBar from './addBar/AddBar';
 import Bar from './bar/Bar';
 import DropdownHandler from './dropdownHandler/DropdownHandler';
 import { Bars } from './songwriter.styles';
@@ -14,6 +15,7 @@ const Songwriter = ({ arrangement, borderRef, moveBarInArrangement }) => {
         {arrangement.map((bar, i) => (
           <Bar key={bar} barId={bar} index={i} moveBar={moveBarInArrangement} />
         ))}
+        <AddBar key="addBar" />
       </DropdownHandler>
     </Bars>
   );

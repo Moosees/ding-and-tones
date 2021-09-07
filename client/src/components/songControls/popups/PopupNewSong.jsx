@@ -70,7 +70,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         options={optionsDifficulty}
         label="Difficulty: "
       />
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary
           label="Confirm"
           disabled={!isTitleValid}

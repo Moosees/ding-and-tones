@@ -72,7 +72,7 @@ const Notes = ({
   return (
     <>
       <TextLabel>Transpose Scale</TextLabel>
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary
           disabled={isSongPlaying}
           label="- 8va"

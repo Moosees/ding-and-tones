@@ -3,12 +3,8 @@ import styled from 'styled-components';
 export const ButtonGroup = styled.div`
   align-items: center;
   display: flex;
-  justify-content: ${({ position }) => (position ? position : 'flex-end')};
+  justify-content: ${({ position }) => (position ? position : 'center')};
   width: 100%;
-
-  @media screen and (orientation: portrait) and (max-width: 1000px) {
-    justify-content: center;
-  }
 `;
 
 export const MenuButton = styled.div`

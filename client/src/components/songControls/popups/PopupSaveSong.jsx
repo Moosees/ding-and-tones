@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { togglePrivateSong } from '../../../redux/song/song.actions';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
 
 const PopupSaveSong = ({
-  hasNewScale,
-  isFirstSave,
+  isOwner,
+  isPrivate,
   newScaleId,
   newScaleName,
   oldScaleId,
@@ -14,10 +15,12 @@ const PopupSaveSong = ({
   onClose,
   onSave,
   title,
+  togglePrivateSong,
 }) => {
   const [selectedScale, setSelectedScale] = useState(
-    isFirstSave && !oldScaleId ? newScaleId : oldScaleId
+    !isOwner && !oldScaleId ? newScaleId : oldScaleId
   );
+  const hasNewScale = newScaleId !== oldScaleId;
 
   return (
     <Popup header="Save song" onClose={onClose}>
@@ -26,17 +29,25 @@ const PopupSaveSong = ({
         {title}
       </Popup.Section>
       <Popup.Section>
+        <Popup.SubHeading>Song Settings:</Popup.SubHeading>
+        <Checkbox
+          label="Private song"
+          checked={isPrivate}
+          onChange={togglePrivateSong}
+        />
+      </Popup.Section>
+      <Popup.Section>
         <Popup.SubHeading>Linked Scale:</Popup.SubHeading>
         {oldScaleId && (
           <Checkbox
-            label={oldScaleName}
+            label={`${oldScaleName} (keep scale)`}
             checked={selectedScale === oldScaleId}
             onChange={() => setSelectedScale(oldScaleId)}
           />
         )}
         {hasNewScale && newScaleId && (
           <Checkbox
-            label={newScaleName}
+            label={`${newScaleName} (change scale)`}
             checked={selectedScale === newScaleId}
             onChange={() => setSelectedScale(newScaleId)}
           />
@@ -48,7 +59,15 @@ const PopupSaveSong = ({
         />
       </Popup.Section>
       <Popup.Buttons>
-        <BtnPrimary label="Save" onClick={() => onSave(selectedScale)} />
+        <BtnPrimary
+          label="Save New"
+          onClick={() => onSave(selectedScale, true)}
+        />
+        <BtnPrimary
+          label="Save"
+          disabled={!isOwner}
+          onClick={() => onSave(selectedScale, false)}
+        />
         <BtnPrimary light label="Cancel" onClick={onClose} />
       </Popup.Buttons>
     </Popup>
@@ -58,8 +77,10 @@ const PopupSaveSong = ({
 const mapStateToProps = ({ scale, song }) => ({
   newScaleId: scale.ui.scaleId,
   newScaleName: `${scale.info.rootName} ${scale.info.name}`,
+  isOwner: song.ui.isOwner,
+  isPrivate: song.ui.isPrivate,
   oldScaleId: song.ui.scaleId,
   oldScaleName: song.ui.scaleName,
 });
 
-export default connect(mapStateToProps)(PopupSaveSong);
+export default connect(mapStateToProps, { togglePrivateSong })(PopupSaveSong);

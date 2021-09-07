@@ -47,7 +47,7 @@ const PopupAccount = ({
           onChange={() => setAnon(!anon)}
         />
       </InfoBox>
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary label="Save" onClick={handleSave} />
         <BtnPrimary light label="Cancel" onClick={toggleAccount} />
       </Buttons>

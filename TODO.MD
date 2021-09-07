@@ -51,6 +51,7 @@
 * Violation 'click' handler took xxx ms when going to song route (big songs)
 * Scale/song url not found alerts not showing
 * Printing on mobile prints entire app and not just iframe
+* Songs with deleted scales can still be found in song searches with scale name
 
 ## Design
 
@@ -154,6 +155,7 @@
 * Privacy date localization
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
 * Save song as JSON?
+* Show if owned song is private in search results?
 
 ## API
 

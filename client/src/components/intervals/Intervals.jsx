@@ -48,7 +48,7 @@ const Intervals = ({
 
   return (
     <IntervalList>
-      <Buttons position="center">
+      <Buttons>
         {isMobile && <PlayButton light />}
         <BtnHelp topic={helpTopics.INTERVALS} />
       </Buttons>

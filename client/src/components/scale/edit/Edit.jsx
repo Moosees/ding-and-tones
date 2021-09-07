@@ -21,7 +21,7 @@ const Edit = ({
   return (
     <EditContainer>
       <EditContent>{isEditingExtraPos ? <Move /> : <Notes />}</EditContent>
-      <Buttons position="center">
+      <Buttons>
         <Checkbox
           asBtn
           light

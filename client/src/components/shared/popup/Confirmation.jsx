@@ -20,7 +20,7 @@ const Confirmation = ({ children, header, label, onConfirm }) => {
       {popupOpen && (
         <Popup header={header} onClose={() => setPopupOpen(false)}>
           <Label>{label}</Label>
-          <Buttons position="center">
+          <Buttons>
             <BtnPrimary label="Confirm" onClick={handleConfirm} />
             <BtnPrimary
               light

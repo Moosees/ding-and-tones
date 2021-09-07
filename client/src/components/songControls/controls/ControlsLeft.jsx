@@ -3,61 +3,47 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import {
-  addNewBar,
-  saveSong,
-  updateSongInfo,
-} from '../../../redux/song/song.actions';
+import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
 import Select from '../../shared/select/Select';
-import PopupNewBar from '../popups/PopupNewBar';
 import PopupNewSong from '../popups/PopupNewSong';
 import PopupSaveSong from '../popups/PopupSaveSong';
 import { ControlsContainer } from './controls.styles';
-import { createNewBar } from './controls.utils';
 
 const ControlsLeft = ({
-  addNewBar,
   arrangement,
-  hasNewScale,
   isOwner,
   isSaving,
   isSignedIn,
   isSongPlaying,
   saveSong,
+  songScaleId,
   songInfo,
   updateSongInfo,
 }) => {
   const [newSongOpen, setNewSongOpen] = useState(false);
-  const [newBarOpen, setNewBarOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);
   const { replace } = useHistory();
 
   const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
     useValidate('songTitle', songInfo.title);
 
-  const { metre, subdivision } = songInfo;
-  const isSongSavable = arrangement.length >= 1 && arrangement.length <= 100;
+  const isArrangementValid =
+    arrangement.length >= 1 && arrangement.length <= 100;
+  const disableSaveSong =
+    !isSignedIn ||
+    isSongPlaying ||
+    isSaving ||
+    !isTitleValid ||
+    !isArrangementValid;
 
-  const saveSongCb = (scaleId) => {
-    saveSong({ saveAs: !isOwner, title, scaleId }).then((res) => {
+  const saveSongCb = (scaleId, saveAs) => {
+    saveSong({ saveAs, title, scaleId }).then((res) => {
       setSaveSongOpen(false);
       if (res) replace(res);
     });
-  };
-
-  const handleSave = () => {
-    if (isOwner && !hasNewScale) {
-      return saveSongCb();
-    }
-
-    setSaveSongOpen(true);
-  };
-
-  const handleNewBar = (metre, subdivision) => {
-    addNewBar(createNewBar(metre, subdivision));
   };
 
   return (
@@ -81,48 +67,28 @@ const ControlsLeft = ({
         />
         <Buttons>
           <BtnPrimary
-            disabled={
-              !isSignedIn ||
-              isSongPlaying ||
-              isSaving ||
-              !isTitleValid ||
-              !isSongSavable
-            }
-            label={isOwner ? 'Save' : 'Save New'}
-            onClick={handleSave}
+            disabled={disableSaveSong}
+            label="Save As"
+            onClick={() => setSaveSongOpen(true)}
+          />
+          <BtnPrimary
+            disabled={!isOwner || disableSaveSong}
+            label="Save"
+            onClick={() => saveSongCb(songScaleId, false)}
           />
           <BtnPrimary
             disabled={isSongPlaying || isSaving || !isTitleValid}
             label="New Song"
             onClick={() => setNewSongOpen(true)}
           />
-          <BtnPrimary
-            label="Add Bar"
-            disabled={isSongPlaying}
-            onClick={() => handleNewBar(metre, subdivision)}
-          />
-          <BtnPrimary
-            label="Custom Bar"
-            disabled={isSongPlaying}
-            onClick={() => setNewBarOpen(true)}
-            handleNewBar={handleNewBar}
-          />
         </Buttons>
       </ControlsContainer>
       {newSongOpen && <PopupNewSong onClose={() => setNewSongOpen(false)} />}
-      {newBarOpen && (
-        <PopupNewBar
-          onClose={() => setNewBarOpen(false)}
-          handleNewBar={handleNewBar}
-        />
-      )}
       {saveSongOpen && (
         <PopupSaveSong
           onClose={() => setSaveSongOpen(false)}
           onSave={saveSongCb}
           title={title}
-          hasNewScale={hasNewScale}
-          isFirstSave={!isOwner}
         />
       )}
     </>
@@ -130,7 +96,7 @@ const ControlsLeft = ({
 };
 
 const mapStateToProps = ({ scale, song, ui, user }) => ({
-  hasNewScale: scale.ui.scaleId !== song.ui.scaleId,
+  songScaleId: song.ui.scaleId,
   arrangement: song.arrangement,
   songInfo: song.info,
   isOwner: song.ui.isOwner,
@@ -140,7 +106,6 @@ const mapStateToProps = ({ scale, song, ui, user }) => ({
 });
 
 export default connect(mapStateToProps, {
-  addNewBar,
   saveSong,
   updateSongInfo,
 })(ControlsLeft);

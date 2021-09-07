@@ -47,7 +47,7 @@ const Info = ({
 
   return (
     <ScaleInfoContainer>
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary
           disabled={isDeleting || isFetching || isSaving}
           label="New Scale"

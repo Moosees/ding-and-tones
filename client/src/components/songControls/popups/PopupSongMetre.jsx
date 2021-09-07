@@ -60,7 +60,7 @@ const PopupSongMetre = ({
         label={newBpmErrors.length ? newBpmErrors[0] : 'Bpm:'}
         value={newBpm}
       />
-      <Buttons position="center">
+      <Buttons>
         <BtnPrimary
           disabled={!isNewBpmValid}
           label="Confirm"

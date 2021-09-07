@@ -35,12 +35,12 @@ const SongViewControls = ({
 }) => {
   return (
     <ControlsContainer>
-      <Buttons position="center">
+      <Buttons>
         <PlayButton light />
         <Print />
         <EditButton light />
       </Buttons>
-      <Buttons position="center">
+      <Buttons>
         <Checkbox
           asBtn
           light

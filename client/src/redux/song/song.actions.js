@@ -70,10 +70,26 @@ export const getSongById =
         }
       })
       .catch((error) => {
+        let msg;
+        switch (error.response.status) {
+          case 404:
+            msg = 'Song not found';
+            break;
+          case 403:
+            msg = 'Song is private';
+            break;
+          case 401:
+            msg = 'Please log in first';
+            break;
+          default:
+            msg = 'Something went wrong';
+            break;
+        }
+
         dispatch({
           type: songTypes.FETCH_ERROR,
           payload: {
-            alert: error.response ? error.response.data.msg : 'Song not found',
+            alert: `Could not load song. ${msg}`,
           },
         });
         return Promise.resolve('/song');
@@ -131,6 +147,10 @@ export const saveSong =
 export const setSongState = (song) => ({
   type: songTypes.SET_STATE,
   payload: song,
+});
+
+export const togglePrivateSong = () => ({
+  type: songTypes.TOGGLE_PRIVATE_SONG,
 });
 
 export const updateBarSubdivision = (barId, newSubdivision) => ({
