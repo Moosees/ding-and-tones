@@ -143,6 +143,7 @@
 * Color for hands on tablature
 * Option to add note names to tablature
 * Clicks on sounds in beat dropdown plays sound selected
+* Help covers solo and mute bars
 
 ## State and search
 
