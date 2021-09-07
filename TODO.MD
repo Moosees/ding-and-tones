@@ -1,6 +1,26 @@
 # DING AND TONES TODO LIST
 
-## Local storage
+## Sorted
+
+### Sound update
+
+* Howler?
+* Volume controls?
+* Play song logic should be moved somewhere else? Hook?
+* Play song logic should be reworked with less forEach? Play song class
+* Safari sound player permissions - howler solves this?
+* Percussive hits on handpan - normalize handpan samples
+* Higher quality samples
+
+### Compare scales
+
+* Table with base scale and one or more scales to compare against
+* Logic for figuring out if a scale/note is a sharp or flat - circle of fifths + maj/min detection
+* Change root note of scale
+* Add play scale button and function
+* Create scale from name and string
+
+### Local storage
 
 * Local storage hook
 * Detect if song has unsaved changes
@@ -11,12 +31,10 @@
 * Persist changes on redis session? Viable? Interval?
 * Prevent/warn transition away from page if data isn't saved?
 
-## Typescript client update
+### Typescript client update
 
 * Update state
 * Update components
-* Play song logic should be moved somewhere else? Hook?
-* Play song logic should be reworked with less forEach? Play song class
 * Middleware driven state reducers?
 * Validation types enum
 * Clean up tonefield logic
@@ -27,18 +45,18 @@
 * Clean up rootIndex in parseScaleData
 * Remove measure subdivision count?
 
-## Updates in need of planning
+### Updates in need of planning
 
 * Validate scales before saving, at least 5 tones?
 * Styled-components, mix-ins and css variables - portrait mq as mixin - mobile first?
 * Testing
 * Bar numbers on song viewer? Only long songs?
-* Volume controls?
 * Should print view only break before fourths?
 
-## Bugs
+## Unsorted
 
-* Safari sound player permissions
+### Bugs
+
 * Safari print popup bug - print dialog is not blocking/waiting
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Song search results doesn't update if save song changes assigned scale
@@ -48,8 +66,9 @@
 * Scale/song url not found alerts not showing
 * Printing on mobile prints entire app and not just iframe
 * Songs with deleted scales can still be found in song searches with scale name
+* Song query strings and (changed) scale broken?
 
-## Design
+### Design
 
 * Search result hints should not be alerts
 * Errors from backend display on inputs instead of alert?
@@ -69,7 +88,7 @@
 * Explanation for disabled buttons
 * Slider disabled cursor
 
-## Focus and keyboard
+### Focus and keyboard
 
 * Disable focus for icons attached to edit only text boxes
 * Fix primary button focus after click
@@ -80,12 +99,12 @@
 * Move focus to beat when closing dropdown?
 * Only show keyboard help on non touch?
 
-## User/Menu
+### User/Menu
 
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 * Active state for nav buttons might not need the full pathname
 
-## Drum
+### Drum
 
 * Dynamic size for tonefields
 * Hover on drum shows all information about hovered note?
@@ -94,26 +113,23 @@
 * Add central Tak for non assigned hand taks? For all Taks?
 * Animation for tonefields being played
 
-## Intervals
+### Intervals
 
 * Hover and tab focus for intervals?
 * Add "big" intervals mode
 * Add colors to intervals help
 * One less plus for octaves in interval list?
 
-## Scale
+### Scale
 
-* Change root note
 * Double ding and mutant scales
-* Add play scale button and function
-* Create scale from name and string
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Sign in should update scale ownership
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Scale layout prop - not needed? used for double ding?
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
 
-## Chords
+### Chords
 
 * ID and cache chords?
 * Check cache for possible chords to show in filter
@@ -127,7 +143,7 @@
 * Print chords without scale info?
 * Scale degrees as chord prefix. And sorting? And filters?
 
-## Songwriter
+### Songwriter
 
 * Use Tooltip component for beat dropdown?
 * Make dropdown higher z than controls, remove need for padding
@@ -145,7 +161,7 @@
 * Clicks on sounds in beat dropdown plays sound selected
 * Help covers solo and mute bars
 
-## State and search
+### State and search
 
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
@@ -155,7 +171,7 @@
 * Save song as JSON?
 * Show if owned song is private in search results?
 
-## API
+### API
 
 * Change query string to keyword search? Atlas search?
 * Add difficulty filter to searches
@@ -167,9 +183,9 @@
 * Store notes in db as note values instead of note names
 * Store sharp notes in scale state?
 * Clean up all sharp note functions
-* mongoose sanitizeFilter
+* mongoose sanitizeFilter instead of current sanitizer?
 
-## Future plans
+### Future plans
 
 * Web worker?
 * Find songs by user (other than current user)
@@ -178,16 +194,13 @@
 * Custom chord inputs
 * Custom metres
 * Custom count for metres, more count styles
-* Comparing scales using tables or other presentations
 * Multiple drums for chords, songs etc. Two track songwriter?
 * More drum alternatives? Add synth/piano alternative?
-* Percussive hits on handpan - normalize handpan samples
-* Higher quality samples
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
 * Alert mouse over or tap inside stops timer?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
-* Automate created and updates posts for db documents
+* Automate created and updates posts for db documents, timestamps
 * Increase max save limits for older accounts
 * Favorite songs/scales
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
@@ -195,5 +208,3 @@
 * Print with notes instead of numbers
 * Dark mode
 * Markdown for help topics
-* Logic for figuring out if a note is a sharp or flat - circle of fifths + maj/min detection
-* Howler?
