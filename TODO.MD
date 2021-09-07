@@ -1,7 +1,5 @@
 # DING AND TONES TODO LIST
 
-* Solo bars
-
 ## Local storage
 
 * Local storage hook

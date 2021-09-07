@@ -2,7 +2,7 @@ import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
-import { getBarMetreOffset, updateMutedBars } from './ui.utils';
+import { getBarMetreOffset } from './ui.utils';
 
 const INITIAL_STATE = {
   addExtraNotes: false,
@@ -124,11 +124,8 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         multiSelect: !state.multiSelect,
       };
 
-    case uiTypes.TOGGLE_MUTE_BAR:
-      return {
-        ...state,
-        mutedBars: updateMutedBars(state.mutedBars, payload),
-      };
+    case uiTypes.SET_MUTED_BARS:
+      return { ...state, mutedBars: payload };
 
     case scaleTypes.LOAD_SCALE:
       return { ...state, isEditingExtraPos: false };

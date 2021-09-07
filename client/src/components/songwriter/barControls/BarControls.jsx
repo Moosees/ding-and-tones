@@ -61,7 +61,12 @@ const BarControls = ({
       <BtnIcon
         title={isMuted ? 'Unmute bar' : 'Mute bar'}
         icon={isMuted ? 'music_off' : 'music_note'}
-        onClick={() => toggleMuteBar(barId)}
+        onClick={() => toggleMuteBar(barId, false)}
+      />
+      <BtnIcon
+        title="Solo bar"
+        icon="priority_high"
+        onClick={() => toggleMuteBar(barId, true)}
       />
       <Subdivision
         small

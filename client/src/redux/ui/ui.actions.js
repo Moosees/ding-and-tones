@@ -120,7 +120,33 @@ export const toggleExtraPosEdit = () => ({
   type: uiTypes.TOGGLE_EXTRA_POS_EDIT,
 });
 
-export const toggleMuteBar = (barId) => ({
-  type: uiTypes.TOGGLE_MUTE_BAR,
-  payload: barId,
-});
+export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
+  const {
+    song: { arrangement },
+    ui: { mutedBars },
+  } = getState();
+
+  if (!solo) {
+    dispatch({
+      type: uiTypes.SET_MUTED_BARS,
+      payload: { ...mutedBars, [barId]: !mutedBars[barId] },
+    });
+    return;
+  }
+
+  const mutedBarsAry = Object.keys(mutedBars).filter((bar) => mutedBars[bar]);
+  const clearSolo =
+    mutedBarsAry.length &&
+    mutedBarsAry.length === arrangement.length - 1 &&
+    !mutedBarsAry.includes(barId);
+
+  dispatch({
+    type: uiTypes.SET_MUTED_BARS,
+    payload: clearSolo
+      ? {}
+      : arrangement.reduce((acc, bar) => {
+          if (barId !== bar) acc[bar] = true;
+          return acc;
+        }, {}),
+  });
+};

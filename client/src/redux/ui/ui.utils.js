@@ -6,7 +6,3 @@ export const getBarMetreOffset = ({ countOpen, handsOpen }) => {
 
   return offset;
 };
-
-export const updateMutedBars = (mutedBars, barId) => {
-  return { ...mutedBars, [barId]: !mutedBars[barId] };
-};
