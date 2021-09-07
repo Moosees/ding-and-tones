@@ -1,7 +1,6 @@
 # DING AND TONES TODO LIST
 
 * Solo bars
-* Cursor for dropdowns
 
 ## Local storage
 

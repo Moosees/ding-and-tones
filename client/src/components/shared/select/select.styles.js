@@ -50,6 +50,8 @@ export const SelectDropdown = styled.select`
 `;
 
 export const SelectLabel = styled(InfoLayout)`
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+
   i {
     color: ${({ theme }) => theme.colorText};
     font-size: 2.4rem;
@@ -64,6 +66,7 @@ export const SelectLabel = styled(InfoLayout)`
 
   &:hover i,
   &:focus-within i {
-    color: ${({ theme }) => theme.colorBtnConfirm};
+    color: ${({ disabled, theme }) =>
+      disabled ? theme.colorText : theme.colorBtnConfirm};
   }
 `;
