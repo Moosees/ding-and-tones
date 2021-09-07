@@ -20,8 +20,8 @@
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.1.0",
     "express-session": "^1.17.2",
-    "google-auth-library": "^7.5.0",
-    "mongoose": "^5.13.7",
+    "google-auth-library": "^7.9.1",
+    "mongoose": "^6.0.5",
     "redis": "^3.1.2"
   },
   "devDependencies": {

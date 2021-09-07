@@ -169,6 +169,7 @@
 * Store notes in db as note values instead of note names
 * Store sharp notes in scale state?
 * Clean up all sharp note functions
+* mongoose sanitizeFilter
 
 ## Future plans
 
