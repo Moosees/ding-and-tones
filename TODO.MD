@@ -1,6 +1,5 @@
 # DING AND TONES TODO LIST
 
-* Disable print button when song is playing
 * Solo bars
 * Cursor for dropdowns
 

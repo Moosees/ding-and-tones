@@ -7,14 +7,14 @@ const ReactToPrint = lazy(() =>
   import('../../shared/reactToPrint/ReactToPrint')
 );
 
-const PrintChordsBtn = ({ printList }) => {
+const PrintChordsBtn = ({ isSongPlaying, printList }) => {
   const [showPrint, setShowPrint] = useState(false);
 
   return (
     <>
       <BtnPrimary
         label="Print Chords"
-        disabled={!printList.length}
+        disabled={!printList.length || isSongPlaying}
         light
         onClick={() => setShowPrint(true)}
       />
@@ -29,8 +29,9 @@ const PrintChordsBtn = ({ printList }) => {
   );
 };
 
-const mapStateToProps = ({ chords }) => ({
+const mapStateToProps = ({ chords, ui }) => ({
   printList: chords.printList,
+  isSongPlaying: ui.isSongPlaying,
 });
 
 export default connect(mapStateToProps)(PrintChordsBtn);
