@@ -1,10 +1,5 @@
 # DING AND TONES TODO LIST
 
-## Private songs
-
-* Update privacy
-* Clean up code
-
 ## Local storage
 
 * Local storage hook

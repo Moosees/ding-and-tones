@@ -43,18 +43,19 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
     </PrivacyParagraph>
     <PrivacyHeader>Content visibility</PrivacyHeader>
     <PrivacyParagraph>
-      Songs and scales saved will be visible to all other users of this website,
-      and other users can use existing songs as starting points when building
-      their own songs. This will not modify the original song. You have the
-      option to remain anonymous or share your username next to your creations.
-      Saved content can be removed without warning if it's outside of the vision
-      of this website or warranted in some other way.
+      Scales saved will be visible to all other users of this website. Songs are
+      visible to all users unless you set them to private. Songs (non private)
+      and scales by other users can be used by other users as starting points
+      when building their own songs or scales. This will not modify the
+      original. You have the option to remain anonymous or share your username
+      next to your creations. Saved content can be removed without warning if
+      it's outside of the vision of this website or warranted in some other way.
     </PrivacyParagraph>
     <PrivacyHeader>Consent</PrivacyHeader>
     <PrivacyParagraph>
       By using this website you consent to these terms.
     </PrivacyParagraph>
-    <PrivacyParagraph>Last updated: 12 march 2021</PrivacyParagraph>
+    <PrivacyParagraph>Last updated: 7 september 2021</PrivacyParagraph>
   </TermsContainer>
 );
 
