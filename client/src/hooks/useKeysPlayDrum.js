@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { beatOptionToKeyCode } from '../assets/keyCodes';
 import { setCurrentBeat } from '../redux/ui/ui.actions';
+import useSound from './useSound';
 
 const useKeysPlayDrum = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const useKeysPlayDrum = () => {
     sounds: ui.soundOptions.allSounds,
   }));
   const [keypress, setKeypress] = useState(false);
+  const testHowl = useSound();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -32,15 +34,19 @@ const useKeysPlayDrum = () => {
     }, {});
 
     const keyboardListener = (e) => {
+      if (e.keyCode === 72) {
+        console.log(testHowl);
+        testHowl.play();
+        return;
+      }
       if (!keyboardCbs[e.keyCode]) return;
-
       keyboardCbs[e.keyCode]();
     };
 
     document.addEventListener('keydown', keyboardListener);
 
     return () => document.removeEventListener('keydown', keyboardListener);
-  }, [dispatch, sounds]);
+  }, [dispatch, sounds, testHowl]);
 };
 
 export default useKeysPlayDrum;
