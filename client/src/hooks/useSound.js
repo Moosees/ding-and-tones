@@ -1,11 +1,41 @@
 import { Howl, Howler } from 'howler';
-
-let howl;
+import { useCallback, useMemo } from 'react';
 
 const useSound = () => {
-  if (!howl) howl = new Howl({ src: ['audio/pan/C3.mp3'] });
+  const cleanup = useCallback(() => {
+    Howler.stop();
+  }, []);
 
-  return howl;
+  const playHowl = (howl) => {
+    if (howl.playing()) {
+      howl.stop();
+    }
+    howl.play();
+  };
+
+  const howls = useMemo(
+    () => [
+      new Howl({ src: ['audio/test/C3.wav'] }),
+      new Howl({ src: ['audio/test/E3.wav'] }),
+    ],
+    []
+  );
+
+  const howlCbs = useMemo(
+    () => [
+      {
+        key: 72,
+        play: () => playHowl(howls[0]),
+      },
+      {
+        key: 74,
+        play: () => playHowl(howls[1]),
+      },
+    ],
+    [howls]
+  );
+
+  return { howlCbs, cleanup };
 };
 
 export default useSound;

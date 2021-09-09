@@ -11,7 +11,7 @@ const useKeysPlayDrum = () => {
     sounds: ui.soundOptions.allSounds,
   }));
   const [keypress, setKeypress] = useState(false);
-  const testHowl = useSound();
+  const { howlCbs, cleanup } = useSound();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -22,6 +22,7 @@ const useKeysPlayDrum = () => {
   }, [dispatch, keypress, isSongPlaying]);
 
   useEffect(() => {
+    console.log('load keys');
     const keyboardCbs = Object.keys(sounds || {}).reduce((acc, soundKey) => {
       const cbKey = beatOptionToKeyCode[soundKey];
       const cbFunc = () => {
@@ -33,20 +34,21 @@ const useKeysPlayDrum = () => {
       return { ...acc, [cbKey]: cbFunc };
     }, {});
 
+    howlCbs.forEach((howl) => (keyboardCbs[howl.key] = howl.play));
+
     const keyboardListener = (e) => {
-      if (e.keyCode === 72) {
-        console.log(testHowl);
-        testHowl.play();
-        return;
-      }
       if (!keyboardCbs[e.keyCode]) return;
       keyboardCbs[e.keyCode]();
     };
 
     document.addEventListener('keydown', keyboardListener);
 
-    return () => document.removeEventListener('keydown', keyboardListener);
-  }, [dispatch, sounds, testHowl]);
+    return () => {
+      console.log('unload keys');
+      cleanup();
+      document.removeEventListener('keydown', keyboardListener);
+    };
+  }, [dispatch, sounds, howlCbs, cleanup]);
 };
 
 export default useKeysPlayDrum;
