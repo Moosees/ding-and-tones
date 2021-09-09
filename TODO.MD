@@ -4,13 +4,14 @@
 
 ### Sound update
 
-* Howler?
-* Volume controls?
-* Play song logic should be moved somewhere else? Hook?
-* Play song logic should be reworked with less forEach? Play song class
+* New sounds
+* Sound player using howler
+* Keyboard used new sound player
+* Drum uses new sound player
+* Play song uses new sound player
+* Master volume
+* Chord volume?
 * Safari sound player permissions - howler solves this?
-* Percussive hits on handpan - normalize handpan samples
-* Higher quality samples
 
 ### Compare scales
 
@@ -208,3 +209,4 @@
 * Print with notes instead of numbers
 * Dark mode
 * Markdown for help topics
+* Percussive hits on handpan
