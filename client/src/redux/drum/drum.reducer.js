@@ -1,11 +1,11 @@
 import { drumModes } from '../../assets/intervals';
-import { sound } from '../../assets/sound';
+import audioOptions from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import drumTypes from './drum.types';
 
 const INITIAL_STATE = {
-  audioPath: sound[0].path,
+  audioPath: audioOptions[0].path,
   displayedChord: null,
   displayedNote: 0,
   drumMode: drumModes.NOTES,

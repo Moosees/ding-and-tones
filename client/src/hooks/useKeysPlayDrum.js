@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { beatOptionToKeyCode } from '../assets/keyCodes';
+import { cleanupHowls, createHowls } from '../assets/sound/howler';
 import { setCurrentBeat } from '../redux/ui/ui.actions';
-import useSound from './useSound';
 
 const useKeysPlayDrum = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,6 @@ const useKeysPlayDrum = () => {
     sounds: ui.soundOptions.allSounds,
   }));
   const [keypress, setKeypress] = useState(false);
-  const { howlCbs, cleanup } = useSound();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -34,6 +33,7 @@ const useKeysPlayDrum = () => {
       return { ...acc, [cbKey]: cbFunc };
     }, {});
 
+    const { howlCbs } = createHowls();
     howlCbs.forEach((howl) => (keyboardCbs[howl.key] = howl.play));
 
     const keyboardListener = (e) => {
@@ -45,10 +45,10 @@ const useKeysPlayDrum = () => {
 
     return () => {
       console.log('unload keys');
-      cleanup();
+      cleanupHowls();
       document.removeEventListener('keydown', keyboardListener);
     };
-  }, [dispatch, sounds, howlCbs, cleanup]);
+  }, [dispatch, sounds]);
 };
 
 export default useKeysPlayDrum;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sound } from '../../../assets/sound';
+import audioOptions from '../../../assets/sound/audioOptions';
 import { selectSoundSource } from '../../../redux/drum/drum.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
@@ -9,7 +9,7 @@ import { AudioOption, Credits } from './sound.styles';
 
 const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
   const getAudioOptions = () =>
-    sound.map((option, i) => (
+    audioOptions.map((option, i) => (
       <AudioOption
         key={i}
         isSelected={option.path === audioPath}
