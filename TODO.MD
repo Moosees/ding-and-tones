@@ -4,6 +4,9 @@
 
 ### Sound update
 
+* Move useKeysPlayDrum to sound handler
+* Move playButton utils to sound assets
+* Move sound options handling
 * New sounds
 * Sound player using howler
 * Keyboard used new sound player
