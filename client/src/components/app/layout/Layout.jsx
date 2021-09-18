@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import useDimensions from '../../../hooks/useDimensions';
 import { setPrivacyOpen } from '../../../redux/ui/ui.actions';
-import AlertHandler from '../effects/AlertHandler';
+import Alert from '../../alert/Alert';
 import PopupPrivacy from '../effects/PopupPrivacy';
 import Large from './Large';
 import { Copyright, PrivacyLink, Viewport } from './layout.styles';
@@ -23,7 +23,7 @@ const App = ({ setPrivacyOpen }) => {
         </Copyright>
       )}
       <PopupPrivacy />
-      <AlertHandler />
+      <Alert />
     </Viewport>
   );
 };

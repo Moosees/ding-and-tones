@@ -16,7 +16,7 @@
 * Master volume
 * Chord volume?
 * Safari sound player permissions - howler solves this?
-* Make alert and privacy handlers regular components
+* Make privacy handlers regular components
 * Split assets folder into constants and utils?
 * Clean up code
 
