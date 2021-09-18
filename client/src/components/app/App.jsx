@@ -3,20 +3,25 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../../assets/themes';
 import { store } from '../../redux/store';
+import Keyboard from './effects/Keyboard';
+import SoundOptions from './effects/SoundOptions';
 import GlobalStyles from './globalStyles';
-import SoundHandler from './handlers/SoundHandler';
 import Layout from './layout/Layout';
 import DimensionsProvider from './providers/DimensionsProvider';
+import HowlsProvider from './providers/HowlsProvider';
 
 const App = () => {
   return (
     <ReduxProvider store={store}>
       <DimensionsProvider>
-        <ThemeProvider theme={mainTheme}>
-          <GlobalStyles />
-          <SoundHandler />
-          <Layout />
-        </ThemeProvider>
+        <HowlsProvider>
+          <ThemeProvider theme={mainTheme}>
+            <GlobalStyles />
+            <Keyboard />
+            <SoundOptions />
+            <Layout />
+          </ThemeProvider>
+        </HowlsProvider>
       </DimensionsProvider>
     </ReduxProvider>
   );

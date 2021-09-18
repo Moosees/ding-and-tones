@@ -4,17 +4,21 @@
 
 ### Sound update
 
-* Move useKeysPlayDrum to sound handler
-* Move playButton utils to sound assets
-* Move sound options handling
+* Move playButton utils to sound assets or somewhere fitting
+* createHowls takes soundOptions as param and hook dependency
 * New sounds
 * Sound player using howler
 * Keyboard used new sound player
 * Drum uses new sound player
 * Play song uses new sound player
+* useHowls is not shared enough to warrant a hook?
+* App effects should work as local hooks instead of components returning no jsx?
 * Master volume
 * Chord volume?
 * Safari sound player permissions - howler solves this?
+* Make alert and privacy handlers regular components
+* Split assets folder into constants and utils?
+* Clean up code
 
 ### Compare scales
 
