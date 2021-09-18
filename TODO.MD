@@ -16,7 +16,6 @@
 * Master volume
 * Chord volume?
 * Safari sound player permissions - howler solves this?
-* Make privacy handlers regular components
 * Split assets folder into constants and utils?
 * Clean up code
 
@@ -95,6 +94,7 @@
 * BtnPrimary on mobile
 * Explanation for disabled buttons
 * Slider disabled cursor
+* Sign in with privacy open on mobile messed up layout
 
 ### Focus and keyboard
 

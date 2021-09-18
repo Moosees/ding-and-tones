@@ -1,26 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import { PrivacyHeader, PrivacyParagraph, TermsContainer } from './privacy.styles';
 
-const TermsContainer = styled.div`
-  max-height: 75vh;
-  max-width: 75vw;
-  overflow: auto;
-  padding: 2rem;
-  width: 60rem;
-`;
-
-const PrivacyHeader = styled.h4`
-  font-size: 1.8rem;
-  margin: 1rem 0;
-`;
-
-const PrivacyParagraph = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.5;
-  margin-bottom: 2rem;
-`;
-
-const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
+const PrivacyText = ({ privacyOpen, setPrivacyOpen }) => (
   <TermsContainer>
     <PrivacyHeader>Ding and Tones vision</PrivacyHeader>
     <PrivacyParagraph>
@@ -59,4 +40,4 @@ const Privacy = ({ privacyOpen, setPrivacyOpen }) => (
   </TermsContainer>
 );
 
-export default Privacy;
+export default PrivacyText;

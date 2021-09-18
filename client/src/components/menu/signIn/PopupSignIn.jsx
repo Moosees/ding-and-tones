@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../../../redux/user/user.actions';
+import PrivacyText from '../../Privacy/PrivacyText';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
-import Privacy from '../../shared/privacy/Privacy';
 import GoogleIcon from './GoogleIcon.jsx';
 import { GoogleBtn, SignInContainer, TermsLink } from './signIn.styles';
 
@@ -24,10 +24,13 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut, songId }) => {
           <span>Sign in with Google</span>
         </GoogleBtn>
         By using this website you agree to our{' '}
-        <TermsLink onClick={() => setPrivacyOpen(true)}>
+        <TermsLink
+          privacyOpen={privacyOpen}
+          onClick={() => setPrivacyOpen(true)}
+        >
           terms and privacy policy.
         </TermsLink>
-        {privacyOpen && <Privacy />}
+        {privacyOpen && <PrivacyText />}
       </SignInContainer>
     </Popup>
   );

@@ -67,23 +67,3 @@ export const BorderContainer = styled.div`
   overflow: hidden;
   position: relative;
 `;
-
-export const Copyright = styled.footer`
-  bottom: 0;
-  font-size: 11px;
-  padding: 2px;
-  position: absolute;
-`;
-
-export const PrivacyLink = styled.a`
-  cursor: pointer;
-  text-decoration: underline;
-`;
-
-export const MobileCopyright = styled.div`
-  bottom: 0;
-  padding: 1px;
-  position: fixed;
-  right: 5%;
-  opacity: 0.4;
-`;
