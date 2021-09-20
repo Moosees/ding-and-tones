@@ -5,13 +5,11 @@
 ### Sound update
 
 * Move playButton utils to sound assets or somewhere fitting
-* createHowls takes soundOptions as param and hook dependency
 * New sounds
 * Sound player using howler
 * Keyboard used new sound player
 * Drum uses new sound player
 * Play song uses new sound player
-* useHowls is not shared enough to warrant a hook?
 * App effects should work as local hooks instead of components returning no jsx?
 * Master volume
 * Chord volume?

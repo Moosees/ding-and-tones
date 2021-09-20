@@ -1,4 +1,5 @@
 import { Howl, Howler } from 'howler';
+import { beatOptionToKeyCode } from '../keyCodes';
 
 export const cleanupHowls = () => {
   Howler.stop();
@@ -11,24 +12,25 @@ export const playHowl = (howl) => {
   else howl.play();
 };
 
-export const createHowls = () => {
-  const howls = [
-    // new Howl({ src: ['audio/test/C3.wav'] }),
-    // new Howl({ src: ['audio/test/E3.wav'] }),
-    new Howl({ src: ['audio/pan/C3.mp3'] }),
-    new Howl({ src: ['audio/pan/E3.mp3'] }),
-  ];
+export const createHowls = (soundOptions) => {
+  const initialValues = {
+    howlKeyCbs: {},
+    howlOptionCbs: {},
+    howls: {},
+    howlList: [],
+  };
 
-  const howlCbs = [
-    {
-      key: 72,
-      play: () => playHowl(howls[0]),
-    },
-    {
-      key: 74,
-      play: () => playHowl(howls[1]),
-    },
-  ];
+  if (!soundOptions) return initialValues;
 
-  return { howls, howlCbs };
+  return Object.keys(soundOptions).reduce((acc, option) => {
+    const howl = new Howl({ src: [soundOptions[option]] });
+    const key = beatOptionToKeyCode[option];
+    const play = () => playHowl(howl);
+
+    acc.howlKeyCbs[key] = { play };
+    acc.howlOptionCbs[option] = { play };
+    acc.howls[option] = howl;
+    acc.howlList.push({ key, play, howl, option });
+    return acc;
+  }, initialValues);
 };

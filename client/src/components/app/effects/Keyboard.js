@@ -10,7 +10,8 @@ const Keyboard = () => {
     isSongPlaying: ui.isSongPlaying,
     sounds: ui.soundOptions.allSounds,
   }));
-  const { howlCbs } = useHowls();
+  const howls = useHowls();
+  console.log(howls);
   const [keypress, setKeypress] = useState(false);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const Keyboard = () => {
       return { ...acc, [cbKey]: cbFunc };
     }, {});
 
-    howlCbs.forEach((howl) => (keyboardCbs[howl.key] = howl.play));
+    // howlCbs.forEach((howl) => (keyboardCbs[howl.key] = howl.play));
 
     const keyboardListener = (e) => {
       if (!keyboardCbs[e.keyCode]) return;
@@ -47,7 +48,7 @@ const Keyboard = () => {
       console.log('unload keys');
       document.removeEventListener('keydown', keyboardListener);
     };
-  }, [dispatch, sounds, howlCbs]);
+  }, [dispatch, sounds]);
 
   return null;
 };
