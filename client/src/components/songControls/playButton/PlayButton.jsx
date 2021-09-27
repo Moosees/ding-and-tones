@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/Primary';
-import { playSong } from './playButton.utils';
+import { playPattern } from '../../../assets/sound/patternPlayer';
 
 const PlayButton = ({
   allSounds,
@@ -15,7 +15,7 @@ const PlayButton = ({
 }) => {
   const handlePlayPause = () => {
     setIsSongPlaying(!isSongPlaying);
-    if (!isSongPlaying) playSong(allSounds, song, mutedBars);
+    if (!isSongPlaying) playPattern(allSounds, song, mutedBars);
   };
 
   return (

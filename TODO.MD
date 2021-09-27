@@ -4,7 +4,10 @@
 
 ### Sound update
 
-* Move playButton utils to sound assets or somewhere fitting
+* PlayButton sends a pattern to the pattern player
+* Build patterns for song somewhere - PlayButton for now?
+* Patterns do not need barId and beatId - for chords or scales
+* Keyboard/drum resets currentBar and currentBeat?
 * New sounds
 * Sound player using howler
 * Keyboard used new sound player
@@ -14,6 +17,7 @@
 * Master volume
 * Chord volume?
 * Safari sound player permissions - howler solves this?
+* Make sure sounds are loaded before playing song?
 * Split assets folder into constants and utils?
 * Clean up code
 

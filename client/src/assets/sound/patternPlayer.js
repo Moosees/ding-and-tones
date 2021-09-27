@@ -1,11 +1,11 @@
-import { metreList } from '../../../assets/metre';
-import { store } from '../../../redux/store';
+import { store } from '../../redux/store';
 import {
   setCurrentBar,
   setCurrentBeat,
   setIsPreparingSong,
   setIsSongPlaying,
-} from '../../../redux/ui/ui.actions';
+} from '../../redux/ui/ui.actions';
+import { setupSong } from './patternBuilder';
 
 const playBeatPromise = (beat, timeout, audio) =>
   new Promise((resolve, reject) => {
@@ -42,47 +42,9 @@ const playBar = async (bar, bpm, audio) => {
   }
 };
 
-const createAudioPromise = (sound) =>
-  new Promise((resolve) => {
-    const audio = new Audio(sound);
-    audio.oncanplaythrough = () => resolve();
-    audio.load();
-  });
-
-const setupAudio = async (allSounds) => {
-  const audioPromises = Object.values(allSounds).map(createAudioPromise);
-  return Promise.all(audioPromises);
-};
-
-const setupSong = ({ arrangement, bars, beats }, mutedBars) => {
-  const song = [];
-  const arrangementNonMuted = arrangement.filter((barId) => !mutedBars[barId]);
-
-  arrangementNonMuted.forEach((barId) => {
-    const { measure, metre, subdivision } = bars[barId];
-    const { lengthInBeats } = metreList[metre];
-    const measureFiltered = measure.reduce((acc, { beatId, value }) => {
-      if (beatId && value <= subdivision) {
-        const { sound, mode } = beats[beatId];
-        acc.push({ sound, mode, beatId });
-      }
-      return acc;
-    }, []);
-
-    song.push({
-      barId,
-      lengthInBeats,
-      measure: measureFiltered,
-    });
-  });
-
-  return song;
-};
-
 // bpm always counts quarter notes right now
-export const playSong = async (allSounds, song, mutedBars) => {
+export const playPattern = async (allSounds, song, mutedBars) => {
   store.dispatch(setIsPreparingSong(true));
-  await setupAudio(allSounds);
   const arrangement = setupSong(song, mutedBars);
   store.dispatch(setIsPreparingSong(false));
 
