@@ -4,8 +4,6 @@
 
 ### Sound update
 
-* Keyboard uses howler
-
 * Play song uses new sound player
 * PlayButton sends a pattern to the pattern player
 * Build patterns for song somewhere - PlayButton for now?

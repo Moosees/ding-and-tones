@@ -14,9 +14,7 @@ export const playHowl = (howl) => {
 
 export const createHowls = (soundOptions) => {
   const initialValues = {
-    howlKeyCbs: {},
     howlOptionCbs: {},
-    howls: {},
     howlList: [],
   };
 
@@ -27,9 +25,7 @@ export const createHowls = (soundOptions) => {
     const key = beatOptionToKeyCode[option];
     const play = () => playHowl(howl);
 
-    acc.howlKeyCbs[key] = { play };
     acc.howlOptionCbs[option] = { play };
-    acc.howls[option] = howl;
     acc.howlList.push({ key, play, howl, option });
     return acc;
   }, initialValues);
