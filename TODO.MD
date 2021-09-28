@@ -4,20 +4,25 @@
 
 ### Sound update
 
+* Keyboard uses howler
+
+* Play song uses new sound player
 * PlayButton sends a pattern to the pattern player
 * Build patterns for song somewhere - PlayButton for now?
 * Patterns do not need barId and beatId - for chords or scales
+* Make sure sounds are loaded before playing song - howler solves?
 * Keyboard/drum resets currentBar and currentBeat?
-* New sounds
-* Sound player using howler
-* Keyboard used new sound player
+
 * Drum uses new sound player
-* Play song uses new sound player
-* App effects should work as local hooks instead of components returning no jsx?
+
+* Sound player using howler - tweak playHowl function?
+* New sounds
 * Master volume
-* Chord volume?
+* Chord volume (dynamic volume when more than one note played at the same time)?
 * Safari sound player permissions - howler solves this?
-* Make sure sounds are loaded before playing song?
+
+* Remove howlOptionCbs from HowlProvider?
+* App effects should work as local hooks instead of components returning no jsx?
 * Split assets folder into constants and utils?
 * Clean up code
 
