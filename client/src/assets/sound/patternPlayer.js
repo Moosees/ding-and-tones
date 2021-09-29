@@ -2,14 +2,18 @@ import { store } from '../../redux/store';
 import {
   setCurrentBar,
   setCurrentBeat,
-  setIsPreparingSong,
   setIsSongPlaying,
 } from '../../redux/ui/ui.actions';
-import { setupSong } from './patternBuilder';
+
+const resetSongUiState = () => {
+  store.dispatch(setCurrentBeat(null));
+  store.dispatch(setCurrentBar(null));
+  store.dispatch(setIsSongPlaying(false));
+};
 
 const playBeatPromise = (beat, timeout, audio) =>
   new Promise((resolve, reject) => {
-    if (!store.getState().ui.isSongPlaying) return reject();
+    if (!store.getState().ui.isSongPlaying) return reject('Song is stopped');
 
     store.dispatch(setCurrentBeat(beat.beatId, beat.sound));
     const volume = beat.sound.length > 1 ? 0.55 : 0.8;
@@ -37,24 +41,27 @@ const playBar = async (bar, bpm, audio) => {
     try {
       await playBeatPromise(beat, timeout, audio);
     } catch (e) {
+      console.log('play bar failed: ', e);
       return;
     }
   }
 };
 
 // bpm always counts quarter notes right now
-export const playPattern = async (allSounds, song, mutedBars) => {
-  store.dispatch(setIsPreparingSong(true));
-  const arrangement = setupSong(song, mutedBars);
-  store.dispatch(setIsPreparingSong(false));
+export const playPattern = async (pattern) => {
+  const {
+    song: {
+      info: { bpm },
+    },
+    ui: { soundOptions },
+  } = store.getState();
 
-  for (let bar of arrangement) {
+  for (let bar of pattern) {
+    console.log({ bar, bpm });
     store.dispatch(setCurrentBar(bar.barId));
 
-    await playBar(bar, song.info.bpm, allSounds);
+    await playBar(bar, bpm, soundOptions.allSounds);
   }
 
-  store.dispatch(setCurrentBeat(null));
-  store.dispatch(setCurrentBar(null));
-  store.dispatch(setIsSongPlaying(false));
+  resetSongUiState();
 };

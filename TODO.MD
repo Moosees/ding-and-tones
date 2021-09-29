@@ -4,11 +4,11 @@
 
 ### Sound update
 
-* Play song uses new sound player
-* PlayButton sends a pattern to the pattern player
-* Build patterns for song somewhere - PlayButton for now?
+* Play song uses new sound player - replace soundOptions.allSounds
 * Patterns do not need barId and beatId - for chords or scales
+* Patterns contain everything needed to play song, including howls?
 * Make sure sounds are loaded before playing song - howler solves?
+* Use or delete isPreparingSong - related to above
 * Keyboard/drum resets currentBar and currentBeat?
 
 * Drum uses new sound player
