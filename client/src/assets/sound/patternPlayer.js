@@ -15,7 +15,7 @@ const playBeatPromise = (beat, timeout, audio) =>
   new Promise((resolve, reject) => {
     if (!store.getState().ui.isSongPlaying) return reject('Song is stopped');
 
-    store.dispatch(setCurrentBeat(beat.beatId, beat.sound));
+    store.dispatch(setCurrentBeat(beat.beatId || null, beat.sound));
     const volume = beat.sound.length > 1 ? 0.55 : 0.8;
 
     if (!beat.mode || beat.mode === 'c')
@@ -58,7 +58,7 @@ export const playPattern = async (pattern) => {
 
   for (let bar of pattern) {
     console.log({ bar, bpm });
-    store.dispatch(setCurrentBar(bar.barId));
+    bar.barId && store.dispatch(setCurrentBar(bar.barId));
 
     await playBar(bar, bpm, soundOptions.allSounds);
   }

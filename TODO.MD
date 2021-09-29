@@ -5,7 +5,6 @@
 ### Sound update
 
 * Play song uses new sound player - replace soundOptions.allSounds
-* Patterns do not need barId and beatId - for chords or scales
 * Patterns contain everything needed to play song, including howls?
 * Make sure sounds are loaded before playing song - howler solves?
 * Use or delete isPreparingSong - related to above
