@@ -9,6 +9,7 @@
 * Make sure sounds are loaded before playing song - howler solves?
 * Use or delete isPreparingSong - related to above
 * Keyboard/drum resets currentBar and currentBeat?
+* Stop pattern bar loop if song is stopped
 
 * Drum uses new sound player
 
