@@ -4,13 +4,6 @@
 
 ### Sound update
 
-* Play song uses new sound player - replace soundOptions.allSounds
-* Patterns contain everything needed to play song, including howls?
-* Make sure sounds are loaded before playing song - howler solves?
-* Use or delete isPreparingSong - related to above
-* Keyboard/drum resets currentBar and currentBeat?
-* Stop pattern bar loop if song is stopped
-
 * Drum uses new sound player
 
 * Sound player using howler - tweak playHowl function?
@@ -19,10 +12,18 @@
 * Chord volume (dynamic volume when more than one note played at the same time)?
 * Safari sound player permissions - howler solves this?
 
-* Remove howlOptionCbs from HowlProvider?
+* Length of beat should be inside patterns?
+* Make sure sounds are loaded before playing pattern - howler solves?
+* Stop pattern bar loop if song is stopped
+* Use or delete isPreparingSong - related to above
+* Keyboard/drum resets currentBar and currentBeat?
 * App effects should work as local hooks instead of components returning no jsx?
 * Split assets folder into constants and utils?
+* Move howls to state?
 * Clean up code
+
+* Bpm for scales and chords?
+* Stopping and isPlaying for scales and chords
 
 ### Compare scales
 

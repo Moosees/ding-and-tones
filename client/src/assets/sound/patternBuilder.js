@@ -1,7 +1,7 @@
 import { metreList } from '../metre';
 import { store } from '../../redux/store';
 
-export const buildPatternFromSong = () => {
+export const buildPatternFromSong = (howls) => {
   const {
     song: { arrangement, bars, beats },
     ui: { mutedBars },
@@ -14,10 +14,17 @@ export const buildPatternFromSong = () => {
     const { measure, metre, subdivision } = bars[barId];
     const { lengthInBeats } = metreList[metre];
     const measureFiltered = measure.reduce((acc, { beatId, value }) => {
-      if (beatId && value <= subdivision) {
-        const { sound, mode } = beats[beatId];
-        acc.push({ sound, mode, beatId });
-      }
+      if (!beatId || value > subdivision) return acc;
+
+      const { sound, mode } = beats[beatId];
+      const play = () => {
+        sound.forEach((note) => {
+          if (note === '-' || !howls[note]) return;
+          howls[note].play();
+        });
+      };
+      acc.push({ sound, mode, beatId, play });
+
       return acc;
     }, []);
 
