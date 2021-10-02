@@ -3,20 +3,15 @@ import { connect } from 'react-redux';
 import { ExtraContainer } from './tonefield.styles';
 
 const ExtraNote = ({
-  audioPath,
   color,
   extra,
+  handlePlay,
   hasFocus,
   isPlaying,
   localIndex,
-  note,
   showNote,
   text,
 }) => {
-  const handlePlay = () => {
-    new Audio(`${audioPath}/${note}.mp3`).play();
-  };
-
   return (
     <ExtraContainer
       color={color}
@@ -31,8 +26,7 @@ const ExtraNote = ({
   );
 };
 
-const mapStateToProps = ({ drum, scale }) => ({
-  audioPath: drum.audioPath,
+const mapStateToProps = ({ scale }) => ({
   extra: scale.notes.extra,
 });
 

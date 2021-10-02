@@ -2,22 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Tonefield = ({
-  audioPath,
   color,
+  handlePlay,
   hasFocus,
   isPlaying,
   localIndex,
-  note,
+  noteNumber,
   positionMap,
   showNote,
   text,
 }) => {
   const { rotate, translate } = positionMap[localIndex];
   const isDing = localIndex === 0;
-
-  const handlePlay = () => {
-    new Audio(`${audioPath}/${note}.mp3`).play();
-  };
 
   return (
     <g
@@ -48,8 +44,7 @@ const Tonefield = ({
   );
 };
 
-const mapStateToProps = ({ drum, scale }) => ({
-  audioPath: drum.audioPath,
+const mapStateToProps = ({ scale }) => ({
   positionMap: scale.ui.positionMap,
 });
 

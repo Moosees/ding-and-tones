@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import useHowls from '../../hooks/useHowls';
 import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
 import { getChordColor, getNoteColor, getNoteText } from './drum.utils';
 import ExtraNote from './tonefield/ExtraNote';
@@ -17,6 +18,8 @@ const Drum = ({
   sharpNotes,
   style,
 }) => {
+  const { howlOptionCbs } = useHowls();
+
   const { roundTonefields, extraTonefields } = scale.reduce(
     (acc, note, i) => {
       const showNote =
@@ -48,14 +51,18 @@ const Drum = ({
           : getNoteColor(i, scale[displayedNote].intervalMap)
         : '#666';
 
+      const handlePlay = () => {
+        howlOptionCbs[noteNumber].play();
+      };
+
       const tonefieldData = {
         showNote,
         hasFocus,
-        note: note.note,
         text,
         color,
         localIndex: note.localIndex,
         isPlaying,
+        handlePlay,
       };
 
       acc[note.isExtra ? 'extraTonefields' : 'roundTonefields'].push(

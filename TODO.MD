@@ -4,7 +4,6 @@
 
 ### Sound update
 
-* Drum uses new sound player
 * Play taks by clicking
 * Tak click target style
 
@@ -22,6 +21,7 @@
 * App effects should work as local hooks instead of components returning no jsx?
 * Split assets folder into constants and utils?
 * Move howls to state?
+* Stop default sounds from loading when using a scale id url
 * Clean up code
 
 * Bpm for scales and chords?
