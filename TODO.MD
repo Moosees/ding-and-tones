@@ -4,28 +4,28 @@
 
 ### Sound update
 
+* Show played note when clicking to play
 * Play taks by clicking
 * Tak click target style
+* Keyboard/drum resets currentBar and currentBeat?
 
 * Sound player using howler - tweak playHowl function?
 * New sounds - and sound switching working with howls
 * Master volume
 * Chord volume (dynamic volume when more than one note played at the same time)?
-* Safari sound player permissions - howler solves this?
-
 * Length of beat should be inside patterns?
 * Make sure sounds are loaded before playing pattern - howler solves?
-* Stop pattern bar loop if song is stopped
 * Use or delete isPreparingSong - related to above
-* Keyboard/drum resets currentBar and currentBeat?
+* Stop pattern bar loop if song is stopped
 * App effects should work as local hooks instead of components returning no jsx?
 * Split assets folder into constants and utils?
 * Move howls to state?
 * Stop default sounds from loading when using a scale id url
+* Set howl pool to match size of scale?
+* Bpm for scales and chords? Always constant?
+* Stopping and isPlaying for scales and chords?
+* Key to stop any playing sound? Space?
 * Clean up code
-
-* Bpm for scales and chords?
-* Stopping and isPlaying for scales and chords
 
 ### Compare scales
 
