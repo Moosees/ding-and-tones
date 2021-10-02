@@ -5,9 +5,11 @@
 ### Sound update
 
 * Drum uses new sound player
+* Play taks by clicking
+* Tak click target style
 
 * Sound player using howler - tweak playHowl function?
-* New sounds
+* New sounds - and sound switching working with howls
 * Master volume
 * Chord volume (dynamic volume when more than one note played at the same time)?
 * Safari sound player permissions - howler solves this?
