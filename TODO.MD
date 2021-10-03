@@ -16,7 +16,6 @@
 * Make sure sounds are loaded before playing pattern - howler solves?
 * Use or delete isPreparingSong - related to above
 * Stop pattern bar loop if song is stopped
-* App effects should work as local hooks instead of components returning no jsx?
 * Split assets folder into constants and utils?
 * Move howls to state?
 * Stop default sounds from loading when using a scale id url

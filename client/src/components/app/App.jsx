@@ -4,8 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../../assets/themes';
 import { store } from '../../redux/store';
 import GlobalEffects from './effects/GlobalEffects';
-import Keyboard from './effects/Keyboard';
-import SoundOptions from './effects/SoundOptions';
 import GlobalStyles from './globalStyles';
 import Layout from './layout/Layout';
 import DimensionsProvider from './providers/DimensionsProvider';
@@ -18,11 +16,8 @@ const App = () => {
         <HowlsProvider>
           <ThemeProvider theme={mainTheme}>
             <GlobalStyles />
-            <Keyboard />
-            <SoundOptions />
-            <GlobalEffects>
-              <Layout />
-            </GlobalEffects>
+            <GlobalEffects />
+            <Layout />
           </ThemeProvider>
         </HowlsProvider>
       </DimensionsProvider>

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import useHowls from '../../../hooks/useHowls';
 import { setCurrentBeat } from '../../../redux/ui/ui.actions';
 
-const Keyboard = () => {
+const usePlayWithKeyboard = () => {
   const dispatch = useDispatch();
   const { howlList } = useHowls();
 
@@ -33,8 +33,6 @@ const Keyboard = () => {
       document.removeEventListener('keydown', keyboardListener);
     };
   }, [dispatch, howlList]);
-
-  return null;
 };
 
-export default Keyboard;
+export default usePlayWithKeyboard;
