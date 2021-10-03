@@ -1,24 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import useHowls from '../../../hooks/useHowls';
 import { setCurrentBeat } from '../../../redux/ui/ui.actions';
 
 const Keyboard = () => {
   const dispatch = useDispatch();
-  const { isSongPlaying } = useSelector(({ ui }) => ({
-    isSongPlaying: ui.isSongPlaying,
-    sounds: ui.soundOptions.allSounds,
-  }));
   const { howlList } = useHowls();
-  const [keypress, setKeypress] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!isSongPlaying) dispatch(setCurrentBeat(null, null));
-    }, 500);
-
-    return () => clearTimeout(timeout);
-  }, [dispatch, keypress, isSongPlaying]);
 
   useEffect(() => {
     console.log('load keys');
@@ -27,7 +14,6 @@ const Keyboard = () => {
           const { key, option, play } = howl;
           const cb = () => {
             dispatch(setCurrentBeat(null, [option]));
-            setKeypress((keypress) => !keypress);
             play();
           };
 

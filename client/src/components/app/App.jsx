@@ -3,6 +3,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../../assets/themes';
 import { store } from '../../redux/store';
+import GlobalEffects from './effects/GlobalEffects';
 import Keyboard from './effects/Keyboard';
 import SoundOptions from './effects/SoundOptions';
 import GlobalStyles from './globalStyles';
@@ -19,7 +20,9 @@ const App = () => {
             <GlobalStyles />
             <Keyboard />
             <SoundOptions />
-            <Layout />
+            <GlobalEffects>
+              <Layout />
+            </GlobalEffects>
           </ThemeProvider>
         </HowlsProvider>
       </DimensionsProvider>

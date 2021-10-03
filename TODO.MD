@@ -7,10 +7,9 @@
 * Show played note when clicking to play
 * Play taks by clicking
 * Tak click target style
-* Keyboard/drum resets currentBar and currentBeat?
 
 * Sound player using howler - tweak playHowl function?
-* New sounds - and sound switching working with howls
+* New sounds
 * Master volume
 * Chord volume (dynamic volume when more than one note played at the same time)?
 * Length of beat should be inside patterns?
