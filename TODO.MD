@@ -4,8 +4,7 @@
 
 ### Sound update
 
-* Play taks by clicking - left for soft, right for hard
-* Tak click target style
+* Tak click target style - letters?
 
 * Sound player using howler - tweak playHowl function?
 * New sounds

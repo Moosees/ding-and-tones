@@ -22,6 +22,11 @@ const Drum = ({
 }) => {
   const { howlOptionCbs } = useHowls();
 
+  const handlePlay = (soundOption) => {
+    setCurrentBeat(null, [soundOption]);
+    howlOptionCbs[soundOption].play();
+  };
+
   const { roundTonefields, extraTonefields } = scale.reduce(
     (acc, note, i) => {
       const showNote =
@@ -53,11 +58,6 @@ const Drum = ({
           : getNoteColor(i, scale[displayedNote].intervalMap)
         : '#666';
 
-      const handlePlay = () => {
-        setCurrentBeat(null, [noteNumber]);
-        howlOptionCbs[noteNumber].play();
-      };
-
       const tonefieldData = {
         showNote,
         hasFocus,
@@ -65,7 +65,7 @@ const Drum = ({
         color,
         localIndex: note.localIndex,
         isPlaying,
-        handlePlay,
+        handlePlay: () => handlePlay(noteNumber),
       };
 
       acc[note.isExtra ? 'extraTonefields' : 'roundTonefields'].push(
@@ -107,8 +107,8 @@ const Drum = ({
             fill="url(#drumGradient)"
             filter="url(#drumShadow)"
           />
-          <Tak hand="L" />
-          <Tak hand="R" />
+          <Tak hand="L" handlePlay={() => handlePlay('t')} />
+          <Tak hand="R" handlePlay={() => handlePlay('T')} />
           {roundTonefields.map((data, i) => (
             <Tonefield key={i} {...data} />
           ))}

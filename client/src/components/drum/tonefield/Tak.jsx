@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import { hands, TRANSLATE_TAK } from '../../../assets/constants';
 
-const Tak = ({ beats, currentBeat, currentSound, hand }) => {
+const Tak = ({ beats, currentBeat, currentSound, hand, handlePlay }) => {
   const validHandValues = useMemo(() => {
     const oppositeHand = hand === 'L' ? 'R' : 'L';
 
@@ -17,10 +17,11 @@ const Tak = ({ beats, currentBeat, currentSound, hand }) => {
 
   const isSoftTak = currentSound.includes('t');
   const isLoudTak = currentSound.includes('T');
+  const defaultHand = isSoftTak ? 2 : 1;
   const isTak = isSoftTak || isLoudTak;
 
   const isPlaying =
-    isTak && validHandValues.includes(beats[currentBeat]?.hand ?? 2);
+    isTak && validHandValues.includes(beats[currentBeat]?.hand ?? defaultHand);
 
   return (
     <circle
@@ -31,6 +32,7 @@ const Tak = ({ beats, currentBeat, currentSound, hand }) => {
         hand === 'R' ? TRANSLATE_TAK : TRANSLATE_TAK * -1
       })`}
       fill={isPlaying ? '#ccc' : 'transparent'}
+      onClick={handlePlay}
     />
   );
 };
