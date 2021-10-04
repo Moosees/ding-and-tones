@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import useHowls from '../../hooks/useHowls';
+import { setCurrentBeat } from '../../redux/ui/ui.actions';
 import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
 import { getChordColor, getNoteColor, getNoteText } from './drum.utils';
 import ExtraNote from './tonefield/ExtraNote';
@@ -15,6 +16,7 @@ const Drum = ({
   extra,
   round,
   scale,
+  setCurrentBeat,
   sharpNotes,
   style,
 }) => {
@@ -52,6 +54,7 @@ const Drum = ({
         : '#666';
 
       const handlePlay = () => {
+        setCurrentBeat(null, [noteNumber]);
         howlOptionCbs[noteNumber].play();
       };
 
@@ -127,4 +130,4 @@ const mapStateToProps = ({ drum, scale, ui }) => ({
   isEditingExtraPos: ui.isEditingExtraPos,
 });
 
-export default connect(mapStateToProps)(Drum);
+export default connect(mapStateToProps, { setCurrentBeat })(Drum);

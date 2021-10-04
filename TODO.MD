@@ -4,8 +4,7 @@
 
 ### Sound update
 
-* Show played note when clicking to play
-* Play taks by clicking
+* Play taks by clicking - left for soft, right for hard
 * Tak click target style
 
 * Sound player using howler - tweak playHowl function?
