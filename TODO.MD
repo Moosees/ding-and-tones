@@ -4,8 +4,6 @@
 
 ### Sound update
 
-* Tak click target style - letters?
-
 * Sound player using howler - tweak playHowl function?
 * New sounds
 * Master volume

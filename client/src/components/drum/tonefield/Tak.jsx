@@ -24,16 +24,24 @@ const Tak = ({ beats, currentBeat, currentSound, hand, handlePlay }) => {
     isTak && validHandValues.includes(beats[currentBeat]?.hand ?? defaultHand);
 
   return (
-    <circle
-      r={isLoudTak ? '1.1' : '0.9'}
+    <g
       cx="0"
       cy="0"
       transform={`translate(${
         hand === 'R' ? TRANSLATE_TAK : TRANSLATE_TAK * -1
       })`}
-      fill={isPlaying ? '#ccc' : 'transparent'}
       onClick={handlePlay}
-    />
+      style={{ cursor: 'pointer' }}
+    >
+      <circle
+        r={hand === 'L' ? '0.7' : '0.85'}
+        fill="rgba(255, 255, 255, 0.25)"
+      />
+      <circle
+        r={isLoudTak ? '1.1' : '0.9'}
+        fill={isPlaying ? '#ddd' : 'transparent'}
+      />
+    </g>
   );
 };
 
