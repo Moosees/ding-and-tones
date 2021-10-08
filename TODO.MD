@@ -4,14 +4,18 @@
 
 ### Sound update
 
+* Make patterns an array of beats with everything needed to play that beat
+* Update song to pattern builder to use new format
+* Update pattern player to use new format
+* Use a single redux action to update barId, beatId, sound and anything else needed for ui (repeats, volume?)
+* Stop pattern bar loop if song is stopped - new format solves this
+
 * Sound player using howler - tweak playHowl function?
 * New sounds
 * Master volume
 * Chord volume (dynamic volume when more than one note played at the same time)?
-* Length of beat should be inside patterns?
 * Make sure sounds are loaded before playing pattern - howler solves?
 * Use or delete isPreparingSong - related to above
-* Stop pattern bar loop if song is stopped
 * Split assets folder into constants and utils?
 * Move howls to state?
 * Stop default sounds from loading when using a scale id url
