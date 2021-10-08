@@ -5,10 +5,11 @@
 ### Sound update
 
 * Make patterns an array of beats with everything needed to play that beat
-* Update song to pattern builder to use new format
 * Update pattern player to use new format
+* Clean up song to pattern builder
 * Use a single redux action to update barId, beatId, sound and anything else needed for ui (repeats, volume?)
 * Stop pattern bar loop if song is stopped - new format solves this
+* Value in both beat and bar state, remove one?
 
 * Sound player using howler - tweak playHowl function?
 * New sounds

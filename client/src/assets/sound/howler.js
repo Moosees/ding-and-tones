@@ -6,7 +6,7 @@ export const cleanupHowls = () => {
 };
 
 export const playHowl = (howl) => {
-  console.log(Howler);
+  // console.log(Howler);
   // if (howl.playing()) howl.stop().play();
   if (howl.playing()) howl.seek(0);
   else howl.play();
