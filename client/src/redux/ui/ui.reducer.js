@@ -30,17 +30,10 @@ const INITIAL_STATE = {
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case uiTypes.SET_CURRENT_BAR:
+    case uiTypes.SET_CURRENTLY_PLAYING:
       return {
         ...state,
-        currentBar: payload,
-      };
-
-    case uiTypes.SET_CURRENT_BEAT:
-      return {
-        ...state,
-        currentBeat: payload.beatId,
-        currentSound: payload.sound || [],
+        ...payload,
       };
 
     case uiTypes.SET_IS_PREPARING_SONG:

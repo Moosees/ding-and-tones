@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentBeat } from '../../../redux/ui/ui.actions';
+import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 
 const useResetCurrentBeat = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const useResetCurrentBeat = () => {
     const timeout = setTimeout(() => {
       if (currentSound.length) {
         console.log('resetting current beat');
-        dispatch(setCurrentBeat(null, null));
+        dispatch(setCurrentlyPlaying({ beatId: null, sound: [] }));
       }
     }, 750);
 

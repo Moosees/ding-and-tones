@@ -1,14 +1,9 @@
 import { getNoteLabelFromName } from '../../assets/intervals';
 import uiTypes from './ui.types';
 
-export const setCurrentBar = (barId) => ({
-  type: uiTypes.SET_CURRENT_BAR,
-  payload: barId,
-});
-
-export const setCurrentBeat = (beatId, sound) => ({
-  type: uiTypes.SET_CURRENT_BEAT,
-  payload: { beatId, sound },
+export const setCurrentlyPlaying = ({ barId, beatId, sound = [] }) => ({
+  type: uiTypes.SET_CURRENTLY_PLAYING,
+  payload: { currentBar: barId, currentBeat: beatId, currentSound: sound },
 });
 
 export const setIsPreparingSong = (isPreparingSong) => ({

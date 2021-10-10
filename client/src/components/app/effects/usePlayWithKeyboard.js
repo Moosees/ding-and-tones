@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import useHowls from '../../../hooks/useHowls';
-import { setCurrentBeat } from '../../../redux/ui/ui.actions';
+import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 
 const usePlayWithKeyboard = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const usePlayWithKeyboard = () => {
       ? howlList.reduce((acc, howl) => {
           const { key, option, play } = howl;
           const cb = () => {
-            dispatch(setCurrentBeat(null, [option]));
+            dispatch(setCurrentlyPlaying({ beatId: null, sound: [option] }));
             play();
           };
 
