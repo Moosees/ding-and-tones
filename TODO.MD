@@ -11,9 +11,12 @@
 * Additions to pattern items? Volume? Repeats?
 
 * Sound player using howler - tweak playHowl function?
+* Clicks on sounds in beat dropdown plays sound selected
 * New sounds
 * Master volume
 * Chord volume (dynamic volume when more than one note played at the same time)?
+* Play chords from chords page, also play them as arpeggios
+* Play scale preview from scale page
 * Make sure sounds are loaded before playing pattern - howler solves?
 * Use or delete isPreparingSong - related to above
 * Split assets folder into constants and utils?
@@ -22,7 +25,7 @@
 * Set howl pool to match size of scale?
 * Bpm for scales and chords? Always constant?
 * Stopping and isPlaying for scales and chords?
-* Key to stop any playing sound? Space?
+* Key to stop any playing sound? Space? Esc?
 * Clean up code
 
 ### Compare scales
@@ -30,7 +33,7 @@
 * Table with base scale and one or more scales to compare against
 * Logic for figuring out if a scale/note is a sharp or flat - circle of fifths + maj/min detection
 * Change root note of scale
-* Add play scale button and function
+* Play scale preview from search results
 * Create scale from name and string
 
 ### Local storage
@@ -124,7 +127,6 @@
 * Hover on drum shows all information about hovered note?
 * Option to turn off/use same color for tonefield borders
 * Prevent soft and loud taks on same beat?
-* Add central Tak for non assigned hand taks? For all Taks?
 * Animation for tonefields being played
 
 ### Intervals
@@ -150,7 +152,6 @@
 * Sort chords
 * Show chord notes in scale in interval list?
 * Select chords to show in beat dropdown?
-* Play chords from chords page, also play them as arpeggios?
 * Print chords scale relative steps should be negative before tonic? Remove 0 steps?
 * All root notes in chords should be focused on drum (or none)?
 * Print list change order of chords?
@@ -172,7 +173,6 @@
 * Add drag and drop
 * Color for hands on tablature
 * Option to add note names to tablature
-* Clicks on sounds in beat dropdown plays sound selected
 * Help covers solo and mute bars
 
 ### State and search
@@ -223,3 +223,4 @@
 * Dark mode
 * Markdown for help topics
 * Percussive hits on handpan
+* Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
