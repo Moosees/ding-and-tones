@@ -4,12 +4,10 @@
 
 ### Sound update
 
-* Make patterns an array of beats with everything needed to play that beat
-* Update pattern player to use new format
-* Stop pattern bar loop if song is stopped - new format solves this
-* Value in both beat and bar state, remove one?
-* Additions to pattern items? Volume? Repeats?
-
+* Consolidate all currentlyPlaying attributes in one pattern key?
+* Use hand in pattern (and setCurrentlyPlaying?)
+* Additions to pattern values? Volume? Repeats?
+* "Value" exists in both beat and bar state, remove one?
 * Sound player using howler - tweak playHowl function?
 * Clicks on sounds in beat dropdown plays sound selected
 * New sounds
@@ -17,14 +15,14 @@
 * Chord volume (dynamic volume when more than one note played at the same time)?
 * Play chords from chords page, also play them as arpeggios
 * Play scale preview from scale page
+* Bpm for scales and chords? Always constant?
+* Stopping and isPlaying for scales and chords?
 * Make sure sounds are loaded before playing pattern - howler solves?
 * Use or delete isPreparingSong - related to above
 * Split assets folder into constants and utils?
 * Move howls to state?
 * Stop default sounds from loading when using a scale id url
 * Set howl pool to match size of scale?
-* Bpm for scales and chords? Always constant?
-* Stopping and isPlaying for scales and chords?
 * Key to stop any playing sound? Space? Esc?
 * Clean up code
 

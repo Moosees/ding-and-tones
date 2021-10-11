@@ -9,42 +9,24 @@ const resetSongUiState = () => {
   store.dispatch(setIsSongPlaying(false));
 };
 
-const playBeatPromise = (beat, timeout, audio) =>
-  new Promise((resolve, reject) => {
-    if (!store.getState().ui.isSongPlaying) return reject('Song is stopped');
-
+const playBeat = ({ barId, beatId, duration, mode, play, sound }) =>
+  new Promise((resolve) => {
     store.dispatch(
-      setCurrentlyPlaying({ beatId: beat.beatId || null, sound: beat.sound })
+      setCurrentlyPlaying({
+        barId: barId || null,
+        beatId: beatId || null,
+        sound: sound,
+      })
     );
-    // if (!beat.mode || beat.mode === 'c') beat.play();
-    beat.play();
+    if (!mode || mode === 'c') play();
 
-    setTimeout(() => {
-      return resolve();
-    }, timeout);
+    setTimeout(() => resolve(), duration);
   });
 
-const playBar = async (bar, bpm, audio) => {
-  const { measure, lengthInBeats } = bar;
-  const barLength = (60000 / bpm) * lengthInBeats;
-  const timeout = barLength / measure.length;
-
-  for (let beat of measure) {
-    try {
-      await playBeatPromise(beat, timeout, audio);
-    } catch (e) {
-      console.log('play bar failed: ', e);
-      return;
-    }
-  }
-};
-
-// bpm always counts quarter notes right now
 export const playPattern = async (pattern) => {
-  for (let bar of pattern) {
-    bar.barId && store.dispatch(setCurrentlyPlaying({ barId: bar.barId }));
-
-    // await playBar(bar, bpm);
+  for (let beat of pattern) {
+    if (!store.getState().ui.isSongPlaying) break;
+    await playBeat(beat);
   }
 
   resetSongUiState();
