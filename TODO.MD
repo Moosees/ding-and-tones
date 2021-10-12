@@ -4,7 +4,6 @@
 
 ### Sound update
 
-* Consolidate all currentlyPlaying attributes in one pattern key?
 * Use hand in pattern (and setCurrentlyPlaying?)
 * Additions to pattern values? Volume? Repeats?
 * "Value" exists in both beat and bar state, remove one?

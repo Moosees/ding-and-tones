@@ -30,9 +30,11 @@ export const buildPatternFromBar = (barId, howls) => {
     };
 
     return {
-      barId,
-      beatId,
-      sound,
+      uiUpdates: {
+        currentBar: barId,
+        currentBeat: beatId,
+        currentSound: sound || [],
+      },
       mode,
       hand,
       play,

@@ -14,7 +14,7 @@ const useResetCurrentBeat = () => {
     const timeout = setTimeout(() => {
       if (currentSound.length) {
         console.log('resetting current beat');
-        dispatch(setCurrentlyPlaying({ beatId: null, sound: [] }));
+        dispatch(setCurrentlyPlaying({ currentBeat: null, currentSound: [] }));
       }
     }, 750);
 

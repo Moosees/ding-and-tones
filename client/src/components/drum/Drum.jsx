@@ -23,7 +23,7 @@ const Drum = ({
   const { howlOptionCbs } = useHowls();
 
   const handlePlay = (soundOption) => {
-    setCurrentlyPlaying({ beatId: null, sound: [soundOption] });
+    setCurrentlyPlaying({ currentSound: [soundOption] });
     howlOptionCbs[soundOption].play();
   };
 

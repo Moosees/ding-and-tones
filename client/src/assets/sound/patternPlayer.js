@@ -5,19 +5,19 @@ import {
 } from '../../redux/ui/ui.actions';
 
 const resetSongUiState = () => {
-  store.dispatch(setCurrentlyPlaying({ beatId: null, barId: null }));
+  store.dispatch(
+    setCurrentlyPlaying({
+      currentBeat: null,
+      currentBar: null,
+      currentSound: [],
+    })
+  );
   store.dispatch(setIsSongPlaying(false));
 };
 
-const playBeat = ({ barId, beatId, duration, mode, play, sound }) =>
+const playBeat = ({ uiUpdates, duration, mode, play }) =>
   new Promise((resolve) => {
-    store.dispatch(
-      setCurrentlyPlaying({
-        barId: barId || null,
-        beatId: beatId || null,
-        sound: sound,
-      })
-    );
+    store.dispatch(setCurrentlyPlaying(uiUpdates));
     if (!mode || mode === 'c') play();
 
     setTimeout(() => resolve(), duration);

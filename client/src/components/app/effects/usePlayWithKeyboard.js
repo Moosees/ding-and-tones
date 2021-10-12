@@ -13,7 +13,7 @@ const usePlayWithKeyboard = () => {
       ? howlList.reduce((acc, howl) => {
           const { key, option, play } = howl;
           const cb = () => {
-            dispatch(setCurrentlyPlaying({ beatId: null, sound: [option] }));
+            dispatch(setCurrentlyPlaying({ currentSound: [option] }));
             play();
           };
 
