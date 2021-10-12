@@ -23,6 +23,7 @@
 * Stop default sounds from loading when using a scale id url
 * Set howl pool to match size of scale?
 * Key to stop any playing sound? Space? Esc?
+* Use separate currentSound for patterns and play with clicks or keys?
 * Clean up code
 
 ### Compare scales
@@ -30,7 +31,7 @@
 * Table with base scale and one or more scales to compare against
 * Logic for figuring out if a scale/note is a sharp or flat - circle of fifths + maj/min detection
 * Change root note of scale
-* Play scale preview from search results
+* Play scale preview from search results - how are howls handled? Low quality for speed?
 * Create scale from name and string
 
 ### Local storage
