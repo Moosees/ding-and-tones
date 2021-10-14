@@ -4,7 +4,7 @@
 
 ### Sound update
 
-* Use currentHand in Tak component
+* Keyboard soft tak sets currentHand to 2?
 * "Value" exists in both beat and bar state, remove one?
 * Sound player using howler - tweak playHowl function?
 * Clicks on sounds in beat dropdown plays sound selected
@@ -51,7 +51,6 @@
 * Middleware driven state reducers?
 * Validation types enum
 * Clean up tonefield logic
-* Clean up Tak logic
 * Use new scaleFull outside print-chords - done?
 * Clean up getNoteText() and Tonefield in general
 * Merge api status states (isFetching etc.) in client?
@@ -127,7 +126,7 @@
 * Dynamic size for tonefields
 * Hover on drum shows all information about hovered note?
 * Option to turn off/use same color for tonefield borders
-* Prevent soft and loud taks on same beat?
+* Prevent soft and loud taks on same beat (both show as loud taks on drum right now)?
 * Animation for tonefields being played
 
 ### Intervals

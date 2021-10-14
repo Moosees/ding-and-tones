@@ -22,8 +22,8 @@ const Drum = ({
 }) => {
   const { howlOptionCbs } = useHowls();
 
-  const handlePlay = (soundOption) => {
-    setCurrentlyPlaying({ currentSound: [soundOption] });
+  const handlePlay = (soundOption, currentHand = 1) => {
+    setCurrentlyPlaying({ currentHand, currentSound: [soundOption] });
     howlOptionCbs[soundOption].play();
   };
 
@@ -107,8 +107,8 @@ const Drum = ({
             fill="url(#drumGradient)"
             filter="url(#drumShadow)"
           />
-          <Tak hand="L" handlePlay={() => handlePlay('t')} />
-          <Tak hand="R" handlePlay={() => handlePlay('T')} />
+          <Tak hand={2} handlePlay={() => handlePlay('t', 2)} />
+          <Tak hand={1} handlePlay={() => handlePlay('T', 1)} />
           {roundTonefields.map((data, i) => (
             <Tonefield key={i} {...data} />
           ))}
