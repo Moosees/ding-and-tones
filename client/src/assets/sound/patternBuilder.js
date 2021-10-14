@@ -1,6 +1,14 @@
 import { metreList } from '../metre';
 import { store } from '../../redux/store';
 
+const getDefaultHandForSound = (sound) => {
+  if (sound.length === 1) {
+    return sound[0] === 't' ? 2 : 1;
+  }
+
+  return 3;
+};
+
 export const buildPatternFromBar = (barId, howls) => {
   const {
     song: {
@@ -33,7 +41,7 @@ export const buildPatternFromBar = (barId, howls) => {
       uiUpdates: {
         currentBar: barId,
         currentBeat: beatId,
-        currentHand: hand,
+        currentHand: hand || getDefaultHandForSound(sound),
         currentSound: sound || [],
       },
       mode,
