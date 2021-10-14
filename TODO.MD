@@ -5,7 +5,6 @@
 ### Sound update
 
 * Use hand in pattern (and setCurrentlyPlaying?)
-* Additions to pattern values? Volume? Repeats?
 * "Value" exists in both beat and bar state, remove one?
 * Sound player using howler - tweak playHowl function?
 * Clicks on sounds in beat dropdown plays sound selected
@@ -58,6 +57,10 @@
 * Merge api status states (isFetching etc.) in client?
 * Clean up rootIndex in parseScaleData
 * Remove measure subdivision count?
+* Why -1 in UPDATE_SCALE for scale label? Instead of false?
+* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
+* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+* Scale and song state should mirror models more closely
 
 ### Updates in need of planning
 
@@ -66,13 +69,13 @@
 * Testing
 * Bar numbers on song viewer? Only long songs?
 * Should print view only break before fourths?
+* Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
 
 ## Unsorted
 
 ### Bugs
 
 * Safari print popup bug - print dialog is not blocking/waiting
-* Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Song search results doesn't update if save song changes assigned scale
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)
@@ -139,9 +142,7 @@
 * Double ding and mutant scales
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Sign in should update scale ownership
-* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Scale layout prop - not needed? used for double ding?
-* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
 
 ### Chords
 
@@ -162,7 +163,7 @@
 * Make dropdown higher z than controls, remove need for padding
 * Show latest changes (useful when copying and moving bars)
 * Undo changes
-* Looping, named bars? Sequencer?
+* Looping/repeats, named bars? Sequencer?
 * Get default hand when adding bars?
 * Check if loaded songs has saved hands and set hands open accordingly?
 * Transpose all notes of type? Some other way to handle scales that don't fit loaded song?
@@ -212,6 +213,7 @@
 * Alert mouse over or tap inside stops timer?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
+* Softer or louder hits
 * Automate created and updates posts for db documents, timestamps
 * Increase max save limits for older accounts
 * Favorite songs/scales
@@ -221,4 +223,3 @@
 * Dark mode
 * Markdown for help topics
 * Percussive hits on handpan
-* Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
