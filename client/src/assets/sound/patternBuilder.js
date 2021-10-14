@@ -33,10 +33,10 @@ export const buildPatternFromBar = (barId, howls) => {
       uiUpdates: {
         currentBar: barId,
         currentBeat: beatId,
+        currentHand: hand,
         currentSound: sound || [],
       },
       mode,
-      hand,
       play,
       duration: beatDuration,
     };

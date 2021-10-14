@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   barMetreOffset: 0,
   currentBar: null,
   currentBeat: null,
+  currentHand: 1,
   currentSound: [],
   countOpen: false,
   handsOpen: false,
@@ -31,9 +32,11 @@ const INITIAL_STATE = {
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case uiTypes.SET_CURRENTLY_PLAYING:
+      const currentHand = payload.currentHand || 1;
       return {
         ...state,
         ...payload,
+        currentHand,
       };
 
     case uiTypes.SET_IS_PREPARING_SONG:

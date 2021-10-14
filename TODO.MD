@@ -4,7 +4,7 @@
 
 ### Sound update
 
-* Use hand in pattern (and setCurrentlyPlaying?)
+* Use currentHand in Tak component
 * "Value" exists in both beat and bar state, remove one?
 * Sound player using howler - tweak playHowl function?
 * Clicks on sounds in beat dropdown plays sound selected
