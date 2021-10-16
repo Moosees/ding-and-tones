@@ -4,23 +4,22 @@
 
 ### Sound update
 
-* "Value" exists in both beat and bar state, remove one?
-* Sound player using howler - tweak playHowl function?
 * New sounds
-* Master volume
-* Chord volume (dynamic volume when more than one note played at the same time)?
-* Play chords from chords page, also play them as arpeggios
-* Play scale preview from scale page
+* Tweak playHowl function?
+* Dynamic volume when more than one note played at the same time?
+
+* Play chords from chords page, arpeggio and unison - how to handle inversions?
+* Play scale preview from scale page - up and down scale?
 * Bpm for scales and chords? Always constant?
-* Stopping and isPlaying for scales and chords?
+* Stopping and isPlaying for scales and chords? Needed for scales at least
+
+* Stop default sounds from loading when using a scale id url!
 * Make sure sounds are loaded before playing pattern - howler solves?
-* Use or delete isPreparingSong - related to above
-* Split assets folder into constants and utils?
+* Use or delete isPreparingSong - related to above - use while howls are loading?
+* Split assets folder into constants and utils? Rename?
 * Move howls to state?
-* Stop default sounds from loading when using a scale id url
 * Set howl pool to match size of scale?
-* Key to stop any playing sound? Space? Esc?
-* Use separate currentSound for patterns and play with clicks or keys?
+* Key to stop any playing song/scale/chord/sound? Space? Esc?
 * Clean up code
 
 ### Compare scales
@@ -58,6 +57,9 @@
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Scale and song state should mirror models more closely
+* Clean up UI state and reduce number of actions (also for other reducers?)
+* Use separate currentSound for patterns and play with clicks or keys?
+* "Value" exists in both beat and bar state, remove one?
 
 ### Updates in need of planning
 
@@ -67,6 +69,7 @@
 * Bar numbers on song viewer? Only long songs?
 * Should print view only break before fourths?
 * Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
+* Master volume controls
 
 ## Unsorted
 
@@ -211,7 +214,7 @@
 * Alert mouse over or tap inside stops timer?
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
-* Softer or louder hits
+* Softer or louder drum hits in songwriter?
 * Automate created and updates posts for db documents, timestamps
 * Increase max save limits for older accounts
 * Favorite songs/scales
@@ -220,4 +223,4 @@
 * Print with notes instead of numbers
 * Dark mode
 * Markdown for help topics
-* Percussive hits on handpan
+* Percussive handpan sound samples
