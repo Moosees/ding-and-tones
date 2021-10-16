@@ -4,7 +4,6 @@
 
 ### Sound update
 
-* Keyboard soft tak sets currentHand to 2?
 * "Value" exists in both beat and bar state, remove one?
 * Sound player using howler - tweak playHowl function?
 * Clicks on sounds in beat dropdown plays sound selected
