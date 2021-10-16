@@ -6,7 +6,6 @@
 
 * "Value" exists in both beat and bar state, remove one?
 * Sound player using howler - tweak playHowl function?
-* Clicks on sounds in beat dropdown plays sound selected
 * New sounds
 * Master volume
 * Chord volume (dynamic volume when more than one note played at the same time)?
@@ -127,6 +126,7 @@
 * Option to turn off/use same color for tonefield borders
 * Prevent soft and loud taks on same beat (both show as loud taks on drum right now)?
 * Animation for tonefields being played
+* Clicks on sounds in beat dropdown animate on drum?
 
 ### Intervals
 

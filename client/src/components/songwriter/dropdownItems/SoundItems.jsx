@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import useHowls from '../../../hooks/useHowls';
 import { updateSoundForBeat } from '../../../redux/song/song.actions';
 import { DropdownItem } from './dropdownItems.styles';
 
@@ -13,6 +14,7 @@ const SoundItems = ({
   updateSoundForBeat,
 }) => {
   const { sound } = beats[beatId];
+  const { howlOptionCbs } = useHowls();
 
   const soundItems = optionList.map(({ label, labelSharp, value }) => {
     const selected = sound.includes(value);
@@ -21,6 +23,7 @@ const SoundItems = ({
 
     const handleClick = () => {
       updateSoundForBeat(beatId, value);
+      howlOptionCbs[value]?.play();
     };
 
     const handleKeyDown = (e) => {
