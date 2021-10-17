@@ -21,8 +21,12 @@ const Intervals = ({
 }) => {
   const { isMobile } = useDimensions();
 
-  const intervals =
-    scale.length && displayedChord
+  const getIntervals = () => {
+    if (!scale.length) {
+      return null;
+    }
+
+    return displayedChord
       ? displayedChord.intervals.map((interval, i) => (
           <ChordInterval
             key={i}
@@ -45,6 +49,7 @@ const Intervals = ({
             />
           );
         });
+  };
 
   return (
     <IntervalList>
@@ -54,7 +59,7 @@ const Intervals = ({
       </Buttons>
       <DrumMode />
       <DividerLine small />
-      <ScrollBox>{intervals}</ScrollBox>
+      <ScrollBox>{getIntervals()}</ScrollBox>
     </IntervalList>
   );
 };

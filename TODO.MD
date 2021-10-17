@@ -4,6 +4,10 @@
 
 ### Sound update
 
+* Load default scale if no scale is loaded from url param
+* Remove default song from state
+* Load default song if no song is loaded from url param
+
 * New sounds
 * Tweak playHowl function?
 * Dynamic volume when more than one note played at the same time?
@@ -13,7 +17,6 @@
 * Bpm for scales and chords? Always constant?
 * Stopping and isPlaying for scales and chords? Needed for scales at least
 
-* Stop default sounds from loading when using a scale id url!
 * Make sure sounds are loaded before playing pattern - howler solves?
 * Use or delete isPreparingSong - related to above - use while howls are loading?
 * Split assets folder into constants and utils? Rename?
