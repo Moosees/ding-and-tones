@@ -12,11 +12,6 @@
 * Tweak playHowl function?
 * Dynamic volume when more than one note played at the same time?
 
-* Play chords from chords page, arpeggio and unison - how to handle inversions?
-* Play scale preview from scale page - up and down scale?
-* Bpm for scales and chords? Always constant?
-* Stopping and isPlaying for scales and chords? Needed for scales at least
-
 * Make sure sounds are loaded before playing pattern - howler solves?
 * Use or delete isPreparingSong - related to above - use while howls are loading?
 * Split assets folder into constants and utils? Rename?
@@ -24,6 +19,13 @@
 * Set howl pool to match size of scale?
 * Key to stop any playing song/scale/chord/sound? Space? Esc?
 * Clean up code
+
+### Scale and chord sound
+
+* Play chords from chords page, arpeggio and unison - how to handle inversions?
+* Play scale preview from scale page - up and down scale?
+* Bpm for scales and chords? Always constant?
+* Stopping and isPlaying for scales and chords? Needed for scales at least
 
 ### Compare scales
 
