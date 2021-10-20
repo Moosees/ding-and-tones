@@ -8,6 +8,7 @@
 * Load default song if no song is loaded from url param
 * Don't show alert for default scale or song loading
 * Move fetching song or scale from url to useDefaultState?
+* Load default scale (or song) if fetch failed due to lack of permissions
 
 * New sounds
 * Tweak playHowl function?
@@ -18,7 +19,6 @@
 * Split assets folder into constants and utils? Rename?
 * Move howls to state?
 * Set howl pool to match size of scale?
-* Key to stop any playing song/scale/chord/sound? Space? Esc?
 * Clean up code
 
 ### Scale and chord sound
@@ -27,6 +27,7 @@
 * Play scale preview from scale page - up and down scale?
 * Bpm for scales and chords? Always constant?
 * Stopping and isPlaying for scales and chords? Needed for scales at least
+* Key to stop any playing song/scale/chord/sound? Space? Esc?
 
 ### Compare scales
 
