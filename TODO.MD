@@ -4,7 +4,6 @@
 
 ### Sound update
 
-* Remove default song from state
 * Load default song if no song is loaded from url param
 * Don't show alert for default scale or song loading
 * Move fetching song or scale from url to useDefaultState?
