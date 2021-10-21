@@ -3,7 +3,7 @@ import usePlayWithKeyboard from './usePlayWithKeyboard';
 import useResetCurrentBeat from './useResetCurrentBeat';
 import useSoundOptions from './useSoundOptions';
 
-const GlobalEffects = ({ children }) => {
+const AppEffects = () => {
   useDefaultState();
   useSoundOptions();
   useResetCurrentBeat();
@@ -12,4 +12,4 @@ const GlobalEffects = ({ children }) => {
   return null;
 };
 
-export default GlobalEffects;
+export default AppEffects;

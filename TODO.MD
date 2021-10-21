@@ -16,7 +16,6 @@
 
 * Make sure sounds are loaded before playing pattern - howler solves?
 * Use or delete isPreparingSong - related to above - use while howls are loading?
-* Split assets folder into constants and utils? Rename?
 * Move howls to state?
 * Set howl pool to match size of scale?
 * Clean up code
