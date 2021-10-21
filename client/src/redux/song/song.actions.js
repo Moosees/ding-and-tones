@@ -96,6 +96,13 @@ export const getSongById =
       });
   };
 
+export const loadSong = (song) => (dispatch) => {
+  const parsedSong = parseFetchedSong(song, false);
+  console.log({ parsedSong });
+
+  dispatch({ type: songTypes.SET_STATE, payload: parsedSong });
+};
+
 export const moveBarInArrangement = (barIndex, targetIndex) => ({
   type: songTypes.MOVE_BAR,
   payload: { barIndex, targetIndex },
