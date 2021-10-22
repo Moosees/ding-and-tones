@@ -97,8 +97,11 @@ export const getScaleById = (scaleId) => (dispatch) => {
     });
 };
 
-export const loadScale = (scale) => {
-  return { type: scaleTypes.LOAD_SCALE, payload: parseScaleData(scale) };
+export const loadScale = (scale, suppressAlert) => {
+  return {
+    type: scaleTypes.LOAD_SCALE,
+    payload: parseScaleData(scale, suppressAlert),
+  };
 };
 
 export const moveExtraNotes = (oldPos, newPos, swap = false) => ({

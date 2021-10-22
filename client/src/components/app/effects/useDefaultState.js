@@ -12,10 +12,10 @@ const useDefaultState = () => {
   useEffect(() => {
     const [, route, id] = location.pathname.split('/');
     if (route !== 'scale' || (route === 'scale' && !id))
-      dispatch(loadScale(defaultScale));
+      dispatch(loadScale(defaultScale, true));
 
     if (route !== 'song' || (route === 'song' && !id))
-      dispatch(loadSong(defaultSong));
+      dispatch(loadSong(defaultSong, true));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);

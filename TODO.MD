@@ -4,7 +4,6 @@
 
 ### Sound update
 
-* Don't show alert for default scale or song loading
 * Move fetching song or scale from url to useDefaultState?
 * Load default scale (or song) if fetch failed due to lack of permissions
 

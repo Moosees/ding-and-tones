@@ -122,7 +122,7 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
   return { newRoot: { rootIndex, rootValue, rootName }, newFull: scaleFull };
 };
 
-export const parseScaleData = (scale, newScale) => {
+export const parseScaleData = (scale, suppressAlert) => {
   const {
     info,
     isOwner,
@@ -148,10 +148,10 @@ export const parseScaleData = (scale, newScale) => {
     info,
     isOwner,
     scaleId,
-    alert: newScale
-      ? 'Scale cleared'
-      : `"${scale.info.rootName} ${scale.info.name}" loaded`,
   };
+
+  if (!suppressAlert)
+    parsedScaleData.alert = `"${scale.info.rootName} ${scale.info.name}" loaded`;
 
   if (parsedScaleData.info.rootIndex === undefined) {
     parsedScaleData.info.rootIndex = newRoot.rootIndex;
