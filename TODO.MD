@@ -4,8 +4,9 @@
 
 ### Sound update
 
-* Move fetching song or scale from url to useDefaultState?
-* Load default scale (or song) if fetch failed due to lack of permissions
+* Move fetching song from url to useDefaultState
+* Load default scale or song if fetch failed due to lack of permissions
+* Load default sale if song does not have a scale assigned
 
 * New sounds
 * Tweak playHowl function?
@@ -87,6 +88,7 @@
 * Printing on mobile prints entire app and not just iframe
 * Songs with deleted scales can still be found in song searches with scale name
 * Song query strings and (changed) scale broken?
+* Deleting scale (and song?) blocks ability to save scale
 
 ### Design
 
