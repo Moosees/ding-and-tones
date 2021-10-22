@@ -4,9 +4,9 @@
 
 ### Sound update
 
-* Move fetching song from url to useDefaultState
 * Load default scale or song if fetch failed due to lack of permissions
 * Load default sale if song does not have a scale assigned
+* Remove promises from song and scale fetch by id
 
 * New sounds
 * Tweak playHowl function?
@@ -110,6 +110,7 @@
 * Explanation for disabled buttons
 * Slider disabled cursor
 * Sign in with privacy open on mobile messed up layout
+* Height of app on low res laptops
 
 ### Focus and keyboard
 

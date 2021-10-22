@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
 import { defaultScale, defaultSong } from '../../../assets/defaultData';
 import { getScaleById, loadScale } from '../../../redux/scale/scale.actions';
-import { loadSong } from '../../../redux/song/song.actions';
+import { getSongById, loadSong } from '../../../redux/song/song.actions';
 
 const useDefaultState = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const useDefaultState = () => {
     const [, route, id] = location.pathname.split('/');
 
     if (route === 'song' && id) {
-      //fetch song (and scale)
+      dispatch(getSongById(id, true));
       return;
     }
 
