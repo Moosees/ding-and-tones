@@ -66,12 +66,12 @@ export const getSongById =
             type: songTypes.FETCH_SUCCESSFUL,
             payload: fetchedSong,
           });
-          return Promise.resolve(`/song/${fetchedSong.ui.songId}`);
+          return Promise.resolve(true);
         }
       })
       .catch((error) => {
         let msg;
-        switch (error.response.status) {
+        switch (error.response?.status) {
           case 404:
             msg = 'Song not found';
             break;
@@ -92,7 +92,7 @@ export const getSongById =
             alert: `Could not load song. ${msg}`,
           },
         });
-        return Promise.resolve('/song');
+        return Promise.resolve(false);
       });
   };
 

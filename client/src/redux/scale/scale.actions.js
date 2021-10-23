@@ -81,8 +81,6 @@ export const getScaleById = (scaleId) => (dispatch) => {
           type: scaleTypes.FETCH_SUCCESSFUL,
           payload: parseScaleData(res.data),
         });
-
-        return Promise.resolve(`/scale/${res.data.scaleId}`);
       }
     })
     .catch((error) => {
@@ -92,8 +90,6 @@ export const getScaleById = (scaleId) => (dispatch) => {
           alert: error.response ? error.response.data.msg : 'Scale not found',
         },
       });
-
-      return Promise.resolve('/scale');
     });
 };
 

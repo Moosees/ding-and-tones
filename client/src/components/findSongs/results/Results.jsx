@@ -57,7 +57,7 @@ const Results = ({
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
       const loadSong = (songId, getScale) => {
         getSongById(songId, getScale).then((res) => {
-          if (res) redirectTo(res);
+          if (res) redirectTo('/song');
         });
       };
 

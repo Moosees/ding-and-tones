@@ -4,9 +4,8 @@
 
 ### Sound update
 
-* Load default scale or song if fetch failed due to lack of permissions
+* Load default scale or song if fetch failed due to lack of permissions (or something else)
 * Load default sale if song does not have a scale assigned
-* Remove promises from song and scale fetch by id
 
 * New sounds
 * Tweak playHowl function?
