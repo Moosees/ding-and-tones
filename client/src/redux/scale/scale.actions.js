@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import scaleTypes from './scale.types';
 import {
@@ -70,7 +71,7 @@ export const deleteScaleById = (scaleId) => (dispatch) => {
     });
 };
 
-export const getScaleById = (scaleId) => (dispatch) => {
+export const getScaleById = (scaleId, firstLoad) => (dispatch) => {
   dispatch({ type: scaleTypes.FETCH_STARTED });
 
   return axios
@@ -84,10 +85,16 @@ export const getScaleById = (scaleId) => (dispatch) => {
       }
     })
     .catch((error) => {
+      firstLoad &&
+        dispatch({
+          type: scaleTypes.LOAD_SCALE,
+          payload: parseScaleData(defaultScale, true),
+        });
+
       dispatch({
         type: scaleTypes.FETCH_ERROR,
         payload: {
-          alert: error.response ? error.response.data.msg : 'Scale not found',
+          alert: 'Could not load scale',
         },
       });
     });

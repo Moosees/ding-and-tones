@@ -19,7 +19,7 @@ const useDefaultState = () => {
 
     if (route === 'scale' && id) {
       dispatch(loadSong(defaultSong, true));
-      dispatch(getScaleById(id));
+      dispatch(getScaleById(id, true));
       return;
     }
 
