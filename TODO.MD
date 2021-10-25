@@ -5,7 +5,6 @@
 ### Sound update
 
 * Load default scale or song if fetch failed due to lack of permissions (or something else)
-* Load default sale if song does not have a scale assigned
 
 * New sounds
 * Tweak playHowl function?

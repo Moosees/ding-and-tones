@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { defaultScale } from '../../assets/defaultData';
+import scaleTypes from '../scale/scale.types';
+import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
 import { parseFetchedSong, parseSongForSaving } from './song.utils';
 
@@ -53,7 +56,7 @@ export const duplicateBar = (bar) => ({
 });
 
 export const getSongById =
-  (songId, getScale = true) =>
+  (songId, getScale = true, firstLoad) =>
   (dispatch) => {
     dispatch({ type: songTypes.FETCH_STARTED });
 
@@ -62,10 +65,18 @@ export const getSongById =
       .then((res) => {
         if (res.status === 200) {
           const fetchedSong = parseFetchedSong(res.data, getScale);
+
+          if (firstLoad && !fetchedSong.getScale)
+            dispatch({
+              type: scaleTypes.LOAD_SCALE,
+              payload: parseScaleData(defaultScale, true),
+            });
+
           dispatch({
             type: songTypes.FETCH_SUCCESSFUL,
             payload: fetchedSong,
           });
+
           return Promise.resolve(true);
         }
       })

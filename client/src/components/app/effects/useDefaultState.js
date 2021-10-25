@@ -13,7 +13,7 @@ const useDefaultState = () => {
     const [, route, id] = location.pathname.split('/');
 
     if (route === 'song' && id) {
-      dispatch(getSongById(id, true));
+      dispatch(getSongById(id, true, true));
       return;
     }
 
