@@ -109,7 +109,6 @@ export const getSongById =
 
 export const loadSong = (song, suppressAlert) => (dispatch) => {
   const parsedSong = parseFetchedSong(song, false, suppressAlert);
-  console.log({ parsedSong });
 
   dispatch({ type: songTypes.SET_STATE, payload: parsedSong });
 };
