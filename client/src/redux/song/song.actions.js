@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { defaultScale } from '../../assets/defaultData';
+import { defaultScale, defaultSong } from '../../assets/defaultData';
 import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
@@ -95,6 +95,17 @@ export const getSongById =
           default:
             msg = 'Something went wrong';
             break;
+        }
+
+        if (firstLoad) {
+          dispatch({
+            type: scaleTypes.LOAD_SCALE,
+            payload: parseScaleData(defaultScale, true),
+          });
+          dispatch({
+            type: songTypes.SET_STATE,
+            payload: parseFetchedSong(defaultSong, false, true),
+          });
         }
 
         dispatch({

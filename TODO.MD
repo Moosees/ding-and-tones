@@ -4,8 +4,6 @@
 
 ### Sound update
 
-* Load default scale or song if fetch failed due to lack of permissions (or something else)
-
 * New sounds
 * Tweak playHowl function?
 * Dynamic volume when more than one note played at the same time?
