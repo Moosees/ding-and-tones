@@ -8,10 +8,12 @@
 * Tweak playHowl function?
 * Dynamic volume when more than one note played at the same time?
 
-* Make sure sounds are loaded before playing pattern - howler solves?
-* Use or delete isPreparingSong - related to above - use while howls are loading?
+* Make sure sounds are loaded before playing pattern - check every time sounds are loaded
+* Use or delete isPreparingSong - use one shot event listeners instead
+* Handle howl loaderror
 * Move howls to state?
 * Set howl pool to match size of scale?
+* Handle patternPlayer play beat failures
 * Clean up code
 
 ### Scale and chord sound
