@@ -5,6 +5,7 @@ import BtnPrimary from '../../shared/button/Primary';
 import { playPattern } from '../../../assets/sound/patternPlayer';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import useHowls from '../../../hooks/useHowls';
+import { areHowlsLoaded } from '../../../assets/sound/howler';
 
 const PlayButton = ({
   isPreparingSong,
@@ -12,9 +13,9 @@ const PlayButton = ({
   light,
   setIsSongPlaying,
 }) => {
-  const { howlOptionCbs } = useHowls();
+  const { howlOptionCbs, howlList } = useHowls();
 
-  const handlePlayPause = () => {
+  const handlePlayPause = async () => {
     if (isSongPlaying) {
       setIsSongPlaying(false);
       return;
@@ -22,6 +23,7 @@ const PlayButton = ({
 
     setIsSongPlaying(true);
     const songPattern = buildPatternFromSong(howlOptionCbs);
+    await areHowlsLoaded(howlList);
     playPattern(songPattern);
   };
 
