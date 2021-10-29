@@ -4,18 +4,16 @@
 
 ### Sound update
 
-* Show loading state for PlayButton
-* Use or delete isPreparingSong - use PlayButton local state?
-
 * New sounds
 * Tweak playHowl function?
 * Dynamic volume when more than one note played at the same time?
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
 * Handle howl loaderror
+* Handle resolve and reject of areHowlsLoaded in PlayButton
 * Move howls to state?
 * Set howl pool to match size of scale?
 * Handle patternPlayer playBeat failures
-* Unload howls when doing cleanupHowls?
+* Manually unload howls when doing cleanupHowls?
 * Clean up code
 
 ### Scale and chord sound

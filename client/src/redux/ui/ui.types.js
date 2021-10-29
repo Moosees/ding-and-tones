@@ -1,7 +1,6 @@
 const uiTypes = {
   SET_CURRENTLY_PLAYING: 'ui/playing',
   SET_MUTED_BARS: 'ui/setMuted',
-  SET_IS_PREPARING_SONG: 'ui/setIsPreparingSong',
   SET_IS_SONG_PLAYING: 'ui/setIsSongPlaying',
   SET_PRIVACY_OPEN: 'ui/setPrivacyOpen',
   SET_SOUND_OPTIONS: 'ui/setSoundOptions',

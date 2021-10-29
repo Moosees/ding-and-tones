@@ -16,7 +16,6 @@ const INITIAL_STATE = {
   headersOpen: true,
   isEditingExtraPos: false,
   isEditingSong: true,
-  isPreparingSong: false,
   isSongPlaying: false,
   multiSelect: false,
   mutedBars: {},
@@ -37,12 +36,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         ...payload,
         currentHand,
-      };
-
-    case uiTypes.SET_IS_PREPARING_SONG:
-      return {
-        ...state,
-        isPreparingSong: payload,
       };
 
     case uiTypes.SET_IS_SONG_PLAYING:
