@@ -14,6 +14,7 @@ const PlayButton = ({ isSongPlaying, light, setIsSongPlaying }) => {
   const handlePlayPause = async () => {
     if (isSongPlaying) {
       setIsSongPlaying(false);
+      setIsPreparingSong(false);
       return;
     }
 
@@ -28,7 +29,6 @@ const PlayButton = ({ isSongPlaying, light, setIsSongPlaying }) => {
   return (
     <BtnPrimary
       light={light}
-      disabled={isPreparingSong}
       onClick={handlePlayPause}
       label={isPreparingSong ? 'Preparing' : isSongPlaying ? 'Stop' : 'Play'}
     />
