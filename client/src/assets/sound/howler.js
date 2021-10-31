@@ -1,16 +1,27 @@
 import { Howl, Howler } from 'howler';
 import { beatOptionToKeyCode } from '../keyCodes';
 
+let howlErrors = {};
+
 export const cleanupHowls = () => {
   Howler.stop();
+  howlErrors = {};
 };
 
-export const areHowlsLoaded = async (howls) => {
-  await Promise.all(
+export const onHowlError = (error, option) => {
+  // console.error(option, error);
+  howlErrors[option] = true;
+};
+
+export const areHowlsLoaded = (howls) =>
+  Promise.all(
     howls.map(
-      ({ howl }) =>
-        new Promise((resolve) => {
-          // console.log({ status: howl.state(), howl });
+      ({ howl, option }) =>
+        new Promise((resolve, reject) => {
+          if (howlErrors[option]) {
+            reject(`Could not load sound: ${option}`);
+            return;
+          }
           if (howl.state() === 'loaded') {
             resolve();
             return;
@@ -19,7 +30,6 @@ export const areHowlsLoaded = async (howls) => {
         })
     )
   );
-};
 
 export const playHowl = (howl) => {
   // console.log(Howler);
@@ -38,7 +48,7 @@ export const createHowls = (soundOptions) => {
 
   return Object.keys(soundOptions).reduce((acc, option) => {
     const howl = new Howl({ src: [soundOptions[option]] });
-    howl.once('loaderror', () => console.error(howl, 'load failed'));
+    howl.once('loaderror', (_id, error) => onHowlError(error, option));
     const key = beatOptionToKeyCode[option];
     const play = () => playHowl(howl);
 

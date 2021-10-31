@@ -4,14 +4,20 @@ import { areHowlsLoaded } from '../../../assets/sound/howler';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
 import useHowls from '../../../hooks/useHowls';
+import { createAlert } from '../../../redux/alert/alert.actions';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/Primary';
 
-const PlayButton = ({ isSongPlaying, light, setIsSongPlaying }) => {
+const PlayButton = ({
+  createAlert,
+  isSongPlaying,
+  light,
+  setIsSongPlaying,
+}) => {
   const [isPreparingSong, setIsPreparingSong] = useState(false);
   const { howlOptionCbs, howlList } = useHowls();
 
-  const handlePlayPause = async () => {
+  const handlePlayPause = () => {
     if (isSongPlaying) {
       setIsSongPlaying(false);
       setIsPreparingSong(false);
@@ -21,9 +27,17 @@ const PlayButton = ({ isSongPlaying, light, setIsSongPlaying }) => {
     setIsPreparingSong(true);
     setIsSongPlaying(true);
     const songPattern = buildPatternFromSong(howlOptionCbs);
-    await areHowlsLoaded(howlList);
-    setIsPreparingSong(false);
-    playPattern(songPattern);
+
+    areHowlsLoaded(howlList)
+      .then(() => {
+        setIsPreparingSong(false);
+        playPattern(songPattern);
+      })
+      .catch((error) => {
+        setIsPreparingSong(false);
+        setIsSongPlaying(false);
+        createAlert(error);
+      });
   };
 
   return (
@@ -40,4 +54,6 @@ const mapStateToProps = ({ drum, scale, song, ui }) => ({
   allSounds: ui.soundOptions.allSounds,
 });
 
-export default connect(mapStateToProps, { setIsSongPlaying })(PlayButton);
+export default connect(mapStateToProps, { createAlert, setIsSongPlaying })(
+  PlayButton
+);
