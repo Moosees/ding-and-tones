@@ -2,10 +2,16 @@ import { Howl, Howler } from 'howler';
 import { beatOptionToKeyCode } from '../keyCodes';
 
 let howlErrors = {};
+let howls = [];
 
 export const cleanupHowls = () => {
+  // console.log({ howls });
   Howler.stop();
   howlErrors = {};
+  howls.forEach((howl) => {
+    howl.off();
+    howl.unload();
+  });
 };
 
 export const onHowlError = (error, option) => {
@@ -46,7 +52,7 @@ export const createHowls = (soundOptions) => {
 
   if (!soundOptions) return initialValues;
 
-  return Object.keys(soundOptions).reduce((acc, option) => {
+  const newHowls = Object.keys(soundOptions).reduce((acc, option) => {
     const howl = new Howl({ src: [soundOptions[option]] });
     howl.once('loaderror', (_id, error) => onHowlError(error, option));
     const key = beatOptionToKeyCode[option];
@@ -56,4 +62,8 @@ export const createHowls = (soundOptions) => {
     acc.howlList.push({ key, play, howl, option });
     return acc;
   }, initialValues);
+
+  howls = newHowls.howlList.map(({ howl }) => howl);
+
+  return newHowls;
 };

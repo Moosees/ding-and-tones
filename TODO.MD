@@ -8,11 +8,9 @@
 * Tweak playHowl function?
 * Dynamic volume when more than one note played at the same time?
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
-* Move howls to state?
 * Set howl pool to match size of scale?
-* Handle patternPlayer playBeat failures
-* Manually unload howls when doing cleanupHowls?
-* Manually clean up event listeners when doing cleanupHowls
+* Handle patternPlayer playBeat failures - not needed?
+* Rework howl state - handle single additions or removals of howls without reloading all howls
 * Clean up code
 
 ### Scale and chord sound
