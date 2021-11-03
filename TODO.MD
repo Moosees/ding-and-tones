@@ -5,7 +5,6 @@
 ### Sound update
 
 * New sounds
-* Tweak playHowl function?
 * Dynamic volume when more than one note played at the same time?
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
 * Set howl pool to match size of scale?

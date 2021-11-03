@@ -38,10 +38,24 @@ export const areHowlsLoaded = (howls) =>
   );
 
 export const playHowl = (howl) => {
-  // console.log(Howler);
-  // if (howl.playing()) howl.stop().play();
-  if (howl.playing()) howl.seek(0);
-  else howl.play();
+  const newId = howl.play();
+
+  const fadeEvent = (id) => {
+    if (id === newId) return;
+
+    const timeout = 100;
+
+    // console.log({ id, newId, ids: howl._getSoundIds() });
+    howl.fade(1.0, 0, timeout, newId);
+    howl.off('play', fadeEvent);
+
+    setTimeout(() => {
+      // console.log('stopping', newId);
+      howl.stop(newId);
+    }, timeout);
+  };
+
+  howl.on('play', fadeEvent);
 };
 
 export const createHowls = (soundOptions) => {
