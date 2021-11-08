@@ -4,11 +4,18 @@
 
 ### Sound update
 
-* Rework howl state - handle single additions or removals of howls without reloading all howls
+* Rework howl state
+* Single howl additions
+* Single howl cleanup
+* Refactor howls provider to app effect
+* Remove useHowler
+* Store list of howler errors in state?
+* Loading (isHowlLoaded) animation for single tonefields? Keys?
+* State handles areHowlsLoaded bool
+* Don't allow playing song while howls are loading?
 
 * New sounds
 * Dynamic volume when more than one note played at the same time?
-* Loading (isHowlLoaded) animation for single tonefields? Keys?
 * Set howl pool to match size of scale?
 * Handle patternPlayer playBeat failures - not needed?
 * Clean up code
