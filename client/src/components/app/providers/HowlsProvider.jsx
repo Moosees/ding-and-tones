@@ -1,18 +1,22 @@
 import { createContext, useEffect, useState } from 'react';
-import { cleanupHowls, createHowls } from '../../../assets/sound/howler';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import {
+  cleanupAllHowls,
+  createAllHowls,
+} from '../../../redux/howls/howls.actions';
 
 export const HowlsContext = createContext();
 
 const HowlsProvider = ({ children, allSoundOptions }) => {
   const [howls, setHowls] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const howls = createHowls(allSoundOptions);
+    const howls = dispatch(createAllHowls(allSoundOptions));
     setHowls(howls);
 
-    return cleanupHowls;
-  }, [allSoundOptions]);
+    return () => dispatch(cleanupAllHowls());
+  }, [allSoundOptions, dispatch]);
 
   return (
     <HowlsContext.Provider value={howls}>{children}</HowlsContext.Provider>

@@ -4,12 +4,13 @@
 
 ### Sound update
 
+* Rework howl state - handle single additions or removals of howls without reloading all howls
+
 * New sounds
 * Dynamic volume when more than one note played at the same time?
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
 * Set howl pool to match size of scale?
 * Handle patternPlayer playBeat failures - not needed?
-* Rework howl state - handle single additions or removals of howls without reloading all howls
 * Clean up code
 
 ### Scale and chord sound

@@ -1,5 +1,5 @@
 import { Howl, Howler } from 'howler';
-import { beatOptionToKeyCode } from '../keyCodes';
+import { beatOptionToKeyCode } from '../../assets/keyCodes';
 
 let howlErrors = {};
 let howls = [];

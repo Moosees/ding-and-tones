@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { areHowlsLoaded } from '../../../assets/sound/howler';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
 import useHowls from '../../../hooks/useHowls';
 import { createAlert } from '../../../redux/alert/alert.actions';
+import { areHowlsLoaded } from '../../../redux/howls/howls.utils';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/Primary';
 
