@@ -7,7 +7,6 @@
 * Rework howl state
 * Single howl additions
 * Single howl cleanup
-* Refactor howls provider to app effect
 * Store list of howler errors in state?
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
 * State handles areHowlsLoaded bool

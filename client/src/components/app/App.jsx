@@ -4,16 +4,13 @@ import { store } from '../../redux/store';
 import AppEffects from './effects/AppEffects';
 import Layout from './layout/Layout';
 import DimensionsProvider from './providers/DimensionsProvider';
-import HowlsProvider from './providers/HowlsProvider';
 
 const App = () => {
   return (
     <ReduxProvider store={store}>
       <DimensionsProvider>
-        <HowlsProvider>
-          <AppEffects />
-          <Layout />
-        </HowlsProvider>
+        <AppEffects />
+        <Layout />
       </DimensionsProvider>
     </ReduxProvider>
   );
