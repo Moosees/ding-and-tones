@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import useHowls from '../../../hooks/useHowls';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 
 const usePlayWithKeyboard = () => {
   const dispatch = useDispatch();
-  const { howlList } = useHowls();
+  const howlList = useSelector(({ howls }) => howls.howlList);
 
   useEffect(() => {
     console.log('load keys');

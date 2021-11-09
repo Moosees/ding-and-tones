@@ -8,11 +8,10 @@
 * Single howl additions
 * Single howl cleanup
 * Refactor howls provider to app effect
-* Remove useHowler
 * Store list of howler errors in state?
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
 * State handles areHowlsLoaded bool
-* Don't allow playing song while howls are loading?
+* Don't allow playing song while howls are loading - update PlayButton
 
 * New sounds
 * Dynamic volume when more than one note played at the same time?

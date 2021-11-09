@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
-import useHowls from '../../../hooks/useHowls';
 import { createAlert } from '../../../redux/alert/alert.actions';
 import { areHowlsLoaded } from '../../../redux/howls/howls.utils';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
@@ -10,12 +9,13 @@ import BtnPrimary from '../../shared/button/Primary';
 
 const PlayButton = ({
   createAlert,
+  howlList,
+  howlOptionCbs,
   isSongPlaying,
   light,
   setIsSongPlaying,
 }) => {
   const [isPreparingSong, setIsPreparingSong] = useState(false);
-  const { howlOptionCbs, howlList } = useHowls();
 
   const handlePlayPause = () => {
     if (isSongPlaying) {
@@ -49,7 +49,9 @@ const PlayButton = ({
   );
 };
 
-const mapStateToProps = ({ drum, scale, song, ui }) => ({
+const mapStateToProps = ({ howls, ui }) => ({
+  howlList: howls.howlList,
+  howlOptionCbs: howls.howlOptionCbs,
   isSongPlaying: ui.isSongPlaying,
   allSounds: ui.soundOptions.allSounds,
 });
