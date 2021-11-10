@@ -7,9 +7,9 @@
 * Rework howl state - rename howls state keys, update and rename initial state
 * Single howl additions
 * Single howl cleanup
-* Listen for play errors
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
 * State handles areHowlsLoaded logic - remove old function
+* Split howls loading status into loaded and error (and error msg)?
 * Don't allow playing song while howls are loading - update PlayButton
 
 * New sounds

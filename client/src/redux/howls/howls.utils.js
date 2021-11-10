@@ -28,6 +28,10 @@ export const onHowlLoad = (option, howl) => {
   store.dispatch(updateHowlLoadingStatus(option, 'ready'));
 };
 
+export const onHowlPlayError = (option) => {
+  store.dispatch(updateHowlLoadingStatus(option, 'playerror'));
+};
+
 export const areHowlsLoaded = (howls) =>
   Promise.all(
     howls.map(
@@ -80,6 +84,7 @@ export const createHowls = (soundOptions) => {
 
     howl.once('loaderror', (_id, error) => onHowlError(option, howl, error));
     howl.once('load', () => onHowlLoad(option, howl));
+    howl.on('playerror', () => onHowlPlayError(option));
 
     const key = beatOptionToKeyCode[option];
     const play = () => playHowl(howl);
