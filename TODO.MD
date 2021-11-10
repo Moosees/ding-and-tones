@@ -230,3 +230,4 @@
 * Dark mode
 * Markdown for help topics
 * Percussive handpan sound samples
+* Replace setInterval in login popup
