@@ -4,10 +4,9 @@
 
 ### Sound update
 
-* Rework howl state
+* Rework howl state - rename howls state keys, update and rename initial state
 * Single howl additions
 * Single howl cleanup
-* Store list of howler errors in state
 * Listen for play errors
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
 * State handles areHowlsLoaded logic - remove old function

@@ -13,3 +13,8 @@ export const createAllHowls = (soundOptions) => (dispatch) => {
   dispatch({ type: howlsTypes.CREATE_HOWLS, payload: { howls } });
   return howls;
 };
+
+export const updateHowlLoadingStatus = (option, status) => ({
+  type: howlsTypes.UPDATE_HOWL_LOADING_STATUS,
+  payload: { option, status },
+});

@@ -1,5 +1,7 @@
 import { Howl, Howler } from 'howler';
 import { beatOptionToKeyCode } from '../../assets/keyCodes';
+import { store } from '../store';
+import { updateHowlLoadingStatus } from './howls.actions';
 
 let howlErrors = {};
 let howls = [];
@@ -18,11 +20,12 @@ export const onHowlError = (option, howl, error) => {
   console.error(option, error);
   howlErrors[option] = true;
   howl.off('load');
+  store.dispatch(updateHowlLoadingStatus(option, 'loaderror'));
 };
 
 export const onHowlLoad = (option, howl) => {
-  console.log(option, 'loaded');
   howl.off('loaderror');
+  store.dispatch(updateHowlLoadingStatus(option, 'ready'));
 };
 
 export const areHowlsLoaded = (howls) =>
