@@ -14,9 +14,15 @@ export const cleanupHowls = () => {
   });
 };
 
-export const onHowlError = (error, option) => {
-  // console.error(option, error);
+export const onHowlError = (option, howl, error) => {
+  console.error(option, error);
   howlErrors[option] = true;
+  howl.off('load');
+};
+
+export const onHowlLoad = (option, howl) => {
+  console.log(option, 'loaded');
+  howl.off('loaderror');
 };
 
 export const areHowlsLoaded = (howls) =>
@@ -68,7 +74,10 @@ export const createHowls = (soundOptions) => {
 
   const newHowls = Object.keys(soundOptions).reduce((acc, option) => {
     const howl = new Howl({ src: [soundOptions[option]] });
-    howl.once('loaderror', (_id, error) => onHowlError(error, option));
+
+    howl.once('loaderror', (_id, error) => onHowlError(option, howl, error));
+    howl.once('load', () => onHowlLoad(option, howl));
+
     const key = beatOptionToKeyCode[option];
     const play = () => playHowl(howl);
 

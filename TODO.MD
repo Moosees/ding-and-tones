@@ -7,9 +7,10 @@
 * Rework howl state
 * Single howl additions
 * Single howl cleanup
-* Store list of howler errors in state?
+* Store list of howler errors in state
+* Listen for play errors
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
-* State handles areHowlsLoaded bool
+* State handles areHowlsLoaded logic - remove old function
 * Don't allow playing song while howls are loading - update PlayButton
 
 * New sounds
