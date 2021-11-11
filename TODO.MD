@@ -74,6 +74,7 @@
 * Should print view only break before fourths?
 * Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
 * Master volume controls
+* React router 6
 
 ## Unsorted
 
