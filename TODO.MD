@@ -4,7 +4,7 @@
 
 ### Sound update
 
-* Rework howl state - rename howls state keys, update and rename initial state
+* Rework howl state
 * Single howl additions
 * Single howl cleanup
 * Loading (isHowlLoaded) animation for single tonefields? Keys?

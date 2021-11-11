@@ -1,13 +1,15 @@
 import howlsTypes from './howls.types';
 
 const INITIAL_STATE = {
+  all: [],
   loadingStatus: {},
+  optionCbs: {},
 };
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case howlsTypes.CLEANUP_HOWLS:
-      return {};
+      return INITIAL_STATE;
 
     case howlsTypes.CREATE_HOWLS:
       return { ...state, ...payload.howls };

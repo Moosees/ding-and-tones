@@ -51,7 +51,7 @@ const SoundItems = ({
 };
 
 const mapStateToProps = ({ howls, scale, song, ui }) => ({
-  howlOptionCbs: howls.howlOptionCbs,
+  howlOptionCbs: howls.optionCbs,
   sharpNotes: scale.info.sharpNotes,
   beats: song.beats,
   multiSelect: ui.multiSelect,

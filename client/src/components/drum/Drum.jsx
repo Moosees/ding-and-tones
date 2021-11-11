@@ -120,7 +120,7 @@ const mapStateToProps = ({ drum, howls, scale, ui }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   drumMode: drum.drumMode,
-  howlOptionCbs: howls.howlOptionCbs,
+  howlOptionCbs: howls.optionCbs,
   sharpNotes: scale.info.sharpNotes,
   extra: scale.notes.extra,
   round: scale.notes.round,

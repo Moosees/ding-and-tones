@@ -4,12 +4,12 @@ import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 
 const usePlayWithKeyboard = () => {
   const dispatch = useDispatch();
-  const howlList = useSelector(({ howls }) => howls.howlList);
+  const howls = useSelector(({ howls }) => howls.all);
 
   useEffect(() => {
     console.log('load keys');
-    const keyboardCbs = howlList?.length
-      ? howlList.reduce((acc, howl) => {
+    const keyboardCbs = howls?.length
+      ? howls.reduce((acc, howl) => {
           const { key, option, play } = howl;
           const cb = () => {
             dispatch(
@@ -36,7 +36,7 @@ const usePlayWithKeyboard = () => {
       console.log('unload keys');
       document.removeEventListener('keydown', keyboardListener);
     };
-  }, [dispatch, howlList]);
+  }, [dispatch, howls]);
 };
 
 export default usePlayWithKeyboard;

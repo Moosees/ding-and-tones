@@ -73,8 +73,8 @@ export const playHowl = (howl) => {
 
 export const createHowls = (soundOptions) => {
   const initialValues = {
-    howlOptionCbs: {},
-    howlList: [],
+    optionCbs: {},
+    all: [],
   };
 
   if (!soundOptions) return initialValues;
@@ -89,12 +89,12 @@ export const createHowls = (soundOptions) => {
     const key = beatOptionToKeyCode[option];
     const play = () => playHowl(howl);
 
-    acc.howlOptionCbs[option] = { play };
-    acc.howlList.push({ key, play, howl, option });
+    acc.optionCbs[option] = { play };
+    acc.all.push({ key, play, howl, option });
     return acc;
   }, initialValues);
 
-  howls = newHowls.howlList.map(({ howl }) => howl);
+  howls = newHowls.all.map(({ howl }) => howl);
 
   return newHowls;
 };

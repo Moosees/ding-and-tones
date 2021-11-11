@@ -9,7 +9,7 @@ import BtnPrimary from '../../shared/button/Primary';
 
 const PlayButton = ({
   createAlert,
-  howlList,
+  howls,
   howlOptionCbs,
   isSongPlaying,
   light,
@@ -28,7 +28,7 @@ const PlayButton = ({
     setIsSongPlaying(true);
     const songPattern = buildPatternFromSong(howlOptionCbs);
 
-    areHowlsLoaded(howlList)
+    areHowlsLoaded(howls)
       .then(() => {
         setIsPreparingSong(false);
         playPattern(songPattern);
@@ -50,8 +50,8 @@ const PlayButton = ({
 };
 
 const mapStateToProps = ({ howls, ui }) => ({
-  howlList: howls.howlList,
-  howlOptionCbs: howls.howlOptionCbs,
+  howls: howls.all,
+  howlOptionCbs: howls.optionCbs,
   isSongPlaying: ui.isSongPlaying,
   allSounds: ui.soundOptions.allSounds,
 });
