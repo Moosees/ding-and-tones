@@ -12,7 +12,7 @@
 * Split howls loading status into loaded and error (and error msg)?
 * Don't allow playing song while howls are loading - update PlayButton
 
-* New sounds - percussive and tongue C3->Gb3
+* New sounds - percussive?
 * Dynamic volume when more than one note played at the same time?
 * Set howl pool to match size of scale?
 * Handle patternPlayer playBeat failures - not needed?
