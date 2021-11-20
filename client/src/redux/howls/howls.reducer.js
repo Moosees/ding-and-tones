@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   all: [],
   loadingStatus: {},
   optionCbs: {},
+  volume: 1.0,
 };
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -13,6 +14,9 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case howlsTypes.CREATE_HOWLS:
       return { ...state, ...payload.howls };
+
+    case howlsTypes.SET_VOLUME:
+      return { ...state, volume: payload.newVolume };
 
     case howlsTypes.UPDATE_HOWL_LOADING_STATUS:
       return {

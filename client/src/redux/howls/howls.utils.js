@@ -57,9 +57,12 @@ export const playHowl = (howl) => {
     if (id === newId) return;
 
     const timeout = 100;
+    const {
+      howls: { volume },
+    } = store.getState();
 
     // console.log({ id, newId, ids: howl._getSoundIds() });
-    howl.fade(1.0, 0, timeout, newId);
+    howl.fade(volume, 0, timeout, newId);
     howl.off('play', fadeEvent);
 
     setTimeout(() => {

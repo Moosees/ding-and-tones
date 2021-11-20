@@ -1,3 +1,4 @@
+import { Howler } from 'howler';
 import howlsTypes from './howls.types';
 import { cleanupHowls, createHowls } from './howls.utils';
 
@@ -12,6 +13,15 @@ export const createAllHowls = (soundOptions) => (dispatch) => {
 
   dispatch({ type: howlsTypes.CREATE_HOWLS, payload: { howls } });
   return howls;
+};
+
+export const setVolume = (newVolume) => (dispatch) => {
+  Howler.volume(newVolume);
+
+  dispatch({
+    type: howlsTypes.SET_VOLUME,
+    payload: { newVolume },
+  });
 };
 
 export const updateHowlLoadingStatus = (option, status) => ({
