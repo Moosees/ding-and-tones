@@ -24,6 +24,7 @@
 * Bpm for scales and chords? Always constant?
 * Stopping and isPlaying for scales and chords? Needed for scales at least
 * Key to stop any playing song/scale/chord/sound? Space? Esc?
+* Found chords styles on smaller screens
 
 ### Compare scales
 
@@ -92,23 +93,23 @@
 
 ### Design
 
-* Search result hints should not be alerts
 * Errors from backend display on inputs instead of alert?
-* Better Loading component - big spinner? Spinner on account page save
-* Load song button can be seen through table header
+* Form input errors instead of disabled buttons
 * Red borders on errors?
 * Checkbox hover effect, all transform: scale hovers...
+* Pseudo elements instead of costly transitions
+* Use drop shadows for tonefield focus?
+* Search result hints should not be alerts
+* Better Loading component - big spinner? Spinner on account page save
+* Load song button can be seen through table header
 * Only small divider lines?
 * Add more text labels like in Edit scale component?
-* Use drop shadows for tonefield focus?
 * Custom ref for popup anchor
 * Add x close button to popups?
 * Select boxes dynamic width
-* Found chords styles on smaller screens
 * New buttons for loading songs and confirm/cancel
 * BtnPrimary on mobile
-* Explanation for disabled buttons
-* Slider disabled cursor
+* Slider disabled default cursor
 * Sign in with privacy open on mobile messed up layout
 * Height of app on low res laptops
 
@@ -133,7 +134,6 @@
 * Dynamic size for tonefields
 * Hover on drum shows all information about hovered note?
 * Option to turn off/use same color for tonefield borders
-* Prevent soft and loud taks on same beat (both show as loud taks on drum right now)?
 * Animation for tonefields being played
 * Clicks on sounds in beat dropdown animate on drum?
 
@@ -148,7 +148,7 @@
 
 * Double ding and mutant scales
 * Remove isOwner from scale ui state or add ability to save scale changes
-* Sign in should update scale ownership
+* Sign in should update scale ownership if isOwner is kept
 * Scale layout prop - not needed? used for double ding?
 
 ### Chords
