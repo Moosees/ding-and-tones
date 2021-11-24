@@ -11,20 +11,17 @@
 * State handles areHowlsLoaded logic - remove old function
 * Split howls loading status into loaded and error (and error msg)?
 * Don't allow playing song while howls are loading - update PlayButton
-
-* Dynamic volume when more than one note played at the same time?
-* Set howl pool to match size of scale?
-* Handle patternPlayer playBeat failures - not needed?
 * Clean up code
 
 ### Scale and chord sound
 
 * Play chords from chords page, arpeggio and unison - how to handle inversions?
-* Play scale preview from scale page - up and down scale?
+* Play scale preview from scale page - up and down scale? How to handle temporary howls?
 * Bpm for scales and chords? Always constant?
-* Stopping and isPlaying for scales and chords? Needed for scales at least
-* Key to stop any playing song/scale/chord/sound? Space? Esc?
+* Stopping and isPlaying for scales and chords? Needed for scales at least - use status state instead of bool (for pattern player to understand what is playing)?
+* Key to stop any playing song/scale/chord/sound? Space (reserve for song recorder skips)? Esc?
 * Found chords styles on smaller screens
+* Dynamic volume when more than one note played at the same time?
 
 ### Compare scales
 
@@ -231,3 +228,4 @@
 * Markdown for help topics
 * Percussive handpan sound samples
 * Replace setInterval in login popup
+* Set howl pool to match size of scale?
