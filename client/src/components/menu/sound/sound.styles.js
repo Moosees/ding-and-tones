@@ -5,7 +5,7 @@ export const AudioOption = styled.button`
   border: 2px solid
     ${({ isSelected, theme }) =>
       isSelected ? theme.colorBtnConfirm : theme.colorBtnLight};
-  border-radius: 10px;
+  border-radius: 3px;
   box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
   cursor: pointer;
   margin: 0 0 0.75rem;

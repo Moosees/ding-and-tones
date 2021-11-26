@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   all: [],
   loadingStatus: {},
   optionCbs: {},
-  volume: 1.0,
+  volume: 0.8,
 };
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {

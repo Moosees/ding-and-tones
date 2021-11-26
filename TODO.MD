@@ -5,6 +5,7 @@
 ### Sound update
 
 * Rework howl state
+* Stop volume from changing when changing sound set or changing howls
 * Single howl additions
 * Single howl cleanup
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
@@ -229,3 +230,4 @@
 * Percussive handpan sound samples
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?
+* DRY up rc-slider

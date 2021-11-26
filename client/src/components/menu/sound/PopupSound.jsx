@@ -4,8 +4,10 @@ import audioOptions from '../../../assets/sound/audioOptions';
 import { selectSoundSource } from '../../../redux/drum/drum.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
+import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 import { AudioOption, Credits } from './sound.styles';
+import VolumeSlider from './VolumeSlider';
 
 const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
   const getAudioOptions = () =>
@@ -21,6 +23,11 @@ const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
 
   return (
     <Popup header="Sound" onClose={onClose}>
+      <Popup.SubHeading>Volume</Popup.SubHeading>
+      <InfoBox>
+        <VolumeSlider />
+      </InfoBox>
+      <Popup.SubHeading>Sound Set</Popup.SubHeading>
       {getAudioOptions()}
       <Credits>
         Handpan samples by{' '}
