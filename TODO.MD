@@ -5,7 +5,6 @@
 ### Sound update
 
 * Rework howl state
-* Stop volume from changing when changing sound set or changing howls
 * Single howl additions
 * Single howl cleanup
 * Loading (isHowlLoaded) animation for single tonefields? Keys?

@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case howlsTypes.CLEANUP_HOWLS:
-      return INITIAL_STATE;
+      return { ...state, all: [], loadingStatus: {}, optionCbs: {} };
 
     case howlsTypes.CREATE_HOWLS:
       return { ...state, ...payload.howls };
