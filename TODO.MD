@@ -7,10 +7,9 @@
 * Rework howl state
 * Single howl additions
 * Single howl cleanup
+* All howls cleanup
+* Don't set already loaded howls to status loading when changing scale
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
-* State handles areHowlsLoaded logic - remove old function
-* Split howls loading status into loaded and error (and error msg)?
-* Don't allow playing song while howls are loading - update PlayButton
 * Clean up code
 
 ### Scale and chord sound
@@ -87,6 +86,7 @@
 * Songs with deleted scales can still be found in song searches with scale name
 * Song query strings and (changed) scale broken?
 * Deleting scale (and song?) blocks ability to save scale
+* Icons show as text before icon is loaded
 
 ### Design
 
@@ -187,6 +187,7 @@
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
 * Save song as JSON?
 * Show if owned song is private in search results?
+* Split howls loading status into loaded and error (and error msg)?
 
 ### API
 

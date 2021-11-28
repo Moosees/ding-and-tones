@@ -1,61 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
-import { createAlert } from '../../../redux/alert/alert.actions';
-import { areHowlsLoaded } from '../../../redux/howls/howls.utils';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/Primary';
 
 const PlayButton = ({
-  createAlert,
-  howls,
   howlOptionCbs,
+  loadingStatus,
   isSongPlaying,
   light,
   setIsSongPlaying,
 }) => {
-  const [isPreparingSong, setIsPreparingSong] = useState(false);
+  const areHowlsReady = Object.values(loadingStatus).every(
+    (status) => status === 'ready'
+  );
+  console.log({ areHowlsReady, loadingStatus });
 
   const handlePlayPause = () => {
     if (isSongPlaying) {
       setIsSongPlaying(false);
-      setIsPreparingSong(false);
       return;
     }
 
-    setIsPreparingSong(true);
     setIsSongPlaying(true);
     const songPattern = buildPatternFromSong(howlOptionCbs);
 
-    areHowlsLoaded(howls)
-      .then(() => {
-        setIsPreparingSong(false);
-        playPattern(songPattern);
-      })
-      .catch((error) => {
-        setIsPreparingSong(false);
-        setIsSongPlaying(false);
-        createAlert(error);
-      });
+    playPattern(songPattern);
   };
 
   return (
     <BtnPrimary
       light={light}
       onClick={handlePlayPause}
-      label={isPreparingSong ? 'Preparing' : isSongPlaying ? 'Stop' : 'Play'}
+      label={!areHowlsReady ? 'Loading' : isSongPlaying ? 'Stop' : 'Play'}
     />
   );
 };
 
 const mapStateToProps = ({ howls, ui }) => ({
-  howls: howls.all,
   howlOptionCbs: howls.optionCbs,
+  loadingStatus: howls.loadingStatus,
   isSongPlaying: ui.isSongPlaying,
-  allSounds: ui.soundOptions.allSounds,
 });
 
-export default connect(mapStateToProps, { createAlert, setIsSongPlaying })(
-  PlayButton
-);
+export default connect(mapStateToProps, { setIsSongPlaying })(PlayButton);
