@@ -5,8 +5,10 @@
 ### Sound update
 
 * Rework howl state
-* Single howl additions
-* Single howl cleanup
+* Add howl
+* Remove howl
+* Remove old soundOption listeners
+* Changes needed to soundOptions and useHowls?
 * All howls cleanup
 * Don't set already loaded howls to status loading when changing scale
 * Loading (isHowlLoaded) animation for single tonefields? Keys?
