@@ -8,8 +8,8 @@ export const cleanupAllHowls = () => (dispatch) => {
   dispatch({ type: howlsTypes.CLEANUP_HOWLS });
 };
 
-export const createAllHowls = (soundOptions) => (dispatch) => {
-  const howls = createHowls(soundOptions);
+export const createAllHowls = () => (dispatch) => {
+  const howls = createHowls();
 
   dispatch({ type: howlsTypes.CREATE_HOWLS, payload: { howls } });
   return howls;

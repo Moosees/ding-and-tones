@@ -21,6 +21,7 @@ const INITIAL_STATE = {
   mutedBars: {},
   privacyOpen: false,
   soundOptions: {
+    allSounds: {},
     percussive: [],
     round: [],
     extra: [],

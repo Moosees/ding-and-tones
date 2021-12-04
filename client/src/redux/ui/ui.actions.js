@@ -24,7 +24,10 @@ export const setSoundOptions =
     } = getState();
 
     const allOptions = ['T', 't', '-'];
-    const allSounds = { T: '/audio/takLoud.mp3', t: '/audio/takSoft.mp3' };
+    const allSounds = {
+      T: `${audioPath}/takLoud.mp3`,
+      t: `${audioPath}/takSoft.mp3`,
+    };
 
     const round = scaleRound.map((note, i) => {
       allOptions.push(`${i}`);

@@ -52,29 +52,46 @@ export const playHowl = (howl) => {
   howl.on('play', fadeEvent);
 };
 
-export const createHowls = (soundOptions) => {
+export const createHowl = (option, path) => {
+  // const {
+  //   drum: { audioPath },
+  // } = store.getState();
+
+  // const howl = new Howl({ src: `${audioPath}/${option}.mp3` });
+  const howl = new Howl({ src: path });
+
+  howl.once('loaderror', (_id, error) => onHowlError(option, howl, error));
+  howl.once('load', () => onHowlLoad(option, howl));
+  howl.on('playerror', () => onHowlPlayError(option));
+
+  const key = beatOptionToKeyCode[option];
+  const play = () => playHowl(howl);
+
+  return { key, play, howl };
+};
+
+export const createHowls = () => {
+  const {
+    ui: {
+      soundOptions: { allSounds },
+    },
+  } = store.getState();
+  console.log(allSounds);
+
   const initialValues = {
     optionCbs: {},
     all: [],
   };
 
-  if (!soundOptions) return initialValues;
-
-  const newHowls = Object.keys(soundOptions).reduce((acc, option) => {
+  const newHowls = Object.keys(allSounds).reduce((acc, option) => {
     store.dispatch(updateHowlLoadingStatus(option, 'loading'));
     console.log('loading', option);
 
-    const howl = new Howl({ src: [soundOptions[option]] });
-
-    howl.once('loaderror', (_id, error) => onHowlError(option, howl, error));
-    howl.once('load', () => onHowlLoad(option, howl));
-    howl.on('playerror', () => onHowlPlayError(option));
-
-    const key = beatOptionToKeyCode[option];
-    const play = () => playHowl(howl);
+    const { key, play, howl } = createHowl(option, allSounds[option]);
 
     acc.optionCbs[option] = { play };
     acc.all.push({ key, play, howl, option });
+
     return acc;
   }, initialValues);
 

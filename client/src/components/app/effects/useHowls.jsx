@@ -10,7 +10,7 @@ const useHowls = () => {
   const allSoundOptions = useSelector(({ ui }) => ui.soundOptions.allSounds);
 
   useEffect(() => {
-    dispatch(createAllHowls(allSoundOptions));
+    dispatch(createAllHowls());
 
     return () => dispatch(cleanupAllHowls());
   }, [allSoundOptions, dispatch]);
