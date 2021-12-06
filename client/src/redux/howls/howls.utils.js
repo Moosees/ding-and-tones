@@ -14,7 +14,6 @@ export const cleanupHowls = () => {
 };
 
 export const onHowlError = (option, howl, error) => {
-  console.error(option, error);
   howl.off('load');
   store.dispatch(updateHowlLoadingStatus(option, 'loaderror'));
 };
@@ -22,7 +21,6 @@ export const onHowlError = (option, howl, error) => {
 export const onHowlLoad = (option, howl) => {
   howl.off('loaderror');
   store.dispatch(updateHowlLoadingStatus(option, 'ready'));
-  console.log('ready', option);
 };
 
 export const onHowlPlayError = (option) => {
@@ -40,12 +38,10 @@ export const playHowl = (howl) => {
       howls: { volume },
     } = store.getState();
 
-    // console.log({ id, newId, ids: howl._getSoundIds() });
     howl.fade(volume, 0, timeout, newId);
     howl.off('play', fadeEvent);
 
     setTimeout(() => {
-      // console.log('stopping', newId);
       howl.stop(newId);
     }, timeout);
   };
@@ -54,11 +50,6 @@ export const playHowl = (howl) => {
 };
 
 export const createHowl = (option, path) => {
-  // const {
-  //   drum: { audioPath },
-  // } = store.getState();
-
-  // const howl = new Howl({ src: `${audioPath}/${option}.mp3` });
   const howl = new Howl({ src: path });
 
   howl.once('loaderror', (_id, error) => onHowlError(option, howl, error));
@@ -77,7 +68,6 @@ export const createHowls = () => {
       soundOptions: { allSounds },
     },
   } = store.getState();
-  console.log(allSounds);
 
   const initialValues = {
     optionCbs: {},
@@ -86,7 +76,6 @@ export const createHowls = () => {
 
   const newHowls = Object.keys(allSounds).reduce((acc, option) => {
     store.dispatch(updateHowlLoadingStatus(option, 'loading'));
-    console.log('loading', option);
 
     const { key, play, howl } = createHowl(option, allSounds[option]);
 

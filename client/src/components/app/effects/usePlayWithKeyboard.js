@@ -7,7 +7,6 @@ const usePlayWithKeyboard = () => {
   const howls = useSelector(({ howls }) => howls.all);
 
   useEffect(() => {
-    console.log('load keys');
     const keyboardCbs = howls?.length
       ? howls.reduce((acc, howl) => {
           const { key, option, play } = howl;
@@ -33,7 +32,6 @@ const usePlayWithKeyboard = () => {
     document.addEventListener('keydown', keyboardListener);
 
     return () => {
-      console.log('unload keys');
       document.removeEventListener('keydown', keyboardListener);
     };
   }, [dispatch, howls]);

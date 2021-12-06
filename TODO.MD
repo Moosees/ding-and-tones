@@ -2,10 +2,6 @@
 
 ## Sorted
 
-### Sound update
-
-* Clean up code
-
 ### SoundOptions and howls state rework
 
 * BeatDropdown, keys, drum get round, extra and percussive notes from scale state

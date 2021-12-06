@@ -10,10 +10,8 @@ const useResetCurrentBeat = () => {
   }));
 
   useEffect(() => {
-    console.log('reset current beat timer started');
     const timeout = setTimeout(() => {
       if (currentSound.length) {
-        console.log('resetting current beat');
         dispatch(setCurrentlyPlaying({ currentBeat: null, currentSound: [] }));
       }
     }, 750);

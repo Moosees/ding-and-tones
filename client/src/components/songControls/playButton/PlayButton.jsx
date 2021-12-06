@@ -15,7 +15,6 @@ const PlayButton = ({
   const areHowlsReady = Object.values(loadingStatus).every(
     (status) => status === 'ready'
   );
-  console.log({ areHowlsReady, loadingStatus });
 
   const handlePlayPause = () => {
     if (isSongPlaying) {

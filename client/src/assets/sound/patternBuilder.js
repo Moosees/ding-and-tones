@@ -63,7 +63,6 @@ export const buildPatternFromSong = (howls) => {
     const bar = buildPatternFromBar(barId, howls);
     return [...acc, ...bar];
   }, []);
-
-  console.log({ pattern });
+  
   return pattern;
 };
