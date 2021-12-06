@@ -4,15 +4,19 @@
 
 ### Sound update
 
-* Rework howl state
-* Remove/rewrite soundOptions
-* Add howl
-* Remove howl
-* Remove old soundOption listeners
 * All howls cleanup
 * Don't set already loaded howls to status loading when changing scale
-* Loading (isHowlLoaded) animation for single tonefields? Keys?
 * Clean up code
+
+### SoundOptions and howls state rework
+
+* BeatDropdown, keys, drum get round, extra and percussive notes from scale state
+* BeatDropdown, keys, drum use howls state when playing sound
+* Howls state only handle sound playing and doesn't know about scales and notes
+* Howls load and unload as needed
+* Handle changing sound sources
+* Handle non scale notes in songs in ui state
+* Remove old soundOption listeners
 
 ### Scale and chord sound
 
@@ -135,6 +139,7 @@
 * Option to turn off/use same color for tonefield borders
 * Animation for tonefields being played
 * Clicks on sounds in beat dropdown animate on drum?
+* Loading (isHowlLoaded) animation for single tonefields?
 
 ### Intervals
 
