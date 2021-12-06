@@ -4,8 +4,6 @@
 
 ### Sound update
 
-* All howls cleanup
-* Don't set already loaded howls to status loading when changing scale
 * Clean up code
 
 ### SoundOptions and howls state rework

@@ -4,12 +4,13 @@ import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
 
 export const cleanupHowls = () => {
-  // console.log({ howls });
+  const { howls } = store.getState();
   Howler.stop();
-  // howls.forEach((howl) => {
-  //   howl.off();
-  //   howl.unload();
-  // });
+
+  howls.all.forEach(({ howl }) => {
+    howl.off();
+    howl.unload();
+  });
 };
 
 export const onHowlError = (option, howl, error) => {
