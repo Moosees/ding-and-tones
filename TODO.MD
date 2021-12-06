@@ -11,6 +11,8 @@
 * Handle changing sound sources
 * Handle non scale notes in songs in ui state
 * Remove old soundOption listeners
+* Add bass octave?
+* Clean up code
 
 ### Scale and chord sound
 
