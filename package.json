@@ -20,11 +20,11 @@
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.1.0",
     "express-session": "^1.17.2",
-    "google-auth-library": "^7.9.1",
-    "mongoose": "^6.0.5",
+    "google-auth-library": "^7.10.3",
+    "mongoose": "^6.1.0",
     "redis": "^3.1.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.15"
   }
 }

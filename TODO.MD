@@ -234,3 +234,4 @@
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?
 * DRY up rc-slider
+* Update to redis 4 when connect-redis is supported
