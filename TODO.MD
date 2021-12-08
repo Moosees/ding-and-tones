@@ -71,8 +71,12 @@
 * Bar numbers on song viewer? Only long songs?
 * Should print view only break before fourths?
 * Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
-* Master volume controls
+* Master volume controls - location and styles
 * React router 6
+* Update to redis 4 when connect-redis is supported
+* React-to-print functional components (SongView and PrintView)
+* React-to-print set documentTitle
+* React-scripts 5?
 
 ## Unsorted
 
@@ -89,6 +93,7 @@
 * Song query strings and (changed) scale broken?
 * Deleting scale (and song?) blocks ability to save scale
 * Icons show as text before icon is loaded
+* It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
 
 ### Design
 
@@ -234,4 +239,3 @@
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?
 * DRY up rc-slider
-* Update to redis 4 when connect-redis is supported
