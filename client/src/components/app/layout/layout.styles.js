@@ -36,8 +36,8 @@ export const LargeLayout = styled.div`
       'main main';
     grid-template-columns: minmax(35rem, 1fr) minmax(0, 1fr);
     grid-template-rows: 35rem minmax(0, 1fr);
-    max-height: unset;
-    max-width: unset;
+    max-height: revert;
+    max-width: revert;
   }
 `;
 
@@ -63,8 +63,8 @@ export const BorderContainer = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  margin-top: ${({ small }) => (small ? '-3rem' : 'unset')};
-  max-height: ${({ small }) => (small ? '40rem' : 'unset')};
+  margin-top: ${({ small }) => (small ? '-3rem' : 'revert')};
+  max-height: ${({ small }) => (small ? '40rem' : 'revert')};
   overflow: hidden;
   position: relative;
 `;

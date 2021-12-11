@@ -10,7 +10,7 @@ export const ButtonGroup = styled.div`
 export const MenuButton = styled.div`
   align-items: center;
   color: ${({ isActive, theme }) =>
-    isActive ? theme.colorBtnConfirm : 'unset'};
+    isActive ? theme.colorBtnConfirm : 'revert'};
   cursor: pointer;
   display: flex;
   font-size: ${({ theme }) => theme.fzSmall};
@@ -37,9 +37,9 @@ export const IconButton = styled.button`
   background-color: transparent;
   border: 0;
   cursor: ${({ editOnly }) => (editOnly ? 'default' : 'pointer')};
-  left: ${({ position }) => (position === 'left' ? '1px' : 'unset')};
+  left: ${({ position }) => (position === 'left' ? '1px' : 'revert')};
   position: ${({ position }) => (position ? 'absolute' : 'static')};
-  right: ${({ position }) => (position === 'right' ? '1px' : 'unset')};
+  right: ${({ position }) => (position === 'right' ? '1px' : 'revert')};
 
   i {
     color: ${({ color, theme }) => (color ? theme[color] : theme.colorText)};

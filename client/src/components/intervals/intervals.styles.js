@@ -76,7 +76,7 @@ export const IntervalBreakBox = styled.div`
   ${({ theme }) => theme.mqW850`
     min-height: 5rem;
     flex-direction: column;
-    flex-wrap: unset;
+    flex-wrap: revert;
     margin-left: 0.5rem;
   `}
 `;

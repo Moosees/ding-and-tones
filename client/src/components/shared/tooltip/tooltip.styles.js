@@ -59,7 +59,7 @@ export const PopupContainer = styled.div`
     left: 10%;
     max-width: 80%;
     right: 10%;
-    top: unset;
+    top: revert;
     transform: translateY(0);
   `}
 `;
