@@ -63,6 +63,7 @@ export const BorderContainer = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: center;
+  margin-top: ${({ small }) => (small ? '-3rem' : 'unset')};
   max-height: ${({ small }) => (small ? '40rem' : 'unset')};
   overflow: hidden;
   position: relative;

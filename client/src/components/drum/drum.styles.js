@@ -9,11 +9,11 @@ export const DrumContainer = styled.div`
   width: 100%;
 
   ${({ theme }) => theme.mqW1300`
-    margin: 0 0 2rem;
+    margin: -3rem 0 2rem;
   `}
 
   ${({ theme }) => theme.mqW1000`
-    margin: -1rem 0;
+    margin: -1rem 0 0;
   `}
 `;
 

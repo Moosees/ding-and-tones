@@ -115,7 +115,6 @@
 * BtnPrimary on mobile
 * Slider disabled default cursor
 * Sign in with privacy open on mobile messed up layout
-* Height of app on low res laptops
 
 ### Focus and keyboard
 
