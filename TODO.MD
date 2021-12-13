@@ -4,14 +4,19 @@
 
 ### SoundOptions and howls state rework
 
-* BeatDropdown, keys, drum get round, extra and percussive notes from scale state
-* BeatDropdown, keys, drum use howls state when playing sound
-* Howls state only handle sound playing and doesn't know about scales and notes
-* Howls load and unload as needed
-* Handle changing sound sources
-* Handle non scale notes in songs in ui state
-* Remove old soundOption listeners
-* Add bass octave?
+* Adding or removing notes from scale updates drum
+* Adding or removing notes from scale updates keyboard listeners
+* Adding or removing notes from scale updates BeatDropdown
+* Adding or removing notes from scale updates pattern player
+* Changing sound source does a full reset on drum click listeners
+* Changing sound source does a full reset on keyboard listeners
+* Changing sound source does a full reset on BeatDropdown click listeners
+* Changing sound source does a full reset on pattern player
+* Transposing scale does a iterative check on what to update
+* Loading scale (or song with scale) does a iterative check on what to update
+* Handle non scale notes in songs loaded without scale - keep in ui state?
+* Remove old global effects
+* Remove old state reducers and actions
 * Clean up code
 
 ### Scale and chord sound
@@ -77,6 +82,7 @@
 * React-to-print functional components (SongView and PrintView)
 * React-to-print set documentTitle
 * React-scripts 5?
+* Add bass octave?
 
 ## Unsorted
 
