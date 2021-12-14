@@ -19,19 +19,21 @@ export const setPrivacyOpen = (privacyOpen) => ({
 export const setSoundOptions =
   (scaleRound, scaleExtra) => (dispatch, getState) => {
     const {
-      drum: { audioPath },
+      howls: {
+        info: { audioSrc },
+      },
       song: { beats },
     } = getState();
 
     const allOptions = ['T', 't', '-'];
     const allSounds = {
-      T: `${audioPath}/takLoud.mp3`,
-      t: `${audioPath}/takSoft.mp3`,
+      T: `${audioSrc.path}/takLoud.mp3`,
+      t: `${audioSrc.path}/takSoft.mp3`,
     };
 
     const round = scaleRound.map((note, i) => {
       allOptions.push(`${i}`);
-      allSounds[i] = `${audioPath}/${note}.mp3`;
+      allSounds[i] = `${audioSrc.path}/${note}.mp3`;
       return {
         label: `${i} - ${note}`,
         labelSharp: `${i} - ${getNoteLabelFromName(note, true)}`,
@@ -41,7 +43,7 @@ export const setSoundOptions =
 
     const extra = scaleExtra.map(({ note }, i) => {
       allOptions.push(`b${i + 1}`);
-      allSounds[`b${i + 1}`] = `${audioPath}/${note}.mp3`;
+      allSounds[`b${i + 1}`] = `${audioSrc.path}/${note}.mp3`;
       return {
         label: `b${i + 1} - ${note}`,
         labelSharp: `b${i + 1} - ${getNoteLabelFromName(note, true)}`,

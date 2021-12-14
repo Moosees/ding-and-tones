@@ -1,11 +1,9 @@
 import { drumModes } from '../../assets/intervals';
-import audioOptions from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import drumTypes from './drum.types';
 
 const INITIAL_STATE = {
-  audioPath: audioOptions[0].path,
   displayedChord: null,
   displayedNote: 0,
   drumMode: drumModes.NOTES,
@@ -13,12 +11,6 @@ const INITIAL_STATE = {
 
 const drumReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case drumTypes.SELECT_AUDIO:
-      return {
-        ...state,
-        audioPath: payload,
-      };
-
     case drumTypes.SET_DISPLAYED_CHORD:
       return {
         ...state,

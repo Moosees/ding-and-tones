@@ -15,11 +15,6 @@ export const changeDrumMode = (direction = 1, currentDrumMode) => {
   };
 };
 
-export const selectSoundSource = (audioPath) => ({
-  type: drumTypes.SELECT_AUDIO,
-  payload: audioPath,
-});
-
 export const setDisplayedChord = (chord) => (dispatch, getState) => {
   const { scale } = getState();
 

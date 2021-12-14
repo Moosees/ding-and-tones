@@ -15,6 +15,11 @@ export const createAllHowls = () => (dispatch) => {
   return howls;
 };
 
+export const selectSoundSource = (audioSrc) => ({
+  type: howlsTypes.SELECT_AUDIO,
+  payload: audioSrc,
+});
+
 export const setVolume = (newVolume) => (dispatch) => {
   Howler.volume(newVolume);
 

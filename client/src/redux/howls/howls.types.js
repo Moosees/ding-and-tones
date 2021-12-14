@@ -3,6 +3,7 @@ const howlsTypes = {
   CLEANUP_HOWLS: 'howls/cleanAll',
   CREATE_HOWLS: 'howls/createAll',
   REMOVE_HOWL: 'howls/remove',
+  SELECT_AUDIO: 'howls/src',
   SET_VOLUME: 'howls/volume',
   UPDATE_HOWL_LOADING_STATUS: 'howls/updateLoading',
 };

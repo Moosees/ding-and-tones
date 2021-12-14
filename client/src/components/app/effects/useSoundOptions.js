@@ -4,8 +4,8 @@ import { setSoundOptions } from '../../../redux/ui/ui.actions';
 
 const useSoundOptions = () => {
   const dispatch = useDispatch();
-  const { audioPath, notes } = useSelector(({ drum, scale }) => ({
-    audioPath: drum.audioPath,
+  const { audioPath, notes } = useSelector(({ howls, scale }) => ({
+    audioPath: howls.info.audioSrc.path,
     notes: scale.notes,
   }));
 

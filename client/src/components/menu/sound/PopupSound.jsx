@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import audioOptions from '../../../assets/sound/audioOptions';
-import { selectSoundSource } from '../../../redux/drum/drum.actions';
+import { selectSoundSource } from '../../../redux/howls/howls.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/layout/InfoBox';
@@ -15,7 +15,7 @@ const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
       <AudioOption
         key={i}
         isSelected={option.path === audioPath}
-        onClick={() => selectSoundSource(option.path)}
+        onClick={() => selectSoundSource(option)}
       >
         {option.label}
       </AudioOption>
@@ -46,8 +46,8 @@ const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
   );
 };
 
-const mapStateToProps = ({ drum }) => ({
-  audioPath: drum.audioPath,
+const mapStateToProps = ({ howls }) => ({
+  audioPath: howls.info.audioSrc.path,
 });
 
 export default connect(mapStateToProps, { selectSoundSource })(PopupSound);
