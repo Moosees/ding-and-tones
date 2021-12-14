@@ -1,3 +1,4 @@
+import audioOptions from '../../assets/sound/audioOptions';
 import howlsTypes from './howls.types';
 
 const INITIAL_STATE = {
@@ -5,6 +6,20 @@ const INITIAL_STATE = {
   loadingStatus: {},
   optionCbs: {},
   volume: 0.8,
+};
+
+const newState = {
+  data: {
+    C3: {
+      howl: null,
+      play: null,
+      status: 'ready',
+    },
+  },
+  info: {
+    audioSrc: audioOptions[0],
+    volume: 0.8,
+  },
 };
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {

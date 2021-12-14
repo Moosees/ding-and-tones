@@ -15,8 +15,12 @@
 * Transposing scale does a iterative check on what to update
 * Loading scale (or song with scale) does a iterative check on what to update
 * Handle non scale notes in songs loaded without scale - keep in ui state?
+* Move audioOptions handling from drum state to howls state
 * Remove old global effects
 * Remove old state reducers and actions
+* Split howls reducer into data and info?
+* Iterate over scale notes to see if song is ready to be played?
+* Keep list of howl status for howls not currently in scale?
 * Clean up code
 
 ### Scale and chord sound
@@ -146,6 +150,7 @@
 * Animation for tonefields being played
 * Clicks on sounds in beat dropdown animate on drum?
 * Loading (isHowlLoaded) animation for single tonefields?
+* Move currentSound and currentHand from ui state to drum state?
 
 ### Intervals
 
