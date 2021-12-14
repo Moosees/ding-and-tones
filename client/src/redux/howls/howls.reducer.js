@@ -24,11 +24,17 @@ const newState = {
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+    case howlsTypes.ADD_HOWL:
+      return { ...state, data: { ...state.data, [payload]: payload } };
+
     case howlsTypes.CLEANUP_HOWLS:
       return { ...state, all: [], loadingStatus: {}, optionCbs: {} };
 
     case howlsTypes.CREATE_HOWLS:
       return { ...state, ...payload.howls };
+
+    case howlsTypes.REMOVE_HOWL:
+      return { ...state, data: { ...state.data, [payload]: null } };
 
     case howlsTypes.SET_VOLUME:
       return { ...state, volume: payload.newVolume };

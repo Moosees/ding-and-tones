@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
+import howlsTypes from '../howls/howls.types';
 import scaleTypes from './scale.types';
 import {
   addExtraNotesPos,
@@ -11,7 +12,7 @@ import {
   parseScaleData,
   sortScaleByFreq,
   transposeExtraToDestination,
-  transposeRoundToDestination
+  transposeRoundToDestination,
 } from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
@@ -44,6 +45,8 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
     type: scaleTypes.UPDATE_SCALE,
     payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
   });
+
+  dispatch({ type: howlsTypes.ADD_HOWL, payload: newNote });
 };
 
 export const deleteScaleById = (scaleId) => (dispatch) => {
@@ -141,6 +144,8 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
     type: scaleTypes.UPDATE_SCALE,
     payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
   });
+
+  dispatch({ type: howlsTypes.REMOVE_HOWL, payload: noteToRemove });
 };
 
 export const saveScale = (scaleName) => (dispatch, getState) => {
