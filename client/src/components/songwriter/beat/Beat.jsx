@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import BeatDropdown from '../beatDropdown/BeatDropdown';
 import { BeatAnchor, BeatCircle, BeatContainer, BeatText } from './beat.styles';
+import { getNonScaleNotes } from './beat.utils';
 
 const Beat = ({
   beatId,
@@ -13,6 +14,7 @@ const Beat = ({
   handsOpen,
   isMuted,
   isSongPlaying,
+  scaleFull,
   soundOptions,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,10 +27,10 @@ const Beat = ({
     if (isSongPlaying) setIsOpen(false);
   }, [setIsOpen, isSongPlaying]);
 
-  const hasNonScaleNote = !sound.every((hit) => {
-    if (!soundOptions.nonScaleMap) return false;
-    return !soundOptions.nonScaleMap[hit];
-  });
+  const nonScaleNotes = useMemo(
+    () => getNonScaleNotes(sound, scaleFull),
+    [sound, scaleFull]
+  );
 
   const handleOpen = () => {
     if (!isSongPlaying) setIsOpen(!isOpen);
@@ -49,7 +51,7 @@ const Beat = ({
           <BeatCircle
             tabIndex={0}
             ref={btnRef}
-            hasNonScaleNote={hasNonScaleNote}
+            hasNonScaleNote={!!nonScaleNotes.length}
             isLocked={isSongPlaying}
             isBeatPlaying={isBeatPlaying}
             isSongPlaying={isSongPlaying}
@@ -67,7 +69,7 @@ const Beat = ({
               dropdownPosRef={dropdownPosRef}
               btnRef={btnRef}
               beatId={beatId}
-              hasNonScaleNote={hasNonScaleNote}
+              nonScaleNotes={nonScaleNotes}
               isOpenCb={setIsOpen}
             />
           )}
@@ -78,7 +80,8 @@ const Beat = ({
   );
 };
 
-const mapStateToProps = ({ song, ui }) => ({
+const mapStateToProps = ({ scale, song, ui }) => ({
+  scaleFull: scale.notes.scaleFull,
   beats: song.beats,
   countOpen: ui.countOpen,
   currentBeat: ui.currentBeat,

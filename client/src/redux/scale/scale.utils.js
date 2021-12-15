@@ -72,7 +72,7 @@ const addRootAndPosition = (scale, sharpNotes) => {
   let rootName = 'C';
 
   const scaleWithPos = scale.map(
-    ({ localIndex, note, noteShort, noteValue, pos }, i) => {
+    ({ localIndex, note, noteShort, noteValue, option, pos }, i) => {
       const isExtra = pos >= 0;
 
       if (!rootFound && !isExtra) {
@@ -85,15 +85,24 @@ const addRootAndPosition = (scale, sharpNotes) => {
         ).slice(0, -1);
 
         return {
-          note,
-          noteShort,
-          noteValue,
           isRoot: true,
           isExtra,
           localIndex,
+          note,
+          noteShort,
+          noteValue,
+          option,
         };
       }
-      return { note, noteShort, noteValue, isRoot: false, isExtra, localIndex };
+      return {
+        isRoot: false,
+        isExtra,
+        localIndex,
+        note,
+        noteShort,
+        noteValue,
+        option,
+      };
     }
   );
 
@@ -104,19 +113,23 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
   if (!round.length) return [];
 
   const roundWithValues = addNoteValueFromName(
-    round.map((note, i) => ({ note, localIndex: i }))
+    round.map((note, i) => ({ note, localIndex: i, option: i }))
   );
+
   const extraWithValues = addNoteValueFromName(
-    extra.map((note, i) => ({ ...note, localIndex: i }))
+    extra.map((note, i) => ({ ...note, localIndex: i, option: `b${i + 1}` }))
   );
+
   const sortedScale = sortScaleByNoteValue([
     ...roundWithValues,
     ...extraWithValues,
   ]);
+
   const { rootIndex, rootValue, rootName, scaleWithPos } = addRootAndPosition(
     sortedScale,
     sharpNotes
   );
+
   const scaleFull = addIntervalMap(scaleWithPos);
 
   return { newRoot: { rootIndex, rootValue, rootName }, newFull: scaleFull };

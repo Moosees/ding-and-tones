@@ -14,7 +14,6 @@
 * Changing sound source does a full reset on pattern player
 * Transposing scale does a iterative check on what to update
 * Loading scale (or song with scale) does a iterative check on what to update
-* Handle non scale notes in songs loaded without scale - keep in ui state?
 * Remove old global effects
 * Remove old state reducers and actions
 * Split howls reducer into data and info?

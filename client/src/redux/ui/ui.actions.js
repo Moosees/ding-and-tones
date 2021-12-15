@@ -22,7 +22,6 @@ export const setSoundOptions =
       howls: {
         info: { audioSrc },
       },
-      song: { beats },
     } = getState();
 
     const allOptions = ['T', 't', '-'];
@@ -57,30 +56,11 @@ export const setSoundOptions =
       { label: 'Soft Tak', labelSharp: 'Soft Tak', value: 't' },
     ];
 
-    const nonScale = [];
-    const nonScaleMap = {};
-
-    Object.values(beats).forEach(({ sound }) => {
-      sound.forEach((option) => {
-        if (!allOptions.includes(option) && !nonScaleMap[option]) {
-          nonScaleMap[option] = true;
-          nonScale.push({
-            label: `${option} - ?`,
-            labelSharp: `${option} - ?`,
-            value: option,
-            outsideScale: true,
-          });
-        }
-      });
-    });
-
     dispatch({
       type: uiTypes.SET_SOUND_OPTIONS,
       payload: {
         allSounds,
         extra,
-        nonScaleMap,
-        nonScale,
         percussive,
         round,
       },

@@ -25,7 +25,6 @@ const INITIAL_STATE = {
     percussive: [],
     round: [],
     extra: [],
-    nonScale: [],
   },
 };
 

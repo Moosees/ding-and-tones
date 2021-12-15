@@ -6,7 +6,7 @@ import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import {
   updateHandForBeat,
-  updateSoundForBeat
+  updateSoundForBeat,
 } from '../../../redux/song/song.actions';
 import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
@@ -20,7 +20,7 @@ import {
   Arrow,
   Dropdown,
   DropdownColumn,
-  DropdownContent
+  DropdownContent,
 } from './beatDropdown.styles';
 import { createKeyboardCbs } from './beatDropdown.utils.js';
 
@@ -28,9 +28,9 @@ const BeatDropdown = ({
   beatId,
   btnRef,
   dropdownPosRef,
-  hasNonScaleNote,
   isOpenCb,
   multiSelect,
+  nonScaleNotes,
   options,
   toggleMultiSelect,
   updateHandForBeat,
@@ -92,13 +92,13 @@ const BeatDropdown = ({
         <DropdownContent>
           <DropdownColumn>
             <SoundItems beatId={beatId} optionList={options.round} />
-            {hasNonScaleNote && (
+            {!!nonScaleNotes.length && (
               <>
                 <DividerLine small />
                 <SoundItems
                   beatId={beatId}
-                  optionList={options.nonScale}
-                  hasNonScaleNote
+                  optionList={nonScaleNotes}
+                  nonScaleNotes
                 />
               </>
             )}
