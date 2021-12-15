@@ -5,9 +5,9 @@ const INITIAL_STATE = {
   all: [],
   loadingStatus: {},
   optionCbs: {},
-  volume: 0.8,
   info: {
     audioSrc: audioOptions[0],
+    volume: 0.8,
   },
 };
 
@@ -46,7 +46,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case howlsTypes.SET_VOLUME:
-      return { ...state, volume: payload.newVolume };
+      return { ...state, info: { ...state.info, volume: payload.newVolume } };
 
     case howlsTypes.UPDATE_HOWL_LOADING_STATUS:
       return {

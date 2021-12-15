@@ -35,7 +35,9 @@ export const playHowl = (howl) => {
 
     const timeout = 100;
     const {
-      howls: { volume },
+      howls: {
+        info: { volume },
+      },
     } = store.getState();
 
     howl.fade(volume, 0, timeout, newId);

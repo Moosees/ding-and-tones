@@ -50,7 +50,7 @@ const VolumeSlider = ({ setVolume, volume }) => (
 );
 
 const mapStateToProps = ({ howls }) => ({
-  volume: howls.volume,
+  volume: howls.info.volume,
 });
 
 export default connect(mapStateToProps, { setVolume })(VolumeSlider);
