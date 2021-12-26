@@ -15,7 +15,6 @@ const Beat = ({
   isMuted,
   isSongPlaying,
   scaleFull,
-  soundOptions,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
@@ -87,7 +86,6 @@ const mapStateToProps = ({ scale, song, ui }) => ({
   currentBeat: ui.currentBeat,
   handsOpen: ui.handsOpen,
   isSongPlaying: ui.isSongPlaying,
-  soundOptions: ui.soundOptions,
 });
 
 export default connect(mapStateToProps)(Beat);

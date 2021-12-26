@@ -53,7 +53,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         loadingStatus: {
           ...state.loadingStatus,
-          [payload.option]: payload.status,
+          [payload.note]: payload.status,
         },
       };
 

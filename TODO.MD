@@ -14,7 +14,10 @@
 * Changing sound source does a full reset on pattern player
 * Transposing scale does a iterative check on what to update
 * Loading scale (or song with scale) does a iterative check on what to update
-* Remove old global effects
+
+* Add percussive sounds to createHowls
+* Fix options in createHowls
+* Remove old global effects - soundOptions still used by BeatDropdown
 * Remove old state reducers and actions
 * Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?

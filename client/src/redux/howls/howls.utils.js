@@ -66,8 +66,11 @@ export const createHowl = (option, path) => {
 
 export const createHowls = () => {
   const {
-    ui: {
-      soundOptions: { allSounds },
+    howls: {
+      info: { audioSrc },
+    },
+    scale: {
+      notes: { round, extra },
     },
   } = store.getState();
 
@@ -76,16 +79,19 @@ export const createHowls = () => {
     all: [],
   };
 
-  const newHowls = Object.keys(allSounds).reduce((acc, option) => {
-    store.dispatch(updateHowlLoadingStatus(option, 'loading'));
+  const newHowls = [...round, ...extra.map((note) => note.note)].reduce(
+    (acc, note, i) => {
+      store.dispatch(updateHowlLoadingStatus(note, 'loading'));
 
-    const { key, play, howl } = createHowl(option, allSounds[option]);
+      const { key, play, howl } = createHowl(i, `${audioSrc.path}/${note}.mp3`);
 
-    acc.optionCbs[option] = { play };
-    acc.all.push({ key, play, howl, option });
+      acc.optionCbs[i] = { play };
+      acc.all.push({ key, play, howl, option: i });
 
-    return acc;
-  }, initialValues);
+      return acc;
+    },
+    initialValues
+  );
 
   return newHowls;
 };

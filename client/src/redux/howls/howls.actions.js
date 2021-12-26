@@ -29,7 +29,7 @@ export const setVolume = (newVolume) => (dispatch) => {
   });
 };
 
-export const updateHowlLoadingStatus = (option, status) => ({
+export const updateHowlLoadingStatus = (note, status) => ({
   type: howlsTypes.UPDATE_HOWL_LOADING_STATUS,
-  payload: { option, status },
+  payload: { note, status },
 });
