@@ -16,56 +16,38 @@ export const setPrivacyOpen = (privacyOpen) => ({
   payload: privacyOpen,
 });
 
-export const setSoundOptions =
-  (scaleRound, scaleExtra) => (dispatch, getState) => {
-    const {
-      howls: {
-        info: { audioSrc },
-      },
-    } = getState();
-
-    const allOptions = ['T', 't', '-'];
-    const allSounds = {
-      T: `${audioSrc.path}/takLoud.mp3`,
-      t: `${audioSrc.path}/takSoft.mp3`,
+export const setSoundOptions = (scaleRound, scaleExtra) => (dispatch) => {
+  const round = scaleRound.map((note, i) => {
+    return {
+      label: `${i} - ${note}`,
+      labelSharp: `${i} - ${getNoteLabelFromName(note, true)}`,
+      value: `${i}`,
     };
+  });
 
-    const round = scaleRound.map((note, i) => {
-      allOptions.push(`${i}`);
-      allSounds[i] = `${audioSrc.path}/${note}.mp3`;
-      return {
-        label: `${i} - ${note}`,
-        labelSharp: `${i} - ${getNoteLabelFromName(note, true)}`,
-        value: `${i}`,
-      };
-    });
+  const extra = scaleExtra.map(({ note }, i) => {
+    return {
+      label: `b${i + 1} - ${note}`,
+      labelSharp: `b${i + 1} - ${getNoteLabelFromName(note, true)}`,
+      value: `b${i + 1}`,
+    };
+  });
 
-    const extra = scaleExtra.map(({ note }, i) => {
-      allOptions.push(`b${i + 1}`);
-      allSounds[`b${i + 1}`] = `${audioSrc.path}/${note}.mp3`;
-      return {
-        label: `b${i + 1} - ${note}`,
-        labelSharp: `b${i + 1} - ${getNoteLabelFromName(note, true)}`,
-        value: `b${i + 1}`,
-      };
-    });
+  const percussive = [
+    // { label: 'Pause', value: '-' },
+    { label: 'Loud Tak', labelSharp: 'Loud Tak', value: 'T' },
+    { label: 'Soft Tak', labelSharp: 'Soft Tak', value: 't' },
+  ];
 
-    const percussive = [
-      // { label: 'Pause', value: '-' },
-      { label: 'Loud Tak', labelSharp: 'Loud Tak', value: 'T' },
-      { label: 'Soft Tak', labelSharp: 'Soft Tak', value: 't' },
-    ];
-
-    dispatch({
-      type: uiTypes.SET_SOUND_OPTIONS,
-      payload: {
-        allSounds,
-        extra,
-        percussive,
-        round,
-      },
-    });
-  };
+  dispatch({
+    type: uiTypes.SET_SOUND_OPTIONS,
+    payload: {
+      extra,
+      percussive,
+      round,
+    },
+  });
+};
 
 export const toggleCountOpen = () => ({
   type: uiTypes.TOGGLE_COUNT_OPEN,

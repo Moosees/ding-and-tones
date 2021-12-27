@@ -15,7 +15,7 @@
 * Transposing scale does a iterative check on what to update
 * Loading scale (or song with scale) does a iterative check on what to update
 
-* Add percussive sounds to createHowls
+* Add percussive sounds to createHowls (keyboard and BeatDropdown)
 * Fix options in createHowls
 * Remove old global effects - soundOptions still used by BeatDropdown
 * Remove old state reducers and actions
