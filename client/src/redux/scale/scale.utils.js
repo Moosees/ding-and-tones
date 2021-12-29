@@ -113,7 +113,7 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
   if (!round.length) return [];
 
   const roundWithValues = addNoteValueFromName(
-    round.map((note, i) => ({ note, localIndex: i, option: i }))
+    round.map((note, i) => ({ note, localIndex: i, option: `${i}` }))
   );
 
   const extraWithValues = addNoteValueFromName(
