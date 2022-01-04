@@ -15,7 +15,6 @@ import ScaleInterval from './ScaleInterval';
 const Intervals = ({
   displayedChord,
   displayedNote,
-  round,
   scale,
   sharpNotes,
 }) => {
@@ -68,7 +67,6 @@ const mapStateToProps = ({ scale, drum }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   sharpNotes: scale.info.sharpNotes,
-  round: scale.notes.round,
   scale: scale.notes.scaleFull,
 });
 

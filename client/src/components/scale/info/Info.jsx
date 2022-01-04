@@ -22,7 +22,6 @@ const Info = ({
   isSignedIn,
   newScale,
   saveScale,
-  scale,
   scaleInfo,
   setScaleName,
 }) => {
@@ -91,7 +90,6 @@ const mapStateToProps = ({ scale, search, ui, user }) => ({
   isDeleting: scale.ui.isDeleting,
   isFetching: scale.ui.isFetching,
   isSaving: scale.ui.isSaving,
-  scale: scale.notes.round,
   scaleInfo: scale.info,
   isSignedIn: user.isSignedIn,
 });
