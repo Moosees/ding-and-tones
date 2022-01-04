@@ -45,6 +45,7 @@
 * Change root note of scale
 * Play scale preview from search results - how are howls handled? Low quality for speed?
 * Create scale from name and string
+* Dynamically create scales from range and root note and skip scaleFull.intervalMap?
 
 ### Local storage
 
