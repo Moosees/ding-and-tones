@@ -216,6 +216,22 @@ export const flatToSharp = {
   Bb5: 'A#5',
 };
 
+const shortFlatToSharp = {
+  Db: 'C#',
+  Eb: 'D#',
+  Gb: 'F#',
+  Ab: 'G#',
+  Bb: 'A#',
+};
+
+export const convertFlatToSharp = (note) => {
+  return flatToSharp[note] || note;
+};
+
+export const convertShortFlatToSharp = (noteShort) => {
+  return shortFlatToSharp[noteShort] || noteShort;
+};
+
 export const getNoteLabelFromName = (noteName, sharpNotes) =>
   sharpNotes && flatToSharp[noteName] ? flatToSharp[noteName] : noteName;
 

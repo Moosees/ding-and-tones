@@ -19,6 +19,7 @@
 * Add percussive hits to scaleFull? Split scaleFull and intervalMaps? Add type (round, extra, ding, percussive) to scaleFull?
 * Fix drum animations not triggering - percussive notes, fixed with above changes?
 * Remove old global effects - soundOptions still used by BeatDropdown
+* Remove utils for old global effects
 * Remove old state reducers and actions
 * Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?
@@ -26,6 +27,7 @@
 * Make sure howls status updates work
 * Remove howls.all? Remove keys in howls.all?
 * Add position to extra notes to scaleFull and use for displaying on drum and mini drum?
+* Refactor scale.utils
 * Clean up code
 
 ### Scale and chord sound
@@ -131,6 +133,7 @@
 * BtnPrimary on mobile
 * Slider disabled default cursor
 * Sign in with privacy open on mobile messed up layout
+* Make focused note more visible?
 
 ### Focus and keyboard
 

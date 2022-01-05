@@ -4,6 +4,8 @@ import {
   TRANSLATE_BASE,
 } from '../../assets/constants';
 import {
+  convertFlatToSharp,
+  convertShortFlatToSharp,
   getNoteLabelFromName,
   noteNameToValue,
   noteValueToName,
@@ -89,16 +91,21 @@ const addRootAndPosition = (scale, sharpNotes) => {
           isExtra,
           localIndex,
           note,
+          noteSharp: convertFlatToSharp(note),
+          noteSharpShort: convertShortFlatToSharp(noteShort),
           noteShort,
           noteValue,
           option,
         };
       }
+
       return {
         isRoot: false,
         isExtra,
         localIndex,
         note,
+        noteSharp: convertFlatToSharp(note),
+        noteSharpShort: convertShortFlatToSharp(noteShort),
         noteShort,
         noteValue,
         option,
@@ -113,11 +120,19 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
   if (!round.length) return [];
 
   const roundWithValues = addNoteValueFromName(
-    round.map((note, i) => ({ note, localIndex: i, option: `${i}` }))
+    round.map((note, i) => ({
+      note,
+      localIndex: i,
+      option: `${i}`,
+    }))
   );
 
   const extraWithValues = addNoteValueFromName(
-    extra.map((note, i) => ({ ...note, localIndex: i, option: `b${i + 1}` }))
+    extra.map((note, i) => ({
+      ...note,
+      localIndex: i,
+      option: `b${i + 1}`,
+    }))
   );
 
   const sortedScale = sortScaleByNoteValue([
