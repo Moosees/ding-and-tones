@@ -1,4 +1,3 @@
-import { getNoteLabelFromName } from '../../assets/intervals';
 import uiTypes from './ui.types';
 
 export const setCurrentlyPlaying = (currentlyPlaying) => ({
@@ -15,39 +14,6 @@ export const setPrivacyOpen = (privacyOpen) => ({
   type: uiTypes.SET_PRIVACY_OPEN,
   payload: privacyOpen,
 });
-
-export const setSoundOptions = (scaleRound, scaleExtra) => (dispatch) => {
-  const round = scaleRound.map((note, i) => {
-    return {
-      label: `${i} - ${note}`,
-      labelSharp: `${i} - ${getNoteLabelFromName(note, true)}`,
-      value: `${i}`,
-    };
-  });
-
-  const extra = scaleExtra.map(({ note }, i) => {
-    return {
-      label: `b${i + 1} - ${note}`,
-      labelSharp: `b${i + 1} - ${getNoteLabelFromName(note, true)}`,
-      value: `b${i + 1}`,
-    };
-  });
-
-  const percussive = [
-    // { label: 'Pause', value: '-' },
-    { label: 'Loud Tak', labelSharp: 'Loud Tak', value: 'T' },
-    { label: 'Soft Tak', labelSharp: 'Soft Tak', value: 't' },
-  ];
-
-  dispatch({
-    type: uiTypes.SET_SOUND_OPTIONS,
-    payload: {
-      extra,
-      percussive,
-      round,
-    },
-  });
-};
 
 export const toggleCountOpen = () => ({
   type: uiTypes.TOGGLE_COUNT_OPEN,

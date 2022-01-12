@@ -20,11 +20,6 @@ const INITIAL_STATE = {
   multiSelect: false,
   mutedBars: {},
   privacyOpen: false,
-  soundOptions: {
-    percussive: [],
-    round: [],
-    extra: [],
-  },
 };
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -47,12 +42,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         privacyOpen: payload,
-      };
-
-    case uiTypes.SET_SOUND_OPTIONS:
-      return {
-        ...state,
-        soundOptions: payload,
       };
 
     case uiTypes.TOGGLE_COUNT_OPEN: {

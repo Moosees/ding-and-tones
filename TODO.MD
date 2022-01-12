@@ -212,7 +212,7 @@
 * Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
 * Sorting search results in table
 * Privacy date localization
-* Beat hasNonScaleNote function should retry if soundOptions is not generated on mount
+* Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?
 * Save song as JSON?
 * Show if owned song is private in search results?
 * Split howls loading status into loaded and error (and error msg)?
