@@ -31,7 +31,7 @@ const BeatDropdown = ({
   isOpenCb,
   multiSelect,
   nonScaleNotes,
-  options,
+  scale,
   toggleMultiSelect,
   updateHandForBeat,
   updateSoundForBeat,
@@ -43,20 +43,25 @@ const BeatDropdown = ({
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 
+  const { round, extra } = useMemo(() => {
+    return scale.reduce(
+      (acc, note) => {
+        const type = note.isExtra ? 'extra' : 'round';
+        acc[type].push(note);
+        return acc;
+      },
+      { round: [], extra: [] }
+    );
+  }, [scale]);
+
   const keyboardCbs = useMemo(() => {
-    return createKeyboardCbs(beatId, updateSoundForBeat, updateHandForBeat, {
-      round: options.round,
-      extra: options.extra,
-      percussive: options.percussive,
-    });
-  }, [
-    beatId,
-    updateSoundForBeat,
-    updateHandForBeat,
-    options.round,
-    options.extra,
-    options.percussive,
-  ]);
+    return createKeyboardCbs(
+      beatId,
+      updateSoundForBeat,
+      updateHandForBeat,
+      scale
+    );
+  }, [beatId, updateSoundForBeat, updateHandForBeat, scale]);
 
   useEffect(() => {
     const keyboardListener = (e) => {
@@ -91,7 +96,7 @@ const BeatDropdown = ({
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
-            <SoundItems beatId={beatId} optionList={options.round} />
+            <SoundItems beatId={beatId} optionList={round} />
             {!!nonScaleNotes.length && (
               <>
                 <DividerLine small />
@@ -107,10 +112,10 @@ const BeatDropdown = ({
             <DividerLine vertical small />
           </DropdownColumn>
           <DropdownColumn>
-            <SoundItems beatId={beatId} optionList={options.extra} />
+            <SoundItems beatId={beatId} optionList={extra} />
             <DividerLine small />
-            <SoundItems beatId={beatId} optionList={options.percussive} />
-            <DividerLine small />
+            {/* <SoundItems beatId={beatId} optionList={options.percussive} />
+            <DividerLine small /> */}
             <HandItems beatId={beatId} />
           </DropdownColumn>
         </DropdownContent>
@@ -119,9 +124,9 @@ const BeatDropdown = ({
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
+const mapStateToProps = ({ scale, ui }) => ({
   multiSelect: ui.multiSelect,
-  options: ui.soundOptions,
+  scale: scale.notes.scaleFull,
 });
 
 export default connect(mapStateToProps, {

@@ -15,14 +15,14 @@ const SoundItems = ({
 }) => {
   const { sound } = beats[beatId];
 
-  const soundItems = optionList.map(({ label, labelSharp, value }) => {
-    const selected = sound.includes(value);
+  const soundItems = optionList.map(({ note, noteSharp, option }) => {
+    const selected = sound.includes(option);
 
     const isDisabled = multiSelect && sound.length >= 2 && !selected;
 
     const handleClick = () => {
-      updateSoundForBeat(beatId, value);
-      howlOptionCbs[value]?.play();
+      updateSoundForBeat(beatId, option);
+      howlOptionCbs[option]?.play();
     };
 
     const handleKeyDown = (e) => {
@@ -37,12 +37,12 @@ const SoundItems = ({
         tabIndex={isDisabled ? -1 : 0}
         disabled={isDisabled}
         selected={selected}
-        key={value}
+        key={option}
         hasNonScaleNote={hasNonScaleNote}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        {sharpNotes ? labelSharp : label}
+        {`${option} - ${sharpNotes ? noteSharp : note}`}
       </DropdownItem>
     );
   });

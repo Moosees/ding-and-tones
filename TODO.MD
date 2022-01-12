@@ -16,9 +16,10 @@
 * Loading scale (or song with scale) does a iterative check on what to update
 
 * Add percussive sounds to createHowls (keyboard and BeatDropdown)
+* Add percussive hits to BeatDropdown
 * Add percussive hits to scaleFull? Split scaleFull and intervalMaps? Add type (round, extra, ding, percussive) to scaleFull?
 * Fix drum animations not triggering - percussive notes, fixed with above changes?
-* Remove old global effects - soundOptions still used by BeatDropdown
+* Remove old global effects
 * Remove utils for old global effects
 * Remove old state reducers and actions
 * Split howls reducer into data and info?
