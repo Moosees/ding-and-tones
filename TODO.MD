@@ -1,8 +1,10 @@
 # DING AND TONES TODO LIST
 
-## Sorted
+## Sorted by release
 
 ### SoundOptions and howls state rework
+
+#### Goals
 
 * Adding or removing notes from scale updates drum
 * Adding or removing notes from scale updates keyboard listeners
@@ -15,21 +17,34 @@
 * Transposing scale does a iterative check on what to update
 * Loading scale (or song with scale) does a iterative check on what to update
 
-* Add percussive sounds to createHowls (keyboard and BeatDropdown)
+#### Needed changes
+
+* Add percussive sounds to createHowls
+* Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
-* Add percussive hits to scaleFull? Split scaleFull and intervalMaps? Add type (round, extra, ding, percussive) to scaleFull?
 * Fix drum animations not triggering - percussive notes, fixed with above changes?
-* Remove old global effects
-* Remove utils for old global effects
-* Remove old state reducers and actions
+* Make sure howls status updates work
+* Add howls handling when loading scale
+* Add howls handling when modifying scale
+
+#### Optional changes
+
+* Split scaleFull and intervalMaps?
+* Add percussive hits to scaleFull?
+* Add position to extra notes to scaleFull and use for displaying on drum and mini drum?
+* Add type (round, extra, ding, percussive) to scaleFull?
 * Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?
 * Keep list of howl status for howls not currently in scale?
-* Make sure howls status updates work
 * Remove howls.all? Remove keys in howls.all?
-* Add position to extra notes to scaleFull and use for displaying on drum and mini drum?
+
+#### Cleanup
+
 * Refactor scale.utils
-* Clean up code
+* Remove old global effects
+* Remove utils for old global effects
+* Remove old state reducers and actions
+* Remove logging and misc code
 
 ### Scale and chord sound
 
@@ -81,23 +96,25 @@
 * Use separate currentSound for patterns and play with clicks or keys?
 * "Value" exists in both beat and bar state, remove one?
 
-### Updates in need of planning
+## Focuses for upcoming release updates
+
+### Minor updates
 
 * Validate scales before saving, at least 5 tones?
+* Bar numbers on song viewer? Only long songs?
+* Add bass octave?
+
+### Major updates
+
 * Styled-components, mix-ins and css variables - portrait mq as mixin - mobile first?
 * Testing
-* Bar numbers on song viewer? Only long songs?
-* Should print view only break before fourths?
 * Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
 * Master volume controls - location and styles
 * React router 6
 * Update to redis 4 when connect-redis is supported
-* React-to-print functional components (SongView and PrintView)
-* React-to-print set documentTitle
-* React-scripts 5?
-* Add bass octave?
+* React-to-print functional components (SongView and PrintView, set documentTitle)
 
-## Unsorted
+## Not yet planned for release updates
 
 ### Bugs
 
@@ -205,6 +222,7 @@
 * Color for hands on tablature
 * Option to add note names to tablature
 * Help covers solo and mute bars
+* Should print view only break before fourths?
 
 ### State and search
 
@@ -259,3 +277,4 @@
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?
 * DRY up rc-slider
+* React-scripts 5?
