@@ -98,6 +98,11 @@
 
 ## Focuses for upcoming release updates
 
+### From user feedback
+
+* Triad chords
+* Remember sound source for user
+
 ### Minor updates
 
 * Validate scales before saving, at least 5 tones?
