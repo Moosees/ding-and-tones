@@ -30,9 +30,9 @@
 
 #### Optional changes
 
-* Split scaleFull and intervalMaps?
+* Split scaleFull and intervalMaps? Make scaleFull dynamic so intervalMaps are just scaleFulls with different root note?
 * Add percussive hits to scaleFull?
-* Add position to extra notes to scaleFull and use for displaying on drum and mini drum?
+* Add position to extra notes in scaleFull (and intervalMaps) and use for displaying on drum and mini drum?
 * Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?
 * Keep list of howl status for howls not currently in scale?
@@ -63,7 +63,7 @@
 * Change root note of scale
 * Play scale preview from search results - how are howls handled? Low quality for speed?
 * Create scale from name and string
-* Dynamically create scales from range and root note and skip scaleFull.intervalMap?
+* Dynamically create scales from range and root note and skip scaleFull.intervalMap? Already done in state update?
 
 ### Local storage
 
@@ -102,6 +102,8 @@
 
 * Triad chords
 * Remember sound source for user
+* Set base rotation for scales to simulate drums that don't have lowest note closest to player
+* Allow user to flip drum 180 deg (or freely?) to allow making tabs where high notes are in focus
 
 ### Minor updates
 
