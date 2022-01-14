@@ -12,12 +12,7 @@ import DrumMode from './DrumMode';
 import { IntervalList } from './intervals.styles';
 import ScaleInterval from './ScaleInterval';
 
-const Intervals = ({
-  displayedChord,
-  displayedNote,
-  scale,
-  sharpNotes,
-}) => {
+const Intervals = ({ displayedChord, displayedNote, scale, sharpNotes }) => {
   const { isMobile } = useDimensions();
 
   const getIntervals = () => {

@@ -46,8 +46,7 @@ const BeatDropdown = ({
   const { round, extra } = useMemo(() => {
     return scale.reduce(
       (acc, note) => {
-        const type = note.isExtra ? 'extra' : 'round';
-        acc[type].push(note);
+        acc[note.type].push(note);
         return acc;
       },
       { round: [], extra: [] }

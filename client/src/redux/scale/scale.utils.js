@@ -73,45 +73,29 @@ const addRootAndPosition = (scale, sharpNotes) => {
   let rootValue = 36;
   let rootName = 'C';
 
-  const scaleWithPos = scale.map(
-    ({ localIndex, note, noteShort, noteValue, option, pos }, i) => {
-      const isExtra = pos >= 0;
+  const scaleWithPos = scale.map((scaleNote, i) => {
+    const { note, noteShort, noteValue, type } = scaleNote;
 
-      if (!rootFound && !isExtra) {
-        rootFound = true;
-        rootIndex = i;
-        rootValue = noteValue;
-        rootName = getNoteLabelFromName(
-          noteValueToName[noteValue],
-          sharpNotes
-        ).slice(0, -1);
+    let isRoot = false;
 
-        return {
-          isRoot: true,
-          isExtra,
-          localIndex,
-          note,
-          noteSharp: convertFlatToSharp(note),
-          noteSharpShort: convertShortFlatToSharp(noteShort),
-          noteShort,
-          noteValue,
-          option,
-        };
-      }
-
-      return {
-        isRoot: false,
-        isExtra,
-        localIndex,
-        note,
-        noteSharp: convertFlatToSharp(note),
-        noteSharpShort: convertShortFlatToSharp(noteShort),
-        noteShort,
-        noteValue,
-        option,
-      };
+    if (!rootFound && type === 'round') {
+      isRoot = true;
+      rootFound = true;
+      rootIndex = i;
+      rootValue = noteValue;
+      rootName = getNoteLabelFromName(
+        noteValueToName[noteValue],
+        sharpNotes
+      ).slice(0, -1);
     }
-  );
+
+    return {
+      ...scaleNote,
+      isRoot,
+      noteSharp: convertFlatToSharp(note),
+      noteSharpShort: convertShortFlatToSharp(noteShort),
+    };
+  });
 
   return { scaleWithPos, rootIndex, rootValue, rootName };
 };
@@ -124,6 +108,7 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
       note,
       localIndex: i,
       option: `${i}`,
+      type: 'round',
     }))
   );
 
@@ -132,6 +117,7 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
       ...note,
       localIndex: i,
       option: `b${i + 1}`,
+      type: 'extra',
     }))
   );
 

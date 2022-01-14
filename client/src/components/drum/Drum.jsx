@@ -23,16 +23,12 @@ const Drum = ({
     howlOptionCbs[soundOption].play();
   };
 
-  const { roundTonefields, extraTonefields } = scale.reduce(
+  const { round, extra } = scale.reduce(
     (acc, note, i) => {
       const showNote =
         !displayedChord || displayedChord.notes.includes(note.noteShort);
 
-      const noteNumber = note.isExtra
-        ? `b${note.localIndex + 1}`
-        : '' + note.localIndex;
-
-      const isPlaying = currentSound.includes(noteNumber);
+      const isPlaying = currentSound.includes(note.option);
 
       const hasFocus = i === displayedNote;
 
@@ -43,7 +39,7 @@ const Drum = ({
             scale[displayedNote].intervalMap,
             drumMode,
             displayedChord,
-            noteNumber,
+            note.option,
             sharpNotes
           )
         : '';
@@ -61,22 +57,20 @@ const Drum = ({
         color,
         localIndex: note.localIndex,
         isPlaying,
-        handlePlay: () => handlePlay(noteNumber),
+        handlePlay: () => handlePlay(note.option),
       };
 
-      acc[note.isExtra ? 'extraTonefields' : 'roundTonefields'].push(
-        tonefieldData
-      );
+      acc[note.type].push(tonefieldData);
 
       return acc;
     },
-    { roundTonefields: [], extraTonefields: [] }
+    { round: [], extra: [] }
   );
 
   return (
     <DrumContainer style={style}>
       <DrumWrapper>
-        {extraTonefields.map((data, i) => (
+        {extra.map((data, i) => (
           <ExtraNote key={i} {...data} />
         ))}
         <DrumSvg viewBox="-10 -10 20 20">
@@ -105,7 +99,7 @@ const Drum = ({
           />
           <Tak hand={2} handlePlay={() => handlePlay('t', 2)} />
           <Tak hand={1} handlePlay={() => handlePlay('T', 1)} />
-          {roundTonefields.map((data, i) => (
+          {round.map((data, i) => (
             <Tonefield key={i} {...data} />
           ))}
         </DrumSvg>
