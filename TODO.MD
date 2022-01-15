@@ -158,6 +158,7 @@
 * Slider disabled default cursor
 * Sign in with privacy open on mobile messed up layout
 * Make focused note more visible?
+* Mouse pointer for Intervals circles
 
 ### Focus and keyboard
 
