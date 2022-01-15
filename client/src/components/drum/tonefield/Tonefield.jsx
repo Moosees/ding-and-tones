@@ -7,7 +7,6 @@ const Tonefield = ({
   hasFocus,
   isPlaying,
   localIndex,
-  noteNumber,
   positionMap,
   showNote,
   text,
