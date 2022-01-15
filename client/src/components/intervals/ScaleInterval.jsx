@@ -30,7 +30,7 @@ const getIntervalProps = (interval) => {
 const ScaleInterval = ({
   displayedNote,
   interval,
-  number,
+  option,
   scaleIndex,
   sharpNotes,
   setDisplayedNote,
@@ -44,7 +44,7 @@ const ScaleInterval = ({
   return (
     <IntervalContainer onClick={handleIntervalClick}>
       <IntervalColor color={color}>
-        <span>{number}</span>
+        <span>{option}</span>
       </IntervalColor>
       <IntervalBreakBox>
         <IntervalText>

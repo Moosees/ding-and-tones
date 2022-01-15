@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Add note.type to interval maps like in regular scaleFull
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
@@ -30,9 +29,9 @@
 
 #### Optional changes
 
-* Split scaleFull and intervalMaps? Make scaleFull dynamic so intervalMaps are just scaleFulls with different root note?
+* Split scaleFull and intervalMaps? Move scale out of notes in reducer?
 * Add percussive hits to scaleFull?
-* Add position to extra notes in scaleFull (and intervalMaps) and use for displaying on drum and mini drum?
+* Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
 * Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?
 * Keep list of howl status for howls not currently in scale?
@@ -63,7 +62,7 @@
 * Change root note of scale
 * Play scale preview from search results - how are howls handled? Low quality for speed?
 * Create scale from name and string
-* Dynamically create scales from range and root note and skip scaleFull.intervalMap? Already done in state update?
+* Dynamically create scales from range and root note and skip scaleFull.intervalMap?
 
 ### Local storage
 
