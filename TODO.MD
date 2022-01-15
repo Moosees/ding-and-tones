@@ -19,6 +19,7 @@
 
 #### Needed changes
 
+* Mirror scale state and db model for scale.info and scale.notes, get scaleID from scale.ui. Move scaleFull, percussive sounds and intervalMap to scale.ui
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
@@ -29,8 +30,6 @@
 
 #### Optional changes
 
-* Split scaleFull and intervalMaps? Move scale out of notes in reducer?
-* Add percussive hits to scaleFull?
 * Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
 * Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?
@@ -39,7 +38,7 @@
 
 #### Cleanup
 
-* Refactor scale.utils (handle roots that are not ding)
+* Refactor scale.utils (handle roots that are not ding, split file?)
 * Remove old global effects
 * Remove utils for old global effects
 * Remove old state reducers and actions
