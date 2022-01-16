@@ -19,7 +19,9 @@
 
 #### Needed changes
 
-* Mirror scale state and db model for scale.info and scale.notes, get scaleID from scale.ui. Move scaleFull, percussive sounds and intervalMap to scale.ui
+* Update scale actions to use new scale state
+* Update components relying on old scale state to use new scale state
+* Split scale.notes.round into round and dings
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
@@ -35,6 +37,8 @@
 * Iterate over scale notes to see if song is ready to be played?
 * Keep list of howl status for howls not currently in scale?
 * Remove howls.all? Remove keys in howls.all?
+* Merge drum state into scale.ui?
+* Does saving scale need to update scale state other than ID and isOwner?
 
 #### Cleanup
 
@@ -118,6 +122,7 @@
 * React router 6
 * Update to redis 4 when connect-redis is supported
 * React-to-print functional components (SongView and PrintView, set documentTitle)
+* Song state update, mirror db model and state
 
 ## Not yet planned for release updates
 

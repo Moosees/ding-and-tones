@@ -9,9 +9,16 @@ export const infoState = {
 };
 
 export const notesState = {
+  dings: [],
   round: [],
   extra: [],
-  scaleFull: [],
+};
+
+export const parsedState = {
+  intervals: [],
+  percussive: [],
+  pitched: [],
+  positions: [],
 };
 
 export const uiState = {
@@ -20,6 +27,5 @@ export const uiState = {
   isFetching: false,
   isOwner: false,
   isSaving: false,
-  positionMap: [],
   scaleId: null,
 };

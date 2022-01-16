@@ -28,7 +28,6 @@ const uiReducer = (state = uiState, { type, payload }) => {
         isFetching: false,
         isOwner: payload.isOwner,
         scaleId: payload.scaleId,
-        positionMap: payload.positionMap,
       };
 
     case scaleTypes.LOAD_SCALE:
@@ -37,7 +36,6 @@ const uiReducer = (state = uiState, { type, payload }) => {
         hasChanges: false,
         isOwner: payload.isOwner,
         scaleId: payload.scaleId,
-        positionMap: payload.positionMap,
       };
 
     case scaleTypes.SAVE_ERROR:
@@ -56,7 +54,6 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
-        positionMap: payload.newPositionMap,
         hasChanges: true,
         isOwner: false,
         scaleId: null,
@@ -68,7 +65,6 @@ const uiReducer = (state = uiState, { type, payload }) => {
         isOwner: false,
         scaleId: null,
         hasChanges: false,
-        positionMap: [{ rotate: 0, translate: 0 }],
       };
 
     case scaleTypes.SET_NAME:
