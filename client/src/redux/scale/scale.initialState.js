@@ -15,7 +15,6 @@ export const notesState = {
 };
 
 export const parsedState = {
-  intervals: [],
   percussive: [],
   pitched: [],
   positions: [],

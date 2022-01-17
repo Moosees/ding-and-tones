@@ -44,7 +44,7 @@ const Tonefield = ({
 };
 
 const mapStateToProps = ({ scale }) => ({
-  positionMap: scale.ui.positionMap,
+  positionMap: scale.parsed.positions,
 });
 
 export default connect(mapStateToProps)(Tonefield);

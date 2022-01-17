@@ -70,7 +70,7 @@ export const createHowls = () => {
       info: { audioSrc },
     },
     scale: {
-      notes: { scaleFull },
+      parsed: { pitched },
     },
   } = store.getState();
 
@@ -79,7 +79,7 @@ export const createHowls = () => {
     all: [],
   };
 
-  const newHowls = scaleFull.reduce((acc, { note, option }) => {
+  const newHowls = pitched.reduce((acc, { note, option }) => {
     store.dispatch(updateHowlLoadingStatus(note, 'loading'));
 
     const { key, play, howl } = createHowl(

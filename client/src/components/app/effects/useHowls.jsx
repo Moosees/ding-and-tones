@@ -2,18 +2,18 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   cleanupAllHowls,
-  createAllHowls
+  createAllHowls,
 } from '../../../redux/howls/howls.actions';
 
 const useHowls = () => {
   const dispatch = useDispatch();
-  const { round, extra } = useSelector(({ scale }) => scale.notes);
+  const { dings, round, extra } = useSelector(({ scale }) => scale.notes);
 
   useEffect(() => {
     dispatch(createAllHowls());
 
     return () => dispatch(cleanupAllHowls());
-  }, [round, extra, dispatch]);
+  }, [dings, round, extra, dispatch]);
 };
 
 export default useHowls;

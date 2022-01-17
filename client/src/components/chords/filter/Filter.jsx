@@ -83,7 +83,7 @@ const Filter = ({
 
 const mapStateToProps = ({ chords, scale }) => ({
   chordList: chords.chordList,
-  scale: scale.notes.scaleFull,
+  scale: scale.parsed.pitched,
 });
 
 export default connect(mapStateToProps, {

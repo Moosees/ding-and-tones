@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../../assets/constants';
 import {
   getNoteLabelFromName,
-  noteValueToName
+  noteValueToName,
 } from '../../../assets/intervals';
 import {
   addNoteToScale,
   removeNoteFromScale,
   toggleSharps,
-  transposeScale
+  transposeScale,
 } from '../../../redux/scale/scale.actions';
 import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
@@ -19,14 +19,15 @@ import { Note, NotesList, TextLabel } from './notes.styles';
 const Notes = ({
   addExtraNotes,
   addNoteToScale,
-  extra,
   isSongPlaying,
+  notes,
   removeNoteFromScale,
-  round,
   sharpNotes,
   toggleSharps,
   transposeScale,
 }) => {
+  const { dings, extra, round } = notes;
+
   const handleAdd = (note) => {
     if (isSongPlaying) return;
     addNoteToScale(note);
@@ -39,26 +40,27 @@ const Notes = ({
 
   const getNotes = () => {
     const extraNotes = extra.map(({ note }) => note);
-    const notes = [];
+    const noteSelectors = [];
 
     for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
       const noteName = noteValueToName[i];
-      const isNoteInRound = round.includes(noteName);
+      const isNoteInRoundOrDings =
+        round.includes(noteName) || dings.includes(noteName);
       const isNoteInExtra = extraNotes.includes(noteName);
-      const isNoteInScale = isNoteInRound || isNoteInExtra;
+      const isNoteInScale = isNoteInRoundOrDings || isNoteInExtra;
       const disabled =
         (!isNoteInScale && addExtraNotes && extraNotes.length >= 8) ||
-        (!isNoteInScale && !addExtraNotes && round.length >= 14);
+        (!isNoteInScale && !addExtraNotes && round.length >= 13);
 
       const handleClick = isNoteInScale
         ? () => handleRemove(noteName)
         : () => handleAdd(noteName);
 
-      notes.push(
+      noteSelectors.push(
         <Note
           disabled={disabled}
           key={i}
-          inRound={isNoteInRound}
+          inRound={isNoteInRoundOrDings}
           inExtra={isNoteInExtra}
           onClick={handleClick}
         >
@@ -66,7 +68,7 @@ const Notes = ({
         </Note>
       );
     }
-    return notes;
+    return noteSelectors;
   };
 
   return (
@@ -113,8 +115,7 @@ const Notes = ({
 
 const mapStateToProps = ({ scale, ui }) => ({
   sharpNotes: scale.info.sharpNotes,
-  extra: scale.notes.extra,
-  round: scale.notes.round,
+  notes: scale.notes,
   addExtraNotes: ui.addExtraNotes,
   isSongPlaying: ui.isSongPlaying,
 });

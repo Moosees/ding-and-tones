@@ -125,7 +125,7 @@ const BeatDropdown = ({
 
 const mapStateToProps = ({ scale, ui }) => ({
   multiSelect: ui.multiSelect,
-  scale: scale.notes.scaleFull,
+  scale: scale.parsed.pitched,
 });
 
 export default connect(mapStateToProps, {

@@ -114,7 +114,7 @@ const mapStateToProps = ({ drum, howls, scale, ui }) => ({
   drumMode: drum.drumMode,
   howlOptionCbs: howls.optionCbs,
   sharpNotes: scale.info.sharpNotes,
-  scale: scale.notes.scaleFull,
+  scale: scale.parsed.pitched,
   currentSound: ui.currentSound,
   isEditingExtraPos: ui.isEditingExtraPos,
 });

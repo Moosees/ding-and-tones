@@ -5,18 +5,21 @@ import MiniExtra from './tonefield/MiniExtra';
 import MiniTonefield from './tonefield/MiniTonefield';
 
 const MiniDrum = ({ notes, showNoteList, positionMap, sharpNotes }) => {
-  const { round, extra } = notes;
+  const { dings, round, extra } = notes;
+  const dingRound = [...dings, ...round];
 
   const roundTonefields = positionMap.map((tonefield, i) => {
     return (
       <MiniTonefield
         key={i}
-        note={round[i]}
+        note={dingRound[i]}
         position={positionMap[i]}
         isDing={i === 0}
         showNote={
           !showNoteList ||
-          showNoteList.includes(round[i].substring(0, round[i].length - 1))
+          showNoteList.includes(
+            dingRound[i].substring(0, dingRound[i].length - 1)
+          )
         }
         sharpNotes={sharpNotes}
       />
@@ -58,7 +61,7 @@ const MiniDrum = ({ notes, showNoteList, positionMap, sharpNotes }) => {
 const mapStateToProps = ({ scale }) => ({
   sharpNotes: scale.info.sharpNotes,
   notes: scale.notes,
-  positionMap: scale.ui.positionMap,
+  positionMap: scale.parsed.positions,
 });
 
 export default connect(mapStateToProps)(MiniDrum);

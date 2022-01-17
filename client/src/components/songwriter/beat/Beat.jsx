@@ -14,7 +14,7 @@ const Beat = ({
   handsOpen,
   isMuted,
   isSongPlaying,
-  scaleFull,
+  scale,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
@@ -27,8 +27,8 @@ const Beat = ({
   }, [setIsOpen, isSongPlaying]);
 
   const nonScaleNotes = useMemo(
-    () => getNonScaleNotes(sound, scaleFull),
-    [sound, scaleFull]
+    () => getNonScaleNotes(sound, scale),
+    [sound, scale]
   );
 
   const handleOpen = () => {
@@ -80,7 +80,7 @@ const Beat = ({
 };
 
 const mapStateToProps = ({ scale, song, ui }) => ({
-  scaleFull: scale.notes.scaleFull,
+  scale: scale.parsed.pitched,
   beats: song.beats,
   countOpen: ui.countOpen,
   currentBeat: ui.currentBeat,

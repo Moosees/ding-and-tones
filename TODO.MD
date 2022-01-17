@@ -19,9 +19,9 @@
 
 #### Needed changes
 
-* Update scale actions to use new scale state
-* Update components relying on old scale state to use new scale state
 * Split scale.notes.round into round and dings
+* Update scale actions to use new scale state - changing and saving/loading (scaleFull, newFull, newPositionMap)
+* Make sure chords work with new parsed scales
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
@@ -39,6 +39,9 @@
 * Remove howls.all? Remove keys in howls.all?
 * Merge drum state into scale.ui?
 * Does saving scale need to update scale state other than ID and isOwner?
+* Use scale.parsed.pitched in MiniDrum, ExtraNote? (scale)Notes, Edit and Move?
+* Handle checking if song is playing in state? Middleware?
+* Update beat.utils to use parsed scale with (dynamic) percussive notes?
 
 #### Cleanup
 
