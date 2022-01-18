@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+const getNoteBorder = ({ type, theme }) => {
+  const borders = {
+    extra: `2px dotted ${theme.colorBtnConfirm}`,
+    round: `2px solid ${theme.colorCheckbox}`,
+    outside: `1px solid ${theme.colorBtnClear}`,
+  };
+
+  return borders[type];
+};
+
 export const NotesList = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -16,10 +26,9 @@ export const NotesList = styled.div`
 export const Note = styled.button`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.05);
-  border: 1px solid ${({ theme }) => theme.colorBtnClear};
+  border: ${getNoteBorder};
   border-radius: 100%;
-  box-shadow: ${({ inRound, inExtra, theme }) =>
-    inRound || inExtra ? theme.shadowLight : 'none'};
+  box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   font-family: 'Sura', serif;
@@ -29,19 +38,8 @@ export const Note = styled.button`
   transition: transform 0.1s ease;
   width: 3rem;
 
-  ${({ inRound, theme }) =>
-    inRound &&
-    `
-    border: 2px solid ${theme.colorCheckbox};
-  `}
-
-  ${({ inExtra, theme }) =>
-    inExtra &&
-    `
-    border: 2px dotted ${theme.colorBtnConfirm};
-  `}
-
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: 0;
     transform: scale(${({ disabled }) => (disabled ? '1' : '1.1')});
   }

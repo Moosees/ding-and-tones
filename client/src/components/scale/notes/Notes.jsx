@@ -22,11 +22,12 @@ const Notes = ({
   isSongPlaying,
   notes,
   removeNoteFromScale,
+  scale,
   sharpNotes,
   toggleSharps,
   transposeScale,
 }) => {
-  const { dings, extra, round } = notes;
+  const { extra, round } = notes;
 
   const handleAdd = (note) => {
     if (isSongPlaying) return;
@@ -39,31 +40,28 @@ const Notes = ({
   };
 
   const getNotes = () => {
-    const extraNotes = extra.map(({ note }) => note);
+    const noteValues = scale.reduce(
+      (acc, { noteValue, type }) => ({ ...acc, [noteValue]: type }),
+      {}
+    );
     const noteSelectors = [];
 
     for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
       const noteName = noteValueToName[i];
-      const isNoteInRoundOrDings =
-        round.includes(noteName) || dings.includes(noteName);
-      const isNoteInExtra = extraNotes.includes(noteName);
-      const isNoteInScale = isNoteInRoundOrDings || isNoteInExtra;
-      const disabled =
-        (!isNoteInScale && addExtraNotes && extraNotes.length >= 8) ||
-        (!isNoteInScale && !addExtraNotes && round.length >= 13);
 
-      const handleClick = isNoteInScale
+      const inScale = !!noteValues[i];
+      const type = inScale ? noteValues[i] : 'outside';
+
+      const disabled =
+        (!inScale && addExtraNotes && extra.length >= 8) ||
+        (!inScale && !addExtraNotes && round.length >= 13);
+
+      const handleClick = inScale
         ? () => handleRemove(noteName)
         : () => handleAdd(noteName);
 
       noteSelectors.push(
-        <Note
-          disabled={disabled}
-          key={i}
-          inRound={isNoteInRoundOrDings}
-          inExtra={isNoteInExtra}
-          onClick={handleClick}
-        >
+        <Note disabled={disabled} key={i} type={type} onClick={handleClick}>
           <span>{getNoteLabelFromName(noteName, sharpNotes)}</span>
         </Note>
       );
@@ -116,6 +114,7 @@ const Notes = ({
 const mapStateToProps = ({ scale, ui }) => ({
   sharpNotes: scale.info.sharpNotes,
   notes: scale.notes,
+  scale: scale.parsed.pitched,
   addExtraNotes: ui.addExtraNotes,
   isSongPlaying: ui.isSongPlaying,
 });
