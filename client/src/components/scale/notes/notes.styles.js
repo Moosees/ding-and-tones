@@ -28,7 +28,8 @@ export const Note = styled.button`
   background-color: rgba(0, 0, 0, 0.05);
   border: ${getNoteBorder};
   border-radius: 100%;
-  box-shadow: ${({ inScale, theme }) => (inScale ? theme.shadowLight : 'none')};
+  box-shadow: ${({ type, theme }) =>
+    type !== 'outside' ? theme.shadowLight : 'none'};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   font-family: 'Sura', serif;
