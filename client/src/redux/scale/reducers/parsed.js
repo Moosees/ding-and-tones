@@ -1,9 +1,9 @@
 import songTypes from '../../song/song.types';
-import { notesState } from '../scale.initialState';
+import { parsedState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
 import { createFullScaleFromNames } from '../scale.utils';
 
-const parsedReducer = (state = notesState, { type, payload }) => {
+const parsedReducer = (state = parsedState, { type, payload }) => {
   switch (type) {
     //case scaleTypes.SAVE_SUCCESSFUL:
     case scaleTypes.FETCH_SUCCESSFUL:
@@ -11,9 +11,8 @@ const parsedReducer = (state = notesState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
-        intervals: payload.newIntervals,
-        pitched: payload.newPitched,
-        positions: payload.newPositions,
+        pitched: payload.pitched,
+        positions: payload.positions,
       };
 
     case scaleTypes.NEW_SCALE: {

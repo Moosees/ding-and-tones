@@ -100,11 +100,11 @@ const addRootAndPosition = (scale, sharpNotes) => {
   return { scaleWithPos, rootIndex, rootValue, rootName };
 };
 
-export const createFullScaleFromNames = (round, extra, sharpNotes) => {
-  if (!round.length) return [];
+export const createFullScaleFromNames = (inner, extra, sharpNotes) => {
+  if (!inner.length) return [];
 
-  const roundWithValues = addNoteValueFromName(
-    round.map((note, i) => ({
+  const innerWithValues = addNoteValueFromName(
+    inner.map((note, i) => ({
       note,
       localIndex: i,
       option: `${i}`,
@@ -122,7 +122,7 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
   );
 
   const sortedScale = sortScaleByNoteValue([
-    ...roundWithValues,
+    ...innerWithValues,
     ...extraWithValues,
   ]);
 
@@ -131,9 +131,9 @@ export const createFullScaleFromNames = (round, extra, sharpNotes) => {
     sharpNotes
   );
 
-  const scaleFull = addIntervalMap(scaleWithPos);
+  const pitched = addIntervalMap(scaleWithPos);
 
-  return { newRoot: { rootIndex, rootValue, rootName }, newFull: scaleFull };
+  return { rootInfo: { rootIndex, rootValue, rootName }, pitched };
 };
 
 export const parseScaleData = (scale, suppressAlert) => {
@@ -144,21 +144,22 @@ export const parseScaleData = (scale, suppressAlert) => {
     notes: { dings, round, extra },
   } = scale;
 
-  const roundMerged = [dings[0], ...round];
+  const roundMerged = [...dings, ...round];
 
-  const positionMap = createPositionMap(info.layout, roundMerged.length);
-  const { newFull, newRoot } = createFullScaleFromNames(
+  const positions = createPositionMap(info.layout, roundMerged.length);
+  const { pitched, rootInfo } = createFullScaleFromNames(
     roundMerged,
     extra,
     info.sharpNotes
   );
 
   const parsedScaleData = {
-    newRound: roundMerged,
-    newExtra: extra,
-    newFull,
-    newRoot,
-    positionMap,
+    dings,
+    round,
+    extra,
+    pitched,
+    rootInfo,
+    positions,
     info,
     isOwner,
     scaleId,
@@ -168,7 +169,7 @@ export const parseScaleData = (scale, suppressAlert) => {
     parsedScaleData.alert = `"${scale.info.rootName} ${scale.info.name}" loaded`;
 
   if (parsedScaleData.info.rootIndex === undefined) {
-    parsedScaleData.info.rootIndex = newRoot.rootIndex;
+    parsedScaleData.info.rootIndex = rootInfo.rootIndex;
   }
 
   return parsedScaleData;
