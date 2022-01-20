@@ -78,7 +78,7 @@ const addRootAndPosition = (scale, sharpNotes) => {
 
     let isRoot = false;
 
-    if (!rootFound && type === 'round') {
+    if (!rootFound && ['ding', 'round'].includes(type)) {
       isRoot = true;
       rootFound = true;
       rootIndex = i;
@@ -97,17 +97,29 @@ const addRootAndPosition = (scale, sharpNotes) => {
     };
   });
 
-  return { scaleWithPos, rootIndex, rootValue, rootName };
+  return { rootInfo: { rootIndex, rootValue, rootName }, scaleWithPos };
 };
 
-export const createFullScaleFromNames = (inner, extra, sharpNotes) => {
-  if (!inner.length) return [];
+export const createFullScaleFromNames = (
+  { dings, inner = [], extra = [] },
+  sharpNotes
+) => {
+  if (!dings || !dings.length) return [];
+
+  const dingsWithValues = addNoteValueFromName(
+    dings.map((note, i) => ({
+      note,
+      localIndex: i,
+      option: `${i}`,
+      type: 'ding',
+    }))
+  );
 
   const innerWithValues = addNoteValueFromName(
     inner.map((note, i) => ({
       note,
-      localIndex: i,
-      option: `${i}`,
+      localIndex: i + dings.length,
+      option: `${i + dings.length}`,
       type: 'round',
     }))
   );
@@ -122,18 +134,19 @@ export const createFullScaleFromNames = (inner, extra, sharpNotes) => {
   );
 
   const sortedScale = sortScaleByNoteValue([
+    ...dingsWithValues,
     ...innerWithValues,
     ...extraWithValues,
   ]);
 
-  const { rootIndex, rootValue, rootName, scaleWithPos } = addRootAndPosition(
+  const { rootInfo, scaleWithPos } = addRootAndPosition(
     sortedScale,
     sharpNotes
   );
 
   const pitched = addIntervalMap(scaleWithPos);
 
-  return { rootInfo: { rootIndex, rootValue, rootName }, pitched };
+  return { rootInfo, pitched };
 };
 
 export const parseScaleData = (scale, suppressAlert) => {
