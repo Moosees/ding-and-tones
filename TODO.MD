@@ -19,8 +19,14 @@
 
 #### Needed changes
 
-* Split scale.notes.round into round and dings
-* Update scale actions to use new scale state - changing and saving/loading (scaleFull, newFull, newPositionMap)
+* Update default state to use split round and dings
+* Update createScaleLabel to use split round and dings
+* Update load scale to use split round and dings
+* Update load song (with scale) to use split round and dings
+* Update save scale (and song?) to use split round and dings
+* Update new scale to use split round and dings
+* Update transpose scale to use split round and dings
+* Update flat/sharp to use split round and dings
 * Make sure chords work with new parsed scales
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
@@ -48,6 +54,7 @@
 #### Cleanup
 
 * Refactor scale.utils (handle roots that are not ding, split file?)
+* Refactor scale.actions?
 * Remove old global effects
 * Remove utils for old global effects
 * Remove old state reducers and actions

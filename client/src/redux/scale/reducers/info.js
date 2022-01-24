@@ -1,7 +1,6 @@
 import songTypes from '../../song/song.types';
 import { infoState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
-import { createScaleLabel } from '../scale.utils';
 
 const infoReducer = (state = infoState, { type, payload }) => {
   switch (type) {
@@ -39,12 +38,7 @@ const infoReducer = (state = infoState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
-        ...payload.newRoot,
-        label: createScaleLabel(
-          payload.newExtra,
-          payload.newRound,
-          state.sharpNotes
-        ),
+        ...payload.info,
       };
 
     case songTypes.FETCH_SUCCESSFUL:

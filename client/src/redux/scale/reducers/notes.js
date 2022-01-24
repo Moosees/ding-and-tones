@@ -10,9 +10,7 @@ const notesReducer = (state = notesState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
-        dings: payload.dings,
-        extra: payload.extra,
-        round: payload.round,
+        ...payload.notes,
       };
 
     case scaleTypes.NEW_SCALE:

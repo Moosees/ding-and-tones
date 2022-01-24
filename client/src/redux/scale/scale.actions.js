@@ -17,33 +17,62 @@ import {
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
   const {
-    scale: { info, notes, ui },
+    scale: { info, notes },
     ui: { addExtraNotes },
   } = getState();
 
-  const newRound = addExtraNotes
-    ? notes.round
-    : sortScaleByFreq([...notes.round, newNote]);
+  const payload = {
+    notes: {},
+    parsed: {},
+    info: {},
+  };
 
-  const newPositionMap = addExtraNotes
-    ? ui.positionMap
-    : createPositionMap(info.layout, newRound.length);
+  if (addExtraNotes) {
+    const newExtraSorted = sortScaleByFreq([
+      ...notes.extra.map(({ note }) => note),
+      newNote,
+    ]);
 
-  const newExtra = addExtraNotes
-    ? addExtraNotesPos(
-        sortScaleByFreq([...notes.extra.map(({ note }) => note), newNote])
-      )
-    : notes.extra;
+    const newExtraWithPos = addExtraNotesPos(newExtraSorted);
 
-  const { newFull, newRoot } = createFullScaleFromNames(
-    newRound,
-    newExtra,
+    payload.notes.extra = newExtraWithPos;
+  }
+
+  if (!addExtraNotes) {
+    const newInnerSorted = sortScaleByFreq([
+      ...notes.dings,
+      ...notes.round,
+      newNote,
+    ]);
+
+    const newPositions = createPositionMap(info.layout, newInnerSorted.length);
+
+    payload.notes.dings = newInnerSorted[0];
+    payload.notes.round = newInnerSorted.slice(1);
+    payload.parsed.positions = newPositions;
+  }
+
+  const tempNotes = {
+    dings: payload.notes.dings || notes.dings,
+    round: payload.notes.round || notes.round,
+    extra: payload.notes.extra || notes.extra,
+  };
+
+  const { rootInfo, pitched } = createFullScaleFromNames(
+    tempNotes,
     info.sharpNotes
   );
 
+  payload.info = rootInfo;
+  payload.parsed.pitched = pitched;
+
+  const label = createScaleLabel(tempNotes, info.sharpNotes);
+
+  payload.info.label = label;
+
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
+    payload,
   });
 
   dispatch({ type: howlsTypes.ADD_HOWL, payload: newNote });

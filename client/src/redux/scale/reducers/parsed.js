@@ -11,8 +11,7 @@ const parsedReducer = (state = parsedState, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE:
       return {
         ...state,
-        pitched: payload.pitched,
-        positions: payload.positions,
+        ...payload.parsed,
       };
 
     case scaleTypes.NEW_SCALE: {
