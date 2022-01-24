@@ -9,6 +9,7 @@ const parsedReducer = (state = parsedState, { type, payload }) => {
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE:
+      console.log(type, { payload });
       return {
         ...state,
         ...payload.parsed,
@@ -26,6 +27,7 @@ const parsedReducer = (state = parsedState, { type, payload }) => {
     }
 
     case songTypes.FETCH_SUCCESSFUL:
+      console.log(type, { payload });
       if (!payload.getScale) return state;
 
       return state; // parse scale?

@@ -35,6 +35,7 @@
 * Make sure howls status updates work
 * Add howls handling when loading scale
 * Add howls handling when modifying scale
+* Make sure loading scales sets root info correctly in parseScaleData
 
 #### Optional changes
 

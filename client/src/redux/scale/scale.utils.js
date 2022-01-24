@@ -101,7 +101,7 @@ const addRootAndPosition = (scale, sharpNotes) => {
 };
 
 export const createFullScaleFromNames = (
-  { dings, inner = [], extra = [] },
+  { dings, round = [], extra = [] },
   sharpNotes
 ) => {
   if (!dings || !dings.length) return [];
@@ -115,8 +115,8 @@ export const createFullScaleFromNames = (
     }))
   );
 
-  const innerWithValues = addNoteValueFromName(
-    inner.map((note, i) => ({
+  const roundWithValues = addNoteValueFromName(
+    round.map((note, i) => ({
       note,
       localIndex: i + dings.length,
       option: `${i + dings.length}`,
@@ -135,7 +135,7 @@ export const createFullScaleFromNames = (
 
   const sortedScale = sortScaleByNoteValue([
     ...dingsWithValues,
-    ...innerWithValues,
+    ...roundWithValues,
     ...extraWithValues,
   ]);
 
@@ -150,40 +150,26 @@ export const createFullScaleFromNames = (
 };
 
 export const parseScaleData = (scale, suppressAlert) => {
-  const {
-    info,
-    isOwner,
-    scaleId,
-    notes: { dings, round, extra },
-  } = scale;
+  const { info, isOwner, scaleId, notes } = scale;
 
-  const roundMerged = [...dings, ...round];
+  const roundMerged = [...notes.dings, ...notes.round];
 
   const positions = createPositionMap(info.layout, roundMerged.length);
   const { pitched, rootInfo } = createFullScaleFromNames(
-    roundMerged,
-    extra,
+    notes,
     info.sharpNotes
   );
 
   const parsedScaleData = {
-    dings,
-    round,
-    extra,
-    pitched,
-    rootInfo,
-    positions,
-    info,
+    notes,
+    parsed: { positions, pitched },
+    info: { ...info, ...rootInfo },
     isOwner,
     scaleId,
   };
 
   if (!suppressAlert)
     parsedScaleData.alert = `"${scale.info.rootName} ${scale.info.name}" loaded`;
-
-  if (parsedScaleData.info.rootIndex === undefined) {
-    parsedScaleData.info.rootIndex = rootInfo.rootIndex;
-  }
 
   return parsedScaleData;
 };
