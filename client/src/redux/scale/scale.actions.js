@@ -47,7 +47,7 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
 
     const newPositions = createPositionMap(info.layout, newInnerSorted.length);
 
-    payload.notes.dings = newInnerSorted[0];
+    payload.notes.dings = [newInnerSorted[0]];
     payload.notes.round = newInnerSorted.slice(1);
     payload.parsed.positions = newPositions;
   }
@@ -57,6 +57,7 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
     round: payload.notes.round || notes.round,
     extra: payload.notes.extra || notes.extra,
   };
+  console.log({ tempNotes });
 
   const { rootInfo, pitched } = createFullScaleFromNames(
     tempNotes,
