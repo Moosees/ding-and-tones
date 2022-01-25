@@ -230,11 +230,11 @@ export const toggleSharps = () => (dispatch, getState) => {
   const {
     scale: {
       info: { rootValue, sharpNotes },
-      notes: { round, extra },
+      notes,
     },
   } = getState();
 
-  const label = createScaleLabel(extra, round, !sharpNotes);
+  const label = createScaleLabel(notes, !sharpNotes);
 
   const rootName = getNoteLabelFromName(
     noteValueToName[rootValue],

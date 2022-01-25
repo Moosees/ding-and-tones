@@ -191,25 +191,27 @@ export const parseScaleData = (scale, suppressAlert) => {
 //   };
 // };
 
-export const createScaleLabel = (extra, round, sharpNotes) => {
-  if (round.length === 0) return '';
+export const createScaleLabel = (
+  { dings, round = [], extra = [] },
+  sharpNotes
+) => {
+  if (!dings || !dings.length) return '';
 
-  const rootNote = getNoteLabelFromName(round[0], sharpNotes);
+  const extraLabels = extra.map(({ note }) =>
+    getNoteLabelFromName(note, sharpNotes)
+  );
 
-  const extraLabel = extra.length
-    ? `${extra
-        .map(({ note }) => getNoteLabelFromName(note, sharpNotes))
-        .join(' ')} `
-    : '';
+  const dingLabels = dings.map((note, i) => {
+    const label = getNoteLabelFromName(note, sharpNotes);
 
-  if (round.length === 1) return `${extraLabel}(${round[0]})`;
+    return i === 0 ? `(${label})` : label;
+  });
 
-  const roundLabel = round
-    .slice(1)
-    .map((note) => getNoteLabelFromName(note, sharpNotes))
-    .join(' ');
+  const roundLabels = round.map((note) =>
+    getNoteLabelFromName(note, sharpNotes)
+  );
 
-  return `${extraLabel}(${rootNote}) ${roundLabel}`;
+  return [...extraLabels, ...dingLabels, ...roundLabels].join(' ');
 };
 
 export const parseNotesForSaveScale = ({ round, extra }) => ({

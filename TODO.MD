@@ -19,8 +19,6 @@
 
 #### Needed changes
 
-* Update default state to use split round and dings
-* Update createScaleLabel to use split round and dings
 * Update load scale to use split round and dings
 * Update load song (with scale) to use split round and dings
 * Update save scale (and song?) to use split round and dings
@@ -216,6 +214,7 @@
 * Remove isOwner from scale ui state or add ability to save scale changes
 * Sign in should update scale ownership if isOwner is kept
 * Scale layout prop - not needed? used for double ding?
+* Change how scale labels look? Double ding styles?
 
 ### Chords
 
