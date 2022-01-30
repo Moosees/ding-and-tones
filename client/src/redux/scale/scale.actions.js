@@ -67,9 +67,7 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
   payload.info = rootInfo;
   payload.parsed.pitched = pitched;
 
-  const label = createScaleLabel(tempNotes, info.sharpNotes);
-
-  payload.info.label = label;
+  payload.info.label = createScaleLabel(tempNotes, info.sharpNotes);
 
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
@@ -149,30 +147,55 @@ export const newScale = () => ({ type: scaleTypes.NEW_SCALE });
 
 export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   const {
-    scale: { info, notes, ui },
+    scale: { info, notes, parsed },
   } = getState();
 
-  const newRound =
-    notes.round.length > 1
-      ? notes.round.filter((note) => note !== noteToRemove)
-      : notes.round;
+  const { type } = parsed.pitched.find((note) => note.note === noteToRemove);
 
-  const newPositionMap =
-    notes.round.length === newRound.length
-      ? ui.positionMap
-      : createPositionMap(info.layout, newRound.length);
+  if (
+    notes.dings.length + notes.round.length === 1 &&
+    ['dings', 'round'].includes(type)
+  ) {
+    return;
+  }
 
-  const newExtra = notes.extra.filter(({ note }) => note !== noteToRemove);
+  const payload = {
+    notes: {},
+    parsed: {},
+    info: {},
+  };
 
-  const { newFull, newRoot } = createFullScaleFromNames(
-    newRound,
-    newExtra,
+  payload.notes = {
+    ...notes,
+    [type]: notes[type].filter((note) => (note.note || note) !== noteToRemove),
+  };
+
+  if (!payload.notes.dings.length) {
+    payload.notes.dings.push(payload.notes.round[0]);
+    payload.notes.round = payload.notes.round.slice(1);
+  }
+
+  payload.parsed.positions =
+    type === 'extra'
+      ? parsed.positions
+      : createPositionMap(
+          info.layout,
+          payload.notes.dings.length + payload.notes.round.length
+        );
+
+  const { rootInfo, pitched } = createFullScaleFromNames(
+    payload.notes,
     info.sharpNotes
   );
 
+  payload.info = rootInfo;
+  payload.parsed.pitched = pitched;
+
+  payload.info.label = createScaleLabel(payload.notes, info.sharpNotes);
+
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
+    payload,
   });
 
   dispatch({ type: howlsTypes.REMOVE_HOWL, payload: noteToRemove });

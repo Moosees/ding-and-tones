@@ -19,8 +19,9 @@
 
 #### Needed changes
 
-* Update load scale to use split round and dings
-* Update load song (with scale) to use split round and dings
+* Fix scale Notes style for selected dings
+* Update fetch scale to use split round and dings
+* Update fetch song (with scale) to use split round and dings
 * Update save scale (and song?) to use split round and dings
 * Update new scale to use split round and dings
 * Update transpose scale to use split round and dings
@@ -49,10 +50,12 @@
 * Use scale.parsed.pitched in MiniDrum, ExtraNote? (scale)Notes, Edit and Move?
 * Handle checking if song is playing in state? Middleware?
 * Update beat.utils to use parsed scale with (dynamic) percussive notes?
+* Stop extra notes from updating positions when adding extra notes?
 
 #### Cleanup
 
 * Refactor scale.utils (handle roots that are not ding, split file?)
+* Rename/clean addRootAndPosition in scale.utils
 * Refactor scale.actions?
 * Remove old global effects
 * Remove utils for old global effects
