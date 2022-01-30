@@ -78,7 +78,7 @@ const addRootAndPosition = (scale, sharpNotes) => {
 
     let isRoot = false;
 
-    if (!rootFound && ['ding', 'round'].includes(type)) {
+    if (!rootFound && ['dings', 'round'].includes(type)) {
       isRoot = true;
       rootFound = true;
       rootIndex = i;
@@ -111,7 +111,7 @@ export const createFullScaleFromNames = (
       note,
       localIndex: i,
       option: `${i}`,
-      type: 'ding',
+      type: 'dings',
     }))
   );
 

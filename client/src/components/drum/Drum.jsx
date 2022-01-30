@@ -23,7 +23,7 @@ const Drum = ({
     howlOptionCbs[soundOption].play();
   };
 
-  const { ding, round, extra } = scale.reduce(
+  const { dings, round, extra } = scale.reduce(
     (acc, note, i) => {
       const showNote =
         !displayedChord || displayedChord.notes.includes(note.noteShort);
@@ -65,7 +65,7 @@ const Drum = ({
 
       return acc;
     },
-    { ding: [], round: [], extra: [] }
+    { dings: [], round: [], extra: [] }
   );
 
   return (
@@ -100,7 +100,7 @@ const Drum = ({
           />
           <Tak hand={2} handlePlay={() => handlePlay('t', 2)} />
           <Tak hand={1} handlePlay={() => handlePlay('T', 1)} />
-          {[...ding, ...round].map((data, i) => (
+          {[...dings, ...round].map((data, i) => (
             <Tonefield key={i} {...data} />
           ))}
         </DrumSvg>
