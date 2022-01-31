@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Fix scale Notes style for selected dings
 * Update fetch scale to use split round and dings
 * Update fetch song (with scale) to use split round and dings
 * Update save scale (and song?) to use split round and dings
@@ -39,7 +38,6 @@
 #### Optional changes
 
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
-* Differentiate between ding(s) and round notes in Notes?
 * Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
 * Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?

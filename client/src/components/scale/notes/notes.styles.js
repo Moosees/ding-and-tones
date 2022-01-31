@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const getNoteBorder = ({ type, theme }) => {
   const borders = {
+    dings: `3px dashed ${theme.colorCheckbox}`,
     extra: `2px dotted ${theme.colorBtnConfirm}`,
     round: `2px solid ${theme.colorCheckbox}`,
     outside: `1px solid ${theme.colorBtnClear}`,
