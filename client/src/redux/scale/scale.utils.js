@@ -152,9 +152,9 @@ export const createFullScaleFromNames = (
 export const parseScaleData = (scale, suppressAlert) => {
   const { info, isOwner, scaleId, notes } = scale;
 
-  const roundMerged = [...notes.dings, ...notes.round];
+  const numInnerNotes = notes.dings.length + notes.round.length;
 
-  const positions = createPositionMap(info.layout, roundMerged.length);
+  const positions = createPositionMap(info.layout, numInnerNotes);
   const { pitched, rootInfo } = createFullScaleFromNames(
     notes,
     info.sharpNotes

@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Update fetch scale to use split round and dings
 * Update fetch song (with scale) to use split round and dings
 * Update save scale (and song?) to use split round and dings
 * Update new scale to use split round and dings
