@@ -57,7 +57,6 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
     round: payload.notes.round || notes.round,
     extra: payload.notes.extra || notes.extra,
   };
-  console.log({ tempNotes });
 
   const { rootInfo, pitched } = createFullScaleFromNames(
     tempNotes,

@@ -150,6 +150,7 @@ export const createFullScaleFromNames = (
 };
 
 export const parseScaleData = (scale, suppressAlert) => {
+  console.log('parseScale:', { scale });
   const { info, isOwner, scaleId, notes } = scale;
 
   const numInnerNotes = notes.dings.length + notes.round.length;

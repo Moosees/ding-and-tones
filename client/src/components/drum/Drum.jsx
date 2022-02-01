@@ -59,7 +59,6 @@ const Drum = ({
         isPlaying,
         handlePlay: () => handlePlay(note.option),
       };
-      console.log(note.type);
 
       acc[note.type].push(tonefieldData);
 

@@ -11,7 +11,7 @@ const parseScaleForSongFetch = ({
   return {
     info,
     notes: { dings, round, extra: extraParsed },
-    ui: { scaleId: _id },
+    scaleId: _id,
   };
 };
 

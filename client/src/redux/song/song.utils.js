@@ -113,17 +113,6 @@ const parseBeatsForLoadSong = (beats) => {
   return parseArrayToObject(parsedBeats);
 };
 
-const parseScaleForLoadSong = (scale) => {
-  const { newExtra, newRound, newFull, newRoot, positionMap } =
-    parseScaleData(scale);
-
-  return {
-    info: { ...scale.info, ...newRoot },
-    ui: { positionMap, scaleId: scale.ui.scaleId },
-    notes: { round: newRound, extra: newExtra, scaleFull: newFull },
-  };
-};
-
 export const parseFetchedSong = (song, getScale, suppressAlert) => {
   const {
     arrangement,
@@ -139,11 +128,12 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
 
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
-  const parsedScale = getScale && scale ? parseScaleForLoadSong(scale) : {};
+  const parsedScale = getScale && scale ? parseScaleData(scale, true) : {};
+  console.log('afterParse:', { parsedScale });
   const savedScale =
-    scale && scale.ui && scale.info
+    scale && scale.info
       ? {
-          scaleId: scale.ui.scaleId,
+          scaleId: scale.scaleId,
           scaleName: `${scale.info.rootName} ${scale.info.name}`,
           scaleLabel: scale.info.label,
         }

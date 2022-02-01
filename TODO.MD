@@ -19,8 +19,8 @@
 
 #### Needed changes
 
-* Update fetch song (with scale) to use split round and dings
 * Update save scale (and song?) to use split round and dings
+* Update delete scale (and song?) to use split round and dings
 * Update new scale to use split round and dings
 * Update transpose scale to use split round and dings
 * Update flat/sharp to use split round and dings
@@ -36,6 +36,7 @@
 
 #### Optional changes
 
+* Add isOwner to song with scale fetch
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
 * Split howls reducer into data and info?

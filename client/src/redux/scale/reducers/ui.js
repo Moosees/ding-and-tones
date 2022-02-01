@@ -78,7 +78,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
         ...state,
         hasChanges: false,
         isOwner: false,
-        ...payload.scale.ui,
+        scaleId: payload.scale.scaleId,
       };
     }
 
