@@ -215,12 +215,6 @@ export const createScaleLabel = (
   return [...extraLabels, ...dingLabels, ...roundLabels].join(' ');
 };
 
-export const parseNotesForSaveScale = ({ round, extra }) => ({
-  dings: [round[0]],
-  round: round.slice(1),
-  extra,
-});
-
 export const transposeRoundToDestination = (scale, destination = 0) => {
   return scale
     .map((note) => {

@@ -8,7 +8,6 @@ import {
   createFullScaleFromNames,
   createPositionMap,
   createScaleLabel,
-  parseNotesForSaveScale,
   parseScaleData,
   sortScaleByFreq,
   transposeExtraToDestination,
@@ -207,7 +206,7 @@ export const saveScale = (scaleName) => (dispatch, getState) => {
   const { info, notes } = scale;
   const scaleUpdate = {
     info,
-    notes: parseNotesForSaveScale(notes),
+    notes,
   };
   if (scaleName) scaleUpdate.info.name = scaleName;
 
