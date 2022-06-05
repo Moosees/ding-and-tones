@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Update delete scale (and song?) to use split round and dings
 * Update new scale to use split round and dings
 * Update transpose scale to use split round and dings
 * Update flat/sharp to use split round and dings
