@@ -15,12 +15,14 @@ const parsedReducer = (state = parsedState, { type, payload }) => {
       };
 
     case scaleTypes.NEW_SCALE: {
-      const { newIntervals, newPitched } = createFullScaleFromNames(['A3'], []);
+      const newScale = createFullScaleFromNames(
+        { dings: ['A3'], round: [], extra: [] },
+        []
+      );
 
       return {
         ...state,
-        intervals: newIntervals,
-        pitched: newPitched,
+        ...newScale,
         positions: [{ rotate: 0, translate: 0 }],
       };
     }

@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Update new scale to use split round and dings
 * Update transpose scale to use split round and dings
 * Update flat/sharp to use split round and dings
 * Make sure chords work with new parsed scales
