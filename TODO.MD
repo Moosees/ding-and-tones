@@ -33,6 +33,7 @@
 
 #### Optional changes
 
+* createFullScaleFromNames handles new createScaleLabel and returns label with scale?
 * Add isOwner to song with scale fetch
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
