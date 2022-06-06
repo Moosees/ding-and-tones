@@ -19,7 +19,7 @@
 
 #### Needed changes
 
-* Update transpose scale to use split round and dings
+* Update transpose scale to allow moving first round note to ding when transposing below MIN_NOTE_VALUE
 * Update flat/sharp to use split round and dings
 * Make sure chords work with new parsed scales
 * Add percussive sounds to createHowls

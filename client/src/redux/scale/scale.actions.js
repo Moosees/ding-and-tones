@@ -10,8 +10,7 @@ import {
   createScaleLabel,
   parseScaleData,
   sortScaleByFreq,
-  transposeExtraToDestination,
-  transposeRoundToDestination,
+  transposeNotesToDestination,
 } from './scale.utils';
 
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
@@ -270,27 +269,39 @@ export const toggleSharps = () => (dispatch, getState) => {
 
 export const transposeScale = (destination) => (dispatch, getState) => {
   const {
-    scale: { info, notes, ui },
+    scale: { notes, parsed, info },
   } = getState();
-  const newRound = transposeRoundToDestination(notes.round, destination);
 
-  if (!newRound.length) return;
+  const payload = {
+    notes: {},
+    parsed: {},
+    info: {},
+  };
 
-  const newPositionMap =
-    notes.round.length === newRound.length
-      ? ui.positionMap
-      : createPositionMap(info.layout, newRound.length);
+  payload.notes = transposeNotesToDestination(notes, destination);
 
-  const newExtra = transposeExtraToDestination(notes.extra, destination);
+  if (!payload.notes.dings.length) return;
 
-  const { newFull, newRoot } = createFullScaleFromNames(
-    newRound,
-    newExtra,
+  const oldLength = notes.round.length + notes.dings.length;
+  const newLength = payload.notes.round.length + payload.notes.dings.length;
+
+  payload.parsed.positions =
+    oldLength === newLength
+      ? parsed.positions
+      : createPositionMap(info.layout, newLength);
+
+  const { rootInfo, pitched } = createFullScaleFromNames(
+    payload.notes,
     info.sharpNotes
   );
 
+  payload.info = rootInfo;
+  payload.parsed.pitched = pitched;
+
+  payload.info.label = createScaleLabel(payload.notes, info.sharpNotes);
+
   dispatch({
     type: scaleTypes.UPDATE_SCALE,
-    payload: { newRound, newExtra, newFull, newRoot, newPositionMap },
+    payload,
   });
 };

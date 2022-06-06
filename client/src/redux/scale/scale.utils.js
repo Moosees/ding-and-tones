@@ -215,8 +215,8 @@ export const createScaleLabel = (
   return [...extraLabels, ...dingLabels, ...roundLabels].join(' ');
 };
 
-export const transposeRoundToDestination = (scale, destination = 0) => {
-  return scale
+export const transposeInnerNotesToDestination = (notes, destination = 0) => {
+  return notes
     .map((note) => {
       const newValue = noteNameToValue[note] + destination;
       return newValue >= MIN_NOTE_VALUE && newValue <= MAX_NOTE_VALUE
@@ -226,8 +226,8 @@ export const transposeRoundToDestination = (scale, destination = 0) => {
     .filter((note) => note);
 };
 
-export const transposeExtraToDestination = (scale, destination = 0) => {
-  return scale
+export const transposeExtraNotesToDestination = (notes, destination = 0) => {
+  return notes
     .map((note) => {
       const newValue = noteNameToValue[note.note] + destination;
       return newValue >= MIN_NOTE_VALUE && newValue <= MAX_NOTE_VALUE
@@ -235,6 +235,17 @@ export const transposeExtraToDestination = (scale, destination = 0) => {
         : null;
     })
     .filter((note) => note);
+};
+
+export const transposeNotesToDestination = (
+  { round = [], dings = [], extra = [] },
+  destination
+) => {
+  return {
+    round: transposeInnerNotesToDestination(round, destination),
+    dings: transposeInnerNotesToDestination(dings, destination),
+    extra: transposeExtraNotesToDestination(extra, destination),
+  };
 };
 
 export const removeSharps = (scale) => {
