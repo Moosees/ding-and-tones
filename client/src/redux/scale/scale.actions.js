@@ -280,7 +280,7 @@ export const transposeScale = (destination) => (dispatch, getState) => {
 
   payload.notes = transposeNotesToDestination(notes, destination);
 
-  if (!payload.notes.dings.length) return;
+  if (!payload.notes.dings[0]) return;
 
   const oldLength = notes.round.length + notes.dings.length;
   const newLength = payload.notes.round.length + payload.notes.dings.length;

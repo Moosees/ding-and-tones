@@ -241,11 +241,19 @@ export const transposeNotesToDestination = (
   { round = [], dings = [], extra = [] },
   destination
 ) => {
-  return {
+  const notes = {
     round: transposeInnerNotesToDestination(round, destination),
     dings: transposeInnerNotesToDestination(dings, destination),
     extra: transposeExtraNotesToDestination(extra, destination),
   };
+
+  return notes.dings.length
+    ? notes
+    : {
+        dings: [notes.round[0]],
+        round: notes.round.slice(1),
+        extra: notes.extra,
+      };
 };
 
 export const removeSharps = (scale) => {
