@@ -1,17 +1,17 @@
 import audioOptions from '../../assets/sound/audioOptions';
 import howlsTypes from './howls.types';
 
-const INITIAL_STATE = {
-  all: [],
-  loadingStatus: {},
-  optionCbs: {},
-  info: {
-    audioSrc: audioOptions[0],
-    volume: 0.8,
-  },
-};
+// const oldState = {
+//   all: [],
+//   loadingStatus: {},
+//   optionCbs: {},
+//   info: {
+//     audioSrc: audioOptions[0],
+//     volume: 0.8,
+//   },
+// };
 
-const newState = {
+const INITIAL_STATE = {
   data: {
     C3: {
       howl: null,
@@ -31,10 +31,10 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, data: { ...state.data, [payload]: payload } };
 
     case howlsTypes.CLEANUP_HOWLS:
-      return { ...state, all: [], loadingStatus: {}, optionCbs: {} };
+      return { ...state, data: {} };
 
     case howlsTypes.CREATE_HOWLS:
-      return { ...state, ...payload.howls };
+      return { ...state, data: { ...payload.howls } };
 
     case howlsTypes.REMOVE_HOWL:
       return { ...state, data: { ...state.data, [payload]: null } };
@@ -48,14 +48,18 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
     case howlsTypes.SET_VOLUME:
       return { ...state, info: { ...state.info, volume: payload.newVolume } };
 
-    case howlsTypes.UPDATE_HOWL_LOADING_STATUS:
+    case howlsTypes.UPDATE_HOWL_LOADING_STATUS: {
+      const note = { ...state.data[payload.note] };
+      note.status = payload.status;
+
       return {
         ...state,
-        loadingStatus: {
-          ...state.loadingStatus,
-          [payload.note]: payload.status,
+        data: {
+          ...state.data,
+          [payload.note]: { ...note },
         },
       };
+    }
 
     default:
       return state;

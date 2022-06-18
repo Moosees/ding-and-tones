@@ -19,11 +19,13 @@
 
 #### Needed changes
 
+* Update cleanupHowls for new howls state structure
+* Update createHowls for new howls state structure
+* Update howl loading status getting and setting
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
 * Fix drum animations not triggering - percussive notes, fixed with above changes?
-* Make sure howls status updates work
 * Add howls handling when loading scale
 * Add howls handling when modifying scale
 * Make sure loading scales sets root info correctly in parseScaleData
@@ -47,6 +49,7 @@
 
 #### Cleanup
 
+* Remove old howls initial state object
 * Update flat/sharp to use split round and dings - done?
 * Make sure chords work with new parsed scales - done?
 * Refactor scale.utils (handle roots that are not ding, split file?)
