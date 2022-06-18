@@ -19,8 +19,6 @@
 
 #### Needed changes
 
-* Update flat/sharp to use split round and dings
-* Make sure chords work with new parsed scales
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
@@ -49,6 +47,8 @@
 
 #### Cleanup
 
+* Update flat/sharp to use split round and dings - done?
+* Make sure chords work with new parsed scales - done?
 * Refactor scale.utils (handle roots that are not ding, split file?)
 * Rename/clean addRootAndPosition in scale.utils
 * Refactor scale.actions?
