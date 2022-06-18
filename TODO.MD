@@ -19,9 +19,12 @@
 
 #### Needed changes
 
-* Update cleanupHowls for new howls state structure
-* Update createHowls for new howls state structure
+* Load howls when mounting app
+* Update howl playing components to use howls.data instead of howls.optionCbs
+* Update howl playing components to check loading status before trying to play howl
 * Update howl loading status getting and setting
+* Make sure loading status doesn't get overwritten when creating howls
+* Update cleanupHowls for new howls state structure
 * Add percussive sounds to createHowls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
@@ -36,10 +39,8 @@
 * Add isOwner to song with scale fetch
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
-* Split howls reducer into data and info?
 * Iterate over scale notes to see if song is ready to be played?
 * Keep list of howl status for howls not currently in scale?
-* Remove howls.all? Remove keys in howls.all?
 * Merge drum state into scale.ui?
 * Does saving scale need to update scale state other than ID and isOwner?
 * Use scale.parsed.pitched in MiniDrum, ExtraNote? (scale)Notes, Edit and Move?

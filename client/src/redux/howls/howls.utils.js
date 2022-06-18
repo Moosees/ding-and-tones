@@ -1,5 +1,4 @@
 import { Howl, Howler } from 'howler';
-import { beatOptionToKeyCode } from '../../assets/keyCodes';
 import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
 
@@ -58,10 +57,9 @@ export const createHowl = (option, path) => {
   howl.once('load', () => onHowlLoad(option, howl));
   howl.on('playerror', () => onHowlPlayError(option));
 
-  const key = beatOptionToKeyCode[option];
   const play = () => playHowl(howl);
 
-  return { key, play, howl };
+  return { play, howl };
 };
 
 export const createHowls = () => {
@@ -74,24 +72,14 @@ export const createHowls = () => {
     },
   } = store.getState();
 
-  const initialValues = {
-    optionCbs: {},
-    all: [],
-  };
-
   const newHowls = pitched.reduce((acc, { note, option }) => {
-    store.dispatch(updateHowlLoadingStatus(note, 'loading'));
+    // store.dispatch(updateHowlLoadingStatus(note, 'loading'));
+    const { play, howl } = createHowl(option, `${audioSrc.path}/${note}.mp3`);
 
-    const { key, play, howl } = createHowl(
-      option,
-      `${audioSrc.path}/${note}.mp3`
-    );
-
-    acc.optionCbs[option] = { play };
-    acc.all.push({ key, play, howl, option, note });
+    acc[note] = { howl, play, status: 'loading' };
 
     return acc;
-  }, initialValues);
+  }, {});
 
   return newHowls;
 };

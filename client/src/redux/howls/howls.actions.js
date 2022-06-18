@@ -3,7 +3,7 @@ import howlsTypes from './howls.types';
 import { cleanupHowls, createHowls } from './howls.utils';
 
 export const cleanupAllHowls = () => (dispatch) => {
-  cleanupHowls();
+  // cleanupHowls();
 
   dispatch({ type: howlsTypes.CLEANUP_HOWLS });
 };
@@ -12,7 +12,6 @@ export const createAllHowls = () => (dispatch) => {
   const howls = createHowls();
 
   dispatch({ type: howlsTypes.CREATE_HOWLS, payload: { howls } });
-  return howls;
 };
 
 export const selectSoundSource = (audioSrc) => ({

@@ -34,7 +34,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, data: {} };
 
     case howlsTypes.CREATE_HOWLS:
-      return { ...state, data: { ...payload.howls } };
+      return { ...state, data: payload.howls };
 
     case howlsTypes.REMOVE_HOWL:
       return { ...state, data: { ...state.data, [payload]: null } };
