@@ -1,7 +1,7 @@
 import audioOptions from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import howlsTypes from './howls.types';
-import { createHowl, createHowls } from './howls.utils';
+import { createHowl } from './howls.utils';
 
 // const oldState = {
 //   all: [],
@@ -14,13 +14,7 @@ import { createHowl, createHowls } from './howls.utils';
 // };
 
 const INITIAL_STATE = {
-  data: {
-    C3: {
-      howl: null,
-      play: null,
-      status: 'ready',
-    },
-  },
+  data: {},
   info: {
     audioSrc: audioOptions[0],
     volume: 0.8,
@@ -64,14 +58,15 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
 
     case scaleTypes.LOAD_SCALE:
-      console.log(payload.parsed.pitched);
+      console.log('load scale:', payload.parsed.pitched);
       const newHowls = payload.parsed.pitched.reduce((acc, { note }) => {
-        if (state.data[note]) acc[note] = { ...state.data[note] };
-
-        acc[note] = {
-          ...createHowl(note, `${state.info.audioSrc.path}/${note}.mp3`),
-          status: 'loading',
-        };
+        console.log('New howl?', note, !state.data[note], state.data[note]);
+        acc[note] = state.data[note]
+          ? { ...state.data[note] }
+          : {
+              ...createHowl(note, `${state.info.audioSrc.path}/${note}.mp3`),
+              status: 'loading',
+            };
 
         return acc;
       }, {});
