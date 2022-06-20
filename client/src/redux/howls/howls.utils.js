@@ -12,18 +12,18 @@ export const cleanupHowls = () => {
   });
 };
 
-export const onHowlError = (option, howl, error) => {
+export const onHowlError = (note, howl, error) => {
   howl.off('load');
-  store.dispatch(updateHowlLoadingStatus(option, 'loaderror'));
+  store.dispatch(updateHowlLoadingStatus(note, 'loaderror'));
 };
 
-export const onHowlLoad = (option, howl) => {
+export const onHowlLoad = (note, howl) => {
   howl.off('loaderror');
-  store.dispatch(updateHowlLoadingStatus(option, 'ready'));
+  store.dispatch(updateHowlLoadingStatus(note, 'ready'));
 };
 
-export const onHowlPlayError = (option) => {
-  store.dispatch(updateHowlLoadingStatus(option, 'playerror'));
+export const onHowlPlayError = (note) => {
+  store.dispatch(updateHowlLoadingStatus(note, 'playerror'));
 };
 
 export const playHowl = (howl) => {
@@ -50,12 +50,12 @@ export const playHowl = (howl) => {
   howl.on('play', fadeEvent);
 };
 
-export const createHowl = (option, path) => {
+export const createHowl = (note, path) => {
   const howl = new Howl({ src: path });
 
-  howl.once('loaderror', (_id, error) => onHowlError(option, howl, error));
-  howl.once('load', () => onHowlLoad(option, howl));
-  howl.on('playerror', () => onHowlPlayError(option));
+  howl.once('loaderror', (_id, error) => onHowlError(note, howl, error));
+  howl.once('load', () => onHowlLoad(note, howl));
+  howl.on('playerror', () => onHowlPlayError(note));
 
   const play = () => playHowl(howl);
 
@@ -72,9 +72,9 @@ export const createHowls = () => {
     },
   } = store.getState();
 
-  const newHowls = pitched.reduce((acc, { note, option }) => {
+  const newHowls = pitched.reduce((acc, { note }) => {
     // store.dispatch(updateHowlLoadingStatus(note, 'loading'));
-    const { play, howl } = createHowl(option, `${audioSrc.path}/${note}.mp3`);
+    const { play, howl } = createHowl(note, `${audioSrc.path}/${note}.mp3`);
 
     acc[note] = { howl, play, status: 'loading' };
 
