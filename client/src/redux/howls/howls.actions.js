@@ -1,17 +1,11 @@
 import { Howler } from 'howler';
 import howlsTypes from './howls.types';
-import { cleanupHowls, createHowls } from './howls.utils';
+import { cleanupHowls } from './howls.utils';
 
 export const cleanupAllHowls = () => (dispatch) => {
   // cleanupHowls();
 
   dispatch({ type: howlsTypes.CLEANUP_HOWLS });
-};
-
-export const createAllHowls = () => (dispatch) => {
-  const howls = createHowls();
-
-  dispatch({ type: howlsTypes.CREATE_HOWLS, payload: { howls } });
 };
 
 export const selectSoundSource = (audioSrc) => ({

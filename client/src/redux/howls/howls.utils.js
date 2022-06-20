@@ -61,25 +61,3 @@ export const createHowl = (note, path) => {
 
   return { play, howl };
 };
-
-export const createHowls = () => {
-  const {
-    howls: {
-      info: { audioSrc },
-    },
-    scale: {
-      parsed: { pitched },
-    },
-  } = store.getState();
-
-  const newHowls = pitched.reduce((acc, { note }) => {
-    // store.dispatch(updateHowlLoadingStatus(note, 'loading'));
-    const { play, howl } = createHowl(note, `${audioSrc.path}/${note}.mp3`);
-
-    acc[note] = { howl, play, status: 'loading' };
-
-    return acc;
-  }, {});
-
-  return newHowls;
-};

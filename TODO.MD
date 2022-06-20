@@ -21,10 +21,11 @@
 
 * Update howl playing components to use howls.data instead of howls.optionCbs
 * Update howl playing components to check loading status before trying to play howl
+* Update play button to use new howls state structure
 * Update howl loading status getting and setting
 * Make sure loading status doesn't get overwritten when creating howls
 * Update cleanupHowls for new howls state structure (loading scale, getting scale etc.)
-* Add percussive sounds to createHowls
+* Add percussive sounds to howls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
 * Fix drum animations not triggering - percussive notes, fixed with above changes?
@@ -33,6 +34,7 @@
 
 #### Optional changes
 
+* Howls reducer refactor to howls.utils?
 * createFullScaleFromNames handles new createScaleLabel and returns label with scale?
 * Add isOwner to song with scale fetch
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
@@ -48,14 +50,13 @@
 
 #### Cleanup
 
-* Remove old howls initial state object
 * Update flat/sharp to use split round and dings - done?
 * Make sure chords work with new parsed scales - done?
 * Refactor scale.utils (handle roots that are not ding, split file?)
 * Rename/clean addRootAndPosition in scale.utils
 * Refactor scale.actions?
-* Remove old global effects
-* Remove utils for old global effects
+* Remove old global effects - done?
+* Remove utils for old global effects - done?
 * Remove old state reducers and actions
 * Remove logging and misc code
 
