@@ -1,5 +1,7 @@
 import audioOptions from '../../assets/sound/audioOptions';
+import scaleTypes from '../scale/scale.types';
 import howlsTypes from './howls.types';
+import { createHowl, createHowls } from './howls.utils';
 
 // const oldState = {
 //   all: [],
@@ -60,6 +62,23 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
         },
       };
     }
+
+    case scaleTypes.LOAD_SCALE:
+      console.log(payload.parsed.pitched);
+      const newHowls = payload.parsed.pitched.reduce((acc, { note }) => {
+        if (state.data[note]) acc[note] = { ...state.data[note] };
+
+        acc[note] = {
+          ...createHowl(note, `${state.info.audioSrc.path}/${note}.mp3`),
+          status: 'loading',
+        };
+
+        return acc;
+      }, {});
+
+      console.log({ newHowls });
+
+      return { ...state, data: newHowls };
 
     default:
       return state;
