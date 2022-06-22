@@ -12,15 +12,15 @@ const Drum = ({
   displayedChord,
   displayedNote,
   drumMode,
-  howlOptionCbs,
+  howls,
   scale,
   setCurrentlyPlaying,
   sharpNotes,
   style,
 }) => {
-  const handlePlay = (soundOption, currentHand = 1) => {
-    setCurrentlyPlaying({ currentHand, currentSound: [soundOption] });
-    howlOptionCbs[soundOption].play();
+  const handlePlay = (note, option, currentHand = 1) => {
+    setCurrentlyPlaying({ currentHand, currentSound: [option] });
+    howls[note].play();
   };
 
   const { dings, round, extra } = scale.reduce(
@@ -57,7 +57,7 @@ const Drum = ({
         color,
         localIndex: note.localIndex,
         isPlaying,
-        handlePlay: () => handlePlay(note.option),
+        handlePlay: () => handlePlay(note.note, note.option),
       };
 
       acc[note.type].push(tonefieldData);
@@ -97,8 +97,8 @@ const Drum = ({
             fill="url(#drumGradient)"
             filter="url(#drumShadow)"
           />
-          <Tak hand={2} handlePlay={() => handlePlay('t', 2)} />
-          <Tak hand={1} handlePlay={() => handlePlay('T', 1)} />
+          <Tak hand={2} handlePlay={() => handlePlay('t', 't', 2)} />
+          <Tak hand={1} handlePlay={() => handlePlay('T', 'T', 1)} />
           {[...dings, ...round].map((data, i) => (
             <Tonefield key={i} {...data} />
           ))}
@@ -112,7 +112,7 @@ const mapStateToProps = ({ drum, howls, scale, ui }) => ({
   displayedChord: drum.displayedChord,
   displayedNote: drum.displayedNote,
   drumMode: drum.drumMode,
-  howlOptionCbs: howls.optionCbs,
+  howls: howls.data,
   sharpNotes: scale.info.sharpNotes,
   scale: scale.parsed.pitched,
   currentSound: ui.currentSound,

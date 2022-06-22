@@ -34,6 +34,7 @@
 
 #### Optional changes
 
+* Change setCurrentlyPlaying to use note instead of option?
 * Howls reducer refactor to howls.utils?
 * createFullScaleFromNames handles new createScaleLabel and returns label with scale?
 * Add isOwner to song with scale fetch
