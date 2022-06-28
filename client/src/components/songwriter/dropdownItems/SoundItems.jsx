@@ -7,22 +7,22 @@ const SoundItems = ({
   beatId,
   beats,
   hasNonScaleNote,
-  howlOptionCbs,
+  howls,
   multiSelect,
-  optionList,
   sharpNotes,
+  soundList,
   updateSoundForBeat,
 }) => {
   const { sound } = beats[beatId];
 
-  const soundItems = optionList.map(({ note, noteSharp, option }) => {
+  const soundItems = soundList.map(({ note, noteSharp, option }) => {
     const selected = sound.includes(option);
 
     const isDisabled = multiSelect && sound.length >= 2 && !selected;
 
     const handleClick = () => {
       updateSoundForBeat(beatId, option);
-      howlOptionCbs[option]?.play();
+      howls[note]?.play();
     };
 
     const handleKeyDown = (e) => {
@@ -51,7 +51,7 @@ const SoundItems = ({
 };
 
 const mapStateToProps = ({ howls, scale, song, ui }) => ({
-  howlOptionCbs: howls.optionCbs,
+  howls: howls.data,
   sharpNotes: scale.info.sharpNotes,
   beats: song.beats,
   multiSelect: ui.multiSelect,

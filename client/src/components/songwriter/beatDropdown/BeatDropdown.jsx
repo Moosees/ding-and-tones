@@ -43,13 +43,13 @@ const BeatDropdown = ({
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 
-  const { round, extra } = useMemo(() => {
+  const { round, extra, dings } = useMemo(() => {
     return scale.reduce(
       (acc, note) => {
         acc[note.type].push(note);
         return acc;
       },
-      { round: [], extra: [] }
+      { round: [], extra: [], dings: [] }
     );
   }, [scale]);
 
@@ -95,13 +95,14 @@ const BeatDropdown = ({
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
-            <SoundItems beatId={beatId} optionList={round} />
+            <SoundItems beatId={beatId} soundList={dings} />
+            <SoundItems beatId={beatId} soundList={round} />
             {!!nonScaleNotes.length && (
               <>
                 <DividerLine small />
                 <SoundItems
                   beatId={beatId}
-                  optionList={nonScaleNotes}
+                  soundList={nonScaleNotes}
                   nonScaleNotes
                 />
               </>
@@ -111,9 +112,9 @@ const BeatDropdown = ({
             <DividerLine vertical small />
           </DropdownColumn>
           <DropdownColumn>
-            <SoundItems beatId={beatId} optionList={extra} />
+            <SoundItems beatId={beatId} soundList={extra} />
             <DividerLine small />
-            {/* <SoundItems beatId={beatId} optionList={options.percussive} />
+            {/* <SoundItems beatId={beatId} soundList={options.percussive} />
             <DividerLine small /> */}
             <HandItems beatId={beatId} />
           </DropdownColumn>
