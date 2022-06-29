@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Update play button to use new howls state structure
 * Update keyboard to use new howls state structure
 * Update howl loading status getting and setting
 * Update howl playing components to check loading status before trying to play howl

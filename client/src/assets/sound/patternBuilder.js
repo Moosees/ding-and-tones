@@ -9,6 +9,21 @@ const getDefaultHandForSound = (sound) => {
   return 3;
 };
 
+const getHowlsForScale = () => {
+  const {
+    howls,
+    scale: {
+      parsed: { pitched },
+    },
+  } = store.getState();
+
+  return pitched.reduce((acc, { note, option }) => {
+    acc[option] = howls.data[note];
+
+    return acc;
+  }, {});
+};
+
 export const buildPatternFromBar = (barId, howls) => {
   const {
     song: {
@@ -31,9 +46,10 @@ export const buildPatternFromBar = (barId, howls) => {
   return measureFiltered.map(({ beatId, value }) => {
     const { sound, mode, hand } = beats[beatId];
     const play = () => {
-      sound.forEach((note) => {
-        if (note === '-' || !howls[note]) return;
-        howls[note].play();
+      sound.forEach((option) => {
+        if (!howls[option]) return;
+        
+        howls[option].play();
       });
     };
 
@@ -51,18 +67,19 @@ export const buildPatternFromBar = (barId, howls) => {
   });
 };
 
-export const buildPatternFromSong = (howls) => {
+export const buildPatternFromSong = () => {
   const {
     song: { arrangement },
     ui: { mutedBars },
   } = store.getState();
 
+  const howls = getHowlsForScale();
   const arrangementNonMuted = arrangement.filter((barId) => !mutedBars[barId]);
 
   const pattern = arrangementNonMuted.reduce((acc, barId) => {
     const bar = buildPatternFromBar(barId, howls);
     return [...acc, ...bar];
   }, []);
-  
+
   return pattern;
 };

@@ -17,7 +17,7 @@ const PlayButton = ({ howls, isSongPlaying, light, setIsSongPlaying }) => {
     }
 
     setIsSongPlaying(true);
-    const songPattern = buildPatternFromSong(howls);
+    const songPattern = buildPatternFromSong();
 
     playPattern(songPattern);
   };
