@@ -19,12 +19,11 @@
 
 #### Needed changes
 
-* Update howl playing components to check loading status before trying to play howl
 * Update cleanupHowls for new howls state structure (loading scale, getting scale etc.)
 * Add percussive sounds to howls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
-* Fix updateSoundForBeat to trigger animations on drum when clicking drum, playing song, by using keyboard or using beatDropdown
+* Fix updateSoundForBeat to trigger animations on drum when using beatDropdown
 * Add howls handling when modifying scale
 * Make sure loading scales sets root info correctly in parseScaleData
 
@@ -44,6 +43,7 @@
 * Handle checking if song is playing in state? Middleware?
 * Update beat.utils to use parsed scale with (dynamic) percussive notes?
 * Stop extra notes from updating positions when adding extra notes?
+* Only start loading howls after UI finish loading?
 
 #### Cleanup
 

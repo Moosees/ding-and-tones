@@ -15,6 +15,8 @@ const usePlayWithKeyboard = () => {
       const keyCode = beatOptionToKeyCode[option];
 
       acc[keyCode] = () => {
+        if (!howls[note] || howls[note].status !== 'ready') return;
+
         dispatch(
           setCurrentlyPlaying({
             currentHand: option === 't' ? 2 : 1,

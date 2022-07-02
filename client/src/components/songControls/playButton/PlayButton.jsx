@@ -5,9 +5,15 @@ import { playPattern } from '../../../assets/sound/patternPlayer';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/Primary';
 
-const PlayButton = ({ howls, isSongPlaying, light, setIsSongPlaying }) => {
-  const areHowlsReady = Object.values(howls).every(
-    ({ status }) => status === 'ready'
+const PlayButton = ({
+  howls,
+  isSongPlaying,
+  light,
+  scale,
+  setIsSongPlaying,
+}) => {
+  const areHowlsReady = scale.every(
+    ({ note }) => howls[note]?.status === 'ready'
   );
 
   const handlePlayPause = () => {
@@ -31,8 +37,9 @@ const PlayButton = ({ howls, isSongPlaying, light, setIsSongPlaying }) => {
   );
 };
 
-const mapStateToProps = ({ howls, ui }) => ({
+const mapStateToProps = ({ howls, scale, ui }) => ({
   howls: howls.data,
+  scale: scale.parsed.pitched,
   isSongPlaying: ui.isSongPlaying,
 });
 

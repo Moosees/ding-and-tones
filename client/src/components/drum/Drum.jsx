@@ -19,6 +19,8 @@ const Drum = ({
   style,
 }) => {
   const handlePlay = (note, option, currentHand = 1) => {
+    if (!howls[note] || howls[note].status !== 'ready') return;
+
     setCurrentlyPlaying({ currentHand, currentSound: [option] });
     howls[note].play();
   };

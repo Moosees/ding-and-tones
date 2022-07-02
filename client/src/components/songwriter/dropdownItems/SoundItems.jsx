@@ -21,8 +21,10 @@ const SoundItems = ({
     const isDisabled = multiSelect && sound.length >= 2 && !selected;
 
     const handleClick = () => {
+      if (!howls[note] || howls[note].status !== 'ready') return;
+
       updateSoundForBeat(beatId, option);
-      howls[note]?.play();
+      howls[note].play();
     };
 
     const handleKeyDown = (e) => {
