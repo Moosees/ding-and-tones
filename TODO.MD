@@ -19,9 +19,7 @@
 
 #### Needed changes
 
-* Update howl loading status getting and setting
 * Update howl playing components to check loading status before trying to play howl
-* Make sure loading status doesn't get overwritten when creating howls
 * Update cleanupHowls for new howls state structure (loading scale, getting scale etc.)
 * Add percussive sounds to howls
 * Add percussive keyboard handlers
@@ -49,6 +47,7 @@
 
 #### Cleanup
 
+* Make sure loading status doesn't get overwritten when creating howls - done?
 * Update flat/sharp to use split round and dings - done?
 * Make sure chords work with new parsed scales - done?
 * Refactor scale.utils (handle roots that are not ding, split file?)
