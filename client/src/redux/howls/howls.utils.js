@@ -2,11 +2,21 @@ import { Howl, Howler } from 'howler';
 import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
 
-export const cleanupHowls = () => {
-  const { howls } = store.getState();
+export const cleanupHowls = (howls, scale) => {
   Howler.stop();
 
-  howls.all.forEach(({ howl }) => {
+  const allNotes = scale.map(({ note }) => note);
+  console.log('cleaning up howls');
+
+  Object.keys(howls).forEach((note) => {
+    if (allNotes.includes(note)) {
+      console.log('skipping', note);
+      return;
+    }
+
+    const howl = howls[note].howl;
+
+    console.log('cleaning up', { note, howl });
     howl.off();
     howl.unload();
   });

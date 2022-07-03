@@ -1,7 +1,7 @@
 import audioOptions from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import howlsTypes from './howls.types';
-import { createHowl } from './howls.utils';
+import { cleanupHowls, createHowl } from './howls.utils';
 
 // const oldState = {
 //   all: [],
@@ -25,9 +25,6 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case howlsTypes.ADD_HOWL:
       return { ...state, data: { ...state.data, [payload]: payload } };
-
-    case howlsTypes.CLEANUP_HOWLS:
-      return { ...state, data: {} };
 
     case howlsTypes.CREATE_HOWLS:
       return { ...state, data: payload.howls };
@@ -66,7 +63,8 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
 
     case scaleTypes.LOAD_SCALE:
-      console.log('load scale:', payload.parsed.pitched);
+      console.log('load scale:', payload);
+      cleanupHowls(state.data, payload.parsed.pitched);
       const newHowls = payload.parsed.pitched.reduce((acc, { note }) => {
         console.log('New howl?', note, !state.data[note], state.data[note]);
         acc[note] = state.data[note]

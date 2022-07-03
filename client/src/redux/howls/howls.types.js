@@ -1,6 +1,5 @@
 const howlsTypes = {
   ADD_HOWL: 'howls/add',
-  CLEANUP_HOWLS: 'howls/cleanAll',
   CREATE_HOWLS: 'howls/createAll',
   REMOVE_HOWL: 'howls/remove',
   SELECT_AUDIO: 'howls/src',

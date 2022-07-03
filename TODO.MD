@@ -19,12 +19,13 @@
 
 #### Needed changes
 
-* Update cleanupHowls for new howls state structure (loading scale, getting scale etc.)
+* Update cleanupHowls for new howls state structure (fetching scale, fetching scale with song)
 * Add percussive sounds to howls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
 * Fix updateSoundForBeat to trigger animations on drum when using beatDropdown
-* Add howls handling when modifying scale
+* Add howls handling when modifying scale - adding and cleaning up
+* Cleanup and re-create howls when changing audio source
 * Make sure loading scales sets root info correctly in parseScaleData
 
 #### Optional changes
