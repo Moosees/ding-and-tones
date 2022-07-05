@@ -118,7 +118,7 @@ export const getSongById =
       });
   };
 
-export const loadSong = (song, suppressAlert) => (dispatch) => {
+export const loadSongFromState = (song, suppressAlert) => (dispatch) => {
   const parsedSong = parseFetchedSong(song, false, suppressAlert);
 
   dispatch({ type: songTypes.SET_STATE, payload: parsedSong });

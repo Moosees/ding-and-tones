@@ -55,7 +55,7 @@ const Results = ({
 
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
-      const loadSong = (songId, getScale) => {
+      const fetchSongFromServer = (songId, getScale) => {
         getSongById(songId, getScale).then((res) => {
           if (res) redirectTo('/song');
         });
@@ -68,13 +68,13 @@ const Results = ({
               <BtnPrimary
                 light
                 label="Load w/o scale"
-                onClick={() => loadSong(songId, false)}
+                onClick={() => fetchSongFromServer(songId, false)}
               />
               {scaleId && (
                 <BtnPrimary
                   light
                   label="Load with scale"
-                  onClick={() => loadSong(songId, true)}
+                  onClick={() => fetchSongFromServer(songId, true)}
                 />
               )}
             </Buttons>
