@@ -19,7 +19,7 @@
 
 #### Needed changes
 
-* Update cleanupHowls for new howls state structure (fetching scale, fetching scale with song)
+* Update cleanupHowls for new howls state structure (fetching scale with song)
 * Add percussive sounds to howls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown

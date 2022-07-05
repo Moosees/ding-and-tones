@@ -62,8 +62,10 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
     }
 
+    case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
-      console.log('load scale:', payload);
+    case scaleTypes.SAVE_SUCCESSFUL:
+      console.log(type, payload);
       cleanupHowls(state.data, payload.parsed.pitched);
       const newHowls = payload.parsed.pitched.reduce((acc, { note }) => {
         console.log('New howl?', note, !state.data[note], state.data[note]);
