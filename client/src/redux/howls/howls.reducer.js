@@ -1,7 +1,8 @@
 import audioOptions from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
+import songTypes from '../song/song.types';
 import howlsTypes from './howls.types';
-import { cleanupHowls, createHowl } from './howls.utils';
+import { updateHowls } from './howls.utils';
 
 // const oldState = {
 //   all: [],
@@ -64,24 +65,35 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
-    case scaleTypes.SAVE_SUCCESSFUL:
+    case scaleTypes.SAVE_SUCCESSFUL: {
       console.log(type, payload);
-      cleanupHowls(state.data, payload.parsed.pitched);
-      const newHowls = payload.parsed.pitched.reduce((acc, { note }) => {
-        console.log('New howl?', note, !state.data[note], state.data[note]);
-        acc[note] = state.data[note]
-          ? { ...state.data[note] }
-          : {
-              ...createHowl(note, `${state.info.audioSrc.path}/${note}.mp3`),
-              status: 'loading',
-            };
 
-        return acc;
-      }, {});
+      const newHowls = updateHowls(
+        state.data,
+        state.info.audioSrc.path,
+        payload.parsed.pitched
+      );
 
       console.log({ newHowls });
 
       return { ...state, data: newHowls };
+    }
+
+    case songTypes.FETCH_SUCCESSFUL: {
+      console.log(type, payload);
+
+      if (!payload.getScale) return state;
+
+      const newHowls = updateHowls(
+        state.data,
+        state.info.audioSrc.path,
+        payload.scale.parsed.pitched
+      );
+
+      console.log({ newHowls });
+
+      return { ...state, data: newHowls };
+    }
 
     default:
       return state;

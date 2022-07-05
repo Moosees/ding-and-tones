@@ -71,3 +71,18 @@ export const createHowl = (note, path) => {
 
   return { play, howl };
 };
+
+export const updateHowls = (howls, audioSrc, scale) => {
+  cleanupHowls(howls, scale);
+  return scale.reduce((acc, { note }) => {
+    console.log('New howl?', note, !howls[note], howls[note]);
+    acc[note] = howls[note]
+      ? { ...howls[note] }
+      : {
+          ...createHowl(note, `${audioSrc}/${note}.mp3`),
+          status: 'loading',
+        };
+
+    return acc;
+  }, {});
+};
