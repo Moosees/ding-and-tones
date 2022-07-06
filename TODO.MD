@@ -22,7 +22,6 @@
 * Add percussive sounds to howls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
-* Fix updateSoundForBeat to trigger animations on drum when using beatDropdown
 * Add howls handling when modifying scale - adding and cleaning up
 * Cleanup and re-create howls when changing audio source
 * Make sure loading scales sets root info correctly in parseScaleData
@@ -30,6 +29,7 @@
 #### Optional changes
 
 * Change setCurrentlyPlaying to use note instead of option?
+* Merge setCurrentlyPlaying into updateSoundForBeat?
 * Howls reducer refactor to howls.utils?
 * createFullScaleFromNames handles new createScaleLabel and returns label with scale?
 * Add isOwner to song with scale fetch

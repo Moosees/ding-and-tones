@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateSoundForBeat } from '../../../redux/song/song.actions';
+import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 import { DropdownItem } from './dropdownItems.styles';
 
 const SoundItems = ({
@@ -9,6 +10,7 @@ const SoundItems = ({
   hasNonScaleNote,
   howls,
   multiSelect,
+  setCurrentlyPlaying,
   sharpNotes,
   soundList,
   updateSoundForBeat,
@@ -24,6 +26,11 @@ const SoundItems = ({
       if (!howls[note] || howls[note].status !== 'ready') return;
 
       updateSoundForBeat(beatId, option);
+      setCurrentlyPlaying({
+        currentBeat: null,
+        currentBar: null,
+        currentSound: [option],
+      });
       howls[note].play();
     };
 
@@ -59,4 +66,7 @@ const mapStateToProps = ({ howls, scale, song, ui }) => ({
   multiSelect: ui.multiSelect,
 });
 
-export default connect(mapStateToProps, { updateSoundForBeat })(SoundItems);
+export default connect(mapStateToProps, {
+  updateSoundForBeat,
+  setCurrentlyPlaying,
+})(SoundItems);
