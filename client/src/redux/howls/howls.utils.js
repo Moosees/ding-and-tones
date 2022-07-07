@@ -60,8 +60,8 @@ export const playHowl = (howl) => {
   howl.on('play', fadeEvent);
 };
 
-export const createHowl = (note, path) => {
-  const howl = new Howl({ src: path });
+export const createHowl = (note, audioSrc) => {
+  const howl = new Howl({ src: `${audioSrc}/${note}.mp3` });
 
   howl.once('loaderror', (_id, error) => onHowlError(note, howl, error));
   howl.once('load', () => onHowlLoad(note, howl));
@@ -69,19 +69,14 @@ export const createHowl = (note, path) => {
 
   const play = () => playHowl(howl);
 
-  return { play, howl };
+  return { play, howl, status: 'loading' };
 };
 
 export const updateHowls = (howls, audioSrc, scale) => {
   cleanupHowls(howls, scale);
   return scale.reduce((acc, { note }) => {
     console.log('New howl?', note, !howls[note], howls[note]);
-    acc[note] = howls[note]
-      ? { ...howls[note] }
-      : {
-          ...createHowl(note, `${audioSrc}/${note}.mp3`),
-          status: 'loading',
-        };
+    acc[note] = howls[note] ? { ...howls[note] } : createHowl(note, audioSrc);
 
     return acc;
   }, {});
