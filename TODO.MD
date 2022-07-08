@@ -22,7 +22,6 @@
 * Add percussive sounds to howls
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
-* Add howls handling when modifying scale - removing/cleaning up
 * Cleanup and re-create howls when changing audio source
 * Make sure loading scales sets root info correctly in parseScaleData
 

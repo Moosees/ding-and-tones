@@ -2,6 +2,12 @@ import { Howl, Howler } from 'howler';
 import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
 
+export const prepareHowlForRemoval = ({ howl }) => {
+  howl.off();
+  howl.unload();
+  console.log('cleaned up', { howl });
+};
+
 export const cleanupHowls = (howls, scale) => {
   Howler.stop();
 
@@ -14,11 +20,8 @@ export const cleanupHowls = (howls, scale) => {
       return;
     }
 
-    const howl = howls[note].howl;
-
-    console.log('cleaning up', { note, howl });
-    howl.off();
-    howl.unload();
+    console.log('cleaning up', note);
+    prepareHowlForRemoval(howls[note]);
   });
 };
 

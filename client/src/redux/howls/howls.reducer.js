@@ -2,7 +2,7 @@ import audioOptions from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import howlsTypes from './howls.types';
-import { createHowl, updateHowls } from './howls.utils';
+import { createHowl, prepareHowlForRemoval, updateHowls } from './howls.utils';
 
 // const oldState = {
 //   all: [],
@@ -37,6 +37,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, data: payload.howls };
 
     case howlsTypes.REMOVE_HOWL:
+      prepareHowlForRemoval(state.data[payload]);
       return { ...state, data: { ...state.data, [payload]: null } };
 
     case howlsTypes.SELECT_AUDIO:
