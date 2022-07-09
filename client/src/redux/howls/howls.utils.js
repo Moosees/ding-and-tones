@@ -8,20 +8,19 @@ export const prepareHowlForRemoval = ({ howl }) => {
   console.log('cleaned up', { howl });
 };
 
-export const cleanupHowls = (howls, scale) => {
+export const cleanupHowls = (howls, sounds) => {
   Howler.stop();
 
-  const allNotes = scale.map(({ note }) => note);
   console.log('cleaning up howls');
 
-  Object.keys(howls).forEach((note) => {
-    if (allNotes.includes(note)) {
-      console.log('skipping', note);
+  Object.keys(howls).forEach((howl) => {
+    if (sounds.includes(howl)) {
+      console.log('skipping', howl);
       return;
     }
 
-    console.log('cleaning up', note);
-    prepareHowlForRemoval(howls[note]);
+    console.log('cleaning up', howl);
+    prepareHowlForRemoval(howls[howl]);
   });
 };
 
@@ -75,11 +74,23 @@ export const createHowl = (note, audioSrc) => {
   return { play, howl, status: 'loading' };
 };
 
+const parseScaleForUpdateHowls = (scale) => {
+  const percussiveHits = ['takLoud', 'takSoft'];
+
+  const parsedScale = scale.map(({ note }) => note);
+
+  return [...percussiveHits, ...parsedScale];
+};
+
 export const updateHowls = (howls, audioSrc, scale) => {
-  cleanupHowls(howls, scale);
-  return scale.reduce((acc, { note }) => {
-    console.log('New howl?', note, !howls[note], howls[note]);
-    acc[note] = howls[note] ? { ...howls[note] } : createHowl(note, audioSrc);
+  const sounds = parseScaleForUpdateHowls(scale);
+
+  cleanupHowls(howls, sounds);
+  return sounds.reduce((acc, sound) => {
+    console.log('New howl?', sound, !howls[sound], howls[sound]);
+    acc[sound] = howls[sound]
+      ? { ...howls[sound] }
+      : createHowl(sound, audioSrc);
 
     return acc;
   }, {});

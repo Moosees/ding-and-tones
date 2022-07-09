@@ -19,7 +19,7 @@
 
 #### Needed changes
 
-* Add percussive sounds to howls
+* Add percussive sounds to howls - started (takLoud, takSoft)
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
 * Cleanup and re-create howls when changing audio source
@@ -27,6 +27,7 @@
 
 #### Optional changes
 
+* Remove key from howls state when removing note from scale?
 * Change setCurrentlyPlaying to use note instead of option?
 * Merge setCurrentlyPlaying into updateSoundForBeat?
 * Howls reducer refactor to howls.utils?
