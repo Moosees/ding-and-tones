@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Add percussive handling to song player
 * Add percussive keyboard handlers
 * Add percussive hits to BeatDropdown
 * Cleanup and re-create howls when changing audio source
@@ -27,7 +26,7 @@
 
 #### Optional changes
 
-* Store percussive sounds/notes and options in shared location?
+* Store percussive sounds/notes and options in shared location? (howls.options?)
 * Remove key from howls state when removing note from scale?
 * Change setCurrentlyPlaying to use note instead of option?
 * Merge setCurrentlyPlaying into updateSoundForBeat?

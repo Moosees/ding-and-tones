@@ -17,11 +17,16 @@ const getHowlsForScale = () => {
     },
   } = store.getState();
 
+  const initialNotes = {
+    t: howls.data['t'],
+    T: howls.data['T'],
+  };
+
   return pitched.reduce((acc, { note, option }) => {
     acc[option] = howls.data[note];
 
     return acc;
-  }, {});
+  }, initialNotes);
 };
 
 export const buildPatternFromBar = (barId, howls) => {
@@ -48,7 +53,7 @@ export const buildPatternFromBar = (barId, howls) => {
     const play = () => {
       sound.forEach((option) => {
         if (!howls[option]) return;
-        
+
         howls[option].play();
       });
     };
