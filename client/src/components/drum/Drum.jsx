@@ -99,8 +99,8 @@ const Drum = ({
             fill="url(#drumGradient)"
             filter="url(#drumShadow)"
           />
-          <Tak hand={2} handlePlay={() => handlePlay('takSoft', 't', 2)} />
-          <Tak hand={1} handlePlay={() => handlePlay('takLoud', 'T', 1)} />
+          <Tak hand={2} handlePlay={() => handlePlay('t', 't', 2)} />
+          <Tak hand={1} handlePlay={() => handlePlay('T', 'T', 1)} />
           {[...dings, ...round].map((data, i) => (
             <Tonefield key={i} {...data} />
           ))}
