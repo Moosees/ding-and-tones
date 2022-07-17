@@ -62,8 +62,8 @@ export const playHowl = (howl) => {
   howl.on('play', fadeEvent);
 };
 
-export const createHowl = (note, audioSrc) => {
-  const howl = new Howl({ src: `${audioSrc}/${note}.mp3` });
+export const createHowl = (note, fileName, audioSrc) => {
+  const howl = new Howl({ src: `${audioSrc}/${fileName}` });
 
   howl.once('loaderror', (_id, error) => onHowlError(note, howl, error));
   howl.once('load', () => onHowlLoad(note, howl));
@@ -75,9 +75,15 @@ export const createHowl = (note, audioSrc) => {
 };
 
 const parseScaleForUpdateHowls = (scale) => {
-  const percussiveHits = ['takLoud', 'takSoft'];
+  const percussiveHits = [
+    { note: 'T', fileName: 'takLoud.mp3' },
+    { note: 't', fileName: 'takSoft.mp3' },
+  ];
 
-  const parsedScale = scale.map(({ note }) => note);
+  const parsedScale = scale.map(({ note }) => ({
+    note,
+    fileName: note + '.mp3',
+  }));
 
   return [...percussiveHits, ...parsedScale];
 };
@@ -86,11 +92,11 @@ export const updateHowls = (howls, audioSrc, scale) => {
   const sounds = parseScaleForUpdateHowls(scale);
 
   cleanupHowls(howls, sounds);
-  return sounds.reduce((acc, sound) => {
-    console.log('New howl?', sound, !howls[sound], howls[sound]);
-    acc[sound] = howls[sound]
-      ? { ...howls[sound] }
-      : createHowl(sound, audioSrc);
+  return sounds.reduce((acc, { note, fileName }) => {
+    console.log('New howl?', note, !howls[note], howls[note]);
+    acc[note] = howls[note]
+      ? { ...howls[note] }
+      : createHowl(note, fileName, audioSrc);
 
     return acc;
   }, {});
