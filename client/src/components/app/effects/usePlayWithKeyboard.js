@@ -11,7 +11,13 @@ const usePlayWithKeyboard = () => {
   }));
 
   useEffect(() => {
-    const keyboardCbs = scale.reduce((acc, { note, option }) => {
+    const allNotes = [
+      ...scale,
+      { note: 't', option: 't' },
+      { note: 'T', option: 'T' },
+    ];
+
+    const keyboardCbs = allNotes.reduce((acc, { note, option }) => {
       const keyCode = beatOptionToKeyCode[option];
 
       acc[keyCode] = () => {
