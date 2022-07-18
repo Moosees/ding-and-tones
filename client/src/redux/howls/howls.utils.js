@@ -14,8 +14,9 @@ export const cleanupHowls = (howls, sounds) => {
   console.log('cleaning up howls');
 
   Object.keys(howls).forEach((howl) => {
+    console.log({ sounds, howl });
     if (sounds.includes(howl)) {
-      console.log('skipping', howl);
+      console.log('skipping cleanup', howl);
       return;
     }
 
@@ -71,6 +72,8 @@ export const createHowl = (note, fileName, audioSrc) => {
 
   const play = () => playHowl(howl);
 
+  console.log('create howl:', note);
+
   return { play, howl, status: 'loading' };
 };
 
@@ -91,9 +94,14 @@ const parseScaleForUpdateHowls = (scale) => {
 export const updateHowls = (howls, audioSrc, scale) => {
   const sounds = parseScaleForUpdateHowls(scale);
 
-  cleanupHowls(howls, sounds);
+  cleanupHowls(
+    howls,
+    sounds.map(({ note }) => note)
+  );
+
+  console.log('creating howls');
   return sounds.reduce((acc, { note, fileName }) => {
-    console.log('New howl?', note, !howls[note], howls[note]);
+    // console.log('New howl?', note, howls[note], acc);
     acc[note] = howls[note]
       ? { ...howls[note] }
       : createHowl(note, fileName, audioSrc);

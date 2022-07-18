@@ -50,7 +50,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, info: { ...state.info, volume: payload.newVolume } };
 
     case howlsTypes.UPDATE_HOWL_LOADING_STATUS: {
-      console.log({
+      console.log('howl status change', {
         howl: payload.howl,
         oldStatus: state.data[payload.howl].status,
         newStatus: payload.status,
