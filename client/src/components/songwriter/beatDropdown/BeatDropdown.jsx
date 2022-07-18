@@ -43,14 +43,21 @@ const BeatDropdown = ({
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 
-  const { round, extra, dings } = useMemo(() => {
-    return scale.reduce(
-      (acc, note) => {
-        acc[note.type].push(note);
-        return acc;
-      },
-      { round: [], extra: [], dings: [] }
-    );
+  const { round, extra, dings, percussive } = useMemo(() => {
+    const initialSounds = {
+      round: [],
+      extra: [],
+      dings: [],
+      percussive: [
+        { note: 't', noteSharp: 't', option: 't' },
+        { note: 'T', noteSharp: 'T', option: 'T' },
+      ],
+    };
+
+    return scale.reduce((acc, note) => {
+      acc[note.type].push(note);
+      return acc;
+    }, initialSounds);
   }, [scale]);
 
   const keyboardCbs = useMemo(() => {
@@ -61,6 +68,7 @@ const BeatDropdown = ({
       scale
     );
   }, [beatId, updateSoundForBeat, updateHandForBeat, scale]);
+  console.log({ keyboardCbs });
 
   useEffect(() => {
     const keyboardListener = (e) => {
@@ -114,8 +122,8 @@ const BeatDropdown = ({
           <DropdownColumn>
             <SoundItems beatId={beatId} soundList={extra} />
             <DividerLine small />
-            {/* <SoundItems beatId={beatId} soundList={options.percussive} />
-            <DividerLine small /> */}
+            <SoundItems beatId={beatId} soundList={percussive} />
+            <DividerLine small />
             <HandItems beatId={beatId} />
           </DropdownColumn>
         </DropdownContent>

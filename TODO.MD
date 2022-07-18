@@ -19,7 +19,7 @@
 
 #### Needed changes
 
-* Add percussive hits to BeatDropdown
+* Show label for tak BeatDropdown SoundItems, "name" prop for soundList?
 * Fix bug causing howls to unload when swapping between scales that contain the same note
 * Cleanup and re-create howls when changing audio source
 * Make sure loading scales sets root info correctly in parseScaleData
