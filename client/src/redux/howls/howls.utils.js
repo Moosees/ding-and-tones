@@ -2,9 +2,14 @@ import { Howl, Howler } from 'howler';
 import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
 
-export const prepareHowlForRemoval = ({ howl }) => {
-  howl.off();
-  howl.unload();
+export const prepareHowlForRemoval = (howl) => {
+  if (!howl) {
+    console.log(`skipping ${howl} as it does not exist`);
+    return;
+  }
+
+  howl.howl.off();
+  howl.howl.unload();
   console.log('cleaned up', { howl });
 };
 
@@ -15,7 +20,7 @@ export const cleanupHowls = (howls, sounds) => {
 
   Object.keys(howls).forEach((howl) => {
     console.log({ sounds, howl });
-    if (!howls[howl] || sounds.includes(howl)) {
+    if (sounds.includes(howl)) {
       console.log('skipping cleanup', howl);
       return;
     }
