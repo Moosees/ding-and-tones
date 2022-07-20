@@ -15,7 +15,7 @@ export const cleanupHowls = (howls, sounds) => {
 
   Object.keys(howls).forEach((howl) => {
     console.log({ sounds, howl });
-    if (sounds.includes(howl)) {
+    if (!howls[howl] || sounds.includes(howl)) {
       console.log('skipping cleanup', howl);
       return;
     }

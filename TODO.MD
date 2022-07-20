@@ -26,7 +26,6 @@
 #### Optional changes
 
 * Store percussive sounds/notes and options in shared location? (howls.options?)
-* Remove key from howls state when removing note from scale?
 * Change setCurrentlyPlaying to use note instead of option?
 * Merge setCurrentlyPlaying into updateSoundForBeat?
 * Howls reducer refactor to howls.utils?
