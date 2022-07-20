@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Transposing scale updates howls
 * Make sure loading scales sets root info correctly in parseScaleData
 
 #### Optional changes

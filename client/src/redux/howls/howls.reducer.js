@@ -94,6 +94,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
+    case scaleTypes.UPDATE_SCALE:
     case scaleTypes.SAVE_SUCCESSFUL: {
       console.log(type, payload);
 
