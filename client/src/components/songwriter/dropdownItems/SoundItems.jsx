@@ -11,19 +11,18 @@ const SoundItems = ({
   howls,
   multiSelect,
   setCurrentlyPlaying,
-  sharpNotes,
   soundList,
   updateSoundForBeat,
 }) => {
   const { sound } = beats[beatId];
 
-  const soundItems = soundList.map(({ note, noteSharp, option }) => {
+  const soundItems = soundList.map(({ howl, label, option }) => {
     const selected = sound.includes(option);
 
     const isDisabled = multiSelect && sound.length >= 2 && !selected;
 
     const handleClick = () => {
-      if (!howls[note] || howls[note].status !== 'ready') return;
+      if (!howls[howl] || howls[howl].status !== 'ready') return;
 
       updateSoundForBeat(beatId, option);
       setCurrentlyPlaying({
@@ -31,7 +30,7 @@ const SoundItems = ({
         currentBar: null,
         currentSound: [option],
       });
-      howls[note].play();
+      howls[howl].play();
     };
 
     const handleKeyDown = (e) => {
@@ -51,7 +50,7 @@ const SoundItems = ({
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        {`${option} - ${sharpNotes ? noteSharp : note}`}
+        {`${option} - ${label}`}
       </DropdownItem>
     );
   });
@@ -59,9 +58,8 @@ const SoundItems = ({
   return <>{soundItems}</>;
 };
 
-const mapStateToProps = ({ howls, scale, song, ui }) => ({
+const mapStateToProps = ({ howls, song, ui }) => ({
   howls: howls.data,
-  sharpNotes: scale.info.sharpNotes,
   beats: song.beats,
   multiSelect: ui.multiSelect,
 });

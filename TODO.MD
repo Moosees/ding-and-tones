@@ -19,7 +19,6 @@
 
 #### Needed changes
 
-* Show label for tak BeatDropdown SoundItems, "name" prop for soundList?
 * Cleanup and re-create howls when changing audio source
 * Make sure loading scales sets root info correctly in parseScaleData
 

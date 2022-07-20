@@ -22,7 +22,7 @@ import {
   DropdownColumn,
   DropdownContent,
 } from './beatDropdown.styles';
-import { createKeyboardCbs } from './beatDropdown.utils.js';
+import { createKeyboardCbs, createSoundLists } from './beatDropdown.utils.js';
 
 const BeatDropdown = ({
   beatId,
@@ -32,6 +32,7 @@ const BeatDropdown = ({
   multiSelect,
   nonScaleNotes,
   scale,
+  sharpNotes,
   toggleMultiSelect,
   updateHandForBeat,
   updateSoundForBeat,
@@ -43,32 +44,16 @@ const BeatDropdown = ({
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2;
 
-  const { round, extra, dings, percussive } = useMemo(() => {
-    const initialSounds = {
-      round: [],
-      extra: [],
-      dings: [],
-      percussive: [
-        { note: 't', noteSharp: 't', option: 't' },
-        { note: 'T', noteSharp: 'T', option: 'T' },
-      ],
-    };
+  const { round, extra, dings, percussive } = useMemo(
+    () => createSoundLists(scale, sharpNotes),
+    [scale, sharpNotes]
+  );
 
-    return scale.reduce((acc, note) => {
-      acc[note.type].push(note);
-      return acc;
-    }, initialSounds);
-  }, [scale]);
-
-  const keyboardCbs = useMemo(() => {
-    return createKeyboardCbs(
-      beatId,
-      updateSoundForBeat,
-      updateHandForBeat,
-      scale
-    );
-  }, [beatId, updateSoundForBeat, updateHandForBeat, scale]);
-  console.log({ keyboardCbs });
+  const keyboardCbs = useMemo(
+    () =>
+      createKeyboardCbs(beatId, updateSoundForBeat, updateHandForBeat, scale),
+    [beatId, updateSoundForBeat, updateHandForBeat, scale]
+  );
 
   useEffect(() => {
     const keyboardListener = (e) => {
@@ -134,6 +119,7 @@ const BeatDropdown = ({
 
 const mapStateToProps = ({ scale, ui }) => ({
   multiSelect: ui.multiSelect,
+  sharpNotes: scale.info.sharpNotes,
   scale: scale.parsed.pitched,
 });
 
