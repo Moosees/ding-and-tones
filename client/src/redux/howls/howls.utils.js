@@ -109,3 +109,16 @@ export const updateHowls = (howls, audioSrc, scale) => {
     return acc;
   }, {});
 };
+
+export const changeAudioSrc = (howls, audioSrc, scale) => {
+  cleanupHowls(howls, []);
+
+  const sounds = parseScaleForUpdateHowls(scale);
+
+  console.log('createing howls with new audioSrc');
+  return sounds.reduce((acc, { note, fileName }) => {
+    acc[note] = createHowl(note, fileName, audioSrc);
+
+    return acc;
+  }, {});
+};

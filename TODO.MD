@@ -19,7 +19,8 @@
 
 #### Needed changes
 
-* Cleanup and re-create howls when changing audio source
+* AudioSrc label selected bug
+* Transposing scale updates howls
 * Make sure loading scales sets root info correctly in parseScaleData
 
 #### Optional changes

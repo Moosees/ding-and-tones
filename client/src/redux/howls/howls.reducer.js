@@ -2,7 +2,12 @@ import audioOptions from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import howlsTypes from './howls.types';
-import { createHowl, prepareHowlForRemoval, updateHowls } from './howls.utils';
+import {
+  changeAudioSrc,
+  createHowl,
+  prepareHowlForRemoval,
+  updateHowls,
+} from './howls.utils';
 
 // const oldState = {
 //   all: [],
@@ -40,11 +45,28 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       prepareHowlForRemoval(state.data[payload]);
       return { ...state, data: { ...state.data, [payload]: null } };
 
-    case howlsTypes.SELECT_AUDIO:
+    case howlsTypes.SELECT_AUDIO: {
+      console.log({
+        oldSrc: state.info.audioSrc,
+        newSrc: payload.audioSrc,
+      });
+      if (state.info.audioSrc.path === payload.audioSrc.path) {
+        console.log('skipping audioSrc update');
+        return state;
+      }
+
+      const newHowls = changeAudioSrc(
+        state.data,
+        payload.audioSrc.path,
+        payload.scale
+      );
+
       return {
         ...state,
+        data: newHowls,
         info: { ...state.info, audioSrc: payload },
       };
+    }
 
     case howlsTypes.SET_VOLUME:
       return { ...state, info: { ...state.info, volume: payload.newVolume } };
