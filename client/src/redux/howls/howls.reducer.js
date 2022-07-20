@@ -64,7 +64,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         data: newHowls,
-        info: { ...state.info, audioSrc: payload },
+        info: { ...state.info, audioSrc: payload.audioSrc },
       };
     }
 

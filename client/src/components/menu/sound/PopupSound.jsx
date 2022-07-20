@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMemo } from 'react';
 import { connect } from 'react-redux';
 import audioOptions from '../../../assets/sound/audioOptions';
 import { selectSoundSource } from '../../../redux/howls/howls.actions';
@@ -9,17 +10,20 @@ import Popup from '../../shared/popup/Popup';
 import { AudioOption, Credits } from './sound.styles';
 import VolumeSlider from './VolumeSlider';
 
-const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
-  const getAudioOptions = () =>
-    audioOptions.map((option, i) => (
-      <AudioOption
-        key={i}
-        isSelected={option.path === audioPath}
-        onClick={() => selectSoundSource(option)}
-      >
-        {option.label}
-      </AudioOption>
-    ));
+const PopupSound = ({ audioSrc, onClose, selectSoundSource }) => {
+  const optionList = useMemo(
+    () =>
+      audioOptions.map((option, i) => (
+        <AudioOption
+          key={i}
+          isSelected={option.path === audioSrc.path}
+          onClick={() => selectSoundSource(option)}
+        >
+          {option.label}
+        </AudioOption>
+      )),
+    [audioSrc, selectSoundSource]
+  );
 
   return (
     <Popup header="Sound" onClose={onClose}>
@@ -28,7 +32,7 @@ const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
         <VolumeSlider />
       </InfoBox>
       <Popup.SubHeading>Sound Set</Popup.SubHeading>
-      {getAudioOptions()}
+      {optionList}
       <Credits>
         Handpan samples by{' '}
         <a
@@ -47,7 +51,7 @@ const PopupSound = ({ audioPath, onClose, selectSoundSource }) => {
 };
 
 const mapStateToProps = ({ howls }) => ({
-  audioPath: howls.info.audioSrc.path,
+  audioSrc: howls.info.audioSrc,
 });
 
 export default connect(mapStateToProps, { selectSoundSource })(PopupSound);
