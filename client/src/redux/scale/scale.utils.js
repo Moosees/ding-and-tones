@@ -175,23 +175,6 @@ export const parseScaleData = (scale, suppressAlert) => {
   return parsedScaleData;
 };
 
-// export const createScaleFromString = (scaleString) => {
-//   const scaleAry = scaleString.split(' ');
-//   const scaleFlat = removeSharps(scaleAry);
-//   const scaleTrimmed = removeDuplicateNotes(scaleFlat);
-//   const round = sortScaleByFreq(scaleTrimmed);
-//   const scaleFull = createFullScaleFromNames(round);
-
-//   return {
-//     name,
-//     layout,
-//     scale: {
-//       round,
-//       scaleFull,
-//     }
-//   };
-// };
-
 export const createScaleLabel = (
   { dings, round = [], extra = [] },
   sharpNotes

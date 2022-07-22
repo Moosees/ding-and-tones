@@ -4,25 +4,16 @@
 
 ### SoundOptions and howls state rework
 
+#### Needed changes
+
+* Iterate over scale notes to see if song is ready to be played - refactor to utils file and check percussive howls
+
 #### Optional changes
 
-* Howls reducer refactor to howls.utils?
 * createFullScaleFromNames handles new createScaleLabel and returns label with scale?
-* Add isOwner to song with scale fetch
-* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
-* Iterate over scale notes to see if song is ready to be played?
-* Keep list of howl status for howls not currently in scale?
-* Merge drum state into scale.ui?
 * Does saving scale need to update scale state other than ID and isOwner?
 * Use scale.parsed.pitched in MiniDrum, ExtraNote? (scale)Notes, Edit and Move?
-* Handle checking if song is playing in state? Middleware?
-* Update beat.utils to use parsed scale with (dynamic) percussive notes?
-* Stop extra notes from updating positions when adding extra notes?
-* Only start loading howls after UI finish loading?
-* Refactor scale.actions?
-* Refactor scale.utils (handle roots that are not ding, split file?)
-* Rename/clean addRootAndPosition in scale.utils?
 
 #### Cleanup
 
@@ -90,9 +81,12 @@
 
 ### Minor updates
 
+* Refactor scale.utils (redux)
+* Add isOwner to song with scale fetch if user is owner of scale linked to song
 * Validate scales before saving, at least 5 tones?
 * Bar numbers on song viewer? Only long songs?
 * Add bass octave?
+* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 
 ### Major updates
 
@@ -104,6 +98,7 @@
 * Update to redis 4 when connect-redis is supported
 * React-to-print functional components (SongView and PrintView, set documentTitle)
 * Song state update, mirror db model and state
+* Lazy loading with priorities, ui -> controls -> sounds?
 
 ## Not yet planned for release updates
 
@@ -186,6 +181,7 @@
 * Scale layout prop - not needed? used for double ding?
 * Change how scale labels look? Double ding styles?
 * Dynamic and centralized percussive sounds
+* Stop extra notes from updating positions when adding extra notes?
 
 ### Chords
 
