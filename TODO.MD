@@ -6,7 +6,6 @@
 
 #### Optional changes
 
-* Store percussive sounds/notes and options in shared location? (howls.options?)
 * Change setCurrentlyPlaying to use note instead of option?
 * Merge setCurrentlyPlaying into updateSoundForBeat?
 * Howls reducer refactor to howls.utils?
@@ -187,6 +186,7 @@
 * Sign in should update scale ownership if isOwner is kept
 * Scale layout prop - not needed? used for double ding?
 * Change how scale labels look? Double ding styles?
+* Dynamic and centralized percussive sounds
 
 ### Chords
 
