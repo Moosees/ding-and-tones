@@ -6,8 +6,6 @@
 
 #### Optional changes
 
-* Change setCurrentlyPlaying to use note instead of option?
-* Merge setCurrentlyPlaying into updateSoundForBeat?
 * Howls reducer refactor to howls.utils?
 * createFullScaleFromNames handles new createScaleLabel and returns label with scale?
 * Add isOwner to song with scale fetch
@@ -79,6 +77,7 @@
 * Clean up UI state and reduce number of actions (also for other reducers?)
 * Use separate currentSound for patterns and play with clicks or keys?
 * "Value" exists in both beat and bar state, remove one?
+* Rework and simplify logic for setCurrentlyPlaying
 
 ## Focuses for upcoming release updates
 
