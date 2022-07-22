@@ -4,16 +4,6 @@ import songTypes from '../song/song.types';
 import howlsTypes from './howls.types';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 
-// const oldState = {
-//   all: [],
-//   loadingStatus: {},
-//   optionCbs: {},
-//   info: {
-//     audioSrc: audioOptions[0],
-//     volume: 0.8,
-//   },
-// };
-
 const INITIAL_STATE = {
   data: {},
   info: {

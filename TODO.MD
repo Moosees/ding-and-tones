@@ -4,10 +4,6 @@
 
 ### SoundOptions and howls state rework
 
-#### Needed changes
-
-* Make sure loading scales sets root info correctly in parseScaleData
-
 #### Optional changes
 
 * Store percussive sounds/notes and options in shared location? (howls.options?)
@@ -27,19 +23,13 @@
 * Update beat.utils to use parsed scale with (dynamic) percussive notes?
 * Stop extra notes from updating positions when adding extra notes?
 * Only start loading howls after UI finish loading?
+* Refactor scale.actions?
+* Refactor scale.utils (handle roots that are not ding, split file?)
+* Rename/clean addRootAndPosition in scale.utils?
 
 #### Cleanup
 
-* Make sure loading status doesn't get overwritten when creating howls - done?
-* Update flat/sharp to use split round and dings - done?
-* Make sure chords work with new parsed scales - done?
-* Refactor scale.utils (handle roots that are not ding, split file?)
-* Rename/clean addRootAndPosition in scale.utils
-* Refactor scale.actions?
-* Remove old global effects - done?
-* Remove utils for old global effects - done?
-* Remove old state reducers and actions
-* Remove logging and misc code
+* Remove logging
 
 ### Scale and chord sound
 
