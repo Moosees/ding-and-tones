@@ -6,8 +6,6 @@
 
 #### Needed changes
 
-* Iterate over scale notes to see if song is ready to be played - refactor to utils file and check percussive howls
-
 #### Optional changes
 
 * createFullScaleFromNames handles new createScaleLabel and returns label with scale?

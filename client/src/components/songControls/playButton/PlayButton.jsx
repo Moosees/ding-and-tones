@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/Primary';
+import { checkHowlsReadyStatus } from './playButton.utils';
 
 const PlayButton = ({
   howls,
@@ -12,8 +13,9 @@ const PlayButton = ({
   scale,
   setIsSongPlaying,
 }) => {
-  const areHowlsReady = scale.every(
-    ({ note }) => howls[note]?.status === 'ready'
+  const areHowlsReady = useMemo(
+    () => checkHowlsReadyStatus(scale, howls),
+    [howls, scale]
   );
 
   const handlePlayPause = () => {
