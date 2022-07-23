@@ -4,8 +4,6 @@ import { checkSession } from '../../../redux/user/user.actions';
 import BtnNav from '../../shared/button/Nav';
 import Dropdown from '../dropdown/Dropdown';
 import { MenuAnchor } from '../nav.styles';
-// import Sound from './sound/Sound';
-// import BtnMenu from '../shared/button/Menu';
 
 const User = ({ checkSession }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -18,12 +18,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, data: payload.howls };
 
     case howlsTypes.SELECT_AUDIO: {
-      console.log({
-        oldSrc: state.info.audioSrc,
-        newSrc: payload.audioSrc,
-      });
       if (state.info.audioSrc.path === payload.audioSrc.path) {
-        console.log('skipping audioSrc update');
         return state;
       }
 
@@ -44,12 +39,6 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, info: { ...state.info, volume: payload.newVolume } };
 
     case howlsTypes.UPDATE_HOWL_LOADING_STATUS: {
-      console.log('howl status change', {
-        howl: payload.howl,
-        oldStatus: state.data[payload.howl].status,
-        newStatus: payload.status,
-        state: state.data,
-      });
       if (!state.data[payload.howl]) return state;
 
       const howl = { ...state.data[payload.howl] };
@@ -66,24 +55,17 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
-    case scaleTypes.UPDATE_SCALE:
-    case scaleTypes.SAVE_SUCCESSFUL: {
-      console.log(type, payload);
-
+    case scaleTypes.UPDATE_SCALE: {
       const newHowls = updateHowls(
         state.data,
         state.info.audioSrc.path,
         payload.parsed.pitched
       );
 
-      console.log({ newHowls });
-
       return { ...state, data: newHowls };
     }
 
     case songTypes.FETCH_SUCCESSFUL: {
-      console.log(type, payload);
-
       if (!payload.getScale) return state;
 
       const newHowls = updateHowls(
@@ -91,8 +73,6 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
         state.info.audioSrc.path,
         payload.scale.parsed.pitched
       );
-
-      console.log({ newHowls });
 
       return { ...state, data: newHowls };
     }

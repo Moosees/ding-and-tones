@@ -2,12 +2,6 @@
 
 ## Sorted by release
 
-### SoundOptions and howls state rework
-
-#### Cleanup
-
-* Remove logging
-
 ### Scale and chord sound
 
 * Play chords from chords page, arpeggio and unison - how to handle inversions?
@@ -70,13 +64,13 @@
 
 ### Minor updates
 
+* Save scale only needs to send back search data and scaleId from server. Also isOwner? Remove parseScaleData when saving scale. Validation issues?
 * Refactor scale.utils (redux)
 * Add isOwner to song with scale fetch if user is owner of scale linked to song
 * Validate scales before saving, at least 5 tones?
 * Bar numbers on song viewer? Only long songs?
 * Add bass octave?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
-* Does saving scale need to update scale state other than ID and isOwner?
 
 ### Major updates
 

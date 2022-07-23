@@ -5,7 +5,6 @@ import { createFullScaleFromNames } from '../scale.utils';
 
 const parsedReducer = (state = parsedState, { type, payload }) => {
   switch (type) {
-    //case scaleTypes.SAVE_SUCCESSFUL:
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE:
@@ -31,9 +30,6 @@ const parsedReducer = (state = parsedState, { type, payload }) => {
       if (!payload.getScale) return state;
 
       return { ...state, ...payload.scale.parsed };
-
-    case scaleTypes.MOVE_EXTRA_NOTES:
-      return state; // position is in parsed scale?
 
     default:
       return state;

@@ -45,13 +45,11 @@ export const getNoteText = (
 
     case drumModes.NOTES:
       return getNoteLabelFromName(noteName, sharpNotes);
-    // return intervalMap[scaleFullIndex].note;
 
     case drumModes.NUMBERS:
       return option;
 
     default:
       return noteName;
-    // return intervalMap[scaleFullIndex].note;
   }
 };

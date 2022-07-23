@@ -15,8 +15,6 @@ const Scale = ({ info, scale }) => {
 
   const lists = scale[info.rootIndex].intervalMap.reduce(
     (lists, { compound, note, octaves, semitones }, i) => {
-      // const scaleSteps = compound > 0 ? compound : Math.min(octaves * 12, 12);
-
       const relativeSteps = semitones - prevSemitones;
       const isOctave = semitones % 12 === 0 && semitones !== 0;
       const { name } = intervals[isOctave ? 12 : compound];
@@ -24,7 +22,6 @@ const Scale = ({ info, scale }) => {
       lists.options.push(scale[i].option);
       lists.notes.push(getNoteLabelFromName(note, info.sharpNotes));
       lists.scaleIntervals.push(name);
-      // lists.scaleSteps.push(scaleSteps);
       lists.relativeSteps.push(relativeSteps);
       prevSemitones = semitones;
 
@@ -33,7 +30,6 @@ const Scale = ({ info, scale }) => {
     {
       options: [],
       notes: [],
-      // scaleSteps: [],
       scaleIntervals: [],
       relativeSteps: [],
     }
@@ -74,16 +70,6 @@ const Scale = ({ info, scale }) => {
             ))}
           </>
         </List>
-        {/* <List>
-          <ListItem>
-            <strong>Steps</strong>
-          </ListItem>
-          <>
-            {lists.scaleSteps.map((text, i) => (
-              <ListItem key={i}>{text}</ListItem>
-            ))}
-          </>
-        </List> */}
         <List>
           <ListItem>
             <strong>Steps</strong>

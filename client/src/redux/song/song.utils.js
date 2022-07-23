@@ -129,7 +129,6 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
   const parsedScale = getScale && scale ? parseScaleData(scale, true) : {};
-  console.log('afterParse:', { parsedScale });
   const savedScale =
     scale && scale.info
       ? {

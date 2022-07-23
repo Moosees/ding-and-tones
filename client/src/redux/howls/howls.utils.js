@@ -4,28 +4,21 @@ import { updateHowlLoadingStatus } from './howls.actions';
 
 export const prepareHowlForRemoval = (howl) => {
   if (!howl) {
-    console.log(`skipping ${howl} as it does not exist`);
     return;
   }
 
   howl.howl.off();
   howl.howl.unload();
-  console.log('cleaned up', { howl });
 };
 
 export const cleanupHowls = (howls, sounds) => {
   Howler.stop();
 
-  console.log('cleaning up howls');
-
   Object.keys(howls).forEach((howl) => {
-    console.log({ sounds, howl });
     if (sounds.includes(howl)) {
-      console.log('skipping cleanup', howl);
       return;
     }
 
-    console.log('cleaning up', howl);
     prepareHowlForRemoval(howls[howl]);
   });
 };
@@ -77,8 +70,6 @@ export const createHowl = (note, fileName, audioSrc) => {
 
   const play = () => playHowl(howl);
 
-  console.log('create howl:', note);
-
   return { play, howl, status: 'loading' };
 };
 
@@ -104,9 +95,7 @@ export const updateHowls = (howls, audioSrc, scale) => {
     sounds.map(({ note }) => note)
   );
 
-  console.log('creating howls');
   return sounds.reduce((acc, { note, fileName }) => {
-    // console.log('New howl?', note, howls[note], acc);
     acc[note] = howls[note]
       ? { ...howls[note] }
       : createHowl(note, fileName, audioSrc);
@@ -120,7 +109,6 @@ export const changeAudioSrc = (howls, audioSrc, scale) => {
 
   const sounds = parseScaleForUpdateHowls(scale);
 
-  console.log('createing howls with new audioSrc');
   return sounds.reduce((acc, { note, fileName }) => {
     acc[note] = createHowl(note, fileName, audioSrc);
 

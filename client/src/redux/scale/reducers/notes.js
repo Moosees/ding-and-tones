@@ -5,7 +5,6 @@ import scaleTypes from '../scale.types';
 const notesReducer = (state = notesState, { type, payload }) => {
   switch (type) {
     case scaleTypes.FETCH_SUCCESSFUL:
-    case scaleTypes.SAVE_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE:
       return {

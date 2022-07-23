@@ -5,7 +5,6 @@ import scaleTypes from '../scale.types';
 const infoReducer = (state = infoState, { type, payload }) => {
   switch (type) {
     case scaleTypes.FETCH_SUCCESSFUL:
-    case scaleTypes.SAVE_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
       return {
         ...state,
