@@ -85,8 +85,9 @@
 ### Dependencies updates
 
 * React-router-dom v6
+* React-table 8
+* Redux with redux toolkit
 * Update to redis 4 when connect-redis is supported
-* React-scripts 5?
 * New react 18 features?
 
 ## Not yet planned for release updates
