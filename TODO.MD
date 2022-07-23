@@ -4,15 +4,6 @@
 
 ### SoundOptions and howls state rework
 
-#### Needed changes
-
-#### Optional changes
-
-* createFullScaleFromNames handles new createScaleLabel and returns label with scale?
-* Add position to extra notes in scaleFull and use for displaying on drum and mini drum?
-* Does saving scale need to update scale state other than ID and isOwner?
-* Use scale.parsed.pitched in MiniDrum, ExtraNote? (scale)Notes, Edit and Move?
-
 #### Cleanup
 
 * Remove logging
@@ -85,6 +76,7 @@
 * Bar numbers on song viewer? Only long songs?
 * Add bass octave?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
+* Does saving scale need to update scale state other than ID and isOwner?
 
 ### Major updates
 
@@ -180,6 +172,7 @@
 * Change how scale labels look? Double ding styles?
 * Dynamic and centralized percussive sounds
 * Stop extra notes from updating positions when adding extra notes?
+* Rewrite parsed scale and position map
 
 ### Chords
 
@@ -222,6 +215,7 @@
 * Save song as JSON?
 * Show if owned song is private in search results?
 * Split howls loading status into loaded and error (and error msg)?
+* createFullScaleFromNames handles new createScaleLabel and returns label with scale? Needs updated new scale action. Function used separately when toggling sharps and flats
 
 ### API
 
