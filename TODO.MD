@@ -78,11 +78,16 @@
 * Testing
 * Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
 * Master volume controls - location and styles
-* React router 6
-* Update to redis 4 when connect-redis is supported
 * React-to-print functional components (SongView and PrintView, set documentTitle)
 * Song state update, mirror db model and state
 * Lazy loading with priorities, ui -> controls -> sounds?
+
+### Dependencies updates
+
+* React-router-dom v6
+* Update to redis 4 when connect-redis is supported
+* React-scripts 5?
+* New react 18 features?
 
 ## Not yet planned for release updates
 
@@ -253,4 +258,3 @@
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?
 * DRY up rc-slider
-* React-scripts 5?
