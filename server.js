@@ -1,9 +1,10 @@
+const dotenv = require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv').config();
 const redis = require('redis');
 const session = require('express-session');
 const connectRedis = require('connect-redis');
