@@ -25,8 +25,11 @@ const Routes = () => {
         <Route exact path="/song" children={<Song />} />
         <Route path="/song/:songId" children={<Song />} />
         <Route exact path="/find" children={<FindSongs />} />
-        <Redirect from="/find/:songId" to="/song/:songId" />
-        <Redirect from="/" to="/scale" />
+        <Route
+          path="/find/:songId"
+          render={() => <Redirect to="/song/:songId" />}
+        />
+        <Route path="/" render={() => <Redirect to="/scale" />} />
       </Switch>
     </Suspense>
   );
