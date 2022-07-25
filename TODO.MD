@@ -71,6 +71,7 @@
 * Bar numbers on song viewer? Only long songs?
 * Add bass octave?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
+* Faulty routes navigate to safe routes, find/:id navigates to song/:id
 
 ### Major updates
 
@@ -84,7 +85,6 @@
 
 ### Dependencies updates
 
-* React-router-dom v6
 * React-table 8
 * Redux with redux toolkit
 * Update to redis 4 when connect-redis is supported

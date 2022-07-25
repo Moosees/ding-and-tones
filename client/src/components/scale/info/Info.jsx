@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
 import {
@@ -25,14 +25,14 @@ const Info = ({
   scaleInfo,
   setScaleName,
 }) => {
-  const { replace } = useHistory();
+  const navigate = useNavigate();
 
   const [name, handleNameChange, nameErrors, isNameValid, resetName] =
     useValidate('scaleName', scaleInfo.name);
 
   const handleScaleSave = () => {
     saveScale(name);
-    replace('/scale');
+    navigate('/scale', { replace: true });
   };
 
   const handleNameSave = () => {
@@ -41,7 +41,7 @@ const Info = ({
 
   const handleNewScale = () => {
     newScale();
-    replace('/scale');
+    navigate('/scale', { replace: true });
   };
 
   return (

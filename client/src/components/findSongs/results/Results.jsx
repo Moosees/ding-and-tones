@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { difficultyByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
 import { deleteSongById, getSongById } from '../../../redux/song/song.actions';
@@ -19,7 +19,7 @@ const Results = ({
   getSongById,
   songs,
 }) => {
-  const { push: redirectTo } = useHistory();
+  const navigate = useNavigate();
 
   const columns = useMemo(
     () => [
@@ -57,7 +57,7 @@ const Results = ({
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
       const fetchSongFromServer = (songId, getScale) => {
         getSongById(songId, getScale).then((res) => {
-          if (res) redirectTo('/song');
+          if (res) navigate('/song');
         });
       };
 
@@ -100,14 +100,7 @@ const Results = ({
         </>
       );
     },
-    [
-      deleteSongById,
-      getSongById,
-      isDeleting,
-      isSearching,
-      isSignedIn,
-      redirectTo,
-    ]
+    [deleteSongById, getSongById, isDeleting, isSearching, isSignedIn, navigate]
   );
 
   const handleFetchMore = useCallback(

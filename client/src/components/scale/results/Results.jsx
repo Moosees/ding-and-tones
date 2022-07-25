@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
 import BtnIcon from '../../shared/button/Icon';
 import Confirmation from '../../shared/popup/Confirmation';
@@ -21,7 +21,7 @@ const Results = ({
   loadScale,
   scales,
 }) => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
 
   const getScales = () =>
     scales.map((scale, i) => {
@@ -33,12 +33,12 @@ const Results = ({
 
       const handleDeleteScale = () => {
         deleteScaleById(scaleId);
-        push('/scale');
+        navigate('/scale');
       };
 
       const handleLoadScale = () => {
         loadScale(scale);
-        push('/scale');
+        navigate('/scale');
       };
 
       const handleKeyDown = (e) => {

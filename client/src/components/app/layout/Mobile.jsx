@@ -3,14 +3,14 @@ import NavMobile from '../../menu/NavMobile';
 import Loading from '../../shared/loading/Loading';
 import { MobileLayout } from './layout.styles';
 
-const Routes = lazy(() => import('../routes/Routes'));
+const AppRoutes = lazy(() => import('../routes/AppRoutes'));
 
 const Mobile = () => {
   return (
     <MobileLayout>
       <NavMobile />
       <Suspense fallback={<Loading />}>
-        <Routes />
+        <AppRoutes />
       </Suspense>
     </MobileLayout>
   );

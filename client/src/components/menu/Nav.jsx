@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BtnNav from '../shared/button/Nav';
 import User from './user/User';
@@ -14,7 +14,7 @@ const Navbar = styled.nav`
 `;
 
 const Nav = ({ scaleId, songId }) => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
 
   return (
@@ -22,22 +22,22 @@ const Nav = ({ scaleId, songId }) => {
       <BtnNav
         label="Scale"
         isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
-        onClick={() => push(`/scale${scaleId ? '/' + scaleId : ''}`)}
+        onClick={() => navigate(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
       <BtnNav
         label="Chords"
         isActive={'/chords' === pathname}
-        onClick={() => push('/chords')}
+        onClick={() => navigate('/chords')}
       />
       <BtnNav
         label="Song"
         isActive={`/song${songId ? '/' + songId : ''}` === pathname}
-        onClick={() => push(`/song${songId ? '/' + songId : ''}`)}
+        onClick={() => navigate(`/song${songId ? '/' + songId : ''}`)}
       />
       <BtnNav
         label="Find Songs"
         isActive={'/find' === pathname}
-        onClick={() => push('/find')}
+        onClick={() => navigate('/find')}
       />
       <User />
     </Navbar>

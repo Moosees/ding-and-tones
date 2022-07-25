@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import { setSongState } from '../../../redux/song/song.actions';
@@ -18,7 +18,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   const [subdivision, setSubdivision] = useState(4);
 
   const [title, setTitle, titleErrors, isTitleValid] = useValidate('songTitle');
-  const { push } = useHistory();
+  const navigate = useNavigate();
 
   const handleConfirm = () => {
     if (isTitleValid) {
@@ -36,7 +36,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
       };
 
       setSongState({ info, ui, bars: {}, beats: {}, arrangement: [] });
-      push('/song');
+      navigate('/song');
       onClose();
     }
   };

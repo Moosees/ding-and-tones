@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
@@ -25,7 +25,7 @@ const ControlsLeft = ({
 }) => {
   const [newSongOpen, setNewSongOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);
-  const { replace } = useHistory();
+  const navigate = useNavigate();
 
   const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
     useValidate('songTitle', songInfo.title);
@@ -42,7 +42,7 @@ const ControlsLeft = ({
   const saveSongCb = (scaleId, saveAs) => {
     saveSong({ saveAs, title, scaleId }).then((res) => {
       setSaveSongOpen(false);
-      if (res) replace(res);
+      if (res) navigate(res, { replace: true });
     });
   };
 

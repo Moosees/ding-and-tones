@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useDimensions from '../../hooks/useDimensions';
 import { startSearch } from '../../redux/search/search.actions';
 import searchOptions from '../../redux/search/search.options';
@@ -14,7 +14,7 @@ import Search from './search/Search';
 
 const Scale = ({ isSearching, scalesFetchTried, scaleUi, startSearch }) => {
   const { scaleId } = useParams();
-  const { replace } = useHistory();
+  const navigate = useNavigate();
   const { isMobile } = useDimensions();
 
   const { hasChanges, isDeleting, isFetching, isSaving } = scaleUi;
@@ -23,16 +23,16 @@ const Scale = ({ isSearching, scalesFetchTried, scaleUi, startSearch }) => {
   useEffect(() => {
     if (isWorking || !hasChanges) return;
 
-    replace('/scale');
-  }, [hasChanges, isWorking, replace]);
+    navigate('/scale', { replace: true });
+  }, [hasChanges, isWorking, navigate]);
 
   useEffect(() => {
     if (isWorking || hasChanges) return;
 
     if (!scaleId && scaleUi.scaleId) {
-      replace(`/scale/${scaleUi.scaleId}`);
+      navigate(`/scale/${scaleUi.scaleId}`, { replace: true });
     }
-  }, [hasChanges, isWorking, replace, scaleId, scaleUi.scaleId]);
+  }, [hasChanges, isWorking, navigate, scaleId, scaleUi.scaleId]);
 
   useEffect(() => {
     if (scalesFetchTried || isSearching || isWorking) return;

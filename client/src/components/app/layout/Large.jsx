@@ -5,7 +5,7 @@ import Nav from '../../menu/Nav';
 import Loading from '../../shared/loading/Loading';
 import { BorderContainer, LargeLayout, SectionWithNav } from './layout.styles';
 
-const Routes = lazy(() => import('../routes/Routes'));
+const AppRoutes = lazy(() => import('../routes/AppRoutes'));
 
 const Large = () => {
   return (
@@ -18,7 +18,7 @@ const Large = () => {
         <Nav />
         <BorderContainer>
           <Suspense fallback={<Loading />}>
-            <Routes />
+            <AppRoutes />
           </Suspense>
         </BorderContainer>
       </SectionWithNav>

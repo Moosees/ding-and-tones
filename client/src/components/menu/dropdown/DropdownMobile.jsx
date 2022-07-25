@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import { setPrivacyOpen } from '../../../redux/ui/ui.actions';
 import BtnMenu from '../../shared/button/Menu';
@@ -17,12 +17,12 @@ const DropdownMobile = ({
   setPrivacyOpen,
   songId,
 }) => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
 
   const goTo = (url) => {
-    push(url);
+    navigate(url);
     isOpenCb();
   };
 

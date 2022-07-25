@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import ScrollBox from '../shared/scrollBox/ScrollBox';
@@ -16,16 +16,16 @@ import {
 const Song = ({ isEditingSong, notes, songUi }) => {
   const borderRef = useRef(null);
   const { songId } = useParams();
-  const { replace } = useHistory();
+  const navigate = useNavigate();
 
   const { isDeleting, isFetching, isSaving } = songUi;
   const isWorking = isDeleting || isFetching || isSaving;
 
   useEffect(() => {
     if (!songId && songUi.songId && !isWorking) {
-      replace(`/song/${songUi.songId}`);
+      navigate(`/song/${songUi.songId}`, { replace: true });
     }
-  }, [isWorking, replace, songId, songUi.songId]);
+  }, [isWorking, navigate, songId, songUi.songId]);
 
   return (
     <>

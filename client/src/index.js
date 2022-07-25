@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Loading from './components/shared/loading/Loading';
 import { API_ADDRESS } from './oauth';
 import * as serviceWorker from './serviceWorker';
@@ -19,10 +19,10 @@ axios.defaults.withCredentials = true;
 root.render(
   <Router>
     <Suspense fallback={<Loading />}>
-      <Switch>
-        <Route exact path="/googleCB" children={<GoogleResponse />} />
-        <Route path="/" children={<App />} />
-      </Switch>
+      <Routes>
+        <Route path="/googleCB" element={<GoogleResponse />} />
+        <Route path="/*" element={<App />} />
+      </Routes>
     </Suspense>
   </Router>
 );
