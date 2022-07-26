@@ -1,8 +1,7 @@
-const parseScaleForSongFetch = ({
-  _id,
-  info,
-  notes: { dings = [], round = [], extra = [] },
-}) => {
+const parseScaleForSongFetch = (
+  { _id, author, info, notes: { dings = [], round = [], extra = [] } },
+  userId
+) => {
   const extraParsed = extra.map(({ note, pos }) => ({
     note,
     pos,
@@ -12,6 +11,7 @@ const parseScaleForSongFetch = ({
     info,
     notes: { dings, round, extra: extraParsed },
     scaleId: _id,
+    isOwner: userId.equals(author),
   };
 };
 
@@ -27,7 +27,7 @@ exports.parseGetResponse = (songObject, userId) => {
     beats,
     info,
     isPrivate,
-    scale: scale && parseScaleForSongFetch(scale),
+    scale: scale && parseScaleForSongFetch(scale, userId),
   };
 };
 

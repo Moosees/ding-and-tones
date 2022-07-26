@@ -196,7 +196,7 @@ exports.saveSong = async (req, res) => {
     const scale =
       songUpdate.scale &&
       isValidObjectId(songUpdate.scale) &&
-      (await Scale.findById(songUpdate.scale).select('_id info').exec());
+      (await Scale.findById(songUpdate.scale).select('_id author info').exec());
 
     songUpdate.queryString = scale
       ? `${songUpdate.info.title.toLowerCase()} ${scale.info.rootName.toLowerCase()} ${scale.info.name.toLowerCase()}`
@@ -247,7 +247,7 @@ exports.getSongById = (req, res) => {
 
   Song.findById(songId)
     .populate('composer', '_id anonymous name')
-    .populate('scale', '_id info notes')
+    .populate('scale', '_id author info notes')
     .select('_id arrangement bars beats info isPrivate')
     .exec((error, song) => {
       if (error) return res.status(500).json();
