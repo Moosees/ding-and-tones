@@ -64,9 +64,9 @@
 
 ### Minor updates
 
-* Save scale only needs to send back search data and scaleId from server. Also isOwner? Remove parseScaleData when saving scale. Validation issues?
 * Refactor scale.utils (redux)
 * Add isOwner to song with scale fetch if user is owner of scale linked to song
+* Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
 * Bar numbers on song viewer? Only long songs?
 * Add bass octave?
