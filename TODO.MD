@@ -2,6 +2,27 @@
 
 ## Sorted by release
 
+### Rotate drum
+
+#### Goals
+
+* Set base rotation for scales to simulate drums that don't have lowest note closest to player
+
+#### Needed changes
+
+* Add rotate post to scale db model
+* Add Rotate component to scale edit
+* Rotate UI (slider?)
+* Rotate state update action
+* Update drum to account for rotation
+* Update print chords to account for rotation
+
+### Home page and user
+
+* Add home page with recent changes, user info etc.
+* Remember sound source for user
+* Active state for nav buttons might not need the full pathname
+
 ### Scale and chord sound
 
 * Play chords from chords page, arpeggio and unison - how to handle inversions?
@@ -58,8 +79,6 @@
 ### From user feedback
 
 * Triad chords
-* Remember sound source for user
-* Set base rotation for scales to simulate drums that don't have lowest note closest to player
 * Allow user to flip drum 180 deg (or freely?) to allow making tabs where high notes are in focus
 
 ### Minor updates
@@ -143,7 +162,6 @@
 ### User/Menu
 
 * Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
-* Active state for nav buttons might not need the full pathname
 
 ### Drum
 
