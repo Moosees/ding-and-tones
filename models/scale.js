@@ -30,6 +30,10 @@ const scaleSchema = new mongoose.Schema({
       required: true,
     },
     rootIndex: Number,
+    rotation: {
+      type: Number,
+      default: 0,
+    },
     sharpNotes: {
       type: Boolean,
       default: false,

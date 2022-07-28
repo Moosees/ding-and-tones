@@ -10,7 +10,6 @@
 
 #### Needed changes
 
-* Add rotate post to scale db model
 * Add Rotate component to scale edit
 * Rotate UI (slider?)
 * Rotate state update action
@@ -21,6 +20,7 @@
 
 * Add home page with recent changes, user info etc.
 * Remember sound source for user
+* Remove sound source from scales? Optional on fetch?
 * Active state for nav buttons might not need the full pathname
 
 ### Scale and chord sound
