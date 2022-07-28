@@ -22,6 +22,12 @@ const infoReducer = (state = infoState, { type, payload }) => {
         rootName: 'A',
       };
 
+    case scaleTypes.ROTATE_DRUM:
+      return {
+        ...state,
+        rotation: payload,
+      };
+
     case scaleTypes.SET_NAME:
       return {
         ...state,

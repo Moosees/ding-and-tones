@@ -12,9 +12,13 @@
 
 * Add Rotate component to scale edit
 * Rotate UI (slider?)
-* Rotate state update action
+* Reset rotation button?
+* Update miniDrum to account for rotation
 * Update drum to account for rotation
 * Update print chords to account for rotation
+* Set rotation when loading scale
+* Set rotation when fetching scale
+* Get rotation when saving scale
 
 ### Home page and user
 

@@ -193,6 +193,11 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   });
 };
 
+export const rotateDrum = (angle) => ({
+  type: scaleTypes.ROTATE_DRUM,
+  payload: angle,
+});
+
 export const saveScale = (scaleName) => (dispatch, getState) => {
   dispatch({ type: scaleTypes.SAVE_STARTED });
 
