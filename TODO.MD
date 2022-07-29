@@ -10,9 +10,10 @@
 
 #### Needed changes
 
-* Add Rotate component to scale edit
-* Rotate UI (slider?)
-* Reset rotation button?
+* Move rotation slider to a more useful location that works on mobile
+* Use miniDrum to show rotation?
+* Separate UI? Popup? Confirm, cancel, reset buttons?
+* Normalize 180 and -180 deg rotations?
 * Update miniDrum to account for rotation
 * Update drum to account for rotation
 * Update print chords to account for rotation

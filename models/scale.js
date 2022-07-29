@@ -32,7 +32,7 @@ const scaleSchema = new mongoose.Schema({
     rootIndex: Number,
     rotation: {
       type: Number,
-      default: 0,
+      default: 180,
     },
     sharpNotes: {
       type: Boolean,

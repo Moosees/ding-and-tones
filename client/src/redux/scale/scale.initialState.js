@@ -2,7 +2,7 @@ export const infoState = {
   label: '',
   layout: 1,
   name: '',
-  rotation: 0,
+  rotation: 180,
   rootName: '',
   rootValue: 33,
   rootIndex: 0,
