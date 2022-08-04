@@ -14,11 +14,10 @@
 * Use miniDrum to show rotation?
 * Separate UI? Popup? Confirm, cancel, reset buttons?
 * Normalize 180 and -180 deg rotations?
-* Update miniDrum to account for rotation
-* Update print chords to account for rotation
 * Set rotation when loading scale
 * Set rotation when fetching scale
 * Get rotation when saving scale
+* Allow saving scale after changing rotation
 
 ### Home page and user
 
@@ -208,6 +207,7 @@
 * All root notes in chords should be focused on drum (or none)?
 * Print list change order of chords?
 * Print chords without scale info?
+* Print chords with numbers instead of note names
 * Scale degrees as chord prefix. And sorting? And filters?
 
 ### Songwriter
