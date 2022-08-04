@@ -14,8 +14,6 @@
 * Use miniDrum to show rotation?
 * Separate UI? Popup? Confirm, cancel, reset buttons?
 * Normalize 180 and -180 deg rotations?
-* Set rotation when loading scale
-* Set rotation when fetching scale
 * Get rotation when saving scale
 
 ### Home page and user
@@ -194,6 +192,7 @@
 * Dynamic and centralized percussive sounds
 * Stop extra notes from updating positions when adding extra notes?
 * Rewrite parsed scale and position map
+* New scale wizard, select notes, select rotation, select layout/position etc.
 
 ### Chords
 
