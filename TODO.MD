@@ -15,7 +15,6 @@
 * Separate UI? Popup? Confirm, cancel, reset buttons?
 * Normalize 180 and -180 deg rotations?
 * Update miniDrum to account for rotation
-* Update drum to account for rotation
 * Update print chords to account for rotation
 * Set rotation when loading scale
 * Set rotation when fetching scale
@@ -88,6 +87,8 @@
 
 ### Minor updates
 
+* Remove empty extra notes from print list
+* Allow printing scale without chords?
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
