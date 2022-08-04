@@ -17,7 +17,6 @@
 * Set rotation when loading scale
 * Set rotation when fetching scale
 * Get rotation when saving scale
-* Allow saving scale after changing rotation
 
 ### Home page and user
 

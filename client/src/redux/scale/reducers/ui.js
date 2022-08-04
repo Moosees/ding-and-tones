@@ -67,6 +67,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
         hasChanges: false,
       };
 
+    case scaleTypes.ROTATE_DRUM:
     case scaleTypes.SET_NAME:
     case scaleTypes.TOGGLE_SHARPS:
       return { ...state, isOwner: false, scaleId: null, hasChanges: true };
