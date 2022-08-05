@@ -92,6 +92,10 @@ exports.saveScale = (req, res) => {
 
   req.body.queryString = `${req.body.info.rootName.toLowerCase()} ${req.body.info.name.toLowerCase()}`;
 
+  if (req.body.info.rotation < 1 || req.body.info.rotation > 360) {
+    req.body.info.rotation = 360;
+  }
+
   new Scale(req.body).save((error, scale) => {
     if (error || !scale) return res.status(400).json();
 

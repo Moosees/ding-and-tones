@@ -13,8 +13,6 @@
 * Move rotation slider to a more useful location that works on mobile
 * Use miniDrum to show rotation?
 * Separate UI? Popup? Confirm, cancel, reset buttons?
-* Normalize 180 and -180 deg rotations?
-* Get rotation when saving scale
 
 ### Home page and user
 
