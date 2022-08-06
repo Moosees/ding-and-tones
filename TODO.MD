@@ -10,9 +10,10 @@
 
 #### Needed changes
 
-* Move rotation slider to a more useful location that works on mobile
 * Use miniDrum to show rotation?
-* Separate UI? Popup? Confirm, cancel, reset buttons?
+* Confirm, cancel, reset buttons?
+* Rulers?
+* Scale info buttons work on mobile
 
 ### Home page and user
 

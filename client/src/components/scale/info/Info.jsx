@@ -12,7 +12,6 @@ import Buttons from '../../shared/button/Buttons';
 import Help from '../../shared/button/Help';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoText from '../../shared/input/InfoText';
-import InfoBox from '../../shared/layout/InfoBox';
 import Rotation from '../rotation/Rotation';
 import { ScaleInfoContainer, ScaleNotes } from './info.styles';
 
@@ -49,6 +48,7 @@ const Info = ({
   return (
     <ScaleInfoContainer>
       <Buttons>
+        <Rotation />
         <BtnPrimary
           disabled={isDeleting || isFetching || isSaving}
           label="New Scale"
@@ -83,9 +83,6 @@ const Info = ({
         <span>Notes:</span>
         {scaleInfo.label}
       </ScaleNotes>
-      <InfoBox label="Rotation:">
-        <Rotation />
-      </InfoBox>
     </ScaleInfoContainer>
   );
 };
