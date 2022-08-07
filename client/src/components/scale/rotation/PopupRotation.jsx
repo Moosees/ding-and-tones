@@ -58,7 +58,7 @@ const PopupRotation = ({ onClose, rotateDrum, rotation }) => (
       />
     </InfoBox>
     <Popup.Flex>
-      <MiniDrum />
+      <MiniDrum noExtraTones />
     </Popup.Flex>
     <Popup.Flex>
       <BtnPrimary label="Close" onClick={onClose} />

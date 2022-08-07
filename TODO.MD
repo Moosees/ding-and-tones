@@ -2,16 +2,6 @@
 
 ## Sorted by release
 
-### Rotate drum
-
-#### Goals
-
-* Set base rotation for scales to simulate drums that don't have lowest note closest to player
-
-#### Needed changes
-
-* Don't show extra notes on popup
-
 ### Home page and user
 
 * Add home page with recent changes, user info etc.

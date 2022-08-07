@@ -4,7 +4,13 @@ import { DrumSvg, MiniDrumContainer } from './drum.styles';
 import MiniExtra from './tonefield/MiniExtra';
 import MiniTonefield from './tonefield/MiniTonefield';
 
-const MiniDrum = ({ notes, showNoteList, positionMap, sharpNotes }) => {
+const MiniDrum = ({
+  notes,
+  noExtraTones,
+  showNoteList,
+  positionMap,
+  sharpNotes,
+}) => {
   const { dings, round, extra } = notes;
   const dingRound = [...dings, ...round];
 
@@ -42,7 +48,7 @@ const MiniDrum = ({ notes, showNoteList, positionMap, sharpNotes }) => {
 
   return (
     <MiniDrumContainer>
-      {extraTonefields}
+      {!noExtraTones && extraTonefields}
       <DrumSvg viewBox="-10 -10 20 20">
         <circle
           r="9.2"
