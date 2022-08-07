@@ -110,7 +110,7 @@ exports.getMySongs = async (req, res) => {
     if (!user.songs.length) return res.status(204).json();
 
     const songs = await Song.find({ _id: { $in: user.songs } })
-      .limit(20)
+      .limit(100)
       .sort({ updated: -1 })
       .select('_id info scale')
       .exec();

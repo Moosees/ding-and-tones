@@ -70,7 +70,7 @@ exports.getMyScales = (req, res) => {
     .populate({
       path: 'scales',
       select: scaleSelect,
-      options: { limit: 20, sort: { created: -1 } },
+      options: { limit: 100, sort: { created: -1 } },
     })
     .select('_id')
     .exec((error, user) => {
