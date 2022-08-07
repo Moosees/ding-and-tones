@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../../../redux/user/user.actions';
-import PrivacyText from '../../Privacy/PrivacyText';
+import PrivacyText from '../../privacy/PrivacyText';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
 import GoogleIcon from './GoogleIcon.jsx';

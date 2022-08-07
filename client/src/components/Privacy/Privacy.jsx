@@ -11,10 +11,10 @@ const Privacy = ({ setPrivacyOpen }) => {
   return (
     <>
       {isMobile ? (
-        <MobileCopyright>&copy; 2021 Linus Almgren</MobileCopyright>
+        <MobileCopyright>&copy; 2022 Linus Almgren</MobileCopyright>
       ) : (
         <Copyright>
-          Copyright &copy; 2021 Linus Almgren -{' '}
+          Copyright &copy; 2022 Linus Almgren -{' '}
           <PrivacyLink onClick={() => setPrivacyOpen(true)}>
             Terms and privacy
           </PrivacyLink>

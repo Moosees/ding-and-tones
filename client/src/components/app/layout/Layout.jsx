@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../../../assets/themes';
 import useDimensions from '../../../hooks/useDimensions';
 import Alert from '../../alert/Alert';
-import Privacy from '../../Privacy/Privacy';
+import Privacy from '../../privacy/Privacy';
 import GlobalStyles from './GlobalStyles';
 import Large from './Large';
 import { Viewport } from './layout.styles';
