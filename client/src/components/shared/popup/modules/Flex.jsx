@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ButtonsWrapper = styled.div`
+const FlexWrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 `;
 
-const Buttons = ({ children }) => {
-  return <ButtonsWrapper>{children}</ButtonsWrapper>;
+const Flex = ({ children }) => {
+  return <FlexWrapper>{children}</FlexWrapper>;
 };
 
-export default Buttons;
+export default Flex;

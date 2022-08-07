@@ -10,10 +10,7 @@
 
 #### Needed changes
 
-* Use miniDrum to show rotation?
-* Confirm, cancel, reset buttons?
-* Rulers?
-* Scale info buttons work on mobile
+* Don't show extra notes on popup
 
 ### Home page and user
 
@@ -78,10 +75,12 @@
 ### From user feedback
 
 * Triad chords
-* Allow user to flip drum 180 deg (or freely?) to allow making tabs where high notes are in focus
+* Allow user to flip drum 180 deg (or freely?) to allow making tabs where high notes are in focus, should this flip note numbers?
 
 ### Minor updates
 
+* Update copyright year
+* Use Popup.Flex instead of Buttons
 * Remove empty extra notes from print list
 * Allow printing scale without chords?
 * Refactor scale.utils (redux)
@@ -128,6 +127,7 @@
 
 ### Design
 
+* Scale page and find songs page overflows in smaller screens
 * Errors from backend display on inputs instead of alert?
 * Form input errors instead of disabled buttons
 * Red borders on errors?

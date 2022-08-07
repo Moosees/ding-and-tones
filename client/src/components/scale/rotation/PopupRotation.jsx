@@ -4,6 +4,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { rotateDrum } from '../../../redux/scale/scale.actions';
+import MiniDrum from '../../drum/MiniDrum';
+import BtnPrimary from '../../shared/button/Primary';
+import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 import './slider-override.css';
 
@@ -28,30 +31,38 @@ const marks = {
 
 const PopupRotation = ({ onClose, rotateDrum, rotation }) => (
   <Popup header="Rotate Drum" onClose={onClose}>
-    <Slider
-      value={rotation}
-      step={1}
-      min={0}
-      max={360}
-      marks={marks}
-      included={false}
-      onChange={(angle) => rotateDrum(angle)}
-      handleStyle={{
-        backgroundColor: '#888',
-        border: '1px solid #444',
-        height: '2rem',
-        marginTop: '-8px',
-        width: '2rem',
-      }}
-      railStyle={{
-        backgroundColor: 'rgba(0,0,60,0.3)',
-      }}
-      style={{
-        backgroundColor: 'rgba(0,0,0,0)',
-        cursor: 'pointer',
-        margin: '-5px 5px 0',
-      }}
-    />
+    <InfoBox>
+      <Slider
+        value={rotation}
+        step={1}
+        min={0}
+        max={360}
+        marks={marks}
+        included={false}
+        onChange={(angle) => rotateDrum(angle)}
+        handleStyle={{
+          backgroundColor: '#888',
+          border: '1px solid #444',
+          height: '2rem',
+          marginTop: '-8px',
+          width: '2rem',
+        }}
+        railStyle={{
+          backgroundColor: 'rgba(0,0,60,0.3)',
+        }}
+        style={{
+          backgroundColor: 'rgba(0,0,0,0)',
+          cursor: 'pointer',
+          margin: '-5px 5px 0',
+        }}
+      />
+    </InfoBox>
+    <Popup.Flex>
+      <MiniDrum />
+    </Popup.Flex>
+    <Popup.Flex>
+      <BtnPrimary label="Close" onClick={onClose} />
+    </Popup.Flex>
   </Popup>
 );
 

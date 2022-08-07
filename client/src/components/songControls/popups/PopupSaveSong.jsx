@@ -58,7 +58,7 @@ const PopupSaveSong = ({
           onChange={() => setSelectedScale(null)}
         />
       </Popup.Section>
-      <Popup.Buttons>
+      <Popup.Flex>
         <BtnPrimary
           label="Save New"
           onClick={() => onSave(selectedScale, true)}
@@ -69,7 +69,7 @@ const PopupSaveSong = ({
           onClick={() => onSave(selectedScale, false)}
         />
         <BtnPrimary light label="Cancel" onClick={onClose} />
-      </Popup.Buttons>
+      </Popup.Flex>
     </Popup>
   );
 };

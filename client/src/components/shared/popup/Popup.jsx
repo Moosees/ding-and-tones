@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
-import Buttons from './modules/Buttons';
+import Flex from './modules/Flex';
 import Section from './modules/Section';
 import SubHeading from './modules/SubHeading';
 import { AccountHeader, Background, Overlay } from './popup.styles';
@@ -28,6 +28,6 @@ const Popup = ({ children, header, onClose }) => {
 
 Popup.Section = Section;
 Popup.SubHeading = SubHeading;
-Popup.Buttons = Buttons;
+Popup.Flex = Flex;
 
 export default Popup;
