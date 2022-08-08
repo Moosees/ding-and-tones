@@ -53,6 +53,7 @@ const Drum = ({
         : '#666';
 
       const tonefieldData = {
+        note: note.note,
         showNote,
         hasFocus,
         text,

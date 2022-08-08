@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Tonefield = ({
   color,
@@ -7,19 +7,27 @@ const Tonefield = ({
   hasFocus,
   isPlaying,
   localIndex,
-  positionMap,
-  scaleRotation,
+  note,
   showNote,
   text,
 }) => {
-  const { rotate, translate } = positionMap[localIndex];
+  const { isReady, position, scaleRotation } = useSelector(
+    ({ howls, scale }) => ({
+      isReady: howls.data[note]?.status === 'ready',
+      position: scale.parsed.positions[localIndex],
+      scaleRotation: scale.info.rotation,
+    })
+  );
+
+  const { rotate, translate } = position;
   const isDing = localIndex === 0;
 
   return (
     <g
-      onClick={showNote ? handlePlay : null}
+      onClick={showNote && isReady ? handlePlay : null}
       cx="0"
       cy="0"
+      opacity={isReady ? 1 : 0.5}
       transform={`rotate(${
         rotate + scaleRotation + 270
       }) translate(${translate})`}
@@ -46,9 +54,4 @@ const Tonefield = ({
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
-  positionMap: scale.parsed.positions,
-  scaleRotation: scale.info.rotation,
-});
-
-export default connect(mapStateToProps)(Tonefield);
+export default Tonefield;

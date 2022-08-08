@@ -69,6 +69,7 @@
 
 ### Minor updates
 
+* Loading (isHowlLoaded) animation for single extra notes and taks
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
@@ -157,7 +158,6 @@
 * Option to turn off/use same color for tonefield borders
 * Animation for tonefields being played
 * Clicks on sounds in beat dropdown animate on drum?
-* Loading (isHowlLoaded) animation for single tonefields?
 * Move currentSound and currentHand from ui state to drum state?
 
 ### Intervals
