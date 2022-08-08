@@ -69,7 +69,6 @@
 
 ### Minor updates
 
-* Loading (isHowlLoaded) animation for taks
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
