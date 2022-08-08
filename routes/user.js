@@ -6,6 +6,7 @@ const {
   signInWithGoogle,
   signOut,
   checkSession,
+  updateUserAudio,
 } = require('../controllers/user');
 const { checkAuth, getUserId } = require('../middleware/auth');
 
@@ -19,6 +20,6 @@ router.post('/signOut', signOut);
 
 // Update user
 router.post('/user/info', checkAuth, updateUserInfo);
-// router.post('user/audio');
+router.post('/user/audio', checkAuth, updateUserAudio);
 
 module.exports = router;
