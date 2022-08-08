@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
 import { updateSongInfo } from '../../../redux/song/song.actions';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoInput from '../../shared/input/InfoInput';
 import Metre from '../../shared/metreControls/Metre';
@@ -60,14 +59,14 @@ const PopupSongMetre = ({
         label={newBpmErrors.length ? newBpmErrors[0] : 'Bpm:'}
         value={newBpm}
       />
-      <Buttons>
+      <Popup.Flex>
         <BtnPrimary
           disabled={!isNewBpmValid}
           label="Confirm"
           onClick={handleConfirm}
         />
         <BtnPrimary light label="Cancel" onClick={onClose} />
-      </Buttons>
+      </Popup.Flex>
     </Popup>
   );
 };

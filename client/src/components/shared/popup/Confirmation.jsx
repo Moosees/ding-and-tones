@@ -1,5 +1,4 @@
 import React, { cloneElement, useState } from 'react';
-import Buttons from '../button/Buttons';
 import BtnPrimary from '../button/Primary';
 import Popup from './Popup';
 import { Label } from './popup.styles';
@@ -20,14 +19,14 @@ const Confirmation = ({ children, header, label, onConfirm }) => {
       {popupOpen && (
         <Popup header={header} onClose={() => setPopupOpen(false)}>
           <Label>{label}</Label>
-          <Buttons>
+          <Popup.Flex>
             <BtnPrimary label="Confirm" onClick={handleConfirm} />
             <BtnPrimary
               light
               label="Cancel"
               onClick={() => setPopupOpen(false)}
             />
-          </Buttons>
+          </Popup.Flex>
         </Popup>
       )}
     </>

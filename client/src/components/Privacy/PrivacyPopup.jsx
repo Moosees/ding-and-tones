@@ -10,7 +10,13 @@ const PrivacyPopup = ({ privacyOpen, setPrivacyOpen }) => (
     {privacyOpen && (
       <Popup header={'Terms and Privacy'} onClose={() => setPrivacyOpen(false)}>
         <PrivacyText />
-        <BtnPrimary light label="Close" onClick={() => setPrivacyOpen(false)} />
+        <Popup.Flex>
+          <BtnPrimary
+            light
+            label="Close"
+            onClick={() => setPrivacyOpen(false)}
+          />
+        </Popup.Flex>
       </Popup>
     )}
   </>

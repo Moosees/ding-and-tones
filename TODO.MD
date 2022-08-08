@@ -69,7 +69,6 @@
 
 ### Minor updates
 
-* Use Popup.Flex instead of Buttons
 * Remove empty extra notes from print list
 * Allow printing scale without chords?
 * Refactor scale.utils (redux)

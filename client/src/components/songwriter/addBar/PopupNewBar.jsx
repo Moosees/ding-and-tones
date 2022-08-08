@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';
@@ -32,10 +31,10 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
         subdivision={subdivision}
         setSubdivision={setSubdivision}
       />
-      <Buttons>
+      <Popup.Flex>
         <BtnPrimary label="Confirm" onClick={handleConfirm} />
         <BtnPrimary light label="Cancel" onClick={onClose} />
-      </Buttons>
+      </Popup.Flex>
     </Popup>
   );
 };

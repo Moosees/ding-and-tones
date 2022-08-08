@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
 import { saveUser, toggleAccount } from '../../../redux/user/user.actions';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';
@@ -47,10 +46,10 @@ const PopupAccount = ({
           onChange={() => setAnon(!anon)}
         />
       </InfoBox>
-      <Buttons>
+      <Popup.Flex>
         <BtnPrimary label="Save" onClick={handleSave} />
         <BtnPrimary light label="Cancel" onClick={toggleAccount} />
-      </Buttons>
+      </Popup.Flex>
     </Popup>
   );
 };

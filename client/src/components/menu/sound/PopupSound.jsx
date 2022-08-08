@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import { connect } from 'react-redux';
 import audioOptions from '../../../assets/sound/audioOptions';
 import { selectSoundSource } from '../../../redux/howls/howls.actions';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
@@ -43,9 +42,9 @@ const PopupSound = ({ audioSrc, onClose, selectSoundSource }) => {
           @connorshafran
         </a>
       </Credits>
-      <Buttons>
+      <Popup.Flex>
         <BtnPrimary light label="Close" onClick={onClose} />
-      </Buttons>
+      </Popup.Flex>
     </Popup>
   );
 };

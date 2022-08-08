@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import { setSongState } from '../../../redux/song/song.actions';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoInput from '../../shared/input/InfoInput';
 import Metre from '../../shared/metreControls/Metre';
@@ -70,14 +69,14 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         options={optionsDifficulty}
         label="Difficulty: "
       />
-      <Buttons>
+      <Popup.Flex>
         <BtnPrimary
           label="Confirm"
           disabled={!isTitleValid}
           onClick={handleConfirm}
         />
         <BtnPrimary light label="Cancel" onClick={onClose} />
-      </Buttons>
+      </Popup.Flex>
     </Popup>
   );
 };
