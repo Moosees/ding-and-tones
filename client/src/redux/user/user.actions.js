@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getAudioSrc } from '../../assets/sound/audioOptions';
 import userTypes from './user.types';
 import {
   getGoogleCode,
@@ -17,12 +18,19 @@ export const checkSession = () => (dispatch, getState) => {
 
   axios.post('/session', { songId }).then((res) => {
     if (res.status === 200 && res.data.user) {
-      const { name, anonymous, isOwner } = res.data.user;
+      console.log(res.data.user);
+      const { sound, name, anonymous, isOwner } = res.data.user;
 
       dispatch({
         type: userTypes.SIGN_IN,
         payload: {
           alert: `Welcome back, ${name}`,
+          howls: {
+            info: {
+              audioSrc: getAudioSrc(sound.audioOption),
+              volume: sound.volume,
+            },
+          },
           song: { isOwner },
           user: {
             name,
@@ -88,12 +96,19 @@ export const signIn = (songId, persistSession) => (dispatch) => {
     })
     .then((res) => {
       if (res.status === 200) {
-        const { name, anonymous, newUser, isOwner } = res.data;
+        console.log(res.data);
+        const { sound, name, anonymous, newUser, isOwner } = res.data;
 
         dispatch({
           type: userTypes.SIGN_IN,
           payload: {
             alert: 'Signed in successfully!',
+            howls: {
+              info: {
+                audioSrc: getAudioSrc(sound.audioOption),
+                volume: sound.volume,
+              },
+            },
             song: { isOwner },
             user: {
               name,

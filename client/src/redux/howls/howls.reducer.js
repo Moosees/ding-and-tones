@@ -1,13 +1,14 @@
-import audioOptions from '../../assets/sound/audioOptions';
+import { audioSources } from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
+import userTypes from '../user/user.types';
 import howlsTypes from './howls.types';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 
 const INITIAL_STATE = {
   data: {},
   info: {
-    audioSrc: audioOptions[0],
+    audioSrc: audioSources[0],
     volume: 0.8,
   },
 };
@@ -75,6 +76,10 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       );
 
       return { ...state, data: newHowls };
+    }
+
+    case userTypes.SIGN_IN: {
+      return { ...state, ...payload.howls };
     }
 
     default:

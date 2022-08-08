@@ -9,10 +9,10 @@ exports.checkSession = async (req, res) => {
   if (!req.userId) return res.status(200).json({ user: null });
 
   try {
-    const { anonymous, name, songs } = await User.findOne({
+    const { anonymous, name, songs, sound } = await User.findOne({
       _id: req.userId,
     })
-      .select('anonymous name songs')
+      .select('anonymous name songs sound')
       .exec();
 
     const isOwner = songs.includes(req.songId);
@@ -22,6 +22,7 @@ exports.checkSession = async (req, res) => {
         anonymous,
         isOwner,
         name,
+        sound,
       },
     });
   } catch (error) {
@@ -86,7 +87,7 @@ exports.signInWithGoogle = async (req, res) => {
     const { sub } = ticket.getPayload();
 
     let user = await User.findOne({ sub })
-      .select('_id anonymous name songs')
+      .select('_id anonymous name songs sound')
       .exec();
 
     const newUser = !user;
@@ -112,6 +113,7 @@ exports.signInWithGoogle = async (req, res) => {
       isOwner,
       name: user.name,
       newUser,
+      sound: user.sound,
     });
   } catch (error) {
     res.status(400).json();

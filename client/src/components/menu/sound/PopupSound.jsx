@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMemo } from 'react';
 import { connect } from 'react-redux';
-import audioOptions from '../../../assets/sound/audioOptions';
+import { audioSources } from '../../../assets/sound/audioOptions';
 import { selectSoundSource } from '../../../redux/howls/howls.actions';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/layout/InfoBox';
@@ -12,7 +12,7 @@ import VolumeSlider from './VolumeSlider';
 const PopupSound = ({ audioSrc, onClose, selectSoundSource }) => {
   const optionList = useMemo(
     () =>
-      audioOptions.map((option, i) => (
+      audioSources.map((option, i) => (
         <AudioOption
           key={i}
           isSelected={option.path === audioSrc.path}
