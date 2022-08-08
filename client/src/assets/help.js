@@ -9,9 +9,10 @@ export const helpContent = {
   chords: {
     title: 'Chords tips',
     content: [
-      'Use the filters on the left side to select what chords you want to find.',
-      'Click "view" in the list on the right to show a chord on the drum.',
-      'After adding at least one chord to the print list, click "Print Chords" to print a page with diagrams of your selected scale and chords.',
+      'Use the filters on the left side to select what type of chords you want to see.',
+      'Click "View" in the list on the right to show a chord on the drum.',
+      'Click "Print List" on the far right of a chord to toggle if that chord should be printed or not.',
+      'Click "Print Chords" to print a page with diagrams of your selected scale and chords.',
       'You can use the scale option in the print dialog if you need bigger diagrams or if you want to fit more chords on a single page',
       'You can also use the print button to save the diagrams as a PDF.',
     ],

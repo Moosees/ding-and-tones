@@ -69,8 +69,6 @@
 
 ### Minor updates
 
-* Remove empty extra notes from print list
-* Allow printing scale without chords?
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
