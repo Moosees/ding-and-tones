@@ -8,3 +8,7 @@ export const getAudioSrc = (option) => {
 
   return audioSources[0];
 };
+
+export const getAudioOption = (audioSrc) => {
+  return audioSources.findIndex(({ path }) => path === audioSrc.path) + 1;
+};

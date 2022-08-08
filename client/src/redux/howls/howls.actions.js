@@ -1,5 +1,33 @@
+import axios from 'axios';
 import { Howler } from 'howler';
+import { getAudioOption } from '../../assets/sound/audioOptions';
 import howlsTypes from './howls.types';
+
+export const saveUserSound = () => (dispatch, getState) => {
+  dispatch({ type: howlsTypes.SAVE_STARTED });
+
+  const { howls } = getState();
+
+  const data = {
+    audioOption: getAudioOption(howls.info.audioSrc),
+    volume: howls.info.volume,
+  };
+
+  axios
+    .post('/user/sound', data)
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch({
+          type: howlsTypes.SAVE_SUCCESSFUL,
+        });
+      }
+    })
+    .catch((error) => {
+      dispatch({
+        type: howlsTypes.SAVE_ERROR,
+      });
+    });
+};
 
 export const selectSoundSource = (audioSrc) => (dispatch, getState) => {
   const { scale } = getState();

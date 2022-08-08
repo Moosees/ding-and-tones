@@ -11,12 +11,19 @@ const INITIAL_STATE = {
     audioSrc: audioSources[0],
     volume: 0.8,
   },
+  isSaving: false,
 };
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case howlsTypes.CREATE_HOWLS:
       return { ...state, data: payload.howls };
+
+    case howlsTypes.SAVE_STARTED:
+      return { ...state, isSaving: true };
+    case howlsTypes.SAVE_ERROR:
+    case howlsTypes.SAVE_SUCCESSFUL:
+      return { ...state, isSaving: false };
 
     case howlsTypes.SELECT_AUDIO: {
       if (state.info.audioSrc.path === payload.audioSrc.path) {

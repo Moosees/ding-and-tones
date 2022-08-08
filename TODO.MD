@@ -10,13 +10,14 @@
 
 #### Needed Changes
 
-* Frontend actions to set sound source and volume also sends request to server - use onClose function for PopupSound
-* Hold howl fetches before user is signed in
+* Hold howl fetches before user is signed in (make sure fetched data takes hold)
 * Clean up
 
 #### Optional Changes
 
 * Remove sound source from scales db model?
+* Do something with howls.isSaving?
+* Alerts when saving?
 
 ### Home page update
 
