@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
+  audioOption: {
+    type: Number,
+    default: 1,
+  },
   created: {
     type: Date,
     default: Date.now,

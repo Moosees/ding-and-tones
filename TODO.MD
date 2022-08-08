@@ -13,7 +13,6 @@
 * Frontend actions to set sound source also sends request to server
 * Get sound source when logging in
 * Hold howl fetches before user is signed in
-* Add sound source to user db model
 * Add route to update user sound source
 
 #### Optional Changes
