@@ -6,12 +6,12 @@
 
 #### Goals
 
-* Remember sound source for user
+* Remember sound source and volume for user
 
 #### Needed Changes
 
-* Frontend actions to set sound source also sends request to server
-* Get sound source when logging in
+* Frontend actions to set sound source and volume also sends request to server - use onClose function for PopupSound
+* Get sound source and volume when logging in
 * Hold howl fetches before user is signed in
 
 #### Optional Changes

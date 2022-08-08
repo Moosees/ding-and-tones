@@ -7,10 +7,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
-  audioOption: {
-    type: Number,
-    default: 1,
-  },
   created: {
     type: Date,
     default: Date.now,
@@ -32,6 +28,13 @@ const userSchema = new mongoose.Schema({
   },
   scales: [{ type: ObjectId, ref: 'Scale' }],
   songs: [{ type: ObjectId, ref: 'Song' }],
+  sound: {
+    audioOption: {
+      type: Number,
+      default: 1,
+    },
+    volume: { type: Number, default: 0.8 },
+  },
   sub: String,
   updated: {
     type: Date,

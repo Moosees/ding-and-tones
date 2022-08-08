@@ -29,18 +29,21 @@ exports.checkSession = async (req, res) => {
   }
 };
 
-exports.updateUserAudio = (req, res) => {
+exports.updateUserSound = (req, res) => {
   const userId = req.userId;
-  const { audioOption } = req.body;
+  const { audioOption, volume } = req.body;
   const updated = Date.now();
 
-  User.findByIdAndUpdate(userId, { audioOption, updated })
+  User.findByIdAndUpdate(userId, { sound: { audioOption, volume }, updated })
     .setOptions({ new: true })
-    .select('audioOption')
+    .select('sound')
     .exec((error, user) => {
       if (error) return res.status(400).json();
 
-      res.status(200).json({ audioOption: user.audioOption });
+      res.status(200).json({
+        audioOption: user.sound.audioOption,
+        volume: user.sound.volume,
+      });
     });
 };
 
