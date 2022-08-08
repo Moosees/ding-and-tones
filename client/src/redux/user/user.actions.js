@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { getAudioSrc } from '../../assets/sound/audioOptions';
+import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
+import howlsTypes from '../howls/howls.types';
 import userTypes from './user.types';
 import {
   getGoogleCode,
@@ -86,7 +87,9 @@ export const saveUserInfo = (newName, newAnon) => (dispatch, getState) => {
     );
 };
 
-export const signIn = (songId, persistSession) => (dispatch) => {
+export const signIn = (songId, persistSession) => (dispatch, getState) => {
+  const { howls, scale } = getState();
+
   axios
     .get('/googleURL')
     .then((res) => handleGooglePostMsg(res.data))
@@ -96,19 +99,14 @@ export const signIn = (songId, persistSession) => (dispatch) => {
     })
     .then((res) => {
       if (res.status === 200) {
-        console.log(res.data);
         const { sound, name, anonymous, newUser, isOwner } = res.data;
+
+        const audioSrc = getAudioSrc(sound.audioOption);
 
         dispatch({
           type: userTypes.SIGN_IN,
           payload: {
             alert: 'Signed in successfully!',
-            howls: {
-              info: {
-                audioSrc: getAudioSrc(sound.audioOption),
-                volume: sound.volume,
-              },
-            },
             song: { isOwner },
             user: {
               name,
@@ -118,6 +116,23 @@ export const signIn = (songId, persistSession) => (dispatch) => {
             },
           },
         });
+
+        if (howls.info.volume !== sound.volume) {
+          dispatch({
+            type: howlsTypes.SET_VOLUME,
+            payload: { newVolume: sound.volume },
+          });
+        }
+
+        if (getAudioOption(howls.info.audioSrc) !== sound.audioOption) {
+          dispatch({
+            type: howlsTypes.SELECT_AUDIO,
+            payload: {
+              audioSrc,
+              scale: scale.parsed.pitched,
+            },
+          });
+        }
       }
     })
     .catch((error) => {

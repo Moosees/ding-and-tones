@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Howler } from 'howler';
 import { getAudioOption } from '../../assets/sound/audioOptions';
 import howlsTypes from './howls.types';
 
@@ -38,14 +37,10 @@ export const selectSoundSource = (audioSrc) => (dispatch, getState) => {
   });
 };
 
-export const setVolume = (newVolume) => (dispatch) => {
-  Howler.volume(newVolume);
-
-  dispatch({
-    type: howlsTypes.SET_VOLUME,
-    payload: { newVolume },
-  });
-};
+export const setVolume = (newVolume) => ({
+  type: howlsTypes.SET_VOLUME,
+  payload: { newVolume },
+});
 
 export const updateHowlLoadingStatus = (howl, status) => ({
   type: howlsTypes.UPDATE_HOWL_LOADING_STATUS,

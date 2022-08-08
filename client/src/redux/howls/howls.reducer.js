@@ -1,3 +1,4 @@
+import { Howler } from 'howler';
 import { audioSources } from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
@@ -43,8 +44,11 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
     }
 
-    case howlsTypes.SET_VOLUME:
+    case howlsTypes.SET_VOLUME: {
+      Howler.volume(payload.newVolume);
+
       return { ...state, info: { ...state.info, volume: payload.newVolume } };
+    }
 
     case howlsTypes.UPDATE_HOWL_LOADING_STATUS: {
       if (!state.data[payload.howl]) return state;

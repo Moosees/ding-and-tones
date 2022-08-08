@@ -11,6 +11,7 @@
 #### Needed Changes
 
 * Hold howl fetches before user is signed in (make sure fetched data takes hold)
+* Don't call saveUserSound if not signed in
 * Clean up
 
 #### Optional Changes
