@@ -37,6 +37,7 @@ export const ExtraContainer = styled.div`
   font-size: 2rem;
   height: 5rem;
   justify-content: center;
+  opacity: ${({ isReady }) => (isReady ? '1' : '0.5')};
   position: absolute;
   width: 5rem;
 
