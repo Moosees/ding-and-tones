@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
-import { saveUser, toggleAccount } from '../../../redux/user/user.actions';
+import { saveUserInfo, toggleAccount } from '../../../redux/user/user.actions';
 import BtnPrimary from '../../shared/button/Primary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';
@@ -13,7 +13,7 @@ const PopupAccount = ({
   isAnonymous,
   name,
   toggleAccount,
-  saveUser,
+  saveUserInfo,
 }) => {
   const [anon, setAnon] = useState(isAnonymous);
 
@@ -23,7 +23,7 @@ const PopupAccount = ({
   );
 
   const handleSave = () => {
-    if (usernameValid) saveUser(username, anon);
+    if (usernameValid) saveUserInfo(username, anon);
   };
 
   return (
@@ -59,6 +59,6 @@ const mapStateToProps = ({ user }) => ({
   name: user.name,
 });
 
-export default connect(mapStateToProps, { saveUser, toggleAccount })(
+export default connect(mapStateToProps, { saveUserInfo, toggleAccount })(
   PopupAccount
 );

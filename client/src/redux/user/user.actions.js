@@ -37,7 +37,7 @@ export const checkSession = () => (dispatch, getState) => {
   });
 };
 
-export const saveUser = (newName, newAnon) => (dispatch, getState) => {
+export const saveUserInfo = (newName, newAnon) => (dispatch, getState) => {
   dispatch({ type: userTypes.SAVE_STARTED });
 
   const {
@@ -48,7 +48,7 @@ export const saveUser = (newName, newAnon) => (dispatch, getState) => {
     return dispatch({ type: userTypes.TOGGLE_ACCOUNT });
 
   axios
-    .post('/user', { name: newName, anonymous: newAnon })
+    .post('/user/info', { name: newName, anonymous: newAnon })
     .then((res) => {
       if (res.status === 200) {
         if (res.data.msg)
