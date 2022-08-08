@@ -2,14 +2,40 @@
 
 ## Sorted by release
 
-### Home page and user
+### User Sound update
+
+#### Goals
+
+* Remember sound source for user
+
+#### Needed Changes
+
+* Frontend actions to set sound source also sends request to server
+* Get sound source when logging in
+* Hold howl fetches before user is signed in
+* Add sound source to user db model
+* Add route to update user sound source
+
+#### Optional Changes
+
+* Remove sound source from scales db model?
+
+### Home page update
 
 * Add home page with recent changes, user info etc.
-* Remember sound source for user
-* Remove sound source from scales? Optional on fetch?
 * Active state for nav buttons might not need the full pathname
+* Faulty routes navigate to safe routes, find/:id navigates to song/:id
 
-### Scale and chord sound
+### Songwriter update
+
+* Triad chords
+* Triplets, flams, etc. Value 9, 17 for triplets?
+* Swing? Accents?
+* Softer or louder drum hits in songwriter?
+* Should print view only break before fourths?
+* Add bass octave?
+
+### Scale and chord sound update
 
 * Play chords from chords page, arpeggio and unison - how to handle inversions?
 * Play scale preview from scale page - up and down scale? How to handle temporary howls?
@@ -19,7 +45,7 @@
 * Found chords styles on smaller screens
 * Dynamic volume when more than one note played at the same time?
 
-### Compare scales
+### Compare scales update
 
 * Table with base scale and one or more scales to compare against
 * Logic for figuring out if a scale/note is a sharp or flat - circle of fifths + maj/min detection
@@ -28,7 +54,7 @@
 * Create scale from name and string
 * Dynamically create scales from range and root note and skip scaleFull.intervalMap?
 
-### Local storage
+### Local storage update
 
 * Local storage hook
 * Detect if song has unsaved changes
@@ -64,7 +90,6 @@
 
 ### From user feedback
 
-* Triad chords
 * Allow user to flip drum 180 deg (or freely?) to allow making tabs where high notes are in focus, should this flip note numbers?
 
 ### Minor updates
@@ -73,9 +98,7 @@
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
 * Bar numbers on song viewer? Only long songs?
-* Add bass octave?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
-* Faulty routes navigate to safe routes, find/:id navigates to song/:id
 
 ### Major updates
 
@@ -208,7 +231,6 @@
 * Color for hands on tablature
 * Option to add note names to tablature
 * Help covers solo and mute bars
-* Should print view only break before fourths?
 
 ### State and search
 
@@ -249,15 +271,13 @@
 * More drum alternatives? Add synth/piano alternative?
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
 * Alert mouse over or tap inside stops timer?
-* Triplets, flams, etc. Value 9, 17 for triplets?
-* Swing? Accents?
-* Softer or louder drum hits in songwriter?
 * Automate created and updates posts for db documents, timestamps
 * Increase max save limits for older accounts
 * Favorite songs/scales
 * Merge db updates so if one fails both fail (scales/songs for user), must use transactions?
 * Print multiple songs on same page
 * Print with notes instead of numbers
+* Add scale to printed song?
 * Dark mode
 * Markdown for help topics
 * Percussive handpan sound samples
