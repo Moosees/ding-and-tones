@@ -76,6 +76,7 @@
 
 ### Minor updates
 
+* Check isSongPlaying before changing audioSrc (or stop song)
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
