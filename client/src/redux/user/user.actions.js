@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Howler } from 'howler';
 import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
 import howlsTypes from '../howls/howls.types';
 import userTypes from './user.types';
@@ -19,8 +20,9 @@ export const checkSession = () => (dispatch, getState) => {
 
   axios.post('/session', { songId }).then((res) => {
     if (res.status === 200 && res.data.user) {
-      console.log(res.data.user);
       const { sound, name, anonymous, isOwner } = res.data.user;
+
+      Howler.volume(sound.volume);
 
       dispatch({
         type: userTypes.SIGN_IN,
@@ -42,6 +44,7 @@ export const checkSession = () => (dispatch, getState) => {
         },
       });
     }
+
     dispatch({ type: userTypes.SESSION_SUCCESSFUL });
   });
 };

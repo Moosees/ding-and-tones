@@ -10,7 +10,6 @@
 
 #### Needed Changes
 
-* Hold howl fetches before user is signed in (make sure fetched data takes hold)
 * Clean up
 
 #### Optional Changes

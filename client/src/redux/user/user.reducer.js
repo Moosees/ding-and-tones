@@ -3,6 +3,7 @@ import userTypes from './user.types';
 const INITIAL_STATE = {
   accountOpen: false,
   fetchingSession: false,
+  fetchSessionTried: false,
   name: '',
   isAnonymous: true,
   isSaving: false,
@@ -27,7 +28,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
     case userTypes.SESSION_STARTED:
       return { ...state, fetchingSession: true };
     case userTypes.SESSION_SUCCESSFUL:
-      return { ...state, fetchingSession: false };
+      return { ...state, fetchingSession: false, fetchSessionTried: true };
 
     case userTypes.SIGN_IN:
       return {
