@@ -3,9 +3,13 @@ import { getAudioOption } from '../../assets/sound/audioOptions';
 import howlsTypes from './howls.types';
 
 export const saveUserSound = () => (dispatch, getState) => {
-  dispatch({ type: howlsTypes.SAVE_STARTED });
+  const { howls, user } = getState();
 
-  const { howls } = getState();
+  if (!user.isSignedIn) {
+    return;
+  }
+
+  dispatch({ type: howlsTypes.SAVE_STARTED });
 
   const data = {
     audioOption: getAudioOption(howls.info.audioSrc),
