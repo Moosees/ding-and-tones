@@ -22,12 +22,14 @@ export const saveUserSound = () => (dispatch, getState) => {
       if (res.status === 200) {
         dispatch({
           type: howlsTypes.SAVE_SUCCESSFUL,
+          payload: { alert: 'Sound setup saved' },
         });
       }
     })
     .catch((error) => {
       dispatch({
         type: howlsTypes.SAVE_ERROR,
+        payload: { alert: 'Could not save sound setup' },
       });
     });
 };

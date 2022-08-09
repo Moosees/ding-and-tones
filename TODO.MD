@@ -2,21 +2,6 @@
 
 ## Sorted by release
 
-### User Sound update
-
-#### Goals
-
-* Remember sound source and volume for user
-
-#### Needed Changes
-
-* Clean up
-
-#### Optional Changes
-
-* Do something with howls.isSaving?
-* Alerts when saving?
-
 ### Home page update
 
 * Add home page with recent changes, user info etc.
