@@ -14,7 +14,6 @@
 
 #### Optional Changes
 
-* Remove sound source from scales db model?
 * Do something with howls.isSaving?
 * Alerts when saving?
 
