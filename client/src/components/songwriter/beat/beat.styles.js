@@ -73,8 +73,16 @@ export const BeatCircle = styled.div`
   }
 `;
 
-export const BeatText = styled.span`
+export const BeatTextSmall = styled.span`
   font-size: ${({ value }) => beatStyles.fz[value] || '12'}px;
   letter-spacing: -1px;
+  font-family: var(--font-beats);
+  white-space: pre-wrap;
+`;
+
+export const BeatTextBig = styled.span`
+  font-size: ${({ value }) => beatStyles.fz[value] || '12'}px;
+  letter-spacing: -1px;
+  font-family: var(--font-beats);
   white-space: pre-wrap;
 `;

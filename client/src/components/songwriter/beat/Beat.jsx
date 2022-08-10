@@ -2,8 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import BeatDropdown from '../beatDropdown/BeatDropdown';
-import { BeatAnchor, BeatCircle, BeatContainer, BeatText } from './beat.styles';
+import { BeatAnchor, BeatCircle, BeatContainer } from './beat.styles';
 import { getNonScaleNotes } from './beat.utils';
+import BeatText from './BeatText';
 
 const Beat = ({
   beatId,
@@ -59,9 +60,11 @@ const Beat = ({
             onClick={handleOpen}
             onKeyDown={handleKeyDown}
           >
-            <BeatText isBeatPlaying={isBeatPlaying} value={value}>
-              {sound.join('+')}
-            </BeatText>
+            <BeatText
+              isBeatPlaying={isBeatPlaying}
+              sound={sound}
+              value={value}
+            />
           </BeatCircle>
           {isOpen && (
             <BeatDropdown

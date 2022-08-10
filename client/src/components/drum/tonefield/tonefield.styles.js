@@ -33,7 +33,7 @@ export const ExtraContainer = styled.div`
   color: ${({ isPlaying }) => (isPlaying ? '#333' : '#ccc')};
   cursor: ${({ showNote }) => (showNote ? 'pointer' : 'default')};
   display: flex;
-  font-family: 'Sura', serif;
+  font-family: var(--font-notes);
   font-size: 2rem;
   height: 5rem;
   justify-content: center;
@@ -66,7 +66,7 @@ export const MiniExtraContainer = styled.div`
   color: #000;
   cursor: default;
   display: flex;
-  font-family: 'Sura', serif;
+  font-family: var(--font-notes);
   font-size: 14px;
   height: 30px;
   justify-content: center;

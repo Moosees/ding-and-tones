@@ -29,6 +29,9 @@ export default createGlobalStyle`
 
     --padding: 2rem;
     --drum-size: 35rem;
+    --font-text: 'Roboto', sans-serif;
+    --font-notes: 'Sura', serif;
+    --font-beats: 'Bigelow Rules', cursive;
 
     ${({ theme }) => theme.mqW1200`
       font-size: 56.25%;
@@ -58,7 +61,7 @@ export default createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colorBg};
     color: ${({ theme }) => theme.colorText};
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-text);
     font-size: ${({ theme }) => theme.fzSmaller};
 
     ${({ theme }) => theme.mqW1200`

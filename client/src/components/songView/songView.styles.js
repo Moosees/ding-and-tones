@@ -55,7 +55,7 @@ export const Bars = styled.ul`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  font-family: 'Sura', serif;
+  font-family: var(--font-beats);
   justify-content: flex-start;
   width: 100%;
 `;

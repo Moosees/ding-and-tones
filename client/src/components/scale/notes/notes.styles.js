@@ -33,7 +33,7 @@ export const Note = styled.button`
     type !== 'outside' ? theme.shadowLight : 'none'};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
-  font-family: 'Sura', serif;
+  font-family: var(--font-notes);
   height: 3rem;
   justify-content: center;
   margin: 4px;
