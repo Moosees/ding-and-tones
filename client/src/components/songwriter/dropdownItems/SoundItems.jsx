@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { MAX_NOTES_IN_BEAT } from '../../../assets/constants';
 import { updateSoundForBeat } from '../../../redux/song/song.actions';
 import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 import { DropdownItem } from './dropdownItems.styles';
@@ -19,7 +20,8 @@ const SoundItems = ({
   const soundItems = soundList.map(({ howl, label, option }) => {
     const selected = sound.includes(option);
 
-    const isDisabled = multiSelect && sound.length >= 2 && !selected;
+    const isDisabled =
+      multiSelect && sound.length >= MAX_NOTES_IN_BEAT && !selected;
 
     const handleClick = () => {
       if (!howls[howl] || howls[howl].status !== 'ready') return;

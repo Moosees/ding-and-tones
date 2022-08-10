@@ -6,6 +6,9 @@ export const TRANSLATE_TAK = TRANSLATE_BASE / 2 + 0.5;
 export const MIN_NOTE_VALUE = 24;
 export const MAX_NOTE_VALUE = 72;
 
+// songwriter
+export const MAX_NOTES_IN_BEAT = 3;
+
 // alerts
 export const ALERT_TIMEOUT = 5000;
 

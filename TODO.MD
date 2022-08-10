@@ -2,12 +2,6 @@
 
 ## Sorted by release
 
-### Home page update
-
-* Add home page with recent changes, user info etc.
-* Active state for nav buttons might not need the full pathname
-* Faulty routes navigate to safe routes, find/:id navigates to song/:id
-
 ### Songwriter update
 
 * Triad chords
@@ -16,6 +10,12 @@
 * Softer or louder drum hits in songwriter?
 * Should print view only break before fourths?
 * Add bass octave?
+
+### Home page update
+
+* Add home page with recent changes, user info etc.
+* Active state for nav buttons might not need the full pathname
+* Faulty routes navigate to safe routes, find/:id navigates to song/:id
 
 ### Scale and chord sound update
 
@@ -201,7 +201,7 @@
 ### Songwriter
 
 * Use Tooltip component for beat dropdown?
-* Make dropdown higher z than controls, remove need for padding
+* Make dropdown higher z than controls, remove need for padding, portal
 * Show latest changes (useful when copying and moving bars)
 * Undo changes
 * Looping/repeats, named bars? Sequencer?

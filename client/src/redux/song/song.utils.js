@@ -1,3 +1,4 @@
+import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
 
@@ -158,7 +159,7 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
 export const addSoundToBeat = (newSound, soundArray, multiSelect) => {
   if (!multiSelect) return [newSound];
 
-  if (soundArray.length >= 2) return soundArray;
+  if (soundArray.length >= MAX_NOTES_IN_BEAT) return soundArray;
 
   return [...soundArray, newSound]
     .filter((sound) => sound !== '-')
