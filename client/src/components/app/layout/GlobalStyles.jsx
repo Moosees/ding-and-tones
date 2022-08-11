@@ -31,7 +31,8 @@ export default createGlobalStyle`
     --drum-size: 35rem;
     --font-text: 'Roboto', sans-serif;
     --font-notes: 'Sura', serif;
-    --font-beats: 'Bigelow Rules', cursive;
+    --font-beats: 'Stint Ultra Condensed', sans-serif;
+    --weight-beats: 400;
 
     ${({ theme }) => theme.mqW1200`
       font-size: 56.25%;

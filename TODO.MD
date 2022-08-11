@@ -267,3 +267,4 @@
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?
 * DRY up rc-slider
+* Four note chords

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 const beatStyles = {
   heightWidth: {
     4: '3',
-    8: '2.8',
-    16: '2.6',
+    8: '2.9',
+    16: '2.8',
   },
   fz: {
-    4: '10',
-    8: '10',
-    16: '9',
+    1: '21',
+    2: '20',
+    3: '18',
   },
   border: {
     4: 'solid',
@@ -31,7 +31,7 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-left: ${({ value }) => (value === 4 ? '3px' : '0')};
+  margin-left: ${({ value }) => (value === 4 ? '2px' : '-1px')};
   position: relative;
 
   ${({ theme }) => theme.mqW850`
@@ -73,16 +73,18 @@ export const BeatCircle = styled.div`
   }
 `;
 
-export const BeatTextSmall = styled.span`
-  font-size: ${({ value }) => beatStyles.fz[value] || '12'}px;
+export const BeatTextNote = styled.span`
+  font-size: ${({ length }) => beatStyles.fz[length] || '16'}px;
   letter-spacing: -1px;
   font-family: var(--font-beats);
+  font-weight: var(--weight-beats);
   white-space: pre-wrap;
 `;
 
-export const BeatTextBig = styled.span`
-  font-size: ${({ value }) => beatStyles.fz[value] || '12'}px;
+export const BeatTextSpacer = styled.span`
+  font-size: ${({ length }) => (length < 3 ? '14' : '10')}px;
   letter-spacing: -1px;
   font-family: var(--font-beats);
+  font-weight: var(--weight-beats);
   white-space: pre-wrap;
 `;

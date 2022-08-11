@@ -1,15 +1,17 @@
-import { BeatTextBig, BeatTextSmall } from './beat.styles';
+import { Fragment } from 'react';
+import { BeatTextNote, BeatTextSpacer } from './beat.styles';
 
 const BeatText = ({ isBeatPlaying, sound, value }) => {
-  return sound.length < 3 ? (
-    <BeatTextSmall value={value}>{sound.join('+')}</BeatTextSmall>
-  ) : (
-    <BeatTextBig value={value}>
-      {sound.map((note) => (
-        <span>{note}</span>
-      ))}
-    </BeatTextBig>
-  );
+  return sound.map((note, i) => (
+    <Fragment key={i}>
+      <BeatTextNote value={value} length={sound.length}>
+        {note}
+      </BeatTextNote>
+      {!sound[i + 1] ? null : (
+        <BeatTextSpacer length={sound.length}>∘</BeatTextSpacer>
+      )}
+    </Fragment>
+  ));
 };
 
 export default BeatText;
