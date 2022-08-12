@@ -86,5 +86,6 @@ export const BeatTextSpacer = styled.span`
   letter-spacing: -1px;
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);
+  margin-bottom: 3px;
   white-space: pre-wrap;
 `;
