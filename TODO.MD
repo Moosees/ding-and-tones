@@ -4,9 +4,7 @@
 
 ### Songwriter update
 
-* Triplets, flams, etc. Value 9, 17 for triplets?
-* Swing? Accents?
-* Softer or louder drum hits in songwriter?
+* Triplets, etc. Value 9, 17 for triplets?
 * Should print view only break before fourths?
 * Add bass octave?
 
@@ -213,6 +211,8 @@
 * Color for hands on tablature
 * Option to add note names to tablature
 * Help covers solo and mute bars
+* Swing? Accents? Flams?
+* Softer or louder drum hits in songwriter?
 
 ### State and search
 
@@ -267,3 +267,4 @@
 * Set howl pool to match size of scale?
 * DRY up rc-slider
 * Four note chords
+* User selectable bar and beat layouts (some optimized for single hit beats etc)
