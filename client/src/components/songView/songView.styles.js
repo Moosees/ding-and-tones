@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const SongLayout = styled.div`
+  align-items: stretch;
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -19,7 +20,7 @@ export const Header = styled.header`
   justify-content: ${({ headersOpen }) =>
     headersOpen ? 'space-between' : 'flex-end'};
   margin: 2rem 1rem ${({ headersOpen }) => (headersOpen ? '0' : '1.5rem')};
-  width: 100%;
+  /* width: 100%; */
 `;
 
 export const Title = styled.h1`
@@ -58,7 +59,7 @@ export const Bars = styled.ul`
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);
   justify-content: flex-start;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 export const Footer = styled.footer`
