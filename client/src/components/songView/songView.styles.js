@@ -56,8 +56,6 @@ export const Bars = styled.ul`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  font-family: var(--font-beats);
-  font-weight: var(--weight-beats);
   justify-content: flex-start;
   /* width: 100%; */
 `;

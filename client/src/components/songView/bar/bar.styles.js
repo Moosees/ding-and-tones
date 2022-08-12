@@ -37,7 +37,7 @@ export const BarMetre = styled.div`
 export const BarDivider = styled.div`
   align-self: stretch;
   border-right: 1px solid #000;
-  margin: 4px 0;
+  margin: 10px 0;
   width: 1px;
 
   &:not(:first-child) {
@@ -49,6 +49,8 @@ export const BeatCircleWrapper = styled.div`
   align-items: center;
   display: flex;
   flex-grow: 1;
+  font-family: var(--font-beats);
+  font-weight: var(--weight-beats);
   justify-content: center;
 `;
 
@@ -73,7 +75,7 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin: 10px 0;
+  margin: 18px 0;
   margin-left: ${({ value }) => (value === 4 ? '3px' : '1px')};
   position: relative;
 `;
