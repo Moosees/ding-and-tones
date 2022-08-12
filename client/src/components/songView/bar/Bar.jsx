@@ -9,6 +9,7 @@ import {
   BeatCircleWrapper,
   BeatContainer,
   BeatText,
+  BeatTextSpacer,
 } from './bar.styles';
 
 const Bar = ({
@@ -37,7 +38,14 @@ const Bar = ({
           {countOpen && <BeatText>{metreInfo.count[i]}</BeatText>}
           <BeatCircleWrapper>
             <BeatCircle isBeatPlaying={isBeatPlaying} value={value}>
-              <BeatText>{sound !== '-' && sound.join('+')}</BeatText>
+              {sound.map((note, i) => (
+                <>
+                  <BeatText length={sound.length}>
+                    {note !== '-' && note}
+                  </BeatText>
+                  {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
+                </>
+              ))}
             </BeatCircle>
           </BeatCircleWrapper>
           {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}

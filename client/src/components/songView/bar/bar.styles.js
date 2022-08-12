@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 const beatStyles = {
   heightWidth: {
-    4: '26',
-    8: '24',
-    16: '23',
+    4: '29',
+    8: '27',
+    16: '27',
   },
   fz: {
-    4: '12',
-    8: '11',
-    16: '11',
+    1: '22',
+    2: '21',
+    3: '19',
   },
   border: {
     4: '1px solid #000',
@@ -22,11 +22,11 @@ export const BarMetre = styled.div`
   align-items: center;
   align-self: stretch;
   display: flex;
-  font-size: 12px;
+  font-size: 13px;
   flex-direction: column;
   font-family: var(--font-text);
   justify-content: center;
-  margin-left: 4px;
+  margin-left: 3px;
   transform: translateY(${({ offset }) => offset}px);
 
   span:first-child {
@@ -74,13 +74,20 @@ export const BeatContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   margin: 10px 0;
-  margin-left: ${({ value }) => (value === 4 ? '4px' : '2px')};
+  margin-left: ${({ value }) => (value === 4 ? '3px' : '1px')};
   position: relative;
 `;
 
 export const BeatText = styled.span`
-  font-size: ${({ value }) => beatStyles.fz[value] || 12}px;
+  font-size: ${({ length }) => beatStyles.fz[length] || '12'}px;
   letter-spacing: -1px;
+  margin-left: -1px;
+  white-space: pre-wrap;
+`;
+
+export const BeatTextSpacer = styled.span`
+  font-size: 13px;
+  margin-bottom: 3px;
   margin-left: -1px;
   white-space: pre-wrap;
 `;

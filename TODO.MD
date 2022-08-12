@@ -4,7 +4,8 @@
 
 ### Songwriter update
 
-* Triad chords
+* Songwriter, song view and print view hands and count styles
+* Line up metre in song view
 * Triplets, flams, etc. Value 9, 17 for triplets?
 * Swing? Accents?
 * Softer or louder drum hits in songwriter?
