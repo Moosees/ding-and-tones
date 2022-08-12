@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
@@ -39,12 +39,12 @@ const Bar = ({
           <BeatCircleWrapper>
             <BeatCircle isBeatPlaying={isBeatPlaying} value={value}>
               {sound.map((note, i) => (
-                <>
+                <Fragment key={i}>
                   <BeatText length={sound.length}>
                     {note !== '-' && note}
                   </BeatText>
                   {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
-                </>
+                </Fragment>
               ))}
             </BeatCircle>
           </BeatCircleWrapper>
