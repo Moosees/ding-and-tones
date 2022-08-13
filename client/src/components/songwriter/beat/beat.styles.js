@@ -7,9 +7,9 @@ const beatStyles = {
     16: '2.8',
   },
   fz: {
-    1: '21',
-    2: '20',
-    3: '18',
+    1: '2.1',
+    2: '2.0',
+    3: '1.8',
   },
   border: {
     4: 'solid',
@@ -74,7 +74,7 @@ export const BeatCircle = styled.div`
 `;
 
 export const BeatTextNote = styled.span`
-  font-size: ${({ length }) => beatStyles.fz[length] || '16'}px;
+  font-size: ${({ length }) => beatStyles.fz[length] || '16'}rem;
   letter-spacing: -1px;
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);

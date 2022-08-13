@@ -7,6 +7,10 @@ export const SongLayout = styled.div`
   font-size: 14px;
   max-width: 100%;
 
+  ${({ theme }) => theme.mqW850`
+    margin-left: 2px;
+  `}
+
   @media print {
     background-color: #fff;
     color: #000;
