@@ -4,9 +4,38 @@
 
 ### Songwriter update
 
-* Triplets, etc. Value 9, 17 for triplets?
-* Should print view only break before fourths?
+#### Goals
+
+* Triplets
+* Quintuplets?
+* Should print view only break before fourths (Or before first triplet)?
 * Add bass octave?
+
+#### Needed changes triplets
+
+* Dynamic metre template generation
+* Dynamic metre count generation
+* Song player understands new system
+* Subdivision in song state is an array with subdivision for each beat
+* Make sure copy bar understands new system
+
+* Add triplet beat templates
+* Add triplet count templates
+* Add ui to select beats to use triplets or higher subdivision
+* Add new beat styles for triplet beats in songwriter
+* Add new beat styles for triplet beats in song and print view
+
+* Subdivision in song db model is an array with subdivision for each beat
+* Update song fetching for new system
+* Update song saving for new system
+* Add fallback for songs loaded with subdivision as an integer
+
+#### Optional changes triplets
+
+* Remove subdivisionCount from metre?
+* Remove old subdivision select or add "set all beats to Xth triplets" to list?
+* No need to filter beats for bars? Just remove all unused beats?
+* Any changes to beat db and state? {sound, value, hand, mode: 'c'}
 
 ### Home page update
 
