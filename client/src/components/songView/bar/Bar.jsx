@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
-import { metreList } from '../../../assets/metre';
+import { createBarTemplate } from '../../../assets/metre';
 import {
   BarDivider,
   BarMetre,
@@ -24,48 +24,49 @@ const Bar = ({
 }) => {
   const { metre, subdivision, measure } = bars[barId];
   const prevBarMetre = prevBar ? bars[prevBar].metre : null;
-  const metreInfo = metreList[metre];
 
-  const filteredBeats = measure.reduce((acc, { beatId, count, value }, i) => {
-    if (!beatId) return acc;
+  const barTemplate = createBarTemplate(metre, subdivision);
 
-    if (value <= subdivision) {
-      const { sound, hand } = beats[beatId];
-      const isBeatPlaying = beatId === currentBeat;
+  // const filteredBeats = measure.reduce((acc, { beatId, count, value }, i) => {
+  //   if (!beatId) return acc;
 
-      acc.push(
-        <BeatContainer key={beatId} value={value}>
-          {countOpen && <BeatText>{metreInfo.count[i]}</BeatText>}
-          <BeatCircleWrapper>
-            <BeatCircle isBeatPlaying={isBeatPlaying} value={value}>
-              {sound.map((note, i) => (
-                <Fragment key={i}>
-                  <BeatText length={sound.length}>
-                    {note !== '-' && note}
-                  </BeatText>
-                  {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
-                </Fragment>
-              ))}
-            </BeatCircle>
-          </BeatCircleWrapper>
-          {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}
-        </BeatContainer>
-      );
-    }
+  //   if (value <= subdivision) {
+  //     const { sound, hand } = beats[beatId];
+  //     const isBeatPlaying = beatId === currentBeat;
 
-    return acc;
-  }, []);
+  //     acc.push(
+  //       <BeatContainer key={beatId} value={value}>
+  //         {countOpen && <BeatText>{metreInfo.count[i]}</BeatText>}
+  //         <BeatCircleWrapper>
+  //           <BeatCircle isBeatPlaying={isBeatPlaying} value={value}>
+  //             {sound.map((note, i) => (
+  //               <Fragment key={i}>
+  //                 <BeatText length={sound.length}>
+  //                   {note !== '-' && note}
+  //                 </BeatText>
+  //                 {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
+  //               </Fragment>
+  //             ))}
+  //           </BeatCircle>
+  //         </BeatCircleWrapper>
+  //         {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}
+  //       </BeatContainer>
+  //     );
+  //   }
+
+  //   return acc;
+  // }, []);
 
   return (
     <>
       {(!prevBarMetre || prevBarMetre !== metre) && (
         <BarMetre offset={barMetreOffset}>
-          {metreInfo.name.split('/').map((substring, i) => (
+          {/* {metreInfo.name.split('/').map((substring, i) => (
             <span key={i}>{substring}</span>
-          ))}
+          ))} */}
         </BarMetre>
       )}
-      {filteredBeats}
+      {/* {filteredBeats} */}
       <BarDivider />
     </>
   );

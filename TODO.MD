@@ -13,15 +13,17 @@
 
 #### Needed changes triplets
 
-* Dynamic metre template generation
-* Dynamic metre count generation
+* Songwriter uses new dynamic templates
+* Song and print view uses new dynamic templates
+* Song and bar subdivision selects sets subdivision to array instead of integer
 * Song player understands new system
-* Subdivision in song state is an array with subdivision for each beat
-* Make sure copy bar understands new system
+* Copy bar understands new system
+* Add ui to select beats to use triplets or higher subdivision
 
+* Add beat and count templates for all metres
+* Add triplets to song and bar subdivision selects
 * Add triplet beat templates
 * Add triplet count templates
-* Add ui to select beats to use triplets or higher subdivision
 * Add new beat styles for triplet beats in songwriter
 * Add new beat styles for triplet beats in song and print view
 
@@ -29,11 +31,11 @@
 * Update song fetching for new system
 * Update song saving for new system
 * Add fallback for songs loaded with subdivision as an integer
+* Remove old template and count for metre
 
 #### Optional changes triplets
 
 * Remove subdivisionCount from metre?
-* Remove old subdivision select or add "set all beats to Xth triplets" to list?
 * No need to filter beats for bars? Just remove all unused beats?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'}
 

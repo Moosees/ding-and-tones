@@ -1,3 +1,28 @@
+const createCountForBeat = (countTemplate, i) => {
+  return countTemplate.map((count) => {
+    if (count === 'X') {
+      return `${i + 1}`;
+    }
+    return count;
+  });
+};
+
+export const createBarTemplate = (metre, subdivision) => {
+  const barTemplates = metreList[metre].templates;
+
+  return subdivision.reduce(
+    (acc, beatSubdivision, i) => {
+      const beatTemplates = barTemplates[beatSubdivision];
+
+      return {
+        beats: [...acc.beats, ...beatTemplates.beat],
+        count: [...acc.count, ...createCountForBeat(beatTemplates.count, i)],
+      };
+    },
+    { beats: [], count: [] }
+  );
+};
+
 export const metreList = {
   s24: {
     group: 'Simple metre',
@@ -33,6 +58,20 @@ export const metreList = {
     name: '4/4',
     nameShort: '4/4',
     template: [4, 16, 8, 16, 4, 16, 8, 16, 4, 16, 8, 16, 4, 16, 8, 16],
+    templates: {
+      4: {
+        beat: [4],
+        count: ['X'],
+      },
+      8: {
+        beat: [4, 8],
+        count: ['X', '&'],
+      },
+      16: {
+        beat: [4, 16, 8, 16],
+        count: ['X', 'e', '&', 'a'],
+      },
+    },
     // prettier-ignore
     count: ['1', 'e', '&', 'a', '2', 'e', '&', 'a', '3', 'e', '&', 'a','4', 'e', '&', 'a'],
     lengthInBeats: 4,

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { createBarTemplate } from '../../../assets/metre';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
@@ -15,33 +16,37 @@ const Bar = ({
   moveBar,
   mutedBars,
 }) => {
-  const { measure, subdivision } = bars[barId];
+  const { measure, metre, subdivision } = bars[barId];
   const isMuted = mutedBars[barId];
 
-  useEffect(() => {
-    checkMeasure(barId, measure, subdivision);
-  }, [barId, measure, subdivision]);
+  const bartemplate = createBarTemplate(metre, subdivision);
 
-  const filteredBeats = filterBeats(measure, subdivision);
+  return <div>'Bar'</div>;
 
-  return (
-    <BarContainer>
-      <BarInfo barId={barId} index={index} />
-      {filteredBeats.length && (
-        <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
-          {filteredBeats.map((beat) => (
-            <Beat
-              key={beat.beatId}
-              isMuted={isMuted}
-              beatId={beat.beatId}
-              count={beat.count}
-            />
-          ))}
-        </Beats>
-      )}
-      <BarControls barId={barId} />
-    </BarContainer>
-  );
+  // useEffect(() => {
+  //   checkMeasure(barId, measure, subdivision);
+  // }, [barId, measure, subdivision]);
+
+  // const filteredBeats = filterBeats(measure, subdivision);
+
+  // return (
+  //   <BarContainer>
+  //     <BarInfo barId={barId} index={index} />
+  //     {filteredBeats.length && (
+  //       <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
+  //         {filteredBeats.map((beat) => (
+  //           <Beat
+  //             key={beat.beatId}
+  //             isMuted={isMuted}
+  //             beatId={beat.beatId}
+  //             count={beat.count}
+  //           />
+  //         ))}
+  //       </Beats>
+  //     )}
+  //     <BarControls barId={barId} />
+  //   </BarContainer>
+  // );
 };
 
 const mapStateToProps = ({ song, ui }) => ({
