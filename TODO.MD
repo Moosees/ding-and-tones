@@ -15,10 +15,12 @@
 
 * Songwriter uses new dynamic templates
 * Song and print view uses new dynamic templates
-* Song and bar subdivision selects sets subdivision to array instead of integer
+* Remove beats when changing subdivision, update metre template when something changes
+* Remove Bar filter and checkMeasure functions
 * Song player understands new system
+* New bar understands new system, new default and new x/x
 * Copy bar understands new system
-* Add ui to select beats to use triplets or higher subdivision
+* Add ui to select subdivision on beat by beat basis
 
 * Add beat and count templates for all metres
 * Add triplets to song and bar subdivision selects

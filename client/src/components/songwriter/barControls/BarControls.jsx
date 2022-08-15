@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { metreList } from '../../../assets/metre';
 import {
   deleteBar,
   duplicateBar,
@@ -43,6 +44,7 @@ const BarControls = ({
   updateBarSubdivision,
 }) => {
   const { metre, subdivision } = bars[barId];
+  const { lengthInBeats } = metreList[metre];
   const isMuted = mutedBars[barId];
 
   return (
@@ -71,9 +73,9 @@ const BarControls = ({
       <Subdivision
         small
         metre={metre}
-        subdivision={subdivision}
-        setSubdivision={(subdivision) =>
-          updateBarSubdivision(barId, subdivision)
+        subdivision={subdivision[0]}
+        setSubdivision={(newSubdivision) =>
+          updateBarSubdivision(barId, Array(lengthInBeats).fill(newSubdivision))
         }
       />
     </ControlsContainer>
