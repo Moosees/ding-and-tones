@@ -13,10 +13,8 @@
 
 #### Needed changes triplets
 
-* Songwriter uses new dynamic templates
 * Song and print view uses new dynamic templates
-* Remove beats when changing subdivision, update metre template when something changes
-* Remove Bar filter and checkMeasure functions
+* Remove beats when changing subdivision, update metre template when something changes - bar checkMeasure function (remove?)
 * Song player understands new system
 * New bar understands new system, new default and new x/x
 * Copy bar understands new system
@@ -30,16 +28,17 @@
 * Add new beat styles for triplet beats in song and print view
 
 * Subdivision in song db model is an array with subdivision for each beat
-* Update song fetching for new system
+* Update song fetching for new system - started
 * Update song saving for new system
 * Add fallback for songs loaded with subdivision as an integer
 * Remove old template and count for metre
 
+* Clean up code
+
 #### Optional changes triplets
 
 * Remove subdivisionCount from metre?
-* No need to filter beats for bars? Just remove all unused beats?
-* Any changes to beat db and state? {sound, value, hand, mode: 'c'}
+* Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 
 ### Home page update
 

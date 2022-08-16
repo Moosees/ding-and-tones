@@ -9,18 +9,19 @@ import BeatText from './BeatText';
 const Beat = ({
   beatId,
   beats,
-  count,
   countOpen,
   currentBeat,
   handsOpen,
   isMuted,
   isSongPlaying,
   scale,
+  template,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
   const dropdownPosRef = useRef(null);
-  const { value, sound, hand } = beats[beatId];
+  const { sound, hand } = beats[beatId];
+  const { value, count } = template;
   const isBeatPlaying = beatId === currentBeat;
 
   useEffect(() => {

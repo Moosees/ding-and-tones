@@ -5,7 +5,7 @@ import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
-import { checkMeasure, filterBeats } from './bar.utils';
+import { checkMeasure } from './bar.utils';
 
 const Bar = ({
   barId,
@@ -19,34 +19,29 @@ const Bar = ({
   const { measure, metre, subdivision } = bars[barId];
   const isMuted = mutedBars[barId];
 
-  const bartemplate = createBarTemplate(metre, subdivision);
-
-  return <div>'Bar'</div>;
+  const barTemplate = createBarTemplate(metre, subdivision);
+  console.log({ barTemplate, measure });
 
   // useEffect(() => {
   //   checkMeasure(barId, measure, subdivision);
   // }, [barId, measure, subdivision]);
 
-  // const filteredBeats = filterBeats(measure, subdivision);
-
-  // return (
-  //   <BarContainer>
-  //     <BarInfo barId={barId} index={index} />
-  //     {filteredBeats.length && (
-  //       <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
-  //         {filteredBeats.map((beat) => (
-  //           <Beat
-  //             key={beat.beatId}
-  //             isMuted={isMuted}
-  //             beatId={beat.beatId}
-  //             count={beat.count}
-  //           />
-  //         ))}
-  //       </Beats>
-  //     )}
-  //     <BarControls barId={barId} />
-  //   </BarContainer>
-  // );
+  return (
+    <BarContainer>
+      <BarInfo barId={barId} index={index} />
+      <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
+        {measure.map((beatId, i) => (
+          <Beat
+            key={beatId}
+            isMuted={isMuted}
+            beatId={beatId}
+            template={barTemplate[i]}
+          />
+        ))}
+      </Beats>
+      <BarControls barId={barId} />
+    </BarContainer>
+  );
 };
 
 const mapStateToProps = ({ song, ui }) => ({

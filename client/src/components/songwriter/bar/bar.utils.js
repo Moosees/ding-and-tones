@@ -2,12 +2,6 @@ import { v4 as uuid } from 'uuid';
 import { updateMeasure } from '../../../redux/song/song.actions';
 import { store } from '../../../redux/store';
 
-export const filterBeats = (measure, barSubdivision) => {
-  return measure.filter(
-    ({ beatId, value }, i) => beatId && value <= barSubdivision
-  );
-};
-
 export const checkMeasure = (barId, measure, subdivision) => {
   let updateState = false;
   const newBeats = {};

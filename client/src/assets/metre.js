@@ -1,26 +1,19 @@
-const createCountForBeat = (countTemplate, i) => {
-  return countTemplate.map((count) => {
-    if (count === 'X') {
-      return `${i + 1}`;
-    }
-    return count;
+const parseBeatTemplates = (beatTemplate, beatIndex) => {
+  return beatTemplate.count.map((rawCount, i) => {
+    const count = rawCount === 'X' ? `${beatIndex + 1}` : rawCount;
+
+    return { count, value: beatTemplate.values[i] };
   });
 };
 
 export const createBarTemplate = (metre, subdivision) => {
   const barTemplates = metreList[metre].templates;
 
-  return subdivision.reduce(
-    (acc, beatSubdivision, i) => {
-      const beatTemplates = barTemplates[beatSubdivision];
+  return subdivision.reduce((acc, beatSubdivision, i) => {
+    const beatTemplates = barTemplates[beatSubdivision];
 
-      return {
-        beats: [...acc.beats, ...beatTemplates.beat],
-        count: [...acc.count, ...createCountForBeat(beatTemplates.count, i)],
-      };
-    },
-    { beats: [], count: [] }
-  );
+    return [...acc, ...parseBeatTemplates(beatTemplates, i)];
+  }, []);
 };
 
 export const metreList = {
@@ -60,15 +53,15 @@ export const metreList = {
     template: [4, 16, 8, 16, 4, 16, 8, 16, 4, 16, 8, 16, 4, 16, 8, 16],
     templates: {
       4: {
-        beat: [4],
+        values: [4],
         count: ['X'],
       },
       8: {
-        beat: [4, 8],
+        values: [4, 8],
         count: ['X', '&'],
       },
       16: {
-        beat: [4, 16, 8, 16],
+        values: [4, 16, 8, 16],
         count: ['X', 'e', '&', 'a'],
       },
     },

@@ -80,29 +80,29 @@ const parseArrayToObject = (array) => {
   }, {});
 };
 
-const parseMeasureForLoadSong = (measure, metre, subdivision) => {
-  const { template } = metreList[metre];
-  let measureIndex = 0;
+// const parseMeasureForLoadSong = (measure, metre, subdivision) => {
+//   const { template } = metreList[metre];
+//   let measureIndex = 0;
 
-  return template.map((templateValue, i) => {
-    return {
-      count: metreList[metre].count[i],
-      value: template[i],
-      beatId: templateValue <= subdivision ? measure[measureIndex++] : null,
-    };
-  });
-};
+//   return template.map((templateValue, i) => {
+//     return {
+//       count: metreList[metre].count[i],
+//       value: template[i],
+//       beatId: templateValue <= subdivision ? measure[measureIndex++] : null,
+//     };
+//   });
+// };
 
-const parseBarsForLoadSong = (bars) => {
-  const parsedBars = bars.map((bar) => {
-    const { measure, metre, subdivision } = bar;
-    return {
-      ...bar,
-      measure: parseMeasureForLoadSong(measure, metre, subdivision),
-    };
-  });
-  return parseArrayToObject(parsedBars);
-};
+// const parseBarsForLoadSong = (bars) => {
+//   const parsedBars = bars.map((bar) => {
+//     const { measure, metre, subdivision } = bar;
+//     return {
+//       ...bar,
+//       measure: parseMeasureForLoadSong(measure, metre, subdivision),
+//     };
+//   });
+//   return parseArrayToObject(parsedBars);
+// };
 
 const parseBeatsForLoadSong = (beats) => {
   const parsedBeats = beats.map((beat) => {
@@ -127,7 +127,8 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
     songId,
   } = song;
 
-  const parsedBars = parseBarsForLoadSong(bars);
+  console.log({ bars });
+  // const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
   const parsedScale = getScale && scale ? parseScaleData(scale, true) : {};
   const savedScale =
@@ -141,9 +142,10 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
 
   const parsedSongData = {
     arrangement,
-    bars: parsedBars,
+    // bars: parsedBars,
+    bars: parseArrayToObject(bars),
     beats: parsedBeats,
-    getScale: scale && getScale,
+    getScale: (scale && getScale) || false,
     info,
     scale: parsedScale,
     ui: { composer, isOwner, songId, isPrivate, ...savedScale },
@@ -152,6 +154,7 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
   if (!suppressAlert) {
     parsedSongData.alert = `"${song.info.title}" by ${song.composer} loaded`;
   }
+  console.log({ parsedSongData });
 
   return parsedSongData;
 };
