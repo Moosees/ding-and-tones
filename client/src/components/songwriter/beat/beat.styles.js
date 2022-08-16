@@ -73,8 +73,12 @@ export const BeatCircle = styled.div`
   }
 `;
 
+export const BeatTextHandCount = styled.span`
+  font-size: 1.2rem;
+`;
+
 export const BeatTextNote = styled.span`
-  font-size: ${({ length }) => beatStyles.fz[length] || '16'}rem;
+  font-size: ${({ length }) => beatStyles.fz[length] || '1.8'}rem;
   letter-spacing: -1px;
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);

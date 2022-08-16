@@ -2,7 +2,12 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import BeatDropdown from '../beatDropdown/BeatDropdown';
-import { BeatAnchor, BeatCircle, BeatContainer } from './beat.styles';
+import {
+  BeatAnchor,
+  BeatCircle,
+  BeatContainer,
+  BeatTextHandCount,
+} from './beat.styles';
 import { getNonScaleNotes } from './beat.utils';
 import BeatText from './BeatText';
 
@@ -47,7 +52,7 @@ const Beat = ({
   return (
     <BeatContainer ref={dropdownPosRef} value={value}>
       <>
-        {countOpen && <BeatText>{count}</BeatText>}
+        {countOpen && <BeatTextHandCount>{count}</BeatTextHandCount>}
         <BeatAnchor>
           <BeatCircle
             tabIndex={0}
@@ -77,7 +82,9 @@ const Beat = ({
             />
           )}
         </BeatAnchor>
-        {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}
+        {handsOpen && (
+          <BeatTextHandCount>{handShortByValue[hand] || ' '}</BeatTextHandCount>
+        )}
       </>
     </BeatContainer>
   );
