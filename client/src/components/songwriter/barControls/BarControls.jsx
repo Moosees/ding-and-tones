@@ -75,7 +75,10 @@ const BarControls = ({
         metre={metre}
         subdivision={subdivision[0]}
         setSubdivision={(newSubdivision) =>
-          updateBarSubdivision(barId, Array(lengthInBeats).fill(newSubdivision))
+          updateBarSubdivision(
+            barId,
+            Array(lengthInBeats).fill(parseInt(newSubdivision))
+          )
         }
       />
     </ControlsContainer>

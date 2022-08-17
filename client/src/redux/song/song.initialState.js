@@ -8,7 +8,7 @@ export const infoState = {
   bpm: 100,
   difficulty: 1,
   metre: 's44',
-  subdivision: 8,
+  subdivision: [8, 8, 8, 8],
   title: 'Is this a song',
 };
 

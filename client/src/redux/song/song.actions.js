@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { defaultScale, defaultSong } from '../../assets/defaultData';
+import { compareSubdivisionLength } from '../../assets/metre';
 import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
@@ -181,10 +182,31 @@ export const togglePrivateSong = () => ({
   type: songTypes.TOGGLE_PRIVATE_SONG,
 });
 
-export const updateBarSubdivision = (barId, newSubdivision) => ({
-  type: songTypes.UPDATE_BAR_SUBDIVISION,
-  payload: { barId, newSubdivision },
-});
+export const updateBarSubdivision =
+  (barId, newSubdivision) => (dispatch, getState) => {
+    const { song } = getState();
+
+    const lengthDifference = compareSubdivisionLength(
+      song.bars[barId].subdivision,
+      newSubdivision,
+      song.bars[barId].metre
+    );
+
+    if (lengthDifference === 0) {
+      console.log('same length');
+    }
+    if (lengthDifference > 0) {
+      console.log('create new beats');
+    }
+    if (lengthDifference < 0) {
+      console.log('remove beats');
+    }
+
+    dispatch({
+      type: songTypes.UPDATE_BAR_SUBDIVISION,
+      payload: { barId, newSubdivision },
+    });
+  };
 
 export const updateHandForBeat = (beatId, newHand) => (dispatch, getState) => {
   const {

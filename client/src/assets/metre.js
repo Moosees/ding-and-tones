@@ -16,6 +16,21 @@ export const createBarTemplate = (metre, subdivision) => {
   }, []);
 };
 
+export const getSubdivisionLength = (subdivision, metre) => {
+  let length = 0;
+
+  subdivision.forEach((beat) => {
+    length += metreList[metre].templates[beat].values.length;
+  });
+
+  return length;
+};
+
+export const compareSubdivisionLength = (a, b, metre) => {
+  console.log({ a, b, metre });
+  return getSubdivisionLength(b, metre) - getSubdivisionLength(a, metre);
+};
+
 export const metreList = {
   s24: {
     group: 'Simple metre',
