@@ -200,17 +200,18 @@ export const updateBarSubdivision =
     );
 
     if (lengthDifference > 0) {
-      console.log('create new beats');
       dispatch({
         type: songTypes.ADD_BEATS_TO_BAR,
-        payload: addBeatsToBar(barId, subdivision, newSubdivision, metre),
+        payload: { barId, ...addBeatsToBar(song.bars[barId], newSubdivision) },
       });
     }
     if (lengthDifference < 0) {
-      console.log('remove beats');
       dispatch({
         type: songTypes.REMOVE_BEATS_FROM_BAR,
-        payload: removeBeatsFromBar(barId, subdivision, newSubdivision, metre),
+        payload: {
+          barId,
+          ...removeBeatsFromBar(song.bars[barId], newSubdivision),
+        },
       });
     }
 

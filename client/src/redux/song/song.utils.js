@@ -175,16 +175,50 @@ export const removeSoundFromBeat = (newSound, soundArray) => {
   return soundArray.filter((sound) => sound !== newSound);
 };
 
-export const addBeatsToBar = (
-  barId,
-  oldSubdivision,
-  newSubdivision,
-  metre
-) => {};
+export const calculateNeededBeatChanges = (template, newTemplate) => {
+  const templateValuesMap = {};
+  const valuesToAdd = [];
+  const valuesToChange = [];
 
-export const removeBeatsFromBar = (
-  barId,
-  oldSubdivision,
-  newSubdivision,
-  metre
-) => {};
+  for (const value of newTemplate) {
+    templateValuesMap[value] !== undefined
+      ? templateValuesMap[value]++
+      : (templateValuesMap[value] = 1);
+  }
+  for (const value of template) {
+    templateValuesMap[value] !== undefined
+      ? templateValuesMap[value]--
+      : (templateValuesMap[value] = -1);
+  }
+
+  for (const [key, value] of Object.entries(templateValuesMap)) {
+    if (value > 0) {
+      valuesToAdd.push(...Array(value).fill(key));
+    }
+    if (value < 0) {
+      valuesToChange.push(...Array(value).fill(key));
+    }
+  }
+
+  return { valuesToAdd, valuesToChange };
+};
+
+export const addBeatsToBar = (bar, newSubdivision) => {
+  const { metre, measure, subdivision } = bar;
+
+  for (let i = 0; i < newSubdivision.length; ++i) {
+    const template = metreList[metre].templates[subdivision[i]].values;
+    const newTemplate = metreList[metre].templates[newSubdivision[i]].values;
+
+    const neededChanges = calculateNeededBeatChanges(template, newTemplate);
+    console.log({ neededChanges });
+
+    // change values if needed and update measure
+
+    // add new values if needed and update measure
+  }
+};
+
+export const removeBeatsFromBar = (bar, newSubdivision) => {
+  console.log('Remove beats', { bar, newSubdivision });
+};

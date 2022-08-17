@@ -108,6 +108,7 @@
 
 ### Minor updates
 
+* for of instead of forEach
 * Check isSongPlaying before changing audioSrc (or stop song)
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
