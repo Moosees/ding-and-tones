@@ -1,4 +1,5 @@
 const songTypes = {
+  ADD_BEATS_TO_BAR: 'song/addBeats',
   ADD_NEW_BAR: 'song/addNewBar',
   DELETE_BAR: 'song/deleteBar',
   DELETE_ERROR: 'song/deleteError',
@@ -9,6 +10,7 @@ const songTypes = {
   FETCH_STARTED: 'song/fetchStarted',
   FETCH_SUCCESSFUL: 'song/fetchSuccessful',
   MOVE_BAR: 'song/moveBar',
+  REMOVE_BEATS_FROM_BAR: 'song/removeBeats',
   SAVE_ERROR: 'song/saveError',
   SAVE_STARTED: 'song/saveStarted',
   SAVE_SUCCESSFUL: 'song/saveSuccessful',
@@ -17,7 +19,7 @@ const songTypes = {
   UPDATE_BAR_SUBDIVISION: 'song/updateBarSubdivision',
   UPDATE_BEAT: 'song/updateBeat',
   UPDATE_HAND: 'song/updateHand',
-  UPDATE_MEASURE: 'song/updateMeasure',
+  // UPDATE_MEASURE: 'song/updateMeasure',
   UPDATE_SONG_INFO: 'song/updateInfo',
 };
 

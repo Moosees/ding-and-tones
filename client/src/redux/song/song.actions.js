@@ -4,7 +4,12 @@ import { compareSubdivisionLength } from '../../assets/metre';
 import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
-import { parseFetchedSong, parseSongForSaving } from './song.utils';
+import {
+  addBeatsToBar,
+  parseFetchedSong,
+  parseSongForSaving,
+  removeBeatsFromBar,
+} from './song.utils';
 
 export const addNewBar = (barWithBeatsAndId) => ({
   type: songTypes.ADD_NEW_BAR,
@@ -186,20 +191,27 @@ export const updateBarSubdivision =
   (barId, newSubdivision) => (dispatch, getState) => {
     const { song } = getState();
 
+    const { metre, subdivision } = song.bars[barId];
+
     const lengthDifference = compareSubdivisionLength(
-      song.bars[barId].subdivision,
+      subdivision,
       newSubdivision,
-      song.bars[barId].metre
+      metre
     );
 
-    if (lengthDifference === 0) {
-      console.log('same length');
-    }
     if (lengthDifference > 0) {
       console.log('create new beats');
+      dispatch({
+        type: songTypes.ADD_BEATS_TO_BAR,
+        payload: addBeatsToBar(barId, subdivision, newSubdivision, metre),
+      });
     }
     if (lengthDifference < 0) {
       console.log('remove beats');
+      dispatch({
+        type: songTypes.REMOVE_BEATS_FROM_BAR,
+        payload: removeBeatsFromBar(barId, subdivision, newSubdivision, metre),
+      });
     }
 
     dispatch({
@@ -236,10 +248,10 @@ export const updateSoundForBeat =
     });
   };
 
-export const updateMeasure = (barId, newMeasure, newBeats) => ({
-  type: songTypes.UPDATE_MEASURE,
-  payload: { barId, newMeasure, newBeats },
-});
+// export const updateMeasure = (barId, newMeasure, newBeats) => ({
+//   type: songTypes.UPDATE_MEASURE,
+//   payload: { barId, newMeasure, newBeats },
+// });
 
 export const updateSongInfo = (songInfo) => ({
   type: songTypes.UPDATE_SONG_INFO,

@@ -13,10 +13,13 @@
 
 #### Needed changes triplets
 
-* Song and print view uses new dynamic templates
-* Remove beats when changing subdivision, update metre template when something changes - bar checkMeasure function (remove?)
+* Add beats when changing subdivision - action, reducer
+* Remove beats when changing subdivision - action, reducer
+* Update metre template for songwriter when changing subdivision
+
+* Song and print view understands new system
 * Song player understands new system
-* New bar understands new system, new default and new x/x
+* New bar understands new system - new default and new x/x
 * Copy bar understands new system
 * Add ui to select subdivision on beat by beat basis
 

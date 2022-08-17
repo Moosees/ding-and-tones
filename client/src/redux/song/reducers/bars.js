@@ -30,14 +30,14 @@ const barsReducer = (state = barsState, { type, payload }) => {
         },
       };
 
-    case songTypes.UPDATE_MEASURE:
-      return {
-        ...state,
-        [payload.barId]: {
-          ...state[payload.barId],
-          measure: payload.newMeasure,
-        },
-      };
+    // case songTypes.UPDATE_MEASURE:
+    //   return {
+    //     ...state,
+    //     [payload.barId]: {
+    //       ...state[payload.barId],
+    //       measure: payload.newMeasure,
+    //     },
+    //   };
 
     default:
       return state;

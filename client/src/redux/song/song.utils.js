@@ -174,3 +174,17 @@ export const removeSoundFromBeat = (newSound, soundArray) => {
 
   return soundArray.filter((sound) => sound !== newSound);
 };
+
+export const addBeatsToBar = (
+  barId,
+  oldSubdivision,
+  newSubdivision,
+  metre
+) => {};
+
+export const removeBeatsFromBar = (
+  barId,
+  oldSubdivision,
+  newSubdivision,
+  metre
+) => {};
