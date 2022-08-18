@@ -175,42 +175,95 @@ export const removeSoundFromBeat = (newSound, soundArray) => {
   return soundArray.filter((sound) => sound !== newSound);
 };
 
-export const calculateNeededBeatChanges = (template, newTemplate) => {
-  const templateValuesMap = {};
-  const valuesToAdd = [];
-  const valuesToChange = [];
-
-  for (const value of newTemplate) {
-    templateValuesMap[value] !== undefined
-      ? templateValuesMap[value]++
-      : (templateValuesMap[value] = 1);
+const getTemplateValuesCount = (templateValues) => {
+  const count = {};
+  for (const value of templateValues) {
+    count[value] !== undefined ? ++count[value] : (count[value] = 1);
   }
-  for (const value of template) {
-    templateValuesMap[value] !== undefined
-      ? templateValuesMap[value]--
-      : (templateValuesMap[value] = -1);
-  }
+  return count;
+};
 
-  for (const [key, value] of Object.entries(templateValuesMap)) {
-    if (value > 0) {
-      valuesToAdd.push(...Array(value).fill(key));
+export const calculateMeasureAndBeatChanges = (
+  measure,
+  template,
+  newTemplate
+) => {
+  console.log({ measure, template, newTemplate });
+  const templateValuesCount = getTemplateValuesCount(template);
+  const measureMatches = measure.map((_beat, i) => false);
+  const newMeasureData = [];
+  let matches = 0;
+
+  for (let i = 0; i < newTemplate.length; ++i) {
+    const beat = {
+      value: newTemplate[i],
+      foundMatch: false,
+    };
+
+    if (templateValuesCount[newTemplate[i]]) {
+      ++matches;
+      --templateValuesCount[newTemplate[i]];
+
+      const oldIndex = measureMatches.findIndex((beat) => beat === false);
+
+      measureMatches[oldIndex] = true;
+      beat.foundMatch = true;
+      beat.oldIndex = oldIndex;
+      beat.beatId = measure[oldIndex];
     }
-    if (value < 0) {
-      valuesToChange.push(...Array(value).fill(key));
-    }
+
+    newMeasureData.push(beat);
   }
 
-  return { valuesToAdd, valuesToChange };
+  let unusedBeats = template.length - matches;
+  let newBeatsNeeded = newTemplate.length - matches;
+
+  while (unusedBeats && newBeatsNeeded) {
+    const oldIndex = measureMatches.findIndex((beat) => !beat.foundMatch);
+    const newIndex = newMeasureData.findIndex((beat) => !beat.foundMatch);
+
+    measureMatches[oldIndex] = true;
+    newMeasureData[newIndex].foundMatch = true;
+    newMeasureData[newIndex].oldIndex = oldIndex;
+    newMeasureData[newIndex].beatId = measure[oldIndex];
+    newMeasureData[newIndex].oldValue = template[oldIndex];
+
+    --unusedBeats;
+    --newBeatsNeeded;
+  }
+
+  return {
+    templateValuesCount,
+    measureMatches,
+    newMeasureData,
+    matches,
+    unusedBeats,
+    newBeatsNeeded,
+  };
 };
 
 export const addBeatsToBar = (bar, newSubdivision) => {
   const { metre, measure, subdivision } = bar;
+  let measureIndex = 0;
 
-  for (let i = 0; i < newSubdivision.length; ++i) {
+  for (let i = 0; i < subdivision.length; ++i) {
     const template = metreList[metre].templates[subdivision[i]].values;
     const newTemplate = metreList[metre].templates[newSubdivision[i]].values;
+    const subMeasure = measure.slice(
+      measureIndex,
+      measureIndex + template.length
+    );
+    measureIndex = measureIndex + template.length;
 
-    const neededChanges = calculateNeededBeatChanges(template, newTemplate);
+    // const neededChanges = calculateNeededBeatChanges(template, newTemplate);
+    // console.log({ neededChanges, subMeasure });
+
+    if (i > 0) return;
+    const neededChanges = calculateMeasureAndBeatChanges(
+      subMeasure,
+      template,
+      newTemplate
+    );
     console.log({ neededChanges });
 
     // change values if needed and update measure
