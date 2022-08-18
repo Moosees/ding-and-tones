@@ -183,12 +183,22 @@ const getTemplateValuesCount = (templateValues) => {
   return count;
 };
 
+const getBeatsToDelete = (measureMatches, measure, measureIndex) => {
+  return measure.reduce((acc, beatId, i) => {
+    if (!measureMatches[i]) {
+      acc.push({ beatId, index: i + measureIndex });
+    }
+
+    return acc;
+  }, []);
+};
+
 export const calculateMeasureAndBeatChanges = (
   measure,
+  measureIndex,
   template,
   newTemplate
 ) => {
-  console.log({ measure, template, newTemplate });
   const templateValuesCount = getTemplateValuesCount(template);
   const measureMatches = measure.map((_beat, i) => false);
   const newMeasureData = [];
@@ -208,7 +218,7 @@ export const calculateMeasureAndBeatChanges = (
 
       measureMatches[oldIndex] = true;
       beat.foundMatch = true;
-      beat.oldIndex = oldIndex;
+      beat.oldIndex = oldIndex + measureIndex;
       beat.beatId = measure[oldIndex];
     }
 
@@ -224,7 +234,7 @@ export const calculateMeasureAndBeatChanges = (
 
     measureMatches[oldIndex] = true;
     newMeasureData[newIndex].foundMatch = true;
-    newMeasureData[newIndex].oldIndex = oldIndex;
+    newMeasureData[newIndex].oldIndex = oldIndex + measureIndex;
     newMeasureData[newIndex].beatId = measure[oldIndex];
     newMeasureData[newIndex].oldValue = template[oldIndex];
 
@@ -232,18 +242,17 @@ export const calculateMeasureAndBeatChanges = (
     --newBeatsNeeded;
   }
 
-  return {
-    templateValuesCount,
-    measureMatches,
-    newMeasureData,
-    matches,
-    unusedBeats,
-    newBeatsNeeded,
-  };
+  const beatsToDelete = !unusedBeats
+    ? []
+    : getBeatsToDelete(measureMatches, measure, measureIndex);
+
+  return { newMeasureData, beatsToDelete };
 };
 
-export const addBeatsToBar = (bar, newSubdivision) => {
+export const updateMeasureAndBeats = (bar, newSubdivision) => {
   const { metre, measure, subdivision } = bar;
+  const fullMeasureData = [];
+  const fullBeatsToDelete = [];
   let measureIndex = 0;
 
   for (let i = 0; i < subdivision.length; ++i) {
@@ -253,25 +262,23 @@ export const addBeatsToBar = (bar, newSubdivision) => {
       measureIndex,
       measureIndex + template.length
     );
-    measureIndex = measureIndex + template.length;
 
-    // const neededChanges = calculateNeededBeatChanges(template, newTemplate);
-    // console.log({ neededChanges, subMeasure });
-
-    if (i > 0) return;
-    const neededChanges = calculateMeasureAndBeatChanges(
+    const { newMeasureData, beatsToDelete } = calculateMeasureAndBeatChanges(
       subMeasure,
+      measureIndex,
       template,
       newTemplate
     );
-    console.log({ neededChanges });
 
-    // change values if needed and update measure
-
-    // add new values if needed and update measure
+    fullMeasureData.push(...newMeasureData);
+    fullBeatsToDelete.push(...beatsToDelete);
+    measureIndex = measureIndex + template.length;
   }
-};
 
-export const removeBeatsFromBar = (bar, newSubdivision) => {
-  console.log('Remove beats', { bar, newSubdivision });
+  console.log({ fullMeasureData, fullBeatsToDelete });
+
+  // fullMeasureData: create new beats where no matches are found,
+  //                  create new measure with old and new beatIds
+  // fullBeatsToDelete: only need beatIds as measure is already parsed?
+  // return payload for reducer to complete update
 };

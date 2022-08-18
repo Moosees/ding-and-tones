@@ -5,10 +5,9 @@ import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
 import {
-  addBeatsToBar,
   parseFetchedSong,
   parseSongForSaving,
-  removeBeatsFromBar,
+  updateMeasureAndBeats,
 } from './song.utils';
 
 export const addNewBar = (barWithBeatsAndId) => ({
@@ -199,18 +198,12 @@ export const updateBarSubdivision =
       metre
     );
 
-    if (lengthDifference > 0) {
+    if (lengthDifference !== 0) {
       dispatch({
-        type: songTypes.ADD_BEATS_TO_BAR,
-        payload: { barId, ...addBeatsToBar(song.bars[barId], newSubdivision) },
-      });
-    }
-    if (lengthDifference < 0) {
-      dispatch({
-        type: songTypes.REMOVE_BEATS_FROM_BAR,
+        type: songTypes.UPDATE_MEASURE_AND_BEATS,
         payload: {
           barId,
-          ...removeBeatsFromBar(song.bars[barId], newSubdivision),
+          ...updateMeasureAndBeats(song.bars[barId], newSubdivision),
         },
       });
     }
@@ -248,11 +241,6 @@ export const updateSoundForBeat =
       payload: { beatId, newSound, selected, multiSelect },
     });
   };
-
-// export const updateMeasure = (barId, newMeasure, newBeats) => ({
-//   type: songTypes.UPDATE_MEASURE,
-//   payload: { barId, newMeasure, newBeats },
-// });
 
 export const updateSongInfo = (songInfo) => ({
   type: songTypes.UPDATE_SONG_INFO,

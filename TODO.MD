@@ -13,8 +13,7 @@
 
 #### Needed changes triplets
 
-* Add beats when changing subdivision - action, reducer
-* Remove beats when changing subdivision - action, reducer
+* Update measure and beats when changing subdivision - action, reducer
 * Update metre template for songwriter when changing subdivision
 
 * Song and print view understands new system
@@ -23,7 +22,8 @@
 * Copy bar understands new system
 * Add ui to select subdivision on beat by beat basis
 
-* Add beat and count templates for all metres
+* Update beat and count templates for all metres to new structure
+* Remove subdivisionCount from metre
 * Add triplets to song and bar subdivision selects
 * Add triplet beat templates
 * Add triplet count templates
@@ -34,14 +34,13 @@
 * Update song fetching for new system - started
 * Update song saving for new system
 * Add fallback for songs loaded with subdivision as an integer
-* Remove old template and count for metre
 
 * Clean up code
 
 #### Optional changes triplets
 
-* Remove subdivisionCount from metre?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
+* Should updateMeasureAndBeats run even if new and old subdivision lengths match?
 
 ### Home page update
 
