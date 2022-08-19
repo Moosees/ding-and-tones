@@ -42,11 +42,15 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
         },
       };
 
-    // case songTypes.UPDATE_MEASURE:
-    //   return {
-    //     ...state,
-    //     ...payload.newBeats,
-    //   };
+    case songTypes.UPDATE_MEASURE_AND_BEATS: {
+      const newState = filterState(state, payload.deleteBeats);
+
+      for (const { beatId, value } of payload.updateBeats) {
+        newState[beatId].value = value;
+      }
+
+      return newState;
+    }
 
     default:
       return state;

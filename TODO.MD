@@ -13,9 +13,6 @@
 
 #### Needed changes triplets
 
-* Update measure and beats when changing subdivision - action, reducer
-* Update metre template for songwriter when changing subdivision
-
 * Song and print view understands new system
 * Song player understands new system
 * New bar understands new system - new default and new x/x
@@ -35,6 +32,9 @@
 * Update song saving for new system
 * Add fallback for songs loaded with subdivision as an integer
 
+* Stop beats without hand assigned from falling down when hands are open
+* Delete beats when deleting bar
+* Update metre template for songwriter when changing subdivision - done?
 * Clean up code
 
 #### Optional changes triplets

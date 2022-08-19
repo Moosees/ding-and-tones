@@ -1,3 +1,4 @@
+import { v4 as uuid } from 'uuid';
 import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
 import { metreList } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
@@ -275,10 +276,31 @@ export const updateMeasureAndBeats = (bar, newSubdivision) => {
     measureIndex = measureIndex + template.length;
   }
 
-  console.log({ fullMeasureData, fullBeatsToDelete });
+  // console.log({ fullMeasureData, fullBeatsToDelete });
+  const payload = {
+    addBeats: {},
+    deleteBeats: null,
+    updateBeats: [],
+    measure: null,
+  };
 
-  // fullMeasureData: create new beats where no matches are found,
-  //                  create new measure with old and new beatIds
-  // fullBeatsToDelete: only need beatIds as measure is already parsed?
-  // return payload for reducer to complete update
+  payload.measure = fullMeasureData.map((beat) => {
+    const beatId = beat.beatId || uuid();
+    if (beat.beatId) {
+      payload.updateBeats.push({ beatId, value: beat.value });
+
+      return beatId;
+    }
+    payload.addBeats[beatId] = {
+      sound: ['-'],
+      value: beat.value,
+      mode: 'c',
+    };
+
+    return beatId;
+  });
+
+  payload.deleteBeats = fullBeatsToDelete.map(({ beatId }) => beatId);
+
+  return payload;
 };
