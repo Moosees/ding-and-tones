@@ -31,6 +31,7 @@
 * Update song saving for new system
 * Add fallback for songs loaded with subdivision as an integer
 
+* Stop howls status updates from rerendering Bars?
 * Stop beats without hand assigned from falling down when hands are open
 * Update metre template for songwriter when changing subdivision - done?
 * Clean up code

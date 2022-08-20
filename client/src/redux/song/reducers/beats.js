@@ -49,7 +49,7 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
         newState[beatId].value = value;
       }
 
-      return newState;
+      return { ...newState, ...payload.addBeats };
     }
 
     default:
