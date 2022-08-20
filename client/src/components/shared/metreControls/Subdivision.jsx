@@ -7,8 +7,18 @@ const subdivisionOptions = [
   { value: 4, label: '4ths', disabled: (minSubdivision) => minSubdivision > 4 },
   { value: 8, label: '8ths', disabled: (minSubdivision) => minSubdivision > 8 },
   {
+    value: 9,
+    label: 'Trip8',
+    disabled: (minSubdivision) => minSubdivision > 8,
+  },
+  {
     value: 16,
     label: '16ths',
+    disabled: (minSubdivision) => minSubdivision > 16,
+  },
+  {
+    value: 17,
+    label: 'Trip16',
     disabled: (minSubdivision) => minSubdivision > 16,
   },
 ];

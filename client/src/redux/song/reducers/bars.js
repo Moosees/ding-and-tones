@@ -31,6 +31,7 @@ const barsReducer = (state = barsState, { type, payload }) => {
       };
 
     case songTypes.UPDATE_MEASURE_AND_BEATS:
+      console.log('UPDATE_MEASURE_AND_BEATS', { payload });
       return {
         ...state,
         [payload.barId]: {

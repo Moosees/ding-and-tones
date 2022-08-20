@@ -35,6 +35,31 @@ export const compareSubdivisionLength = (a, b, metre) => {
   return getSubdivisionLength(b, metre) - getSubdivisionLength(a, metre);
 };
 
+const templateList = {
+  simple: {
+    4: {
+      values: [4],
+      count: ['X'],
+    },
+    8: {
+      values: [4, 8],
+      count: ['X', '&'],
+    },
+    9: {
+      values: [8, 8, 8],
+      count: ['X', 'trip', 'let'],
+    },
+    16: {
+      values: [4, 16, 8, 16],
+      count: ['X', 'e', '&', 'a'],
+    },
+    17: {
+      values: [16, 16, 16, 16, 16, 16],
+      count: ['X', 'trip', 'let', '&', 'trip', 'let'],
+    },
+  },
+};
+
 export const metreList = {
   s24: {
     group: 'Simple metre',
@@ -59,23 +84,7 @@ export const metreList = {
     group: 'Simple metre',
     name: '4/4',
     nameShort: '4/4',
-    template: [4, 16, 8, 16, 4, 16, 8, 16, 4, 16, 8, 16, 4, 16, 8, 16],
-    templates: {
-      4: {
-        values: [4],
-        count: ['X'],
-      },
-      8: {
-        values: [4, 8],
-        count: ['X', '&'],
-      },
-      16: {
-        values: [4, 16, 8, 16],
-        count: ['X', 'e', '&', 'a'],
-      },
-    },
-    // prettier-ignore
-    count: ['1', 'e', '&', 'a', '2', 'e', '&', 'a', '3', 'e', '&', 'a','4', 'e', '&', 'a'],
+    templates: { ...templateList.simple },
     lengthInBeats: 4,
     minSubdivision: 4,
   },

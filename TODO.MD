@@ -19,10 +19,8 @@
 * Copy bar understands new system
 * Add ui to select subdivision on beat by beat basis
 
+* Bug: triplet subdivisions don't update measure correctly and create too few beats
 * Update beat and count templates for all metres to new structure
-* Add triplets to song and bar subdivision selects
-* Add triplet beat templates
-* Add triplet count templates
 * Add new beat styles for triplet beats in songwriter
 * Add new beat styles for triplet beats in song and print view
 
@@ -40,6 +38,8 @@
 
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
+* Subdivisions with mixed triplets and regular 16ths
+* Quarter note triplets?
 
 ### Home page update
 
