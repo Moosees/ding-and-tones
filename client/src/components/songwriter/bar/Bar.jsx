@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { createBarTemplate } from '../../../assets/metre';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
-import { checkMeasure } from './bar.utils';
 
 const Bar = ({
   barId,
@@ -21,10 +20,6 @@ const Bar = ({
 
   const barTemplate = createBarTemplate(metre, subdivision);
   console.log({ barTemplate, measure });
-
-  // useEffect(() => {
-  //   checkMeasure(barId, measure, subdivision);
-  // }, [barId, measure, subdivision]);
 
   return (
     <BarContainer>

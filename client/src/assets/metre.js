@@ -40,11 +40,6 @@ export const metreList = {
     count: ['1', 'e', '&', 'a', '2', 'e', '&', 'a'],
     lengthInBeats: 2,
     minSubdivision: 4,
-    subdivisionCount: {
-      4: 2,
-      8: 4,
-      16: 8,
-    },
   },
   s34: {
     group: 'Simple metre',
@@ -55,11 +50,6 @@ export const metreList = {
     count: ['1', 'e', '&', 'a', '2', 'e', '&', 'a', '3', 'e', '&', 'a'],
     lengthInBeats: 3,
     minSubdivision: 4,
-    subdivisionCount: {
-      4: 3,
-      8: 6,
-      16: 12,
-    },
   },
   s44: {
     group: 'Simple metre',
@@ -84,11 +74,6 @@ export const metreList = {
     count: ['1', 'e', '&', 'a', '2', 'e', '&', 'a', '3', 'e', '&', 'a','4', 'e', '&', 'a'],
     lengthInBeats: 4,
     minSubdivision: 4,
-    subdivisionCount: {
-      4: 4,
-      8: 8,
-      16: 16,
-    },
   },
   s54: {
     group: 'Simple metre',
@@ -100,11 +85,6 @@ export const metreList = {
     count: ['1', 'e', '&', 'a', '2', 'e', '&', 'a', '3', 'e', '&', 'a','4', 'e', '&', 'a', '5', 'e', '&', 'a'],
     lengthInBeats: 5,
     minSubdivision: 4,
-    subdivisionCount: {
-      4: 5,
-      8: 10,
-      16: 15,
-    },
   },
   c68: {
     group: 'Compound metre',
@@ -115,11 +95,6 @@ export const metreList = {
     count: ['1','ta', 'la', 'ta', 'le', 'ta', '2','ta', 'la', 'ta', 'le', 'ta'],
     lengthInBeats: 3,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 2,
-      8: 6,
-      16: 12,
-    },
   },
   c98: {
     group: 'Compound metre',
@@ -130,11 +105,6 @@ export const metreList = {
     count: ['1','ta', 'la', 'ta', 'le', 'ta', '2','ta', 'la', 'ta', 'le', 'ta', '3','ta', 'la', 'ta', 'le', 'ta'],
     lengthInBeats: 4.5,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 3,
-      8: 9,
-      16: 18,
-    },
   },
   c128: {
     group: 'Compound metre',
@@ -146,11 +116,6 @@ export const metreList = {
     count: ['1','ta', 'la', 'ta', 'le', 'ta', '2','ta', 'la', 'ta', 'le', 'ta', '3','ta', 'la', 'ta', 'le', 'ta', '4','ta', 'la', 'ta', 'le', 'ta'],
     lengthInBeats: 6,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 4,
-      8: 12,
-      16: 24,
-    },
   },
   x223: {
     group: 'Complex metre',
@@ -161,11 +126,6 @@ export const metreList = {
     count: ['1', 'ta', 'la', 'ta', '2', 'ta', 'la', 'ta', '3', 'ta', 'la', 'ta', 'le', 'ta'],
     lengthInBeats: 3.5,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 3,
-      8: 7,
-      16: 14,
-    },
   },
   x232: {
     group: 'Complex metre',
@@ -176,11 +136,6 @@ export const metreList = {
     count: ['1', 'ta', 'la', 'ta', '2', 'ta', 'la', 'ta', 'le', 'ta', '3', 'ta', 'la', 'ta'],
     lengthInBeats: 3.5,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 3,
-      8: 7,
-      16: 14,
-    },
   },
   x322: {
     group: 'Complex metre',
@@ -191,11 +146,6 @@ export const metreList = {
     count: ['1', 'ta', 'la', 'ta', 'le', 'ta', '2', 'ta', 'la', 'ta', '3', 'ta', 'la', 'ta'],
     lengthInBeats: 3.5,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 3,
-      8: 7,
-      16: 14,
-    },
   },
   x233: {
     group: 'Complex metre',
@@ -206,11 +156,6 @@ export const metreList = {
     count: ['1', 'ta', 'la', 'ta', '2', 'ta', 'la', 'ta', 'le', 'ta', '3', 'ta', 'la', 'ta', 'le', 'ta'],
     lengthInBeats: 4,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 3,
-      8: 8,
-      16: 16,
-    },
   },
   x323: {
     group: 'Complex metre',
@@ -221,11 +166,6 @@ export const metreList = {
     count: ['1', 'ta', 'la', 'ta', 'le', 'ta', '2', 'ta', 'la', 'ta', '3', 'ta', 'la', 'ta', 'le', 'ta'],
     lengthInBeats: 4,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 3,
-      8: 8,
-      16: 16,
-    },
   },
   x332: {
     group: 'Complex metre',
@@ -236,10 +176,5 @@ export const metreList = {
     count: ['1', 'ta', 'la', 'ta', 'le', 'ta', '2', 'ta', 'la', 'ta', 'le', 'ta', '3', 'ta', 'la', 'ta'],
     lengthInBeats: 4,
     minSubdivision: 8,
-    subdivisionCount: {
-      4: 3,
-      8: 8,
-      16: 16,
-    },
   },
 };

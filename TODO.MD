@@ -20,7 +20,6 @@
 * Add ui to select subdivision on beat by beat basis
 
 * Update beat and count templates for all metres to new structure
-* Remove subdivisionCount from metre
 * Add triplets to song and bar subdivision selects
 * Add triplet beat templates
 * Add triplet count templates
@@ -33,7 +32,6 @@
 * Add fallback for songs loaded with subdivision as an integer
 
 * Stop beats without hand assigned from falling down when hands are open
-* Delete beats when deleting bar
 * Update metre template for songwriter when changing subdivision - done?
 * Clean up code
 
