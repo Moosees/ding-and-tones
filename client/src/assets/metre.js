@@ -7,13 +7,17 @@ const parseBeatTemplates = (beatTemplate, beatIndex) => {
 };
 
 export const createBarTemplate = (metre, subdivision) => {
+  console.log('createBarTemplate', { metre, subdivision });
   const barTemplates = metreList[metre].templates;
 
-  return subdivision.reduce((acc, beatSubdivision, i) => {
+  const template = subdivision.reduce((acc, beatSubdivision, i) => {
     const beatTemplates = barTemplates[beatSubdivision];
 
     return [...acc, ...parseBeatTemplates(beatTemplates, i)];
   }, []);
+
+  console.log({ template });
+  return template;
 };
 
 export const getSubdivisionLength = (subdivision, metre) => {

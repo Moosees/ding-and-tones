@@ -1,30 +1,33 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { createBarTemplate } from '../../../assets/metre';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
 import { BarContainer, Beats } from './bar.styles';
 
-const Bar = ({
-  barId,
-  bars,
-  currentBar,
-  index,
-  isSongPlaying,
-  moveBar,
-  mutedBars,
-}) => {
-  const { measure, metre, subdivision } = bars[barId];
-  const isMuted = mutedBars[barId];
+const Bar = ({ barId, index, moveBar }) => {
+  const { measure, metre, subdivision, isPlaying, isMuted } = useSelector(
+    ({ song, ui }) => ({
+      measure: song.bars[barId].measure,
+      metre: song.bars[barId].metre,
+      subdivision: song.bars[barId].subdivision,
+      isPlaying: ui.currentBar === barId,
+      isMuted: ui.mutedBars[barId],
+    })
+  );
 
-  const barTemplate = createBarTemplate(metre, subdivision);
-  console.log({ barTemplate, measure });
+  const barTemplate = useMemo(
+    () => createBarTemplate(metre, subdivision),
+    [metre, subdivision]
+  );
+  console.log({ measure });
 
   return (
     <BarContainer>
       <BarInfo barId={barId} index={index} />
-      <Beats isMuted={isMuted} isPlaying={barId === currentBar}>
+      <Beats isMuted={isMuted} isPlaying={isPlaying}>
         {measure.map((beatId, i) => (
           <Beat
             key={beatId}
@@ -39,11 +42,4 @@ const Bar = ({
   );
 };
 
-const mapStateToProps = ({ song, ui }) => ({
-  bars: song.bars,
-  currentBar: ui.currentBar,
-  isSongPlaying: ui.isSongPlaying,
-  mutedBars: ui.mutedBars,
-});
-
-export default connect(mapStateToProps)(Bar);
+export default Bar;
