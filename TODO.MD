@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Song and print view understands new system
 * Song player understands new system
 * New bar understands new system - new default and new x/x
 * Copy bar understands new system
@@ -31,15 +30,18 @@
 * Stop howls status updates from rerendering Bars?
 * Stop beats without hand assigned from falling down when hands are open
 * Update metre template for songwriter when changing subdivision - done?
+* Add back missing bars from default song data, update to song with triplets?
 * Clean up code
 
 #### Optional changes triplets
 
-* calcMeasureAndBeatChanges doesn't need all match logic? 
+* calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
 * Subdivisions with mixed triplets and regular 16ths
 * Quarter note triplets?
+* Split beats from song and print view Bar?
+* Memoization and useSelect for song and print view Bar?
 
 ### Home page update
 
