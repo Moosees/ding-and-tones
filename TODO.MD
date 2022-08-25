@@ -13,21 +13,26 @@
 
 #### Needed changes triplets
 
+* Subdivisions with mixed triplets and regular 16ths
+* Metre templates is split into groups based on minSubdivision and number of those min subdivisions in each group (4/4 has four base4.length1)
+* Handle 2-2-3 and other asymmetrical metres beatTemplates
 * (BarControls) updateBarSubdivision sets a correct subdivision value (no 3.5 length arrays) - metre by metre options list?
+* Get subdivision select options from metreList/templateList (move name and nameShort, remove lengthInBeats and minSubdivision)?
+* Disable (can reset?) bar subdivision when using custom subdivisions?
+* Update beat and count templates for all metres to new structure
+
 * New song understands new system
 * New bar understands new system - new default and new x/x
 * Copy bar understands new system
 * Add ui to select subdivision on beat by beat basis
-* Handle 2-2-3 and other asymmetrical metres beatTemplates
 
-* Update beat and count templates for all metres to new structure
 * Add new beat styles for triplet beats in songwriter
 * Add new beat styles for triplet beats in song and print view
 
 * Subdivision in song db model is an array with subdivision for each beat
 * Update song fetching for new system - started
 * Update song saving for new system
-* Add fallback for songs loaded with subdivision as an integer
+* Add fallback for songs loaded with subdivision as an integer - set to array with length of metre templates array?
 
 * Stop howls status updates from rerendering Bars?
 * Stop beats without hand assigned from falling down when hands are open
@@ -38,14 +43,11 @@
 #### Optional changes triplets
 
 * Rename metreList/templateList values as they are mostly for ui styles?
-* Get subdivision select options from metreList/templateList (move name and nameShort, remove lengthInBeats and minSubdivision)?
-* Disable (can reset?) bar subdivision when using custom subdivisions?
 * calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
-* Subdivisions with mixed triplets and regular 16ths
-* Quarter note triplets?
-* Split beats from song and print view Bar?
+* Quarter note triplets? No for now
+* Split beats from song and print view Bar into new Component?
 * Memoization and useSelect for song and print view Bar?
 
 ### Home page update

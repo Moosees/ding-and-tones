@@ -1,3 +1,5 @@
+import { base4 } from './metreTemplates';
+
 const parseBeatTemplates = (beatTemplate, beatIndex) => {
   const { count, values, beatLength } = beatTemplate;
 
@@ -41,56 +43,6 @@ export const compareSubdivisionLength = (a, b, metre) => {
   return getSubdivisionLength(b, metre) - getSubdivisionLength(a, metre);
 };
 
-const templateList = {
-  simple: {
-    4: {
-      values: [4],
-      count: ['X'],
-      beatLength: [12],
-    },
-    8: {
-      values: [4, 8],
-      count: ['X', '&'],
-      beatLength: [6, 6],
-    },
-    9: {
-      values: [8, 8, 8],
-      count: ['X', 'trip', 'let'],
-      beatLength: [4, 4, 4],
-    },
-    16: {
-      values: [4, 16, 8, 16],
-      count: ['X', 'e', '&', 'a'],
-      beatLength: [3, 3, 3, 3],
-    },
-    17: {
-      values: [16, 16, 16, 16, 16, 16],
-      count: ['X', 'trip', 'let', '&', 'trip', 'let'],
-      beatLength: [2, 2, 2, 2, 2, 2],
-    },
-    18: {
-      values: [4, 16, 16, 16],
-      count: ['X', '&', 'trip', 'let'],
-      beatLength: [6, 2, 2, 2],
-    },
-    19: {
-      values: [4, 8, 16, 16, 16],
-      count: ['X', 'e', '&', 'trip', 'let'],
-      beatLength: [3, 3, 2, 2, 2],
-    },
-    20: {
-      values: [16, 16, 16, 8],
-      count: ['X', 'trip', 'let', '&'],
-      beatLength: [2, 2, 2, 6],
-    },
-    21: {
-      values: [16, 16, 16, 16, 8],
-      count: ['X', 'trip', 'let', '&', 'a'],
-      beatLength: [2, 2, 2, 3, 3],
-    },
-  },
-};
-
 export const metreList = {
   s24: {
     group: 'Simple metre',
@@ -115,8 +67,10 @@ export const metreList = {
     group: 'Simple metre',
     name: '4/4',
     nameShort: '4/4',
-    templates: { ...templateList.simple },
-    lengthInBeats: 4,
+    // templates: ['length1', 'length1', 'length1']
+    templates: { ...base4.length1 },
+    lengthInBeats: 4, // to be removed
+    // metreBase: 4,
     minSubdivision: 4,
   },
   s54: {
