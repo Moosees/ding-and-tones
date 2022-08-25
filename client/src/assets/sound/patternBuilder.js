@@ -1,4 +1,4 @@
-import { metreList } from '../metre';
+import { createBarTemplate } from '../metre';
 import { store } from '../../redux/store';
 
 const getDefaultHandForSound = (sound) => {
@@ -39,16 +39,12 @@ export const buildPatternFromBar = (barId, howls) => {
   } = store.getState();
 
   const { measure, metre, subdivision } = bars[barId];
-  const { lengthInBeats } = metreList[metre];
+  const barTemplate = createBarTemplate(metre, subdivision);
+  console.log({ barTemplate });
 
-  const measureFiltered = measure.filter(
-    ({ beatId, value }) => beatId && value <= subdivision
-  );
+  const beatDurationBaseline = 60000 / bpm / 12;
 
-  const barDuration = (60000 / bpm) * lengthInBeats;
-  const beatDuration = barDuration / measureFiltered.length;
-
-  return measureFiltered.map(({ beatId, value }) => {
+  return measure.map((beatId, i) => {
     const { sound, mode, hand } = beats[beatId];
     const play = () => {
       sound.forEach((option) => {
@@ -67,7 +63,7 @@ export const buildPatternFromBar = (barId, howls) => {
       },
       mode,
       play,
-      duration: beatDuration,
+      duration: barTemplate[i].beatLength * beatDurationBaseline,
     };
   });
 };

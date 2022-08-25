@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Song player understands new system
 * (BarControls) updateBarSubdivision sets a correct subdivision value (no 3.5 length arrays) - metre by metre options list?
 * New song understands new system
 * New bar understands new system - new default and new x/x
