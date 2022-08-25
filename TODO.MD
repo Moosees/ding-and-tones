@@ -35,6 +35,8 @@
 
 #### Optional changes triplets
 
+* Rename metreList/templateList values as they are mostly for ui styles?
+* Get subdivision select options from metreList/templateList (move name and nameShort, remove lengthInBeats and minSubdivision)?
 * calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
