@@ -14,9 +14,12 @@
 #### Needed changes triplets
 
 * Song player understands new system
+* (BarControls) updateBarSubdivision sets a correct subdivision value (no 3.5 length arrays) - metre by metre options list?
+* New song understands new system
 * New bar understands new system - new default and new x/x
 * Copy bar understands new system
 * Add ui to select subdivision on beat by beat basis
+* Handle 2-2-3 and other asymmetrical metres beatTemplates
 
 * Update beat and count templates for all metres to new structure
 * Add new beat styles for triplet beats in songwriter
@@ -37,6 +40,7 @@
 
 * Rename metreList/templateList values as they are mostly for ui styles?
 * Get subdivision select options from metreList/templateList (move name and nameShort, remove lengthInBeats and minSubdivision)?
+* Disable (can reset?) bar subdivision when using custom subdivisions?
 * calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
