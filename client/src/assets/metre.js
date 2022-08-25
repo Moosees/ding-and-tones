@@ -1,8 +1,14 @@
 const parseBeatTemplates = (beatTemplate, beatIndex) => {
-  return beatTemplate.count.map((rawCount, i) => {
-    const count = rawCount === 'X' ? `${beatIndex + 1}` : rawCount;
+  const { count, values, beatLength } = beatTemplate;
 
-    return { count, value: beatTemplate.values[i] };
+  return count.map((rawCount, i) => {
+    const parsedCount = rawCount === 'X' ? `${beatIndex + 1}` : rawCount;
+
+    return {
+      count: parsedCount,
+      value: values[i],
+      beatLength: beatLength[i],
+    };
   });
 };
 
