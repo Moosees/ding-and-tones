@@ -35,12 +35,12 @@ const metreOptions = [
 
 const Metre = ({ metre, setMetre, subdivision, setSubdivision }) => {
   const handleTimeChange = (newMetre) => {
-    const { minSubdivision } = metreList[newMetre];
+    const { metreBase } = metreList[newMetre];
 
     setMetre(newMetre);
 
-    if (setSubdivision && minSubdivision > subdivision) {
-      setSubdivision(minSubdivision);
+    if (setSubdivision && metreBase > subdivision) {
+      setSubdivision(metreBase);
     }
   };
 

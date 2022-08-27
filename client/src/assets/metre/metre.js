@@ -1,4 +1,4 @@
-import { beatsList } from './beats';
+import { subdivisions } from './subdivisions';
 
 export const metreList = {
   s24: {
@@ -25,9 +25,8 @@ export const metreList = {
     name: '4/4',
     nameShort: '4/4',
     beatLengths: [1, 1, 1, 1],
-    templates: { ...beatsList.base4.length1 }, // remove
-    lengthInBeats: 4, // remove
-    minSubdivision: 4, // rename to metreBase
+    templates: { ...subdivisions.base4.length1 }, // remove
+    metreBase: 4,
   },
   s54: {
     group: 'Simple metre',

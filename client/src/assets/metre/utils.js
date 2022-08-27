@@ -1,18 +1,21 @@
-import { beatsList } from './beats';
+import { subdivisions } from './subdivisions';
 import { metreList } from './metre';
 
 export const getSubDivisionOptions = (isBar, metre, beatIndex) => {
-  const baseKey = `base${metreList[metre].minSubdivision}`;
+  const baseKey = `base${metreList[metre].metreBase}`;
   const lengthKey = `length${metreList[metre].beatLengths[beatIndex]}`;
-  const subdivisions = beatsList[baseKey][lengthKey];
+  const currentSubdivisions = subdivisions[baseKey][lengthKey];
 
-  return Object.keys(subdivisions)
+  return Object.keys(currentSubdivisions)
     .reduce((acc, key) => {
-      if (isBar && !subdivisions[key].isBarMetre) {
+      if (isBar && !currentSubdivisions[key].isBarMetre) {
         return acc;
       }
 
-      return [...acc, { value: parseInt(key), label: subdivisions[key].label }];
+      return [
+        ...acc,
+        { value: parseInt(key), label: currentSubdivisions[key].label },
+      ];
     }, [])
     .sort((a, b) => a.value - b.value);
 };

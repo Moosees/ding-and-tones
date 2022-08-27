@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 import { metreList } from '../../../assets/metre';
 
 export const createNewBar = (metre, subdivision) => {
-  const { template, minSubdivision, count } = metreList[metre];
+  const { template, metreBase, count } = metreList[metre];
   const barId = uuid();
   const measure = [];
   const beats = {};
@@ -19,7 +19,7 @@ export const createNewBar = (metre, subdivision) => {
 
   const bar = {
     metre,
-    subdivision: Math.max(subdivision, minSubdivision),
+    subdivision: Math.max(subdivision, metreBase),
     repeats: 1,
     measure,
   };

@@ -1,4 +1,4 @@
-export const beatsList = {
+export const subdivisions = {
   base4: {
     length1: {
       4: {

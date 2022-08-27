@@ -14,7 +14,7 @@
 #### Needed changes triplets
 
 * Subdivisions with mixed triplets and regular 16ths
-* Metre templates is split into groups based on minSubdivision and number of those min subdivisions in each group (4/4 has four base4.length1)
+* Metre templates is split into groups based on metreBase and beatLengths
 * Handle 2-2-3 and other asymmetrical metres beatTemplates
 * Disable (can reset?) bar subdivision when using custom subdivisions?
 * Update beat and count templates for all metres to new structure
@@ -42,7 +42,7 @@
 
 #### Optional changes triplets
 
-* Rename metreList/templateList values as they are mostly for ui styles?
+* Rename metreList/subdivisions values as they are mostly for ui styles?
 * calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?

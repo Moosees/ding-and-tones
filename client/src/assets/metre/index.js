@@ -1,3 +1,3 @@
-export * from './beats';
 export * from './metre';
+export * from './subdivisions';
 export * from './utils';
