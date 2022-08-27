@@ -67,11 +67,10 @@ export const metreList = {
     group: 'Simple metre',
     name: '4/4',
     nameShort: '4/4',
-    // templates: ['length1', 'length1', 'length1']
-    templates: { ...base4.length1 },
-    lengthInBeats: 4, // to be removed
-    // metreBase: 4,
-    minSubdivision: 4,
+    beatLengths: [1, 1, 1, 1],
+    templates: { ...base4.length1 }, // remove
+    lengthInBeats: 4, // remove
+    minSubdivision: 4, // rename to metreBase
   },
   s54: {
     group: 'Simple metre',

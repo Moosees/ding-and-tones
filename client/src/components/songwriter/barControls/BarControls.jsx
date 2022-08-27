@@ -44,7 +44,7 @@ const BarControls = ({
   updateBarSubdivision,
 }) => {
   const { metre, subdivision } = bars[barId];
-  const { lengthInBeats } = metreList[metre];
+  const subdivisionGroups = metreList[metre].beatLengths.length;
   const isMuted = mutedBars[barId];
 
   return (
@@ -77,7 +77,7 @@ const BarControls = ({
         setSubdivision={(newSubdivision) =>
           updateBarSubdivision(
             barId,
-            Array(lengthInBeats).fill(parseInt(newSubdivision))
+            Array(subdivisionGroups).fill(parseInt(newSubdivision))
           )
         }
       />

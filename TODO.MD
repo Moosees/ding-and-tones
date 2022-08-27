@@ -16,13 +16,13 @@
 * Subdivisions with mixed triplets and regular 16ths
 * Metre templates is split into groups based on minSubdivision and number of those min subdivisions in each group (4/4 has four base4.length1)
 * Handle 2-2-3 and other asymmetrical metres beatTemplates
-* (BarControls) updateBarSubdivision sets a correct subdivision value (no 3.5 length arrays) - metre by metre options list?
 * Get subdivision select options from metreList/templateList (move name and nameShort, remove lengthInBeats and minSubdivision)?
 * Disable (can reset?) bar subdivision when using custom subdivisions?
 * Update beat and count templates for all metres to new structure
 
 * New song understands new system
 * New bar understands new system - new default and new x/x
+* Song metre popup understands new system
 * Copy bar understands new system
 * Add ui to select subdivision on beat by beat basis
 
