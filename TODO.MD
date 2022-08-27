@@ -16,7 +16,6 @@
 * Subdivisions with mixed triplets and regular 16ths
 * Metre templates is split into groups based on minSubdivision and number of those min subdivisions in each group (4/4 has four base4.length1)
 * Handle 2-2-3 and other asymmetrical metres beatTemplates
-* Get subdivision select options from metreList/templateList (move name and nameShort, remove lengthInBeats and minSubdivision)?
 * Disable (can reset?) bar subdivision when using custom subdivisions?
 * Update beat and count templates for all metres to new structure
 
@@ -25,6 +24,7 @@
 * Song metre popup understands new system
 * Copy bar understands new system
 * Add ui to select subdivision on beat by beat basis
+* Subdivision getSubdivisionOptions isBar param
 
 * Add new beat styles for triplet beats in songwriter
 * Add new beat styles for triplet beats in song and print view
@@ -49,6 +49,7 @@
 * Quarter note triplets? No for now
 * Split beats from song and print view Bar into new Component?
 * Memoization and useSelect for song and print view Bar?
+* Memoize Subdivision subdivisionOptions?
 
 ### Home page update
 
