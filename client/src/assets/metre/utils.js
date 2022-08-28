@@ -60,11 +60,12 @@ export const createBarTemplate = (metre, subdivision) => {
 };
 
 export const getSubdivisionLength = (subdivision, metre) => {
+  const metreTemplates = getMetreTemplates(metre);
   let length = 0;
 
-  subdivision.forEach((beat) => {
-    length += metreList[metre].templates[beat].values.length;
-  });
+  for (const [i, beat] of subdivision.entries()) {
+    length += metreTemplates[i][beat].values.length;
+  }
 
   return length;
 };
