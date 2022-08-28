@@ -15,7 +15,6 @@
 
 * Use builders for bar or beat subdivisions to avoid duplicates?
 * Disable (can reset?) bar subdivision when using custom subdivisions?
-* Update beat and count templates for all metres to new structure
 
 * New song understands new system
 * New bar understands new system - new default and new x/x
@@ -49,6 +48,7 @@
 * Memoization and useSelect for song and print view Bar?
 * Memoize Subdivision subdivisionOptions?
 * Subdivisions with mixed triplets and regular 16ths - base8.length3 (double triplet and two 16ths)?
+* More metres?
 
 ### Home page update
 
