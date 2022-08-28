@@ -20,6 +20,17 @@ export const getSubDivisionOptions = (isBar, metre, beatIndex) => {
     .sort((a, b) => a.value - b.value);
 };
 
+export const getMetreTemplates = (metre) => {
+  const { metreBase, beatLengths } = metreList[metre];
+
+  const baseKey = `base${metreBase}`;
+
+  return beatLengths.map((length) => {
+    const lengthKey = `length${length}`;
+    return subdivisions[baseKey][lengthKey];
+  });
+};
+
 const parseBeatTemplates = (beatTemplate, beatIndex) => {
   const { count, values, beatLength } = beatTemplate;
 
@@ -35,11 +46,11 @@ const parseBeatTemplates = (beatTemplate, beatIndex) => {
 };
 
 export const createBarTemplate = (metre, subdivision) => {
-  console.log('createBarTemplate', { metre, subdivision });
-  const barTemplates = metreList[metre].templates;
+  const metreTemplates = getMetreTemplates(metre);
+  console.log('createBarTemplate', { metre, subdivision, metreTemplates });
 
   const template = subdivision.reduce((acc, beatSubdivision, i) => {
-    const beatTemplates = barTemplates[beatSubdivision];
+    const beatTemplates = metreTemplates[i][beatSubdivision];
 
     return [...acc, ...parseBeatTemplates(beatTemplates, i)];
   }, []);
