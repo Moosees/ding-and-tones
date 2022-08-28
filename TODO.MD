@@ -13,8 +13,7 @@
 
 #### Needed changes triplets
 
-* Handle 2-2-3 and other asymmetrical metres subdivisions - add base8
-* Subdivisions with mixed triplets and regular 16ths
+* Use builders for bar or beat subdivisions to avoid duplicates?
 * Disable (can reset?) bar subdivision when using custom subdivisions?
 * Update beat and count templates for all metres to new structure
 
@@ -49,6 +48,7 @@
 * Split beats from song and print view Bar into new Component?
 * Memoization and useSelect for song and print view Bar?
 * Memoize Subdivision subdivisionOptions?
+* Subdivisions with mixed triplets and regular 16ths - base8.length3 (double triplet and two 16ths)?
 
 ### Home page update
 
@@ -97,7 +97,6 @@
 * Clean up getNoteText() and Tonefield in general
 * Merge api status states (isFetching etc.) in client?
 * Clean up rootIndex in parseScaleData
-* Remove measure subdivision count?
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
@@ -291,7 +290,7 @@
 * Likes and/or comments?
 * Custom chord inputs
 * Custom metres
-* Custom count for metres, more count styles
+* Custom count for metres, more count styles - konnakol?
 * Multiple drums for chords, songs etc. Two track songwriter?
 * More drum alternatives? Add synth/piano alternative?
 * Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
