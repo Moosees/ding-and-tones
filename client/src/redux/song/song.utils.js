@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
-import { metreList } from '../../assets/metre';
+import { getMetreTemplates } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
@@ -264,13 +264,15 @@ export const calculateMeasureAndBeatChanges = (
 
 export const updateMeasureAndBeats = (bar, newSubdivision) => {
   const { metre, measure, subdivision } = bar;
+  const metreTemplates = getMetreTemplates(metre);
+
   const fullMeasureData = [];
   const fullBeatsToDelete = [];
   let measureIndex = 0;
 
   for (let i = 0; i < subdivision.length; ++i) {
-    const template = metreList[metre].templates[subdivision[i]].values;
-    const newTemplate = metreList[metre].templates[newSubdivision[i]].values;
+    const template = metreTemplates[i][subdivision[i]].values;
+    const newTemplate = metreTemplates[i][newSubdivision[i]].values;
     const subMeasure = measure.slice(
       measureIndex,
       measureIndex + template.length
@@ -288,7 +290,7 @@ export const updateMeasureAndBeats = (bar, newSubdivision) => {
     measureIndex = measureIndex + template.length;
   }
 
-  console.log({
+  console.log('updateMeasureAndBeats', {
     fullMeasureData,
     fullBeatsToDelete,
     subdivision,

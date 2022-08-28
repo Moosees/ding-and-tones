@@ -13,9 +13,8 @@
 
 #### Needed changes triplets
 
+* Handle 2-2-3 and other asymmetrical metres subdivisions - add base8
 * Subdivisions with mixed triplets and regular 16ths
-* Metre templates is split into groups based on metreBase and beatLengths
-* Handle 2-2-3 and other asymmetrical metres beatTemplates
 * Disable (can reset?) bar subdivision when using custom subdivisions?
 * Update beat and count templates for all metres to new structure
 
