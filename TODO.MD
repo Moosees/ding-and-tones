@@ -13,8 +13,10 @@
 
 #### Needed changes triplets
 
-* Use builders for bar or beat subdivisions to avoid duplicates?
+* Bar subdivision sets beat subdivision based on length - started
+* Delete barSubdivision keys in subdivisions
 * Disable (can reset?) bar subdivision when using custom subdivisions?
+* Set metreBase to string if number is not needed (or have both?)
 
 * New song understands new system
 * New bar understands new system - new default and new x/x

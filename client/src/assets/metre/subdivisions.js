@@ -1,3 +1,68 @@
+export const barSubdivisionOptions = {
+  base4: [
+    {
+      label: '4ths',
+      subdivisionByLength: {
+        1: 4,
+      },
+    },
+    {
+      label: '8ths',
+      subdivisionByLength: {
+        1: 8,
+      },
+    },
+    {
+      label: 'Trip8',
+      subdivisionByLength: {
+        1: 9,
+      },
+    },
+    {
+      label: '16ths',
+      subdivisionByLength: {
+        1: 16,
+      },
+    },
+    {
+      label: 'Trip16',
+      subdivisionByLength: {
+        1: 17,
+      },
+    },
+  ],
+  base8: [
+    {
+      label: '8ths',
+      subdivisionByLength: {
+        2: 8,
+        3: 8,
+      },
+    },
+    {
+      label: 'Trip8',
+      subdivisionByLength: {
+        2: 9,
+        3: 8,
+      },
+    },
+    {
+      label: '16ths',
+      subdivisionByLength: {
+        2: 16,
+        3: 16,
+      },
+    },
+    {
+      label: 'Trip16',
+      subdivisionByLength: {
+        2: 17,
+        3: 16,
+      },
+    },
+  ],
+};
+
 export const subdivisions = {
   base4: {
     length1: {
@@ -119,13 +184,6 @@ export const subdivisions = {
         count: ['X', 'la', 'le'],
         beatLength: [6, 6, 6],
       },
-      9: {
-        label: 'Trip8',
-        isBarMetre: true,
-        values: [4, 8, 8],
-        count: ['X', 'la', 'le'],
-        beatLength: [6, 6, 6],
-      },
       10: {
         label: '8-333',
         isBarMetre: false,
@@ -149,33 +207,26 @@ export const subdivisions = {
       },
       17: {
         label: 'Trip16',
-        isBarMetre: true,
-        values: [4, 16, 8, 16, 8, 16],
-        count: ['X', 'ta', 'la', 'ta', 'le', 'ta'],
-        beatLength: [3, 3, 3, 3, 3, 3],
-      },
-      18: {
-        label: '333*3',
         isBarMetre: false,
         values: [16, 16, 16, 16, 16, 16, 16, 16, 16],
         count: ['X', 'trip', 'let', 'la', 'trip', 'let', 'le', 'trip', 'let'],
         beatLength: [2, 2, 2, 2, 2, 2, 2, 2, 2],
       },
-      19: {
+      18: {
         label: '333-16-16',
         isBarMetre: false,
         values: [16, 16, 16, 8, 16, 8, 16],
         count: ['X', 'trip', 'let', 'la', 'ta', 'le', 'ta'],
         beatLength: [2, 2, 2, 3, 3, 3, 3],
       },
-      20: {
+      19: {
         label: '16-333-16',
         isBarMetre: false,
         values: [4, 16, 16, 16, 16, 8, 16],
         count: ['X', 'ta', 'la', 'trip', 'let', 'le', 'ta'],
         beatLength: [3, 3, 2, 2, 2, 3, 3],
       },
-      21: {
+      20: {
         label: '16-16-333',
         isBarMetre: false,
         values: [4, 16, 8, 16, 16, 16, 16],
