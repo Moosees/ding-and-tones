@@ -1,23 +1,38 @@
-import { subdivisions } from './subdivisions';
+import { barSubdivisionOptions, subdivisions } from './subdivisions';
 import { metreList } from './metre';
 
-export const getSubDivisionOptions = (isBar, metre, beatIndex) => {
+const getSubdivisionOptionsForBar = (metre) => {
+  const baseKey = `base${metreList[metre].metreBase}`;
+  const beatLengths = metreList[metre].beatLengths;
+
+  return barSubdivisionOptions[baseKey].map((option, i) => {
+    const value = beatLengths
+      .map((length) => option.subdivisionByLength[length])
+      .join('-');
+    return { label: option.label, value };
+  });
+};
+
+const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
   const baseKey = `base${metreList[metre].metreBase}`;
   const lengthKey = `length${metreList[metre].beatLengths[beatIndex]}`;
   const currentSubdivisions = subdivisions[baseKey][lengthKey];
 
   return Object.keys(currentSubdivisions)
-    .reduce((acc, key) => {
-      if (isBar && !currentSubdivisions[key].isBarMetre) {
-        return acc;
-      }
-
-      return [
+    .reduce(
+      (acc, key) => [
         ...acc,
         { value: parseInt(key), label: currentSubdivisions[key].label },
-      ];
-    }, [])
+      ],
+      []
+    )
     .sort((a, b) => a.value - b.value);
+};
+
+export const getSubDivisionOptions = (isBar, metre, beatIndex) => {
+  return isBar
+    ? getSubdivisionOptionsForBar(metre)
+    : getSubdivisionOptionsForBeat(metre, beatIndex);
 };
 
 export const getMetreTemplates = (metre) => {

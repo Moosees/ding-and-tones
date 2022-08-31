@@ -13,10 +13,9 @@
 
 #### Needed changes triplets
 
-* Bar subdivision sets beat subdivision based on length - started
-* Delete barSubdivision keys in subdivisions
 * Disable (can reset?) bar subdivision when using custom subdivisions?
 * Set metreBase to string if number is not needed (or have both?)
+* Dynamic metre select options (or add new ones to old list)
 
 * New song understands new system
 * New bar understands new system - new default and new x/x
@@ -37,6 +36,7 @@
 * Stop beats without hand assigned from falling down when hands are open
 * Update metre template for songwriter when changing subdivision - done?
 * Add back missing bars from default song data, update to song with triplets?
+* Make sure hands is working for new bar, change subdivision etc.
 * Clean up code
 
 #### Optional changes triplets
@@ -50,7 +50,8 @@
 * Memoization and useSelect for song and print view Bar?
 * Memoize Subdivision subdivisionOptions?
 * Subdivisions with mixed triplets and regular 16ths - base8.length3 (double triplet and two 16ths)?
-* More metres?
+* More metres (and add to select list if not dynamic)?
+* Change metre subdivisions labels?
 
 ### Home page update
 
