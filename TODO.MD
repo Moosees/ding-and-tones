@@ -13,19 +13,17 @@
 
 #### Needed changes triplets
 
-* Disable (can reset?) bar subdivision when using custom subdivisions?
+* Add new beat styles for triplet beats in songwriter
+* Add new beat styles for triplet beats in song and print view
+
 * Set metreBase to string if number is not needed (or have both?)
 * Dynamic metre select options (or add new ones to old list)
-
 * New song understands new system
 * New bar understands new system - new default and new x/x
 * Song metre popup understands new system
 * Copy bar understands new system
-* Add ui to select subdivision on beat by beat basis
-* Subdivision getSubdivisionOptions isBar param
-
-* Add new beat styles for triplet beats in songwriter
-* Add new beat styles for triplet beats in song and print view
+* handle bar subdivision select when using custom subdivision
+* Style EditSubdivision
 
 * Subdivision in song db model is an array with subdivision for each beat
 * Update song fetching for new system - started

@@ -39,6 +39,7 @@ const BarControls = ({
   duplicateBar,
   isSongPlaying,
   mutedBars,
+  toggleEditSubdivision,
   toggleMuteBar,
   updateBarSubdivision,
 }) => {
@@ -67,6 +68,11 @@ const BarControls = ({
         title="Solo bar"
         icon="priority_high"
         onClick={() => toggleMuteBar(barId, true)}
+      />
+      <BtnIcon
+        title="Edit subdivision"
+        icon="tune"
+        onClick={toggleEditSubdivision}
       />
       <Subdivision
         small

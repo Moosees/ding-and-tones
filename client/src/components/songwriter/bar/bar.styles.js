@@ -4,6 +4,7 @@ export const BarContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   margin: 0.5rem;
+  position: relative;
 
   ${({ theme }) => theme.mqW850`
     margin: 1px;

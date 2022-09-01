@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { createBarTemplate } from '../../../assets/metre';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
+import EditSubdivision from '../editSubdivision/EditSubdivision';
 import { BarContainer, Beats } from './bar.styles';
 
 const Bar = ({ barId, index, moveBar }) => {
+  const [editSubdivisionOpen, setEditSubdivisionOpen] = useState(false);
   const { measure, metre, subdivision, isPlaying, isMuted } = useSelector(
     ({ song, ui }) => ({
       measure: song.bars[barId].measure,
@@ -37,7 +39,13 @@ const Bar = ({ barId, index, moveBar }) => {
           />
         ))}
       </Beats>
-      <BarControls barId={barId} />
+      {editSubdivisionOpen && (
+        <EditSubdivision barId={barId} subdivision={subdivision} />
+      )}
+      <BarControls
+        barId={barId}
+        toggleEditSubdivision={() => setEditSubdivisionOpen((val) => !val)}
+      />
     </BarContainer>
   );
 };
