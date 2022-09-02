@@ -8,13 +8,13 @@
 
 * Triplets
 * Quintuplets?
-* Should print view only break before fourths (Or before first triplet)?
 * Add bass octave?
 
 #### Needed changes triplets
 
 * Add new beat styles for triplet beats in songwriter
 * Add new beat styles for triplet beats in song and print view
+* Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
 
 * Set metreBase to string if number is not needed (or have both?)
 * Dynamic metre select options (or add new ones to old list)
