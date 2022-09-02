@@ -4,7 +4,9 @@ const beatStyles = {
   heightWidth: {
     4: '3',
     8: '2.9',
+    9: '2.9',
     16: '2.8',
+    17: '2.8',
   },
   fz: {
     1: '2.1',
@@ -14,7 +16,9 @@ const beatStyles = {
   border: {
     4: 'solid',
     8: 'solid',
+    9: 'dotted',
     16: 'dashed',
+    17: 'dotted',
   },
 };
 

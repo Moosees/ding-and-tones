@@ -88,7 +88,7 @@ export const subdivisions = {
       },
       9: {
         label: 'Trip8',
-        values: [8, 8, 8],
+        values: [4, 9, 9],
         count: ['X', 'trip', 'let'],
         beatLength: [4, 4, 4],
         groupStart: [0],
@@ -108,7 +108,7 @@ export const subdivisions = {
       },
       17: {
         label: 'Trip16',
-        values: [16, 16, 16, 16, 16, 16],
+        values: [4, 17, 17, 8, 17, 17],
         count: ['X', 'trip', 'let', '&', 'trip', 'let'],
         beatLength: [2, 2, 2, 2, 2, 2],
         groupStart: [0],
@@ -118,7 +118,7 @@ export const subdivisions = {
       },
       18: {
         label: '4-333',
-        values: [4, 16, 16, 16],
+        values: [4, 8, 17, 17],
         count: ['X', '&', 'trip', 'let'],
         beatLength: [6, 2, 2, 2],
         groupStart: [0],
@@ -128,7 +128,7 @@ export const subdivisions = {
       },
       19: {
         label: '88-333',
-        values: [4, 16, 16, 16, 16],
+        values: [4, 16, 8, 17, 17],
         count: ['X', 'e', '&', 'trip', 'let'],
         beatLength: [3, 3, 2, 2, 2],
         groupStart: [0],
@@ -138,7 +138,7 @@ export const subdivisions = {
       },
       20: {
         label: '333-4',
-        values: [16, 16, 16, 8],
+        values: [4, 17, 17, 8],
         count: ['X', 'trip', 'let', '&'],
         beatLength: [2, 2, 2, 6],
         groupStart: [0],
@@ -148,7 +148,7 @@ export const subdivisions = {
       },
       21: {
         label: '333-88',
-        values: [16, 16, 16, 8, 16],
+        values: [4, 17, 17, 8, 16],
         count: ['X', 'trip', 'let', '&', 'a'],
         beatLength: [2, 2, 2, 3, 3],
         groupStart: [0],
@@ -172,7 +172,7 @@ export const subdivisions = {
       },
       9: {
         label: 'Trip8',
-        values: [8, 8, 8],
+        values: [4, 9, 9],
         count: ['X', 'trip', 'let'],
         beatLength: [4, 4, 4],
         groupStart: [0],
@@ -192,7 +192,7 @@ export const subdivisions = {
       },
       17: {
         label: 'Trip16',
-        values: [16, 16, 16, 16, 16, 16],
+        values: [4, 17, 17, 8, 17, 17],
         count: ['X', 'trip', 'let', 'la', 'trip', 'let'],
         beatLength: [2, 2, 2, 2, 2, 2],
         groupStart: [0],
@@ -202,7 +202,7 @@ export const subdivisions = {
       },
       19: {
         label: '88-333',
-        values: [4, 16, 16, 16, 16],
+        values: [4, 16, 8, 17, 17],
         count: ['X', 'ta', 'la', 'trip', 'let'],
         beatLength: [3, 3, 2, 2, 2],
         groupStart: [0],
@@ -212,7 +212,7 @@ export const subdivisions = {
       },
       21: {
         label: '333-88',
-        values: [16, 16, 16, 8, 16],
+        values: [4, 17, 17, 8, 16],
         count: ['X', 'trip', 'let', 'la', 'ta'],
         beatLength: [2, 2, 2, 3, 3],
         groupStart: [0],
@@ -234,7 +234,7 @@ export const subdivisions = {
       },
       10: {
         label: '8-333',
-        values: [4, 16, 16, 16],
+        values: [4, 8, 9, 9],
         count: ['X', 'la', 'trip', 'let'],
         beatLength: [6, 4, 4, 4],
         groupStart: [0],
@@ -244,7 +244,7 @@ export const subdivisions = {
       },
       11: {
         label: '333-8',
-        values: [16, 16, 16, 8],
+        values: [4, 9, 9, 8],
         count: ['X', 'trip', 'let', 'le'],
         beatLength: [4, 4, 4, 6],
         groupStart: [0],
@@ -264,7 +264,7 @@ export const subdivisions = {
       },
       17: {
         label: 'Trip16',
-        values: [16, 16, 16, 16, 16, 16, 16, 16, 16],
+        values: [4, 17, 17, 8, 17, 17, 8, 17, 17],
         count: ['X', 'trip', 'let', 'la', 'trip', 'let', 'le', 'trip', 'let'],
         beatLength: [2, 2, 2, 2, 2, 2, 2, 2, 2],
         groupStart: [0],
@@ -274,7 +274,7 @@ export const subdivisions = {
       },
       18: {
         label: '333-16-16',
-        values: [16, 16, 16, 8, 16, 8, 16],
+        values: [4, 17, 17, 8, 16, 8, 16],
         count: ['X', 'trip', 'let', 'la', 'ta', 'le', 'ta'],
         beatLength: [2, 2, 2, 3, 3, 3, 3],
         groupStart: [0],
@@ -284,7 +284,7 @@ export const subdivisions = {
       },
       19: {
         label: '16-333-16',
-        values: [4, 16, 16, 16, 16, 8, 16],
+        values: [4, 16, 8, 17, 17, 8, 16],
         count: ['X', 'ta', 'la', 'trip', 'let', 'le', 'ta'],
         beatLength: [3, 3, 2, 2, 2, 3, 3],
         groupStart: [0],
@@ -294,7 +294,7 @@ export const subdivisions = {
       },
       20: {
         label: '16-16-333',
-        values: [4, 16, 8, 16, 16, 16, 16],
+        values: [4, 16, 8, 16, 8, 17, 17],
         count: ['X', 'ta', 'la', 'ta', 'le', 'trip', 'let'],
         beatLength: [3, 3, 3, 3, 2, 2, 2],
         groupStart: [0],

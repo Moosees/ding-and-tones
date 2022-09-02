@@ -9,10 +9,11 @@
 * Triplets
 * Quintuplets?
 * Add bass octave?
+* Sheet music style subdivisions (all based on note length instead of beat start)?
 
 #### Needed changes triplets
 
-* Add new beat styles for triplet beats in songwriter
+* Add new beat styles for triplet beats in songwriter - 3s under triplet? lines?
 * Add new beat styles for triplet beats in song and print view
 * Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
 
