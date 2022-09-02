@@ -26,7 +26,7 @@ const Beat = ({
   const btnRef = useRef(null);
   const dropdownPosRef = useRef(null);
   const { sound, hand } = beats[beatId];
-  const { value, count } = template;
+  const { value, count, tripletStatus } = template;
   const isBeatPlaying = beatId === currentBeat;
 
   useEffect(() => {
@@ -85,6 +85,7 @@ const Beat = ({
         {handsOpen && (
           <BeatTextHandCount>{handShortByValue[hand] || ' '}</BeatTextHandCount>
         )}
+        {!!tripletStatus && <div>-</div>}
       </>
     </BeatContainer>
   );

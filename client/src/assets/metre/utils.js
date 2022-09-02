@@ -47,15 +47,8 @@ export const getMetreTemplates = (metre) => {
 };
 
 const parseBeatTemplates = (beatTemplate, beatIndex) => {
-  const {
-    count,
-    values,
-    beatLength,
-    groupStart,
-    groupEnd,
-    tripStart,
-    tripEnd,
-  } = beatTemplate;
+  const { count, values, beatLength, groupStart, groupEnd, triplets } =
+    beatTemplate;
 
   return count.map((rawCount, subIndex) => {
     const parsedCount = rawCount === 'X' ? `${beatIndex + 1}` : rawCount;
@@ -64,10 +57,9 @@ const parseBeatTemplates = (beatTemplate, beatIndex) => {
       count: parsedCount,
       value: values[subIndex],
       beatLength: beatLength[subIndex],
+      tripletStatus: triplets[subIndex],
       groupStart: groupStart.includes(subIndex),
       groupEnd: groupEnd.includes(subIndex),
-      tripStart: tripStart.includes(subIndex),
-      tripEnd: tripEnd.includes(subIndex),
     };
   });
 };
