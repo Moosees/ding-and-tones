@@ -10,6 +10,7 @@ export const parseOptions = (options) =>
       return (
         <option
           disabled={option.disabled}
+          hidden={option.hidden}
           value={option.value}
           key={option.value}
         >

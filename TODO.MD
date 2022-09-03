@@ -22,7 +22,6 @@
 * New bar understands new system - new default and new x/x
 * Song metre popup understands new system
 * Copy bar understands new system
-* handle bar subdivision select when using custom subdivision
 * Style EditSubdivision
 * Wonky logic for moving beats when changing subdivision
 

@@ -5,12 +5,20 @@ const getSubdivisionOptionsForBar = (metre) => {
   const baseKey = `base${metreList[metre].metreBase}`;
   const beatLengths = metreList[metre].beatLengths;
 
-  return barSubdivisionOptions[baseKey].map((option, i) => {
+  const customOption = {
+    label: '',
+    value: 'custom',
+    hidden: true,
+  };
+
+  const barOptions = barSubdivisionOptions[baseKey].map((option, i) => {
     const value = beatLengths
       .map((length) => option.subdivisionByLength[length])
       .join('-');
     return { label: option.label, value };
   });
+
+  return [customOption, ...barOptions];
 };
 
 const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
