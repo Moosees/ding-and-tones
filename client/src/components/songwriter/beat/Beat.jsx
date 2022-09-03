@@ -65,6 +65,7 @@ const Beat = ({
             value={value}
             onClick={handleOpen}
             onKeyDown={handleKeyDown}
+            tripletStatus={tripletStatus}
           >
             <BeatText
               isBeatPlaying={isBeatPlaying}
@@ -85,7 +86,6 @@ const Beat = ({
         {handsOpen && (
           <BeatTextHandCount>{handShortByValue[hand] || ' '}</BeatTextHandCount>
         )}
-        {!!tripletStatus && <div>-</div>}
       </>
     </BeatContainer>
   );

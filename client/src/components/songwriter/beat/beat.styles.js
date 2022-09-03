@@ -22,6 +22,36 @@ const beatStyles = {
   },
 };
 
+const tripletStatusMixins = {
+  0: '',
+  1: `
+      border-bottom: 1px solid black;
+      border-left: 1px solid black;
+      content: '';
+      height: 12%;
+      left: 20%;
+      position: absolute;
+      top: 95%;
+      width: 100%;
+    `,
+  2: `
+      content: '3';
+      font-size: 1rem;
+      position: absolute;
+      top: 83%;
+    `,
+  3: `
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      content: '';
+      height: 12%;
+      position: absolute;
+      right: 20%;
+      top: 95%;
+      width: 100%;
+    `,
+};
+
 export const BeatAnchor = styled.div`
   align-items: center;
   display: flex;
@@ -70,6 +100,10 @@ export const BeatCircle = styled.div`
     outline: 0;
     ${({ isSongPlaying, theme }) =>
       !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
+  }
+
+  &::after {
+    ${({ tripletStatus }) => tripletStatusMixins[tripletStatus]}
   }
 
   @media screen and (orientation: portrait) and (max-width: 1000px) {

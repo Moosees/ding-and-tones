@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Add new beat styles for triplet beats in songwriter - 3s under triplet? lines?
 * Add new beat styles for triplet beats in song and print view
 * Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
 
@@ -25,6 +24,7 @@
 * Copy bar understands new system
 * handle bar subdivision select when using custom subdivision
 * Style EditSubdivision
+* Wonky logic for moving beats when changing subdivision
 
 * Subdivision in song db model is an array with subdivision for each beat
 * Update song fetching for new system - started
@@ -36,6 +36,7 @@
 * Update metre template for songwriter when changing subdivision - done?
 * Add back missing bars from default song data, update to song with triplets?
 * Make sure hands is working for new bar, change subdivision etc.
+* Check isSongPlaying before changing audioSrc (or stop song)
 * Clean up code
 
 #### Optional changes triplets
@@ -44,11 +45,9 @@
 * calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
-* Quarter note triplets? No for now
 * Split beats from song and print view Bar into new Component?
 * Memoization and useSelect for song and print view Bar?
 * Memoize Subdivision subdivisionOptions?
-* Subdivisions with mixed triplets and regular 16ths - base8.length3 (double triplet and two 16ths)?
 * More metres (and add to select list if not dynamic)?
 * Change metre subdivisions labels?
 
@@ -117,7 +116,6 @@
 ### Minor updates
 
 * for of instead of forEach
-* Check isSongPlaying before changing audioSrc (or stop song)
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
