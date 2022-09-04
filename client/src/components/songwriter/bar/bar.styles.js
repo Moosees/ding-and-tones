@@ -25,7 +25,7 @@ export const Beats = styled.div`
   display: flex;
   justify-content: center;
   margin: 1px 2px 3px;
-  padding: 0.5rem;
+  padding: 2px;
   transition: opacity 0.1s ease-in;
 
   ${({ theme }) => theme.mqW850`

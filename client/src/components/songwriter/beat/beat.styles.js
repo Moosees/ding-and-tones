@@ -57,6 +57,7 @@ export const BeatAnchor = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: center;
+  margin: 3px 0;
   position: relative;
 `;
 
@@ -113,6 +114,7 @@ export const BeatCircle = styled.div`
 
 export const BeatTextHandCount = styled.span`
   font-size: 1.2rem;
+  height: 100%;
 `;
 
 export const BeatTextNote = styled.span`

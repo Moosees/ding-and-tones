@@ -51,42 +51,36 @@ const Beat = ({
 
   return (
     <BeatContainer ref={dropdownPosRef} value={value}>
-      <>
-        {countOpen && <BeatTextHandCount>{count}</BeatTextHandCount>}
-        <BeatAnchor>
-          <BeatCircle
-            tabIndex={0}
-            ref={btnRef}
-            hasNonScaleNote={!!nonScaleNotes.length}
-            isLocked={isSongPlaying}
-            isBeatPlaying={isBeatPlaying}
-            isSongPlaying={isSongPlaying}
-            isMuted={isMuted}
-            value={value}
-            onClick={handleOpen}
-            onKeyDown={handleKeyDown}
-            tripletStatus={tripletStatus}
-          >
-            <BeatText
-              isBeatPlaying={isBeatPlaying}
-              sound={sound}
-              value={value}
-            />
-          </BeatCircle>
-          {isOpen && (
-            <BeatDropdown
-              dropdownPosRef={dropdownPosRef}
-              btnRef={btnRef}
-              beatId={beatId}
-              nonScaleNotes={nonScaleNotes}
-              isOpenCb={setIsOpen}
-            />
-          )}
-        </BeatAnchor>
-        {handsOpen && (
-          <BeatTextHandCount>{handShortByValue[hand] || ' '}</BeatTextHandCount>
+      {countOpen && <BeatTextHandCount>{count}</BeatTextHandCount>}
+      <BeatAnchor>
+        <BeatCircle
+          tabIndex={0}
+          ref={btnRef}
+          hasNonScaleNote={!!nonScaleNotes.length}
+          isLocked={isSongPlaying}
+          isBeatPlaying={isBeatPlaying}
+          isSongPlaying={isSongPlaying}
+          isMuted={isMuted}
+          value={value}
+          onClick={handleOpen}
+          onKeyDown={handleKeyDown}
+          tripletStatus={tripletStatus}
+        >
+          <BeatText isBeatPlaying={isBeatPlaying} sound={sound} value={value} />
+        </BeatCircle>
+        {isOpen && (
+          <BeatDropdown
+            dropdownPosRef={dropdownPosRef}
+            btnRef={btnRef}
+            beatId={beatId}
+            nonScaleNotes={nonScaleNotes}
+            isOpenCb={setIsOpen}
+          />
         )}
-      </>
+      </BeatAnchor>
+      {handsOpen && (
+        <BeatTextHandCount>{handShortByValue[hand] || ' '}</BeatTextHandCount>
+      )}
     </BeatContainer>
   );
 };

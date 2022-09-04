@@ -16,7 +16,6 @@
 * Add new beat styles for triplet beats in song and print view
 * Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
 
-* Set metreBase to string if number is not needed (or have both?)
 * Dynamic metre select options (or add new ones to old list)
 * New song understands new system
 * New bar understands new system - new default and new x/x
@@ -31,11 +30,11 @@
 * Add fallback for songs loaded with subdivision as an integer - set to array with length of metre templates array?
 
 * Stop howls status updates from rerendering Bars?
-* Stop beats without hand assigned from falling down when hands are open
 * Update metre template for songwriter when changing subdivision - done?
 * Add back missing bars from default song data, update to song with triplets?
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
+* Set metreBase to string if number is not needed (or have both?)
 * Clean up code
 
 #### Optional changes triplets
