@@ -36,6 +36,7 @@ const Bar = ({ barId, index, moveBar }) => {
             isMuted={isMuted}
             beatId={beatId}
             template={barTemplate[i]}
+            editSubdivisionOpen={editSubdivisionOpen}
           />
         ))}
       </Beats>

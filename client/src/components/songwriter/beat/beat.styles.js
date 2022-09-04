@@ -52,6 +52,14 @@ const tripletStatusMixins = {
     `,
 };
 
+const editSubdivisionMixin = `
+  &:not(:first-child) {
+    border-left: 1px solid black;
+    margin-left: 5px; 
+    padding-left: 5px;
+  }
+`;
+
 export const BeatAnchor = styled.div`
   align-items: center;
   display: flex;
@@ -66,17 +74,20 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-left: ${({ value }) => (value === 4 ? '2px' : '-1px')};
+  margin-left: ${({ groupStart }) => (groupStart ? '2px' : '-1px')};
   position: relative;
 
   ${({ theme }) => theme.mqW850`
     margin-left: 0;
   `}
+
+  ${({ editSubdivisionOpen, groupStart }) =>
+    editSubdivisionOpen && groupStart && editSubdivisionMixin}
 `;
 
 export const BeatCircle = styled.div`
   align-items: center;
-  border: ${({ value }) => (value === 4 ? '2px' : '1px')};
+  border-width: ${({ value }) => (value === 4 ? '2px' : '1px')};
   border-style: ${({ value }) => beatStyles.border[value]};
   border-radius: 100%;
   border-color: ${({ theme, hasNonScaleNote, isBeatPlaying }) =>

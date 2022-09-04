@@ -15,13 +15,14 @@
 
 * Add new beat styles for triplet beats in song and print view
 * Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
+* Add beatStart to template and use for displaying spacers when editing subdivision
+* Style EditSubdivision - done? - split up component? grid?
 
 * Dynamic metre select options (or add new ones to old list)
 * New song understands new system
 * New bar understands new system - new default and new x/x
 * Song metre popup understands new system
 * Copy bar understands new system
-* Style EditSubdivision
 * Wonky logic for moving beats when changing subdivision
 
 * Subdivision in song db model is an array with subdivision for each beat

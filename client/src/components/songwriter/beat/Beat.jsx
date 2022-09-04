@@ -16,6 +16,7 @@ const Beat = ({
   beats,
   countOpen,
   currentBeat,
+  editSubdivisionOpen,
   handsOpen,
   isMuted,
   isSongPlaying,
@@ -26,7 +27,7 @@ const Beat = ({
   const btnRef = useRef(null);
   const dropdownPosRef = useRef(null);
   const { sound, hand } = beats[beatId];
-  const { value, count, tripletStatus } = template;
+  const { value, count, tripletStatus, groupStart } = template;
   const isBeatPlaying = beatId === currentBeat;
 
   useEffect(() => {
@@ -50,7 +51,11 @@ const Beat = ({
   };
 
   return (
-    <BeatContainer ref={dropdownPosRef} value={value}>
+    <BeatContainer
+      ref={dropdownPosRef}
+      editSubdivisionOpen={editSubdivisionOpen}
+      groupStart={groupStart}
+    >
       {countOpen && <BeatTextHandCount>{count}</BeatTextHandCount>}
       <BeatAnchor>
         <BeatCircle
