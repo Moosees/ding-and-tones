@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Add new beat styles for triplet beats in song and print view
 * Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
 * Add beatStart to template and use for displaying spacers when editing subdivision
 * Style EditSubdivision - done? - split up component? grid?

@@ -4,7 +4,9 @@ const beatStyles = {
   heightWidth: {
     4: '29',
     8: '27',
+    9: '27',
     16: '27',
+    17: '27',
   },
   fz: {
     1: '22',
@@ -13,9 +15,41 @@ const beatStyles = {
   },
   border: {
     4: '1px solid #000',
-    8: '1px dotted #000',
+    8: '1px solid rgba(0,0,0,0.5)',
+    9: '1px dotted #000',
     16: '1px dashed #000',
+    17: '1px dotted #000',
   },
+};
+
+const tripletStatusMixins = {
+  0: '',
+  1: `
+      border-bottom: 1px solid rgba(0,0,0,0.7);
+      border-left: 1px solid rgba(0,0,0,0.7);
+      content: '';
+      height: 12%;
+      left: 10%;
+      position: absolute;
+      top: 98%;
+      width: 110%;
+    `,
+  2: `
+      content: '3';
+      font-size: 11px;
+      position: absolute;
+      top: 85%;
+    `,
+  3: `
+      border-bottom: 1px solid rgba(0,0,0,0.7);
+      border-right: 1px solid rgba(0,0,0,0.7);
+      content: '';
+      height: 12%;
+      position: absolute;
+      right: 10%;
+      top: 98%;
+      width: 110%;
+    `,
 };
 
 export const BarMetre = styled.div`
@@ -52,6 +86,7 @@ export const BeatCircleWrapper = styled.div`
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);
   justify-content: center;
+  padding: 2px 0 5px;
 `;
 
 export const BeatCircle = styled.div`
@@ -61,12 +96,17 @@ export const BeatCircle = styled.div`
   display: flex;
   height: ${({ value }) => beatStyles.heightWidth[value]}px;
   justify-content: center;
+  position: relative;
   width: ${({ value }) => beatStyles.heightWidth[value]}px;
 
   ${({ isBeatPlaying, theme }) =>
     isBeatPlaying &&
     `border-color: ${theme.colorBeatActive};
       box-shadow: ${theme.shadowPlaying};`}
+
+  &::after {
+    ${({ tripletStatus }) => tripletStatusMixins[tripletStatus]}
+  }
 `;
 
 export const BeatContainer = styled.div`

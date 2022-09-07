@@ -30,7 +30,7 @@ const Bar = ({
   console.log({ measure, barTemplate });
 
   const filteredBeats = measure.reduce((acc, beatId, i) => {
-    const { count, value } = barTemplate[i];
+    const { count, value, tripletStatus } = barTemplate[i];
     const { sound, hand } = beats[beatId];
     const isBeatPlaying = beatId === currentBeat;
 
@@ -38,7 +38,11 @@ const Bar = ({
       <BeatContainer key={beatId} value={value}>
         {countOpen && <BeatText>{count}</BeatText>}
         <BeatCircleWrapper>
-          <BeatCircle isBeatPlaying={isBeatPlaying} value={value}>
+          <BeatCircle
+            isBeatPlaying={isBeatPlaying}
+            value={value}
+            tripletStatus={tripletStatus}
+          >
             {sound.map((note, i) => (
               <Fragment key={i}>
                 <BeatText length={sound.length}>
