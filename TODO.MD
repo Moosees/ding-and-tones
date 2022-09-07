@@ -14,7 +14,6 @@
 #### Needed changes triplets
 
 * Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
-* Add beatStart to template and use for displaying spacers when editing subdivision
 * Style EditSubdivision - done? - split up component? grid?
 
 * Dynamic metre select options (or add new ones to old list)

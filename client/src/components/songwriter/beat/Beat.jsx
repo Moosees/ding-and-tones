@@ -27,7 +27,7 @@ const Beat = ({
   const btnRef = useRef(null);
   const dropdownPosRef = useRef(null);
   const { sound, hand } = beats[beatId];
-  const { value, count, tripletStatus, groupStart } = template;
+  const { value, count, tripletStatus, beatStart } = template;
   const isBeatPlaying = beatId === currentBeat;
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Beat = ({
     <BeatContainer
       ref={dropdownPosRef}
       editSubdivisionOpen={editSubdivisionOpen}
-      groupStart={groupStart}
+      beatStart={beatStart}
     >
       {countOpen && <BeatTextHandCount>{count}</BeatTextHandCount>}
       <BeatAnchor>

@@ -68,6 +68,7 @@ const parseBeatTemplates = (beatTemplate, beatIndex) => {
       tripletStatus: triplets[subIndex],
       groupStart: groupStart.includes(subIndex),
       groupEnd: groupEnd.includes(subIndex),
+      beatStart: subIndex === 0,
     };
   });
 };

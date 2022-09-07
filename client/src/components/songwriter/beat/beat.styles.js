@@ -74,15 +74,15 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-left: ${({ groupStart }) => (groupStart ? '2px' : '-1px')};
+  margin-left: ${({ beatStart }) => (beatStart ? '2px' : '-1px')};
   position: relative;
 
   ${({ theme }) => theme.mqW850`
     margin-left: 0;
   `}
 
-  ${({ editSubdivisionOpen, groupStart }) =>
-    editSubdivisionOpen && groupStart && editSubdivisionMixin}
+  ${({ editSubdivisionOpen, beatStart }) =>
+    editSubdivisionOpen && beatStart && editSubdivisionMixin}
 `;
 
 export const BeatCircle = styled.div`
