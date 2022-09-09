@@ -54,33 +54,49 @@ export const getMetreTemplates = (metre) => {
   });
 };
 
-const parseBeatTemplates = (beatTemplate, beatIndex) => {
-  const { count, values, beatLength, groupStart, groupEnd, triplets } =
-    beatTemplate;
+const parseBeatTemplates = (beatTemplate, beatIndex, lastGroup) => {
+  const { count, values, beatLength, groupEnd, triplets } = beatTemplate;
 
-  return count.map((rawCount, subIndex) => {
+  let currentGroup = lastGroup;
+
+  const parsedBeats = count.map((rawCount, subIndex) => {
     const parsedCount = rawCount === 'X' ? `${beatIndex + 1}` : rawCount;
 
-    return {
+    const data = {
       count: parsedCount,
       value: values[subIndex],
       beatLength: beatLength[subIndex],
       tripletStatus: triplets[subIndex],
-      groupStart: groupStart.includes(subIndex),
-      groupEnd: groupEnd.includes(subIndex),
+      group: currentGroup,
+      // groupStart: groupStart.includes(subIndex),
+      // groupEnd: groupEnd.includes(subIndex),
       beatStart: subIndex === 0,
     };
+
+    groupEnd.includes(subIndex) && ++currentGroup;
+
+    return data;
   });
+
+  return { currentGroup, parsedBeats };
 };
 
 export const createBarTemplate = (metre, subdivision) => {
   const metreTemplates = getMetreTemplates(metre);
   console.log('createBarTemplate', { metre, subdivision, metreTemplates });
+  let lastGroup = 0;
 
   const template = subdivision.reduce((acc, beatSubdivision, i) => {
     const beatTemplates = metreTemplates[i][beatSubdivision];
+    const { currentGroup, parsedBeats } = parseBeatTemplates(
+      beatTemplates,
+      i,
+      lastGroup
+    );
 
-    return [...acc, ...parseBeatTemplates(beatTemplates, i)];
+    lastGroup = currentGroup;
+
+    return [...acc, ...parsedBeats];
   }, []);
 
   console.log({ template });
