@@ -27,7 +27,16 @@ const Bar = ({
   const { nameShort } = metreList[metre];
 
   const barTemplate = createBarTemplate(metre, subdivision);
-  console.log({ measure, barTemplate });
+
+  const beatsGrouped = barTemplate.reduce((acc, beat, i) => {
+    if (!acc[beat.group]) {
+      return [...acc, [beat]];
+    }
+
+    acc[beat.group] = [...acc[beat.group], beat];
+    return acc;
+  }, []);
+  console.log({ measure, barTemplate, beatsGrouped });
 
   const filteredBeats = measure.reduce((acc, beatId, i) => {
     const { count, value, tripletStatus } = barTemplate[i];

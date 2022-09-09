@@ -14,6 +14,7 @@
 #### Needed changes triplets
 
 * Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
+* Use beatStart instead of value === 4 to determine beat spacers in song and print view
 * Style EditSubdivision - done? - split up component? grid?
 
 * Dynamic metre select options (or add new ones to old list)
