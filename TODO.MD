@@ -13,18 +13,18 @@
 
 #### Needed changes triplets
 
-* Add song type cb for getSubdivisionOptions
 * New song understands new system
-* New bar understands new system - new default and new x/x
 * Song metre popup understands new system
+
+* New bar understands new system - new default and new x/x
 * Copy bar understands new system
-* Wonky logic for moving beats when changing subdivision
 
 * Subdivision in song db model is an array with subdivision for each beat
 * Update song fetching for new system - started
 * Update song saving for new system
 * Add fallback for songs loaded with subdivision as an integer - set to array with length of metre templates array?
 
+* Fix wonky logic for moving beats when changing subdivision
 * Add beatGroups to metre subdivision and make sure line breaks where it's supposed to
 * Style EditSubdivision - done? - split up component? grid?
 * Stop howls status updates from rerendering Bars?

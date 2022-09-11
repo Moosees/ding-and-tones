@@ -19,9 +19,8 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   const [title, setTitle, titleErrors, isTitleValid] = useValidate('songTitle');
   const navigate = useNavigate();
 
-  const handleSetSubdivision = (subdivision) => {
-    console.log({ subdivision });
-  };
+  const handleSetSubdivision = (subdivision) =>
+    setSubdivision(parseInt(subdivision));
 
   const handleConfirm = () => {
     if (isTitleValid) {
@@ -59,7 +58,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         metre={metre}
         subdivision={subdivision}
         setMetre={setMetre}
-        setSubdivision={setSubdivision}
+        setSubdivision={handleSetSubdivision}
       />
       <Subdivision
         type="song"

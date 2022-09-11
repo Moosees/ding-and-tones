@@ -1,4 +1,8 @@
-import { barSubdivisionOptions, subdivisions } from './subdivisions';
+import {
+  barSubdivisionOptions,
+  songSubdivisionOptions,
+  subdivisions,
+} from './subdivisions';
 import { metreList } from './metre';
 
 export const getMetreOptions = () => {
@@ -70,11 +74,17 @@ const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
     .sort((a, b) => a.value - b.value);
 };
 
+const getSubdivisionOptionsForSong = (metre) => {
+  const baseKey = `base${metreList[metre].metreBase}`;
+
+  return songSubdivisionOptions[baseKey];
+};
+
 export const getSubdivisionOptions = (type, metre, beatIndex) => {
   const typeCbs = {
-    beat: () => getSubdivisionOptionsForBeat(metre, beatIndex),
     bar: () => getSubdivisionOptionsForBar(metre),
-    song: () => [],
+    beat: () => getSubdivisionOptionsForBeat(metre, beatIndex),
+    song: () => getSubdivisionOptionsForSong(metre),
   };
 
   return typeCbs[type]();

@@ -63,6 +63,21 @@ export const barSubdivisionOptions = {
   ],
 };
 
+export const songSubdivisionOptions = {
+  base4: [
+    { label: '4ths', value: 4 },
+    { label: '8ths', value: 8 },
+    { label: 'Trip8', value: 9 },
+    { label: '16ths', value: 16 },
+    { label: 'Trip16', value: 17 },
+  ],
+  base8: [
+    { label: '8ths', value: 8 },
+    { label: '16ths', value: 16 },
+    { label: 'Trip16', value: 17 },
+  ],
+};
+
 export const subdivisions = {
   base4: {
     length1: {
