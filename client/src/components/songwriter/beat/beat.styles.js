@@ -126,6 +126,7 @@ export const BeatCircle = styled.div`
 export const BeatTextHandCount = styled.span`
   font-size: 1.2rem;
   height: 100%;
+  white-space: pre-wrap;
 `;
 
 export const BeatTextNote = styled.span`
@@ -142,5 +143,4 @@ export const BeatTextSpacer = styled.span`
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);
   margin-bottom: 3px;
-  white-space: pre-wrap;
 `;
