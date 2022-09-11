@@ -56,7 +56,6 @@ const PopupNewSong = ({ onClose, setSongState }) => {
       />
       <Metre
         metre={metre}
-        subdivision={subdivision}
         setMetre={setMetre}
         setSubdivision={handleSetSubdivision}
       />

@@ -38,7 +38,6 @@ const PopupSongMetre = ({
     <Popup header="Metre" onClose={onClose}>
       <Metre
         metre={newMetre}
-        subdivision={newSubdivision}
         setMetre={setNewMetre}
         setSubdivision={setNewSubdivision}
       />

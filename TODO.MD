@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* New song understands new system
 * Song metre popup understands new system
 
 * New bar understands new system - new default and new x/x
@@ -45,6 +44,7 @@
 * Memoize Subdivision subdivisionOptions?
 * More metres (and add to select list if not dynamic)?
 * Change metre subdivisions labels?
+* New song understands new system - done? - should new song come with bars? - don't reset bpm?
 
 ### Home page update
 
