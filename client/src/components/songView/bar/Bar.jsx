@@ -1,25 +1,16 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { handShortByValue } from '../../../assets/constants';
 import { createBarTemplate, metreList } from '../../../assets/metre';
+import Beats from '../beats/Beats';
 import {
   BarDivider,
   BarMetre,
-  BeatCircle,
-  BeatCircleWrapper,
-  BeatContainer,
-  BeatText,
-  BeatTextSpacer,
 } from './bar.styles';
 
 const Bar = ({
   barId,
   barMetreOffset,
   bars,
-  beats,
-  countOpen,
-  currentBeat,
-  handsOpen,
   prevBar,
 }) => {
   const { metre, subdivision, measure } = bars[barId];
@@ -29,45 +20,16 @@ const Bar = ({
   const barTemplate = createBarTemplate(metre, subdivision);
 
   const beatsGrouped = barTemplate.reduce((acc, beat, i) => {
-    if (!acc[beat.group]) {
-      return [...acc, [beat]];
+    const beatData = { ...beat, beatId: measure[i] };
+
+    if (!acc[beatData.group]) {
+      return [...acc, [beatData]];
     }
 
-    acc[beat.group] = [...acc[beat.group], beat];
+    acc[beatData.group] = [...acc[beatData.group], beatData];
     return acc;
   }, []);
   console.log({ measure, barTemplate, beatsGrouped });
-
-  const filteredBeats = measure.reduce((acc, beatId, i) => {
-    const { count, value, tripletStatus } = barTemplate[i];
-    const { sound, hand } = beats[beatId];
-    const isBeatPlaying = beatId === currentBeat;
-
-    acc.push(
-      <BeatContainer key={beatId} value={value}>
-        {countOpen && <BeatText>{count}</BeatText>}
-        <BeatCircleWrapper>
-          <BeatCircle
-            isBeatPlaying={isBeatPlaying}
-            value={value}
-            tripletStatus={tripletStatus}
-          >
-            {sound.map((note, i) => (
-              <Fragment key={i}>
-                <BeatText length={sound.length}>
-                  {note !== '-' && note}
-                </BeatText>
-                {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
-              </Fragment>
-            ))}
-          </BeatCircle>
-        </BeatCircleWrapper>
-        {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}
-      </BeatContainer>
-    );
-
-    return acc;
-  }, []);
 
   return (
     <>
@@ -78,7 +40,9 @@ const Bar = ({
           ))}
         </BarMetre>
       )}
-      {filteredBeats}
+      {beatsGrouped.map((group, i) => (
+        <Beats key={i} {...group} />
+      ))}
       <BarDivider />
     </>
   );
@@ -86,11 +50,7 @@ const Bar = ({
 
 const mapStateToProps = ({ song, ui }) => ({
   bars: song.bars,
-  beats: song.beats,
   barMetreOffset: ui.barMetreOffset,
-  countOpen: ui.countOpen,
-  currentBeat: ui.currentBeat,
-  handsOpen: ui.handsOpen,
 });
 
 export default connect(mapStateToProps)(Bar);

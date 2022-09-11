@@ -43,7 +43,6 @@
 * calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
-* Split beats from song and print view Bar into new Component?
 * Memoization and useSelect for song and print view Bar?
 * Memoize Subdivision subdivisionOptions?
 * More metres (and add to select list if not dynamic)?
