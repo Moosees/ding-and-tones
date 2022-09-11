@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Dynamic metre select options (or add new ones to old list)
 * New song understands new system
 * New bar understands new system - new default and new x/x
 * Song metre popup understands new system

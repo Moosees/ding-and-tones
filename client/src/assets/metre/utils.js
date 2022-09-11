@@ -1,6 +1,39 @@
 import { barSubdivisionOptions, subdivisions } from './subdivisions';
 import { metreList } from './metre';
 
+export const getMetreOptions = () => {
+  const metreGroupIndexes = {
+    'Simple metre': 0,
+    'Compound metre': 1,
+    'Complex metre': 2,
+  };
+
+  return Object.keys(metreList).reduce(
+    (acc, key) => {
+      const { group, name } = metreList[key];
+      const index = metreGroupIndexes[group];
+
+      acc[index].options.push({ value: key, label: name });
+
+      return acc;
+    },
+    [
+      {
+        group: 'Simple metre',
+        options: [],
+      },
+      {
+        group: 'Compound metre',
+        options: [],
+      },
+      {
+        group: 'Complex metre',
+        options: [],
+      },
+    ]
+  );
+};
+
 const getSubdivisionOptionsForBar = (metre) => {
   const baseKey = `base${metreList[metre].metreBase}`;
   const beatLengths = metreList[metre].beatLengths;
