@@ -13,9 +13,7 @@
 
 #### Needed changes triplets
 
-* Print view line breaks using metre subdivision groupStart and groupEnd (or delete keys is not used)
 * Use beatStart instead of value === 4 to determine beat spacers in song and print view
-* Style EditSubdivision - done? - split up component? grid?
 
 * Dynamic metre select options (or add new ones to old list)
 * New song understands new system
@@ -29,6 +27,8 @@
 * Update song saving for new system
 * Add fallback for songs loaded with subdivision as an integer - set to array with length of metre templates array?
 
+* Add beatGroups to metre subdivision and make sure line breaks where it's supposed to
+* Style EditSubdivision - done? - split up component? grid?
 * Stop howls status updates from rerendering Bars?
 * Update metre template for songwriter when changing subdivision - done?
 * Add back missing bars from default song data, update to song with triplets?

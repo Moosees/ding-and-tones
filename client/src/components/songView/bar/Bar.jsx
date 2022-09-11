@@ -2,17 +2,9 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { createBarTemplate, metreList } from '../../../assets/metre';
 import Beats from '../beats/Beats';
-import {
-  BarDivider,
-  BarMetre,
-} from './bar.styles';
+import { BarDivider, BarMetre } from './bar.styles';
 
-const Bar = ({
-  barId,
-  barMetreOffset,
-  bars,
-  prevBar,
-}) => {
+const Bar = ({ barId, barMetreOffset, bars, prevBar }) => {
   const { metre, subdivision, measure } = bars[barId];
   const prevBarMetre = prevBar ? bars[prevBar].metre : null;
   const { nameShort } = metreList[metre];
@@ -41,7 +33,7 @@ const Bar = ({
         </BarMetre>
       )}
       {beatsGrouped.map((group, i) => (
-        <Beats key={i} {...group} />
+        <Beats key={i} group={group} />
       ))}
       <BarDivider />
     </>

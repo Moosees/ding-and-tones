@@ -52,6 +52,11 @@ const tripletStatusMixins = {
     `,
 };
 
+export const BeatGroup = styled.div`
+  display: flex;
+  white-space: nowrap;
+`;
+
 export const BeatCircleWrapper = styled.div`
   align-items: center;
   display: flex;
@@ -104,5 +109,4 @@ export const BeatTextSpacer = styled.span`
   font-size: 13px;
   margin-bottom: 3px;
   margin-left: -1px;
-  white-space: pre-wrap;
 `;
