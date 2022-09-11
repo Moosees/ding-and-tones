@@ -70,10 +70,14 @@ const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
     .sort((a, b) => a.value - b.value);
 };
 
-export const getSubDivisionOptions = (isBar, metre, beatIndex) => {
-  return isBar
-    ? getSubdivisionOptionsForBar(metre)
-    : getSubdivisionOptionsForBeat(metre, beatIndex);
+export const getSubdivisionOptions = (type, metre, beatIndex) => {
+  const typeCbs = {
+    beat: () => getSubdivisionOptionsForBeat(metre, beatIndex),
+    bar: () => getSubdivisionOptionsForBar(metre),
+    song: () => [],
+  };
+
+  return typeCbs[type]();
 };
 
 export const getMetreTemplates = (metre) => {

@@ -19,6 +19,10 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   const [title, setTitle, titleErrors, isTitleValid] = useValidate('songTitle');
   const navigate = useNavigate();
 
+  const handleSetSubdivision = (subdivision) => {
+    console.log({ subdivision });
+  };
+
   const handleConfirm = () => {
     if (isTitleValid) {
       const info = {
@@ -58,9 +62,10 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         setSubdivision={setSubdivision}
       />
       <Subdivision
+        type="song"
         metre={metre}
         subdivision={subdivision}
-        setSubdivision={setSubdivision}
+        setSubdivision={handleSetSubdivision}
       />
       <Select
         large

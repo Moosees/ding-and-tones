@@ -1,17 +1,18 @@
 import React from 'react';
-import { getSubDivisionOptions } from '../../../assets/metre';
+import { getSubdivisionOptions } from '../../../assets/metre';
 import Select from '../select/Select';
 import SelectSmall from '../select/SelectSmall';
 
 const Subdivision = ({
   beatIndex,
-  isBar,
   metre,
   setSubdivision,
   small,
   subdivision,
+  type,
 }) => {
-  const subdivisionOptions = getSubDivisionOptions(isBar, metre, beatIndex);
+  const subdivisionOptions = getSubdivisionOptions(type, metre, beatIndex);
+  console.log({ subdivisionOptions });
 
   const SelectComponent = small ? SelectSmall : Select;
 

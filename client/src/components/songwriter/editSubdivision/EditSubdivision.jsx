@@ -20,6 +20,7 @@ const EditSubdivision = ({ barId }) => {
       {subdivision.map((beat, i) => (
         <Subdivision
           small
+          type="beat"
           key={i}
           beatIndex={i}
           metre={metre}

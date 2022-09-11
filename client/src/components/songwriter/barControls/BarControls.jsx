@@ -76,7 +76,7 @@ const BarControls = ({
       />
       <Subdivision
         small
-        isBar
+        type="bar"
         metre={metre}
         subdivision={subdivision.join('-')}
         setSubdivision={(newSubdivision) =>

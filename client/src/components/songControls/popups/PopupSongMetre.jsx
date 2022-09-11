@@ -37,16 +37,13 @@ const PopupSongMetre = ({
   return (
     <Popup header="Metre" onClose={onClose}>
       <Metre
-        large
-        hasLabel
         metre={newMetre}
         subdivision={newSubdivision}
         setMetre={setNewMetre}
         setSubdivision={setNewSubdivision}
       />
       <Subdivision
-        large
-        hasLabel
+        type="song"
         metre={newMetre}
         subdivision={newSubdivision}
         setSubdivision={setNewSubdivision}

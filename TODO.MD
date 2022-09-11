@@ -13,6 +13,7 @@
 
 #### Needed changes triplets
 
+* Add song type cb for getSubdivisionOptions
 * New song understands new system
 * New bar understands new system - new default and new x/x
 * Song metre popup understands new system
