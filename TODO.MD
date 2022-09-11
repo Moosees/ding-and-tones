@@ -13,8 +13,6 @@
 
 #### Needed changes triplets
 
-* Use beatStart instead of value === 4 to determine beat spacers in song and print view
-
 * Dynamic metre select options (or add new ones to old list)
 * New song understands new system
 * New bar understands new system - new default and new x/x

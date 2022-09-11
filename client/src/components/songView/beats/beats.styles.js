@@ -94,7 +94,7 @@ export const BeatContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   margin: 18px 0;
-  margin-left: ${({ value }) => (value === 4 ? '3px' : '1px')};
+  margin-left: ${({ beatStart }) => (beatStart ? '3px' : '1px')};
   position: relative;
 `;
 

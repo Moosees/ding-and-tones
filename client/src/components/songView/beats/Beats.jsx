@@ -11,7 +11,6 @@ import {
 } from './beats.styles';
 
 const Beats = ({ group }) => {
-  console.log({ group });
   const { beats, countOpen, currentBeat, handsOpen } = useSelector(
     ({ song, ui }) => ({
       beats: song.beats,
@@ -23,12 +22,12 @@ const Beats = ({ group }) => {
 
   return (
     <BeatGroup>
-      {group.map(({ count, value, tripletStatus, beatId }) => {
+      {group.map(({ beatStart, count, value, tripletStatus, beatId }) => {
         const { sound, hand } = beats[beatId];
         const isBeatPlaying = beatId === currentBeat;
 
         return (
-          <BeatContainer key={beatId} value={value}>
+          <BeatContainer key={beatId} beatStart={beatStart}>
             {countOpen && <BeatText>{count}</BeatText>}
             <BeatCircleWrapper>
               <BeatCircle
