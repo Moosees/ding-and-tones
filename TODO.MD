@@ -13,10 +13,9 @@
 
 #### Needed changes triplets
 
-* Song metre popup understands new system
-
 * New bar understands new system - new default and new x/x
 * Copy bar understands new system
+* Set metreBase to string if number is not needed (or have both?)
 
 * Subdivision in song db model is an array with subdivision for each beat
 * Update song fetching for new system - started
@@ -31,7 +30,6 @@
 * Add back missing bars from default song data, update to song with triplets?
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
-* Set metreBase to string if number is not needed (or have both?)
 * Clean up code
 
 #### Optional changes triplets

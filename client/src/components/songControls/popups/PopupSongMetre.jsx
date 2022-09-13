@@ -23,6 +23,9 @@ const PopupSongMetre = ({
     bpm
   );
 
+  const handleSetSubdivision = (subdivision) =>
+    setNewSubdivision(parseInt(subdivision));
+
   const handleConfirm = () => {
     if (isNewBpmValid) {
       updateSongInfo({
@@ -39,13 +42,13 @@ const PopupSongMetre = ({
       <Metre
         metre={newMetre}
         setMetre={setNewMetre}
-        setSubdivision={setNewSubdivision}
+        setSubdivision={handleSetSubdivision}
       />
       <Subdivision
         type="song"
         metre={newMetre}
         subdivision={newSubdivision}
-        setSubdivision={setNewSubdivision}
+        setSubdivision={handleSetSubdivision}
       />
       <InfoInput
         large
