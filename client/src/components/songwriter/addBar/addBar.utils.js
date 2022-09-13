@@ -1,25 +1,27 @@
 import { v4 as uuid } from 'uuid';
-import { metreList } from '../../../assets/metre';
+import { createBarTemplate, metreList } from '../../../assets/metre';
 
-export const createNewBar = (metre, subdivision) => {
-  const { template, metreBase, count } = metreList[metre];
+export const createNewBar = (metre, songSubdivision) => {
+  const beatGroups = metreList[metre].beatLengths.length;
+  const subdivision = Array(beatGroups).fill(songSubdivision);
+  const barTemplate = createBarTemplate(metre, subdivision);
   const barId = uuid();
   const measure = [];
   const beats = {};
 
-  template.forEach((value, i) => {
+  for (const { beatStart, value } of barTemplate) {
     const beatId = uuid();
-    measure.push({ beatId, count: count[i], value });
+    measure.push(beatId);
     beats[beatId] = {
-      sound: value === 4 ? ['0'] : ['-'],
+      sound: beatStart ? ['0'] : ['-'],
       mode: 'c',
       value,
     };
-  });
+  }
 
   const bar = {
     metre,
-    subdivision: Math.max(subdivision, metreBase),
+    subdivision,
     repeats: 1,
     measure,
   };
