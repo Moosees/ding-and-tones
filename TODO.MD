@@ -13,10 +13,11 @@
 
 #### Needed changes triplets
 
-* New bar understands new system - new x/x
+* songToBarSubdivision understands asymmetrical subdivisions
+* Fix getSubdivisionOptions for compound metres - stop duplicate options
 * Custom subdivision for new x/x?
 * Copy bar understands new system
-* move createNewBar to metre assets?
+* move createNewBar and songToBarSubdivision to metre assets?
 * Set metreBase to string if number is not needed (or have both?)
 
 * Subdivision in song db model is an array with subdivision for each beat

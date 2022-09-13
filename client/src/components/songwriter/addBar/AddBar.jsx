@@ -4,7 +4,7 @@ import { metreList } from '../../../assets/metre';
 import { addNewBar } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
 import { AddBarBtn, AddBarContainer } from './addBar.styles';
-import { createNewBar } from './addBar.utils';
+import { createNewBar, songToBarSubdivision } from './addBar.utils';
 import PopupNewBar from './PopupNewBar';
 
 const AddBar = ({ addNewBar, isSongPlaying, songInfo }) => {
@@ -23,7 +23,9 @@ const AddBar = ({ addNewBar, isSongPlaying, songInfo }) => {
         <AddBarBtn
           disabled={isSongPlaying}
           isSongPlaying={isSongPlaying}
-          onClick={() => handleNewBar(metre, subdivision)}
+          onClick={() =>
+            handleNewBar(metre, songToBarSubdivision(metre, subdivision))
+          }
         >
           {nameShort}
         </AddBarBtn>

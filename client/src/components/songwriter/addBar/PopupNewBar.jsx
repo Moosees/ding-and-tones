@@ -4,13 +4,17 @@ import BtnPrimary from '../../shared/button/Primary';
 import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
+import { songToBarSubdivision } from './addBar.utils';
 
 const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
   const [metre, setMetre] = useState(songMetre);
-  const [subdivision, setSubdivision] = useState(songSubdivision);
+  const [subdivision, setSubdivision] = useState(
+    songToBarSubdivision(songMetre, songSubdivision).join('-')
+  );
 
+  console.log({ metre, subdivision });
   const handleConfirm = () => {
-    handleNewBar(metre, subdivision);
+    handleNewBar(metre, subdivision.split('-'));
     onClose();
   };
 
