@@ -14,7 +14,6 @@
 #### Needed changes triplets
 
 * songToBarSubdivision understands asymmetrical subdivisions
-* Fix getSubdivisionOptions for compound metres - stop duplicate options
 * Custom subdivision for new x/x?
 * Copy bar understands new system
 * move createNewBar and songToBarSubdivision to metre assets?

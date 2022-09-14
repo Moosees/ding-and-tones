@@ -1,5 +1,5 @@
 export const barSubdivisionOptions = {
-  base4: [
+  'Simple metre': [
     {
       label: '4ths',
       subdivisionByLength: {
@@ -31,7 +31,27 @@ export const barSubdivisionOptions = {
       },
     },
   ],
-  base8: [
+  'Compound metre': [
+    {
+      label: '8ths',
+      subdivisionByLength: {
+        3: 8,
+      },
+    },
+    {
+      label: '16ths',
+      subdivisionByLength: {
+        3: 16,
+      },
+    },
+    {
+      label: 'Trip16',
+      subdivisionByLength: {
+        3: 17,
+      },
+    },
+  ],
+  'Complex metre': [
     {
       label: '8ths',
       subdivisionByLength: {

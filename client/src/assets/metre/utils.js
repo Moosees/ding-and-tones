@@ -39,8 +39,7 @@ export const getMetreOptions = () => {
 };
 
 const getSubdivisionOptionsForBar = (metre) => {
-  const baseKey = `base${metreList[metre].metreBase}`;
-  const beatLengths = metreList[metre].beatLengths;
+  const { beatLengths, group } = metreList[metre];
 
   const customOption = {
     label: '',
@@ -48,7 +47,7 @@ const getSubdivisionOptionsForBar = (metre) => {
     hidden: true,
   };
 
-  const barOptions = barSubdivisionOptions[baseKey].map((option, i) => {
+  const barOptions = barSubdivisionOptions[group].map((option, i) => {
     const value = beatLengths
       .map((length) => option.subdivisionByLength[length])
       .join('-');
