@@ -75,9 +75,9 @@ const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
 };
 
 const getSubdivisionOptionsForSong = (metre) => {
-  const baseKey = `base${metreList[metre].metreBase}`;
+  const group = metre.slice(0, 1);
 
-  return songSubdivisionOptions[baseKey];
+  return songSubdivisionOptions[group];
 };
 
 export const getSubdivisionOptions = (type, metre, beatIndex) => {
