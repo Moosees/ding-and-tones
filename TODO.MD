@@ -13,7 +13,7 @@
 
 #### Needed changes triplets
 
-* songToBarSubdivision understands asymmetrical subdivisions
+* Merge bar and song subdivisionOptions?
 * Custom subdivision for new x/x?
 * Copy bar understands new system
 * move createNewBar and songToBarSubdivision to metre assets?

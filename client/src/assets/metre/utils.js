@@ -74,7 +74,7 @@ const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
     .sort((a, b) => a.value - b.value);
 };
 
-const getSubdivisionOptionsForSong = (metre) => {
+export const getSubdivisionOptionsForSong = (metre) => {
   const group = metre.slice(0, 1);
 
   return songSubdivisionOptions[group];
