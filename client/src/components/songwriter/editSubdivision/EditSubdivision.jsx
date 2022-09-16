@@ -10,7 +10,7 @@ const EditSubdivision = ({ barId }) => {
 
   const handleSetSubdivision = (value, beatIndex) => {
     const newSubdivision = [...subdivision];
-    newSubdivision[beatIndex] = value;
+    newSubdivision[beatIndex] = parseInt(value);
 
     dispatch(updateBarSubdivision(barId, newSubdivision));
   };
