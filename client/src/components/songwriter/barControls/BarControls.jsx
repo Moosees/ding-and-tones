@@ -12,23 +12,23 @@ import Subdivision from '../../shared/metreControls/Subdivision';
 import { ControlsContainer } from './barControls.styles';
 
 const copyBar = (barId, bars, beats) => {
+  const { measure, subdivision, metre, repeats } = bars[barId];
   const newBarId = uuid();
   const newBeats = {};
-  const newMeasure = [];
+  const newBar = { metre, repeats };
 
-  bars[barId].measure.forEach(({ beatId, count, value }) => {
-    let newBeatId = null;
+  newBar.subdivision = [...subdivision];
+  newBar.measure = measure.map((beatId) => {
+    const newBeatId = uuid();
+    newBeats[newBeatId] = {
+      ...beats[beatId],
+      sound: [...beats[beatId].sound],
+    };
 
-    if (beatId) {
-      newBeatId = uuid();
-      newBeats[newBeatId] = {
-        ...beats[beatId],
-        sound: [...beats[beatId].sound],
-      };
-    }
-    newMeasure.push({ beatId: newBeatId, count, value });
+    return newBeatId;
   });
-  return { oldBarId: barId, newBarId, newMeasure, newBeats };
+
+  return { newBarId, newBar, newBeats };
 };
 
 const BarControls = ({

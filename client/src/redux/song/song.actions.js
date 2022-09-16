@@ -57,7 +57,7 @@ export const deleteSongById = (songId) => (dispatch) => {
 
 export const duplicateBar = (bar) => ({
   type: songTypes.DUPLICATE_BAR,
-  payload: bar, // { oldBarId, newBarId, newMeasure, newBeats }
+  payload: bar, // { newBarId, newBar, newBeats }
 });
 
 export const getSongById =

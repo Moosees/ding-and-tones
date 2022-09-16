@@ -11,10 +11,9 @@ const barsReducer = (state = barsState, { type, payload }) => {
       return filterState(state, [payload.barToDelete]);
 
     case songTypes.DUPLICATE_BAR:
-      const oldBar = state[payload.oldBarId];
       return {
         ...state,
-        [payload.newBarId]: { ...oldBar, measure: payload.newMeasure },
+        [payload.newBarId]: payload.newBar,
       };
 
     case songTypes.FETCH_SUCCESSFUL:

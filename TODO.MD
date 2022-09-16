@@ -13,11 +13,6 @@
 
 #### Needed changes triplets
 
-* Custom subdivision for new x/x?
-* Copy bar understands new system
-* move createNewBar and songToBarSubdivision to metre assets?
-* Set metreBase to string if number is not needed (or have both?)
-
 * Subdivision in song db model is an array with subdivision for each beat
 * Update song fetching for new system - started
 * Update song saving for new system
@@ -44,6 +39,9 @@
 * More metres (and add to select list if not dynamic)?
 * Change metre subdivisions labels?
 * New song understands new system - done? - should new song come with bars? - don't reset bpm?
+* Custom subdivision for new x/x?
+* move createNewBar and songToBarSubdivision to metre assets?
+* Set metreBase to string if number is not needed (or have both?)
 
 ### Home page update
 
