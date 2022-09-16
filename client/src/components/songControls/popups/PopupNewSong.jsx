@@ -14,7 +14,7 @@ import Select from '../../shared/select/Select';
 const PopupNewSong = ({ onClose, setSongState }) => {
   const [difficulty, setDifficulty] = useState(1);
   const [metre, setMetre] = useState('s44');
-  const [subdivision, setSubdivision] = useState(4);
+  const [subdivision, setSubdivision] = useState(8);
 
   const [title, setTitle, titleErrors, isTitleValid] = useValidate('songTitle');
   const navigate = useNavigate();
