@@ -1,8 +1,4 @@
-import {
-  barSubdivisionOptions,
-  songSubdivisionOptions,
-  subdivisions,
-} from './subdivisions';
+import { subdivisionOptions, subdivisions } from './subdivisions';
 import { metreList } from './metre';
 
 export const getMetreOptions = () => {
@@ -48,7 +44,7 @@ const getSubdivisionOptionsForBar = (metre) => {
     hidden: true,
   };
 
-  const barOptions = barSubdivisionOptions[group].map((option, i) => {
+  const barOptions = subdivisionOptions[group].map((option, i) => {
     const value = beatLengths
       .map((length) => option.subdivisionByLength[length])
       .join('-');
@@ -77,7 +73,10 @@ const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
 export const getSubdivisionOptionsForSong = (metre) => {
   const group = metre.slice(0, 1);
 
-  return songSubdivisionOptions[group];
+  return subdivisionOptions[group].map(({ label, value }) => ({
+    label,
+    value,
+  }));
 };
 
 export const getSubdivisionOptions = (type, metre, beatIndex) => {

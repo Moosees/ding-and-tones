@@ -1,31 +1,36 @@
-export const barSubdivisionOptions = {
+export const subdivisionOptions = {
   s: [
     {
       label: '4ths',
+      value: 4,
       subdivisionByLength: {
         1: 4,
       },
     },
     {
       label: '8ths',
+      value: 8,
       subdivisionByLength: {
         1: 8,
       },
     },
     {
       label: 'Trip8',
+      value: 9,
       subdivisionByLength: {
         1: 9,
       },
     },
     {
       label: '16ths',
+      value: 16,
       subdivisionByLength: {
         1: 16,
       },
     },
     {
       label: 'Trip16',
+      value: 17,
       subdivisionByLength: {
         1: 17,
       },
@@ -34,18 +39,21 @@ export const barSubdivisionOptions = {
   c: [
     {
       label: '8ths',
+      value: 8,
       subdivisionByLength: {
         3: 8,
       },
     },
     {
       label: '16ths',
+      value: 16,
       subdivisionByLength: {
         3: 16,
       },
     },
     {
       label: 'Trip16',
+      value: 17,
       subdivisionByLength: {
         3: 17,
       },
@@ -54,6 +62,7 @@ export const barSubdivisionOptions = {
   x: [
     {
       label: '8ths',
+      value: 8,
       subdivisionByLength: {
         2: 8,
         3: 8,
@@ -61,6 +70,7 @@ export const barSubdivisionOptions = {
     },
     {
       label: 'Trip8',
+      value: 9,
       subdivisionByLength: {
         2: 9,
         3: 8,
@@ -68,6 +78,7 @@ export const barSubdivisionOptions = {
     },
     {
       label: '16ths',
+      value: 16,
       subdivisionByLength: {
         2: 16,
         3: 16,
@@ -75,32 +86,12 @@ export const barSubdivisionOptions = {
     },
     {
       label: 'Trip16',
+      value: 17,
       subdivisionByLength: {
         2: 17,
         3: 16,
       },
     },
-  ],
-};
-
-export const songSubdivisionOptions = {
-  s: [
-    { label: '4ths', value: 4 },
-    { label: '8ths', value: 8 },
-    { label: 'Trip8', value: 9 },
-    { label: '16ths', value: 16 },
-    { label: 'Trip16', value: 17 },
-  ],
-  c: [
-    { label: '8ths', value: 8 },
-    { label: '16ths', value: 16 },
-    { label: 'Trip16', value: 17 },
-  ],
-  x: [
-    { label: '8ths', value: 8 },
-    { label: 'Trip8', value: 9 },
-    { label: '16ths', value: 16 },
-    { label: 'Trip16', value: 17 },
   ],
 };
 
