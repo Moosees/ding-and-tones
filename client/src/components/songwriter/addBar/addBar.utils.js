@@ -2,17 +2,16 @@ import { v4 as uuid } from 'uuid';
 import {
   subdivisionOptions,
   createBarTemplate,
-  getSubdivisionOptionsForSong,
   metreList,
 } from '../../../assets/metre';
 
 export const songToBarSubdivision = (songMetre, songSubdivision) => {
   const { beatLengths } = metreList[songMetre];
   const metreGroup = songMetre.slice(0, 1);
-  const optionIndex = getSubdivisionOptionsForSong(songMetre).findIndex(
+
+  const { subdivisionByLength } = subdivisionOptions[metreGroup].find(
     ({ value }) => value === songSubdivision
   );
-  const { subdivisionByLength } = subdivisionOptions[metreGroup][optionIndex];
 
   return beatLengths.map((length) => subdivisionByLength[length]);
 };
