@@ -13,10 +13,8 @@
 
 #### Needed changes triplets
 
-* Subdivision in song db model is an array with subdivision for each beat
-* Update song fetching for new system - started
-* Update song saving for new system
-* Add fallback for songs loaded with subdivision as an integer - set to array with length of metre templates array?
+* Update song fetching for new system - started - update song state to use subdivisions instead of subdivision
+* Update song saving for new system - subdivisions instead of subdivision
 
 * Fix wonky logic for moving beats when changing subdivision
 * Add beatGroups to metre subdivision and make sure line breaks where it's supposed to

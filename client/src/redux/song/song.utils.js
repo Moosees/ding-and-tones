@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
-import { getMetreTemplates } from '../../assets/metre';
+import { getMetreTemplates, metreList } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
@@ -81,29 +81,20 @@ const parseArrayToObject = (array) => {
   }, {});
 };
 
-// const parseMeasureForLoadSong = (measure, metre, subdivision) => {
-//   const { template } = metreList[metre];
-//   let measureIndex = 0;
+// converts subdivision number bars to [number]
+const parseBarsForLoadSong = (bars) => {
+  const parsedBars = bars.map((bar) => {
+    if (bar.subdivisions.length) {
+      return bar;
+    }
 
-//   return template.map((templateValue, i) => {
-//     return {
-//       count: metreList[metre].count[i],
-//       value: template[i],
-//       beatId: templateValue <= subdivision ? measure[measureIndex++] : null,
-//     };
-//   });
-// };
+    const { measure, metre, subdivision, _id } = bar;
+    const subdivisions = metreList[metre].beatLengths.map(() => subdivision);
 
-// const parseBarsForLoadSong = (bars) => {
-//   const parsedBars = bars.map((bar) => {
-//     const { measure, metre, subdivision } = bar;
-//     return {
-//       ...bar,
-//       measure: parseMeasureForLoadSong(measure, metre, subdivision),
-//     };
-//   });
-//   return parseArrayToObject(parsedBars);
-// };
+    return { measure, metre, _id, subdivisions };
+  });
+  return parseArrayToObject(parsedBars);
+};
 
 const parseBeatsForLoadSong = (beats) => {
   const parsedBeats = beats.map((beat) => {
@@ -129,7 +120,7 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
   } = song;
 
   console.log({ bars });
-  // const parsedBars = parseBarsForLoadSong(bars);
+  const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
   const parsedScale = getScale && scale ? parseScaleData(scale, true) : {};
   const savedScale =
@@ -143,8 +134,7 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
 
   const parsedSongData = {
     arrangement,
-    // bars: parsedBars,
-    bars: parseArrayToObject(bars),
+    bars: parsedBars,
     beats: parsedBeats,
     getScale: (scale && getScale) || false,
     info,

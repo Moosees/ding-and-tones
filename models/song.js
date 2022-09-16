@@ -10,6 +10,7 @@ const songSchema = new mongoose.Schema({
       metre: String,
       repeats: { type: Number, default: 1 },
       subdivision: Number,
+      subdivisions: [Number],
     },
   ],
   beats: [
