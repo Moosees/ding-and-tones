@@ -20,12 +20,12 @@ const barsReducer = (state = barsState, { type, payload }) => {
     case songTypes.SET_STATE:
       return payload.bars || state;
 
-    case songTypes.UPDATE_BAR_SUBDIVISION:
+    case songTypes.UPDATE_BAR_SUBDIVISIONS:
       return {
         ...state,
         [payload.barId]: {
           ...state[payload.barId],
-          subdivision: payload.newSubdivision,
+          subdivisions: payload.newSubdivisions,
         },
       };
 

@@ -12,8 +12,8 @@ const AddBar = ({ addNewBar, isSongPlaying, songInfo }) => {
   const { metre, subdivision } = songInfo;
   const { nameShort } = metreList[metre];
 
-  const handleNewBar = (metre, subdivision) => {
-    addNewBar(createNewBar(metre, subdivision));
+  const handleNewBar = (metre, subdivisions) => {
+    addNewBar(createNewBar(metre, subdivisions));
   };
 
   return (

@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Update song fetching for new system - started - update song state to use subdivisions instead of subdivision
 * Update song saving for new system - subdivisions instead of subdivision
 
 * Fix wonky logic for moving beats when changing subdivision
@@ -40,6 +39,7 @@
 * Custom subdivision for new x/x?
 * move createNewBar and songToBarSubdivision to metre assets?
 * Set metreBase to string if number is not needed (or have both?)
+* Delete song info initial state (or change to integer subdivision)?
 
 ### Home page update
 

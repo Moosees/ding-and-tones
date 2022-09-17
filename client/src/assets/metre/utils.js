@@ -1,4 +1,4 @@
-import { subdivisionOptions, subdivisions } from './subdivisions';
+import { subdivisionOptions, beatSubdivisionTemplates } from './subdivisions';
 import { metreList } from './metre';
 
 export const getMetreOptions = () => {
@@ -57,13 +57,13 @@ const getSubdivisionOptionsForBar = (metre) => {
 const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
   const baseKey = `base${metreList[metre].metreBase}`;
   const lengthKey = `length${metreList[metre].beatLengths[beatIndex]}`;
-  const currentSubdivisions = subdivisions[baseKey][lengthKey];
+  const currentTemplates = beatSubdivisionTemplates[baseKey][lengthKey];
 
-  return Object.keys(currentSubdivisions)
+  return Object.keys(currentTemplates)
     .reduce(
       (acc, key) => [
         ...acc,
-        { value: parseInt(key), label: currentSubdivisions[key].label },
+        { value: parseInt(key), label: currentTemplates[key].label },
       ],
       []
     )
@@ -96,7 +96,7 @@ export const getMetreTemplates = (metre) => {
 
   return beatLengths.map((length) => {
     const lengthKey = `length${length}`;
-    return subdivisions[baseKey][lengthKey];
+    return beatSubdivisionTemplates[baseKey][lengthKey];
   });
 };
 
@@ -127,12 +127,12 @@ const parseBeatTemplates = (beatTemplate, beatIndex, lastGroup) => {
   return { currentGroup, parsedBeats };
 };
 
-export const createBarTemplate = (metre, subdivision) => {
+export const createBarTemplate = (metre, subdivisions) => {
   const metreTemplates = getMetreTemplates(metre);
-  console.log('createBarTemplate', { metre, subdivision, metreTemplates });
+  console.log('createBarTemplate', { metre, subdivisions, metreTemplates });
   let lastGroup = 0;
 
-  const template = subdivision.reduce((acc, beatSubdivision, i) => {
+  const template = subdivisions.reduce((acc, beatSubdivision, i) => {
     const beatTemplates = metreTemplates[i][beatSubdivision];
     const { currentGroup, parsedBeats } = parseBeatTemplates(
       beatTemplates,
@@ -149,18 +149,18 @@ export const createBarTemplate = (metre, subdivision) => {
   return template;
 };
 
-export const getSubdivisionLength = (subdivision, metre) => {
+export const getSubdivisionsLength = (subdivisions, metre) => {
   const metreTemplates = getMetreTemplates(metre);
   let length = 0;
 
-  for (const [i, beat] of subdivision.entries()) {
+  for (const [i, beat] of subdivisions.entries()) {
     length += metreTemplates[i][beat].values.length;
   }
 
   return length;
 };
 
-export const compareSubdivisionLength = (a, b, metre) => {
+export const compareSubdivisionsLength = (a, b, metre) => {
   console.log({ a, b, metre });
-  return getSubdivisionLength(b, metre) - getSubdivisionLength(a, metre);
+  return getSubdivisionsLength(b, metre) - getSubdivisionsLength(a, metre);
 };

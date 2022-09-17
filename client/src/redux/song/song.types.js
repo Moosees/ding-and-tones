@@ -14,7 +14,7 @@ const songTypes = {
   SAVE_SUCCESSFUL: 'song/saveSuccessful',
   SET_STATE: 'song/setState',
   TOGGLE_PRIVATE_SONG: 'song/togglePrivate',
-  UPDATE_BAR_SUBDIVISION: 'song/updateBarSubdivision',
+  UPDATE_BAR_SUBDIVISIONS: 'song/updateBarSubdivisions',
   UPDATE_BEAT: 'song/updateBeat',
   UPDATE_HAND: 'song/updateHand',
   UPDATE_MEASURE_AND_BEATS: 'song/measureAndBeats',

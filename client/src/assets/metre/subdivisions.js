@@ -95,7 +95,7 @@ export const subdivisionOptions = {
   ],
 };
 
-export const subdivisions = {
+export const beatSubdivisionTemplates = {
   base4: {
     length1: {
       4: {

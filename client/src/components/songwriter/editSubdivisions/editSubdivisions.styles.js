@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const EditSubdivisionContainer = styled.div`
+export const EditSubdivisionsContainer = styled.div`
   border: ${({ theme }) => theme.borderLight};
   border-radius: 4px;
   justify-content: space-around;

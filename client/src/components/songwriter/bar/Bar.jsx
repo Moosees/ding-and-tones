@@ -5,24 +5,24 @@ import { createBarTemplate } from '../../../assets/metre';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
-import EditSubdivision from '../editSubdivision/EditSubdivision';
+import EditSubdivisions from '../editSubdivisions/EditSubdivisions';
 import { BarContainer, Beats } from './bar.styles';
 
 const Bar = ({ barId, index, moveBar }) => {
-  const [editSubdivisionOpen, setEditSubdivisionOpen] = useState(false);
-  const { measure, metre, subdivision, isPlaying, isMuted } = useSelector(
+  const [editSubdivisionsOpen, setEditSubdivisionsOpen] = useState(false);
+  const { measure, metre, subdivisions, isPlaying, isMuted } = useSelector(
     ({ song, ui }) => ({
       measure: song.bars[barId].measure,
       metre: song.bars[barId].metre,
-      subdivision: song.bars[barId].subdivision,
+      subdivisions: song.bars[barId].subdivisions,
       isPlaying: ui.currentBar === barId,
       isMuted: ui.mutedBars[barId],
     })
   );
 
   const barTemplate = useMemo(
-    () => createBarTemplate(metre, subdivision),
-    [metre, subdivision]
+    () => createBarTemplate(metre, subdivisions),
+    [metre, subdivisions]
   );
   console.log({ measure });
 
@@ -36,16 +36,16 @@ const Bar = ({ barId, index, moveBar }) => {
             isMuted={isMuted}
             beatId={beatId}
             template={barTemplate[i]}
-            editSubdivisionOpen={editSubdivisionOpen}
+            editSubdivisionsOpen={editSubdivisionsOpen}
           />
         ))}
       </Beats>
-      {editSubdivisionOpen && (
-        <EditSubdivision barId={barId} subdivision={subdivision} />
+      {editSubdivisionsOpen && (
+        <EditSubdivisions barId={barId} />
       )}
       <BarControls
         barId={barId}
-        toggleEditSubdivision={() => setEditSubdivisionOpen((val) => !val)}
+        toggleEditSubdivisions={() => setEditSubdivisionsOpen((val) => !val)}
       />
     </BarContainer>
   );

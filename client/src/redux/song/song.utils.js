@@ -13,9 +13,9 @@ export const moveBar = (arrangement, barIndex, targetIndex) => {
 
 const parseBarsForSaving = (arrangement, bars, beats) => {
   return arrangement.map((bar) => {
-    const { measure, subdivision } = bars[bar];
+    const { measure, subdivisions } = bars[bar];
     const filteredMeasure = measure.reduce((acc, { beatId }) => {
-      if (beatId && beats[beatId].value <= subdivision) acc.push(beatId);
+      if (beatId && beats[beatId].value <= subdivisions) acc.push(beatId);
       return acc;
     }, []);
 
@@ -29,10 +29,10 @@ const parseBarsForSaving = (arrangement, bars, beats) => {
 
 const parseBeatsForSaving = (arrangement, bars, beats) => {
   return arrangement.reduce((parsedBeats, bar) => {
-    const { measure, subdivision } = bars[bar];
+    const { measure, subdivisions } = bars[bar];
 
     measure.forEach(({ beatId }) => {
-      if (beatId && beats[beatId].value <= subdivision) {
+      if (beatId && beats[beatId].value <= subdivisions) {
         const { sound, value, mode, hand } = beats[beatId];
         parsedBeats.push({
           sound: sound.join('+'),
@@ -81,10 +81,10 @@ const parseArrayToObject = (array) => {
   }, {});
 };
 
-// converts subdivision number bars to [number]
+// converts subdivision for bars from number to [number]
 const parseBarsForLoadSong = (bars) => {
   const parsedBars = bars.map((bar) => {
-    if (bar.subdivisions.length) {
+    if (bar.subdivisions?.length) {
       return bar;
     }
 
@@ -252,17 +252,17 @@ export const calculateMeasureAndBeatChanges = (
   return { newMeasureData, beatsToDelete };
 };
 
-export const updateMeasureAndBeats = (bar, newSubdivision) => {
-  const { metre, measure, subdivision } = bar;
+export const updateMeasureAndBeats = (bar, newSubdivisions) => {
+  const { metre, measure, subdivisions } = bar;
   const metreTemplates = getMetreTemplates(metre);
 
   const fullMeasureData = [];
   const fullBeatsToDelete = [];
   let measureIndex = 0;
 
-  for (let i = 0; i < subdivision.length; ++i) {
-    const template = metreTemplates[i][subdivision[i]].values;
-    const newTemplate = metreTemplates[i][newSubdivision[i]].values;
+  for (let i = 0; i < subdivisions.length; ++i) {
+    const template = metreTemplates[i][subdivisions[i]].values;
+    const newTemplate = metreTemplates[i][newSubdivisions[i]].values;
     const subMeasure = measure.slice(
       measureIndex,
       measureIndex + template.length
@@ -283,8 +283,8 @@ export const updateMeasureAndBeats = (bar, newSubdivision) => {
   console.log('updateMeasureAndBeats', {
     fullMeasureData,
     fullBeatsToDelete,
-    subdivision,
-    newSubdivision,
+    subdivisions,
+    newSubdivisions,
   });
   const payload = {
     addBeats: {},

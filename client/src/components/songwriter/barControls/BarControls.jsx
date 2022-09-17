@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import {
   deleteBar,
   duplicateBar,
-  updateBarSubdivision,
+  updateBarSubdivisions,
 } from '../../../redux/song/song.actions';
 import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnIcon from '../../shared/button/Icon';
@@ -12,12 +12,12 @@ import Subdivision from '../../shared/metreControls/Subdivision';
 import { ControlsContainer } from './barControls.styles';
 
 const copyBar = (barId, bars, beats) => {
-  const { measure, subdivision, metre, repeats } = bars[barId];
+  const { measure, subdivisions, metre, repeats } = bars[barId];
   const newBarId = uuid();
   const newBeats = {};
   const newBar = { metre, repeats };
 
-  newBar.subdivision = [...subdivision];
+  newBar.subdivisions = [...subdivisions];
   newBar.measure = measure.map((beatId) => {
     const newBeatId = uuid();
     newBeats[newBeatId] = {
@@ -39,11 +39,11 @@ const BarControls = ({
   duplicateBar,
   isSongPlaying,
   mutedBars,
-  toggleEditSubdivision,
+  toggleEditSubdivisions,
   toggleMuteBar,
-  updateBarSubdivision,
+  updateBarSubdivisions,
 }) => {
-  const { metre, subdivision } = bars[barId];
+  const { metre, subdivisions } = bars[barId];
   const isMuted = mutedBars[barId];
 
   return (
@@ -70,17 +70,17 @@ const BarControls = ({
         onClick={() => toggleMuteBar(barId, true)}
       />
       <BtnIcon
-        title="Edit subdivision"
+        title="Edit subdivisions"
         icon="tune"
-        onClick={toggleEditSubdivision}
+        onClick={toggleEditSubdivisions}
       />
       <Subdivision
         small
         type="bar"
         metre={metre}
-        subdivision={subdivision.join('-')}
+        subdivision={subdivisions.join('-')}
         setSubdivision={(newSubdivision) =>
-          updateBarSubdivision(barId, newSubdivision.split('-'))
+          updateBarSubdivisions(barId, newSubdivision.split('-'))
         }
       />
     </ControlsContainer>
@@ -98,5 +98,5 @@ export default connect(mapStateToProps, {
   deleteBar,
   duplicateBar,
   toggleMuteBar,
-  updateBarSubdivision,
+  updateBarSubdivisions,
 })(BarControls);

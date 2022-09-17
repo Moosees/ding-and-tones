@@ -52,7 +52,7 @@ const tripletStatusMixins = {
     `,
 };
 
-const editSubdivisionMixin = `
+const editSubdivisionsMixin = `
   &:not(:first-child) {
     border-left: 1px solid black;
     margin-left: 5px; 
@@ -81,8 +81,8 @@ export const BeatContainer = styled.div`
     margin-left: 0;
   `}
 
-  ${({ editSubdivisionOpen, beatStart }) =>
-    editSubdivisionOpen && beatStart && editSubdivisionMixin}
+  ${({ editSubdivisionsOpen, beatStart }) =>
+    editSubdivisionsOpen && beatStart && editSubdivisionsMixin}
 `;
 
 export const BeatCircle = styled.div`

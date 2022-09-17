@@ -16,8 +16,8 @@ export const songToBarSubdivision = (songMetre, songSubdivision) => {
   return beatLengths.map((length) => subdivisionByLength[length]);
 };
 
-export const createNewBar = (metre, subdivision) => {
-  const barTemplate = createBarTemplate(metre, subdivision);
+export const createNewBar = (metre, subdivisions) => {
+  const barTemplate = createBarTemplate(metre, subdivisions);
   const barId = uuid();
   const measure = [];
   const beats = {};
@@ -34,7 +34,7 @@ export const createNewBar = (metre, subdivision) => {
 
   const bar = {
     metre,
-    subdivision,
+    subdivisions,
     repeats: 1,
     measure,
   };

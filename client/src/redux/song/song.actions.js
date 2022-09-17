@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { defaultScale, defaultSong } from '../../assets/defaultData';
-import { compareSubdivisionLength } from '../../assets/metre';
+import { compareSubdivisionsLength } from '../../assets/metre';
 import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
@@ -187,15 +187,15 @@ export const togglePrivateSong = () => ({
   type: songTypes.TOGGLE_PRIVATE_SONG,
 });
 
-export const updateBarSubdivision =
-  (barId, newSubdivision) => (dispatch, getState) => {
+export const updateBarSubdivisions =
+  (barId, newSubdivisions) => (dispatch, getState) => {
     const { song } = getState();
 
-    const { metre, subdivision } = song.bars[barId];
+    const { metre, subdivisions } = song.bars[barId];
 
-    const lengthDifference = compareSubdivisionLength(
-      subdivision,
-      newSubdivision,
+    const lengthDifference = compareSubdivisionsLength(
+      subdivisions,
+      newSubdivisions,
       metre
     );
 
@@ -204,14 +204,14 @@ export const updateBarSubdivision =
         type: songTypes.UPDATE_MEASURE_AND_BEATS,
         payload: {
           barId,
-          ...updateMeasureAndBeats(song.bars[barId], newSubdivision),
+          ...updateMeasureAndBeats(song.bars[barId], newSubdivisions),
         },
       });
     }
 
     dispatch({
-      type: songTypes.UPDATE_BAR_SUBDIVISION,
-      payload: { barId, newSubdivision },
+      type: songTypes.UPDATE_BAR_SUBDIVISIONS,
+      payload: { barId, newSubdivisions },
     });
   };
 

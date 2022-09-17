@@ -16,7 +16,7 @@ const Beat = ({
   beats,
   countOpen,
   currentBeat,
-  editSubdivisionOpen,
+  editSubdivisionsOpen,
   handsOpen,
   isMuted,
   isSongPlaying,
@@ -53,7 +53,7 @@ const Beat = ({
   return (
     <BeatContainer
       ref={dropdownPosRef}
-      editSubdivisionOpen={editSubdivisionOpen}
+      editSubdivisionsOpen={editSubdivisionsOpen}
       beatStart={beatStart}
     >
       {countOpen && <BeatTextHandCount>{count}</BeatTextHandCount>}
