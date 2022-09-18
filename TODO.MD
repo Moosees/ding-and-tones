@@ -13,8 +13,6 @@
 
 #### Needed changes triplets
 
-* Update song saving for new system - subdivisions instead of subdivision
-
 * Fix wonky logic for moving beats when changing subdivision
 * Add beatGroups to metre subdivision and make sure line breaks where it's supposed to
 * Style EditSubdivision - done? - split up component? grid?

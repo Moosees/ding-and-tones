@@ -12,40 +12,28 @@ export const moveBar = (arrangement, barIndex, targetIndex) => {
 };
 
 const parseBarsForSaving = (arrangement, bars, beats) => {
-  return arrangement.map((bar) => {
-    const { measure, subdivisions } = bars[bar];
-    const filteredMeasure = measure.reduce((acc, { beatId }) => {
-      if (beatId && beats[beatId].value <= subdivisions) acc.push(beatId);
-      return acc;
-    }, []);
-
-    return {
-      ...bars[bar],
-      measure: filteredMeasure,
-      _id: bar,
-    };
-  });
+  return arrangement.map((bar) => ({
+    ...bars[bar],
+    _id: bar,
+  }));
 };
 
 const parseBeatsForSaving = (arrangement, bars, beats) => {
-  return arrangement.reduce((parsedBeats, bar) => {
-    const { measure, subdivisions } = bars[bar];
-
-    measure.forEach(({ beatId }) => {
-      if (beatId && beats[beatId].value <= subdivisions) {
-        const { sound, value, mode, hand } = beats[beatId];
-        parsedBeats.push({
-          sound: sound.join('+'),
-          value,
-          hand,
-          mode,
-          _id: beatId,
-        });
-      }
-    });
-
-    return parsedBeats;
+  const allBeatIds = arrangement.reduce((acc, barId) => {
+    return [...acc, ...bars[barId].measure];
   }, []);
+
+  return allBeatIds.map((beatId) => {
+    const { sound, value, mode, hand } = beats[beatId];
+    
+    return {
+      sound: sound.join('+'),
+      value,
+      hand,
+      mode,
+      _id: beatId,
+    };
+  });
 };
 
 export const parseSongForSaving = (song, saveAs, title, scaleId) => {
