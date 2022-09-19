@@ -46,6 +46,11 @@ const BarControls = ({
   const { metre, subdivisions } = bars[barId];
   const isMuted = mutedBars[barId];
 
+  const handleSetSubdivision = (subdivisionString) => {
+    const subdivisions = subdivisionString.split('-').map((s) => parseInt(s));
+    updateBarSubdivisions(barId, subdivisions);
+  };
+
   return (
     <ControlsContainer>
       <BtnIcon
@@ -79,9 +84,7 @@ const BarControls = ({
         type="bar"
         metre={metre}
         subdivision={subdivisions.join('-')}
-        setSubdivision={(newSubdivision) =>
-          updateBarSubdivisions(barId, newSubdivision.split('-'))
-        }
+        setSubdivision={handleSetSubdivision}
       />
     </ControlsContainer>
   );
