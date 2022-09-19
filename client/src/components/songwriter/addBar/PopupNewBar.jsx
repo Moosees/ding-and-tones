@@ -12,7 +12,11 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
     songToBarSubdivision(songMetre, songSubdivision).join('-')
   );
 
-  console.log({ metre, subdivision });
+  const handleSetMetre = (newMetre) => {
+    setMetre(newMetre);
+    setSubdivision(songToBarSubdivision(newMetre, 8).join('-'));
+  };
+
   const handleConfirm = () => {
     handleNewBar(metre, subdivision.split('-'));
     onClose();
@@ -20,11 +24,7 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
 
   return (
     <Popup header="New bar" onClose={onClose}>
-      <Metre
-        metre={metre}
-        setMetre={setMetre}
-        setSubdivision={setSubdivision}
-      />
+      <Metre metre={metre} setMetre={handleSetMetre} />
       <Subdivision
         type="bar"
         metre={metre}

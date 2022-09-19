@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Subdivision doesn't set to correct default option when changing metre for new bar x/x
 * Add beatGroups to metre subdivision and make sure line breaks where it's supposed to
 * Style EditSubdivision - done? - split up component? grid? Open state for icon?
 * Stop howls status updates from rerendering Bars?
