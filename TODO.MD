@@ -13,11 +13,10 @@
 
 #### Needed changes triplets
 
-* Fix wonky logic for moving beats when changing subdivision
+* Subdivision doesn't set to correct default option when changing metre for new bar x/x
 * Add beatGroups to metre subdivision and make sure line breaks where it's supposed to
-* Style EditSubdivision - done? - split up component? grid?
+* Style EditSubdivision - done? - split up component? grid? Open state for icon?
 * Stop howls status updates from rerendering Bars?
-* Update metre template for songwriter when changing subdivision - done?
 * Add back missing bars from default song data, update to song with triplets?
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
@@ -143,6 +142,7 @@
 * Deleting scale (and song?) blocks ability to save scale
 * Icons show as text before icon is loaded
 * It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
+* Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 
 ### Design
 

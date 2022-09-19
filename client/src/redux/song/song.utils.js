@@ -25,7 +25,7 @@ const parseBeatsForSaving = (arrangement, bars, beats) => {
 
   return allBeatIds.map((beatId) => {
     const { sound, value, mode, hand } = beats[beatId];
-    
+
     return {
       sound: sound.join('+'),
       value,
@@ -154,90 +154,74 @@ export const removeSoundFromBeat = (newSound, soundArray) => {
   return soundArray.filter((sound) => sound !== newSound);
 };
 
-const getTemplateValuesCount = (templateValues) => {
-  const count = {};
-  for (const value of templateValues) {
-    count[value] !== undefined ? ++count[value] : (count[value] = 1);
+const createBeatPool = (measure, template) => {
+  const pool = {};
+
+  for (const [i, value] of template.entries()) {
+    if (!pool[value]) {
+      pool[value] = [];
+    }
+    pool[value].push({ beatId: measure[i], value });
   }
-  return count;
+
+  return pool;
 };
 
-const getBeatsToDelete = (measureMatches, measure, measureIndex) => {
-  return measure.reduce((acc, beatId, i) => {
-    if (!measureMatches[i].match) {
-      acc.push({ beatId, index: i + measureIndex });
-    }
+const calculateMeasureAndBeatChanges = (measure, template, newTemplate) => {
+  const beatPool = createBeatPool(measure, template);
 
-    return acc;
-  }, []);
+  const newMeasureFromPool = newTemplate.map((value) => {
+    if (beatPool[value]?.length) {
+      return beatPool[value].shift();
+    }
+    return { beatId: null, value };
+  });
+
+  const remainingBeatsFromPool = Object.values(beatPool).flat();
+
+  const newMeasureData = newMeasureFromPool.map((beat) => {
+    if (!beat.beatId && remainingBeatsFromPool.length) {
+      return {
+        ...remainingBeatsFromPool.shift(),
+        value: beat.value,
+        update: true,
+      };
+    }
+    return beat;
+  });
+  console.log({ newMeasureFromPool, remainingBeatsFromPool, newMeasureData });
+
+  return { newMeasureData, beatsToDelete: remainingBeatsFromPool };
 };
 
-export const calculateMeasureAndBeatChanges = (
-  measure,
-  measureIndex,
-  template,
-  newTemplate
-) => {
-  const templateValuesCount = getTemplateValuesCount(template);
-  const measureMatches = template.map((value) => ({ value, match: false }));
-  const newMeasureData = [];
-  let matches = 0;
+const createUpdateMeasureAndBeatsPayload = (measureData, deleteData) => {
+  const payload = {
+    addBeats: {},
+    deleteBeats: null,
+    updateBeats: [],
+    measure: null,
+  };
 
-  for (let i = 0; i < newTemplate.length; ++i) {
-    measureIndex === 0 &&
-      console.log({
-        measure,
-        template,
-        newTemplate,
-        isMatch: !!templateValuesCount[newTemplate[i]],
-        measureMatches: [...measureMatches],
-        matches,
-        newMeasureData: { ...newMeasureData },
-      });
-    const beat = {
-      value: newTemplate[i],
-      foundMatch: false,
-    };
-
-    if (templateValuesCount[newTemplate[i]]) {
-      ++matches;
-      --templateValuesCount[newTemplate[i]];
-
-      const oldIndex = measureMatches.findIndex(({ match }) => !match);
-
-      measureMatches[oldIndex].match = true;
-      beat.foundMatch = true;
-      beat.oldIndex = oldIndex + measureIndex;
-      beat.beatId = measure[oldIndex];
-      beat.oldValue = template[oldIndex];
+  payload.measure = measureData.map((beat) => {
+    if (beat.update) {
+      payload.updateBeats.push({ beatId: beat.beatId, value: beat.value });
     }
 
-    newMeasureData.push(beat);
-  }
+    const beatId = beat.beatId || uuid();
+    if (!beat.beatId) {
+      payload.addBeats[beatId] = {
+        sound: ['-'],
+        value: beat.value,
+        mode: 'c',
+      };
+    }
 
-  let unusedBeats = template.length - matches;
-  let newBeatsNeeded = newTemplate.length - matches;
+    return beatId;
+  });
 
-  while (unusedBeats && newBeatsNeeded) {
-    const oldIndex = measureMatches.findIndex(({ match }) => !match);
-    const newIndex = newMeasureData.findIndex((beat) => !beat.foundMatch);
-    // console.log({ oldIndex, newIndex, unusedBeats, newBeatsNeeded });
+  payload.deleteBeats = deleteData.map(({ beatId }) => beatId);
 
-    measureMatches[oldIndex].match = true;
-    newMeasureData[newIndex].foundMatch = true;
-    newMeasureData[newIndex].oldIndex = oldIndex + measureIndex;
-    newMeasureData[newIndex].beatId = measure[oldIndex];
-    newMeasureData[newIndex].oldValue = template[oldIndex];
-
-    --unusedBeats;
-    --newBeatsNeeded;
-  }
-
-  const beatsToDelete = !unusedBeats
-    ? []
-    : getBeatsToDelete(measureMatches, measure, measureIndex);
-
-  return { newMeasureData, beatsToDelete };
+  return payload;
 };
 
 export const updateMeasureAndBeats = (bar, newSubdivisions) => {
@@ -258,7 +242,6 @@ export const updateMeasureAndBeats = (bar, newSubdivisions) => {
 
     const { newMeasureData, beatsToDelete } = calculateMeasureAndBeatChanges(
       subMeasure,
-      measureIndex,
       template,
       newTemplate
     );
@@ -274,30 +257,5 @@ export const updateMeasureAndBeats = (bar, newSubdivisions) => {
     subdivisions,
     newSubdivisions,
   });
-  const payload = {
-    addBeats: {},
-    deleteBeats: null,
-    updateBeats: [],
-    measure: null,
-  };
-
-  payload.measure = fullMeasureData.map((beat) => {
-    const beatId = beat.beatId || uuid();
-    if (beat.beatId) {
-      payload.updateBeats.push({ beatId, value: beat.value });
-
-      return beatId;
-    }
-    payload.addBeats[beatId] = {
-      sound: ['-'],
-      value: beat.value,
-      mode: 'c',
-    };
-
-    return beatId;
-  });
-
-  payload.deleteBeats = fullBeatsToDelete.map(({ beatId }) => beatId);
-
-  return payload;
+  return createUpdateMeasureAndBeatsPayload(fullMeasureData, fullBeatsToDelete);
 };
