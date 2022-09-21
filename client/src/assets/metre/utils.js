@@ -114,8 +114,6 @@ const parseBeatTemplates = (beatTemplate, beatIndex, lastGroup) => {
       beatLength: beatLength[subIndex],
       tripletStatus: triplets[subIndex],
       group: currentGroup,
-      // groupStart: groupStart.includes(subIndex),
-      // groupEnd: groupEnd.includes(subIndex),
       beatStart: subIndex === 0,
     };
 
