@@ -13,7 +13,6 @@
 
 #### Needed changes triplets
 
-* Add beatGroups to metre subdivision and make sure line breaks where it's supposed to
 * Style EditSubdivision - done? - split up component? grid? Open state for icon?
 * Stop howls status updates from rerendering Bars?
 * Make sure hands is working for new bar, change subdivision etc.
@@ -21,7 +20,9 @@
 
 * Fix page breaks when printing long songs
 * Fix composer name when you are the composer when printing
+* Fix line break after new metre symbols in song and print view
 * Edit name on save song as popup?
+* Line breaks or scroll for big bars in songwriter
 
 * Clean up code
 

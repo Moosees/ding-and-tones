@@ -128,7 +128,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'e', '&', 'a'],
         beatLength: [3, 3, 3, 3],
         triplets: [0, 0, 0, 0],
-        groupEnd: [3],
+        groupEnd: [1, 3],
       },
       17: {
         label: 'Trip16',
@@ -136,7 +136,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'trip', 'let', '&', 'trip', 'let'],
         beatLength: [2, 2, 2, 2, 2, 2],
         triplets: [1, 2, 3, 1, 2, 3],
-        groupEnd: [5],
+        groupEnd: [2, 5],
       },
       18: {
         label: '4-333',
@@ -144,7 +144,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', '&', 'trip', 'let'],
         beatLength: [6, 2, 2, 2],
         triplets: [0, 1, 2, 3],
-        groupEnd: [3],
+        groupEnd: [0, 3],
       },
       19: {
         label: '88-333',
@@ -152,7 +152,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'e', '&', 'trip', 'let'],
         beatLength: [3, 3, 2, 2, 2],
         triplets: [0, 0, 1, 2, 3],
-        groupEnd: [4],
+        groupEnd: [1, 4],
       },
       20: {
         label: '333-4',
@@ -160,7 +160,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'trip', 'let', '&'],
         beatLength: [2, 2, 2, 6],
         triplets: [1, 2, 3, 0],
-        groupEnd: [3],
+        groupEnd: [2, 3],
       },
       21: {
         label: '333-88',
@@ -168,7 +168,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'trip', 'let', '&', 'a'],
         beatLength: [2, 2, 2, 3, 3],
         triplets: [1, 2, 3, 0, 0],
-        groupEnd: [4],
+        groupEnd: [2, 4],
       },
     },
   },
@@ -196,7 +196,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'ta', 'la', 'ta'],
         beatLength: [3, 3, 3, 3],
         triplets: [0, 0, 0, 0],
-        groupEnd: [3],
+        groupEnd: [1, 3],
       },
       17: {
         label: 'Trip16',
@@ -204,7 +204,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'trip', 'let', 'la', 'trip', 'let'],
         beatLength: [2, 2, 2, 2, 2, 2],
         triplets: [1, 2, 3, 1, 2, 3],
-        groupEnd: [5],
+        groupEnd: [2, 5],
       },
       19: {
         label: '88-333',
@@ -212,7 +212,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'ta', 'la', 'trip', 'let'],
         beatLength: [3, 3, 2, 2, 2],
         triplets: [0, 0, 1, 2, 3],
-        groupEnd: [4],
+        groupEnd: [1, 4],
       },
       21: {
         label: '333-88',
@@ -220,7 +220,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'trip', 'let', 'la', 'ta'],
         beatLength: [2, 2, 2, 3, 3],
         triplets: [1, 2, 3, 0, 0],
-        groupEnd: [4],
+        groupEnd: [2, 4],
       },
     },
     length3: {
@@ -254,7 +254,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'ta', 'la', 'ta', 'le', 'ta'],
         beatLength: [3, 3, 3, 3, 3, 3],
         triplets: [0, 0, 0, 0, 0, 0],
-        groupEnd: [5],
+        groupEnd: [1, 3, 5],
       },
       17: {
         label: 'Trip16',
@@ -262,7 +262,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'trip', 'let', 'la', 'trip', 'let', 'le', 'trip', 'let'],
         beatLength: [2, 2, 2, 2, 2, 2, 2, 2, 2],
         triplets: [1, 2, 3, 1, 2, 3, 1, 2, 3],
-        groupEnd: [8],
+        groupEnd: [2, 5, 8],
       },
       18: {
         label: '333-16-16',
@@ -270,7 +270,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'trip', 'let', 'la', 'ta', 'le', 'ta'],
         beatLength: [2, 2, 2, 3, 3, 3, 3],
         triplets: [1, 2, 3, 0, 0, 0, 0],
-        groupEnd: [6],
+        groupEnd: [2, 4, 6],
       },
       19: {
         label: '16-333-16',
@@ -278,7 +278,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'ta', 'la', 'trip', 'let', 'le', 'ta'],
         beatLength: [3, 3, 2, 2, 2, 3, 3],
         triplets: [0, 0, 1, 2, 3, 0, 0],
-        groupEnd: [6],
+        groupEnd: [1, 4, 6],
       },
       20: {
         label: '16-16-333',
@@ -286,7 +286,7 @@ export const beatSubdivisionTemplates = {
         count: ['X', 'ta', 'la', 'ta', 'le', 'trip', 'let'],
         beatLength: [3, 3, 3, 3, 2, 2, 2],
         triplets: [0, 0, 0, 0, 1, 2, 3],
-        groupEnd: [6],
+        groupEnd: [1, 3, 6],
       },
     },
   },
