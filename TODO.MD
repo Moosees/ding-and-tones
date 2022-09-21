@@ -16,9 +16,13 @@
 * Add beatGroups to metre subdivision and make sure line breaks where it's supposed to
 * Style EditSubdivision - done? - split up component? grid? Open state for icon?
 * Stop howls status updates from rerendering Bars?
-* Add back missing bars from default song data, update to song with triplets?
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
+
+* Fix page breaks when printing long songs
+* Fix composer name when you are the composer when printing
+* Edit name on save song as popup?
+
 * Clean up code
 
 #### Optional changes triplets
@@ -36,6 +40,7 @@
 * move createNewBar and songToBarSubdivision to metre assets?
 * Set metreBase to string if number is not needed (or have both?)
 * Delete song info initial state (or change to integer subdivision)?
+* New default song (and scale)?
 
 ### Home page update
 

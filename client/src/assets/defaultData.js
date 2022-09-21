@@ -21,8 +21,7 @@ export const defaultSong = {
   isOwner: false,
   songId: null,
   composer: null,
-  arrangement: ['bar_a'],
-  // arrangement: ['bar_a', 'bar_b', 'bar_c'],
+  arrangement: ['bar_a', 'bar_b', 'bar_c'],
   isPrivate: false,
   scale: null,
   info: {
