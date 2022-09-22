@@ -57,6 +57,12 @@ export default createGlobalStyle`
     @media screen and (orientation: portrait) and (max-width: 1000px) {
       --padding: 0;
     }
+
+    @media print {
+      & :footer, & :header {
+        display: none;
+      }
+    }
   }
 
   body {
@@ -74,18 +80,9 @@ export default createGlobalStyle`
     `}
   }
 
-  @media print {
-    @page {
-      margin: 0;
+  @page {
+    @media print {
       size: A4;
-
-      & :footer, & :header {
-        display: none;
-      }
-    }
-
-    body {
-      margin: 10mm 12mm;
     }
   }
 `;

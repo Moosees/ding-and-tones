@@ -18,11 +18,15 @@
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
 
-* Fix page breaks when printing long songs
+* Fix page breaks when printing long songs - done? margins?
 * Fix composer name when you are the composer when printing
 * Fix line break after new metre symbols in song and print view
 * Edit name on save song as popup?
 * Line breaks or scroll for big bars in songwriter
+* Page numbers?
+* Bar numbers on song viewer? Only long songs?
+* Line up bars and beats and everything else
+* Divider lines and margins
 
 * Clean up code
 
@@ -111,7 +115,6 @@
 * Refactor scale.utils (redux)
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
-* Bar numbers on song viewer? Only long songs?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 
 ### Major updates

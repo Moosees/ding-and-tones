@@ -5,7 +5,6 @@ import {
   BeatCircle,
   BeatCircleWrapper,
   BeatContainer,
-  BeatGroup,
   BeatText,
   BeatTextSpacer,
 } from './beats.styles';
@@ -21,35 +20,43 @@ const Beats = ({ group }) => {
   );
 
   return (
-    <BeatGroup>
-      {group.map(({ beatStart, count, value, tripletStatus, beatId }) => {
-        const { sound, hand } = beats[beatId];
-        const isBeatPlaying = beatId === currentBeat;
+    <>
+      {group.map(
+        ({ barStart, beatStart, count, value, tripletStatus, beatId }) => {
+          const { sound, hand } = beats[beatId];
+          const isBeatPlaying = beatId === currentBeat;
 
-        return (
-          <BeatContainer key={beatId} beatStart={beatStart}>
-            {countOpen && <BeatText>{count}</BeatText>}
-            <BeatCircleWrapper>
-              <BeatCircle
-                isBeatPlaying={isBeatPlaying}
-                value={value}
-                tripletStatus={tripletStatus}
-              >
-                {sound.map((note, i) => (
-                  <Fragment key={i}>
-                    <BeatText length={sound.length}>
-                      {note !== '-' && note}
-                    </BeatText>
-                    {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
-                  </Fragment>
-                ))}
-              </BeatCircle>
-            </BeatCircleWrapper>
-            {handsOpen && <BeatText>{handShortByValue[hand] || ' '}</BeatText>}
-          </BeatContainer>
-        );
-      })}
-    </BeatGroup>
+          return (
+            <BeatContainer
+              key={beatId}
+              barStart={barStart}
+              beatStart={beatStart}
+            >
+              {countOpen && <BeatText>{count}</BeatText>}
+              <BeatCircleWrapper>
+                <BeatCircle
+                  isBeatPlaying={isBeatPlaying}
+                  value={value}
+                  tripletStatus={tripletStatus}
+                >
+                  {sound.map((note, i) => (
+                    <Fragment key={i}>
+                      <BeatText length={sound.length}>
+                        {note !== '-' && note}
+                      </BeatText>
+                      {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
+                    </Fragment>
+                  ))}
+                </BeatCircle>
+              </BeatCircleWrapper>
+              {handsOpen && (
+                <BeatText>{handShortByValue[hand] || ' '}</BeatText>
+              )}
+            </BeatContainer>
+          );
+        }
+      )}
+    </>
   );
 };
 

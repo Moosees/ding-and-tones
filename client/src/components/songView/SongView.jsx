@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getTempoText } from '../../assets/tempo';
 import SongViewControls from '../songControls/SongViewControls';
 import Bar from './bar/Bar';
-import { BarDivider } from './bar/bar.styles';
 import {
   Bars,
   Composer,
@@ -41,10 +40,7 @@ class SongView extends Component {
             <SongViewControls />
           </Header>
         )}
-        <Bars>
-          <BarDivider />
-          {bars}
-        </Bars>
+        <Bars>{bars}</Bars>
       </SongLayout>
     );
   }

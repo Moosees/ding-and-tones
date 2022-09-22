@@ -52,9 +52,14 @@ const tripletStatusMixins = {
     `,
 };
 
-export const BeatGroup = styled.div`
-  display: flex;
-  white-space: nowrap;
+export const dividerMixin = `
+  border-right: 1px solid #000;
+  content: "";
+  height: 100%;
+  left: -2px;
+  margin: 10px 0;
+  position: absolute;
+  width: 1px;
 `;
 
 export const BeatCircleWrapper = styled.div`
@@ -94,8 +99,12 @@ export const BeatContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   margin: 18px 0;
-  margin-left: ${({ beatStart }) => (beatStart ? '3px' : '1px')};
+  margin-left: ${({ beatStart }) => (beatStart ? '2px' : '1px')};
   position: relative;
+
+  &::before {
+    ${({ barStart }) => (barStart ? dividerMixin : '')}
+  }
 `;
 
 export const BeatText = styled.span`

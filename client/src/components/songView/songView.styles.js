@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const SongLayout = styled.div`
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
+  /* align-items: stretch; */
+  /* display: flex; */
+  /* flex-direction: column; */
   font-size: 14px;
-  max-width: 100%;
+  /* max-width: 100%; */
 
   ${({ theme }) => theme.mqW850`
     margin-left: 2px;
@@ -14,7 +14,8 @@ export const SongLayout = styled.div`
   @media print {
     background-color: #fff;
     color: #000;
-    display: block;
+    /* display: block; */
+    margin: 10mm 12mm;
   }
 `;
 
@@ -57,16 +58,18 @@ export const Tempo = styled.h4`
 `;
 
 export const Bars = styled.ul`
-  align-items: center;
+  list-style: none;
+  /* align-items: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-start; */
   /* width: 100%; */
 `;
 
 export const Footer = styled.footer`
   bottom: 2mm;
   font-size: 10px;
+  /* page-break-after: always; */
   position: fixed;
   right: 2mm;
 `;
