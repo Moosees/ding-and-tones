@@ -13,7 +13,6 @@
 * Stop howls status updates from rerendering Bars?
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
-* Fix composer name when you are the composer when printing
 * Clean up code
 
 #### Optional changes triplets
@@ -40,6 +39,7 @@
 
 ### Song patchwork update
 
+* User selectable bar and beat layouts (some optimized for single hit beats etc)
 * Sheet music style subdivisions (all based on note length instead of beat start)?
 * Page numbers? Add header with page number and title for every page, better spacing?
 * Bar numbers on song viewer? Only long songs?
@@ -48,6 +48,7 @@
 * Custom subdivision for new x/x?
 * Add bass octave
 * Quintuplets?
+* Full screen songwriter?
 
 ### Scale and chord sound update
 
@@ -108,6 +109,7 @@
 ### Minor updates
 
 * for of instead of forEach
+* Callbacks for setState
 * Refactor scale.utils (redux)?
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
@@ -148,6 +150,7 @@
 * Icons show as text before icon is loaded
 * It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
 * Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
+* Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
 
 ### Design
 
@@ -302,5 +305,3 @@
 * Set howl pool to match size of scale?
 * DRY up rc-slider
 * Four note chords
-* User selectable bar and beat layouts (some optimized for single hit beats etc)
-* Full screen songwriter?

@@ -41,9 +41,9 @@ const PopupAccount = ({
         <Checkbox
           reverse
           small
-          label="Hide name in searches?"
-          checked={anon}
-          onChange={() => setAnon(!anon)}
+          label="Show name as composer?"
+          checked={!anon}
+          onChange={() => setAnon((val) => !val)}
         />
       </InfoBox>
       <Popup.Flex>
