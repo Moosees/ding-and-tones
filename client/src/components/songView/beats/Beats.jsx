@@ -42,7 +42,7 @@ const Beats = ({ group }) => {
                   {sound.map((note, i) => (
                     <Fragment key={i}>
                       <BeatText length={sound.length}>
-                        {note !== '-' && note}
+                        {note !== '-' ? note : ' '}
                       </BeatText>
                       {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}
                     </Fragment>

@@ -17,16 +17,7 @@
 * Stop howls status updates from rerendering Bars?
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
-
-* Fix page breaks when printing long songs - done? margins?
 * Fix composer name when you are the composer when printing
-* Fix line break after new metre symbols in song and print view
-* Edit name on save song as popup?
-* Line breaks or scroll for big bars in songwriter
-* Page numbers?
-* Bar numbers on song viewer? Only long songs?
-* Line up bars and beats and everything else
-* Divider lines and margins
 
 * Clean up code
 
@@ -46,6 +37,10 @@
 * Set metreBase to string if number is not needed (or have both?)
 * Delete song info initial state (or change to integer subdivision)?
 * New default song (and scale)?
+* Edit name on save song as popup?
+* Page numbers? Add header with page number and title for every page, better spacing?
+* Bar numbers on song viewer? Only long songs?
+* Line breaks or scroll for big bars in songwriter
 
 ### Home page update
 
@@ -306,3 +301,4 @@
 * DRY up rc-slider
 * Four note chords
 * User selectable bar and beat layouts (some optimized for single hit beats etc)
+* Full screen songwriter?

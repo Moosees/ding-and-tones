@@ -79,10 +79,4 @@ export default createGlobalStyle`
       font-size: 12px;
     `}
   }
-
-  @page {
-    @media print {
-      size: A4;
-    }
-  }
 `;

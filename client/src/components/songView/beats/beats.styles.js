@@ -52,12 +52,11 @@ const tripletStatusMixins = {
     `,
 };
 
-export const dividerMixin = `
+const dividerMixin = `
   border-right: 1px solid #000;
   content: "";
   height: 100%;
-  left: -2px;
-  margin: 10px 0;
+  left: -4px;
   position: absolute;
   width: 1px;
 `;
@@ -98,8 +97,9 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin: 18px 0;
-  margin-left: ${({ beatStart }) => (beatStart ? '2px' : '1px')};
+  margin: 16px 0;
+  margin-left: ${({ barStart, beatStart }) =>
+    barStart ? '7px' : beatStart ? '2px' : '1px'};
   position: relative;
 
   &::before {
