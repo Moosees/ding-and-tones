@@ -7,24 +7,18 @@
 #### Goals
 
 * Triplets
-* Quintuplets?
-* Add bass octave?
-* Sheet music style subdivisions (all based on note length instead of beat start)?
 
 #### Needed changes triplets
 
-* Style EditSubdivision - done? - split up component? grid? Open state for icon?
 * Stop howls status updates from rerendering Bars?
 * Make sure hands is working for new bar, change subdivision etc.
 * Check isSongPlaying before changing audioSrc (or stop song)
 * Fix composer name when you are the composer when printing
-
 * Clean up code
 
 #### Optional changes triplets
 
 * Rename metreList/subdivisions values as they are mostly for ui styles?
-* calcMeasureAndBeatChanges doesn't need all match logic?
 * Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match?
 * Memoization and useSelect for song and print view Bar?
@@ -32,21 +26,28 @@
 * More metres (and add to select list if not dynamic)?
 * Change metre subdivisions labels?
 * New song understands new system - done? - should new song come with bars? - don't reset bpm?
-* Custom subdivision for new x/x?
 * move createNewBar and songToBarSubdivision to metre assets?
 * Set metreBase to string if number is not needed (or have both?)
 * Delete song info initial state (or change to integer subdivision)?
 * New default song (and scale)?
 * Edit name on save song as popup?
-* Page numbers? Add header with page number and title for every page, better spacing?
-* Bar numbers on song viewer? Only long songs?
-* Line breaks or scroll for big bars in songwriter
 
 ### Home page update
 
 * Add home page with recent changes, user info etc.
 * Active state for nav buttons might not need the full pathname
 * Faulty routes navigate to safe routes, find/:id navigates to song/:id
+
+### Song patchwork update
+
+* Sheet music style subdivisions (all based on note length instead of beat start)?
+* Page numbers? Add header with page number and title for every page, better spacing?
+* Bar numbers on song viewer? Only long songs?
+* Line breaks or scroll for big bars in songwriter
+* Style EditSubdivision - done? - split up component? grid? Open state for icon?
+* Custom subdivision for new x/x?
+* Add bass octave
+* Quintuplets?
 
 ### Scale and chord sound update
 
@@ -107,7 +108,7 @@
 ### Minor updates
 
 * for of instead of forEach
-* Refactor scale.utils (redux)
+* Refactor scale.utils (redux)?
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
@@ -128,6 +129,7 @@
 * Redux with redux toolkit
 * Update to redis 4 when connect-redis is supported
 * New react 18 features?
+* Stop using CRA?
 
 ## Not yet planned for release updates
 
