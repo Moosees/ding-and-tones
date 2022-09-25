@@ -4,31 +4,16 @@
 
 ### Songwriter update
 
-#### Goals
-
-* Triplets
-
-#### Needed changes triplets
-
-* Stop howls status updates from rerendering Bars?
-* Make sure hands is working for new bar, change subdivision etc.
-* Clean up code
-
-#### Optional changes triplets
-
-* Rename metreList/subdivisions values as they are mostly for ui styles?
-* Any changes to beat db and state? {sound, value, hand, mode: 'c'} - no need for beats to have Value?
-* Should updateMeasureAndBeats run even if new and old subdivision lengths match?
-* Memoization and useSelect for song and print view Bar?
-* Memoize Subdivision subdivisionOptions?
-* More metres (and add to select list if not dynamic)?
-* Change metre subdivisions labels?
-* New song understands new system - done? - should new song come with bars? - don't reset bpm?
-* move createNewBar and songToBarSubdivision to metre assets?
+* Delete bar should delete related beats
+* Beats in state and db does not need value key?
 * Set metreBase to string if number is not needed (or have both?)
 * Delete song info initial state (or change to integer subdivision)?
 * New default song (and scale)?
-* Edit name on save song as popup?
+
+* Stop howls status updates from rerendering Bars?
+* Memoization and useSelect for song and print view Bar?
+* Memoize Subdivision subdivisionOptions?
+* Clean up code
 
 ### Home page update
 
@@ -38,8 +23,10 @@
 
 ### Song patchwork update
 
+* move createNewBar and songToBarSubdivision to metre assets?
 * User selectable bar and beat layouts (some optimized for single hit beats etc)
 * Sheet music style subdivisions (all based on note length instead of beat start)?
+* Rename metreList/subdivisions values as they are mostly for ui styles?
 * Page numbers? Add header with page number and title for every page, better spacing?
 * Bar numbers on song viewer? Only long songs?
 * Line breaks or scroll for big bars in songwriter
@@ -48,6 +35,10 @@
 * Add bass octave
 * Quintuplets?
 * Full screen songwriter?
+* New bar/song default sounds/hands?
+* Edit name on save song as popup?
+* Should updateMeasureAndBeats run even if new and old subdivision lengths match? Only run update on a beat to beat basis?
+* More metres (and add to select list if not dynamic)?
 
 ### Scale and chord sound update
 
