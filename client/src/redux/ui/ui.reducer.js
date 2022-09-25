@@ -1,3 +1,4 @@
+import howlsTypes from '../howls/howls.types';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import { filterState } from '../store.utils';
@@ -87,6 +88,9 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case uiTypes.SET_MUTED_BARS:
       return { ...state, mutedBars: payload };
+
+    case howlsTypes.SELECT_AUDIO:
+      return { ...state, isSongPlaying: false };
 
     case scaleTypes.LOAD_SCALE:
       return { ...state, isEditingExtraPos: false };

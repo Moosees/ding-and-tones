@@ -12,7 +12,6 @@
 
 * Stop howls status updates from rerendering Bars?
 * Make sure hands is working for new bar, change subdivision etc.
-* Check isSongPlaying before changing audioSrc (or stop song)
 * Clean up code
 
 #### Optional changes triplets
