@@ -5,8 +5,6 @@
 ### Songwriter update
 
 * Beats in state and db does not need value key?
-* Set metreBase to string if number is not needed (or have both?)
-* Delete song info initial state (or change to integer subdivision)?
 * New default song (and scale)?
 
 * Stop howls status updates from rerendering Bars?
