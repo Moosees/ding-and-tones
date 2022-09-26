@@ -22,13 +22,12 @@ export const createNewBar = (metre, subdivisions) => {
   const measure = [];
   const beats = {};
 
-  for (const { beatStart, value } of barTemplate) {
+  for (const { beatStart } of barTemplate) {
     const beatId = uuid();
     measure.push(beatId);
     beats[beatId] = {
       sound: beatStart ? ['0'] : ['-'],
       mode: 'c',
-      value,
     };
   }
 

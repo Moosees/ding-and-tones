@@ -4,9 +4,7 @@
 
 ### Songwriter update
 
-* Beats in state and db does not need value key?
 * New default song (and scale)?
-
 * Stop howls status updates from rerendering Bars?
 * Memoization and useSelect for song and print view Bar?
 * Memoize Subdivision subdivisionOptions?

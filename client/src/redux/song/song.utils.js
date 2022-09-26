@@ -24,11 +24,10 @@ const parseBeatsForSaving = (arrangement, bars, beats) => {
   }, []);
 
   return allBeatIds.map((beatId) => {
-    const { sound, value, mode, hand } = beats[beatId];
+    const { sound, mode, hand } = beats[beatId];
 
     return {
       sound: sound.join('+'),
-      value,
       hand,
       mode,
       _id: beatId,
@@ -86,9 +85,9 @@ const parseBarsForLoadSong = (bars) => {
 
 const parseBeatsForLoadSong = (beats) => {
   const parsedBeats = beats.map((beat) => {
-    const { sound, value, mode, hand, _id } = beat;
+    const { sound, mode, hand, _id } = beat;
 
-    return { sound: sound.split('+'), value, mode, hand, _id };
+    return { sound: sound.split('+'), mode, hand, _id };
   });
 
   return parseArrayToObject(parsedBeats);
@@ -161,7 +160,7 @@ const createBeatPool = (measure, template) => {
     if (!pool[value]) {
       pool[value] = [];
     }
-    pool[value].push({ beatId: measure[i], value });
+    pool[value].push(measure[i]);
   }
 
   return pool;
@@ -171,23 +170,15 @@ const calculateMeasureAndBeatChanges = (measure, template, newTemplate) => {
   const beatPool = createBeatPool(measure, template);
 
   const newMeasureFromPool = newTemplate.map((value) => {
-    if (beatPool[value]?.length) {
-      return beatPool[value].shift();
-    }
-    return { beatId: null, value };
+    return beatPool[value]?.length ? beatPool[value].shift() : null;
   });
 
   const remainingBeatsFromPool = Object.values(beatPool).flat();
 
-  const newMeasureData = newMeasureFromPool.map((beat) => {
-    if (!beat.beatId && remainingBeatsFromPool.length) {
-      return {
-        ...remainingBeatsFromPool.shift(),
-        value: beat.value,
-        update: true,
-      };
-    }
-    return beat;
+  const newMeasureData = newMeasureFromPool.map((beatId) => {
+    return !beatId && remainingBeatsFromPool.length
+      ? remainingBeatsFromPool.shift()
+      : beatId;
   });
   console.log({ newMeasureFromPool, remainingBeatsFromPool, newMeasureData });
 
@@ -197,29 +188,22 @@ const calculateMeasureAndBeatChanges = (measure, template, newTemplate) => {
 const createUpdateMeasureAndBeatsPayload = (measureData, deleteData) => {
   const payload = {
     addBeats: {},
-    deleteBeats: null,
-    updateBeats: [],
+    deleteBeats: deleteData,
     measure: null,
   };
 
-  payload.measure = measureData.map((beat) => {
-    if (beat.update) {
-      payload.updateBeats.push({ beatId: beat.beatId, value: beat.value });
+  payload.measure = measureData.map((beatId) => {
+    if (beatId) {
+      return beatId;
     }
 
-    const beatId = beat.beatId || uuid();
-    if (!beat.beatId) {
-      payload.addBeats[beatId] = {
-        sound: ['-'],
-        value: beat.value,
-        mode: 'c',
-      };
-    }
-
-    return beatId;
+    const newBeatId = uuid();
+    payload.addBeats[newBeatId] = {
+      sound: ['-'],
+      mode: 'c',
+    };
+    return newBeatId;
   });
-
-  payload.deleteBeats = deleteData.map(({ beatId }) => beatId);
 
   return payload;
 };

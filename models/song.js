@@ -17,7 +17,6 @@ const songSchema = new mongoose.Schema({
     {
       _id: String,
       sound: String,
-      value: Number,
       mode: String,
       hand: Number,
     },
