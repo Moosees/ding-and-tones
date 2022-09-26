@@ -4,7 +4,6 @@
 
 ### Songwriter update
 
-* Delete bar should delete related beats
 * Beats in state and db does not need value key?
 * Set metreBase to string if number is not needed (or have both?)
 * Delete song info initial state (or change to integer subdivision)?

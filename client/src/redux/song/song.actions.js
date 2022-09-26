@@ -20,9 +20,7 @@ export const deleteBar = (barId) => (dispatch, getState) => {
     song: { bars },
   } = getState();
 
-  const beatsToDelete = bars[barId].measure
-    .map((beat) => beat.beatId)
-    .filter((beat) => beat);
+  const beatsToDelete = [...bars[barId].measure];
 
   dispatch({
     type: songTypes.DELETE_BAR,
