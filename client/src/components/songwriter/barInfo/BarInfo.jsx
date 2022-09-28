@@ -8,10 +8,10 @@ import { BarInfoContainer, DragGradient } from './barInfo.styles';
 const BarInfo = ({
   arrangement,
   barId,
+  barIndex,
   bars,
   beats,
   moveBarInArrangement,
-  index,
   isSongPlaying,
 }) => {
   const { metre } = bars[barId];
@@ -20,17 +20,17 @@ const BarInfo = ({
     <BarInfoContainer>
       <BtnIcon
         icon="navigate_before"
-        disabled={index === 0}
-        onClick={() => moveBarInArrangement(index, index - 1)}
+        disabled={barIndex === 0}
+        onClick={() => moveBarInArrangement(barIndex, barIndex - 1)}
       />
       <DragGradient>
-        Metre: {metreList[metre].nameShort} - Bar: {index + 1}/
+        Metre: {metreList[metre].nameShort} - Bar: {barIndex + 1}/
         {arrangement.length}
       </DragGradient>
       <BtnIcon
         icon="navigate_next"
-        disabled={index === arrangement.length - 1}
-        onClick={() => moveBarInArrangement(index, index + 1)}
+        disabled={barIndex === arrangement.length - 1}
+        onClick={() => moveBarInArrangement(barIndex, barIndex + 1)}
       />
     </BarInfoContainer>
   );

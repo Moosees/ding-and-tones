@@ -8,7 +8,7 @@ import Beat from '../beat/Beat';
 import EditSubdivisions from '../editSubdivisions/EditSubdivisions';
 import { BarContainer, Beats } from './bar.styles';
 
-const Bar = ({ barId, index, moveBar }) => {
+const Bar = ({ barId, barIndex }) => {
   const [editSubdivisionsOpen, setEditSubdivisionsOpen] = useState(false);
   const { measure, metre, subdivisions, isPlaying, isMuted } = useSelector(
     ({ song, ui }) => ({
@@ -24,11 +24,11 @@ const Bar = ({ barId, index, moveBar }) => {
     () => createBarTemplate(metre, subdivisions),
     [metre, subdivisions]
   );
-  console.log({ measure });
+  console.log('BAR', barId);
 
   return (
     <BarContainer>
-      <BarInfo barId={barId} index={index} />
+      <BarInfo barId={barId} barIndex={barIndex} />
       <Beats isMuted={isMuted} isPlaying={isPlaying}>
         {measure.map((beatId, i) => (
           <Beat
@@ -40,9 +40,7 @@ const Bar = ({ barId, index, moveBar }) => {
           />
         ))}
       </Beats>
-      {editSubdivisionsOpen && (
-        <EditSubdivisions barId={barId} />
-      )}
+      {editSubdivisionsOpen && <EditSubdivisions barId={barId} />}
       <BarControls
         barId={barId}
         toggleEditSubdivisions={() => setEditSubdivisionsOpen((val) => !val)}
