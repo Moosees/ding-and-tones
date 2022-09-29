@@ -5,7 +5,6 @@
 ### Songwriter update
 
 * New default song (and scale)?
-* Stop howls status updates from rerendering Bars?
 * Memoization and useSelect for song and print view Bar?
 * Memoize Subdivision subdivisionOptions?
 * Clean up code
@@ -18,6 +17,8 @@
 
 ### Song patchwork update
 
+* Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
+* Next and prev beat buttons, auto next beat toggle
 * move createNewBar and songToBarSubdivision to metre assets?
 * User selectable bar and beat layouts (some optimized for single hit beats etc)
 * Sheet music style subdivisions (all based on note length instead of beat start)?
@@ -34,6 +35,8 @@
 * Edit name on save song as popup?
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match? Only run update on a beat to beat basis?
 * More metres (and add to select list if not dynamic)?
+* Disable play button if no bars or all bars are muted
+* Remember muted bars when navigating?
 
 ### Scale and chord sound update
 

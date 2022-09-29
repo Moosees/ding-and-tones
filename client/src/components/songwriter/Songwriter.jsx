@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import AddBar from './addBar/AddBar';
 import Bar from './bar/Bar';
 import DropdownHandler from './dropdownHandler/DropdownHandler';
 import { Bars } from './songwriter.styles';
 
-const Songwriter = ({ arrangement, borderRef }) => {
+const Songwriter = ({ borderRef }) => {
   const listRef = useRef(null);
-  console.log('SONGWRITER')
+  const arrangement = useSelector(({ song }) => song.arrangement);
+  console.log('SONGWRITER');
 
   return (
     <Bars ref={listRef}>
@@ -21,8 +22,4 @@ const Songwriter = ({ arrangement, borderRef }) => {
   );
 };
 
-const mapStateToProps = ({ drum, scale, song }) => ({
-  arrangement: song.arrangement,
-});
-
-export default connect(mapStateToProps)(Songwriter);
+export default Songwriter;
