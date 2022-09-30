@@ -2,10 +2,6 @@
 
 ## Sorted by release
 
-### Songwriter update
-
-* New default song (and scale)?
-
 ### Home page update
 
 * Add home page with recent changes, user info etc.
