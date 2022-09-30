@@ -25,7 +25,7 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   const handleConfirm = () => {
     if (isTitleValid) {
       const info = {
-        bpm: 100,
+        bpm: 80,
         difficulty,
         metre,
         subdivision,

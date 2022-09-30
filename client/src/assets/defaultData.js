@@ -25,7 +25,7 @@ export const defaultSong = {
   isPrivate: false,
   scale: null,
   info: {
-    bpm: 100,
+    bpm: 80,
     difficulty: 1,
     metre: 's44',
     subdivision: 8,
