@@ -106,7 +106,6 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
     songId,
   } = song;
 
-  console.log({ bars });
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
   const parsedScale = getScale && scale ? parseScaleData(scale, true) : {};
@@ -132,7 +131,6 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
   if (!suppressAlert) {
     parsedSongData.alert = `"${song.info.title}" by ${song.composer} loaded`;
   }
-  console.log({ parsedSongData });
 
   return parsedSongData;
 };
@@ -180,7 +178,6 @@ const calculateMeasureAndBeatChanges = (measure, template, newTemplate) => {
       ? remainingBeatsFromPool.shift()
       : beatId;
   });
-  console.log({ newMeasureFromPool, remainingBeatsFromPool, newMeasureData });
 
   return { newMeasureData, beatsToDelete: remainingBeatsFromPool };
 };
@@ -235,11 +232,5 @@ export const updateMeasureAndBeats = (bar, newSubdivisions) => {
     measureIndex = measureIndex + template.length;
   }
 
-  console.log('updateMeasureAndBeats', {
-    fullMeasureData,
-    fullBeatsToDelete,
-    subdivisions,
-    newSubdivisions,
-  });
   return createUpdateMeasureAndBeatsPayload(fullMeasureData, fullBeatsToDelete);
 };

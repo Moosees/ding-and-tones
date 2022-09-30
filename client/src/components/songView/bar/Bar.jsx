@@ -21,7 +21,6 @@ const Bar = ({ barId, bars, prevBar }) => {
     acc[beatData.group] = [...acc[beatData.group], beatData];
     return acc;
   }, []);
-  console.log('BAR', { measure, barTemplate, beatsGrouped });
 
   return beatsGrouped.map((group, i) => {
     const newMetre = i === 0 && (!prevBarMetre || prevBarMetre !== metre);

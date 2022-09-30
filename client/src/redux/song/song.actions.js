@@ -67,7 +67,6 @@ export const getSongById =
       .get(`/song/id/${songId}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log({ fetchedSong: res.data });
           const fetchedSong = parseFetchedSong(res.data, getScale);
 
           if (firstLoad && !fetchedSong.getScale)

@@ -5,8 +5,6 @@
 ### Songwriter update
 
 * New default song (and scale)?
-* Memoization and useSelect for song and print view Bar?
-* Clean up code
 
 ### Home page update
 
@@ -36,6 +34,7 @@
 * More metres (and add to select list if not dynamic)?
 * Disable play button if no bars or all bars are muted
 * Remember muted bars when navigating?
+* Replace connect with useSelector and useDispatch
 
 ### Scale and chord sound update
 

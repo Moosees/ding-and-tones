@@ -127,7 +127,6 @@ const parseBeatTemplates = (beatTemplate, beatIndex, lastGroup) => {
 
 export const createBarTemplate = (metre, subdivisions) => {
   const metreTemplates = getMetreTemplates(metre);
-  console.log('createBarTemplate', { metre, subdivisions, metreTemplates });
   let lastGroup = 0;
 
   const template = subdivisions.reduce((acc, beatSubdivision, i) => {
@@ -143,7 +142,6 @@ export const createBarTemplate = (metre, subdivisions) => {
     return [...acc, ...parsedBeats];
   }, []);
 
-  console.log({ template });
   return template;
 };
 
@@ -159,6 +157,5 @@ export const getSubdivisionsLength = (subdivisions, metre) => {
 };
 
 export const compareSubdivisionsLength = (a, b, metre) => {
-  console.log({ a, b, metre });
   return getSubdivisionsLength(b, metre) - getSubdivisionsLength(a, metre);
 };

@@ -5,7 +5,6 @@ import Select from '../select/Select';
 const metreOptions = getMetreOptions();
 
 const Metre = ({ metre, setMetre, setSubdivision }) => {
-  console.log({ metreOptions });
   const handleTimeChange = (newMetre) => {
     setMetre(newMetre);
 

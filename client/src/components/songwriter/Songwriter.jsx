@@ -8,7 +8,6 @@ import { Bars } from './songwriter.styles';
 const Songwriter = ({ borderRef }) => {
   const listRef = useRef(null);
   const arrangement = useSelector(({ song }) => song.arrangement);
-  console.log('SONGWRITER');
 
   return (
     <Bars ref={listRef}>

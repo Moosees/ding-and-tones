@@ -40,7 +40,6 @@ export const buildPatternFromBar = (barId, howls) => {
 
   const { measure, metre, subdivisions } = bars[barId];
   const barTemplate = createBarTemplate(metre, subdivisions);
-  console.log({ barTemplate });
 
   const beatDurationBaseline = 60000 / bpm / 12;
 
