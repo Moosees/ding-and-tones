@@ -6,7 +6,6 @@
 
 * New default song (and scale)?
 * Memoization and useSelect for song and print view Bar?
-* Memoize Subdivision subdivisionOptions?
 * Clean up code
 
 ### Home page update

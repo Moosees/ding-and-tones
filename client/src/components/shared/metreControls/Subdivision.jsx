@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMemo } from 'react';
 import { getSubdivisionOptions } from '../../../assets/metre';
 import Select from '../select/Select';
 import SelectSmall from '../select/SelectSmall';
@@ -11,8 +12,10 @@ const Subdivision = ({
   subdivision,
   type,
 }) => {
-  const subdivisionOptions = getSubdivisionOptions(type, metre, beatIndex);
-  console.log({ subdivisionOptions });
+  const subdivisionOptions = useMemo(
+    () => getSubdivisionOptions(type, metre, beatIndex),
+    [type, metre, beatIndex]
+  );
 
   const SelectComponent = small ? SelectSmall : Select;
 
