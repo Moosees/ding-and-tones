@@ -9,7 +9,7 @@ import {
   handleGooglePostMsg,
 } from './user.utils';
 
-export const checkSession = () => (dispatch, getState) => {
+export const checkSession = (urlId) => (dispatch, getState) => {
   dispatch({ type: userTypes.SESSION_STARTED });
 
   const {
@@ -18,7 +18,7 @@ export const checkSession = () => (dispatch, getState) => {
     },
   } = getState();
 
-  axios.post('/session', { songId }).then((res) => {
+  axios.post('/session', { songId: urlId || songId || null }).then((res) => {
     if (res.status === 200 && res.data.user) {
       const { sound, name, anonymous, isOwner } = res.data.user;
 

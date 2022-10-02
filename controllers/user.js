@@ -26,7 +26,8 @@ exports.checkSession = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json();
+    res.status(200).json({ user: null });
+    // res.status(500).json({ user: null });
   }
 };
 
