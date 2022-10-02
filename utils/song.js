@@ -18,10 +18,13 @@ const parseScaleForSongFetch = (
 exports.parseGetResponse = (songObject, userId) => {
   const { _id, arrangement, bars, beats, composer, info, isPrivate, scale } =
     songObject;
+  const anonymousComposer = !composer || composer.anonymous || !composer.name;
+
   return {
-    isOwner: userId && composer ? userId.equals(composer._id) : false,
+    isOwner:
+      userId && composer && composer._id ? userId.equals(composer._id) : false,
     songId: _id,
-    composer: composer && !composer.anonymous ? composer.name : 'Anonymous',
+    composer: anonymousComposer ? 'Anonymous' : composer.name,
     arrangement,
     bars,
     beats,
