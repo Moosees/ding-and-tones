@@ -2,6 +2,17 @@
 
 ## Sorted by release
 
+### Beat dropdown move
+
+* Next and prev beat buttons
+* Auto next beat toggle
+* Beat dropdown knows next and previous beat - memo a list a of all beats?
+* Keyboard listeners - don't move on non note inputs
+* Handle chords - debounce inputs?
+* Show dropdown over song controls - portal? z?
+* Better dropdown handler?
+* Better arrows?
+
 ### Home page update
 
 * Add home page with recent changes, user info etc.
@@ -10,8 +21,8 @@
 
 ### Song patchwork update
 
+* SongById try catch?
 * Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
-* Next and prev beat buttons, auto next beat toggle
 * move createNewBar and songToBarSubdivision to metre assets?
 * User selectable bar and beat layouts (some optimized for single hit beats etc)
 * Sheet music style subdivisions (all based on note length instead of beat start)?
@@ -218,7 +229,6 @@
 ### Songwriter
 
 * Use Tooltip component for beat dropdown?
-* Make dropdown higher z than controls, remove need for padding, portal
 * Show latest changes (useful when copying and moving bars)
 * Undo changes
 * Looping/repeats, named bars? Sequencer?
