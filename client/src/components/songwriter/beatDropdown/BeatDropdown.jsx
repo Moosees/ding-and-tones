@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { helpTopics } from '../../../assets/help';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import useCloseOutside from '../../../hooks/useCloseOutside';
@@ -8,10 +7,6 @@ import {
   updateHandForBeat,
   updateSoundForBeat,
 } from '../../../redux/song/song.actions';
-import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
-import Buttons from '../../shared/button/Buttons';
-import Help from '../../shared/button/Help';
-import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { DropdownContext } from '../dropdownHandler/DropdownHandler';
 import HandItems from '../dropdownItems/HandItems';
@@ -23,13 +18,13 @@ import {
   DropdownContent,
 } from './beatDropdown.styles';
 import { createKeyboardCbs, createSoundLists } from './beatDropdown.utils.js';
+import BeatDropdownControls from './BeatDropdownControls';
 
 const BeatDropdown = ({
   beatId,
   btnRef,
   dropdownPosRef,
   isOpenCb,
-  multiSelect,
   nonScaleNotes,
   scale,
   sharpNotes,
@@ -76,15 +71,7 @@ const BeatDropdown = ({
     <>
       <Arrow openTop={openTop} />
       <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
-        <Buttons position="space-around">
-          <Checkbox
-            small
-            checked={multiSelect}
-            label="Chord"
-            onChange={toggleMultiSelect}
-          />
-          <Help topic={helpTopics.BEATS} />
-        </Buttons>
+        <BeatDropdownControls />
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
@@ -117,14 +104,12 @@ const BeatDropdown = ({
   );
 };
 
-const mapStateToProps = ({ scale, ui }) => ({
-  multiSelect: ui.multiSelect,
+const mapStateToProps = ({ scale }) => ({
   sharpNotes: scale.info.sharpNotes,
   scale: scale.parsed.pitched,
 });
 
 export default connect(mapStateToProps, {
-  toggleMultiSelect,
   updateHandForBeat,
   updateSoundForBeat,
 })(BeatDropdown);
