@@ -6,7 +6,7 @@ import Buttons from '../../shared/button/Buttons';
 import Help from '../../shared/button/Help';
 import Checkbox from '../../shared/checkbox/Checkbox';
 
-const BeatDropdownControls = () => {
+const DropdownControls = () => {
   const dispatch = useDispatch();
   const { multiSelect } = useSelector(({ ui }) => ({
     multiSelect: ui.multiSelect,
@@ -25,4 +25,4 @@ const BeatDropdownControls = () => {
   );
 };
 
-export default BeatDropdownControls;
+export default DropdownControls;

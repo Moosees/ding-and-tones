@@ -1,5 +1,5 @@
-import { hands } from '../../../assets/constants';
-import { beatOptionToKeyCode } from '../../../assets/keyCodes';
+import { hands } from '../../assets/constants';
+import { beatOptionToKeyCode } from '../../assets/keyCodes';
 
 export const createKeyboardCbs = (beatId, soundCb, handCb, scale) => {
   const percussionCbs = {

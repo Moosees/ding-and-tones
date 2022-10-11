@@ -5,7 +5,7 @@ import { updateSoundForBeat } from '../../../redux/song/song.actions';
 import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 import { DropdownItem } from './dropdownItems.styles';
 
-const SoundItems = ({
+const DropdownSoundItems = ({
   beatId,
   beats,
   hasNonScaleNote,
@@ -69,4 +69,4 @@ const mapStateToProps = ({ howls, song, ui }) => ({
 export default connect(mapStateToProps, {
   updateSoundForBeat,
   setCurrentlyPlaying,
-})(SoundItems);
+})(DropdownSoundItems);

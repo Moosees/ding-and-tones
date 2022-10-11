@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { beatOptionToKeyCode } from '../../../assets/keyCodes';
-import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
-import useCloseOutside from '../../../hooks/useCloseOutside';
+import useCloseOnEsc from '../../hooks/useCloseOnEsc';
+import useCloseOutside from '../../hooks/useCloseOutside';
 import {
   updateHandForBeat,
   updateSoundForBeat,
-} from '../../../redux/song/song.actions';
-import DividerLine from '../../shared/dividerLine/DividerLine';
-import { DropdownContext } from '../dropdownHandler/DropdownHandler';
-import HandItems from '../dropdownItems/HandItems';
-import SoundItems from '../dropdownItems/SoundItems';
+} from '../../redux/song/song.actions';
+import DividerLine from '../shared/dividerLine/DividerLine';
+import { DropdownContext } from './handler/DropdownHandler';
+import DropdownHandItems from './items/DropdownHandItems';
+import DropdownSoundItems from './items/DropdownSoundItems';
 import {
   Arrow,
   Dropdown,
@@ -18,7 +17,8 @@ import {
   DropdownContent,
 } from './beatDropdown.styles';
 import { createKeyboardCbs, createSoundLists } from './beatDropdown.utils.js';
-import BeatDropdownControls from './BeatDropdownControls';
+import DropdownControls from './controls/DropdownControls';
+import { beatOptionToKeyCode } from '../../assets/keyCodes';
 
 const BeatDropdown = ({
   beatId,
@@ -71,16 +71,16 @@ const BeatDropdown = ({
     <>
       <Arrow openTop={openTop} />
       <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
-        <BeatDropdownControls />
+        <DropdownControls />
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
-            <SoundItems beatId={beatId} soundList={dings} />
-            <SoundItems beatId={beatId} soundList={round} />
+            <DropdownSoundItems beatId={beatId} soundList={dings} />
+            <DropdownSoundItems beatId={beatId} soundList={round} />
             {!!nonScaleNotes.length && (
               <>
                 <DividerLine small />
-                <SoundItems
+                <DropdownSoundItems
                   beatId={beatId}
                   soundList={nonScaleNotes}
                   nonScaleNotes
@@ -92,11 +92,11 @@ const BeatDropdown = ({
             <DividerLine vertical small />
           </DropdownColumn>
           <DropdownColumn>
-            <SoundItems beatId={beatId} soundList={extra} />
+            <DropdownSoundItems beatId={beatId} soundList={extra} />
             <DividerLine small />
-            <SoundItems beatId={beatId} soundList={percussive} />
+            <DropdownSoundItems beatId={beatId} soundList={percussive} />
             <DividerLine small />
-            <HandItems beatId={beatId} />
+            <DropdownHandItems beatId={beatId} />
           </DropdownColumn>
         </DropdownContent>
       </Dropdown>

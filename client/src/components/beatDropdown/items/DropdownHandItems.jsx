@@ -4,7 +4,7 @@ import { hands } from '../../../assets/constants';
 import { updateHandForBeat } from '../../../redux/song/song.actions';
 import { DropdownItem, HandIcon } from './dropdownItems.styles';
 
-const HandItems = ({ beatId, beats, updateHandForBeat }) => {
+const DropdownHandItems = ({ beatId, beats, updateHandForBeat }) => {
   const { hand } = beats[beatId];
 
   const handItems = hands.map(({ name, value }) => {
@@ -41,4 +41,4 @@ const mapStateToProps = ({ song, ui }) => ({
   multiSelect: ui.multiSelect,
 });
 
-export default connect(mapStateToProps, { updateHandForBeat })(HandItems);
+export default connect(mapStateToProps, { updateHandForBeat })(DropdownHandItems);

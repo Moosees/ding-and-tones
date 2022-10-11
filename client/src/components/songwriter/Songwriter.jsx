@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import DropdownHandler from '../beatDropdown/handler/DropdownHandler';
 import AddBar from './addBar/AddBar';
 import Bar from './bar/Bar';
-import DropdownHandler from './dropdownHandler/DropdownHandler';
 import { Bars } from './songwriter.styles';
 
 const Songwriter = ({ borderRef }) => {

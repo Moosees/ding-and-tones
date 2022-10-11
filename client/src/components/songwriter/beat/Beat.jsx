@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
-import BeatDropdown from '../beatDropdown/BeatDropdown';
+import BeatDropdown from '../../beatDropdown/BeatDropdown';
 import {
   BeatAnchor,
   BeatCircle,
