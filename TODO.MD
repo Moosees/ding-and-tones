@@ -4,14 +4,15 @@
 
 ### Beat dropdown move
 
-* Next and prev beat buttons
-* Auto next beat toggle
+* Next and prev beat buttons - functionality
+* Auto next beat toggle - functionality
 * Beat dropdown knows next and previous beat - memo a list a of all beats?
 * Keyboard listeners - don't move on non note inputs
-* Handle chords - debounce inputs?
+* Handle chords and auto - debounce inputs?
 * Show dropdown over song controls - portal? z?
 * Better dropdown handler?
 * Better arrows?
+* Update help text
 
 ### Home page update
 
