@@ -5,6 +5,7 @@ import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
 
 const INITIAL_STATE = {
+  allBeats: [],
   addExtraNotes: false,
   autoMove: false,
   currentBar: null,
@@ -94,7 +95,11 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case uiTypes.SET_MUTED_BARS:
-      return { ...state, mutedBars: payload };
+      return {
+        ...state,
+        allBeats: payload.allBeats,
+        mutedBars: payload.mutedBars,
+      };
 
     case howlsTypes.SELECT_AUDIO:
       return { ...state, isSongPlaying: false };

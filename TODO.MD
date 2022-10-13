@@ -6,7 +6,7 @@
 
 * Next and prev beat buttons - functionality
 * Auto next beat toggle - functionality
-* Beat dropdown knows next and previous beat - memo a list a of all beats?
+* allBeats updates when something changes
 * Keyboard listeners - don't move on non note inputs
 * Handle chords and auto - debounce inputs?
 * Show dropdown over song controls - portal? z?

@@ -1,4 +1,5 @@
 import uiTypes from './ui.types';
+import { createAllBeatsSnapshot } from './ui.utils';
 
 export const setCurrentlyPlaying = (currentlyPlaying) => ({
   type: uiTypes.SET_CURRENTLY_PLAYING,
@@ -49,14 +50,17 @@ export const toggleExtraPosEdit = () => ({
 
 export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
   const {
-    song: { arrangement },
+    song: { arrangement, bars },
     ui: { mutedBars },
   } = getState();
 
   if (!solo) {
+    const newMuted = { ...mutedBars, [barId]: !mutedBars[barId] };
+    const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
+
     dispatch({
       type: uiTypes.SET_MUTED_BARS,
-      payload: { ...mutedBars, [barId]: !mutedBars[barId] },
+      payload: { mutedBars: newMuted, allBeats },
     });
     return;
   }
@@ -67,13 +71,17 @@ export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
     mutedBarsAry.length === arrangement.length - 1 &&
     !mutedBarsAry.includes(barId);
 
+  const newMuted = clearSolo
+    ? {}
+    : arrangement.reduce((acc, bar) => {
+        if (barId !== bar) acc[bar] = true;
+        return acc;
+      }, {});
+
+  const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
+
   dispatch({
     type: uiTypes.SET_MUTED_BARS,
-    payload: clearSolo
-      ? {}
-      : arrangement.reduce((acc, bar) => {
-          if (barId !== bar) acc[bar] = true;
-          return acc;
-        }, {}),
+    payload: { mutedBars: newMuted, allBeats },
   });
 };
