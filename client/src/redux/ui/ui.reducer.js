@@ -6,6 +6,7 @@ import uiTypes from './ui.types';
 
 const INITIAL_STATE = {
   addExtraNotes: false,
+  autoMove: false,
   currentBar: null,
   currentBeat: null,
   currentHand: 1,
@@ -41,6 +42,12 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         privacyOpen: payload,
+      };
+
+    case uiTypes.TOGGLE_AUTO_MOVE:
+      return {
+        ...state,
+        autoMove: !state.autoMove,
       };
 
     case uiTypes.TOGGLE_COUNT_OPEN:

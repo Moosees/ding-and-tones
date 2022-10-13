@@ -15,6 +15,10 @@ export const setPrivacyOpen = (privacyOpen) => ({
   payload: privacyOpen,
 });
 
+export const toggleAutoMove = () => ({
+  type: uiTypes.TOGGLE_AUTO_MOVE,
+});
+
 export const toggleCountOpen = () => ({
   type: uiTypes.TOGGLE_COUNT_OPEN,
 });

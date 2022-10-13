@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { helpTopics } from '../../../assets/help';
-import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
+import {
+  toggleAutoMove,
+  toggleMultiSelect,
+} from '../../../redux/ui/ui.actions';
 import Buttons from '../../shared/button/Buttons';
 import Help from '../../shared/button/Help';
 import BtnIcon from '../../shared/button/Icon';
@@ -9,7 +12,8 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownControls = () => {
   const dispatch = useDispatch();
-  const { multiSelect } = useSelector(({ ui }) => ({
+  const { autoMove, multiSelect } = useSelector(({ ui }) => ({
+    autoMove: ui.autoMove,
     multiSelect: ui.multiSelect,
   }));
 
@@ -17,7 +21,12 @@ const DropdownControls = () => {
     <>
       <Buttons position="space-between">
         <BtnIcon icon="navigate_before" disabled={false} onClick={() => {}} />
-        <Checkbox small checked={true} label="Auto" onChange={() => {}} />
+        <Checkbox
+          small
+          checked={autoMove}
+          label="Auto"
+          onChange={() => dispatch(toggleAutoMove())}
+        />
         <BtnIcon icon="navigate_next" disabled={false} onClick={() => {}} />
       </Buttons>
       <Buttons position="space-around">
