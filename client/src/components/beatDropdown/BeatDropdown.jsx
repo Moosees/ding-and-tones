@@ -71,7 +71,7 @@ const BeatDropdown = ({
     <>
       <Arrow openTop={openTop} />
       <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
-        <DropdownControls />
+        <DropdownControls beatId={beatId} />
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>

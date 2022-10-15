@@ -4,9 +4,11 @@
 
 ### Beat dropdown move
 
-* Next and prev beat buttons - functionality
-* Auto next beat toggle - functionality
+* allBeats populates on page load
 * allBeats updates when something changes
+* use currentDropdown when opening BeatDropdown
+* update currentDropdown from BeatDropdown useCloseOutside
+* Auto next beat toggle - functionality
 * Keyboard listeners - don't move on non note inputs
 * Handle chords and auto - debounce inputs?
 * Show dropdown over song controls - portal? z?

@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { helpTopics } from '../../../assets/help';
 import {
+  setCurrentDropdown,
   toggleAutoMove,
   toggleMultiSelect,
 } from '../../../redux/ui/ui.actions';
@@ -10,24 +11,31 @@ import Help from '../../shared/button/Help';
 import BtnIcon from '../../shared/button/Icon';
 import Checkbox from '../../shared/checkbox/Checkbox';
 
-const DropdownControls = () => {
+const DropdownControls = ({ beatId }) => {
   const dispatch = useDispatch();
-  const { autoMove, multiSelect } = useSelector(({ ui }) => ({
-    autoMove: ui.autoMove,
-    multiSelect: ui.multiSelect,
-  }));
+  const { allBeats, autoMove, multiSelect } = useSelector(({ ui }) => ui);
 
   return (
     <>
       <Buttons position="space-between">
-        <BtnIcon icon="navigate_before" disabled={false} onClick={() => {}} />
+        <BtnIcon
+          icon="navigate_before"
+          onClick={() =>
+            dispatch(setCurrentDropdown(allBeats[beatId].prevBeatId))
+          }
+        />
         <Checkbox
           small
           checked={autoMove}
           label="Auto"
           onChange={() => dispatch(toggleAutoMove())}
         />
-        <BtnIcon icon="navigate_next" disabled={false} onClick={() => {}} />
+        <BtnIcon
+          icon="navigate_next"
+          onClick={() =>
+            dispatch(setCurrentDropdown(allBeats[beatId].nextBeatId))
+          }
+        />
       </Buttons>
       <Buttons position="space-around">
         <Checkbox

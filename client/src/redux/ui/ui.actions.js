@@ -1,6 +1,11 @@
 import uiTypes from './ui.types';
 import { createAllBeatsSnapshot } from './ui.utils';
 
+export const setCurrentDropdown = (beatId) => ({
+  type: uiTypes.SET_CURRENT_DROPDOWN,
+  payload: { beatId },
+});
+
 export const setCurrentlyPlaying = (currentlyPlaying) => ({
   type: uiTypes.SET_CURRENTLY_PLAYING,
   payload: currentlyPlaying, // { currentBeat, currentBar, currentSound, currentHand }

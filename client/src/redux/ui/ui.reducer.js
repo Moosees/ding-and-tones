@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   autoMove: false,
   currentBar: null,
   currentBeat: null,
+  currentDropdown: null,
   currentHand: 1,
   currentSound: [],
   countOpen: false,
@@ -25,6 +26,9 @@ const INITIAL_STATE = {
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+    case uiTypes.SET_CURRENT_DROPDOWN:
+      return { ...state, currentDropdown: payload.beatId };
+
     case uiTypes.SET_CURRENTLY_PLAYING:
       const currentHand = payload.currentHand || 1;
       return {
