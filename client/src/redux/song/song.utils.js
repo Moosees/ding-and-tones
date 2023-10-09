@@ -3,6 +3,10 @@ import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
 import { getMetreTemplates, metreList } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
 
+export const createAllBeats = (song, barToAdd, barIdToSkip) => {
+  console.log(song, barToAdd, barIdToSkip);
+};
+
 export const moveBar = (arrangement, barIndex, targetIndex) => {
   const arrCopy = [...arrangement];
 

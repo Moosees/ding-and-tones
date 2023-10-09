@@ -4,14 +4,23 @@
 
 ### Beat dropdown move
 
-* allBeats populates on page load
-* allBeats updates when something changes
+* allBeats populates on page load without songId
+* allBeats populates on page load with correct songId
+* allBeats populates on page load with incorrect songId
+* allBeats populates on load song
+* allBeats updates when user adds bar
+* allBeats updates when user duplicates bar - different format from addBar
+* allBeats updates when user deletes bar
+* allBeats updates when user moves bar - need solution
+* allBeats updates when user change subdivisions or metre - need solution
+
+* saving song changes anything?
 * use currentDropdown when opening BeatDropdown
 * update currentDropdown from BeatDropdown useCloseOutside
 * Auto next beat toggle - functionality
 * Keyboard listeners - don't move on non note inputs
 * Handle chords and auto - debounce inputs?
-* Show dropdown over song controls - portal? z?
+* Show dropdown over song controls - portal? z? html dialog?
 * Better dropdown handler?
 * Better arrows?
 * Update help text
