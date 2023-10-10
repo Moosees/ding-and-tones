@@ -4,10 +4,10 @@
 
 ### Beat dropdown move
 
-* allBeats populates on page load without songId
-* allBeats populates on page load with correct songId
-* allBeats populates on page load with incorrect songId
-* allBeats populates on load song
+* allBeats populates on page load without songId - working
+* allBeats populates on page load with correct songId - working
+* allBeats populates on page load with incorrect songId - working
+* allBeats populates on load song - working
 * allBeats updates when user adds bar
 * allBeats updates when user duplicates bar - different format from addBar
 * allBeats updates when user deletes bar

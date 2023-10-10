@@ -122,11 +122,15 @@ export const getSongById =
             type: scaleTypes.LOAD_SCALE,
             payload: parseScaleData(defaultScale, true),
           });
+
+          const defaultSongParsed = parseFetchedSong(defaultSong, false, true);
+
           console.log('get default song');
-          createAllBeats(defaultSong);
+          createAllBeats(defaultSongParsed);
+
           dispatch({
             type: songTypes.SET_STATE,
-            payload: parseFetchedSong(defaultSong, false, true),
+            payload: defaultSongParsed,
           });
         }
 
