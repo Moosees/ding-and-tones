@@ -3,17 +3,16 @@ import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
 import { getMetreTemplates, metreList } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
 
-export const createAllBeats = (song, barToAdd, barIdToSkip) => {
-  console.log(song, barToAdd, barIdToSkip);
+export const createAllBeats = (song, beatsToAdd, barToSkip) => {
+  console.log(song, beatsToAdd, barToSkip);
   const { arrangement, bars } = song;
 
-  const beatOrder = arrangement.reduce((acc, barId) => {
-    return [...acc, ...bars[barId].measure];
-  }, []);
-
-  if (beatOrder.length === 0) {
-    return [];
-  }
+  const beatOrder = [
+    ...arrangement.reduce((acc, barId) => {
+      return [...acc, ...bars[barId].measure];
+    }, []),
+    ...(beatsToAdd || []),
+  ];
 
   const allBeats = beatOrder.reduce((acc, beatId, i) => {
     const prevBeat = i === 0 ? null : beatOrder[i - 1];

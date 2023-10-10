@@ -8,8 +8,8 @@
 * allBeats populates on page load with correct songId - working
 * allBeats populates on page load with incorrect songId - working
 * allBeats populates on load song - working
-* allBeats updates when user adds bar
-* allBeats updates when user duplicates bar - different format from addBar
+* allBeats updates when user adds bar - working
+* allBeats updates when user duplicates bar - working
 * allBeats updates when user deletes bar
 * allBeats updates when user moves bar - need solution
 * allBeats updates when user change subdivisions or metre - need solution

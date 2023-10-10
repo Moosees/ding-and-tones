@@ -14,7 +14,7 @@ import {
 export const addNewBar = (barWithBeatsAndId) => (dispatch, getState) => {
   const { song } = getState();
   console.log('addNewBar, always at the end');
-  createAllBeats(song, barWithBeatsAndId);
+  createAllBeats(song, barWithBeatsAndId.bar.measure);
 
   dispatch({
     type: songTypes.ADD_NEW_BAR,
@@ -65,7 +65,7 @@ export const duplicateBar = (bar) => (dispatch, getState) => {
   const { song } = getState();
 
   console.log('duplicateBar, always at end');
-  createAllBeats(song, bar);
+  createAllBeats(song, bar.newBar.measure);
 
   dispatch({
     type: songTypes.DUPLICATE_BAR,
