@@ -5,6 +5,27 @@ import { parseScaleData } from '../scale/scale.utils';
 
 export const createAllBeats = (song, barToAdd, barIdToSkip) => {
   console.log(song, barToAdd, barIdToSkip);
+  const { arrangement, bars } = song;
+
+  const beatOrder = arrangement.reduce((acc, barId) => {
+    return [...acc, ...bars[barId].measure];
+  }, []);
+
+  if (beatOrder.length === 0) {
+    return [];
+  }
+
+  const allBeats = beatOrder.reduce((acc, beatId, i) => {
+    const prevBeat = i === 0 ? null : beatOrder[i - 1];
+    const nextBeat = i + 1 === beatOrder.length ? null : beatOrder[i + 1];
+
+    acc[beatId] = { prevBeat, nextBeat };
+
+    return acc;
+  }, {});
+
+  console.log(beatOrder, allBeats);
+  return allBeats;
 };
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
