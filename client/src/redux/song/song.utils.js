@@ -9,6 +9,10 @@ export const createAllBeats = (song, beatsToAdd, barToSkip) => {
 
   const beatOrder = [
     ...arrangement.reduce((acc, barId) => {
+      if (barId === barToSkip) {
+        return acc;
+      }
+
       return [...acc, ...bars[barId].measure];
     }, []),
     ...(beatsToAdd || []),
