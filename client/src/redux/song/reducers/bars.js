@@ -34,7 +34,7 @@ const barsReducer = (state = barsState, { type, payload }) => {
         ...state,
         [payload.barId]: {
           ...state[payload.barId],
-          measure: payload.measure,
+          measure: payload.newMeasure,
         },
       };
 

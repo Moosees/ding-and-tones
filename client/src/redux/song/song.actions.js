@@ -233,16 +233,26 @@ export const updateBarSubdivisions =
     );
 
     if (lengthDifference !== 0) {
+      const { addBeats, deleteBeats, newMeasure } = updateMeasureAndBeats(
+        song.bars[barId],
+        newSubdivisions
+      );
+
+      const barsForAllBeats = { ...song.bars };
+      barsForAllBeats[barId].measure = newMeasure;
+
+      console.log('updateBarSubdivisions', barId, barsForAllBeats);
+      createAllBeats({ arrangement: song.arrangement, bars: barsForAllBeats });
+
       dispatch({
         type: songTypes.UPDATE_MEASURE_AND_BEATS,
         payload: {
           barId,
-          ...updateMeasureAndBeats(song.bars[barId], newSubdivisions),
+          addBeats,
+          deleteBeats,
+          newMeasure,
         },
       });
-
-      console.log('updateBarSubdivisions', barId);
-      createAllBeats(song);
     }
 
     dispatch({

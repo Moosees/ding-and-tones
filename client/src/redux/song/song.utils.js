@@ -214,10 +214,10 @@ const createUpdateMeasureAndBeatsPayload = (measureData, deleteData) => {
   const payload = {
     addBeats: {},
     deleteBeats: deleteData,
-    measure: null,
+    newMeasure: null,
   };
 
-  payload.measure = measureData.map((beatId) => {
+  payload.newMeasure = measureData.map((beatId) => {
     if (beatId) {
       return beatId;
     }
