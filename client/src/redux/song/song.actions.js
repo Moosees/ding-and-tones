@@ -6,6 +6,7 @@ import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
 import {
   createAllBeats,
+  moveBar,
   parseFetchedSong,
   parseSongForSaving,
   updateMeasureAndBeats,
@@ -156,12 +157,14 @@ export const moveBarInArrangement =
   (barIndex, targetIndex) => (dispatch, getState) => {
     const { song } = getState();
 
+    const newArrangement = moveBar(song.arrangement, barIndex, targetIndex);
+
     console.log('moveBarInArrangement');
-    createAllBeats(song);
+    createAllBeats({ arrangement: newArrangement, bars: song.bars });
 
     dispatch({
       type: songTypes.MOVE_BAR,
-      payload: { barIndex, targetIndex },
+      payload: { arrangement: newArrangement },
     });
   };
 

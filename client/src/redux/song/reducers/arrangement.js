@@ -1,6 +1,5 @@
 import { arrangementState } from '../song.initialState';
 import songTypes from '../song.types';
-import { moveBar } from '../song.utils';
 
 const arrangementReducer = (state = arrangementState, { type, payload }) => {
   switch (type) {
@@ -15,13 +14,6 @@ const arrangementReducer = (state = arrangementState, { type, payload }) => {
       return arrFiltered;
 
     case songTypes.MOVE_BAR:
-      const newArrangement = moveBar(
-        state,
-        payload.barIndex,
-        payload.targetIndex
-      );
-      return newArrangement;
-
     case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
       return payload.arrangement || state;

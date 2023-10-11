@@ -11,7 +11,7 @@
 * allBeats updates when user adds bar - working
 * allBeats updates when user duplicates bar - working
 * allBeats updates when user deletes bar - working
-* allBeats updates when user moves bar - need solution
+* allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - need solution
 
 * saving song changes anything?
