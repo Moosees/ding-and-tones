@@ -119,6 +119,7 @@
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
+* add safe Ids to default song
 
 ### Major updates
 
@@ -129,14 +130,16 @@
 * React-to-print functional components (SongView and PrintView, set documentTitle)
 * Song state update, mirror db model and state
 * Lazy loading with priorities, ui -> controls -> sounds?
+* custom keybindings
 
 ### Dependencies updates
 
 * React-table 8
-* Redux with redux toolkit
+* Redux with redux toolkit?
 * Update to redis 4 when connect-redis is supported
 * New react 18 features?
 * Stop using CRA?
+* react query?
 
 ## Not yet planned for release updates
 
