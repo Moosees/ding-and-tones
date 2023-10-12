@@ -4,7 +4,7 @@ import songTypes from '../song.types';
 const arrangementReducer = (state = arrangementState, { type, payload }) => {
   switch (type) {
     case songTypes.ADD_NEW_BAR:
-      return [...state, payload.barId];
+      return [...state, payload.song.barId];
 
     case songTypes.DUPLICATE_BAR:
       return [...state, payload.newBarId];

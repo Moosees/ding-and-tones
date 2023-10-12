@@ -4,7 +4,7 @@
 
 ### Beat dropdown move
 
-* add allBeats state setters
+* add remaining allBeats state setters
 * set currentDropdown when opening dropdown
 * open new dropdown when currentDropdown change
 * disable next/prev dropdown arrow at first and last beat

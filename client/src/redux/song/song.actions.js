@@ -15,11 +15,11 @@ import {
 export const addNewBar = (barWithBeatsAndId) => (dispatch, getState) => {
   const { song } = getState();
   console.log('addNewBar, always at the end');
-  createAllBeats(song, barWithBeatsAndId.bar.measure);
+  const allBeats = createAllBeats(song, barWithBeatsAndId.bar.measure);
 
   dispatch({
     type: songTypes.ADD_NEW_BAR,
-    payload: barWithBeatsAndId, // { bar, barId, beats }
+    payload: { song: barWithBeatsAndId, ui: { allBeats } },
   });
 };
 

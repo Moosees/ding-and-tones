@@ -5,7 +5,7 @@ import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
 
 const INITIAL_STATE = {
-  allBeats: [],
+  allBeats: {},
   addExtraNotes: false,
   autoMove: false,
   currentBar: null,
@@ -101,7 +101,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case uiTypes.SET_MUTED_BARS:
       return {
         ...state,
-        allBeats: payload.allBeats,
         mutedBars: payload.mutedBars,
       };
 
@@ -110,6 +109,9 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case scaleTypes.LOAD_SCALE:
       return { ...state, isEditingExtraPos: false };
+
+    case songTypes.ADD_NEW_BAR:
+      return { ...state, allBeats: payload.ui.allBeats };
 
     case songTypes.DELETE_BAR:
       return {

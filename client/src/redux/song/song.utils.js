@@ -19,15 +19,15 @@ export const createAllBeats = (song, beatsToAdd, barToSkip) => {
   ];
 
   const allBeats = beatOrder.reduce((acc, beatId, i) => {
-    const prevBeat = i === 0 ? null : beatOrder[i - 1];
-    const nextBeat = i + 1 === beatOrder.length ? null : beatOrder[i + 1];
+    const prevBeatId = i === 0 ? null : beatOrder[i - 1];
+    const nextBeatId = i + 1 === beatOrder.length ? null : beatOrder[i + 1];
 
-    acc[beatId] = { prevBeat, nextBeat };
+    acc[beatId] = { prevBeatId, nextBeatId };
 
     return acc;
   }, {});
 
-  console.log(beatOrder, allBeats);
+  console.log({ allBeats });
   return allBeats;
 };
 

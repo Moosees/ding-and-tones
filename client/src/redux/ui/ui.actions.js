@@ -1,5 +1,5 @@
 import uiTypes from './ui.types';
-import { createAllBeatsSnapshot } from './ui.utils';
+// import { createAllBeatsSnapshot } from './ui.utils';
 
 export const setCurrentDropdown = (beatId) => ({
   type: uiTypes.SET_CURRENT_DROPDOWN,
@@ -55,17 +55,17 @@ export const toggleExtraPosEdit = () => ({
 
 export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
   const {
-    song: { arrangement, bars },
+    song: { arrangement },
     ui: { mutedBars },
   } = getState();
 
   if (!solo) {
     const newMuted = { ...mutedBars, [barId]: !mutedBars[barId] };
-    const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
+    // const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
 
     dispatch({
       type: uiTypes.SET_MUTED_BARS,
-      payload: { mutedBars: newMuted, allBeats },
+      payload: { mutedBars: newMuted },
     });
     return;
   }
@@ -83,10 +83,10 @@ export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
         return acc;
       }, {});
 
-  const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
+  // const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
 
   dispatch({
     type: uiTypes.SET_MUTED_BARS,
-    payload: { mutedBars: newMuted, allBeats },
+    payload: { mutedBars: newMuted },
   });
 };
