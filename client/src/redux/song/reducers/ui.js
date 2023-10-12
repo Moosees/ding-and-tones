@@ -21,7 +21,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
     case songTypes.FETCH_SUCCESSFUL:
-      return { ...state, ...payload.ui, isFetching: false };
+      return { ...state, ...payload.song.ui, isFetching: false };
 
     case songTypes.SAVE_ERROR:
       return { ...state, isSaving: false };
@@ -40,7 +40,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
       };
 
     case songTypes.SET_STATE:
-      return { ...state, ...payload.ui };
+      return { ...state, ...payload.song.ui };
 
     case songTypes.TOGGLE_PRIVATE_SONG:
       return { ...state, isPrivate: !state.isPrivate };

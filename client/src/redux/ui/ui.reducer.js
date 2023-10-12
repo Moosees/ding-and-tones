@@ -111,20 +111,33 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, isEditingExtraPos: false };
 
     case songTypes.ADD_NEW_BAR:
-      return { ...state, allBeats: payload.ui.allBeats };
+    case songTypes.DUPLICATE_BAR:
+    case songTypes.MOVE_BAR:
+    case songTypes.UPDATE_MEASURE_AND_BEATS:
+      return { ...state, allBeats: payload.ui.allBeats, currentDropdown: null };
 
     case songTypes.DELETE_BAR:
       return {
         ...state,
-        mutedBars: filterState(state.mutedBars, payload.barToDelete),
+        allBeats: payload.ui.allBeats,
+        currentDropdown: null,
+        mutedBars: filterState(state.mutedBars, payload.song.barToDelete),
       };
 
     case songTypes.FETCH_SUCCESSFUL:
-      return { ...state, isEditingSong: false, mutedBars: {} };
+      return {
+        ...state,
+        allBeats: payload.ui.allBeats,
+        currentDropdown: null,
+        isEditingSong: false,
+        mutedBars: {},
+      };
 
     case songTypes.SET_STATE:
       return {
         ...state,
+        allBeats: payload.ui.allBeats,
+        currentDropdown: null,
         isEditingSong: true,
         mutedBars: {},
       };

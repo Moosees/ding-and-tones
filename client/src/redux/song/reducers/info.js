@@ -8,7 +8,7 @@ const infoReducer = (state = infoState, { type, payload }) => {
 
     case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
-      return payload.info || state;
+      return payload.song.info || state;
 
     case songTypes.UPDATE_SONG_INFO:
       return { ...state, ...payload };

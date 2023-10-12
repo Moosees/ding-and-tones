@@ -4,12 +4,12 @@
 
 ### Beat dropdown move
 
-* add remaining allBeats state setters
 * set currentDropdown when opening dropdown
 * open new dropdown when currentDropdown change
 * disable next/prev dropdown arrow at first and last beat
 * clear currentDropdown from BeatDropdown useCloseOutside
 
+* allBeats populates on new song (rename setSongState)
 * allBeats populates on page load without songId - working
 * allBeats populates on page load with correct songId - working
 * allBeats populates on page load with incorrect songId - working

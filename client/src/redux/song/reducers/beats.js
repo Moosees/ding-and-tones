@@ -9,14 +9,14 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
       return { ...state, ...payload.song.beats };
 
     case songTypes.DELETE_BAR:
-      return filterState(state, payload.beatsToDelete);
+      return filterState(state, payload.song.beatsToDelete);
 
     case songTypes.DUPLICATE_BAR:
-      return { ...state, ...payload.newBeats };
+      return { ...state, ...payload.song.newBeats };
 
     case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
-      return payload.beats || state;
+      return payload.song.beats || state;
 
     case songTypes.UPDATE_BEAT:
       return {
@@ -43,9 +43,9 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
       };
 
     case songTypes.UPDATE_MEASURE_AND_BEATS: {
-      const newState = filterState(state, payload.deleteBeats);
+      const newState = filterState(state, payload.song.deleteBeats);
 
-      return { ...newState, ...payload.addBeats };
+      return { ...newState, ...payload.song.addBeats };
     }
 
     default:

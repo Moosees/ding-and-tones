@@ -29,11 +29,11 @@ export const deleteBar = (barId) => (dispatch, getState) => {
 
   const beatsToDelete = [...bars[barId].measure];
   console.log('deleteBar, skip provided id', barId);
-  createAllBeats(song, null, barId);
+  const allBeats = createAllBeats(song, null, barId);
 
   dispatch({
     type: songTypes.DELETE_BAR,
-    payload: { barToDelete: barId, beatsToDelete },
+    payload: { song: { barToDelete: barId, beatsToDelete }, ui: { allBeats } },
   });
 };
 
@@ -66,11 +66,11 @@ export const duplicateBar = (bar) => (dispatch, getState) => {
   const { song } = getState();
 
   console.log('duplicateBar, always at end');
-  createAllBeats(song, bar.newBar.measure);
+  const allBeats = createAllBeats(song, bar.newBar.measure);
 
   dispatch({
     type: songTypes.DUPLICATE_BAR,
-    payload: bar, // { newBarId, newBar, newBeats }
+    payload: { song: bar, ui: { allBeats } },
   });
 };
 
@@ -85,7 +85,7 @@ export const getSongById =
         if (res.status === 200) {
           const fetchedSong = parseFetchedSong(res.data, getScale);
           console.log('getSongById');
-          createAllBeats(fetchedSong);
+          const allBeats = createAllBeats(fetchedSong);
 
           if (firstLoad && !fetchedSong.getScale)
             dispatch({
@@ -95,7 +95,7 @@ export const getSongById =
 
           dispatch({
             type: songTypes.FETCH_SUCCESSFUL,
-            payload: fetchedSong,
+            payload: { song: fetchedSong, ui: { allBeats } },
           });
 
           return Promise.resolve(true);
@@ -127,11 +127,11 @@ export const getSongById =
           const defaultSongParsed = parseFetchedSong(defaultSong, false, true);
 
           console.log('get default song');
-          createAllBeats(defaultSongParsed);
+          const allBeats = createAllBeats(defaultSongParsed);
 
           dispatch({
             type: songTypes.SET_STATE,
-            payload: defaultSongParsed,
+            payload: { song: defaultSongParsed, ui: { allBeats } },
           });
         }
 
@@ -148,9 +148,12 @@ export const getSongById =
 export const loadSongFromState = (song, suppressAlert) => (dispatch) => {
   const parsedSong = parseFetchedSong(song, false, suppressAlert);
   console.log('loadSongFromState');
-  createAllBeats(parsedSong);
+  const allBeats = createAllBeats(parsedSong);
 
-  dispatch({ type: songTypes.SET_STATE, payload: parsedSong });
+  dispatch({
+    type: songTypes.SET_STATE,
+    payload: { song: parsedSong, ui: { allBeats } },
+  });
 };
 
 export const moveBarInArrangement =
@@ -160,11 +163,14 @@ export const moveBarInArrangement =
     const newArrangement = moveBar(song.arrangement, barIndex, targetIndex);
 
     console.log('moveBarInArrangement');
-    createAllBeats({ arrangement: newArrangement, bars: song.bars });
+    const allBeats = createAllBeats({
+      arrangement: newArrangement,
+      bars: song.bars,
+    });
 
     dispatch({
       type: songTypes.MOVE_BAR,
-      payload: { arrangement: newArrangement },
+      payload: { song: { newArrangement }, ui: { allBeats } },
     });
   };
 
@@ -213,7 +219,7 @@ export const saveSong =
 
 export const setSongState = (song) => ({
   type: songTypes.SET_STATE,
-  payload: song,
+  payload: { song },
 });
 
 export const togglePrivateSong = () => ({
@@ -242,15 +248,21 @@ export const updateBarSubdivisions =
       barsForAllBeats[barId].measure = newMeasure;
 
       console.log('updateBarSubdivisions', barId, barsForAllBeats);
-      createAllBeats({ arrangement: song.arrangement, bars: barsForAllBeats });
+      const allBeats = createAllBeats({
+        arrangement: song.arrangement,
+        bars: barsForAllBeats,
+      });
 
       dispatch({
         type: songTypes.UPDATE_MEASURE_AND_BEATS,
         payload: {
-          barId,
-          addBeats,
-          deleteBeats,
-          newMeasure,
+          song: {
+            barId,
+            addBeats,
+            deleteBeats,
+            newMeasure,
+          },
+          ui: { allBeats },
         },
       });
     }

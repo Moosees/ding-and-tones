@@ -64,7 +64,7 @@ const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, foundChords: [], printList: [] };
 
     case songTypes.FETCH_SUCCESSFUL:
-      if (!payload.getScale) return state;
+      if (!payload.song.getScale) return state;
 
       return { ...state, foundChords: [], printList: [] };
 

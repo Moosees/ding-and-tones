@@ -78,12 +78,12 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
 
     case songTypes.FETCH_SUCCESSFUL: {
-      if (!payload.getScale) return state;
+      if (!payload.song.getScale) return state;
 
       const newHowls = updateHowls(
         state.data,
         state.info.audioSrc.path,
-        payload.scale.parsed.pitched
+        payload.song.scale.parsed.pitched
       );
 
       return { ...state, data: newHowls };

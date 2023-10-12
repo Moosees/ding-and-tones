@@ -7,16 +7,20 @@ const arrangementReducer = (state = arrangementState, { type, payload }) => {
       return [...state, payload.song.barId];
 
     case songTypes.DUPLICATE_BAR:
-      return [...state, payload.newBarId];
+      return [...state, payload.song.newBarId];
 
     case songTypes.DELETE_BAR:
-      const arrFiltered = state.filter((bar) => bar !== payload.barToDelete);
+      const arrFiltered = state.filter(
+        (bar) => bar !== payload.song.barToDelete
+      );
       return arrFiltered;
 
     case songTypes.MOVE_BAR:
+      return payload.song.newArrangement || state;
+
     case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
-      return payload.arrangement || state;
+      return payload.song.arrangement || state;
 
     default:
       return state;

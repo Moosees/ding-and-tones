@@ -27,9 +27,9 @@ const parsedReducer = (state = parsedState, { type, payload }) => {
     }
 
     case songTypes.FETCH_SUCCESSFUL:
-      if (!payload.getScale) return state;
+      if (!payload.song.getScale) return state;
 
-      return { ...state, ...payload.scale.parsed };
+      return { ...state, ...payload.song.scale.parsed };
 
     default:
       return state;

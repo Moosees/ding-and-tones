@@ -21,11 +21,11 @@ const notesReducer = (state = notesState, { type, payload }) => {
       };
 
     case songTypes.FETCH_SUCCESSFUL:
-      if (!payload.getScale) return state;
+      if (!payload.song.getScale) return state;
 
       return {
         ...state,
-        ...payload.scale.notes,
+        ...payload.song.scale.notes,
       };
 
     case scaleTypes.MOVE_EXTRA_NOTES:
