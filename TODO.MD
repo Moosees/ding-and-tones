@@ -4,6 +4,12 @@
 
 ### Beat dropdown move
 
+* add allBeats state setters
+* set currentDropdown when opening dropdown
+* open new dropdown when currentDropdown change
+* disable next/prev dropdown arrow at first and last beat
+* clear currentDropdown from BeatDropdown useCloseOutside
+
 * allBeats populates on page load without songId - working
 * allBeats populates on page load with correct songId - working
 * allBeats populates on page load with incorrect songId - working
@@ -15,15 +21,16 @@
 * allBeats updates when user change subdivisions or metre - working
 
 * saving song changes anything?
-* use currentDropdown when opening BeatDropdown
-* update currentDropdown from BeatDropdown useCloseOutside
 * Auto next beat toggle - functionality
+* stop auto dropdown change when reaching last beat
 * Keyboard listeners - don't move on non note inputs
 * Handle chords and auto - debounce inputs?
 * Show dropdown over song controls - portal? z? html dialog?
 * Better dropdown handler?
 * Better arrows?
 * Update help text
+* Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
+* Better name for allBeats?
 
 ### Home page update
 
