@@ -1,7 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useMemo, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
+import { setCurrentDropdown } from '../../../redux/ui/ui.actions';
 import BeatDropdown from '../../beatDropdown/BeatDropdown';
+import BeatText from './BeatText';
 import {
   BeatAnchor,
   BeatCircle,
@@ -9,30 +11,32 @@ import {
   BeatTextHandCount,
 } from './beat.styles';
 import { getNonScaleNotes } from './beat.utils';
-import BeatText from './BeatText';
 
-const Beat = ({
-  beatId,
-  beats,
-  countOpen,
-  currentBeat,
-  editSubdivisionsOpen,
-  handsOpen,
-  isMuted,
-  isSongPlaying,
-  scale,
-  template,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
+  const {
+    scale,
+    beats,
+    countOpen,
+    currentBeat,
+    handsOpen,
+    isSongPlaying,
+    isOpen,
+  } = useSelector(({ scale, song, ui }) => ({
+    scale: scale.parsed.pitched,
+    beats: song.beats,
+    countOpen: ui.countOpen,
+    currentBeat: ui.currentBeat,
+    handsOpen: ui.handsOpen,
+    isSongPlaying: ui.isSongPlaying,
+    isOpen: ui.currentDropdown === beatId,
+  }));
+  
+  const dispatch = useDispatch();
   const btnRef = useRef(null);
   const dropdownPosRef = useRef(null);
   const { sound, hand } = beats[beatId];
   const { value, count, tripletStatus, beatStart } = template;
   const isBeatPlaying = beatId === currentBeat;
-
-  useEffect(() => {
-    if (isSongPlaying) setIsOpen(false);
-  }, [setIsOpen, isSongPlaying]);
 
   const nonScaleNotes = useMemo(
     () => getNonScaleNotes(sound, scale),
@@ -40,7 +44,9 @@ const Beat = ({
   );
 
   const handleOpen = () => {
-    if (!isSongPlaying) setIsOpen(!isOpen);
+    if (isSongPlaying) return;
+
+    dispatch(setCurrentDropdown(beatId));
   };
 
   const handleKeyDown = (e) => {
@@ -79,7 +85,6 @@ const Beat = ({
             btnRef={btnRef}
             beatId={beatId}
             nonScaleNotes={nonScaleNotes}
-            isOpenCb={setIsOpen}
           />
         )}
       </BeatAnchor>
@@ -90,13 +95,4 @@ const Beat = ({
   );
 };
 
-const mapStateToProps = ({ scale, song, ui }) => ({
-  scale: scale.parsed.pitched,
-  beats: song.beats,
-  countOpen: ui.countOpen,
-  currentBeat: ui.currentBeat,
-  handsOpen: ui.handsOpen,
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps)(Beat);
+export default Beat;

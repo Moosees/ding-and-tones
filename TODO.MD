@@ -4,10 +4,10 @@
 
 ### Beat dropdown move
 
-* set currentDropdown when opening dropdown
-* open new dropdown when currentDropdown change
+* set CurrentDropdown to null when playing song, clicking outside, or clicking escape
+* update keyboard listeners when playing song, clicking outside, or clicking escape
+* close dropdown when clicking beat with open dropdown
 * disable next/prev dropdown arrow at first and last beat
-* clear currentDropdown from BeatDropdown useCloseOutside
 
 * allBeats populates on new song (rename setSongState)
 * allBeats populates on page load without songId - working
@@ -23,7 +23,7 @@
 * saving song changes anything?
 * Auto next beat toggle - functionality
 * stop auto dropdown change when reaching last beat
-* Keyboard listeners - don't move on non note inputs
+* Keyboard listeners - don't move on non note inputs, arrow keys? space skips? clear beat key?
 * Handle chords and auto - debounce inputs?
 * Show dropdown over song controls - portal? z? html dialog?
 * Better dropdown handler?

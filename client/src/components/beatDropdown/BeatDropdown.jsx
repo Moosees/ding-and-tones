@@ -24,7 +24,6 @@ const BeatDropdown = ({
   beatId,
   btnRef,
   dropdownPosRef,
-  isOpenCb,
   nonScaleNotes,
   scale,
   sharpNotes,
@@ -32,8 +31,8 @@ const BeatDropdown = ({
   updateHandForBeat,
   updateSoundForBeat,
 }) => {
-  useCloseOnEsc(() => isOpenCb(false));
-  const { insideRef } = useCloseOutside(isOpenCb, btnRef);
+  // useCloseOnEsc(() => isOpenCb(false));
+  // const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
   const { offsetTop, offsetLeft } = dropdownPosRef.current;
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
@@ -65,12 +64,14 @@ const BeatDropdown = ({
     document.addEventListener('keydown', keyboardListener);
 
     return () => document.removeEventListener('keydown', keyboardListener);
-  }, [keyboardCbs, isOpenCb, toggleMultiSelect]);
+  }, [keyboardCbs, toggleMultiSelect]);
+  // }, [keyboardCbs, isOpenCb, toggleMultiSelect]);
 
   return (
     <>
       <Arrow openTop={openTop} />
-      <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}>
+      <Dropdown openLeft={openLeft} openTop={openTop}>
+      {/* <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}> */}
         <DropdownControls beatId={beatId} />
         <DividerLine small />
         <DropdownContent>
