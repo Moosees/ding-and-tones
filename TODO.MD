@@ -4,7 +4,6 @@
 
 ### Beat dropdown move
 
-* set CurrentDropdown to null when clicking same beat as dropdown is open on
 * move next and prev dropdown to useKeyboardForDropdown?
 * disable next/prev dropdown arrow at first and last beat
 
@@ -19,6 +18,7 @@
 * allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - working
 
+* add close button to dropdown
 * saving song changes anything?
 * Auto next beat toggle - functionality
 * stop auto dropdown change when reaching last beat

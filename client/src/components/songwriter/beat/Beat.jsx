@@ -45,6 +45,11 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
   const handleOpen = () => {
     if (isSongPlaying) return;
 
+    if (isOpen) {
+      dispatch(setCurrentDropdown(null));
+      return;
+    }
+
     dispatch(setCurrentDropdown(beatId));
   };
 
