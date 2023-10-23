@@ -22,6 +22,8 @@ const useKeyboardForDropdown = () => {
   useCloseOnEsc(() => dispatch(setCurrentDropdown(null)));
 
   useEffect(() => {
+    if (currentDropdown === null) return;
+
     const percussionCbs = {
       [beatOptionToKeyCode['t']]: () =>
         dispatch(updateSoundForBeat(currentDropdown, 't')),

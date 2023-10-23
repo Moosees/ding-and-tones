@@ -6,7 +6,6 @@
 
 * set CurrentDropdown to null when clicking same beat as dropdown is open on
 * move next and prev dropdown to useKeyboardForDropdown?
-* remove keyboard listeners when currentDropdown is null
 * disable next/prev dropdown arrow at first and last beat
 
 * allBeats populates on new song (rename setSongState)
