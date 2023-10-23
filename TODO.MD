@@ -4,9 +4,8 @@
 
 ### Beat dropdown move
 
-* set CurrentDropdown to null when playing song, clicking outside, or clicking escape
+* set CurrentDropdown to null or clicking escape or clicking same beat as dropdown is open on
 * update keyboard listeners when playing song, clicking outside, or clicking escape
-* close dropdown when clicking beat with open dropdown
 * disable next/prev dropdown arrow at first and last beat
 
 * allBeats populates on new song (rename setSongState)
@@ -31,6 +30,7 @@
 * Update help text
 * Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
 * Better name for allBeats?
+* clickOutside closes dropdown?
 
 ### Home page update
 
@@ -127,6 +127,7 @@
 * Validate scales before saving, at least 5 tones?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * add safe Ids to default song
+* move logic to useSongIsPlaying
 
 ### Major updates
 
