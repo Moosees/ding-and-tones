@@ -2,11 +2,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
+import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import {
   updateHandForBeat,
   updateSoundForBeat,
 } from '../../../redux/song/song.actions';
-import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
+import {
+  setCurrentDropdown,
+  toggleMultiSelect,
+} from '../../../redux/ui/ui.actions';
 
 const useKeyboardForDropdown = () => {
   const dispatch = useDispatch();
@@ -14,6 +18,8 @@ const useKeyboardForDropdown = () => {
     currentDropdown: ui.currentDropdown,
     scale: scale.parsed.pitched,
   }));
+
+  useCloseOnEsc(() => dispatch(setCurrentDropdown(null)));
 
   useEffect(() => {
     const percussionCbs = {

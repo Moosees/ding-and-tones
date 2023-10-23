@@ -1,7 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useCloseOnEsc from '../../hooks/useCloseOnEsc';
-import { setCurrentDropdown } from '../../redux/ui/ui.actions';
+import { useSelector } from 'react-redux';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import {
   Arrow,
@@ -15,13 +13,7 @@ import { DropdownContext } from './handler/DropdownHandler';
 import DropdownHandItems from './items/DropdownHandItems';
 import DropdownSoundItems from './items/DropdownSoundItems';
 
-const BeatDropdown = ({
-  beatId,
-  dropdownPosRef,
-  nonScaleNotes,
-  toggleMultiSelect,
-}) => {
-  const dispatch = useDispatch();
+const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
   const { sharpNotes, scale } = useSelector(({ scale }) => ({
     sharpNotes: scale.info.sharpNotes,
     scale: scale.parsed.pitched,
@@ -36,8 +28,6 @@ const BeatDropdown = ({
     () => createSoundLists(scale, sharpNotes),
     [scale, sharpNotes]
   );
-
-  useCloseOnEsc(() => dispatch(setCurrentDropdown(null)));
 
   return (
     <>
