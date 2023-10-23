@@ -4,8 +4,9 @@
 
 ### Beat dropdown move
 
-* set CurrentDropdown to null or clicking escape or clicking same beat as dropdown is open on
-* update keyboard listeners when playing song, clicking outside, or clicking escape
+* set CurrentDropdown to null when clicking same beat as dropdown is open on
+* move next and prev dropdown to useKeyboardForDropdown?
+* remove keyboard listeners when currentDropdown is null
 * disable next/prev dropdown arrow at first and last beat
 
 * allBeats populates on new song (rename setSongState)
@@ -31,6 +32,7 @@
 * Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
 * Better name for allBeats?
 * clickOutside closes dropdown?
+* move song effect from app effects to only work on song page?
 
 ### Home page update
 

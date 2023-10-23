@@ -1,38 +1,32 @@
-import React, { useContext, useEffect, useMemo } from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import useCloseOnEsc from '../../hooks/useCloseOnEsc';
-import useCloseOutside from '../../hooks/useCloseOutside';
-import {
-  updateHandForBeat,
-  updateSoundForBeat,
-} from '../../redux/song/song.actions';
+import { setCurrentDropdown } from '../../redux/ui/ui.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
-import { DropdownContext } from './handler/DropdownHandler';
-import DropdownHandItems from './items/DropdownHandItems';
-import DropdownSoundItems from './items/DropdownSoundItems';
 import {
   Arrow,
   Dropdown,
   DropdownColumn,
   DropdownContent,
 } from './beatDropdown.styles';
-import { createKeyboardCbs, createSoundLists } from './beatDropdown.utils.js';
+import { createSoundLists } from './beatDropdown.utils.js.js';
 import DropdownControls from './controls/DropdownControls';
-import { beatOptionToKeyCode } from '../../assets/keyCodes';
+import { DropdownContext } from './handler/DropdownHandler';
+import DropdownHandItems from './items/DropdownHandItems';
+import DropdownSoundItems from './items/DropdownSoundItems';
 
 const BeatDropdown = ({
   beatId,
-  btnRef,
   dropdownPosRef,
   nonScaleNotes,
-  scale,
-  sharpNotes,
   toggleMultiSelect,
-  updateHandForBeat,
-  updateSoundForBeat,
 }) => {
-  // useCloseOnEsc(() => isOpenCb(false));
-  // const { insideRef } = useCloseOutside(isOpenCb, btnRef);
+  const dispatch = useDispatch();
+  const { sharpNotes, scale } = useSelector(({ scale }) => ({
+    sharpNotes: scale.info.sharpNotes,
+    scale: scale.parsed.pitched,
+  }));
+
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
   const { offsetTop, offsetLeft } = dropdownPosRef.current;
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
@@ -43,35 +37,12 @@ const BeatDropdown = ({
     [scale, sharpNotes]
   );
 
-  const keyboardCbs = useMemo(
-    () =>
-      createKeyboardCbs(beatId, updateSoundForBeat, updateHandForBeat, scale),
-    [beatId, updateSoundForBeat, updateHandForBeat, scale]
-  );
-
-  useEffect(() => {
-    const keyboardListener = (e) => {
-      if (e.keyCode === beatOptionToKeyCode['chord']) {
-        toggleMultiSelect();
-        return;
-      }
-
-      if (!keyboardCbs[e.keyCode]) return;
-
-      keyboardCbs[e.keyCode]();
-    };
-
-    document.addEventListener('keydown', keyboardListener);
-
-    return () => document.removeEventListener('keydown', keyboardListener);
-  }, [keyboardCbs, toggleMultiSelect]);
-  // }, [keyboardCbs, isOpenCb, toggleMultiSelect]);
+  useCloseOnEsc(() => dispatch(setCurrentDropdown(null)));
 
   return (
     <>
       <Arrow openTop={openTop} />
       <Dropdown openLeft={openLeft} openTop={openTop}>
-      {/* <Dropdown ref={insideRef} openLeft={openLeft} openTop={openTop}> */}
         <DropdownControls beatId={beatId} />
         <DividerLine small />
         <DropdownContent>
@@ -105,12 +76,4 @@ const BeatDropdown = ({
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
-  sharpNotes: scale.info.sharpNotes,
-  scale: scale.parsed.pitched,
-});
-
-export default connect(mapStateToProps, {
-  updateHandForBeat,
-  updateSoundForBeat,
-})(BeatDropdown);
+export default BeatDropdown;

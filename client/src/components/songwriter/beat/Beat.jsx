@@ -13,6 +13,7 @@ import {
 import { getNonScaleNotes } from './beat.utils';
 
 const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
+  const dispatch = useDispatch();
   const {
     scale,
     beats,
@@ -30,9 +31,7 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
     isSongPlaying: ui.isSongPlaying,
     isOpen: ui.currentDropdown === beatId,
   }));
-  
-  const dispatch = useDispatch();
-  const btnRef = useRef(null);
+
   const dropdownPosRef = useRef(null);
   const { sound, hand } = beats[beatId];
   const { value, count, tripletStatus, beatStart } = template;
@@ -66,7 +65,6 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
       <BeatAnchor>
         <BeatCircle
           tabIndex={0}
-          ref={btnRef}
           hasNonScaleNote={!!nonScaleNotes.length}
           isLocked={isSongPlaying}
           isBeatPlaying={isBeatPlaying}
@@ -82,7 +80,6 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
         {isOpen && (
           <BeatDropdown
             dropdownPosRef={dropdownPosRef}
-            btnRef={btnRef}
             beatId={beatId}
             nonScaleNotes={nonScaleNotes}
           />
