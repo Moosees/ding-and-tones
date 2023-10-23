@@ -98,7 +98,7 @@ export const BeatCircle = styled.div`
       : theme.colorBeat};
   box-shadow: ${({ theme, isBeatPlaying }) =>
     isBeatPlaying ? theme.shadowPlaying : theme.shadowBtnHeavy};
-  cursor: ${({ isLocked }) => (isLocked ? 'default' : 'pointer')};
+  cursor: ${({ isSongPlaying }) => (isSongPlaying ? 'default' : 'pointer')};
   display: flex;
   height: ${({ value }) => beatStyles.heightWidth[value]}rem;
   justify-content: center;

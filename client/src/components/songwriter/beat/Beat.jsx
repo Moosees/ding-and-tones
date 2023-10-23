@@ -71,7 +71,6 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
         <BeatCircle
           tabIndex={0}
           hasNonScaleNote={!!nonScaleNotes.length}
-          isLocked={isSongPlaying}
           isBeatPlaying={isBeatPlaying}
           isSongPlaying={isSongPlaying}
           isMuted={isMuted}
