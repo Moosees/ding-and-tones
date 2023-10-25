@@ -20,6 +20,7 @@ const DropdownControls = ({ beatId }) => {
       <Buttons position="space-between">
         <BtnIcon
           icon="navigate_before"
+          disabled={allBeats[beatId].prevBeatId === null}
           onClick={() =>
             dispatch(setCurrentDropdown(allBeats[beatId].prevBeatId))
           }
@@ -32,6 +33,7 @@ const DropdownControls = ({ beatId }) => {
         />
         <BtnIcon
           icon="navigate_next"
+          disabled={allBeats[beatId].nextBeatId === null}
           onClick={() =>
             dispatch(setCurrentDropdown(allBeats[beatId].nextBeatId))
           }
