@@ -4,7 +4,6 @@
 
 ### Beat dropdown move
 
-* keyboardListeners for nextBeat, prevBeat and auto on off. arrow keys? space to skip or clear?
 * Auto next beat - move on keyboard down (only scale notes and percussive)
 * Auto next beat - move on mouse click (only scale notes and percussive)
 * Handle chords and auto - debounce inputs?
@@ -21,12 +20,13 @@
 * allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - working
 
+* update keyboardListeners to use event.key or event.code
 * add close button to dropdown
 * saving song changes anything?
 * Show dropdown over song controls - portal? z? html dialog?
 * Better dropdown handler?
 * Better arrows?
-* Update help text
+* Update help text with auto info and new keyboard shortcuts
 * Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
 * Better name for allBeats?
 * clickOutside closes dropdown?

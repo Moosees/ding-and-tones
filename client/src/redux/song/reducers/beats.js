@@ -8,6 +8,12 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
     case songTypes.ADD_NEW_BAR:
       return { ...state, ...payload.song.beats };
 
+    case songTypes.CLEAR_BEAT:
+      return {
+        ...state,
+        [payload.beatId]: { sound: ['-'], mode: state[payload.beatId].mode },
+      };
+
     case songTypes.DELETE_BAR:
       return filterState(state, payload.song.beatsToDelete);
 

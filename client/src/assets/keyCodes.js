@@ -1,5 +1,11 @@
 export const beatOptionToKeyCode = {
+  nextBeat: 39, // arrowRight
+  prevBeat: 37, // arrowLeft
+  nextBeatAlt: 190, // .
+  prevBeatAlt: 188, // ,
+  clear: 189, // -
   chord: 67, // c
+  auto: 86, // v
   RL: 66, // b
   L: 78, // n
   R: 77, // m
