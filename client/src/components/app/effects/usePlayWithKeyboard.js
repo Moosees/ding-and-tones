@@ -36,8 +36,8 @@ const usePlayWithKeyboard = () => {
     }, {});
 
     const keyboardListener = (e) => {
-      if (!keyboardCbs[e.keyCode]) return;
-      keyboardCbs[e.keyCode]();
+      if (!keyboardCbs[e.code]) return;
+      keyboardCbs[e.code]();
     };
 
     document.addEventListener('keydown', keyboardListener);

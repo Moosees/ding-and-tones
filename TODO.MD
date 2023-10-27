@@ -4,6 +4,7 @@
 
 ### Beat dropdown move
 
+* change other keyboard eventListeners to e.code
 * Auto next beat - move on keyboard down (only scale notes and percussive)
 * Auto next beat - move on mouse click (only scale notes and percussive)
 * Handle chords and auto - debounce inputs?

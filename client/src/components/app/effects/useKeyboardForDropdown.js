@@ -74,9 +74,10 @@ const useKeyboardForDropdown = () => {
     };
 
     const keyboardListener = (e) => {
-      if (!keyboardCbs[e.keyCode]) return;
+      console.log({e})
+      if (!keyboardCbs[e.code]) return;
 
-      keyboardCbs[e.keyCode]();
+      keyboardCbs[e.code]();
     };
 
     document.addEventListener('keydown', keyboardListener);

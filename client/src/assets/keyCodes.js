@@ -1,35 +1,35 @@
 export const beatOptionToKeyCode = {
-  nextBeat: 39, // arrowRight
-  prevBeat: 37, // arrowLeft
-  nextBeatAlt: 190, // .
-  prevBeatAlt: 188, // ,
-  clear: 189, // -
-  chord: 67, // c
-  auto: 86, // v
-  RL: 66, // b
-  L: 78, // n
-  R: 77, // m
-  t: 65, // a
-  T: 83, // s
-  0: 68, // d
-  1: 49, // digits
-  2: 50,
-  3: 51,
-  4: 52,
-  5: 53,
-  6: 54,
-  7: 55,
-  8: 56,
-  9: 57,
-  10: 48,
-  b1: 81, // q-p
-  b2: 87,
-  b3: 69,
-  b4: 82,
-  b5: 84,
-  b6: 89,
-  b7: 85,
-  b8: 73,
-  b9: 79,
-  b10: 80,
+  nextBeat: 'ArrowRight', // arrowRight 39
+  prevBeat: 'ArrowLeft', // arrowLeft 37
+  nextBeatAlt: 'Period', // . 190
+  prevBeatAlt: 'Comma', // , 188
+  clear: 'Slash', // - 189
+  chord: 'KeyC', // c 67
+  auto: 'KeyV', // v 86
+  RL: 'KeyB', // b 66
+  L: 'KeyN', // n 78
+  R: 'KeyM', // m 77
+  t: 'KeyA', // a 65
+  T: 'KeyS', // s 83
+  0: 'KeyD', // d 68
+  1: 'Digit1', // digits 49 - 57 and 48
+  2: 'Digit2',
+  3: 'Digit3',
+  4: 'Digit4',
+  5: 'Digit5',
+  6: 'Digit6',
+  7: 'Digit7',
+  8: 'Digit8',
+  9: 'Digit9',
+  10: 'Digit0',
+  b1: 'KeyQ', // q 81
+  b2: 'KeyW', // w 87
+  b3: 'KewE', // e 69
+  b4: 'KeyR', // r 82
+  b5: 'KeyT', // t 84
+  b6: 'KeyY', // y 89
+  b7: 'KeyU', // u 85
+  b8: 'KeyI', // i 73
+  b9: 'KeyO', // o 79
+  b10: 'KeyP', // p 80
 };
