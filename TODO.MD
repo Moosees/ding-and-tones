@@ -4,10 +4,8 @@
 
 ### Beat dropdown move
 
-* Auto next beat - move on keyboard down (only scale notes and percussive)
-* Auto next beat - move on mouse click (only scale notes and percussive)
+* Auto next beat - move on mouse click (only scale notes and percussive, stop on last beat)
 * Handle chords and auto - debounce inputs?
-* stop auto dropdown change when reaching last beat
 
 * allBeats populates on new song (rename setSongState)
 * allBeats populates on page load without songId - working

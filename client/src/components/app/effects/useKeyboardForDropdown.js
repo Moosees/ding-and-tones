@@ -16,11 +16,14 @@ import {
 
 const useKeyboardForDropdown = () => {
   const dispatch = useDispatch();
-  const { allBeats, currentDropdown, scale } = useSelector(({ ui, scale }) => ({
-    allBeats: ui.allBeats,
-    currentDropdown: ui.currentDropdown,
-    scale: scale.parsed.pitched,
-  }));
+  const { allBeats, autoMove, currentDropdown, scale } = useSelector(
+    ({ ui, scale }) => ({
+      allBeats: ui.allBeats,
+      autoMove: ui.autoMove,
+      currentDropdown: ui.currentDropdown,
+      scale: scale.parsed.pitched,
+    })
+  );
 
   useCloseOnEsc(() => dispatch(setCurrentDropdown(null)));
 
@@ -74,16 +77,24 @@ const useKeyboardForDropdown = () => {
     };
 
     const keyboardListener = (e) => {
-      console.log({e})
+      console.log({ e });
       if (!keyboardCbs[e.code]) return;
 
       keyboardCbs[e.code]();
+
+      if (
+        autoMove &&
+        allBeats[currentDropdown].nextBeatId &&
+        (percussionCbs[e.code] || soundCbs[e.code])
+      ) {
+        dispatch(setCurrentDropdown(allBeats[currentDropdown].nextBeatId));
+      }
     };
 
     document.addEventListener('keydown', keyboardListener);
 
     return () => document.removeEventListener('keydown', keyboardListener);
-  }, [currentDropdown, scale, allBeats, dispatch]);
+  }, [autoMove, currentDropdown, scale, allBeats, dispatch]);
 };
 
 export default useKeyboardForDropdown;
