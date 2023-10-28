@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
+import { beatOptionToKeyCode } from '../assets/keyCodes';
 
 const useCloseOnEsc = (onCloseCb) => {
   useEffect(() => {
     const closeOnEsc = (e) => {
-      if (e.keyCode === 27) onCloseCb();
+      if (e.code === beatOptionToKeyCode['escape']) onCloseCb();
     };
 
     document.addEventListener('keydown', closeOnEsc);

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useExpanded, useTable } from 'react-table';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
 import {
   ExpandedRow,
@@ -39,7 +40,10 @@ const ReactTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
             const { key, role } = row.getRowProps();
 
             const handleKeyDown = (e) => {
-              if (e.keyCode === 32 || e.keyCode === 13) {
+              if (
+                e.code === beatOptionToKeyCode['enter'] ||
+                e.code === beatOptionToKeyCode['space']
+              ) {
                 e.preventDefault();
                 row.toggleRowExpanded(!row.isExpanded);
               }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { MAX_NOTES_IN_BEAT } from '../../../assets/constants';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { updateSoundForBeat } from '../../../redux/song/song.actions';
 import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 import { DropdownItem } from './dropdownItems.styles';
@@ -36,7 +37,10 @@ const DropdownSoundItems = ({
     };
 
     const handleKeyDown = (e) => {
-      if (e.keyCode === 32 || e.keyCode === 13) {
+      if (
+        e.code === beatOptionToKeyCode['enter'] ||
+        e.code === beatOptionToKeyCode['space']
+      ) {
         e.preventDefault();
         handleClick();
       }

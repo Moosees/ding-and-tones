@@ -1,4 +1,5 @@
 import React from 'react';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useDimensions from '../../../hooks/useDimensions';
 import { MenuButton, MenuLabel } from './button.styles';
 
@@ -13,7 +14,10 @@ const BtnMenu = ({
   const { isMobile } = useDimensions();
 
   const handleKeyDown = (e) => {
-    if (e.keyCode === 32 || e.keyCode === 13) {
+    if (
+      e.code === beatOptionToKeyCode['enter'] ||
+      e.code === beatOptionToKeyCode['space']
+    ) {
       e.preventDefault();
       onClick();
     }

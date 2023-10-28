@@ -1,6 +1,7 @@
 import React, { useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { setCurrentDropdown } from '../../../redux/ui/ui.actions';
 import BeatDropdown from '../../beatDropdown/BeatDropdown';
 import BeatText from './BeatText';
@@ -54,7 +55,10 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.keyCode === 32 || e.keyCode === 13) {
+    if (
+      e.code === beatOptionToKeyCode['enter'] ||
+      e.code === beatOptionToKeyCode['space']
+    ) {
       e.preventDefault();
       handleOpen();
     }

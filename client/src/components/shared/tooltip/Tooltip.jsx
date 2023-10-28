@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { TooltipBtnWrapper, TooltipContainer } from './tooltip.styles';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import TooltipPopup from './TooltipPopup';
+import { TooltipBtnWrapper, TooltipContainer } from './tooltip.styles';
 
 const Tooltip = ({ children, parent }) => {
   const Parent = parent;
@@ -12,7 +13,7 @@ const Tooltip = ({ children, parent }) => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.keyCode === 32 || e.keyCode === 13) {
+    if (e.code === beatOptionToKeyCode['enter'] || e.code === beatOptionToKeyCode['space']) {
       e.preventDefault();
       setIsOpen(!isOpen);
     }

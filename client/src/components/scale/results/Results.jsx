@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
 import BtnIcon from '../../shared/button/Icon';
 import Confirmation from '../../shared/popup/Confirmation';
@@ -42,7 +43,10 @@ const Results = ({
       };
 
       const handleKeyDown = (e) => {
-        if (e.keyCode === 32 || e.keyCode === 13) {
+        if (
+          e.code === beatOptionToKeyCode['enter'] ||
+          e.code === beatOptionToKeyCode['space']
+        ) {
           e.preventDefault();
           handleLoadScale();
         }

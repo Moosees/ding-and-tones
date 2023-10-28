@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import BtnIcon from '../button/Icon';
 import { InfoLayout } from '../layout/layout.styles';
 import { TextInput } from './input.styles';
@@ -19,13 +20,12 @@ const InfoInput = ({
   useEffect(() => () => onClose, [onClose]);
 
   const handleKeyDown = (e) => {
-    if (!editOnly || e.keyCode !== 27) e.stopPropagation();
+    if (!editOnly || e.code !== beatOptionToKeyCode['escape'])
+      e.stopPropagation();
 
-    // enter
-    if (e.keyCode === 13) return onSave();
+    if (e.code === beatOptionToKeyCode['enter']) return onSave();
 
-    // escape
-    if (e.keyCode === 27) return onClose();
+    if (e.code === beatOptionToKeyCode['escape']) return onClose();
   };
 
   return (

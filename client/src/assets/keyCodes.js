@@ -1,4 +1,7 @@
 export const beatOptionToKeyCode = {
+  space: 'Space', // 32
+  enter: 'Enter', // 13
+  escape: 'Escape', // 27
   nextBeat: 'ArrowRight', // arrowRight 39
   prevBeat: 'ArrowLeft', // arrowLeft 37
   nextBeatAlt: 'Period', // . 190

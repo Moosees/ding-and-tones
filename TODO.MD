@@ -4,7 +4,6 @@
 
 ### Beat dropdown move
 
-* change other keyboard eventListeners to e.code
 * Auto next beat - move on keyboard down (only scale notes and percussive)
 * Auto next beat - move on mouse click (only scale notes and percussive)
 * Handle chords and auto - debounce inputs?
@@ -21,7 +20,6 @@
 * allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - working
 
-* update keyboardListeners to use event.key or event.code
 * add close button to dropdown
 * saving song changes anything?
 * Show dropdown over song controls - portal? z? html dialog?

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { hands } from '../../../assets/constants';
+import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { updateHandForBeat } from '../../../redux/song/song.actions';
 import { DropdownItem, HandIcon } from './dropdownItems.styles';
 
@@ -13,7 +14,10 @@ const DropdownHandItems = ({ beatId, beats, updateHandForBeat }) => {
     };
 
     const handleKeyDown = (e) => {
-      if (e.keyCode === 32 || e.keyCode === 13) {
+      if (
+        e.code === beatOptionToKeyCode['enter'] ||
+        e.code === beatOptionToKeyCode['space']
+      ) {
         e.preventDefault();
         handleClick();
       }
@@ -41,4 +45,6 @@ const mapStateToProps = ({ song, ui }) => ({
   multiSelect: ui.multiSelect,
 });
 
-export default connect(mapStateToProps, { updateHandForBeat })(DropdownHandItems);
+export default connect(mapStateToProps, { updateHandForBeat })(
+  DropdownHandItems
+);
