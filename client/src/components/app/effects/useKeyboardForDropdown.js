@@ -65,6 +65,8 @@ const useKeyboardForDropdown = () => {
         dispatch(setCurrentDropdown(nextBeatId)),
       [beatOptionToKeyCode['prevBeatAlt']]: () =>
         dispatch(setCurrentDropdown(prevBeatId)),
+      [beatOptionToKeyCode['skip']]: () =>
+        dispatch(setCurrentDropdown(nextBeatId)),
       [beatOptionToKeyCode['clear']]: () =>
         dispatch(clearBeat(currentDropdown)),
     };
