@@ -58,15 +58,15 @@ const useKeyboardForDropdown = () => {
       [beatOptionToKeyCode['chord']]: () => dispatch(toggleMultiSelect()),
       [beatOptionToKeyCode['auto']]: () => dispatch(toggleAutoMove()),
       [beatOptionToKeyCode['nextBeat']]: () =>
-        dispatch(setCurrentDropdown(nextBeatId)),
+        dispatch(setCurrentDropdown(nextBeatId || currentDropdown)),
       [beatOptionToKeyCode['prevBeat']]: () =>
-        dispatch(setCurrentDropdown(prevBeatId)),
+        dispatch(setCurrentDropdown(prevBeatId || currentDropdown)),
       [beatOptionToKeyCode['nextBeatAlt']]: () =>
-        dispatch(setCurrentDropdown(nextBeatId)),
+        dispatch(setCurrentDropdown(nextBeatId || currentDropdown)),
       [beatOptionToKeyCode['prevBeatAlt']]: () =>
-        dispatch(setCurrentDropdown(prevBeatId)),
+        dispatch(setCurrentDropdown(prevBeatId || currentDropdown)),
       [beatOptionToKeyCode['skip']]: () =>
-        dispatch(setCurrentDropdown(nextBeatId)),
+        dispatch(setCurrentDropdown(nextBeatId || currentDropdown)),
       [beatOptionToKeyCode['clear']]: () =>
         dispatch(clearBeat(currentDropdown)),
     };
@@ -84,12 +84,8 @@ const useKeyboardForDropdown = () => {
 
       keyboardCbs[e.code]();
 
-      if (
-        autoMove &&
-        allBeats[currentDropdown].nextBeatId &&
-        (percussionCbs[e.code] || soundCbs[e.code])
-      ) {
-        dispatch(setCurrentDropdown(allBeats[currentDropdown].nextBeatId));
+      if (autoMove && (percussionCbs[e.code] || soundCbs[e.code])) {
+        dispatch(setCurrentDropdown(nextBeatId || currentDropdown));
       }
     };
 
