@@ -8,9 +8,9 @@ export const getNonScaleNotes = (sound, scale) => {
   return sound.reduce((acc, hit) => {
     if (!scaleParsed.includes(hit)) {
       acc.push({
-        label: `${hit} - ?`,
-        labelSharp: `${hit} - ?`,
-        value: hit,
+        label: `??`,
+        labelSharp: `??`,
+        option: hit,
         outsideScale: true,
       });
     }

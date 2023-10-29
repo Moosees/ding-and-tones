@@ -4,7 +4,6 @@
 
 ### Beat dropdown move
 
-* fix dropdown items for non scale notes
 * Handle chords and auto - debounce inputs?
 
 * allBeats populates on new song (rename setSongState)
@@ -19,6 +18,7 @@
 * allBeats updates when user change subdivisions or metre - working
 
 * add close button to dropdown
+* allow removing non scale notes by click or keyboard on dropdown
 * saving song changes anything?
 * Show dropdown over song controls - portal? z? html dialog?
 * Better dropdown handler?

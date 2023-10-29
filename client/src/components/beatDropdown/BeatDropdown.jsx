@@ -29,6 +29,8 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     [scale, sharpNotes]
   );
 
+  console.log({ nonScaleNotes, dings, round });
+
   return (
     <>
       <Arrow openTop={openTop} />
@@ -45,7 +47,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
                 <DropdownSoundItems
                   beatId={beatId}
                   soundList={nonScaleNotes}
-                  nonScaleNotes
+                  hasNonScaleNote
                 />
               </>
             )}
