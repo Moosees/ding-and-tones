@@ -4,7 +4,7 @@
 
 ### Beat dropdown move
 
-* Auto next beat - move on mouse click (only scale notes and percussive, stop on last beat)
+* close dropdown when navigating away from song route
 * Handle chords and auto - debounce inputs?
 
 * allBeats populates on new song (rename setSongState)

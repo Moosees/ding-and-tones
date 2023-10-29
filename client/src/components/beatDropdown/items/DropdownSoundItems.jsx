@@ -1,21 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MAX_NOTES_IN_BEAT } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { updateSoundForBeat } from '../../../redux/song/song.actions';
-import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
+import {
+  setCurrentDropdown,
+  setCurrentlyPlaying,
+} from '../../../redux/ui/ui.actions';
 import { DropdownItem } from './dropdownItems.styles';
 
-const DropdownSoundItems = ({
-  beatId,
-  beats,
-  hasNonScaleNote,
-  howls,
-  multiSelect,
-  setCurrentlyPlaying,
-  soundList,
-  updateSoundForBeat,
-}) => {
+const DropdownSoundItems = ({ beatId, hasNonScaleNote, soundList }) => {
+  const dispatch = useDispatch();
+  const { howls, beats, autoMove, multiSelect, nextBeatId } = useSelector(
+    ({ howls, song, ui }) => ({
+      howls: howls.data,
+      beats: song.beats,
+      autoMove: ui.autoMove,
+      multiSelect: ui.multiSelect,
+      nextBeatId: ui.allBeats[beatId].nextBeatId,
+    })
+  );
+
   const { sound } = beats[beatId];
 
   const soundItems = soundList.map(({ howl, label, option }) => {
@@ -24,16 +29,26 @@ const DropdownSoundItems = ({
     const isDisabled =
       multiSelect && sound.length >= MAX_NOTES_IN_BEAT && !selected;
 
+    const handleAutoMove = () => {
+      if (!autoMove || !nextBeatId) return;
+
+      dispatch(setCurrentDropdown(nextBeatId));
+    };
+
     const handleClick = () => {
       if (!howls[howl] || howls[howl].status !== 'ready') return;
 
-      updateSoundForBeat(beatId, option);
-      setCurrentlyPlaying({
-        currentBeat: null,
-        currentBar: null,
-        currentSound: [option],
-      });
+      dispatch(updateSoundForBeat(beatId, option));
+      dispatch(
+        setCurrentlyPlaying({
+          currentBeat: null,
+          currentBar: null,
+          currentSound: [option],
+        })
+      );
       howls[howl].play();
+
+      handleAutoMove();
     };
 
     const handleKeyDown = (e) => {
@@ -64,13 +79,4 @@ const DropdownSoundItems = ({
   return <>{soundItems}</>;
 };
 
-const mapStateToProps = ({ howls, song, ui }) => ({
-  howls: howls.data,
-  beats: song.beats,
-  multiSelect: ui.multiSelect,
-});
-
-export default connect(mapStateToProps, {
-  updateSoundForBeat,
-  setCurrentlyPlaying,
-})(DropdownSoundItems);
+export default DropdownSoundItems;
