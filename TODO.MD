@@ -4,7 +4,7 @@
 
 ### Beat dropdown move
 
-* close dropdown when navigating away from song route
+* fix dropdown items for non scale notes
 * Handle chords and auto - debounce inputs?
 
 * allBeats populates on new song (rename setSongState)

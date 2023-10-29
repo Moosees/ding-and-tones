@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { setCurrentDropdown } from '../../redux/ui/ui.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import ScrollBox from '../shared/scrollBox/ScrollBox';
@@ -13,19 +14,36 @@ import {
   SongViewContainer,
 } from './song.styles';
 
-const Song = ({ isEditingSong, notes, songUi }) => {
+const Song = ({ notes }) => {
   const borderRef = useRef(null);
   const { songId } = useParams();
   const navigate = useNavigate();
-
-  const { isDeleting, isFetching, isSaving } = songUi;
-  const isWorking = isDeleting || isFetching || isSaving;
+  const dispatch = useDispatch();
+  const { localSongId, isDeleting, isFetching, isSaving, isEditingSong } =
+    useSelector(({ song, ui }) => ({
+      localSongId: song.ui.songId,
+      isDeleting: song.ui.isDeleting,
+      isFetching: song.ui.isFetching,
+      isSaving: song.ui.isSaving,
+      isEditingSong: ui.isEditingSong,
+    }));
 
   useEffect(() => {
-    if (!songId && songUi.songId && !isWorking) {
-      navigate(`/song/${songUi.songId}`, { replace: true });
+    const isWorking = isDeleting || isFetching || isSaving;
+
+    if (!songId && localSongId && !isWorking) {
+      navigate(`/song/${localSongId}`, { replace: true });
     }
-  }, [isWorking, navigate, songId, songUi.songId]);
+  }, [isDeleting, isFetching, isSaving, navigate, songId, localSongId]);
+
+  useEffect(() => {
+    // close dropdown when navigating away from song route or showing tablature
+    if (!isEditingSong) {
+      dispatch(setCurrentDropdown(null));
+    }
+
+    return () => dispatch(setCurrentDropdown(null));
+  }, [isEditingSong, dispatch]);
 
   return (
     <>
@@ -52,9 +70,4 @@ const Song = ({ isEditingSong, notes, songUi }) => {
   );
 };
 
-const mapStateToProps = ({ song, ui }) => ({
-  songUi: song.ui,
-  isEditingSong: ui.isEditingSong,
-});
-
-export default connect(mapStateToProps)(Song);
+export default Song;
