@@ -4,6 +4,10 @@
 
 ### Beat dropdown move
 
+* add close button to dropdown
+* move auto row below sounds
+* Show dropdown over song controls - portal? z? html dialog?
+
 * allBeats populates on new song (rename setSongState)
 * allBeats populates on page load without songId - working
 * allBeats populates on page load with correct songId - working
@@ -15,17 +19,15 @@
 * allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - working
 
-* add close button to dropdown
-* allow removing non scale notes by click or keyboard on dropdown
-* saving song changes anything?
-* Show dropdown over song controls - portal? z? html dialog?
-* Better dropdown handler?
-* Better arrows?
 * Update help text with auto info and new keyboard shortcuts
+* create keyboard layout image? use dynamic key names?
+* allow removing non scale notes by click or keyboard on dropdown
+* saving song changes anything? close dropdown?
+* Better dropdown handler?
 * Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
 * Better name for allBeats?
-* clickOutside closes dropdown?
 * move song effect from app effects to only work on song page?
+* cleanup code
 
 ### Home page update
 
