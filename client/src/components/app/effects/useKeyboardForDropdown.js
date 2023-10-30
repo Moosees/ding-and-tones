@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { hands } from '../../../assets/constants';
+import { AUTO_MOVE_DELAY, hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import {
@@ -16,14 +16,14 @@ import {
 
 const useKeyboardForDropdown = () => {
   const dispatch = useDispatch();
-  const { allBeats, autoMove, currentDropdown, scale } = useSelector(
-    ({ ui, scale }) => ({
+  const { allBeats, autoMove, currentDropdown, multiSelect, scale } =
+    useSelector(({ ui, scale }) => ({
       allBeats: ui.allBeats,
       autoMove: ui.autoMove,
       currentDropdown: ui.currentDropdown,
+      multiSelect: ui.multiSelect,
       scale: scale.parsed.pitched,
-    })
-  );
+    }));
 
   useCloseOnEsc(() => dispatch(setCurrentDropdown(null)));
 
@@ -78,21 +78,33 @@ const useKeyboardForDropdown = () => {
       ...otherCbs,
     };
 
+    let timeout;
+
     const keyboardListener = (e) => {
-      console.log({ e });
       if (!keyboardCbs[e.code]) return;
 
+      clearTimeout(timeout);
       keyboardCbs[e.code]();
 
-      if (autoMove && (percussionCbs[e.code] || soundCbs[e.code])) {
+      if (!autoMove || !(percussionCbs[e.code] || soundCbs[e.code])) return;
+
+      if (!multiSelect) {
         dispatch(setCurrentDropdown(nextBeatId || currentDropdown));
+        return;
       }
+
+      timeout = setTimeout(() => {
+        dispatch(setCurrentDropdown(nextBeatId || currentDropdown));
+      }, AUTO_MOVE_DELAY);
     };
 
     document.addEventListener('keydown', keyboardListener);
 
-    return () => document.removeEventListener('keydown', keyboardListener);
-  }, [autoMove, currentDropdown, scale, allBeats, dispatch]);
+    return () => {
+      clearTimeout(timeout);
+      document.removeEventListener('keydown', keyboardListener);
+    };
+  }, [autoMove, currentDropdown, multiSelect, scale, allBeats, dispatch]);
 };
 
 export default useKeyboardForDropdown;

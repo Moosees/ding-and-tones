@@ -8,6 +8,7 @@ export const MAX_NOTE_VALUE = 72;
 
 // songwriter
 export const MAX_NOTES_IN_BEAT = 3;
+export const AUTO_MOVE_DELAY = 1000;
 
 // alerts
 export const ALERT_TIMEOUT = 5000;
