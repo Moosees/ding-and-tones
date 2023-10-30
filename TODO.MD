@@ -4,8 +4,6 @@
 
 ### Beat dropdown move
 
-* Handle chords and auto - debounce clicks
-
 * allBeats populates on new song (rename setSongState)
 * allBeats populates on page load without songId - working
 * allBeats populates on page load with correct songId - working

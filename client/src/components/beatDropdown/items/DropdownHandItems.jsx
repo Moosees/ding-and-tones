@@ -1,16 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { updateHandForBeat } from '../../../redux/song/song.actions';
 import { DropdownItem, HandIcon } from './dropdownItems.styles';
 
-const DropdownHandItems = ({ beatId, beats, updateHandForBeat }) => {
-  const { hand } = beats[beatId];
+const DropdownHandItems = ({ beatId, stopTimeout }) => {
+  const dispatch = useDispatch();
+  const { hand } = useSelector(({ song }) => ({
+    hand: song.beats[beatId].hand,
+  }));
 
   const handItems = hands.map(({ name, value }) => {
     const handleClick = () => {
-      updateHandForBeat(beatId, value);
+      stopTimeout();
+      dispatch(updateHandForBeat(beatId, value));
     };
 
     const handleKeyDown = (e) => {
@@ -40,11 +44,4 @@ const DropdownHandItems = ({ beatId, beats, updateHandForBeat }) => {
   return <>{handItems}</>;
 };
 
-const mapStateToProps = ({ song, ui }) => ({
-  beats: song.beats,
-  multiSelect: ui.multiSelect,
-});
-
-export default connect(mapStateToProps, { updateHandForBeat })(
-  DropdownHandItems
-);
+export default DropdownHandItems;

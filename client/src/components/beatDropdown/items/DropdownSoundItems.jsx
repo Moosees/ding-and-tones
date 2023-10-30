@@ -3,23 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MAX_NOTES_IN_BEAT } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { updateSoundForBeat } from '../../../redux/song/song.actions';
-import {
-  setCurrentDropdown,
-  setCurrentlyPlaying,
-} from '../../../redux/ui/ui.actions';
+import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 import { DropdownItem } from './dropdownItems.styles';
 
-const DropdownSoundItems = ({ beatId, hasNonScaleNote, soundList }) => {
+const DropdownSoundItems = ({
+  beatId,
+  handleAutoMove,
+  hasNonScaleNote,
+  soundList,
+}) => {
   const dispatch = useDispatch();
-  const { howls, beats, autoMove, multiSelect, nextBeatId } = useSelector(
-    ({ howls, song, ui }) => ({
-      howls: howls.data,
-      beats: song.beats,
-      autoMove: ui.autoMove,
-      multiSelect: ui.multiSelect,
-      nextBeatId: ui.allBeats[beatId].nextBeatId,
-    })
-  );
+  const { howls, beats, multiSelect } = useSelector(({ howls, song, ui }) => ({
+    howls: howls.data,
+    beats: song.beats,
+    multiSelect: ui.multiSelect,
+  }));
 
   const { sound } = beats[beatId];
 
@@ -28,12 +26,6 @@ const DropdownSoundItems = ({ beatId, hasNonScaleNote, soundList }) => {
 
     const isDisabled =
       multiSelect && sound.length >= MAX_NOTES_IN_BEAT && !selected;
-
-    const handleAutoMove = () => {
-      if (!autoMove || !nextBeatId) return;
-
-      dispatch(setCurrentDropdown(nextBeatId));
-    };
 
     const handleClick = () => {
       if (!howls[howl] || howls[howl].status !== 'ready') return;

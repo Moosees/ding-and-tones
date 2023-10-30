@@ -1,5 +1,7 @@
-import React, { useContext, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AUTO_MOVE_DELAY } from '../../assets/constants';
+import { setCurrentDropdown } from '../../redux/ui/ui.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import {
   Arrow,
@@ -14,10 +16,17 @@ import DropdownHandItems from './items/DropdownHandItems';
 import DropdownSoundItems from './items/DropdownSoundItems';
 
 const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
-  const { sharpNotes, scale } = useSelector(({ scale }) => ({
-    sharpNotes: scale.info.sharpNotes,
-    scale: scale.parsed.pitched,
-  }));
+  const [timeoutRef, setTimeoutRef] = useState(null);
+  const dispatch = useDispatch();
+  const { autoMove, multiSelect, nextBeatId, sharpNotes, scale } = useSelector(
+    ({ ui, scale }) => ({
+      autoMove: ui.autoMove,
+      multiSelect: ui.multiSelect,
+      nextBeatId: ui.allBeats[beatId].nextBeatId,
+      sharpNotes: scale.info.sharpNotes,
+      scale: scale.parsed.pitched,
+    })
+  );
 
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
   const { offsetTop, offsetLeft } = dropdownPosRef.current;
@@ -27,6 +36,30 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
   const { round, extra, dings, percussive } = useMemo(
     () => createSoundLists(scale, sharpNotes),
     [scale, sharpNotes]
+  );
+
+  const handleAutoMove = () => {
+    clearTimeout(timeoutRef); // not needed? edge cases?
+
+    if (!autoMove || !nextBeatId) return;
+
+    if (!multiSelect) {
+      dispatch(setCurrentDropdown(nextBeatId));
+      return;
+    }
+
+    setTimeoutRef(
+      setTimeout(() => {
+        dispatch(setCurrentDropdown(nextBeatId));
+      }, AUTO_MOVE_DELAY * 2)
+    );
+  };
+
+  useEffect(
+    () => () => {
+      clearTimeout(timeoutRef);
+    },
+    [timeoutRef]
   );
 
   console.log({ nonScaleNotes, dings, round });
@@ -39,14 +72,23 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
         <DividerLine small />
         <DropdownContent>
           <DropdownColumn>
-            <DropdownSoundItems beatId={beatId} soundList={dings} />
-            <DropdownSoundItems beatId={beatId} soundList={round} />
+            <DropdownSoundItems
+              beatId={beatId}
+              soundList={dings}
+              handleAutoMove={handleAutoMove}
+            />
+            <DropdownSoundItems
+              beatId={beatId}
+              soundList={round}
+              handleAutoMove={handleAutoMove}
+            />
             {!!nonScaleNotes.length && (
               <>
                 <DividerLine small />
                 <DropdownSoundItems
                   beatId={beatId}
                   soundList={nonScaleNotes}
+                  handleAutoMove={handleAutoMove}
                   hasNonScaleNote
                 />
               </>
@@ -56,11 +98,22 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
             <DividerLine vertical small />
           </DropdownColumn>
           <DropdownColumn>
-            <DropdownSoundItems beatId={beatId} soundList={extra} />
+            <DropdownSoundItems
+              beatId={beatId}
+              soundList={extra}
+              handleAutoMove={handleAutoMove}
+            />
             <DividerLine small />
-            <DropdownSoundItems beatId={beatId} soundList={percussive} />
+            <DropdownSoundItems
+              beatId={beatId}
+              soundList={percussive}
+              handleAutoMove={handleAutoMove}
+            />
             <DividerLine small />
-            <DropdownHandItems beatId={beatId} />
+            <DropdownHandItems
+              beatId={beatId}
+              stopTimeout={() => clearTimeout(timeoutRef)}
+            />
           </DropdownColumn>
         </DropdownContent>
       </Dropdown>
