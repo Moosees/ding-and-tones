@@ -11,6 +11,7 @@ import {
 } from './beatDropdown.styles';
 import { createSoundLists } from './beatDropdown.utils.js.js';
 import DropdownControls from './controls/DropdownControls';
+import DropdownMove from './controls/DropdownMove';
 import { DropdownContext } from './handler/DropdownHandler';
 import DropdownHandItems from './items/DropdownHandItems';
 import DropdownSoundItems from './items/DropdownSoundItems';
@@ -116,6 +117,8 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
             />
           </DropdownColumn>
         </DropdownContent>
+        <DividerLine small />
+        <DropdownMove beatId={beatId} />
       </Dropdown>
     </>
   );

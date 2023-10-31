@@ -5,7 +5,6 @@
 ### Beat dropdown move
 
 * add close button to dropdown
-* move auto row below sounds
 * Show dropdown over song controls - portal? z? html dialog?
 
 * allBeats populates on new song (rename setSongState)
