@@ -38,6 +38,8 @@ export const IconButton = styled.button`
   border: 0;
   cursor: ${({ editOnly }) => (editOnly ? 'default' : 'pointer')};
   left: ${({ position }) => (position === 'left' ? '1px' : 'revert')};
+  max-width: 3.1rem;
+  overflow: hidden;
   position: ${({ position }) => (position ? 'absolute' : 'static')};
   right: ${({ position }) => (position === 'right' ? '1px' : 'revert')};
 
