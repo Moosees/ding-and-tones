@@ -15,8 +15,6 @@
 * allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - working
 
-* Update help text with auto info and new keyboard shortcuts
-* create keyboard layout image? use dynamic key names?
 * allow removing non scale notes by click or keyboard on dropdown
 * saving song changes anything? close dropdown?
 * Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
@@ -126,6 +124,7 @@
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * add safe Ids to default song
 * move logic to useSongIsPlaying
+* create keyboard layout image? use dynamic key names?
 
 ### Major updates
 
@@ -312,7 +311,7 @@
 * Print with notes instead of numbers
 * Add scale to printed song?
 * Dark mode
-* Markdown for help topics
+* Markdown or other solution for help topics
 * Percussive handpan sound samples
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?

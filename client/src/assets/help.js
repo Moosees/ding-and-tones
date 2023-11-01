@@ -30,11 +30,13 @@ export const helpContent = {
   beats: {
     title: 'Note selection tips',
     content: [
-      'Keyboard shortcuts help when adding notes:',
-      'Use "d" for ding and "a" or "s" for taks.',
-      '"1" - "9" for normal tonefields.',
-      'Use "q" - "p" for extra/bottom notes,',
-      '"c" toggles chord mode and "b", "n", "m" changes hands.',
+      'Keyboard shortcuts for songwriter:',
+      'Digit row: "`/§" next beat, "1" - "9" add central notes.',
+      'Top alpha row: "q/a" - "p" add extra/bottom notes,',
+      'Mid alpha row: "a/q" "s" add taks, "d" add ding.',
+      'Bottom alpha row: "c" chord, "v" auto, "b" "n" "m/?" hands.',
+      'Bottom right "-/§" next to right shift clears beat',
+      'Movement: Arrows or "`/§" or ",/." ".//".',
     ],
   },
   scale: {
