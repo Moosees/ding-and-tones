@@ -4,7 +4,7 @@
 
 ### Beat dropdown move
 
-* allBeats populates on new song (rename setSongState)
+* allBeats populates on new song - working
 * allBeats populates on page load without songId - working
 * allBeats populates on page load with correct songId - working
 * allBeats populates on page load with incorrect songId - working

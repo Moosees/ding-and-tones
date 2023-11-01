@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import { setSongState } from '../../../redux/song/song.actions';
+import { createNewSong } from '../../../redux/song/song.actions';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoInput from '../../shared/input/InfoInput';
 import Metre from '../../shared/metreControls/Metre';
@@ -11,7 +11,9 @@ import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
 import Select from '../../shared/select/Select';
 
-const PopupNewSong = ({ onClose, setSongState }) => {
+const PopupNewSong = ({ onClose }) => {
+  const dispatch = useDispatch();
+
   const [difficulty, setDifficulty] = useState(1);
   const [metre, setMetre] = useState('s44');
   const [subdivision, setSubdivision] = useState(8);
@@ -37,7 +39,9 @@ const PopupNewSong = ({ onClose, setSongState }) => {
         songId: null,
       };
 
-      setSongState({ info, ui, bars: {}, beats: {}, arrangement: [] });
+      dispatch(
+        createNewSong({ info, ui, bars: {}, beats: {}, arrangement: [] })
+      );
       navigate('/song');
       onClose();
     }
@@ -84,6 +88,4 @@ const PopupNewSong = ({ onClose, setSongState }) => {
   );
 };
 
-export default connect(null, {
-  setSongState,
-})(PopupNewSong);
+export default PopupNewSong;

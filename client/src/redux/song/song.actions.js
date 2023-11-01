@@ -221,9 +221,9 @@ export const saveSong =
       });
   };
 
-export const setSongState = (song) => ({
+export const createNewSong = (song) => ({
   type: songTypes.SET_STATE,
-  payload: { song },
+  payload: { song, ui: { allBeats: {} } },
 });
 
 export const togglePrivateSong = () => ({
