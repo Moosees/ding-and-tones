@@ -16,47 +16,84 @@
 * allBeats updates when user change subdivisions or metre - working
 
 * allow removing non scale notes by click or keyboard on dropdown
-* saving song changes anything? close dropdown?
 * Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
 * Better name for allBeats?
-* move song effect from app effects to only work on song page?
 * cleanup code
 
-### DropdownHandler update
+### Fixes update
 
+* Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?
 * Fix dropdown opening position and change on scroll or resize
-* Show dropdown over song controls - portal? z? html dialog? anchor browser support?
 * Better dropdown handler?
+* Add bass octave
+* move related logic to useSongIsPlaying
+* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
+* "Value" exists in both beat and bar state, remove one?
+* Replace connect with useSelector and useDispatch
+* Disable play button if no bars or all bars are muted
+* for of instead of forEach?
+* Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
+* Should updateMeasureAndBeats run even if new and old subdivision lengths match? Only run update on a beat to beat basis?
+* Use new scaleFull outside print-chords - done?
 
-### Home page update
+### Home page and nav update
 
 * Add home page with recent changes, user info etc.
 * Active state for nav buttons might not need the full pathname
 * Faulty routes navigate to safe routes, find/:id navigates to song/:id
+* create keyboard layout image? use dynamic key names?
+* Show save limits for scale and song
+
+### Logic and state update
+
+* Callbacks for setState
+* Refactor scale.utils (redux)?
+* Abort states for all axios requests
+* SongById try catch?
+* Clean up tonefield logic
+* Clean up getNoteText() and Tonefield in general
+* Merge api status states (isFetching etc.) in client?
+* Middleware driven state reducers?
+* Clean up rootIndex in parseScaleData
+* Why -1 in UPDATE_SCALE for scale label? Instead of false?
+* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+* Scale and song state should mirror models more closely
+* Clean up UI state and reduce number of actions (also for other reducers?)
+* Use separate currentSound for patterns and play with clicks or keys?
+* Rework and simplify logic for setCurrentlyPlaying
+
+### Layout update
+
+* Semantic html and less nesting
+* More visible toggle buttons
+* Full screen songwriter?
+* Style EditSubdivision - done? - split up component? grid? Open state for icon?
+* Page numbers? Add header with page number and title for every page, better spacing?
+* Bar numbers on song viewer? Only long songs?
+* Found chords styles on smaller screens
+* Styled-components, mix-ins and css variables - portrait mq as mixin - mobile first?
+* Disable focus for icons attached to edit only text boxes
+* Fix primary button focus after click
+* Handle focus on modals - enter should confirm modal? enter should exit from input?
+* Line breaks or scroll for big bars in songwriter
+* Icons show as text before icon is loaded - new icons?
+* Use Tooltip component for beat dropdown?
+* Show dropdown over song controls - portal? z? html dialog? anchor browser support?
+* Close on outside click for dropdown?
+* Dark mode
 
 ### Song patchwork update
 
-* SongById try catch?
-* Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
 * move createNewBar and songToBarSubdivision to metre assets?
 * User selectable bar and beat layouts (some optimized for single hit beats etc)
 * Sheet music style subdivisions (all based on note length instead of beat start)?
 * Rename metreList/subdivisions values as they are mostly for ui styles?
-* Page numbers? Add header with page number and title for every page, better spacing?
-* Bar numbers on song viewer? Only long songs?
-* Line breaks or scroll for big bars in songwriter
-* Style EditSubdivision - done? - split up component? grid? Open state for icon?
 * Custom subdivision for new x/x?
-* Add bass octave
 * Quintuplets?
-* Full screen songwriter?
 * New bar/song default sounds/hands?
 * Edit name on save song as popup?
-* Should updateMeasureAndBeats run even if new and old subdivision lengths match? Only run update on a beat to beat basis?
 * More metres (and add to select list if not dynamic)?
-* Disable play button if no bars or all bars are muted
 * Remember muted bars when navigating?
-* Replace connect with useSelector and useDispatch
 
 ### Scale and chord sound update
 
@@ -65,7 +102,6 @@
 * Bpm for scales and chords? Always constant?
 * Stopping and isPlaying for scales and chords? Needed for scales at least - use status state instead of bool (for pattern player to understand what is playing)?
 * Key to stop any playing song/scale/chord/sound? Space (reserve for song recorder skips)? Esc?
-* Found chords styles on smaller screens
 * Dynamic volume when more than one note played at the same time?
 
 ### Compare scales update
@@ -88,54 +124,30 @@
 * Persist changes on redis session? Viable? Interval?
 * Prevent/warn transition away from page if data isn't saved?
 
-### Typescript client update
-
-* Update state
-* Update components
-* Middleware driven state reducers?
-* Validation types enum
-* Clean up tonefield logic
-* Use new scaleFull outside print-chords - done?
-* Clean up getNoteText() and Tonefield in general
-* Merge api status states (isFetching etc.) in client?
-* Clean up rootIndex in parseScaleData
-* Why -1 in UPDATE_SCALE for scale label? Instead of false?
-* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
-* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* Scale and song state should mirror models more closely
-* Clean up UI state and reduce number of actions (also for other reducers?)
-* Use separate currentSound for patterns and play with clicks or keys?
-* "Value" exists in both beat and bar state, remove one?
-* Rework and simplify logic for setCurrentlyPlaying
-
 ## Focuses for upcoming release updates
 
 ### From user feedback
 
-* Allow user to flip drum 180 deg (or freely?) to allow making tabs where high notes are in focus, should this flip note numbers?
+* Note numbers and rotated drum?
 
 ### Minor updates
 
-* for of instead of forEach
-* Callbacks for setState
-* Refactor scale.utils (redux)?
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * add safe Ids to default song
-* move logic to useSongIsPlaying
-* create keyboard layout image? use dynamic key names?
+* Discord
 
 ### Major updates
 
-* Styled-components, mix-ins and css variables - portrait mq as mixin - mobile first?
 * Testing
-* Song recording mode, wait for next key or click, space (or button) skips? How to handle hands?
 * Master volume controls - location and styles
 * React-to-print functional components (SongView and PrintView, set documentTitle)
 * Song state update, mirror db model and state
 * Lazy loading with priorities, ui -> controls -> sounds?
 * custom keybindings
+* Markdown or other solution for help topics
+* TypeScript
 
 ### Dependencies updates
 
@@ -145,6 +157,7 @@
 * New react 18 features?
 * Stop using CRA?
 * react query?
+* Update and DRY up rc-slider
 
 ## Not yet planned for release updates
 
@@ -160,7 +173,6 @@
 * Songs with deleted scales can still be found in song searches with scale name
 * Song query strings and (changed) scale broken?
 * Deleting scale (and song?) blocks ability to save scale
-* Icons show as text before icon is loaded
 * It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
 * Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 * Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
@@ -191,18 +203,11 @@
 
 ### Focus and keyboard
 
-* Disable focus for icons attached to edit only text boxes
-* Fix primary button focus after click
-* Handle focus on modals - enter should confirm modal? enter should exit from input?
-* Better keyboard navigation for table and dropdown
+* Better keyboard navigation for table
 * Print keyboard shortcut
 * Keyboard shortcuts on new song (and other?) popup - done?
 * Move focus to beat when closing dropdown?
 * Only show keyboard help on non touch?
-
-### User/Menu
-
-* Help leads to facebook thread? Support this page? Discord? Help displays save limit, limits on sign in? Help videos?
 
 ### Drum
 
@@ -248,7 +253,6 @@
 
 ### Songwriter
 
-* Use Tooltip component for beat dropdown?
 * Show latest changes (useful when copying and moving bars)
 * Undo changes
 * Looping/repeats, named bars? Sequencer?
@@ -267,10 +271,9 @@
 ### State and search
 
 * DRY up search logic - reset search with button or empty search field (cache initial search?)
-* Infinite scroll on songs (and scales?) - show "load more" if more songs match query?
+* Infinite scroll on songs (and scales?) - show "load more" if more songs match query? pages?
 * Sorting search results in table
 * Privacy date localization
-* Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?
 * Save song as JSON?
 * Show if owned song is private in search results?
 * Split howls loading status into loaded and error (and error msg)?
@@ -283,7 +286,6 @@
 * Count number of bars for search results? Virtual field?
 * Auth middleware populates current user
 * Cache users in scale searches
-* Typescript
 * Better profanity filter on save requests
 * Store notes in db as note values instead of note names
 * Store sharp notes in scale state?
@@ -310,10 +312,7 @@
 * Print multiple songs on same page
 * Print with notes instead of numbers
 * Add scale to printed song?
-* Dark mode
-* Markdown or other solution for help topics
 * Percussive handpan sound samples
 * Replace setInterval in login popup
 * Set howl pool to match size of scale?
-* DRY up rc-slider
 * Four note chords
