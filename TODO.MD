@@ -16,7 +16,6 @@
 * allBeats updates when user change subdivisions or metre - working
 
 * allow removing non scale notes by click or keyboard on dropdown
-* Delete old createAllBeatsSnapshot? Keep muted bars skipping for dropdown?
 * Better name for allBeats?
 * cleanup code
 
@@ -80,6 +79,7 @@
 * Use Tooltip component for beat dropdown?
 * Show dropdown over song controls - portal? z? html dialog? anchor browser support?
 * Close on outside click for dropdown?
+* Allow to skip from last to first beat and opposite
 * Dark mode
 
 ### Song patchwork update

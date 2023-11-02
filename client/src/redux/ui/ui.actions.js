@@ -1,5 +1,4 @@
 import uiTypes from './ui.types';
-// import { createAllBeatsSnapshot } from './ui.utils';
 
 export const setCurrentDropdown = (beatId) => ({
   type: uiTypes.SET_CURRENT_DROPDOWN,
@@ -61,7 +60,6 @@ export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
 
   if (!solo) {
     const newMuted = { ...mutedBars, [barId]: !mutedBars[barId] };
-    // const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
 
     dispatch({
       type: uiTypes.SET_MUTED_BARS,
@@ -82,8 +80,6 @@ export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
         if (barId !== bar) acc[bar] = true;
         return acc;
       }, {});
-
-  // const allBeats = createAllBeatsSnapshot(arrangement, bars, newMuted);
 
   dispatch({
     type: uiTypes.SET_MUTED_BARS,
