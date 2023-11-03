@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTO_MOVE_DELAY } from '../../assets/constants';
+import { beatOptionToKeyCode } from '../../assets/keyCodes.js';
+import { updateSoundForBeat } from '../../redux/song/song.actions.js';
 import { setCurrentDropdown } from '../../redux/ui/ui.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import {
@@ -55,6 +57,31 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
       }, AUTO_MOVE_DELAY * 2)
     );
   };
+
+  useEffect(() => {
+    if (!nonScaleNotes.length) return;
+
+    const nonScaleKeyboardCbs = nonScaleNotes.reduce((acc, note) => {
+      return {
+        ...acc,
+        [beatOptionToKeyCode[note.option]]: () =>
+          dispatch(updateSoundForBeat(beatId, note.option)),
+      };
+    }, {});
+
+    const nonScaleKeyboardListener = (e) => {
+      if (!nonScaleKeyboardCbs[e.code]) return;
+
+      nonScaleKeyboardCbs[e.code]();
+    };
+
+    document.addEventListener('keydown', nonScaleKeyboardListener);
+    console.log({ nonScaleNotes });
+
+    return () => {
+      document.removeEventListener('keydown', nonScaleKeyboardListener);
+    };
+  });
 
   useEffect(
     () => () => {
