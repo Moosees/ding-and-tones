@@ -15,7 +15,7 @@
 * allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - working
 
-* allow removing non scale notes by click or keyboard on dropdown
+* allow removing non scale notes with keyboard on dropdown
 * Better name for allBeats?
 * cleanup code
 

@@ -28,17 +28,18 @@ const DropdownSoundItems = ({
       multiSelect && sound.length >= MAX_NOTES_IN_BEAT && !selected;
 
     const handleClick = () => {
-      if (!howls[howl] || howls[howl].status !== 'ready') return;
-
       dispatch(updateSoundForBeat(beatId, option));
-      dispatch(
-        setCurrentlyPlaying({
-          currentBeat: null,
-          currentBar: null,
-          currentSound: [option],
-        })
-      );
-      howls[howl].play();
+
+      if (howls[howl] && howls[howl].status === 'ready') {
+        dispatch(
+          setCurrentlyPlaying({
+            currentBeat: null,
+            currentBar: null,
+            currentSound: [option],
+          })
+        );
+        howls[howl].play();
+      }
 
       handleAutoMove();
     };
