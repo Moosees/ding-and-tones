@@ -3,7 +3,7 @@ import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
 import { getMetreTemplates, metreList } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
 
-export const createAllBeats = (song, beatsToAdd, barToSkip) => {
+export const createAutoMoveOrder = (song, beatsToAdd, barToSkip) => {
   console.log(song, beatsToAdd, barToSkip);
   const { arrangement, bars } = song;
 
@@ -18,7 +18,7 @@ export const createAllBeats = (song, beatsToAdd, barToSkip) => {
     ...(beatsToAdd || []),
   ];
 
-  const allBeats = beatOrder.reduce((acc, beatId, i) => {
+  const autoMoveOrder = beatOrder.reduce((acc, beatId, i) => {
     const prevBeatId = i === 0 ? null : beatOrder[i - 1];
     const nextBeatId = i + 1 === beatOrder.length ? null : beatOrder[i + 1];
 
@@ -27,8 +27,8 @@ export const createAllBeats = (song, beatsToAdd, barToSkip) => {
     return acc;
   }, {});
 
-  console.log({ allBeats });
-  return allBeats;
+  console.log({ autoMoveOrder });
+  return autoMoveOrder;
 };
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {

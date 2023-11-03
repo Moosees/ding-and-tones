@@ -5,7 +5,7 @@ import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
 import {
-  createAllBeats,
+  createAutoMoveOrder,
   moveBar,
   parseFetchedSong,
   parseSongForSaving,
@@ -15,11 +15,14 @@ import {
 export const addNewBar = (barWithBeatsAndId) => (dispatch, getState) => {
   const { song } = getState();
   console.log('addNewBar, always at the end');
-  const allBeats = createAllBeats(song, barWithBeatsAndId.bar.measure);
+  const autoMoveOrder = createAutoMoveOrder(
+    song,
+    barWithBeatsAndId.bar.measure
+  );
 
   dispatch({
     type: songTypes.ADD_NEW_BAR,
-    payload: { song: barWithBeatsAndId, ui: { allBeats } },
+    payload: { song: barWithBeatsAndId, ui: { autoMoveOrder } },
   });
 };
 
@@ -33,11 +36,14 @@ export const deleteBar = (barId) => (dispatch, getState) => {
 
   const beatsToDelete = [...bars[barId].measure];
   console.log('deleteBar, skip provided id', barId);
-  const allBeats = createAllBeats(song, null, barId);
+  const autoMoveOrder = createAutoMoveOrder(song, null, barId);
 
   dispatch({
     type: songTypes.DELETE_BAR,
-    payload: { song: { barToDelete: barId, beatsToDelete }, ui: { allBeats } },
+    payload: {
+      song: { barToDelete: barId, beatsToDelete },
+      ui: { autoMoveOrder },
+    },
   });
 };
 
@@ -70,11 +76,11 @@ export const duplicateBar = (bar) => (dispatch, getState) => {
   const { song } = getState();
 
   console.log('duplicateBar, always at end');
-  const allBeats = createAllBeats(song, bar.newBar.measure);
+  const autoMoveOrder = createAutoMoveOrder(song, bar.newBar.measure);
 
   dispatch({
     type: songTypes.DUPLICATE_BAR,
-    payload: { song: bar, ui: { allBeats } },
+    payload: { song: bar, ui: { autoMoveOrder } },
   });
 };
 
@@ -89,7 +95,7 @@ export const getSongById =
         if (res.status === 200) {
           const fetchedSong = parseFetchedSong(res.data, getScale);
           console.log('getSongById');
-          const allBeats = createAllBeats(fetchedSong);
+          const autoMoveOrder = createAutoMoveOrder(fetchedSong);
 
           if (firstLoad && !fetchedSong.getScale)
             dispatch({
@@ -99,7 +105,7 @@ export const getSongById =
 
           dispatch({
             type: songTypes.FETCH_SUCCESSFUL,
-            payload: { song: fetchedSong, ui: { allBeats } },
+            payload: { song: fetchedSong, ui: { autoMoveOrder } },
           });
 
           return Promise.resolve(true);
@@ -131,11 +137,11 @@ export const getSongById =
           const defaultSongParsed = parseFetchedSong(defaultSong, false, true);
 
           console.log('get default song');
-          const allBeats = createAllBeats(defaultSongParsed);
+          const autoMoveOrder = createAutoMoveOrder(defaultSongParsed);
 
           dispatch({
             type: songTypes.SET_STATE,
-            payload: { song: defaultSongParsed, ui: { allBeats } },
+            payload: { song: defaultSongParsed, ui: { autoMoveOrder } },
           });
         }
 
@@ -152,11 +158,11 @@ export const getSongById =
 export const loadSongFromState = (song, suppressAlert) => (dispatch) => {
   const parsedSong = parseFetchedSong(song, false, suppressAlert);
   console.log('loadSongFromState');
-  const allBeats = createAllBeats(parsedSong);
+  const autoMoveOrder = createAutoMoveOrder(parsedSong);
 
   dispatch({
     type: songTypes.SET_STATE,
-    payload: { song: parsedSong, ui: { allBeats } },
+    payload: { song: parsedSong, ui: { autoMoveOrder } },
   });
 };
 
@@ -167,14 +173,14 @@ export const moveBarInArrangement =
     const newArrangement = moveBar(song.arrangement, barIndex, targetIndex);
 
     console.log('moveBarInArrangement');
-    const allBeats = createAllBeats({
+    const autoMoveOrder = createAutoMoveOrder({
       arrangement: newArrangement,
       bars: song.bars,
     });
 
     dispatch({
       type: songTypes.MOVE_BAR,
-      payload: { song: { newArrangement }, ui: { allBeats } },
+      payload: { song: { newArrangement }, ui: { autoMoveOrder } },
     });
   };
 
@@ -223,7 +229,7 @@ export const saveSong =
 
 export const createNewSong = (song) => ({
   type: songTypes.SET_STATE,
-  payload: { song, ui: { allBeats: {} } },
+  payload: { song, ui: { autoMoveOrder: {} } },
 });
 
 export const togglePrivateSong = () => ({
@@ -248,13 +254,13 @@ export const updateBarSubdivisions =
         newSubdivisions
       );
 
-      const barsForAllBeats = { ...song.bars };
-      barsForAllBeats[barId].measure = newMeasure;
+      const barsForAutoMoveOrder = { ...song.bars };
+      barsForAutoMoveOrder[barId].measure = newMeasure;
 
-      console.log('updateBarSubdivisions', barId, barsForAllBeats);
-      const allBeats = createAllBeats({
+      console.log('updateBarSubdivisions', barId, barsForAutoMoveOrder);
+      const autoMoveOrder = createAutoMoveOrder({
         arrangement: song.arrangement,
-        bars: barsForAllBeats,
+        bars: barsForAutoMoveOrder,
       });
 
       dispatch({
@@ -266,7 +272,7 @@ export const updateBarSubdivisions =
             deleteBeats,
             newMeasure,
           },
-          ui: { allBeats },
+          ui: { autoMoveOrder },
         },
       });
     }

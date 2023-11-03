@@ -25,7 +25,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     ({ ui, scale }) => ({
       autoMove: ui.autoMove,
       multiSelect: ui.multiSelect,
-      nextBeatId: ui.allBeats[beatId].nextBeatId,
+      nextBeatId: ui.autoMoveOrder[beatId].nextBeatId,
       sharpNotes: scale.info.sharpNotes,
       scale: scale.parsed.pitched,
     })

@@ -5,9 +5,9 @@ import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
 
 const INITIAL_STATE = {
-  allBeats: {},
   addExtraNotes: false,
   autoMove: false,
+  autoMoveOrder: {},
   currentBar: null,
   currentBeat: null,
   currentDropdown: null,
@@ -114,12 +114,16 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case songTypes.DUPLICATE_BAR:
     case songTypes.MOVE_BAR:
     case songTypes.UPDATE_MEASURE_AND_BEATS:
-      return { ...state, allBeats: payload.ui.allBeats, currentDropdown: null };
+      return {
+        ...state,
+        autoMoveOrder: payload.ui.autoMoveOrder,
+        currentDropdown: null,
+      };
 
     case songTypes.DELETE_BAR:
       return {
         ...state,
-        allBeats: payload.ui.allBeats,
+        autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
         mutedBars: filterState(state.mutedBars, payload.song.barToDelete),
       };
@@ -127,7 +131,7 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case songTypes.FETCH_SUCCESSFUL:
       return {
         ...state,
-        allBeats: payload.ui.allBeats,
+        autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
         isEditingSong: false,
         mutedBars: {},
@@ -136,7 +140,7 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case songTypes.SET_STATE:
       return {
         ...state,
-        allBeats: payload.ui.allBeats,
+        autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
         isEditingSong: true,
         mutedBars: {},

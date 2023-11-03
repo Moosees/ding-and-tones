@@ -16,10 +16,10 @@ import {
 
 const useKeyboardForDropdown = () => {
   const dispatch = useDispatch();
-  const { allBeats, autoMove, currentDropdown, multiSelect, scale } =
+  const { autoMove, autoMoveOrder, currentDropdown, multiSelect, scale } =
     useSelector(({ ui, scale }) => ({
-      allBeats: ui.allBeats,
       autoMove: ui.autoMove,
+      autoMoveOrder: ui.autoMoveOrder,
       currentDropdown: ui.currentDropdown,
       multiSelect: ui.multiSelect,
       scale: scale.parsed.pitched,
@@ -53,7 +53,7 @@ const useKeyboardForDropdown = () => {
       };
     }, {});
 
-    const { prevBeatId, nextBeatId } = allBeats[currentDropdown];
+    const { prevBeatId, nextBeatId } = autoMoveOrder[currentDropdown];
     const otherCbs = {
       [beatOptionToKeyCode['chord']]: () => dispatch(toggleMultiSelect()),
       [beatOptionToKeyCode['auto']]: () => dispatch(toggleAutoMove()),
@@ -104,7 +104,7 @@ const useKeyboardForDropdown = () => {
       clearTimeout(timeout);
       document.removeEventListener('keydown', keyboardListener);
     };
-  }, [autoMove, currentDropdown, multiSelect, scale, allBeats, dispatch]);
+  }, [autoMove, currentDropdown, multiSelect, scale, autoMoveOrder, dispatch]);
 };
 
 export default useKeyboardForDropdown;

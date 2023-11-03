@@ -15,7 +15,6 @@
 * allBeats updates when user moves bar - working
 * allBeats updates when user change subdivisions or metre - working
 
-* Better name for allBeats?
 * cleanup code
 
 ### Fixes update

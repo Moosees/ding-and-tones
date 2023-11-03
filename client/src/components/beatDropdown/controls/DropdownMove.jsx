@@ -10,15 +10,15 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownMove = ({ beatId }) => {
   const dispatch = useDispatch();
-  const { allBeats, autoMove } = useSelector(({ ui }) => ui);
+  const { autoMove, autoMoveOrder } = useSelector(({ ui }) => ui);
 
   return (
     <Buttons position="space-between">
       <BtnIcon
         icon="navigate_before"
-        disabled={allBeats[beatId].prevBeatId === null}
+        disabled={autoMoveOrder[beatId].prevBeatId === null}
         onClick={() =>
-          dispatch(setCurrentDropdown(allBeats[beatId].prevBeatId))
+          dispatch(setCurrentDropdown(autoMoveOrder[beatId].prevBeatId))
         }
       />
       <Checkbox
@@ -29,9 +29,9 @@ const DropdownMove = ({ beatId }) => {
       />
       <BtnIcon
         icon="navigate_next"
-        disabled={allBeats[beatId].nextBeatId === null}
+        disabled={autoMoveOrder[beatId].nextBeatId === null}
         onClick={() =>
-          dispatch(setCurrentDropdown(allBeats[beatId].nextBeatId))
+          dispatch(setCurrentDropdown(autoMoveOrder[beatId].nextBeatId))
         }
       />
     </Buttons>
