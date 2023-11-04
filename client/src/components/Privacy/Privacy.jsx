@@ -1,21 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import useDimensions from '../../hooks/useDimensions';
 import { setPrivacyOpen } from '../../redux/ui/ui.actions';
-import { Copyright, MobileCopyright, PrivacyLink } from './privacy.styles';
 import PrivacyPopup from './PrivacyPopup';
+import { Copyright, MobileCopyright, PrivacyLink } from './privacy.styles';
 
-const Privacy = ({ setPrivacyOpen }) => {
+const Privacy = () => {
+  const dispatch = useDispatch();
   const { isMobile } = useDimensions();
 
   return (
     <>
       {isMobile ? (
-        <MobileCopyright>&copy; 2022 Linus Almgren</MobileCopyright>
+        <MobileCopyright>&copy; 2023 Linus Almgren</MobileCopyright>
       ) : (
         <Copyright>
-          Copyright &copy; 2022 Linus Almgren -{' '}
-          <PrivacyLink onClick={() => setPrivacyOpen(true)}>
+          Copyright &copy; 2023 Linus Almgren -{' '}
+          <PrivacyLink onClick={() => dispatch(setPrivacyOpen(true))}>
             Terms and privacy
           </PrivacyLink>
         </Copyright>
@@ -25,4 +26,4 @@ const Privacy = ({ setPrivacyOpen }) => {
   );
 };
 
-export default connect(null, { setPrivacyOpen })(Privacy);
+export default Privacy;
