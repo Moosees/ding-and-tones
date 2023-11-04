@@ -14,7 +14,6 @@ import {
 
 export const addNewBar = (barWithBeatsAndId) => (dispatch, getState) => {
   const { song } = getState();
-  console.log('addNewBar, always at the end');
   const autoMoveOrder = createAutoMoveOrder(
     song,
     barWithBeatsAndId.bar.measure
@@ -35,7 +34,6 @@ export const deleteBar = (barId) => (dispatch, getState) => {
   const { bars } = song;
 
   const beatsToDelete = [...bars[barId].measure];
-  console.log('deleteBar, skip provided id', barId);
   const autoMoveOrder = createAutoMoveOrder(song, null, barId);
 
   dispatch({
@@ -75,7 +73,6 @@ export const deleteSongById = (songId) => (dispatch) => {
 export const duplicateBar = (bar) => (dispatch, getState) => {
   const { song } = getState();
 
-  console.log('duplicateBar, always at end');
   const autoMoveOrder = createAutoMoveOrder(song, bar.newBar.measure);
 
   dispatch({
@@ -94,7 +91,6 @@ export const getSongById =
       .then((res) => {
         if (res.status === 200) {
           const fetchedSong = parseFetchedSong(res.data, getScale);
-          console.log('getSongById');
           const autoMoveOrder = createAutoMoveOrder(fetchedSong);
 
           if (firstLoad && !fetchedSong.getScale)
@@ -136,7 +132,6 @@ export const getSongById =
 
           const defaultSongParsed = parseFetchedSong(defaultSong, false, true);
 
-          console.log('get default song');
           const autoMoveOrder = createAutoMoveOrder(defaultSongParsed);
 
           dispatch({
@@ -157,7 +152,6 @@ export const getSongById =
 
 export const loadSongFromState = (song, suppressAlert) => (dispatch) => {
   const parsedSong = parseFetchedSong(song, false, suppressAlert);
-  console.log('loadSongFromState');
   const autoMoveOrder = createAutoMoveOrder(parsedSong);
 
   dispatch({
@@ -172,7 +166,6 @@ export const moveBarInArrangement =
 
     const newArrangement = moveBar(song.arrangement, barIndex, targetIndex);
 
-    console.log('moveBarInArrangement');
     const autoMoveOrder = createAutoMoveOrder({
       arrangement: newArrangement,
       bars: song.bars,
@@ -257,7 +250,6 @@ export const updateBarSubdivisions =
       const barsForAutoMoveOrder = { ...song.bars };
       barsForAutoMoveOrder[barId].measure = newMeasure;
 
-      console.log('updateBarSubdivisions', barId, barsForAutoMoveOrder);
       const autoMoveOrder = createAutoMoveOrder({
         arrangement: song.arrangement,
         bars: barsForAutoMoveOrder,

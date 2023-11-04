@@ -2,21 +2,6 @@
 
 ## Sorted by release
 
-### Beat dropdown move
-
-* allBeats populates on new song - working
-* allBeats populates on page load without songId - working
-* allBeats populates on page load with correct songId - working
-* allBeats populates on page load with incorrect songId - working
-* allBeats populates on load song - working
-* allBeats updates when user adds bar - working
-* allBeats updates when user duplicates bar - working
-* allBeats updates when user deletes bar - working
-* allBeats updates when user moves bar - working
-* allBeats updates when user change subdivisions or metre - working
-
-* cleanup code
-
 ### Fixes update
 
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?

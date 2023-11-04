@@ -4,7 +4,6 @@ import { getMetreTemplates, metreList } from '../../assets/metre';
 import { parseScaleData } from '../scale/scale.utils';
 
 export const createAutoMoveOrder = (song, beatsToAdd, barToSkip) => {
-  console.log(song, beatsToAdd, barToSkip);
   const { arrangement, bars } = song;
 
   const beatOrder = [
@@ -27,7 +26,6 @@ export const createAutoMoveOrder = (song, beatsToAdd, barToSkip) => {
     return acc;
   }, {});
 
-  console.log({ autoMoveOrder });
   return autoMoveOrder;
 };
 

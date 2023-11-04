@@ -76,7 +76,6 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     };
 
     document.addEventListener('keydown', nonScaleKeyboardListener);
-    console.log({ nonScaleNotes });
 
     return () => {
       document.removeEventListener('keydown', nonScaleKeyboardListener);
@@ -89,8 +88,6 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     },
     [timeoutRef]
   );
-
-  console.log({ nonScaleNotes, dings, round });
 
   return (
     <>
