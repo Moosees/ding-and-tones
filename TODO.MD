@@ -141,6 +141,7 @@
 * Stop using CRA?
 * react query?
 * Update and DRY up rc-slider
+* mongoose 8 - strictQuery will set to false by default
 
 ## Not yet planned for release updates
 
