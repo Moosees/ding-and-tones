@@ -19,7 +19,6 @@ import DropdownHandItems from './items/DropdownHandItems';
 import DropdownSoundItems from './items/DropdownSoundItems';
 
 const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
-  const [timeoutRef, setTimeoutRef] = useState(null);
   const dispatch = useDispatch();
   const { autoMove, multiSelect, nextBeatId, sharpNotes, scale } = useSelector(
     ({ ui, scale }) => ({
@@ -31,6 +30,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     })
   );
 
+  const [timeoutRef, setTimeoutRef] = useState(null);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
   const { offsetTop, offsetLeft } = dropdownPosRef.current;
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;

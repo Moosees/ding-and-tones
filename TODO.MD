@@ -135,7 +135,7 @@
 ### Dependencies updates
 
 * React-table 8
-* Redux with redux toolkit?
+* Redux with redux toolkit? reselect? memoize selectors somehow
 * Update to redis 4 when connect-redis is supported
 * New react 18 features?
 * Stop using CRA?

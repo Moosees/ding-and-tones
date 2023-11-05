@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ChordsPrint from '../../chordsPrint/ChordsPrint';
 import BtnPrimary from '../../shared/button/Primary';
 
@@ -7,7 +7,8 @@ const ReactToPrint = lazy(() =>
   import('../../shared/reactToPrint/ReactToPrint')
 );
 
-const PrintChordsBtn = ({ isSongPlaying }) => {
+const PrintChordsBtn = () => {
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
   const [showPrint, setShowPrint] = useState(false);
 
   return (
@@ -29,8 +30,4 @@ const PrintChordsBtn = ({ isSongPlaying }) => {
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps)(PrintChordsBtn);
+export default PrintChordsBtn;

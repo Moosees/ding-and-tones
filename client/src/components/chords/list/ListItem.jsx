@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getNoteLabelFromName } from '../../../assets/intervals';
 import useDimensions from '../../../hooks/useDimensions';
 import {
@@ -10,15 +10,13 @@ import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import { ItemContainer } from './list.styles';
 
-const ListItem = ({
-  addChordToPrintList,
-  chord,
-  isDisplayed,
-  printList,
-  removeChordFromPrintList,
-  setDisplayedChord,
-  sharpNotes,
-}) => {
+const ListItem = ({ chord, isDisplayed }) => {
+  const dispatch = useDispatch();
+  const { printList, sharpNotes } = useSelector(({ chords, scale }) => ({
+    printList: chords.printList,
+    sharpNotes: scale.info.sharpNotes,
+  }));
+
   const { isMobile } = useDimensions();
 
   const chordIsInPrintList = !printList.every(
@@ -27,8 +25,8 @@ const ListItem = ({
 
   const handleChordClick = () => {
     chordIsInPrintList
-      ? removeChordFromPrintList(chord)
-      : addChordToPrintList(chord);
+      ? dispatch(removeChordFromPrintList(chord))
+      : dispatch(addChordToPrintList(chord));
   };
 
   const chordName = sharpNotes ? chord.nameSharp : chord.name;
@@ -46,7 +44,9 @@ const ListItem = ({
         <Checkbox
           label="View"
           checked={isDisplayed}
-          onChange={() => setDisplayedChord(isDisplayed ? null : chord)}
+          onChange={() =>
+            dispatch(setDisplayedChord(isDisplayed ? null : chord))
+          }
         />
         <Checkbox
           label={isMobile ? 'Print' : 'Print list'}
@@ -58,13 +58,4 @@ const ListItem = ({
   );
 };
 
-const mapStateToProps = ({ chords, scale }) => ({
-  printList: chords.printList,
-  sharpNotes: scale.info.sharpNotes,
-});
-
-export default connect(mapStateToProps, {
-  addChordToPrintList,
-  removeChordFromPrintList,
-  setDisplayedChord,
-})(ListItem);
+export default ListItem;

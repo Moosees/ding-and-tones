@@ -12,7 +12,7 @@ const useSongIsPlaying = () => {
     if (!isSongPlaying) return;
 
     dispatch(setCurrentDropdown(null));
-  }, [isSongPlaying, dispatch]);
+  }, [dispatch, isSongPlaying]);
 };
 
 export default useSongIsPlaying;

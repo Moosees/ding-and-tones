@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { helpTopics } from '../../../assets/help';
 import {
@@ -33,20 +33,20 @@ const CheckBoxes = styled.div`
   `}
 `;
 
-const Filter = ({
-  chordList,
-  scale,
-  setAllChordFiltersTo,
-  setDisplayedChord,
-  toggleChordIsSelected,
-}) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+  const { chordList, scale } = useSelector(({ chords, scale }) => ({
+    chordList: chords.chordList,
+    scale: scale.parsed.pitched,
+  }));
+
   useEffect(() => {
-    toggleChordIsSelected(null, scale);
-  }, [toggleChordIsSelected, scale]);
+    dispatch(toggleChordIsSelected(null, scale));
+  }, [dispatch, scale]);
 
   const handleClear = () => {
-    setAllChordFiltersTo(false, scale);
-    setDisplayedChord(null);
+    dispatch(setAllChordFiltersTo(false, scale));
+    dispatch(setDisplayedChord(null));
   };
 
   const allChords = chordList.map((chord) => (
@@ -54,7 +54,7 @@ const Filter = ({
       key={chord.id}
       label={chord.name}
       checked={chord.isSelected}
-      onChange={() => toggleChordIsSelected(chord.id, scale)}
+      onChange={() => dispatch(toggleChordIsSelected(chord.id, scale))}
     />
   ));
 
@@ -73,7 +73,7 @@ const Filter = ({
         <BtnPrimary
           label="All"
           light
-          onClick={() => setAllChordFiltersTo(true, scale)}
+          onClick={() => dispatch(setAllChordFiltersTo(true, scale))}
         />
         <BtnPrimary label="None" light onClick={handleClear} />
       </Buttons>
@@ -81,13 +81,4 @@ const Filter = ({
   );
 };
 
-const mapStateToProps = ({ chords, scale }) => ({
-  chordList: chords.chordList,
-  scale: scale.parsed.pitched,
-});
-
-export default connect(mapStateToProps, {
-  setAllChordFiltersTo,
-  setDisplayedChord,
-  toggleChordIsSelected,
-})(Filter);
+export default Filter;

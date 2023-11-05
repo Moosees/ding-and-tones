@@ -1,9 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
 import ListItem from './ListItem';
 
-const List = ({ displayedChord, setDisplayedChord, foundChords }) => {
+const List = () => {
+  const { displayedChord, foundChords } = useSelector(({ chords, drum }) => ({
+    displayedChord: drum.displayedChord,
+    foundChords: chords.foundChords,
+  }));
+
   return (
     <ScrollBox>
       {foundChords &&
@@ -17,9 +22,4 @@ const List = ({ displayedChord, setDisplayedChord, foundChords }) => {
   );
 };
 
-const mapStateToProps = ({ chords, drum }) => ({
-  displayedChord: drum.displayedChord,
-  foundChords: chords.foundChords,
-});
-
-export default connect(mapStateToProps)(List);
+export default List;

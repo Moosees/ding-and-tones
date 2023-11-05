@@ -9,8 +9,8 @@ import {
 } from '../../../redux/song/song.actions';
 
 const useDefaultState = () => {
-  const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const dispatch = useDispatch();
+  const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const location = useLocation();
 
   useEffect(() => {
