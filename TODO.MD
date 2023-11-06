@@ -115,6 +115,7 @@
 
 ### Minor updates
 
+* findSongs/Results.jsx promise in render rows expanded and getSongById, better solution?
 * Allow saving scale with song save
 * Validate scales before saving, at least 5 tones?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra

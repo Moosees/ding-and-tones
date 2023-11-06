@@ -1,17 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { DrumSvg, MiniDrumContainer } from './drum.styles';
 import MiniExtra from './tonefield/MiniExtra';
 import MiniTonefield from './tonefield/MiniTonefield';
 
-const MiniDrum = ({
-  notes,
-  noExtraTones,
-  showNoteList,
-  positionMap,
-  sharpNotes,
-}) => {
-  const { dings, round, extra } = notes;
+const MiniDrum = ({ noExtraTones, showNoteList }) => {
+  const { sharpNotes, dings, round, extra, positionMap } = useSelector(
+    ({ scale }) => ({
+      sharpNotes: scale.info.sharpNotes,
+      dings: scale.notes.dings,
+      round: scale.notes.round,
+      extra: scale.notes.extra,
+      positionMap: scale.parsed.positions,
+    })
+  );
+
   const dingRound = [...dings, ...round];
 
   const roundTonefields = positionMap.map((tonefield, i) => {
@@ -64,10 +67,4 @@ const MiniDrum = ({
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
-  sharpNotes: scale.info.sharpNotes,
-  notes: scale.notes,
-  positionMap: scale.parsed.positions,
-});
-
-export default connect(mapStateToProps)(MiniDrum);
+export default MiniDrum;

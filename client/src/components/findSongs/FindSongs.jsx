@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { startSearch } from '../../redux/search/search.actions';
 import searchOptions from '../../redux/search/search.options';
+import Loading from '../shared/loading/Loading';
 import Results from './results/Results';
 import Search from './search/Search';
-import Loading from '../shared/loading/Loading';
 
 const FindSongsContainer = styled.div`
   align-items: center;
@@ -15,10 +15,15 @@ const FindSongsContainer = styled.div`
   padding: var(--padding);
 `;
 
-const FindSongs = ({ startSearch, songsFetchTried }) => {
+const FindSongs = () => {
+  const dispatch = useDispatch();
+  const songsFetchTried = useSelector(({ search }) => search.songsFetchTried);
+
   useEffect(() => {
-    if (!songsFetchTried) startSearch(searchOptions.songs.latest);
-  }, [songsFetchTried, startSearch]);
+    if (!songsFetchTried) {
+      dispatch(startSearch(searchOptions.songs.latest));
+    }
+  }, [dispatch, songsFetchTried]);
 
   return (
     <FindSongsContainer>
@@ -34,8 +39,4 @@ const FindSongs = ({ startSearch, songsFetchTried }) => {
   );
 };
 
-const mapStateToProps = ({ search }) => ({
-  songsFetchTried: search.songsFetchTried,
-});
-
-export default connect(mapStateToProps, { startSearch })(FindSongs);
+export default FindSongs;

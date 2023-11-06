@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { difficultyByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
@@ -11,14 +11,16 @@ import Confirmation from '../../shared/popup/Confirmation';
 import ReactTable from './ReactTable';
 import { DeleteContainer } from './results.styles';
 
-const Results = ({
-  deleteSongById,
-  isDeleting,
-  isSearching,
-  isSignedIn,
-  getSongById,
-  songs,
-}) => {
+const Results = () => {
+  const dispatch = useDispatch();
+  const { songs, isSearching, isDeleting, isSignedIn } = useSelector(
+    ({ search, song, user }) => ({
+      songs: search.songs,
+      isSearching: search.isSearching,
+      isDeleting: song.ui.isDeleting,
+      isSignedIn: user.isSignedIn,
+    })
+  );
   const navigate = useNavigate();
 
   const columns = useMemo(
@@ -56,7 +58,7 @@ const Results = ({
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
       const fetchSongFromServer = (songId, getScale) => {
-        getSongById(songId, getScale).then((res) => {
+        dispatch(getSongById(songId, getScale)).then((res) => {
           if (res) navigate('/song');
         });
       };
@@ -83,7 +85,7 @@ const Results = ({
             {isOwner && isSignedIn ? (
               <DeleteContainer>
                 <Confirmation
-                  onConfirm={() => deleteSongById(songId)}
+                  onConfirm={() => dispatch(deleteSongById(songId))}
                   label={`Are you sure you want to delete "${title}"`}
                 >
                   <BtnIcon
@@ -100,7 +102,7 @@ const Results = ({
         </>
       );
     },
-    [deleteSongById, getSongById, isDeleting, isSearching, isSignedIn, navigate]
+    [dispatch, isDeleting, isSearching, isSignedIn, navigate]
   );
 
   const handleFetchMore = useCallback(
@@ -118,13 +120,4 @@ const Results = ({
   );
 };
 
-const mapStateToProps = ({ search, song, user }) => ({
-  songs: search.songs,
-  isSearching: search.isSearching,
-  isDeleting: song.ui.isDeleting,
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, { deleteSongById, getSongById })(
-  Results
-);
+export default Results;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getNoteLabelFromName, intervals } from '../../../assets/intervals';
 import MiniDrum from '../../drum/MiniDrum';
 import {
@@ -10,7 +10,12 @@ import {
   ScaleHeader,
 } from './scale.styles';
 
-const Scale = ({ info, scale }) => {
+const Scale = () => {
+  const { info, scale } = useSelector(({ scale }) => ({
+    info: scale.info,
+    scale: scale.parsed.pitched,
+  }));
+
   let prevSemitones = scale[info.rootIndex].intervalMap[0].semitones;
 
   const lists = scale[info.rootIndex].intervalMap.reduce(
@@ -85,9 +90,4 @@ const Scale = ({ info, scale }) => {
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
-  info: scale.info,
-  scale: scale.parsed.pitched,
-});
-
-export default connect(mapStateToProps)(Scale);
+export default Scale;

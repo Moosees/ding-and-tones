@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentlyPlaying } from '../../redux/ui/ui.actions';
 import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
 import { getChordColor, getNoteColor, getNoteText } from './drum.utils';
@@ -7,21 +7,31 @@ import ExtraNote from './tonefield/ExtraNote';
 import Tak from './tonefield/Tak';
 import Tonefield from './tonefield/Tonefield';
 
-const Drum = ({
-  currentSound,
-  displayedChord,
-  displayedNote,
-  drumMode,
-  howls,
-  scale,
-  setCurrentlyPlaying,
-  sharpNotes,
-  style,
-}) => {
+const Drum = ({ style }) => {
+  const dispatch = useDispatch();
+  const {
+    displayedChord,
+    displayedNote,
+    drumMode,
+    howls,
+    sharpNotes,
+    scale,
+    currentSound,
+  } = useSelector(({ drum, howls, scale, ui }) => ({
+    displayedChord: drum.displayedChord,
+    displayedNote: drum.displayedNote,
+    drumMode: drum.drumMode,
+    howls: howls.data,
+    sharpNotes: scale.info.sharpNotes,
+    scale: scale.parsed.pitched,
+    currentSound: ui.currentSound,
+  }));
+
   const handlePlay = (note, option, currentHand = 1) => {
     if (!howls[note] || howls[note].status !== 'ready') return;
 
-    setCurrentlyPlaying({ currentHand, currentSound: [option] });
+    dispatch(setCurrentlyPlaying({ currentHand, currentSound: [option] }));
+    
     howls[note].play();
   };
 
@@ -111,15 +121,4 @@ const Drum = ({
   );
 };
 
-const mapStateToProps = ({ drum, howls, scale, ui }) => ({
-  displayedChord: drum.displayedChord,
-  displayedNote: drum.displayedNote,
-  drumMode: drum.drumMode,
-  howls: howls.data,
-  sharpNotes: scale.info.sharpNotes,
-  scale: scale.parsed.pitched,
-  currentSound: ui.currentSound,
-  isEditingExtraPos: ui.isEditingExtraPos,
-});
-
-export default connect(mapStateToProps, { setCurrentlyPlaying })(Drum);
+export default Drum;

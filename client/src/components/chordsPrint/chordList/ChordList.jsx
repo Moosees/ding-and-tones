@@ -1,8 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Chord from './Chord';
 
-const ChordList = ({ printList, sharpNotes }) => {
+const ChordList = () => {
+  const { printList, sharpNotes } = useSelector(({ chords, scale }) => ({
+    printList: chords.printList,
+    sharpNotes: scale.info.sharpNotes,
+  }));
+
   return (
     <>
       {printList.map((chord, i) => (
@@ -12,9 +17,4 @@ const ChordList = ({ printList, sharpNotes }) => {
   );
 };
 
-const mapStateToProps = ({ chords, scale }) => ({
-  printList: chords.printList,
-  sharpNotes: scale.info.sharpNotes,
-});
-
-export default connect(mapStateToProps)(ChordList);
+export default ChordList;
