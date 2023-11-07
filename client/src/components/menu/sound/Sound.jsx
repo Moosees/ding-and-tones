@@ -5,14 +5,14 @@ import BtnMenu from '../../shared/button/Menu';
 import PopupSound from './PopupSound';
 
 const Sound = () => {
-  const [soundOpen, setSoundOpen] = useState(false);
-  const [oldSound, setOldSound] = useState({ audioOption: null, volume: null });
-
+  const dispatch = useDispatch();
   const { audioSrc, volume } = useSelector(({ howls }) => ({
     audioSrc: howls.info.audioSrc,
     volume: howls.info.volume,
   }));
-  const dispatch = useDispatch();
+
+  const [soundOpen, setSoundOpen] = useState(false);
+  const [oldSound, setOldSound] = useState({ audioOption: null, volume: null });
 
   const handleOpen = () => {
     setOldSound({ audioSrc, volume });

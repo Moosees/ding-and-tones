@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../../redux/user/user.actions';
 import BtnMenu from '../../shared/button/Menu';
 import PopupSignIn from './PopupSignIn';
 
-const SignIn = ({ isSignedIn, signOut }) => {
+const SignIn = () => {
+  const dispatch = useDispatch();
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+
   const [popupOpen, setPopupOpen] = useState(false);
 
   return (
     <>
       {isSignedIn ? (
-        <BtnMenu label="Sign out" icon="directions_run" onClick={signOut} />
+        <BtnMenu
+          label="Sign out"
+          icon="directions_run"
+          onClick={() => dispatch(signOut())}
+        />
       ) : (
         <>
           <BtnMenu
@@ -26,8 +33,4 @@ const SignIn = ({ isSignedIn, signOut }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, { signOut })(SignIn);
+export default SignIn;

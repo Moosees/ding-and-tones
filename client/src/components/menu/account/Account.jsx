@@ -1,17 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleAccount } from '../../../redux/user/user.actions';
 import BtnMenu from '../../shared/button/Menu';
 import PopupAccount from './PopupAccount';
 
-const Account = ({ accountOpen, isSignedIn, toggleAccount }) => {
+const Account = () => {
+  const dispatch = useDispatch();
+  const { accountOpen, isSignedIn } = useSelector(({ user }) => ({
+    accountOpen: user.accountOpen,
+    isSignedIn: user.isSignedIn,
+  }));
+
   return (
     <>
       {isSignedIn && (
         <BtnMenu
           label="Account"
           icon="person_outline"
-          onClick={toggleAccount}
+          onClick={() => dispatch(toggleAccount())}
         />
       )}
       {accountOpen && <PopupAccount />}
@@ -19,9 +25,4 @@ const Account = ({ accountOpen, isSignedIn, toggleAccount }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  accountOpen: user.accountOpen,
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, { toggleAccount })(Account);
+export default Account;

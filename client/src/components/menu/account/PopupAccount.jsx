@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
 import { saveUserInfo, toggleAccount } from '../../../redux/user/user.actions';
 import BtnPrimary from '../../shared/button/Primary';
@@ -8,13 +8,13 @@ import InfoInput from '../../shared/input/InfoInput';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 
-const PopupAccount = ({
-  clearNewUser,
-  isAnonymous,
-  name,
-  toggleAccount,
-  saveUserInfo,
-}) => {
+const PopupAccount = ({ clearNewUser }) => {
+  const dispatch = useDispatch();
+  const { isAnonymous, name } = useSelector(({ user }) => ({
+    isAnonymous: user.isAnonymous,
+    name: user.name,
+  }));
+
   const [anon, setAnon] = useState(isAnonymous);
 
   const [username, setUsername, usernameErrors, usernameValid] = useValidate(
@@ -23,11 +23,15 @@ const PopupAccount = ({
   );
 
   const handleSave = () => {
-    if (usernameValid) saveUserInfo(username, anon);
+    if (usernameValid) dispatch(saveUserInfo(username, anon));
+  };
+
+  const handleToggleAccount = () => {
+    dispatch(toggleAccount());
   };
 
   return (
-    <Popup header="Account" onClose={toggleAccount}>
+    <Popup header="Account" onClose={handleToggleAccount}>
       <InfoInput
         autoFocus
         large
@@ -48,17 +52,10 @@ const PopupAccount = ({
       </InfoBox>
       <Popup.Flex>
         <BtnPrimary label="Save" onClick={handleSave} />
-        <BtnPrimary light label="Cancel" onClick={toggleAccount} />
+        <BtnPrimary light label="Cancel" onClick={handleToggleAccount} />
       </Popup.Flex>
     </Popup>
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  isAnonymous: user.isAnonymous,
-  name: user.name,
-});
-
-export default connect(mapStateToProps, { saveUserInfo, toggleAccount })(
-  PopupAccount
-);
+export default PopupAccount;

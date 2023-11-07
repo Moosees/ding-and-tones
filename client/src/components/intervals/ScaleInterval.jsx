@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getNoteLabelFromName, intervals } from '../../assets/intervals';
 import { setDisplayedNote } from '../../redux/drum/drum.actions';
 import {
@@ -27,18 +27,14 @@ const getIntervalProps = (interval) => {
   };
 };
 
-const ScaleInterval = ({
-  displayedNote,
-  interval,
-  option,
-  scaleIndex,
-  sharpNotes,
-  setDisplayedNote,
-}) => {
+const ScaleInterval = ({ interval, option, scaleIndex, sharpNotes }) => {
+  const dispatch = useDispatch();
+
   const { color, modifier, name, nameShort, note, semitones } =
     getIntervalProps(interval);
+
   const handleIntervalClick = () => {
-    setDisplayedNote(scaleIndex);
+    dispatch(setDisplayedNote(scaleIndex));
   };
 
   return (
@@ -59,8 +55,4 @@ const ScaleInterval = ({
   );
 };
 
-const mapStateToProps = ({ drum }) => ({
-  displayedNote: drum.displayedNote,
-});
-
-export default connect(mapStateToProps, { setDisplayedNote })(ScaleInterval);
+export default ScaleInterval;

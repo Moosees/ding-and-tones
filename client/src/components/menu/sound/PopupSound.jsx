@@ -1,27 +1,29 @@
-import React from 'react';
-import { useMemo } from 'react';
-import { connect } from 'react-redux';
+import React, { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { audioSources } from '../../../assets/sound/audioOptions';
 import { selectSoundSource } from '../../../redux/howls/howls.actions';
 import BtnPrimary from '../../shared/button/Primary';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
-import { AudioOption, Credits } from './sound.styles';
 import VolumeSlider from './VolumeSlider';
+import { AudioOption, Credits } from './sound.styles';
 
-const PopupSound = ({ audioSrc, onClose, selectSoundSource }) => {
+const PopupSound = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const audioSrc = useSelector(({ howls }) => howls.info.audioSrc);
+
   const optionList = useMemo(
     () =>
       audioSources.map((option, i) => (
         <AudioOption
           key={i}
           isSelected={option.path === audioSrc.path}
-          onClick={() => selectSoundSource(option)}
+          onClick={() => dispatch(selectSoundSource(option))}
         >
           {option.label}
         </AudioOption>
       )),
-    [audioSrc, selectSoundSource]
+    [dispatch, audioSrc]
   );
 
   return (
@@ -49,8 +51,4 @@ const PopupSound = ({ audioSrc, onClose, selectSoundSource }) => {
   );
 };
 
-const mapStateToProps = ({ howls }) => ({
-  audioSrc: howls.info.audioSrc,
-});
-
-export default connect(mapStateToProps, { selectSoundSource })(PopupSound);
+export default PopupSound;

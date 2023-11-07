@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BtnNav from '../shared/button/Nav';
@@ -13,7 +13,12 @@ const Navbar = styled.nav`
   position: absolute;
 `;
 
-const Nav = ({ scaleId, songId }) => {
+const Nav = () => {
+  const { scaleId, songId } = useSelector(({ scale, song }) => ({
+    scaleId: scale.ui.scaleId,
+    songId: song.ui.songId,
+  }));
+
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -44,9 +49,4 @@ const Nav = ({ scaleId, songId }) => {
   );
 };
 
-const mapStateToProps = ({ scale, song }) => ({
-  scaleId: scale.ui.scaleId,
-  songId: song.ui.songId,
-});
-
-export default connect(mapStateToProps)(Nav);
+export default Nav;

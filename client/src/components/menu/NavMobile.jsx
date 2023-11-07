@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { checkSession } from '../../redux/user/user.actions';
 import DropdownMobile from './dropdown/DropdownMobile';
@@ -7,16 +7,18 @@ import Logo from './logo/Logo';
 import { LogoContainer, MobileAnchor } from './nav.styles';
 import { getSongIdFromLocation } from './nav.utils';
 
-const NavMobile = ({ checkSession }) => {
+const NavMobile = () => {
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
     const songId = getSongIdFromLocation(location);
-    checkSession(songId);
+    dispatch(checkSession(songId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checkSession]);
+  }, [dispatch]);
 
   return (
     <MobileAnchor>
@@ -28,4 +30,4 @@ const NavMobile = ({ checkSession }) => {
   );
 };
 
-export default connect(null, { checkSession })(NavMobile);
+export default NavMobile;

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { signIn, signOut } from '../../../redux/user/user.actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { signIn } from '../../../redux/user/user.actions';
 import PrivacyText from '../../privacy/PrivacyText';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
 import GoogleIcon from './GoogleIcon.jsx';
 import { GoogleBtn, SignInContainer, TermsLink } from './signIn.styles';
 
-const SignIn = ({ isSignedIn, onClose, signIn, signOut, songId }) => {
+const SignIn = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const songId = useSelector(({ song }) => song.ui.songId);
+
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [persist, setPersist] = useState(false);
 
@@ -19,7 +22,7 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut, songId }) => {
           checked={persist}
           onChange={() => setPersist((persist) => !persist)}
         />
-        <GoogleBtn onClick={() => signIn(songId, persist)}>
+        <GoogleBtn onClick={() => dispatch(signIn(songId, persist))}>
           <GoogleIcon />
           <span>Sign in with Google</span>
         </GoogleBtn>
@@ -36,9 +39,4 @@ const SignIn = ({ isSignedIn, onClose, signIn, signOut, songId }) => {
   );
 };
 
-const mapStateToProps = ({ song, user }) => ({
-  songId: song.ui.songId,
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, { signIn, signOut })(SignIn);
+export default SignIn;

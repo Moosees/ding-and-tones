@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { checkSession } from '../../../redux/user/user.actions';
 import BtnNav from '../../shared/button/Nav';
@@ -7,16 +7,18 @@ import Dropdown from '../dropdown/Dropdown';
 import { MenuAnchor } from '../nav.styles';
 import { getSongIdFromLocation } from '../nav.utils';
 
-const User = ({ checkSession }) => {
+const User = () => {
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
     const songId = getSongIdFromLocation(location);
-    checkSession(songId);
+    dispatch(checkSession(songId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checkSession]);
+  }, [dispatch]);
 
   return (
     <div>
@@ -35,4 +37,4 @@ const User = ({ checkSession }) => {
   );
 };
 
-export default connect(null, { checkSession })(User);
+export default User;

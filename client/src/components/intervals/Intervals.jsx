@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { helpTopics } from '../../assets/help';
 import useDimensions from '../../hooks/useDimensions';
 import Buttons from '../shared/button/Buttons';
@@ -9,10 +9,19 @@ import ScrollBox from '../shared/scrollBox/ScrollBox';
 import PlayButton from '../songControls/playButton/PlayButton';
 import ChordInterval from './ChordInterval';
 import DrumMode from './DrumMode';
-import { IntervalList } from './intervals.styles';
 import ScaleInterval from './ScaleInterval';
+import { IntervalList } from './intervals.styles';
 
-const Intervals = ({ displayedChord, displayedNote, scale, sharpNotes }) => {
+const Intervals = () => {
+  const { displayedChord, displayedNote, sharpNotes, scale } = useSelector(
+    ({ scale, drum }) => ({
+      displayedChord: drum.displayedChord,
+      displayedNote: drum.displayedNote,
+      sharpNotes: scale.info.sharpNotes,
+      scale: scale.parsed.pitched,
+    })
+  );
+
   const { isMobile } = useDimensions();
 
   const getIntervals = () => {
@@ -57,11 +66,4 @@ const Intervals = ({ displayedChord, displayedNote, scale, sharpNotes }) => {
   );
 };
 
-const mapStateToProps = ({ scale, drum }) => ({
-  displayedChord: drum.displayedChord,
-  displayedNote: drum.displayedNote,
-  sharpNotes: scale.info.sharpNotes,
-  scale: scale.parsed.pitched,
-});
-
-export default connect(mapStateToProps)(Intervals);
+export default Intervals;
