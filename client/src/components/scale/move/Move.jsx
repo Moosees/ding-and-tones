@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { moveExtraNotes } from '../../../redux/scale/scale.actions';
 import { TextLabel } from '../edit/edit.styles';
 import { MoveContainer, Note, PositionWrapper } from './move.styles';
 
-const Move = ({ extra, moveExtraNotes }) => {
+const Move = () => {
+  const dispatch = useDispatch();
+  const extra = useSelector(({ scale }) => scale.notes.extra);
+
   const [grabbed, setGrabbed] = useState(null);
   const [isGrabbing, setIsGrabbing] = useState(false);
 
@@ -15,7 +18,9 @@ const Move = ({ extra, moveExtraNotes }) => {
   });
 
   const handleMove = (note, pos) => {
-    if (pos !== grabbed) moveExtraNotes(grabbed, pos, !!note);
+    if (pos !== grabbed) {
+      dispatch(moveExtraNotes(grabbed, pos, !!note));
+    }
 
     setGrabbed(null);
     setIsGrabbing(false);
@@ -55,8 +60,4 @@ const Move = ({ extra, moveExtraNotes }) => {
   );
 };
 
-const mapStateToProps = ({ scale }) => ({
-  extra: scale.notes.extra,
-});
-
-export default connect(mapStateToProps, { moveExtraNotes })(Move);
+export default Move;

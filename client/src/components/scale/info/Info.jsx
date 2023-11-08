@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
@@ -15,33 +15,40 @@ import InfoText from '../../shared/input/InfoText';
 import Rotation from '../rotation/Rotation';
 import { ScaleInfoContainer, ScaleNotes } from './info.styles';
 
-const Info = ({
-  hasChanges,
-  isDeleting,
-  isFetching,
-  isSaving,
-  isSignedIn,
-  newScale,
-  saveScale,
-  scaleInfo,
-  setScaleName,
-}) => {
+const Info = () => {
+  const dispatch = useDispatch();
+  const {
+    hasChanges,
+    isDeleting,
+    isFetching,
+    isSaving,
+    scaleInfo,
+    isSignedIn,
+  } = useSelector(({ scale, search, ui, user }) => ({
+    hasChanges: scale.ui.hasChanges,
+    isDeleting: scale.ui.isDeleting,
+    isFetching: scale.ui.isFetching,
+    isSaving: scale.ui.isSaving,
+    scaleInfo: scale.info,
+    isSignedIn: user.isSignedIn,
+  }));
+
   const navigate = useNavigate();
 
   const [name, handleNameChange, nameErrors, isNameValid, resetName] =
     useValidate('scaleName', scaleInfo.name);
 
   const handleScaleSave = () => {
-    saveScale(name);
+    dispatch(saveScale(name));
     navigate('/scale', { replace: true });
   };
 
   const handleNameSave = () => {
-    if (isNameValid) setScaleName(name);
+    if (isNameValid) dispatch(setScaleName(name));
   };
 
   const handleNewScale = () => {
-    newScale();
+    dispatch(newScale());
     navigate('/scale', { replace: true });
   };
 
@@ -87,17 +94,4 @@ const Info = ({
   );
 };
 
-const mapStateToProps = ({ scale, search, ui, user }) => ({
-  hasChanges: scale.ui.hasChanges,
-  isDeleting: scale.ui.isDeleting,
-  isFetching: scale.ui.isFetching,
-  isSaving: scale.ui.isSaving,
-  scaleInfo: scale.info,
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, {
-  newScale,
-  saveScale,
-  setScaleName,
-})(Info);
+export default Info;

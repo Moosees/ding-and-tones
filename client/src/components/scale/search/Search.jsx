@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
 import searchOptions from '../../../redux/search/search.options';
 import Buttons from '../../shared/button/Buttons';
@@ -7,17 +7,23 @@ import BtnPrimary from '../../shared/button/Primary';
 import InfoSearch from '../../shared/input/InfoSearch';
 import { SearchContainer } from './search.styles';
 
-const Search = ({ isSearching, isSignedIn, startSearch }) => {
+const Search = () => {
+  const dispatch = useDispatch();
+  const { isSearching, isSignedIn } = useSelector(({ search, user }) => ({
+    isSearching: search.isSearching,
+    isSignedIn: user.isSignedIn,
+  }));
+
   const [value, setValue] = useState('');
 
   const handleNewScalesClick = () => {
     setValue('');
-    startSearch(searchOptions.scales.latest);
+    dispatch(startSearch(searchOptions.scales.latest));
   };
 
   const handleMyScalesClick = () => {
     setValue('');
-    startSearch(searchOptions.scales.me);
+    dispatch(startSearch(searchOptions.scales.me));
   };
 
   return (
@@ -44,9 +50,4 @@ const Search = ({ isSearching, isSignedIn, startSearch }) => {
   );
 };
 
-const mapStateToProps = ({ search, user }) => ({
-  isSearching: search.isSearching,
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, { startSearch })(Search);
+export default Search;

@@ -15,7 +15,7 @@ import {
 export const addNoteToScale = (newNote) => (dispatch, getState) => {
   const {
     scale: { info, notes },
-    ui: { addExtraNotes },
+    ui: { isAddingExtraNotes },
   } = getState();
 
   const payload = {
@@ -24,7 +24,7 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
     info: {},
   };
 
-  if (addExtraNotes) {
+  if (isAddingExtraNotes) {
     const newExtraSorted = sortScaleByFreq([
       ...notes.extra.map(({ note }) => note),
       newNote,
@@ -35,7 +35,7 @@ export const addNoteToScale = (newNote) => (dispatch, getState) => {
     payload.notes.extra = newExtraWithPos;
   }
 
-  if (!addExtraNotes) {
+  if (!isAddingExtraNotes) {
     const newInnerSorted = sortScaleByFreq([
       ...notes.dings,
       ...notes.round,

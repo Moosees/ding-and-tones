@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useDimensions from '../../hooks/useDimensions';
 import { startSearch } from '../../redux/search/search.actions';
@@ -12,7 +12,16 @@ import Results from './results/Results';
 import { ScaleContainer, Section } from './scale.styles';
 import Search from './search/Search';
 
-const Scale = ({ isSearching, scalesFetchTried, scaleUi, startSearch }) => {
+const Scale = () => {
+  const dispatch = useDispatch();
+  const { scaleUi, isSearching, scalesFetchTried } = useSelector(
+    ({ scale, search }) => ({
+      scaleUi: scale.ui,
+      isSearching: search.isSearching,
+      scalesFetchTried: search.scalesFetchTried,
+    })
+  );
+
   const { scaleId } = useParams();
   const navigate = useNavigate();
   const { isMobile } = useDimensions();
@@ -37,8 +46,8 @@ const Scale = ({ isSearching, scalesFetchTried, scaleUi, startSearch }) => {
   useEffect(() => {
     if (scalesFetchTried || isSearching || isWorking) return;
 
-    startSearch(searchOptions.scales.latest);
-  }, [isSearching, isWorking, scalesFetchTried, startSearch]);
+    dispatch(startSearch(searchOptions.scales.latest));
+  }, [dispatch, isSearching, isWorking, scalesFetchTried]);
 
   return (
     <ScaleContainer>
@@ -68,10 +77,4 @@ const Scale = ({ isSearching, scalesFetchTried, scaleUi, startSearch }) => {
   );
 };
 
-const mapStateToProps = ({ scale, search }) => ({
-  scaleUi: scale.ui,
-  isSearching: search.isSearching,
-  scalesFetchTried: search.scalesFetchTried,
-});
-
-export default connect(mapStateToProps, { startSearch })(Scale);
+export default Scale;

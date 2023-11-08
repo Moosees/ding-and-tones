@@ -5,7 +5,6 @@ import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
 
 const INITIAL_STATE = {
-  addExtraNotes: false,
   autoMove: false,
   autoMoveOrder: {},
   currentBar: null,
@@ -16,6 +15,7 @@ const INITIAL_STATE = {
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
+  isAddingExtraNotes: false,
   isEditingExtraPos: false,
   isEditingSong: true,
   isSongPlaying: false,
@@ -77,7 +77,7 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case uiTypes.TOGGLE_EXTRA_NOTES:
       return {
         ...state,
-        addExtraNotes: !state.addExtraNotes,
+        isAddingExtraNotes: !state.isAddingExtraNotes,
       };
 
     case uiTypes.TOGGLE_HEADERS_OPEN:

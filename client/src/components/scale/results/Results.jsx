@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
@@ -14,14 +14,17 @@ import {
   TextContainer,
 } from './results.styles';
 
-const Results = ({
-  deleteScaleById,
-  isDeleting,
-  isSearching,
-  isSignedIn,
-  loadScale,
-  scales,
-}) => {
+const Results = () => {
+  const dispatch = useDispatch();
+  const { isDeleting, scales, isSearching, isSignedIn } = useSelector(
+    ({ scale, search, user }) => ({
+      isDeleting: scale.ui.isDeleting,
+      scales: search.scales,
+      isSearching: search.isSearching,
+      isSignedIn: user.isSignedIn,
+    })
+  );
+
   const navigate = useNavigate();
 
   const getScales = () =>
@@ -33,12 +36,12 @@ const Results = ({
       } = scale;
 
       const handleDeleteScale = () => {
-        deleteScaleById(scaleId);
+        dispatch(deleteScaleById(scaleId));
         navigate('/scale');
       };
 
       const handleLoadScale = () => {
-        loadScale(scale);
+        dispatch(loadScale(scale));
         navigate('/scale');
       };
 
@@ -86,14 +89,4 @@ const Results = ({
   );
 };
 
-const mapStateToProps = ({ scale, search, user }) => ({
-  isDeleting: scale.ui.isDeleting,
-  scales: search.scales,
-  isSearching: search.isSearching,
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, {
-  deleteScaleById,
-  loadScale,
-})(Results);
+export default Results;

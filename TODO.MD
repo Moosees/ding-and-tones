@@ -4,6 +4,7 @@
 
 ### Fixes update
 
+* Clicking new song with extra notes move open locks the ui - fix
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?
 * Fix dropdown opening position and change on scroll or resize
 * Better dropdown handler?

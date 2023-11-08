@@ -1,7 +1,7 @@
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { rotateDrum } from '../../../redux/scale/scale.actions';
 import MiniDrum from '../../drum/MiniDrum';
@@ -29,45 +29,46 @@ const marks = {
   360: <Mark>180</Mark>,
 };
 
-const PopupRotation = ({ onClose, rotateDrum, rotation }) => (
-  <Popup header="Rotate Drum" onClose={onClose}>
-    <InfoBox>
-      <Slider
-        value={rotation}
-        step={1}
-        min={0}
-        max={360}
-        marks={marks}
-        included={false}
-        onChange={(angle) => rotateDrum(angle)}
-        handleStyle={{
-          backgroundColor: '#888',
-          border: '1px solid #444',
-          height: '2rem',
-          marginTop: '-8px',
-          width: '2rem',
-        }}
-        railStyle={{
-          backgroundColor: 'rgba(0,0,60,0.3)',
-        }}
-        style={{
-          backgroundColor: 'rgba(0,0,0,0)',
-          cursor: 'pointer',
-          margin: '-5px 5px 0',
-        }}
-      />
-    </InfoBox>
-    <Popup.Flex>
-      <MiniDrum noExtraTones />
-    </Popup.Flex>
-    <Popup.Flex>
-      <BtnPrimary label="Close" onClick={onClose} />
-    </Popup.Flex>
-  </Popup>
-);
+const PopupRotation = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const rotation = useSelector(({ scale }) => scale.info.rotation);
 
-const mapStateToProps = ({ scale }) => ({
-  rotation: scale.info.rotation,
-});
+  return (
+    <Popup header="Rotate Drum" onClose={onClose}>
+      <InfoBox>
+        <Slider
+          value={rotation}
+          step={1}
+          min={0}
+          max={360}
+          marks={marks}
+          included={false}
+          onChange={(angle) => dispatch(rotateDrum(angle))}
+          handleStyle={{
+            backgroundColor: '#888',
+            border: '1px solid #444',
+            height: '2rem',
+            marginTop: '-8px',
+            width: '2rem',
+          }}
+          railStyle={{
+            backgroundColor: 'rgba(0,0,60,0.3)',
+          }}
+          style={{
+            backgroundColor: 'rgba(0,0,0,0)',
+            cursor: 'pointer',
+            margin: '-5px 5px 0',
+          }}
+        />
+      </InfoBox>
+      <Popup.Flex>
+        <MiniDrum noExtraTones />
+      </Popup.Flex>
+      <Popup.Flex>
+        <BtnPrimary label="Close" onClick={onClose} />
+      </Popup.Flex>
+    </Popup>
+  );
+};
 
-export default connect(mapStateToProps, { rotateDrum })(PopupRotation);
+export default PopupRotation;

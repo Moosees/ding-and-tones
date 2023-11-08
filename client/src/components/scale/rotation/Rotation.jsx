@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BtnPrimary from '../../shared/button/Primary';
 import PopupRotation from './PopupRotation';
 
-const Rotation = ({ rotateDrum, rotation }) => {
+const Rotation = () => {
   const [popupOpen, setPopupOpen] = useState(false);
 
   return (

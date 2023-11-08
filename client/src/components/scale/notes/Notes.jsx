@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MAX_NOTE_VALUE, MIN_NOTE_VALUE } from '../../../assets/constants';
 import {
   getNoteLabelFromName,
@@ -16,27 +16,28 @@ import BtnPrimary from '../../shared/button/Primary';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { Note, NotesList, TextLabel } from './notes.styles';
 
-const Notes = ({
-  addExtraNotes,
-  addNoteToScale,
-  isSongPlaying,
-  notes,
-  removeNoteFromScale,
-  scale,
-  sharpNotes,
-  toggleSharps,
-  transposeScale,
-}) => {
-  const { extra, round } = notes;
+const Notes = () => {
+  const dispatch = useDispatch();
+  const { sharpNotes, extra, round, scale, isAddingExtraNotes, isSongPlaying } =
+    useSelector(({ scale, ui }) => ({
+      sharpNotes: scale.info.sharpNotes,
+      extra: scale.notes.extra,
+      round: scale.notes.round,
+      scale: scale.parsed.pitched,
+      isAddingExtraNotes: ui.isAddingExtraNotes,
+      isSongPlaying: ui.isSongPlaying,
+    }));
 
   const handleAdd = (note) => {
     if (isSongPlaying) return;
-    addNoteToScale(note);
+
+    dispatch(addNoteToScale(note));
   };
 
   const handleRemove = (note) => {
     if (isSongPlaying) return;
-    removeNoteFromScale(note);
+
+    dispatch(removeNoteFromScale(note));
   };
 
   const getNotes = () => {
@@ -53,8 +54,8 @@ const Notes = ({
       const type = inScale ? noteValues[i] : 'outside';
 
       const disabled =
-        (!inScale && addExtraNotes && extra.length >= 8) ||
-        (!inScale && !addExtraNotes && round.length >= 13);
+        (!inScale && isAddingExtraNotes && extra.length >= 8) ||
+        (!inScale && !isAddingExtraNotes && round.length >= 13);
 
       const handleClick = inScale
         ? () => handleRemove(noteName)
@@ -69,6 +70,10 @@ const Notes = ({
     return noteSelectors;
   };
 
+  const handleTransposeScale = (destination) => {
+    dispatch(transposeScale(destination));
+  };
+
   return (
     <>
       <TextLabel>Transpose Scale</TextLabel>
@@ -77,31 +82,31 @@ const Notes = ({
           disabled={isSongPlaying}
           label="- 8va"
           light
-          onClick={() => transposeScale(-12)}
+          onClick={() => handleTransposeScale(-12)}
         />
         <BtnPrimary
           disabled={isSongPlaying}
           label="Down"
           light
-          onClick={() => transposeScale(-1)}
+          onClick={() => handleTransposeScale(-1)}
         />
         <BtnPrimary
           disabled={isSongPlaying}
           label="#/b"
           light
-          onClick={toggleSharps}
+          onClick={() => dispatch(toggleSharps())}
         />
         <BtnPrimary
           disabled={isSongPlaying}
           label="Up"
           light
-          onClick={() => transposeScale(1)}
+          onClick={() => handleTransposeScale(1)}
         />
         <BtnPrimary
           disabled={isSongPlaying}
           label="+ 8va"
           light
-          onClick={() => transposeScale(12)}
+          onClick={() => handleTransposeScale(12)}
         />
       </Buttons>
       <DividerLine small />
@@ -111,17 +116,4 @@ const Notes = ({
   );
 };
 
-const mapStateToProps = ({ scale, ui }) => ({
-  sharpNotes: scale.info.sharpNotes,
-  notes: scale.notes,
-  scale: scale.parsed.pitched,
-  addExtraNotes: ui.addExtraNotes,
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps, {
-  addNoteToScale,
-  removeNoteFromScale,
-  toggleSharps,
-  transposeScale,
-})(Notes);
+export default Notes;
