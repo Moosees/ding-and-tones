@@ -1,16 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { SelectDropdown, SelectLabel } from './select.styles';
 import { parseOptions } from './select.utils';
 
-const Select = ({
-  label,
-  large,
-  handleChange,
-  isSongPlaying,
-  options,
-  value,
-}) => {
+const Select = ({ label, large, handleChange, options, value }) => {
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+
   return (
     <SelectLabel as="label" large={large} disabled={isSongPlaying}>
       <span>{label}</span>
@@ -26,8 +21,4 @@ const Select = ({
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps)(Select);
+export default Select;

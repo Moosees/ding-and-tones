@@ -1,7 +1,7 @@
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { updateSongInfo } from '../../../redux/song/song.actions';
 import './slider-override.css';
@@ -22,37 +22,40 @@ const marks = {
   160: <Mark>160</Mark>,
 };
 
-const BpmSlider = ({ bpm, updateSongInfo, isSongPlaying }) => (
-  <Slider
-    value={bpm}
-    step={5}
-    min={40}
-    max={180}
-    marks={marks}
-    included={false}
-    disabled={isSongPlaying}
-    onChange={(value) => updateSongInfo({ bpm: value })}
-    handleStyle={{
-      backgroundColor: '#888',
-      border: '1px solid #444',
-      height: '2rem',
-      marginTop: '-8px',
-      width: '2rem',
-    }}
-    railStyle={{
-      backgroundColor: 'rgba(0,0,60,0.3)',
-    }}
-    style={{
-      backgroundColor: 'rgba(0,0,0,0)',
-      cursor: 'pointer',
-      marginTop: '-5px',
-    }}
-  />
-);
+const BpmSlider = () => {
+  const dispatch = useDispatch();
+  const { bpm, isSongPlaying } = useSelector(({ song, ui }) => ({
+    bpm: song.info.bpm,
+    isSongPlaying: ui.isSongPlaying,
+  }));
 
-const mapStateToProps = ({ song, ui }) => ({
-  bpm: song.info.bpm,
-  isSongPlaying: ui.isSongPlaying,
-});
+  return (
+    <Slider
+      value={bpm}
+      step={5}
+      min={40}
+      max={180}
+      marks={marks}
+      included={false}
+      disabled={isSongPlaying}
+      onChange={(value) => dispatch(updateSongInfo({ bpm: value }))}
+      handleStyle={{
+        backgroundColor: '#888',
+        border: '1px solid #444',
+        height: '2rem',
+        marginTop: '-8px',
+        width: '2rem',
+      }}
+      railStyle={{
+        backgroundColor: 'rgba(0,0,60,0.3)',
+      }}
+      style={{
+        backgroundColor: 'rgba(0,0,0,0)',
+        cursor: 'pointer',
+        marginTop: '-5px',
+      }}
+    />
+  );
+};
 
-export default connect(mapStateToProps, { updateSongInfo })(BpmSlider);
+export default BpmSlider;

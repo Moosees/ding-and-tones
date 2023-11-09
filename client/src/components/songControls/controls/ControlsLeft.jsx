@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
@@ -12,17 +12,26 @@ import PopupNewSong from '../popups/PopupNewSong';
 import PopupSaveSong from '../popups/PopupSaveSong';
 import { ControlsContainer } from './controls.styles';
 
-const ControlsLeft = ({
-  arrangement,
-  isOwner,
-  isSaving,
-  isSignedIn,
-  isSongPlaying,
-  saveSong,
-  songScaleId,
-  songInfo,
-  updateSongInfo,
-}) => {
+const ControlsLeft = () => {
+  const dispatch = useDispatch();
+  const {
+    songScaleId,
+    arrangement,
+    songInfo,
+    isOwner,
+    isSaving,
+    isSongPlaying,
+    isSignedIn,
+  } = useSelector(({ scale, song, ui, user }) => ({
+    songScaleId: song.ui.scaleId,
+    arrangement: song.arrangement,
+    songInfo: song.info,
+    isOwner: song.ui.isOwner,
+    isSaving: song.ui.isSaving,
+    isSongPlaying: ui.isSongPlaying,
+    isSignedIn: user.isSignedIn,
+  }));
+
   const [newSongOpen, setNewSongOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);
   const navigate = useNavigate();
@@ -40,7 +49,7 @@ const ControlsLeft = ({
     !isArrangementValid;
 
   const saveSongCb = (scaleId, saveAs) => {
-    saveSong({ saveAs, title, scaleId }).then((res) => {
+    dispatch(saveSong({ saveAs, title, scaleId })).then((res) => {
       setSaveSongOpen(false);
       if (res) navigate(res, { replace: true });
     });
@@ -52,7 +61,7 @@ const ControlsLeft = ({
         <InfoText
           handleChange={handleTitleChange}
           handleClose={resetTitle}
-          handleSave={() => updateSongInfo({ title })}
+          handleSave={() => dispatch(updateSongInfo({ title }))}
           isValid={isTitleValid}
           label={titleErrors.length ? titleErrors[0] : 'Song title:'}
           value={title}
@@ -61,7 +70,9 @@ const ControlsLeft = ({
         </InfoText>
         <Select
           value={songInfo.difficulty}
-          handleChange={(value) => updateSongInfo({ difficulty: value })}
+          handleChange={(value) =>
+            dispatch(updateSongInfo({ difficulty: value }))
+          }
           options={optionsDifficulty}
           label="Difficulty: "
         />
@@ -95,17 +106,4 @@ const ControlsLeft = ({
   );
 };
 
-const mapStateToProps = ({ scale, song, ui, user }) => ({
-  songScaleId: song.ui.scaleId,
-  arrangement: song.arrangement,
-  songInfo: song.info,
-  isOwner: song.ui.isOwner,
-  isSaving: song.ui.isSaving,
-  isSongPlaying: ui.isSongPlaying,
-  isSignedIn: user.isSignedIn,
-});
-
-export default connect(mapStateToProps, {
-  saveSong,
-  updateSongInfo,
-})(ControlsLeft);
+export default ControlsLeft;

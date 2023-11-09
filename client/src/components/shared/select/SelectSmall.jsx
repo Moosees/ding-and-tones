@@ -1,9 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { SelectDropdown, SelectLabelSmall } from './select.styles';
 import { parseOptions } from './select.utils';
 
-const SelectSmall = ({ handleChange, isSongPlaying, options, value }) => {
+const SelectSmall = ({ handleChange, options, value }) => {
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+
   return (
     <SelectLabelSmall disabled={isSongPlaying}>
       <SelectDropdown
@@ -20,8 +22,4 @@ const SelectSmall = ({ handleChange, isSongPlaying, options, value }) => {
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps)(SelectSmall);
+export default SelectSmall;

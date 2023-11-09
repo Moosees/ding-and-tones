@@ -1,18 +1,21 @@
 import React, { useMemo } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
 import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import { checkHowlsReadyStatus } from './playButton.utils';
 
-const PlayButton = ({
-  howls,
-  isSongPlaying,
-  light,
-  scale,
-  setIsSongPlaying,
-}) => {
+const PlayButton = ({ light }) => {
+  const dispatch = useDispatch();
+  const { howls, scale, isSongPlaying } = useSelector(
+    ({ howls, scale, ui }) => ({
+      howls: howls.data,
+      scale: scale.parsed.pitched,
+      isSongPlaying: ui.isSongPlaying,
+    })
+  );
+
   const areHowlsReady = useMemo(
     () => checkHowlsReadyStatus(scale, howls),
     [howls, scale]
@@ -20,11 +23,11 @@ const PlayButton = ({
 
   const handlePlayPause = () => {
     if (isSongPlaying) {
-      setIsSongPlaying(false);
+      dispatch(setIsSongPlaying(false));
       return;
     }
 
-    setIsSongPlaying(true);
+    dispatch(setIsSongPlaying(true));
     const songPattern = buildPatternFromSong();
 
     playPattern(songPattern);
@@ -39,10 +42,4 @@ const PlayButton = ({
   );
 };
 
-const mapStateToProps = ({ howls, scale, ui }) => ({
-  howls: howls.data,
-  scale: scale.parsed.pitched,
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps, { setIsSongPlaying })(PlayButton);
+export default PlayButton;

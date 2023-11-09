@@ -15,9 +15,6 @@ import {
 } from './song.styles';
 
 const Song = ({ notes }) => {
-  const borderRef = useRef(null);
-  const { songId } = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { localSongId, isDeleting, isFetching, isSaving, isEditingSong } =
     useSelector(({ song, ui }) => ({
@@ -27,6 +24,10 @@ const Song = ({ notes }) => {
       isSaving: song.ui.isSaving,
       isEditingSong: ui.isEditingSong,
     }));
+
+  const borderRef = useRef(null);
+  const { songId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const isWorking = isDeleting || isFetching || isSaving;
@@ -43,7 +44,7 @@ const Song = ({ notes }) => {
     }
 
     return () => dispatch(setCurrentDropdown(null));
-  }, [isEditingSong, dispatch]);
+  }, [dispatch, isEditingSong]);
 
   return (
     <>

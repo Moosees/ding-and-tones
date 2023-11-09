@@ -1,27 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleEditSong } from '../../../redux/ui/ui.actions';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 
-const EditButton = ({
-  isEditingSong,
-  isSongPlaying,
-  light,
-  toggleEditSong,
-}) => {
+const EditButton = ({ light }) => {
+  const dispatch = useDispatch();
+  const { isEditingSong, isSongPlaying } = useSelector(({ ui }) => ({
+    isEditingSong: ui.isEditingSong,
+    isSongPlaying: ui.isSongPlaying,
+  }));
+
   return (
     <BtnPrimary
       light={light}
       label={isEditingSong ? 'Tablature' : 'Edit'}
       disabled={isSongPlaying}
-      onClick={toggleEditSong}
+      onClick={() => dispatch(toggleEditSong())}
     />
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
-  isEditingSong: ui.isEditingSong,
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps, { toggleEditSong })(EditButton);
+export default EditButton;

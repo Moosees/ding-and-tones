@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import {
   toggleCountOpen,
@@ -24,15 +24,17 @@ const ControlsContainer = styled.div`
   }
 `;
 
-const SongViewControls = ({
-  countOpen,
-  handsOpen,
-  headersOpen,
-  isSongPlaying,
-  toggleCountOpen,
-  toggleHandsOpen,
-  toggleHeadersOpen,
-}) => {
+const SongViewControls = () => {
+  const dispatch = useDispatch();
+  const { countOpen, handsOpen, headersOpen, isSongPlaying } = useSelector(
+    ({ ui }) => ({
+      countOpen: ui.countOpen,
+      handsOpen: ui.handsOpen,
+      headersOpen: ui.headersOpen,
+      isSongPlaying: ui.isSongPlaying,
+    })
+  );
+
   return (
     <ControlsContainer>
       <Buttons>
@@ -47,7 +49,7 @@ const SongViewControls = ({
           checked={handsOpen}
           label="Hands"
           disabled={isSongPlaying}
-          onChange={toggleHandsOpen}
+          onChange={() => dispatch(toggleHandsOpen())}
         />
         <Checkbox
           asBtn
@@ -55,7 +57,7 @@ const SongViewControls = ({
           checked={countOpen}
           label="Count"
           disabled={isSongPlaying}
-          onChange={toggleCountOpen}
+          onChange={() => dispatch(toggleCountOpen())}
         />
         <Checkbox
           asBtn
@@ -63,22 +65,11 @@ const SongViewControls = ({
           checked={headersOpen}
           label="Headers"
           disabled={isSongPlaying}
-          onChange={toggleHeadersOpen}
+          onChange={() => dispatch(toggleHeadersOpen())}
         />
       </Buttons>
     </ControlsContainer>
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
-  countOpen: ui.countOpen,
-  handsOpen: ui.handsOpen,
-  headersOpen: ui.headersOpen,
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps, {
-  toggleCountOpen,
-  toggleHandsOpen,
-  toggleHeadersOpen,
-})(SongViewControls);
+export default SongViewControls;

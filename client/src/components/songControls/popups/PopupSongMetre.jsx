@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
 import { updateSongInfo } from '../../../redux/song/song.actions';
 import BtnPrimary from '../../shared/button/BtnPrimary';
@@ -8,14 +8,14 @@ import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
 
-const PopupSongMetre = ({
-  bpm,
-  handleNewBar,
-  metre,
-  onClose,
-  subdivision,
-  updateSongInfo,
-}) => {
+const PopupSongMetre = ({ handleNewBar, onClose }) => {
+  const dispatch = useDispatch();
+  const { bpm, metre, subdivision } = useSelector(({ song }) => ({
+    bpm: song.info.bpm,
+    metre: song.info.metre,
+    subdivision: song.info.subdivision,
+  }));
+
   const [newMetre, setNewMetre] = useState(metre);
   const [newSubdivision, setNewSubdivision] = useState(subdivision);
   const [newBpm, setNewBpm, newBpmErrors, isNewBpmValid] = useValidate(
@@ -28,11 +28,13 @@ const PopupSongMetre = ({
 
   const handleConfirm = () => {
     if (isNewBpmValid) {
-      updateSongInfo({
-        bpm: newBpm,
-        metre: newMetre,
-        subdivision: newSubdivision,
-      });
+      dispatch(
+        updateSongInfo({
+          bpm: newBpm,
+          metre: newMetre,
+          subdivision: newSubdivision,
+        })
+      );
       onClose();
     }
   };
@@ -70,12 +72,4 @@ const PopupSongMetre = ({
   );
 };
 
-const mapStateToProps = ({ song }) => ({
-  bpm: song.info.bpm,
-  metre: song.info.metre,
-  subdivision: song.info.subdivision,
-});
-
-export default connect(mapStateToProps, {
-  updateSongInfo,
-})(PopupSongMetre);
+export default PopupSongMetre;

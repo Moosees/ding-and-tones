@@ -1,25 +1,21 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
 import { InfoLayout } from '../layout/layout.styles';
 import Spinner from '../spinner/Spinner';
 import { TextInput } from './input.styles';
 
-const InfoSearch = ({
-  isSearching,
-  placeholder,
-  searchOption,
-  setValue,
-  startSearch,
-  value,
-}) => {
+const InfoSearch = ({ placeholder, searchOption, setValue, value }) => {
+  const dispatch = useDispatch();
+  const isSearching = useSelector(({ search }) => search.isSearching);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (value.length > 2) startSearch(searchOption, value);
+      if (value.length > 2) dispatch(startSearch(searchOption, value));
     }, 600);
 
     return () => clearTimeout(timeout);
-  }, [searchOption, startSearch, value]);
+  }, [dispatch, searchOption, value]);
 
   return (
     <InfoLayout as="label">
@@ -35,8 +31,4 @@ const InfoSearch = ({
   );
 };
 
-const mapStateToProps = ({ search }) => ({
-  isSearching: search.isSearching,
-});
-
-export default connect(mapStateToProps, { startSearch })(InfoSearch);
+export default InfoSearch;

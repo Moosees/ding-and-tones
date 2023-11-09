@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { togglePrivateSong } from '../../../redux/song/song.actions';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
 
-const PopupSaveSong = ({
-  isOwner,
-  isPrivate,
-  newScaleId,
-  newScaleName,
-  oldScaleId,
-  oldScaleName,
-  onClose,
-  onSave,
-  title,
-  togglePrivateSong,
-}) => {
+const PopupSaveSong = ({ onClose, onSave, title }) => {
+  const dispatch = useDispatch();
+  const {
+    newScaleId,
+    newScaleName,
+    isOwner,
+    isPrivate,
+    oldScaleId,
+    oldScaleName,
+  } = useSelector(({ scale, song }) => ({
+    newScaleId: scale.ui.scaleId,
+    newScaleName: `${scale.info.rootName} ${scale.info.name}`,
+    isOwner: song.ui.isOwner,
+    isPrivate: song.ui.isPrivate,
+    oldScaleId: song.ui.scaleId,
+    oldScaleName: song.ui.scaleName,
+  }));
+
   const [selectedScale, setSelectedScale] = useState(
     !isOwner && !oldScaleId ? newScaleId : oldScaleId
   );
@@ -33,7 +39,7 @@ const PopupSaveSong = ({
         <Checkbox
           label="Private song"
           checked={isPrivate}
-          onChange={togglePrivateSong}
+          onChange={() => dispatch(togglePrivateSong())}
         />
       </Popup.Section>
       <Popup.Section>
@@ -74,13 +80,4 @@ const PopupSaveSong = ({
   );
 };
 
-const mapStateToProps = ({ scale, song }) => ({
-  newScaleId: scale.ui.scaleId,
-  newScaleName: `${scale.info.rootName} ${scale.info.name}`,
-  isOwner: song.ui.isOwner,
-  isPrivate: song.ui.isPrivate,
-  oldScaleId: song.ui.scaleId,
-  oldScaleName: song.ui.scaleName,
-});
-
-export default connect(mapStateToProps, { togglePrivateSong })(PopupSaveSong);
+export default PopupSaveSong;

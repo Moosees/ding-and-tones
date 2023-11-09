@@ -4,6 +4,7 @@
 
 ### Fixes update
 
+* Use local dispatch instead of callback to save song in PopupSaveSong and PopupSongMetre?
 * Move isSongPlaying state check from BtnIcon to parent components?
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?
 * Fix dropdown opening position and change on scroll or resize
@@ -162,6 +163,7 @@
 * It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
 * Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 * Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
+* Failing to save song (inside popup) gives no feedback to user
 
 ### Design
 
