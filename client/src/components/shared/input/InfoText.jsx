@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BtnIcon from '../button/Icon';
+import BtnIcon from '../button/BtnIcon';
 import { InfoLayout } from '../layout/layout.styles';
 import InfoInput from './InfoInput';
 

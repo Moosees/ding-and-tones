@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import { createNewSong } from '../../../redux/song/song.actions';
-import BtnPrimary from '../../shared/button/Primary';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoInput from '../../shared/input/InfoInput';
 import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';

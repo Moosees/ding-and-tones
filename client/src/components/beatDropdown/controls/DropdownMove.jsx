@@ -4,8 +4,8 @@ import {
   setCurrentDropdown,
   toggleAutoMove,
 } from '../../../redux/ui/ui.actions';
+import BtnIcon from '../../shared/button/BtnIcon';
 import Buttons from '../../shared/button/Buttons';
-import BtnIcon from '../../shared/button/Icon';
 import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownMove = ({ beatId }) => {

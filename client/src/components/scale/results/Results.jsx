@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { deleteScaleById, loadScale } from '../../../redux/scale/scale.actions';
-import BtnIcon from '../../shared/button/Icon';
+import BtnIcon from '../../shared/button/BtnIcon';
 import Confirmation from '../../shared/popup/Confirmation';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
 import {

@@ -1,5 +1,5 @@
 import React, { cloneElement, useState } from 'react';
-import BtnPrimary from '../button/Primary';
+import BtnPrimary from '../button/BtnPrimary';
 import Popup from './Popup';
 import { Label } from './popup.styles';
 

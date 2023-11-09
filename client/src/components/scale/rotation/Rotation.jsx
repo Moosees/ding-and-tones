@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BtnPrimary from '../../shared/button/Primary';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import PopupRotation from './PopupRotation';
 
 const Rotation = () => {

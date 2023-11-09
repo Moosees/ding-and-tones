@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import { setPrivacyOpen } from '../../../redux/ui/ui.actions';
-import BtnMenu from '../../shared/button/Menu';
+import BtnMenu from '../../shared/button/BtnMenu';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import Account from '../account/Account';
 import SignIn from '../signIn/SignIn';

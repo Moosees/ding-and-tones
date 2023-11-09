@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
 import { saveUserInfo, toggleAccount } from '../../../redux/user/user.actions';
-import BtnPrimary from '../../shared/button/Primary';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';
 import InfoBox from '../../shared/layout/InfoBox';

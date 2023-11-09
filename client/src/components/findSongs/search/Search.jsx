@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { startSearch } from '../../../redux/search/search.actions';
 import searchOptions from '../../../redux/search/search.options';
-import BtnPrimary from '../../shared/button/Primary';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoSearch from '../../shared/input/InfoSearch';
 import { SearchContainer } from './search.styles';
 

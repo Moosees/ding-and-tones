@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../../redux/user/user.actions';
-import BtnMenu from '../../shared/button/Menu';
+import BtnMenu from '../../shared/button/BtnMenu';
 import PopupSignIn from './PopupSignIn';
 
 const SignIn = () => {

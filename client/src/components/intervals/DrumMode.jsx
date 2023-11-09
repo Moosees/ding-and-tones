@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDrumMode } from '../../redux/drum/drum.actions';
-import BtnIcon from '../shared/button/Icon';
+import BtnIcon from '../shared/button/BtnIcon';
 import { DrumModeContainer } from './intervals.styles';
 
 const DrumMode = () => {

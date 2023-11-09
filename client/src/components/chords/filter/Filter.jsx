@@ -7,9 +7,9 @@ import {
   toggleChordIsSelected,
 } from '../../../redux/chords/chords.actions';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
+import BtnHelp from '../../shared/button/BtnHelp';
 import Buttons from '../../shared/button/Buttons';
-import Help from '../../shared/button/Help';
-import BtnPrimary from '../../shared/button/Primary';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
@@ -62,7 +62,7 @@ const Filter = () => {
     <ControlsContainer>
       <Buttons>
         <PrintChordsBtn />
-        <Help topic={helpTopics.CHORDS} />
+        <BtnHelp topic={helpTopics.CHORDS} />
       </Buttons>
       <DividerLine small />
       <ScrollBox>

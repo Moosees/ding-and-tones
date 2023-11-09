@@ -5,7 +5,7 @@ import Account from '../account/Account';
 import SignIn from '../signIn/SignIn';
 import Sound from '../sound/Sound';
 import { DropdownContainer } from './dropdown.styles';
-// import BtnMenu from '../shared/button/Menu';
+// import BtnMenu from '../shared/button/BtnMenu';
 
 const Dropdown = ({ btnRef, isOpenCb }) => {
   useCloseOnEsc(() => isOpenCb(false));

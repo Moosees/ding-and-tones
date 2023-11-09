@@ -8,9 +8,9 @@ import {
   saveScale,
   setScaleName,
 } from '../../../redux/scale/scale.actions';
+import BtnHelp from '../../shared/button/BtnHelp';
 import Buttons from '../../shared/button/Buttons';
-import Help from '../../shared/button/Help';
-import BtnPrimary from '../../shared/button/Primary';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoText from '../../shared/input/InfoText';
 import Rotation from '../rotation/Rotation';
 import { ScaleInfoContainer, ScaleNotes } from './info.styles';
@@ -74,7 +74,7 @@ const Info = () => {
           label="Save Scale"
           onClick={handleScaleSave}
         />
-        <Help topic={helpTopics.SCALE} />
+        <BtnHelp topic={helpTopics.SCALE} />
       </Buttons>
       <InfoText
         handleChange={handleNameChange}

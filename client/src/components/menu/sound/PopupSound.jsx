@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { audioSources } from '../../../assets/sound/audioOptions';
 import { selectSoundSource } from '../../../redux/howls/howls.actions';
-import BtnPrimary from '../../shared/button/Primary';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 import VolumeSlider from './VolumeSlider';

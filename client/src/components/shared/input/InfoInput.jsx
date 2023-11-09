@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
-import BtnIcon from '../button/Icon';
+import BtnIcon from '../button/BtnIcon';
 import { InfoLayout } from '../layout/layout.styles';
 import { TextInput } from './input.styles';
 

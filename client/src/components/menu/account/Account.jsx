@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleAccount } from '../../../redux/user/user.actions';
-import BtnMenu from '../../shared/button/Menu';
+import BtnMenu from '../../shared/button/BtnMenu';
 import PopupAccount from './PopupAccount';
 
 const Account = () => {

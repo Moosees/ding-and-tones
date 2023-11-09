@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import useDimensions from '../../../hooks/useDimensions';
-import BtnIcon from '../button/Icon';
+import BtnIcon from '../button/BtnIcon';
 import { Arrow, PopupContainer } from './tooltip.styles';
 
 const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {

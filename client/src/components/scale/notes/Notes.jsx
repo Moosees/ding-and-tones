@@ -11,8 +11,8 @@ import {
   toggleSharps,
   transposeScale,
 } from '../../../redux/scale/scale.actions';
+import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
-import BtnPrimary from '../../shared/button/Primary';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { Note, NotesList, TextLabel } from './notes.styles';
 

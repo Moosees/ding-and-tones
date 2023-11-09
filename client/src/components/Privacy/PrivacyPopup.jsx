@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setPrivacyOpen } from '../../redux/ui/ui.actions';
-import BtnPrimary from '../shared/button/Primary';
+import BtnPrimary from '../shared/button/BtnPrimary';
 import Popup from '../shared/popup/Popup';
 import PrivacyText from './PrivacyText';
 

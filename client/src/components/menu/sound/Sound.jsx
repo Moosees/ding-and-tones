@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveUserSound } from '../../../redux/howls/howls.actions';
-import BtnMenu from '../../shared/button/Menu';
+import BtnMenu from '../../shared/button/BtnMenu';
 import PopupSound from './PopupSound';
 
 const Sound = () => {

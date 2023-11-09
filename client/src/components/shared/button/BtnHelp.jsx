@@ -1,12 +1,12 @@
 import React from 'react';
 import { helpContent } from '../../../assets/help';
 import Tooltip from '../tooltip/Tooltip';
+import BtnIcon from './BtnIcon';
 import { HelpContainer } from './button.styles';
-import BtnIcon from './Icon';
 
 const Btn = () => <BtnIcon icon="help_outline" />;
 
-const Help = ({ topic }) => {
+const BtnHelp = ({ topic }) => {
   return (
     <Tooltip parent={Btn}>
       <HelpContainer>
@@ -19,4 +19,4 @@ const Help = ({ topic }) => {
   );
 };
 
-export default Help;
+export default BtnHelp;

@@ -1,5 +1,5 @@
 import React from 'react';
-import BtnIcon from '../button/Icon';
+import BtnIcon from '../button/BtnIcon';
 import { InfoLayout } from './layout.styles';
 
 const InfoBox = ({ children, label, large, reverse, onEdit }) => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { IconButton } from './button.styles';
 
 const BtnIcon = ({
@@ -7,12 +7,13 @@ const BtnIcon = ({
   disabled,
   editOnly,
   icon,
-  isSongPlaying,
   onClick,
   position,
   small,
   title,
 }) => {
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+
   return (
     <IconButton
       aria-label={title}
@@ -29,8 +30,4 @@ const BtnIcon = ({
   );
 };
 
-const mapStateToProps = ({ ui }) => ({
-  isSongPlaying: ui.isSongPlaying,
-});
-
-export default connect(mapStateToProps)(BtnIcon);
+export default BtnIcon;

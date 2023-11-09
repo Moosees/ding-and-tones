@@ -5,9 +5,9 @@ import {
   setCurrentDropdown,
   toggleMultiSelect,
 } from '../../../redux/ui/ui.actions';
+import BtnHelp from '../../shared/button/BtnHelp';
 import Buttons from '../../shared/button/Buttons';
-import Help from '../../shared/button/Help';
-import BtnIcon from '../../shared/button/Icon';
+import BtnIcon from '../../shared/button/BtnIcon';
 import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownControls = ({ beatId }) => {
@@ -26,7 +26,7 @@ const DropdownControls = ({ beatId }) => {
         label="Chord"
         onChange={() => dispatch(toggleMultiSelect())}
       />
-      <Help topic={helpTopics.BEATS} />
+      <BtnHelp topic={helpTopics.BEATS} />
     </Buttons>
   );
 };

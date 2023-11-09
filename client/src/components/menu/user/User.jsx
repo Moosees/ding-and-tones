@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { checkSession } from '../../../redux/user/user.actions';
-import BtnNav from '../../shared/button/Nav';
+import BtnNav from '../../shared/button/BtnNav';
 import Dropdown from '../dropdown/Dropdown';
 import { MenuAnchor } from '../nav.styles';
 import { getSongIdFromLocation } from '../nav.utils';

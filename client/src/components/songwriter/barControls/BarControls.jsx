@@ -7,7 +7,7 @@ import {
   updateBarSubdivisions,
 } from '../../../redux/song/song.actions';
 import { toggleMuteBar } from '../../../redux/ui/ui.actions';
-import BtnIcon from '../../shared/button/Icon';
+import BtnIcon from '../../shared/button/BtnIcon';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import { ControlsContainer } from './barControls.styles';
 

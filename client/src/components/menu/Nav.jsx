@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import BtnNav from '../shared/button/Nav';
+import BtnNav from '../shared/button/BtnNav';
 import User from './user/User';
 
 const Navbar = styled.nav`

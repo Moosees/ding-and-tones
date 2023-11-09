@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState } from 'react';
-import BtnPrimary from '../../shared/button/Primary';
-import PrintView from '../../songView/PrintView';
 import { connect } from 'react-redux';
+import BtnPrimary from '../../shared/button/BtnPrimary';
+import PrintView from '../../songView/PrintView';
 
 const ReactToPrint = lazy(() =>
   import('../../shared/reactToPrint/ReactToPrint')

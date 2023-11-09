@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { metreList } from '../../../assets/metre';
 import { moveBarInArrangement } from '../../../redux/song/song.actions';
-import BtnIcon from '../../shared/button/Icon';
+import BtnIcon from '../../shared/button/BtnIcon';
 import { BarInfoContainer, DragGradient } from './barInfo.styles';
 
 const BarInfo = ({
