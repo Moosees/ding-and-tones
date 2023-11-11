@@ -6,8 +6,9 @@ import Bar from './bar/Bar';
 import { Bars } from './songwriter.styles';
 
 const Songwriter = ({ borderRef }) => {
-  const listRef = useRef(null);
   const arrangement = useSelector(({ song }) => song.arrangement);
+  
+  const listRef = useRef(null);
 
   return (
     <Bars ref={listRef}>

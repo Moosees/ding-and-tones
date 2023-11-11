@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { metreList } from '../../../assets/metre';
 import { addNewBar } from '../../../redux/song/song.actions';
 import Buttons from '../../shared/button/Buttons';
+import PopupNewBar from './PopupNewBar';
 import { AddBarBtn, AddBarContainer } from './addBar.styles';
 import { createNewBar, songToBarSubdivision } from './addBar.utils';
-import PopupNewBar from './PopupNewBar';
 
-const AddBar = ({ addNewBar, isSongPlaying, songInfo }) => {
+const AddBar = () => {
+  const dispatch = useDispatch();
+  const { isSongPlaying, songInfo } = useSelector(
+    ({ scale, song, ui, user }) => ({
+      isSongPlaying: ui.isSongPlaying,
+      songInfo: song.info,
+    })
+  );
+
   const [newBarOpen, setNewBarOpen] = useState(false);
   const { metre, subdivision } = songInfo;
   const { nameShort } = metreList[metre];
 
   const handleNewBar = (metre, subdivisionsString) => {
     const subdivisions = subdivisionsString.map((s) => parseInt(s));
-    addNewBar(createNewBar(metre, subdivisions));
+    dispatch(addNewBar(createNewBar(metre, subdivisions)));
   };
 
   return (
@@ -48,9 +56,4 @@ const AddBar = ({ addNewBar, isSongPlaying, songInfo }) => {
   );
 };
 
-const mapStateToProps = ({ scale, song, ui, user }) => ({
-  isSongPlaying: ui.isSongPlaying,
-  songInfo: song.info,
-});
-
-export default connect(mapStateToProps, { addNewBar })(AddBar);
+export default AddBar;

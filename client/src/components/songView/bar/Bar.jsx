@@ -1,10 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { createBarTemplate, metreList } from '../../../assets/metre';
 import Beats from '../beats/Beats';
 import { BarMetre, BeatGroup } from './bar.styles';
 
-const Bar = ({ barId, bars, prevBar }) => {
+const Bar = ({ barId, prevBar }) => {
+  const bars = useSelector(({ song }) => song.bars);
+
   const { metre, subdivisions, measure } = bars[barId];
   const prevBarMetre = prevBar ? bars[prevBar].metre : null;
   const { nameShort } = metreList[metre];
@@ -39,8 +41,4 @@ const Bar = ({ barId, bars, prevBar }) => {
   });
 };
 
-const mapStateToProps = ({ song, ui }) => ({
-  bars: song.bars,
-});
-
-export default connect(mapStateToProps)(Bar);
+export default Bar;

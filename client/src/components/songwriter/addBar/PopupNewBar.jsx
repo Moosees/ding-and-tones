@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
 import { songToBarSubdivision } from './addBar.utils';
 
-const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
+const PopupNewBar = ({ handleNewBar, onClose }) => {
+  const { songSubdivision, songMetre } = useSelector(({ song }) => ({
+    songSubdivision: song.info.subdivision,
+    songMetre: song.info.metre,
+  }));
+
   const [metre, setMetre] = useState(songMetre);
   const [subdivision, setSubdivision] = useState(
     songToBarSubdivision(songMetre, songSubdivision).join('-')
@@ -39,9 +44,4 @@ const PopupNewBar = ({ handleNewBar, songMetre, onClose, songSubdivision }) => {
   );
 };
 
-const mapStateToProps = ({ song }) => ({
-  songSubdivision: song.info.subdivision,
-  songMetre: song.info.metre,
-});
-
-export default connect(mapStateToProps)(PopupNewBar);
+export default PopupNewBar;

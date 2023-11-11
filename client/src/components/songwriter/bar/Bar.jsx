@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { createBarTemplate } from '../../../assets/metre';
 import BarControls from '../barControls/BarControls';
@@ -9,17 +8,18 @@ import EditSubdivisions from '../editSubdivisions/EditSubdivisions';
 import { BarContainer, Beats } from './bar.styles';
 
 const Bar = ({ barId, barIndex }) => {
-  const [editSubdivisionsOpen, setEditSubdivisionsOpen] = useState(false);
-  const { isPlaying, isMuted } = useSelector(
-    ({ ui }) => ({
+  const { metre, measure, subdivisions, isPlaying, isMuted } = useSelector(
+    ({ song, ui }) => ({
+      metre: song.bars[barId].metre,
+      measure: song.bars[barId].measure,
+      subdivisions: song.bars[barId].subdivisions,
       isPlaying: ui.currentBar === barId,
       isMuted: ui.mutedBars[barId] && ui.mutedBars[barId] === true,
     }),
     shallowEqual
   );
-  const { metre, measure, subdivisions } = useSelector(
-    ({ song }) => song.bars[barId]
-  );
+
+  const [editSubdivisionsOpen, setEditSubdivisionsOpen] = useState(false);
 
   const barTemplate = useMemo(() => {
     return createBarTemplate(metre, subdivisions);

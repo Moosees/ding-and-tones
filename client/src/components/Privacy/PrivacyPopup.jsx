@@ -1,29 +1,33 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPrivacyOpen } from '../../redux/ui/ui.actions';
 import BtnPrimary from '../shared/button/BtnPrimary';
 import Popup from '../shared/popup/Popup';
 import PrivacyText from './PrivacyText';
 
-const PrivacyPopup = ({ privacyOpen, setPrivacyOpen }) => (
-  <>
-    {privacyOpen && (
-      <Popup header={'Terms and Privacy'} onClose={() => setPrivacyOpen(false)}>
-        <PrivacyText />
-        <Popup.Flex>
-          <BtnPrimary
-            light
-            label="Close"
-            onClick={() => setPrivacyOpen(false)}
-          />
-        </Popup.Flex>
-      </Popup>
-    )}
-  </>
-);
+const PrivacyPopup = () => {
+  const dispatch = useDispatch();
+  const privacyOpen = useSelector(({ ui }) => ui.privacyOpen);
 
-const mapStateToProps = ({ ui }) => ({
-  privacyOpen: ui.privacyOpen,
-});
+  return (
+    <>
+      {privacyOpen && (
+        <Popup
+          header={'Terms and Privacy'}
+          onClose={() => dispatch(setPrivacyOpen(false))}
+        >
+          <PrivacyText />
+          <Popup.Flex>
+            <BtnPrimary
+              light
+              label="Close"
+              onClick={() => dispatch(setPrivacyOpen(false))}
+            />
+          </Popup.Flex>
+        </Popup>
+      )}
+    </>
+  );
+};
 
-export default connect(mapStateToProps, { setPrivacyOpen })(PrivacyPopup);
+export default PrivacyPopup;
