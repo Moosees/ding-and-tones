@@ -8,11 +8,13 @@ import { checkHowlsReadyStatus } from './playButton.utils';
 
 const PlayButton = ({ light }) => {
   const dispatch = useDispatch();
-  const { howls, scale, isSongPlaying } = useSelector(
-    ({ howls, scale, ui }) => ({
+  const { howls, scale, arrangement, isSongPlaying, mutedBars } = useSelector(
+    ({ howls, scale, song, ui }) => ({
       howls: howls.data,
       scale: scale.parsed.pitched,
+      arrangement: song.arrangement,
       isSongPlaying: ui.isSongPlaying,
+      mutedBars: ui.mutedBars,
     })
   );
 
@@ -33,6 +35,15 @@ const PlayButton = ({ light }) => {
     playPattern(songPattern);
   };
 
+  const isPlayingDisabled = () => {
+    if (!areHowlsReady) return true;
+
+    if (!arrangement?.length) return true;
+
+    const numMutedBars = Object.values(mutedBars).filter((val) => val).length;
+    if (numMutedBars === arrangement.length) return true;
+  };
+
   const getPlayButtonLabel = () => {
     if (!areHowlsReady) return 'Loading';
 
@@ -43,7 +54,7 @@ const PlayButton = ({ light }) => {
     <BtnPrimary
       light={light}
       onClick={handlePlayPause}
-      disabled={!areHowlsReady}
+      disabled={isPlayingDisabled()}
       label={getPlayButtonLabel()}
     />
   );
