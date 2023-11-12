@@ -4,7 +4,6 @@
 
 ### Fixes update
 
-* Use local dispatch instead of callback to save song in PopupSaveSong and PopupSongMetre?
 * Move isSongPlaying state check from BtnIcon to parent components?
 * Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?
 * Fix dropdown opening position and change on scroll or resize

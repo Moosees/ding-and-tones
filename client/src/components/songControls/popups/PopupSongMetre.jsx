@@ -8,7 +8,7 @@ import Metre from '../../shared/metreControls/Metre';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import Popup from '../../shared/popup/Popup';
 
-const PopupSongMetre = ({ handleNewBar, onClose }) => {
+const PopupSongMetre = ({ onClose }) => {
   const dispatch = useDispatch();
   const { bpm, metre, subdivision } = useSelector(({ song }) => ({
     bpm: song.info.bpm,
