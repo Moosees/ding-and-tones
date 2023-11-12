@@ -4,12 +4,9 @@
 
 ### Fixes update
 
-* Move isSongPlaying state check from BtnIcon to parent components?
-* Beat hasNonScaleNote function should retry if soundOptions is not generated on mount - obsolete with howls update?
 * Fix dropdown opening position and change on scroll or resize
 * Better dropdown handler?
 * Add bass octave
-* move related logic to useSongIsPlaying
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
 * "Value" exists in both beat and bar state, remove one?
 * Disable play button if no bars or all bars are muted

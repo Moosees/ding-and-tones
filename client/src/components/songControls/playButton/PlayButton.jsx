@@ -33,11 +33,18 @@ const PlayButton = ({ light }) => {
     playPattern(songPattern);
   };
 
+  const getPlayButtonLabel = () => {
+    if (!areHowlsReady) return 'Loading';
+
+    return isSongPlaying ? 'Stop' : 'Play';
+  };
+
   return (
     <BtnPrimary
       light={light}
       onClick={handlePlayPause}
-      label={!areHowlsReady ? 'Loading' : isSongPlaying ? 'Stop' : 'Play'}
+      disabled={!areHowlsReady}
+      label={getPlayButtonLabel()}
     />
   );
 };
