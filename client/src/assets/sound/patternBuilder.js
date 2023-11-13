@@ -1,5 +1,5 @@
-import { createBarTemplate } from '../metre';
 import { store } from '../../redux/store';
+import { createBarTemplate } from '../metre';
 
 const getDefaultHandForSound = (sound) => {
   if (sound.length === 1) {
@@ -46,11 +46,11 @@ export const buildPatternFromBar = (barId, howls) => {
   return measure.map((beatId, i) => {
     const { sound, mode, hand } = beats[beatId];
     const play = () => {
-      sound.forEach((option) => {
+      for (const option of sound) {
         if (!howls[option]) return;
 
         howls[option].play();
-      });
+      }
     };
 
     return {

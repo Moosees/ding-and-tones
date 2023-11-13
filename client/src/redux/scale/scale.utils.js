@@ -54,10 +54,10 @@ const addIntervalMap = (scale) => {
   return scale.map((note) => {
     const intervalMap = [];
 
-    scale.forEach((relativeNote) => {
+    for (const relativeNote of scale) {
       const currentInterval = addIntervalData(note, relativeNote);
       intervalMap.push(currentInterval);
-    });
+    }
 
     return { ...note, intervalMap };
   });

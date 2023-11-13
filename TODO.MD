@@ -8,7 +8,6 @@
 * Better dropdown handler?
 * Add bass octave
 * Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
-* for of instead of forEach?
 * Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
 * Should updateMeasureAndBeats run even if new and old subdivision lengths match? Only run update on a beat to beat basis?
 * Use new scaleFull outside print-chords - done?

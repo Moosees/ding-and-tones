@@ -13,9 +13,9 @@ const Move = () => {
 
   const notesTemplate = Array.from({ length: 8 });
 
-  extra.forEach(({ note, pos }) => {
+  for (const { note, pos } of extra) {
     notesTemplate[pos] = note;
-  });
+  }
 
   const handleMove = (note, pos) => {
     if (pos !== grabbed) {

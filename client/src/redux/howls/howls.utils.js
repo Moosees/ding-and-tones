@@ -14,13 +14,11 @@ export const prepareHowlForRemoval = (howl) => {
 export const cleanupHowls = (howls, sounds) => {
   Howler.stop();
 
-  Object.keys(howls).forEach((howl) => {
-    if (sounds.includes(howl)) {
-      return;
+  for (const howl in howls) {
+    if (howls.hasOwnProperty(howl) && !sounds.includes(howl)) {
+      prepareHowlForRemoval(howls[howl]);
     }
-
-    prepareHowlForRemoval(howls[howl]);
-  });
+  }
 };
 
 export const onHowlError = (note, howl, error) => {
