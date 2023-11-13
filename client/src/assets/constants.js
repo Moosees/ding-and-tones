@@ -3,7 +3,7 @@ export const TRANSLATE_BASE = 6.6;
 export const TRANSLATE_TAK = TRANSLATE_BASE / 2 + 0.5;
 
 // C2 to C5
-export const MIN_NOTE_VALUE = 24;
+export const MIN_NOTE_VALUE = 12;
 export const MAX_NOTE_VALUE = 72;
 
 // songwriter

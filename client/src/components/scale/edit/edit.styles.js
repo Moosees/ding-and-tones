@@ -21,7 +21,7 @@ export const EditContent = styled.div`
 
   @media screen and (orientation: portrait) and (max-width: 1000px) {
     min-height: revert;
-    width: 50rem;
+    width: auto;
   }
 `;
 

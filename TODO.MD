@@ -6,11 +6,7 @@
 
 * Fix dropdown opening position and change on scroll or resize
 * Better dropdown handler?
-* Add bass octave
-* Save scale on client should be more functional? Promise based redirects like when loading and saving songs? - done?
 * Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
-* Should updateMeasureAndBeats run even if new and old subdivision lengths match? Only run update on a beat to beat basis?
-* Use new scaleFull outside print-chords - done?
 
 ### Home page and nav update
 
@@ -280,6 +276,7 @@
 * Likes and/or comments?
 * Custom chord inputs
 * Custom metres
+* updateMeasureAndBeats should rearrange beats instead of just placing them in order if old and new subdivision is the same length?
 * Custom count for metres, more count styles - konnakol?
 * Multiple drums for chords, songs etc. Two track songwriter?
 * More drum alternatives? Add synth/piano alternative?

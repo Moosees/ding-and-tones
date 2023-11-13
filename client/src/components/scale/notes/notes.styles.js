@@ -15,7 +15,7 @@ export const NotesList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 36rem;
+  max-width: 40rem;
   margin-bottom: 1rem;
 
   @media screen and (orientation: portrait) and (max-width: 1000px) {
