@@ -38,6 +38,12 @@ const DropdownHandler = ({ children, borderRef, listRef }) => {
       onScroll();
       onResize();
 
+      console.log({
+        clientHeight: borderRef.current.clientHeight,
+        borderWidth: borderRef.current.clientWidth,
+        listHeight: listRef.current.scrollHeight,
+      });
+
       return () => {
         timeout && clearTimeout(timeout);
         scrollEl.removeEventListener('scroll', onScroll);
