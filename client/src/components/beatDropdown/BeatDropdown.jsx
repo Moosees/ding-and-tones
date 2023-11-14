@@ -32,11 +32,10 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
 
   const [timeoutRef, setTimeoutRef] = useState(null);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
-  const { offsetTop, offsetLeft } = dropdownPosRef.current;
+  const offsetLeft = dropdownPosRef.current.offsetLeft;
+  const offsetTop = dropdownPosRef.current.offsetParent.offsetTop;
   const openTop = offsetTop - listScroll - 20 > borderHeight / 2;
   const openLeft = offsetLeft > borderWidth / 2 - 175;
-
-  console.log({ offsetTop, offsetLeft, openTop, openLeft });
 
   const { round, extra, dings, percussive } = useMemo(
     () => createSoundLists(scale, sharpNotes),

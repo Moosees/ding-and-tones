@@ -4,7 +4,6 @@
 
 ### Fixes update
 
-* Fix dropdown opening position and change on scroll or resize
 * Better dropdown handler?
 * Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
 
