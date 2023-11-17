@@ -13,13 +13,11 @@ const DropdownSoundItems = ({
   soundList,
 }) => {
   const dispatch = useDispatch();
-  const { howls, beats, multiSelect } = useSelector(({ howls, song, ui }) => ({
+  const { howls, sound, multiSelect } = useSelector(({ howls, song, ui }) => ({
     howls: howls.data,
-    beats: song.beats,
+    sound: song.beats[beatId].sound,
     multiSelect: ui.multiSelect,
   }));
-
-  const { sound } = beats[beatId];
 
   const soundItems = soundList.map(({ howl, label, option }) => {
     const selected = sound.includes(option);

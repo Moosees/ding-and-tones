@@ -5,7 +5,6 @@
 ### Fixes update
 
 * Better dropdown handler?
-* Check useSelects where beat, song, bar, etc. ids are used for unnecessary rerenders
 
 ### Home page and nav update
 

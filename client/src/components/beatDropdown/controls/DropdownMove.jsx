@@ -10,7 +10,10 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownMove = ({ beatId }) => {
   const dispatch = useDispatch();
-  const { autoMove, autoMoveOrder } = useSelector(({ ui }) => ui);
+  const { autoMove, autoMoveOrder } = useSelector(({ ui }) => ({
+    autoMove: ui.autoMove,
+    autoMoveOrder: ui.autoMoveOrder,
+  }));
 
   return (
     <Buttons position="space-between">

@@ -12,7 +12,7 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownControls = ({ beatId }) => {
   const dispatch = useDispatch();
-  const { multiSelect } = useSelector(({ ui }) => ui);
+  const multiSelect = useSelector(({ ui }) => ui.multiSelect);
 
   return (
     <Buttons position="space-between">

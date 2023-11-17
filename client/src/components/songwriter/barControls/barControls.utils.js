@@ -1,7 +1,11 @@
 import { v4 as uuid } from 'uuid';
+import { store } from '../../../redux/store';
 
-export const copyBar = (barId, bars, beats) => {
-  const { measure, subdivisions, metre, repeats } = bars[barId];
+export const copyBar = ({ measure, subdivisions, metre, repeats }) => {
+  const {
+    song: { beats },
+  } = store.getState();
+
   const newBarId = uuid();
   const newBeats = {};
   const newBar = { metre, repeats };

@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import { getNoteLabelFromName } from '../../../assets/intervals';
 
 const MiniTonefield = ({ isDing, note, position, sharpNotes, showNote }) => {
-  const { scaleRotation } = useSelector(({ scale }) => ({
-    scaleRotation: scale.info.rotation,
-  }));
+  const scaleRotation = useSelector(({ scale }) => scale.info.rotation);
 
   const { rotate, translate } = position;
 

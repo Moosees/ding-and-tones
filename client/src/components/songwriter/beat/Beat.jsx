@@ -17,26 +17,26 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
   const dispatch = useDispatch();
   const {
     scale,
-    beats,
+    sound,
+    hand,
     countOpen,
-    currentBeat,
+    isBeatPlaying,
     handsOpen,
     isSongPlaying,
     isOpen,
   } = useSelector(({ scale, song, ui }) => ({
     scale: scale.parsed.pitched,
-    beats: song.beats,
+    sound: song.beats[beatId].sound,
+    hand: song.beats[beatId].hand,
     countOpen: ui.countOpen,
-    currentBeat: ui.currentBeat,
+    isBeatPlaying: ui.currentBeat === beatId,
     handsOpen: ui.handsOpen,
     isSongPlaying: ui.isSongPlaying,
     isOpen: ui.currentDropdown === beatId,
   }));
 
   const dropdownPosRef = useRef(null);
-  const { sound, hand } = beats[beatId];
   const { value, count, tripletStatus, beatStart } = template;
-  const isBeatPlaying = beatId === currentBeat;
 
   const nonScaleNotes = useMemo(
     () => getNonScaleNotes(sound, scale),

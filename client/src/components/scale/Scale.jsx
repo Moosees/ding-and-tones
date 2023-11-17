@@ -14,19 +14,28 @@ import Search from './search/Search';
 
 const Scale = () => {
   const dispatch = useDispatch();
-  const { scaleUi, isSearching, scalesFetchTried } = useSelector(
-    ({ scale, search }) => ({
-      scaleUi: scale.ui,
-      isSearching: search.isSearching,
-      scalesFetchTried: search.scalesFetchTried,
-    })
-  );
+  const {
+    scaleIdLocal,
+    hasChanges,
+    isDeleting,
+    isFetching,
+    isSaving,
+    isSearching,
+    scalesFetchTried,
+  } = useSelector(({ scale, search }) => ({
+    scaleIdLocal: scale.ui.scaleId,
+    hasChanges: scale.ui.hasChanges,
+    isDeleting: scale.ui.isDeleting,
+    isFetching: scale.ui.isFetching,
+    isSaving: scale.ui.isSaving,
+    isSearching: search.isSearching,
+    scalesFetchTried: search.scalesFetchTried,
+  }));
 
   const { scaleId } = useParams();
   const navigate = useNavigate();
   const { isMobile } = useDimensions();
 
-  const { hasChanges, isDeleting, isFetching, isSaving } = scaleUi;
   const isWorking = isDeleting || isFetching || isSaving;
 
   useEffect(() => {
@@ -38,10 +47,10 @@ const Scale = () => {
   useEffect(() => {
     if (isWorking || hasChanges) return;
 
-    if (!scaleId && scaleUi.scaleId) {
-      navigate(`/scale/${scaleUi.scaleId}`, { replace: true });
+    if (!scaleId && scaleIdLocal) {
+      navigate(`/scale/${scaleIdLocal}`, { replace: true });
     }
-  }, [hasChanges, isWorking, navigate, scaleId, scaleUi.scaleId]);
+  }, [hasChanges, isWorking, navigate, scaleId, scaleIdLocal]);
 
   useEffect(() => {
     if (scalesFetchTried || isSearching || isWorking) return;
