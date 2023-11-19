@@ -8,23 +8,23 @@ const Tooltip = ({ children, parent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const anchorRef = useRef(null);
 
-  const handleClick = (e) => {
-    setIsOpen(!isOpen);
+  const handleClick = () => {
+    setIsOpen((isOpen) => !isOpen);
   };
 
   const handleKeyDown = (e) => {
-    if (e.code === beatOptionToKeyCode['enter'] || e.code === beatOptionToKeyCode['space']) {
+    if (
+      e.code === beatOptionToKeyCode['enter'] ||
+      e.code === beatOptionToKeyCode['space']
+    ) {
       e.preventDefault();
-      setIsOpen(!isOpen);
+      handleClick();
     }
   };
 
   return (
     <TooltipContainer ref={anchorRef}>
-      <TooltipBtnWrapper
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-      >
+      <TooltipBtnWrapper onClick={handleClick} onKeyDown={handleKeyDown}>
         <Parent />
       </TooltipBtnWrapper>
       {isOpen && (

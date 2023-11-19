@@ -26,7 +26,7 @@ const User = () => {
         ariaLabel={'User'}
         disabled={false}
         isActive={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((isOpen) => !isOpen)}
         ref={btnRef}
         label="User"
       />

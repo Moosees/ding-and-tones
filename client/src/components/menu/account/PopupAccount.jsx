@@ -47,7 +47,7 @@ const PopupAccount = ({ clearNewUser }) => {
           small
           label="Show name as composer?"
           checked={!anon}
-          onChange={() => setAnon((val) => !val)}
+          onChange={() => setAnon((anon) => !anon)}
         />
       </InfoBox>
       <Popup.Flex>

@@ -2,10 +2,6 @@
 
 ## Sorted by release
 
-### Fixes update
-
-* Better dropdown handler?
-
 ### Home page and nav update
 
 * Add home page with recent changes, user info etc.
@@ -16,7 +12,6 @@
 
 ### Logic and state update
 
-* Callbacks for setState
 * Refactor scale.utils (redux)?
 * Abort states for all axios requests
 * SongById try catch?

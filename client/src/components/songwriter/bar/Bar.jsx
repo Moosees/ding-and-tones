@@ -42,7 +42,11 @@ const Bar = ({ barId, barIndex }) => {
       {editSubdivisionsOpen && <EditSubdivisions barId={barId} />}
       <BarControls
         barId={barId}
-        toggleEditSubdivisions={() => setEditSubdivisionsOpen((val) => !val)}
+        toggleEditSubdivisions={() =>
+          setEditSubdivisionsOpen(
+            (editSubdivisionsOpen) => !editSubdivisionsOpen
+          )
+        }
       />
     </BarContainer>
   );

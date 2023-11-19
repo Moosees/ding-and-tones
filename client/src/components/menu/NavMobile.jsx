@@ -22,7 +22,10 @@ const NavMobile = () => {
 
   return (
     <MobileAnchor>
-      <LogoContainer ref={btnRef} onClick={() => setIsOpen(!isOpen)}>
+      <LogoContainer
+        ref={btnRef}
+        onClick={() => setIsOpen((isOpen) => !isOpen)}
+      >
         <Logo />
       </LogoContainer>
       {isOpen && <DropdownMobile btnRef={btnRef} isOpenCb={setIsOpen} />}
