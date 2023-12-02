@@ -14,7 +14,7 @@ export const ScaleContainer = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
-  padding-right: ${({ isOwner }) => (isOwner ? '2.2rem' : '0')};
+  padding-right: ${({ $isOwner }) => ($isOwner ? '2.2rem' : '0')};
   position: relative;
   width: 100%;
 

@@ -17,8 +17,8 @@ const PopupSound = ({ onClose }) => {
       audioSources.map((option, i) => (
         <AudioOption
           key={i}
-          isSelected={option.path === audioSrc.path}
           onClick={() => dispatch(selectSoundSource(option))}
+          $isSelected={option.path === audioSrc.path}
         >
           {option.label}
         </AudioOption>

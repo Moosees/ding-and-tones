@@ -31,7 +31,7 @@ const SongView = () => {
     <SongLayout>
       {headersOpen ? (
         <>
-          <Header headersOpen={headersOpen}>
+          <Header $headersOpen={headersOpen}>
             <div>
               <Title>{title}</Title>
               {composer && composer !== 'Anonymous' && (
@@ -43,7 +43,7 @@ const SongView = () => {
           <Tempo>{getTempoText(bpm)}</Tempo>
         </>
       ) : (
-        <Header headersOpen={headersOpen}>
+        <Header $headersOpen={headersOpen}>
           <SongViewControls />
         </Header>
       )}

@@ -15,7 +15,7 @@ export const AddBarBtn = styled.button`
   align-items: center;
   border: 2px solid ${({ theme }) => theme.colorBeat};
   border-radius: 100%;
-  cursor: ${({ isSongPlaying }) => (isSongPlaying ? 'default' : 'pointer')};
+  cursor: ${({ $isSongPlaying }) => ($isSongPlaying ? 'default' : 'pointer')};
   display: flex;
   height: 28px;
   font-size: 11px;
@@ -26,7 +26,7 @@ export const AddBarBtn = styled.button`
   &:hover,
   &:focus {
     outline: 0;
-    ${({ isSongPlaying, theme }) =>
-      !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
+    ${({ $isSongPlaying, theme }) =>
+      !$isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
   }
 `;

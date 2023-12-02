@@ -29,17 +29,17 @@ const AddBar = () => {
       <Buttons>
         <AddBarBtn
           disabled={isSongPlaying}
-          isSongPlaying={isSongPlaying}
           onClick={() =>
             handleNewBar(metre, songToBarSubdivision(metre, subdivision))
           }
+          $isSongPlaying={isSongPlaying}
         >
           {nameShort}
         </AddBarBtn>
         <AddBarBtn
           disabled={isSongPlaying}
-          isSongPlaying={isSongPlaying}
           onClick={() => setNewBarOpen(true)}
+          $isSongPlaying={isSongPlaying}
         >
           X/X
         </AddBarBtn>

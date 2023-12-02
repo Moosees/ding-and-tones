@@ -3,18 +3,18 @@ import styled from 'styled-components';
 export const Arrow = styled.div`
   background-color: ${({ theme }) => theme.colorBg};
   border: ${({ theme }) => theme.borderHeavyLight};
-  border-radius: ${({ openRight }) =>
-    openRight
+  border-radius: ${({ $openRight }) =>
+    $openRight
       ? '100% 0% 0% 100% / 50% 100% 0% 50%'
       : '0% 100% 100% 0% / 0% 50% 50% 100%'};
-  border-width: ${({ openRight }) =>
-    openRight ? '2px 0 2px 2px' : '2px 2px 2px 0'};
+  border-width: ${({ $openRight }) =>
+    $openRight ? '2px 0 2px 2px' : '2px 2px 2px 0'};
   padding: 5px;
   position: absolute;
   top: calc(50% - 7px);
   z-index: 80;
 
-  ${({ openRight }) => (openRight ? 'left: -11px;' : 'right: -11px;')}
+  ${({ $openRight }) => ($openRight ? 'left: -11px;' : 'right: -11px;')}
 
   ${({ theme }) => theme.mqW850`
     display: none;
@@ -47,12 +47,12 @@ export const PopupContainer = styled.div`
   max-width: 30%;
   padding: 1rem;
   position: absolute;
-  top: ${({ top }) => top}px;
+  top: ${({ $top }) => $top}px;
   transform: translateY(-50%);
   z-index: 90;
 
-  ${({ vertPos, openRight }) =>
-    `${openRight ? 'left: ' : 'right: '}${vertPos}px;`}
+  ${({ $vertPos, $openRight }) =>
+    `${$openRight ? 'left: ' : 'right: '}${$vertPos}px;`}
 
   ${({ theme }) => theme.mqW850`
     bottom: 10%;

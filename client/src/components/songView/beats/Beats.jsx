@@ -29,19 +29,19 @@ const Beats = ({ group }) => {
           return (
             <BeatContainer
               key={beatId}
-              barStart={barStart}
-              beatStart={beatStart}
+              $barStart={barStart}
+              $beatStart={beatStart}
             >
               {countOpen && <BeatText>{count}</BeatText>}
               <BeatCircleWrapper>
                 <BeatCircle
-                  isBeatPlaying={isBeatPlaying}
-                  value={value}
-                  tripletStatus={tripletStatus}
+                  $isBeatPlaying={isBeatPlaying}
+                  $tripletStatus={tripletStatus}
+                  $value={value}
                 >
                   {sound.map((note, i) => (
                     <Fragment key={i}>
-                      <BeatText length={sound.length}>
+                      <BeatText $length={sound.length}>
                         {note !== '-' ? note : ' '}
                       </BeatText>
                       {sound[i + 1] ? <BeatTextSpacer>∘</BeatTextSpacer> : null}

@@ -56,11 +56,11 @@ const DropdownSoundItems = ({
       <DropdownItem
         tabIndex={isDisabled ? -1 : 0}
         disabled={isDisabled}
-        selected={selected}
         key={option}
-        hasNonScaleNote={hasNonScaleNote}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        $hasNonScaleNote={hasNonScaleNote}
+        $selected={selected}
       >
         {`${option} - ${label}`}
       </DropdownItem>

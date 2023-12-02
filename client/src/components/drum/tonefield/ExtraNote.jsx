@@ -19,13 +19,13 @@ const ExtraNote = ({
 
   return (
     <ExtraContainer
-      color={color}
-      isPlaying={isPlaying}
-      isReady={isReady}
-      showNote={showNote}
-      hasFocus={hasFocus}
-      position={position}
       onClick={showNote && isReady ? handlePlay : null}
+      $color={color}
+      $isPlaying={isPlaying}
+      $isReady={isReady}
+      $showNote={showNote}
+      $hasFocus={hasFocus}
+      $position={position}
     >
       {text}
     </ExtraContainer>

@@ -12,8 +12,8 @@ const ChordInterval = ({ interval, note, sharpNotes }) => {
   const noteLabel = getNoteLabelFromName(`${note}1`, sharpNotes).slice(0, -1);
 
   return (
-    <IntervalContainer key={interval} isChord={true}>
-      <IntervalColor color={color} />
+    <IntervalContainer key={interval} $isChord={true}>
+      <IntervalColor $color={color} />
       <IntervalBreakBox>
         <IntervalText>
           {noteLabel} - {name}

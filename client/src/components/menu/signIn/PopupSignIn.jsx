@@ -28,8 +28,8 @@ const SignIn = ({ onClose }) => {
         </GoogleBtn>
         By using this website you agree to our{' '}
         <TermsLink
-          privacyOpen={privacyOpen}
           onClick={() => setPrivacyOpen(true)}
+          $privacyOpen={privacyOpen}
         >
           terms and privacy policy.
         </TermsLink>

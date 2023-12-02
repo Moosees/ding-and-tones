@@ -4,7 +4,7 @@ import { MiniExtraContainer } from './tonefield.styles';
 
 const MiniExtra = ({ extra, sharpNotes, showNote }) => {
   return (
-    <MiniExtraContainer position={extra.pos}>
+    <MiniExtraContainer $position={extra.pos}>
       {showNote ? getNoteLabelFromName(extra.note, sharpNotes) : ''}
     </MiniExtraContainer>
   );

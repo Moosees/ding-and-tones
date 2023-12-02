@@ -7,13 +7,13 @@ export const Arrow = styled.div`
     openTop
       ? '50% 50% 50% 50% / 0% 0% 100% 100%'
       : '50% 50% 50% 50% / 100% 100% 0% 0%'};
-  border-width: ${({ openTop }) =>
-    openTop ? '0 2px 2px 2px' : '2px 2px 0 2px'};
+  border-width: ${({ $openTop }) =>
+    $openTop ? '0 2px 2px 2px' : '2px 2px 0 2px'};
   padding: 0.5rem;
   position: absolute;
   z-index: 20;
 
-  ${({ openTop }) => (openTop ? 'bottom: 2rem;' : 'top: 2rem;')}
+  ${({ $openTop }) => ($openTop ? 'bottom: 2rem;' : 'top: 2rem;')}
 `;
 
 export const Dropdown = styled.div`
@@ -30,8 +30,8 @@ export const Dropdown = styled.div`
   position: absolute;
   z-index: 10;
 
-  ${({ openLeft }) => (openLeft ? 'right: 0;' : 'left: 0;')}
-  ${({ openTop }) => (openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
+  ${({ $openLeft }) => ($openLeft ? 'right: 0;' : 'left: 0;')}
+  ${({ $openTop }) => ($openTop ? 'bottom: 3rem;' : 'top: 3rem;')}
 `;
 
 export const DropdownContent = styled.div`

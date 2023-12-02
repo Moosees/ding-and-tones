@@ -33,7 +33,7 @@ export const IntervalList = styled.div`
 export const IntervalContainer = styled.div`
   align-items: center;
   border-bottom: ${({ theme }) => theme.borderLight};
-  cursor: ${({ isChord }) => (isChord ? 'default' : 'pointer')};
+  cursor: ${({ $isChord }) => ($isChord ? 'default' : 'pointer')};
   display: flex;
 
   &:last-child {
@@ -48,7 +48,7 @@ export const IntervalContainer = styled.div`
 
 export const IntervalColor = styled.div`
   align-items: center;
-  background-color: ${({ color }) => color};
+  background-color: ${({ $color }) => $color};
   cursor: default;
   border: ${({ theme }) => theme.borderMedium};
   border-radius: 100%;

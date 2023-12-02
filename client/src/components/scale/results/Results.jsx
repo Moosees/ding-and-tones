@@ -56,7 +56,7 @@ const Results = () => {
       };
 
       return (
-        <ScaleContainer key={i} isOwner={isOwner && isSignedIn}>
+        <ScaleContainer key={i} $isOwner={isOwner && isSignedIn}>
           {isOwner && isSignedIn && (
             <Confirmation
               onConfirm={handleDeleteScale}

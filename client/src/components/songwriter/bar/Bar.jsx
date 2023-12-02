@@ -28,7 +28,7 @@ const Bar = ({ barId, barIndex }) => {
   return (
     <BarContainer>
       <BarInfo barId={barId} barIndex={barIndex} />
-      <Beats isMuted={isMuted} isPlaying={isPlaying}>
+      <Beats $isPlaying={isPlaying}>
         {measure.map((beatId, i) => (
           <Beat
             key={beatId}

@@ -67,21 +67,21 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
   return (
     <BeatContainer
       ref={dropdownPosRef}
-      editSubdivisionsOpen={editSubdivisionsOpen}
-      beatStart={beatStart}
+      $beatStart={beatStart}
+      $editSubdivisionsOpen={editSubdivisionsOpen}
     >
       {countOpen && <BeatTextHandCount>{count}</BeatTextHandCount>}
       <BeatAnchor>
         <BeatCircle
           tabIndex={0}
-          hasNonScaleNote={!!nonScaleNotes.length}
-          isBeatPlaying={isBeatPlaying}
-          isSongPlaying={isSongPlaying}
-          isMuted={isMuted}
-          value={value}
           onClick={handleOpen}
           onKeyDown={handleKeyDown}
-          tripletStatus={tripletStatus}
+          $hasNonScaleNote={!!nonScaleNotes.length}
+          $isBeatPlaying={isBeatPlaying}
+          $isSongPlaying={isSongPlaying}
+          $isMuted={isMuted}
+          $value={value}
+          $tripletStatus={tripletStatus}
         >
           <BeatText isBeatPlaying={isBeatPlaying} sound={sound} value={value} />
         </BeatCircle>

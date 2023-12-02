@@ -7,7 +7,7 @@ const Select = ({ label, large, handleChange, options, value }) => {
   const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
 
   return (
-    <SelectLabel as="label" large={large} disabled={isSongPlaying}>
+    <SelectLabel as="label" disabled={isSongPlaying} $large={large}>
       <span>{label}</span>
       <SelectDropdown
         disabled={isSongPlaying}

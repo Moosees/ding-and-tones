@@ -92,8 +92,8 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
 
   return (
     <>
-      <Arrow openTop={openTop} />
-      <Dropdown openLeft={openLeft} openTop={openTop}>
+      <Arrow $openTop={openTop} />
+      <Dropdown $openLeft={openLeft} $openTop={openTop}>
         <DropdownControls beatId={beatId} />
         <DividerLine small />
         <DropdownContent>

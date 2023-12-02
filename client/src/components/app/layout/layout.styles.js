@@ -58,13 +58,13 @@ export const SectionWithNav = styled.div`
 export const BorderContainer = styled.div`
   background-color: ${({ theme }) => theme.colorBox};
   border: ${({ theme }) => theme.borderHeavyDark};
-  border-radius: ${({ small }) => (small ? '58' : '65')}px;
+  border-radius: ${({ $small }) => ($small ? '58' : '65')}px;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  margin-top: ${({ small }) => (small ? '-3rem' : 'revert')};
-  max-height: ${({ small }) => (small ? '40rem' : 'revert')};
+  margin-top: ${({ $small }) => ($small ? '-3rem' : 'revert')};
+  max-height: ${({ $small }) => ($small ? '40rem' : 'revert')};
   overflow: hidden;
   position: relative;
 `;

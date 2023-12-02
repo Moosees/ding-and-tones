@@ -26,9 +26,9 @@ const BtnMenu = ({
   return (
     <MenuButton
       tabIndex={0}
-      isActive={isActive}
       onClick={onClick}
       onKeyDown={handleKeyDown}
+      $isActive={isActive}
     >
       <i
         style={

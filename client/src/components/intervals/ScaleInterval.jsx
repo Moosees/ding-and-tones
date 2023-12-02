@@ -39,7 +39,7 @@ const ScaleInterval = ({ interval, option, scaleIndex, sharpNotes }) => {
 
   return (
     <IntervalContainer onClick={handleIntervalClick}>
-      <IntervalColor color={color}>
+      <IntervalColor $color={color}>
         <span>{option}</span>
       </IntervalColor>
       <IntervalBreakBox>

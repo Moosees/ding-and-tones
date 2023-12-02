@@ -30,10 +30,10 @@ const DropdownHandItems = ({ beatId, stopTimeout }) => {
     return (
       <DropdownItem
         tabIndex={0}
-        selected={value === hand}
         key={value}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        $selected={value === hand}
       >
         <span>{name}</span>
         <HandIcon className="material-icons">pan_tool</HandIcon>

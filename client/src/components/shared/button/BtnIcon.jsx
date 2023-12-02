@@ -17,13 +17,13 @@ const BtnIcon = ({
   return (
     <IconButton
       aria-label={title}
-      color={color ? `color${color}` : null}
       disabled={disabled || isSongPlaying}
-      editOnly={editOnly}
       onClick={onClick}
-      position={position}
-      small={small}
-      title={title}
+      title={title} // tooltip
+      $color={color ? `color${color}` : null}
+      $editOnly={editOnly}
+      $position={position}
+      $small={small}
     >
       <i className="material-icons">{icon}</i>
     </IconButton>

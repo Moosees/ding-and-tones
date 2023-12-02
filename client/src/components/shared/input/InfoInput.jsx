@@ -29,11 +29,11 @@ const InfoInput = ({
   };
 
   return (
-    <InfoLayout as="label" large={large}>
+    <InfoLayout as="label" $large={large}>
       <TextInput
         autoFocus={!editOnly || autoFocus}
         aria-label={label}
-        errors={errors}
+        // errors={errors}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={value}

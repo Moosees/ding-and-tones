@@ -62,7 +62,7 @@ const Notes = () => {
         : () => handleAdd(noteName);
 
       noteSelectors.push(
-        <Note disabled={disabled} key={i} type={type} onClick={handleClick}>
+        <Note disabled={disabled} key={i} onClick={handleClick} $type={type}>
           <span>{getNoteLabelFromName(noteName, sharpNotes)}</span>
         </Note>
       );

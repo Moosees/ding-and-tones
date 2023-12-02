@@ -9,10 +9,9 @@ const SelectSmall = ({ handleChange, options, value }) => {
   return (
     <SelectLabelSmall disabled={isSongPlaying}>
       <SelectDropdown
-        small
         disabled={isSongPlaying}
         value={value}
-        labelWidth={20}
+        // labelWidth={20}
         onChange={(e) => handleChange(e.target.value)}
       >
         {parseOptions(options)}

@@ -18,7 +18,7 @@ const SpinDiv = styled.div`
   border-right-color: transparent;
   border-radius: 100%;
   height: 2rem;
-  opacity: ${({ isSpinning }) => (isSpinning ? '1' : '0')};
+  opacity: ${({ $isSpinning }) => ($isSpinning ? '1' : '0')};
   position: absolute;
   transition: opacity 0.2s ease;
   right: 2px;
@@ -26,7 +26,7 @@ const SpinDiv = styled.div`
 `;
 
 const Spinner = ({ isSpinning }) => {
-  return <SpinDiv isSpinning={isSpinning} />;
+  return <SpinDiv $isSpinning={isSpinning} />;
 };
 
 export default Spinner;

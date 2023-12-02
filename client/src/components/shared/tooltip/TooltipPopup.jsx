@@ -23,12 +23,12 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
 
   return createPortal(
     <PopupContainer
-      openRight={openRight}
-      vertPos={vertPos}
-      top={top}
       ref={insideRef}
+      $openRight={openRight}
+      $vertPos={vertPos}
+      $top={top}
     >
-      <Arrow openRight={openRight} />
+      <Arrow $openRight={openRight} />
       {children}
       <BtnIcon icon="close" onClick={handleClick} />
     </PopupContainer>,

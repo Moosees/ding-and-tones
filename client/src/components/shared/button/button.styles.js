@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const ButtonGroup = styled.div`
   align-items: center;
   display: flex;
-  justify-content: ${({ position }) => (position ? position : 'center')};
+  justify-content: ${({ $position }) => ($position ? $position : 'center')};
   width: 100%;
 `;
 
 export const MenuButton = styled.div`
   align-items: center;
-  color: ${({ isActive, theme }) =>
-    isActive ? theme.colorBtnConfirm : 'revert'};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colorBtnConfirm : 'revert'};
   cursor: pointer;
   display: flex;
   font-size: ${({ theme }) => theme.fzSmall};
@@ -36,22 +36,22 @@ export const MenuLabel = styled.span`
 export const IconButton = styled.button`
   background-color: transparent;
   border: 0;
-  cursor: ${({ editOnly }) => (editOnly ? 'default' : 'pointer')};
-  left: ${({ position }) => (position === 'left' ? '1px' : 'revert')};
+  cursor: ${({ $editOnly }) => ($editOnly ? 'default' : 'pointer')};
+  left: ${({ $position }) => ($position === 'left' ? '1px' : 'revert')};
   max-width: 3.1rem;
   overflow: hidden;
-  position: ${({ position }) => (position ? 'absolute' : 'static')};
-  right: ${({ position }) => (position === 'right' ? '1px' : 'revert')};
+  position: ${({ $position }) => ($position ? 'absolute' : 'static')};
+  right: ${({ $position }) => ($position === 'right' ? '1px' : 'revert')};
 
   i {
-    color: ${({ color, theme }) => (color ? theme[color] : theme.colorText)};
-    font-size: ${({ theme, small }) =>
-      small ? theme.fzMedium : theme.fzLarger};
+    color: ${({ $color, theme }) => ($color ? theme[$color] : theme.colorText)};
+    font-size: ${({ theme, $small }) =>
+      $small ? theme.fzMedium : theme.fzLarger};
     padding: 0.5rem;
     transition: color 0.1s ease-in;
 
-    ${({ theme, small }) => theme.mqW1000`
-      font-size ${small ? theme.fzLarge : theme.fzLargest}
+    ${({ theme, $small }) => theme.mqW1000`
+      font-size ${$small ? theme.fzLarge : theme.fzLargest}
   `}
   }
 
@@ -61,7 +61,7 @@ export const IconButton = styled.button`
 
   &:hover:not([disabled]) i,
   &:focus:not([disabled]) i {
-    ${({ editOnly, theme }) => !editOnly && `color: ${theme.colorBtnConfirm};`}
+    ${({ $editOnly, theme }) => !$editOnly && `color: ${theme.colorBtnConfirm};`}
   }
 
   &:focus:not([disabled]) {
@@ -79,10 +79,10 @@ export const IconButton = styled.button`
 
 export const NavButton = styled.button`
   background-color: ${({ theme }) => theme.colorBox};
-  border: ${({ isActive, theme }) =>
-    isActive ? theme.borderHeavyDark : theme.borderHeavyLight};
-  border-bottom-color: ${({ isActive, theme }) =>
-    isActive ? theme.colorBox : theme.colorNavBorder};
+  border: ${({ $isActive, theme }) =>
+    $isActive ? theme.borderHeavyDark : theme.borderHeavyLight};
+  border-bottom-color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colorBox : theme.colorNavBorder};
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   cursor: pointer;
@@ -94,22 +94,22 @@ export const NavButton = styled.button`
   text-shadow: ${({ theme }) => theme.textShadowLight};
   top: 3px;
   transition: transform 0.1s ease-in;
-  ${({ isActive }) => (isActive ? 'z-index: 10;' : '')}
+  ${({ $isActive }) => ($isActive ? 'z-index: 10;' : '')}
 
   &:hover, &:focus {
     outline: 0;
-    ${({ isActive }) => !isActive && 'transform: translateY(-2%) scale(1.04);'}
+    ${({ $isActive }) => !$isActive && 'transform: translateY(-2%) scale(1.04);'}
   }
 `;
 
 export const PrimaryButton = styled.button`
   align-items: center;
   border: ${({ theme }) => theme.borderLight};
-  background-color: ${({ light, theme }) =>
-    light ? theme.colorBtnLight : theme.colorBtnHeavy};
+  background-color: ${({ $light, theme }) =>
+    $light ? theme.colorBtnLight : theme.colorBtnHeavy};
   border-radius: 3px;
-  box-shadow: ${({ light, theme }) =>
-    light ? theme.shadowBtnLight : theme.shadowBtnHeavy};
+  box-shadow: ${({ $light, theme }) =>
+    $light ? theme.shadowBtnLight : theme.shadowBtnHeavy};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   height: 2.8rem;

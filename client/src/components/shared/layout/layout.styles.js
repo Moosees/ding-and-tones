@@ -32,12 +32,12 @@ export const InfoLayout = styled.div`
   cursor: default;
   display: flex;
   flex: 1;
-  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
+  flex-direction: ${({ $reverse }) => ($reverse ? 'row-reverse' : 'row')};
   justify-content: space-between;
-  margin: ${({ large }) => (large ? '1rem 0' : '0.5rem 0')};
+  margin: ${({ $large }) => ($large ? '1rem 0' : '0.5rem 0')};
   min-height: 3.5rem;
-  padding-left: ${({ reverse }) => (reverse ? '0' : '0.5rem')};
-  padding-right: ${({ reverse }) => (reverse ? '0.5rem' : '0')};
+  padding-left: ${({ $reverse }) => ($reverse ? '0' : '0.5rem')};
+  padding-right: ${({ $reverse }) => ($reverse ? '0.5rem' : '0')};
   position: relative;
   width: 100%;
 

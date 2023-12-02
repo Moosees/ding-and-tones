@@ -37,11 +37,11 @@ const Move = () => {
     return (
       <Note
         key={i}
-        isVisible={isGrabbing || note}
-        isGrabbed={grabbed === i}
         onClick={
           isGrabbing ? () => handleMove(note, i) : () => handleGrab(note, i)
         }
+        $isVisible={isGrabbing || note}
+        $isGrabbed={grabbed === i}
       >
         {note}
       </Note>

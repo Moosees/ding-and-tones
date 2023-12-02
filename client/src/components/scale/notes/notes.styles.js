@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const getNoteBorder = ({ type, theme }) => {
+const getNoteBorder = ({ $type, theme }) => {
   const borders = {
     dings: `3px dashed ${theme.colorCheckbox}`,
     extra: `2px dotted ${theme.colorBtnConfirm}`,
@@ -8,7 +8,7 @@ const getNoteBorder = ({ type, theme }) => {
     outside: `1px solid ${theme.colorBtnClear}`,
   };
 
-  return borders[type];
+  return borders[$type];
 };
 
 export const NotesList = styled.div`
@@ -29,8 +29,8 @@ export const Note = styled.button`
   background-color: rgba(0, 0, 0, 0.05);
   border: ${getNoteBorder};
   border-radius: 100%;
-  box-shadow: ${({ type, theme }) =>
-    type !== 'outside' ? theme.shadowLight : 'none'};
+  box-shadow: ${({ $type, theme }) =>
+    $type !== 'outside' ? theme.shadowLight : 'none'};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   font-family: var(--font-notes);

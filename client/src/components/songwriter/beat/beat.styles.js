@@ -74,21 +74,21 @@ export const BeatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-left: ${({ beatStart }) => (beatStart ? '2px' : '-1px')};
+  margin-left: ${({ $beatStart }) => ($beatStart ? '2px' : '-1px')};
   position: relative;
 
   ${({ theme }) => theme.mqW850`
     margin-left: 0;
   `}
 
-  ${({ editSubdivisionsOpen, beatStart }) =>
-    editSubdivisionsOpen && beatStart && editSubdivisionsMixin}
+  ${({ $editSubdivisionsOpen, $beatStart }) =>
+    $editSubdivisionsOpen && $beatStart && editSubdivisionsMixin}
 `;
 
 export const BeatCircle = styled.div`
   align-items: center;
-  border-width: ${({ value }) => (value === 4 ? '2px' : '1px')};
-  border-style: ${({ value }) => beatStyles.border[value]};
+  border-width: ${({ $value }) => ($value === 4 ? '2px' : '1px')};
+  border-style: ${({ $value }) => beatStyles.border[$value]};
   border-radius: 100%;
   border-color: ${({ theme, hasNonScaleNote, isBeatPlaying }) =>
     isBeatPlaying
@@ -96,26 +96,26 @@ export const BeatCircle = styled.div`
       : hasNonScaleNote
       ? theme.colorBtnClear
       : theme.colorBeat};
-  box-shadow: ${({ theme, isBeatPlaying }) =>
-    isBeatPlaying ? theme.shadowPlaying : theme.shadowBtnHeavy};
-  cursor: ${({ isSongPlaying }) => (isSongPlaying ? 'default' : 'pointer')};
+  box-shadow: ${({ theme, $isBeatPlaying }) =>
+    $isBeatPlaying ? theme.shadowPlaying : theme.shadowBtnHeavy};
+  cursor: ${({ $isSongPlaying }) => ($isSongPlaying ? 'default' : 'pointer')};
   display: flex;
-  height: ${({ value }) => beatStyles.heightWidth[value]}rem;
+  height: ${({ $value }) => beatStyles.heightWidth[$value]}rem;
   justify-content: center;
   margin: 1px;
   opacity: ${({ isMuted }) => (isMuted ? '0.65' : '1')};
   transition: color 0.1s ease-in;
-  width: ${({ value }) => beatStyles.heightWidth[value]}rem;
+  width: ${({ $value }) => beatStyles.heightWidth[$value]}rem;
 
   &:hover,
   &:focus {
     outline: 0;
-    ${({ isSongPlaying, theme }) =>
-      !isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
+    ${({ $isSongPlaying, theme }) =>
+      !$isSongPlaying && `border-color: ${theme.colorBtnConfirm};`}
   }
 
   &::after {
-    ${({ tripletStatus }) => tripletStatusMixins[tripletStatus]}
+    ${({ $tripletStatus }) => tripletStatusMixins[$tripletStatus]}
   }
 
   @media screen and (orientation: portrait) and (max-width: 1000px) {
@@ -130,7 +130,7 @@ export const BeatTextHandCount = styled.span`
 `;
 
 export const BeatTextNote = styled.span`
-  font-size: ${({ length }) => beatStyles.fz[length] || '1.8'}rem;
+  font-size: ${({ $length }) => beatStyles.fz[$length] || '1.8'}rem;
   letter-spacing: -1px;
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);
@@ -138,7 +138,7 @@ export const BeatTextNote = styled.span`
 `;
 
 export const BeatTextSpacer = styled.span`
-  font-size: ${({ length }) => (length < 3 ? '14' : '10')}px;
+  font-size: ${({ $length }) => ($length < 3 ? '14' : '10')}px;
   letter-spacing: -1px;
   font-family: var(--font-beats);
   font-weight: var(--weight-beats);

@@ -33,7 +33,7 @@ const Bar = ({ barId, prevBar }) => {
   return beatsGrouped.map((group, i) => {
     const newMetre = i === 0 && (!prevBarMetre || prevBarMetre !== metre);
     return (
-      <BeatGroup key={i} newMetre={newMetre}>
+      <BeatGroup key={i} $newMetre={newMetre}>
         {newMetre && (
           <BarMetre>
             {nameShort.split('/').map((substring, i) => (

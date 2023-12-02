@@ -14,12 +14,12 @@ export const BeatGroup = styled.div`
   align-items: baseline;
   break-inside: avoid;
   display: inline-flex;
-  margin-left: ${({ newMetre }) => (newMetre ? '2px' : '0')};
+  margin-left: ${({ $newMetre }) => ($newMetre ? '2px' : '0')};
   position: relative;
   white-space: nowrap;
 
   &::before {
-    ${({ newMetre }) => (newMetre ? dividerMixin : '')}
+    ${({ $newMetre }) => ($newMetre ? dividerMixin : '')}
   }
 `;
 

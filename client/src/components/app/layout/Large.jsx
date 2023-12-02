@@ -11,7 +11,7 @@ const Large = () => {
   return (
     <LargeLayout>
       <Drum style={{ gridArea: 'drum' }} />
-      <BorderContainer small style={{ gridArea: 'controls' }}>
+      <BorderContainer style={{ gridArea: 'controls' }} $small>
         <Intervals />
       </BorderContainer>
       <SectionWithNav style={{ gridArea: 'main' }}>

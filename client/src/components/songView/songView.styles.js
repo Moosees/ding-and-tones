@@ -17,9 +17,9 @@ export const SongLayout = styled.div`
 export const Header = styled.header`
   align-items: center;
   display: flex;
-  justify-content: ${({ headersOpen }) =>
-    headersOpen ? 'space-between' : 'flex-end'};
-  margin: 2rem 1rem ${({ headersOpen }) => (headersOpen ? '0' : '1.5rem')};
+  justify-content: ${({ $headersOpen }) =>
+    $headersOpen ? 'space-between' : 'flex-end'};
+  margin: 2rem 1rem ${({ $headersOpen }) => ($headersOpen ? '0' : '1.5rem')};
 `;
 
 export const Title = styled.h1`

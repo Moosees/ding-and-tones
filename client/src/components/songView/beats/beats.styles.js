@@ -73,21 +73,21 @@ export const BeatCircleWrapper = styled.div`
 
 export const BeatCircle = styled.div`
   align-items: center;
-  border: ${({ value }) => beatStyles.border[value]};
+  border: ${({ $value }) => beatStyles.border[$value]};
   border-radius: 100%;
   display: flex;
-  height: ${({ value }) => beatStyles.heightWidth[value]}px;
+  height: ${({ $value }) => beatStyles.heightWidth[$value]}px;
   justify-content: center;
   position: relative;
-  width: ${({ value }) => beatStyles.heightWidth[value]}px;
+  width: ${({ $value }) => beatStyles.heightWidth[$value]}px;
 
-  ${({ isBeatPlaying, theme }) =>
-    isBeatPlaying &&
+  ${({ $isBeatPlaying, theme }) =>
+    $isBeatPlaying &&
     `border-color: ${theme.colorBeatActive};
       box-shadow: ${theme.shadowPlaying};`}
 
   &::after {
-    ${({ tripletStatus }) => tripletStatusMixins[tripletStatus]}
+    ${({ $tripletStatus }) => tripletStatusMixins[$tripletStatus]}
   }
 `;
 
@@ -98,17 +98,17 @@ export const BeatContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   margin: 16px 0;
-  margin-left: ${({ barStart, beatStart }) =>
-    barStart ? '7px' : beatStart ? '2px' : '1px'};
+  margin-left: ${({ $barStart, $beatStart }) =>
+    $barStart ? '7px' : $beatStart ? '2px' : '1px'};
   position: relative;
 
   &::before {
-    ${({ barStart }) => (barStart ? dividerMixin : '')}
+    ${({ $barStart }) => ($barStart ? dividerMixin : '')}
   }
 `;
 
 export const BeatText = styled.span`
-  font-size: ${({ length }) => beatStyles.fz[length] || '12'}px;
+  font-size: ${({ $length }) => beatStyles.fz[$length] || '12'}px;
   letter-spacing: -1px;
   margin-left: -1px;
   white-space: pre-wrap;

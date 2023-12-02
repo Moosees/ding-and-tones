@@ -24,34 +24,34 @@ const miniExtraPositions = [
 
 export const ExtraContainer = styled.div`
   align-items: center;
-  background-color: ${({ isPlaying }) => (isPlaying ? '#ccc' : '#333')};
-  border-color: ${({ color }) => color};
+  background-color: ${({ $isPlaying }) => ($isPlaying ? '#ccc' : '#333')};
+  border-color: ${({ $color }) => $color};
   border-radius: 100%;
   border-style: solid;
-  border-width: ${({ hasFocus }) => (hasFocus ? '6px' : '3px')};
+  border-width: ${({ $hasFocus }) => ($hasFocus ? '6px' : '3px')};
   box-shadow: ${({ theme }) => theme.shadowLight};
-  color: ${({ isPlaying }) => (isPlaying ? '#333' : '#ccc')};
-  cursor: ${({ showNote }) => (showNote ? 'pointer' : 'default')};
+  color: ${({ $isPlaying }) => ($isPlaying ? '#333' : '#ccc')};
+  cursor: ${({ $showNote }) => ($showNote ? 'pointer' : 'default')};
   display: flex;
   font-family: var(--font-notes);
   font-size: 2rem;
   height: 5rem;
   justify-content: center;
-  opacity: ${({ isReady }) => (isReady ? '1' : '0.5')};
+  opacity: ${({ $isReady }) => ($isReady ? '1' : '0.5')};
   position: absolute;
   width: 5rem;
 
   ${({ position }) => extraPositions[position]}
 
   ${({ theme }) => theme.mqW1200`
-    border-width: ${({ hasFocus }) => (hasFocus ? '5px' : '2px')};
+    border-width: ${({ $hasFocus }) => ($hasFocus ? '5px' : '2px')};
     font-size: 1.8rem;
     height: 4rem;
     width: 4rem;
   `}
 
   ${({ theme }) => theme.mqW850`
-    border-width: ${({ hasFocus }) => (hasFocus ? '3px' : '1px')};
+    border-width: ${({ $hasFocus }) => ($hasFocus ? '3px' : '1px')};
     font-size: 1.5rem;
     height: 3rem;
     width: 3rem;
@@ -73,5 +73,5 @@ export const MiniExtraContainer = styled.div`
   position: absolute;
   width: 30px;
 
-  ${({ position }) => miniExtraPositions[position]}
+  ${({ $position }) => miniExtraPositions[$position]}
 `;

@@ -15,7 +15,7 @@ const Layout = () => {
   return (
     <ThemeProvider theme={mainTheme}>
       <GlobalStyles />
-      <Viewport id="outsideTarget" isMobile={isMobile}>
+      <Viewport id="outsideTarget">
         {isMobile ? <Mobile /> : <Large />}
         <Privacy />
         <Alert />

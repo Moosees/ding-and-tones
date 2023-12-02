@@ -54,12 +54,12 @@ export const PositionWrapper = styled.div`
 
 export const Note = styled.div`
   align-items: center;
-  background-color: ${({ isGrabbed }) => (!isGrabbed ? '#333' : '#ccc')};
+  background-color: ${({ $isGrabbed }) => (!$isGrabbed ? '#333' : '#ccc')};
   border: ${({ theme }) => theme.borderHeavyLight};
   border-radius: 100%;
-  color: ${({ isGrabbed }) => (!isGrabbed ? '#ccc' : '#111')};
+  color: ${({ $isGrabbed }) => (!$isGrabbed ? '#ccc' : '#111')};
   cursor: move;
-  display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
+  display: ${({ $isVisible }) => ($isVisible ? 'flex' : 'none')};
   height: 4rem;
   justify-content: center;
   position: absolute;

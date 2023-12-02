@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const AudioOption = styled.button`
   background-color: ${({ theme }) => theme.colorBtnHeavy};
   border: 2px solid
-    ${({ isSelected, theme }) =>
-      isSelected ? theme.colorBtnConfirm : theme.colorBtnLight};
+    ${({ $isSelected, theme }) =>
+      $isSelected ? theme.colorBtnConfirm : theme.colorBtnLight};
   border-radius: 3px;
   box-shadow: ${({ theme }) => theme.shadowBtnHeavy};
   cursor: pointer;

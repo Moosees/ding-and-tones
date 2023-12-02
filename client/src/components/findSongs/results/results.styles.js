@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-export const TableContainer = styled.div`
-  height: 100%;
-  max-height: ${({ isMobile }) => (isMobile ? '600px' : '58rem')};
-  width: ${({ isMobile }) => (isMobile ? '100%' : '95%')};
-
-  ${({ theme }) => theme.mqW850`
-    max-height: 78vh;
-  `}
-`;
-
 export const Table = styled.table`
   border-spacing: 0;
   padding: 0 0.6rem;

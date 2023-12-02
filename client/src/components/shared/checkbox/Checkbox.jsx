@@ -20,12 +20,12 @@ const Checkbox = ({
 
   return (
     <Component
-      light={light}
       disabled={disabled}
       onClick={onChange}
-      reverse={reverse}
+      $light={light}
+      $reverse={reverse}
     >
-      <CheckboxIcon checked={checked} small={small || asBtn} />
+      <CheckboxIcon $checked={checked} $small={small || asBtn} />
       <CheckboxLabel>{label}</CheckboxLabel>
     </Component>
   );

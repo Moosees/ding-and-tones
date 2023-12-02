@@ -7,8 +7,8 @@ export const CheckboxContainer = styled.button`
   cursor: pointer;
   display: flex;
 
-  ${({ reverse }) =>
-    reverse &&
+  ${({ $reverse }) =>
+    $reverse &&
     `
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -26,14 +26,14 @@ export const CheckboxContainer = styled.button`
 `;
 
 export const CheckboxIcon = styled.div`
-  background-color: ${({ checked, theme }) =>
-    checked ? theme.colorCheckbox : theme.colorBtnClear};
+  background-color: ${({ $checked, theme }) =>
+    $checked ? theme.colorCheckbox : theme.colorBtnClear};
   border: ${({ theme }) => theme.borderLight};
   border-radius: 100%;
-  height: ${({ small }) => (small ? '1.8' : '2')}rem;
+  height: ${({ $small }) => ($small ? '1.8' : '2')}rem;
   margin: 1px;
   opacity: 0.8;
-  width: ${({ small }) => (small ? '1.8' : '2')}rem;
+  width: ${({ $small }) => ($small ? '1.8' : '2')}rem;
 `;
 
 export const CheckboxLabel = styled.span`

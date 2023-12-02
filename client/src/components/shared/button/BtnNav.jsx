@@ -7,9 +7,9 @@ const BtnNav = forwardRef(
       <NavButton
         ref={ref}
         aria-label={ariaLabel || label}
-        isActive={isActive}
         disabled={disabled}
         onClick={onClick}
+        $isActive={isActive}
       >
         {label}
       </NavButton>
