@@ -118,14 +118,13 @@
 
 ### Dependencies updates
 
-* React-table 8
-* Redux with redux toolkit? reselect? memoize selectors somehow
-* Update to redis 4 when connect-redis is supported
-* New react 18 features?
-* Stop using CRA?
-* react query?
-* Update and DRY up rc-slider
+* Redux 5
 * mongoose 8 - strictQuery will set to false by default
+* redis 4 and connect-redis 7
+* New react 18 features? react query?
+* Stop using CRA?
+* rc-slider into shared component
+* React-table 8 or drop for new solution?
 
 ## Not yet planned for release updates
 

@@ -13,11 +13,11 @@ const userSchema = new mongoose.Schema({
   },
   maxSavedScales: {
     type: Number,
-    default: 10,
+    default: 50,
   },
   maxSavedSongs: {
     type: Number,
-    default: 20,
+    default: 50,
   },
   name: {
     type: String,
