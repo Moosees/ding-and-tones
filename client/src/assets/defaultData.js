@@ -26,7 +26,7 @@ export const defaultSong = {
   scale: null,
   info: {
     bpm: 80,
-    difficulty: 2,
+    difficulty: 1,
     metre: 's44',
     subdivision: 9,
     title: 'Is this a shuffle',
