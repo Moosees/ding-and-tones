@@ -7,27 +7,30 @@ const ObjectId = require('mongoose').Types.ObjectId;
 const scaleSelect =
   '_id info notes.round notes.extra.pos notes.extra.note notes.dings author';
 
-exports.deleteScale = (req, res) => {
+exports.deleteScale = async (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
 
-  if (!isValidObjectId(scaleId)) return res.status(400).json();
+  if (!isValidObjectId(scaleId))
+    return res.status(400).json({ msg: 'Scale not found' });
 
-  Scale.findOneAndDelete({ _id: scaleId, author: userId })
-    .select('_id info.name info.rootName')
-    .exec((error, scale) => {
-      if (error || !scale) return res.status(400).json();
+  try {
+    const scale = await Scale.findOneAndDelete({ _id: scaleId, author: userId })
+      .select('_id info.name info.rootName')
+      .exec();
 
-      User.findByIdAndUpdate(userId, {
-        $pull: { scales: scale._id },
-      })
-        .setOptions({ new: true })
-        .exec((error) => {
-          if (error) return res.status(400).json();
+    if (!scale) return res.status(400).json({ msg: 'Scale not found' });
 
-          res.status(200).json(scale);
-        });
-    });
+    await User.findByIdAndUpdate(userId, {
+      $pull: { scales: scale._id },
+    })
+      .setOptions({ new: true })
+      .exec();
+
+    res.status(200).json(scale);
+  } catch (error) {
+    res.status(400).json({ msg: 'Error, please try again later' });
+  }
 };
 
 exports.getScaleById = (req, res) => {
