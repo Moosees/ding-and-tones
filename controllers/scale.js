@@ -57,20 +57,23 @@ exports.getScaleById = async (req, res) => {
   }
 };
 
-exports.getScales = (req, res) => {
+exports.getScales = async (req, res) => {
   const userId = req.userId;
 
-  Scale.find({ author: { $ne: ObjectId(userId) } })
-    .select(scaleSelect)
-    .limit(20)
-    .sort({ created: -1 })
-    .exec((error, scales) => {
-      if (error) return res.status(400).json();
-      if (!scales.length) return res.status(204).json();
+  try {
+    const scales = await Scale.find({ author: { $ne: new ObjectId(userId) } })
+      .select(scaleSelect)
+      .limit(20)
+      .sort({ created: -1 })
+      .exec();
 
-      const data = scales.map((scale) => parseScaleResponse(scale, userId));
-      res.status(200).json({ scales: data });
-    });
+    if (!scales.length) return res.status(204).json({ msg: 'No scales found' });
+
+    const data = scales.map((scale) => parseScaleResponse(scale, userId));
+    res.status(200).json({ scales: data });
+  } catch (error) {
+    res.status(400).json();
+  }
 };
 
 exports.getMyScales = (req, res) => {
