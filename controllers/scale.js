@@ -103,11 +103,11 @@ exports.getMyScales = async (req, res) => {
   }
 };
 
-exports.saveScale = (req, res) => {
+exports.saveScale = async (req, res) => {
   const userId = req.userId;
   req.body.author = userId;
   req.body.isNew = true;
-  req.body._id = ObjectId();
+  req.body._id = new ObjectId();
 
   req.body.queryString = `${req.body.info.rootName.toLowerCase()} ${req.body.info.name.toLowerCase()}`;
 
@@ -115,20 +115,22 @@ exports.saveScale = (req, res) => {
     req.body.info.rotation = 360;
   }
 
-  new Scale(req.body).save((error, scale) => {
-    if (error || !scale) return res.status(400).json();
+  try {
+    const scale = await new Scale(req.body).save();
 
-    User.findByIdAndUpdate(userId, {
+    if (!scale) return res.status(400).json({ msg: 'Could not save scale' });
+
+    await User.findByIdAndUpdate(userId, {
       $push: { scales: scale._id },
     })
       .setOptions({ new: true })
-      .exec((error) => {
-        if (error) return res.status(400).json();
+      .exec();
 
-        const data = parseScaleResponse(scale, userId);
-        res.status(200).json(data);
-      });
-  });
+    const data = parseScaleResponse(scale, userId);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json({ msg: defaultErrorMsg });
+  }
 };
 
 exports.scaleSearch = (req, res) => {
