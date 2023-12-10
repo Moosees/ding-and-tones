@@ -68,7 +68,9 @@ exports.getScales = async (req, res) => {
       .sort({ created: -1 })
       .exec();
 
-    if (!scales.length) return res.status(204).json({ msg: 'No scales found' });
+    if (!scales.length) {
+      return res.status(204).json({ msg: 'No scales found' });
+    }
 
     const data = scales.map((scale) => parseScaleResponse(scale, userId));
     res.status(200).json({ scales: data });
@@ -77,25 +79,28 @@ exports.getScales = async (req, res) => {
   }
 };
 
-exports.getMyScales = (req, res) => {
+exports.getMyScales = async (req, res) => {
   const userId = req.userId;
 
-  User.findById(userId)
-    .populate({
-      path: 'scales',
-      select: scaleSelect,
-      options: { limit: 100, sort: { created: -1 } },
-    })
-    .select('_id')
-    .exec((error, user) => {
-      if (error) return res.status(400).json();
-      if (!user.scales.length) return res.status(204).json();
+  try {
+    const user = await User.findById(userId)
+      .populate({
+        path: 'scales',
+        select: scaleSelect,
+        options: { limit: 100, sort: { created: -1 } },
+      })
+      .select('_id')
+      .exec();
 
-      const data = user.scales.map((scale) =>
-        parseScaleResponse(scale, userId)
-      );
-      res.status(200).json({ scales: data });
-    });
+    if (!user.scales.length) {
+      return res.status(204).json({ msg: 'No saved scales found' });
+    }
+
+    const data = user.scales.map((scale) => parseScaleResponse(scale, userId));
+    res.status(200).json({ scales: data });
+  } catch (error) {
+    res.status(400).json({ msg: defaultErrorMsg });
+  }
 };
 
 exports.saveScale = (req, res) => {
