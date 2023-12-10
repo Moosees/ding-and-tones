@@ -1,5 +1,6 @@
 const Scale = require('../models/scale');
 const User = require('../models/user');
+const { defaultErrorMsg } = require('../utils/assets');
 const { parseScaleResponse } = require('../utils/scale');
 const { isValidObjectId } = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
@@ -32,7 +33,7 @@ exports.deleteScale = async (req, res) => {
 
     res.status(200).json(scale);
   } catch (error) {
-    res.status(400).json({ msg: 'Error, please try again later' });
+    res.status(400).json({ msg: defaultErrorMsg });
   }
 };
 
@@ -53,7 +54,7 @@ exports.getScaleById = async (req, res) => {
 
     res.status(200).json(parseScaleResponse(scale, userId));
   } catch (error) {
-    res.status(400).json({ msg: 'Error, please try again later' });
+    res.status(400).json({ msg: defaultErrorMsg });
   }
 };
 
@@ -72,7 +73,7 @@ exports.getScales = async (req, res) => {
     const data = scales.map((scale) => parseScaleResponse(scale, userId));
     res.status(200).json({ scales: data });
   } catch (error) {
-    res.status(400).json();
+    res.status(400).json({ msg: defaultErrorMsg });
   }
 };
 

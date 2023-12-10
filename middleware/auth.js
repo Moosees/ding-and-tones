@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const { isValidObjectId } = require('mongoose');
+const { defaultErrorMsg } = require('../utils/assets');
 
 exports.checkAuth = async (req, res, next) => {
   console.log(req.session.user);
@@ -15,7 +16,7 @@ exports.checkAuth = async (req, res, next) => {
     req.userId = user._id;
     next();
   } catch (error) {
-    res.status(500).json({ msg: 'Error, please try again later' });
+    res.status(500).json({ msg: defaultErrorMsg });
   }
 };
 
@@ -35,6 +36,6 @@ exports.getUserId = async (req, res, next) => {
 
     next();
   } catch (error) {
-    res.status(500).json({ msg: 'Error, please try again later' });
+    res.status(500).json({ msg: defaultErrorMsg });
   }
 };
