@@ -11,15 +11,18 @@ exports.deleteScale = async (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
 
-  if (!isValidObjectId(scaleId))
+  if (!isValidObjectId(scaleId)) {
     return res.status(400).json({ msg: 'Scale not found' });
+  }
 
   try {
     const scale = await Scale.findOneAndDelete({ _id: scaleId, author: userId })
       .select('_id info.name info.rootName')
       .exec();
 
-    if (!scale) return res.status(400).json({ msg: 'Scale not found' });
+    if (!scale) {
+      return res.status(400).json({ msg: 'Scale not found' });
+    }
 
     await User.findByIdAndUpdate(userId, {
       $pull: { scales: scale._id },
@@ -33,21 +36,25 @@ exports.deleteScale = async (req, res) => {
   }
 };
 
-exports.getScaleById = (req, res) => {
+exports.getScaleById = async (req, res) => {
   const scaleId = req.params.scaleId;
   const userId = req.userId;
 
-  if (!isValidObjectId(scaleId)) return res.status(404).json();
+  if (!isValidObjectId(scaleId)) {
+    return res.status(404).json({ msg: 'Scale not found' });
+  }
 
-  Scale.findById(scaleId)
-    .select(scaleSelect)
-    .exec((error, scale) => {
-      if (error) return res.status(400).json();
-      if (!scale) return res.status(404).json();
+  try {
+    const scale = await Scale.findById(scaleId).select(scaleSelect).exec();
 
-      const data = parseScaleResponse(scale, userId);
-      res.status(200).json(data);
-    });
+    if (!scale) {
+      return res.status(404).json({ msg: 'Scale not found' });
+    }
+
+    res.status(200).json(parseScaleResponse(scale, userId));
+  } catch (error) {
+    res.status(400).json({ msg: 'Error, please try again later' });
+  }
 };
 
 exports.getScales = (req, res) => {
