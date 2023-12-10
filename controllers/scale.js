@@ -133,19 +133,24 @@ exports.saveScale = async (req, res) => {
   }
 };
 
-exports.scaleSearch = (req, res) => {
+exports.scaleSearch = async (req, res) => {
   const userId = req.userId;
   const searchTerm = req.params.searchTerm.toLowerCase();
 
-  Scale.find({ queryString: { $regex: searchTerm } })
-    .select(scaleSelect)
-    .limit(20)
-    .sort({ 'info.name': 1, 'info.rootName': 1 })
-    .exec((error, scales) => {
-      if (error) return res.status(400).json();
-      if (!scales.length) return res.status(204).json();
+  try {
+    const scales = await Scale.find({ queryString: { $regex: searchTerm } })
+      .select(scaleSelect)
+      .limit(20)
+      .sort({ 'info.name': 1, 'info.rootName': 1 })
+      .exec();
 
-      const data = scales.map((scale) => parseScaleResponse(scale, userId));
-      res.status(200).json({ scales: data });
-    });
+    if (!scales.length) {
+      return res.status(204).json({ msg: 'No scales found' });
+    }
+
+    const data = scales.map((scale) => parseScaleResponse(scale, userId));
+    res.status(200).json({ scales: data });
+  } catch (error) {
+    res.status(400).json({ msg: defaultErrorMsg });
+  }
 };
