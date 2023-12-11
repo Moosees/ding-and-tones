@@ -3,6 +3,7 @@ const User = require('../models/user');
 const Scale = require('../models/scale');
 const { parseGetResponse, parseSearchResponse } = require('../utils/song');
 const { isValidObjectId } = require('mongoose');
+const { defaultErrorMsg } = require('../utils/assets');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 // Song searches
@@ -73,7 +74,9 @@ exports.songSearch = async (req, res) => {
       .select('_id info composer scale')
       .exec();
 
-    if (!songs.length) return res.status(204).json();
+    if (!songs.length) {
+      return res.status(204).json({ msg: 'No songs found' });
+    }
 
     const scales = await getScalesForSongSearches(songs);
 
@@ -97,7 +100,7 @@ exports.songSearch = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json();
+    res.status(500).json({ msg: defaultErrorMsg });
   }
 };
 
@@ -107,7 +110,9 @@ exports.getMySongs = async (req, res) => {
 
     const user = await User.findById(userId).select('_id name songs').exec();
 
-    if (!user.songs.length) return res.status(204).json();
+    if (!user.songs.length) {
+      return res.status(204).json({ msg: 'No saved songs found' });
+    }
 
     const songs = await Song.find({ _id: { $in: user.songs } })
       .limit(100)
@@ -133,7 +138,7 @@ exports.getMySongs = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json();
+    res.status(500).json({ msg: defaultErrorMsg });
   }
 };
 
@@ -142,14 +147,16 @@ exports.getNewSongs = async (req, res) => {
     const userId = req.userId;
 
     const songs = await Song.find({
-      $and: [{ isPrivate: false }, { composer: { $ne: ObjectId(userId) } }],
+      $and: [{ isPrivate: false }, { composer: { $ne: new ObjectId(userId) } }],
     })
       .select('_id composer info scale')
       .limit(20)
       .sort({ updated: -1 })
       .exec();
 
-    if (!songs.length) return res.status(204).json();
+    if (!songs.length) {
+      return res.status(204).json({ msg: 'No songs found' });
+    }
 
     const scales = await getScalesForSongSearches(songs);
 
@@ -172,7 +179,7 @@ exports.getNewSongs = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json();
+    res.status(500).json({ msg: defaultErrorMsg });
   }
 };
 
@@ -185,13 +192,19 @@ exports.saveSong = async (req, res) => {
     songUpdate.updated = Date.now();
     let newSong = false;
 
-    if (songUpdate.arrangement.length > 100)
+    if (songUpdate.arrangement.length > 100) {
       return res.status(400).json({ msg: 'Song is too long' });
-    if (songUpdate.arrangement.length < 1)
+    }
+    if (songUpdate.arrangement.length < 1) {
       return res.status(400).json({ msg: 'Song needs at least one bar' });
-    if (songId && !isValidObjectId(songId)) return res.status(404).json();
+    }
+    if (songId && !isValidObjectId(songId)) {
+      return res.status(404).json({ msg: 'Could not save song' });
+    }
 
-    if (!songId) newSong = true;
+    if (!songId) {
+      newSong = true;
+    }
 
     const scale =
       songUpdate.scale &&
@@ -202,7 +215,10 @@ exports.saveSong = async (req, res) => {
       ? `${songUpdate.info.title.toLowerCase()} ${scale.info.rootName.toLowerCase()} ${scale.info.name.toLowerCase()}`
       : songUpdate.info.title.toLowerCase();
 
-    const song = await Song.findByIdAndUpdate(songId || ObjectId(), songUpdate)
+    const song = await Song.findByIdAndUpdate(
+      songId || new ObjectId(),
+      songUpdate
+    )
       .setOptions({
         new: true,
         upsert: true,
@@ -212,7 +228,9 @@ exports.saveSong = async (req, res) => {
       .select('_id info')
       .exec();
 
-    if (!song) return res.status(404).json();
+    if (!song) {
+      return res.status(404).json({ msg: 'Song not found, could not save' });
+    }
 
     newSong &&
       (await User.findByIdAndUpdate(userId, {
@@ -235,7 +253,7 @@ exports.saveSong = async (req, res) => {
 
     res.status(200).json({ song: resData });
   } catch (error) {
-    res.status(500).json();
+    res.status(500).json({ msg: defaultErrorMsg });
   }
 };
 
