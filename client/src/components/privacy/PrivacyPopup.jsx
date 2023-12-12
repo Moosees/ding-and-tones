@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPrivacyOpen } from '../../redux/ui/ui.actions';
 import BtnPrimary from '../shared/button/BtnPrimary';
 import Popup from '../shared/popup/Popup';
-import PrivacyText from './FooterText';
+import PrivacyText from './PrivacyText';
 
-const FooterPopup = () => {
+const PrivacyPopup = () => {
   const dispatch = useDispatch();
   const privacyOpen = useSelector(({ ui }) => ui.privacyOpen);
 
@@ -30,4 +30,4 @@ const FooterPopup = () => {
   );
 };
 
-export default FooterPopup;
+export default PrivacyPopup;

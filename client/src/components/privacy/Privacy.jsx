@@ -2,10 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import useDimensions from '../../hooks/useDimensions';
 import { setPrivacyOpen } from '../../redux/ui/ui.actions';
-import PrivacyPopup from './FooterPopup';
-import { Copyright, MobileCopyright, PrivacyLink } from './footer.styles';
+import PrivacyPopup from './PrivacyPopup';
+import { Copyright, MobileCopyright, PrivacyLink } from './privacy.styles';
 
-const Footer = () => {
+const Privacy = () => {
   const dispatch = useDispatch();
   const { isMobile } = useDimensions();
 
@@ -26,4 +26,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Privacy;

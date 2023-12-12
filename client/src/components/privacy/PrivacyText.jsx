@@ -1,7 +1,7 @@
 import React from 'react';
-import { PrivacyHeader, PrivacyParagraph, TermsContainer } from './footer.styles';
+import { PrivacyHeader, PrivacyParagraph, TermsContainer } from './privacy.styles';
 
-const FooterText = ({ privacyOpen, setPrivacyOpen }) => (
+const PrivacyText = ({ privacyOpen, setPrivacyOpen }) => (
   <TermsContainer>
     <PrivacyHeader>Ding and Tones vision</PrivacyHeader>
     <PrivacyParagraph>
@@ -40,4 +40,4 @@ const FooterText = ({ privacyOpen, setPrivacyOpen }) => (
   </TermsContainer>
 );
 
-export default FooterText;
+export default PrivacyText;
