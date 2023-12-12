@@ -1,18 +1,25 @@
-const parseScaleForSongFetch = (
-  { _id, author, info, notes: { dings = [], round = [], extra = [] } },
-  userId
-) => {
-  const extraParsed = extra.map(({ note, pos }) => ({
-    note,
-    pos,
-  }));
+const parseScaleForSongFetch = (scale, userId) => {
+  const { _id, author, info, notes } = scale;
+  const { dings = [], round = [], extra = [] } = notes;
+
+  const extraParsed = extra.map(({ note, pos }) => ({ note, pos }));
+
+  const isOwner = userId && author ? userId.equals(author) : false;
 
   return {
     info,
     notes: { dings, round, extra: extraParsed },
     scaleId: _id,
-    isOwner: userId.equals(author),
+    isOwner,
   };
+};
+
+const determineIsOwner = (userId, composer) => {
+  if (!userId || !composer || !composer._id) {
+    return false;
+  }
+
+  return userId.equals(composer._id);
 };
 
 exports.parseGetResponse = (songObject, userId) => {
@@ -21,8 +28,7 @@ exports.parseGetResponse = (songObject, userId) => {
   const anonymousComposer = !composer || composer.anonymous || !composer.name;
 
   return {
-    isOwner:
-      userId && composer && composer._id ? userId.equals(composer._id) : false,
+    isOwner: determineIsOwner(userId, composer),
     songId: _id,
     composer: anonymousComposer ? 'Anonymous' : composer.name,
     arrangement,
@@ -30,7 +36,7 @@ exports.parseGetResponse = (songObject, userId) => {
     beats,
     info,
     isPrivate,
-    scale: scale && parseScaleForSongFetch(scale, userId),
+    scale: scale ? parseScaleForSongFetch(scale, userId) : false,
   };
 };
 
