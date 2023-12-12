@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { defaultErrorMsg } = require('../utils/assets');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 const checkNumVsMaxSavesFor = (type) => {
@@ -7,25 +8,30 @@ const checkNumVsMaxSavesFor = (type) => {
     max: `$maxSaved${type}`,
   };
 
-  return (req, res, next) => {
-    if (req.body.songId) return next();
+  return async (req, res, next) => {
+    if (req.body.songId) {
+      return next();
+    }
 
-    User.aggregate()
-      .match({ _id: ObjectId(req.userId) })
-      .project(projection)
-      .exec((error, user) => {
-        const { num, max } = user[0];
+    try {
+      const user = await User.aggregate()
+        .match({ _id: new ObjectId(req.userId) })
+        .project(projection)
+        .exec();
 
-        if (error) return res.status(400).json();
+      const { num, max } = user[0];
 
-        if (num >= max)
-          return res.status(200).json({
-            msg: `${type} limit reached. 
+      if (num >= max) {
+        return res.status(200).json({
+          msg: `${type} limit reached. 
           You are only allowed to save ${max} ${type.toLowerCase()}`,
-          });
+        });
+      }
 
-        next();
-      });
+      next();
+    } catch (error) {
+      res.status(400).json({ msg: defaultErrorMsg });
+    }
   };
 };
 

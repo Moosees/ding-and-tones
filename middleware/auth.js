@@ -3,7 +3,6 @@ const { isValidObjectId } = require('mongoose');
 const { defaultErrorMsg } = require('../utils/assets');
 
 exports.checkAuth = async (req, res, next) => {
-  console.log(req.session.user);
   if (!req.session.user || !isValidObjectId(req.session.user)) {
     return res.status(403).json({ msg: 'No authorization' });
   }
