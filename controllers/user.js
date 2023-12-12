@@ -2,11 +2,14 @@ const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
 const { getClient, getAuthUrl } = require('../utils/auth');
 const crypto = require('crypto');
+const { defaultErrorMsg } = require('../utils/assets');
 
 const day = 1000 * 60 * 60 * 24;
 
 exports.checkSession = async (req, res) => {
-  if (!req.userId) return res.status(200).json({ user: null });
+  if (!req.userId) {
+    return res.status(200).json({ user: null });
+  }
 
   try {
     const { anonymous, name, songs, sound } = await User.findOne({
@@ -31,22 +34,31 @@ exports.checkSession = async (req, res) => {
   }
 };
 
-exports.updateUserSound = (req, res) => {
+exports.updateUserSound = async (req, res) => {
   const userId = req.userId;
   const { audioOption, volume } = req.body;
   const updated = Date.now();
 
-  User.findByIdAndUpdate(userId, { sound: { audioOption, volume }, updated })
-    .setOptions({ new: true })
-    .select('sound')
-    .exec((error, user) => {
-      if (error) return res.status(400).json();
+  try {
+    const user = await User.findByIdAndUpdate(userId, {
+      sound: { audioOption, volume },
+      updated,
+    })
+      .setOptions({ new: true })
+      .select('sound')
+      .exec();
 
-      res.status(200).json({
-        audioOption: user.sound.audioOption,
-        volume: user.sound.volume,
-      });
+    if (!user) {
+      return res.status(400).json({ msg: 'Could not update user settings' });
+    }
+
+    res.status(200).json({
+      audioOption: user.sound.audioOption,
+      volume: user.sound.volume,
     });
+  } catch (error) {
+    res.status(400).json({ msg: defaultErrorMsg });
+  }
 };
 
 exports.updateUserInfo = (req, res) => {
