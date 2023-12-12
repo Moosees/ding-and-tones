@@ -293,26 +293,31 @@ exports.getSongById = async (req, res) => {
   }
 };
 
-exports.deleteSong = (req, res) => {
+exports.deleteSong = async (req, res) => {
   const songId = req.params.songId;
   const userId = req.userId;
 
-  if (!isValidObjectId(songId)) return res.status(404).json();
+  if (!isValidObjectId(songId)) {
+    return res.status(404).json({ msg: 'Delete failed, song not found' });
+  }
 
-  Song.findOneAndDelete({ _id: songId, composer: userId })
-    .select('_id info.title')
-    .exec((error, song) => {
-      if (error) return res.status(500).json();
-      if (!song) return res.status(404).json();
+  try {
+    const song = await Song.findOneAndDelete({ _id: songId, composer: userId })
+      .select('_id info.title')
+      .exec();
 
-      User.findByIdAndUpdate(userId, {
-        $pull: { songs: song._id },
-      })
-        .setOptions({ new: true })
-        .exec((error) => {
-          if (error) return res.status(500).json();
+    if (!song) {
+      return res.status(404).json({ msg: 'Delete failed, song not found' });
+    }
 
-          res.status(200).json(song);
-        });
-    });
+    await User.findByIdAndUpdate(userId, {
+      $pull: { songs: song._id },
+    })
+      .setOptions({ new: true })
+      .exec();
+
+    res.status(200).json(song);
+  } catch (error) {
+    res.status(500).json({ msg: defaultErrorMsg });
+  }
 };
