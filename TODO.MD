@@ -2,6 +2,19 @@
 
 ## Sorted by release
 
+### Bugfixes and minor changes
+
+* MiniDrum (rotate) shows note numbers
+* Validate scales before saving, at least 5 tones?
+* add safe Ids to default song
+* If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
+* Songs without users show up without composer name (and not Anonymous either)
+* Songs with deleted scales can still be found in song searches with scale name
+* Song query strings and (changed) scale broken?
+* Deleting scale (and song?) blocks ability to save scale
+* It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
+* Failing to save song (inside popup) gives no feedback to user
+
 ### Home page and nav update
 
 * Add home page with recent changes, user info etc.
@@ -12,7 +25,9 @@
 
 ### Logic and state update
 
+* Redux 5
 * Refactor scale.utils (redux)?
+* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * Abort states for all axios requests
 * SongById try catch?
 * Clean up tonefield logic
@@ -94,15 +109,10 @@
 
 ### From user feedback
 
-* Note numbers and rotated drum?
-
 ### Minor updates
 
 * findSongs/Results.jsx promise in render rows expanded and getSongById, better solution?
 * Allow saving scale with song save
-* Validate scales before saving, at least 5 tones?
-* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
-* add safe Ids to default song
 * Discord
 
 ### Major updates
@@ -118,8 +128,7 @@
 
 ### Dependencies updates
 
-* Redux 5
-* mongoose 8 - strictQuery will set to false by default
+* mongoose 8
 * redis 4 and connect-redis 7
 * New react 18 features? react query?
 * Stop using CRA?
@@ -132,18 +141,11 @@
 
 * Safari print popup bug - print dialog is not blocking/waiting
 * Song search results doesn't update if save song changes assigned scale
-* If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
-* Songs without users show up without composer name (and not Anonymous either)
 * Violation 'click' handler took xxx ms when going to song route (big songs)
-* Scale/song url not found alerts not showing
 * Printing on mobile prints entire app and not just iframe
-* Songs with deleted scales can still be found in song searches with scale name
-* Song query strings and (changed) scale broken?
-* Deleting scale (and song?) blocks ability to save scale
-* It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
+* Scale/song url not found alerts not showing
 * Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 * Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
-* Failing to save song (inside popup) gives no feedback to user
 
 ### Design
 
