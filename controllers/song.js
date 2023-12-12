@@ -257,27 +257,40 @@ exports.saveSong = async (req, res) => {
   }
 };
 
-exports.getSongById = (req, res) => {
+exports.getSongById = async (req, res) => {
   const songId = req.params.songId;
   const userId = req.userId;
 
-  if (!isValidObjectId(songId)) return res.status(404).json();
+  if (!isValidObjectId(songId)) {
+    return res.status(404).json({ msg: 'Song not found' });
+  }
 
-  Song.findById(songId)
-    .populate('composer', '_id anonymous name')
-    .populate('scale', '_id author info notes')
-    .select('_id arrangement bars beats info isPrivate')
-    .exec((error, song) => {
-      if (error) return res.status(500).json();
-      if (!song) return res.status(404).json();
+  try {
+    const song = await Song.findById(songId)
+      .populate('composer', '_id anonymous name')
+      .populate('scale', '_id author info notes')
+      .select('_id arrangement bars beats info isPrivate')
+      .exec();
 
-      const data = parseGetResponse(song, userId);
+    if (!song) {
+      return res.status(404).json({ msg: 'Song not found' });
+    }
 
-      if (data.isPrivate && !userId) return res.status(401).json();
-      if (data.isPrivate && !data.isOwner) return res.status(403).json();
+    const data = parseGetResponse(song, userId);
 
-      res.status(200).json(data);
-    });
+    if (data.isPrivate && !userId) {
+      return res
+        .status(401)
+        .json({ msg: 'Song is private, please sign in and try again' });
+    }
+    if (data.isPrivate && !data.isOwner) {
+      return res.status(403).json({ msg: 'Song is private' });
+    }
+
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ msg: defaultErrorMsg });
+  }
 };
 
 exports.deleteSong = (req, res) => {
