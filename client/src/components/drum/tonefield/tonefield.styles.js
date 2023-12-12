@@ -41,7 +41,7 @@ export const ExtraContainer = styled.div`
   position: absolute;
   width: 5rem;
 
-  ${({ position }) => extraPositions[position]}
+  ${({ $position }) => extraPositions[$position]}
 
   ${({ theme }) => theme.mqW1200`
     border-width: ${({ $hasFocus }) => ($hasFocus ? '5px' : '2px')};
