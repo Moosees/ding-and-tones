@@ -61,26 +61,38 @@ exports.updateUserSound = async (req, res) => {
   }
 };
 
-exports.updateUserInfo = (req, res) => {
+exports.updateUserInfo = async (req, res) => {
   const userId = req.userId;
   const { anonymous, name } = req.body;
   const updated = Date.now();
 
-  User.findByIdAndUpdate(userId, { anonymous, name, updated })
-    .setOptions({
-      new: true,
-      upsert: true,
-      setDefaultsOnInsert: true,
-      runValidators: true,
+  try {
+    const user = await User.findByIdAndUpdate(userId, {
+      anonymous,
+      name,
+      updated,
     })
-    .select('anonymous name')
-    .exec((error, user) => {
-      if (error && error.code === 11000)
-        return res.status(200).json({ msg: 'Name is already in use' });
-      if (!user || error) return res.status(400).json();
+      .setOptions({
+        new: true,
+        upsert: true,
+        setDefaultsOnInsert: true,
+        runValidators: true,
+      })
+      .select('anonymous name')
+      .exec();
 
-      res.status(200).json({ isAnonymous: user.anonymous, name: user.name });
-    });
+    if (!user) {
+      return res.status(400).json({ msg: 'Could not update user info' });
+    }
+
+    res.status(200).json({ isAnonymous: user.anonymous, name: user.name });
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.status(200).json({ msg: 'Name is already in use' });
+    }
+
+    res.status(400).json({ msg: defaultErrorMsg });
+  }
 };
 
 exports.signInWithGoogle = async (req, res) => {
@@ -121,7 +133,7 @@ exports.signInWithGoogle = async (req, res) => {
     const sessionTtl = persistSession ? day * 30 : day;
     req.session.cookie.maxAge = sessionTtl;
 
-    return res.status(200).json({
+    res.status(200).json({
       anonymous: user.anonymous,
       isOwner,
       name: user.name,
@@ -129,7 +141,7 @@ exports.signInWithGoogle = async (req, res) => {
       sound: user.sound,
     });
   } catch (error) {
-    res.status(400).json();
+    res.status(400).json({ msg: defaultErrorMsg });
   }
 };
 
@@ -139,7 +151,7 @@ exports.signOut = (req, res) => {
       if (error) {
         res.status(200).json({ msg: 'Sign out failed' });
       }
-      res.clearCookie('connect.sid').status(200).json();
+      res.clearCookie('connect.sid').status(200).json({ msg: 'Signed out' });
     });
 };
 
