@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 export const defaultScale = {
   info: {
     label: '(A2) C3 D3 E3 G3 A3 C4 D4 E4',
@@ -17,285 +19,260 @@ export const defaultScale = {
   scaleId: null,
 };
 
-export const defaultSong = {
-  isOwner: false,
-  songId: null,
-  composer: null,
-  arrangement: ['bar_a', 'bar_b', 'bar_c'],
-  isPrivate: false,
-  scale: null,
-  info: {
-    bpm: 80,
-    difficulty: 1,
-    metre: 's44',
-    subdivision: 9,
-    title: 'Is this a shuffle',
-  },
-  bars: [
+export const createDefaultSong = () => {
+  const getId = ({ _id }) => _id;
+
+  const barBeatsA = [
     {
-      _id: 'bar_a',
-      measure: [
-        'aa',
-        'ab',
-        'ac',
-        'ad',
-        'ae',
-        'af',
-        'ag',
-        'ah',
-        'ai',
-        'aj',
-        'ak',
-        'al',
-      ],
-      metre: 's44',
-      repeats: 1,
-      subdivisions: [9, 9, 9, 9],
-    },
-    {
-      _id: 'bar_b',
-      measure: [
-        'ba',
-        'bb',
-        'bc',
-        'bd',
-        'be',
-        'bf',
-        'bg',
-        'bh',
-        'bi',
-        'bj',
-        'bk',
-        'bl',
-      ],
-      metre: 's44',
-      repeats: 1,
-      subdivisions: [9, 9, 9, 9],
-    },
-    {
-      _id: 'bar_c',
-      measure: [
-        'ca',
-        'cb',
-        'cc',
-        'cd',
-        'ce',
-        'cf',
-        'cg',
-        'ch',
-        'ci',
-        'cj',
-        'ck',
-        'cl',
-      ],
-      metre: 's44',
-      repeats: 1,
-      subdivisions: [9, 9, 9, 9],
-    },
-  ],
-  beats: [
-    {
-      _id: 'aa',
+      _id: uuid(),
       sound: '0',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'ab',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'ac',
+      _id: uuid(),
       sound: 't',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'ad',
+      _id: uuid(),
       sound: '1',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'ae',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'af',
+      _id: uuid(),
       sound: 't',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'ag',
+      _id: uuid(),
       sound: '5',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'ah',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'ai',
+      _id: uuid(),
       sound: 't',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'aj',
+      _id: uuid(),
       sound: '7',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'ak',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'al',
+      _id: uuid(),
       sound: '6',
       mode: 'c',
       hand: 2,
     },
+  ];
+
+  const barBeatsB = [
     {
-      _id: 'ba',
+      _id: uuid(),
       sound: '1',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'bb',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'bc',
+      _id: uuid(),
       sound: 't',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'bd',
+      _id: uuid(),
       sound: 't',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'be',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'bf',
+      _id: uuid(),
       sound: '4',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'bg',
+      _id: uuid(),
       sound: '5',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'bh',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'bi',
+      _id: uuid(),
       sound: 't',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'bj',
+      _id: uuid(),
       sound: '3',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'bk',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'bl',
+      _id: uuid(),
       sound: '2',
       mode: 'c',
       hand: 2,
     },
+  ];
+
+  const barBeatsC = [
     {
-      _id: 'ca',
+      _id: uuid(),
       sound: 'T',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'cb',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'cc',
+      _id: uuid(),
       sound: 't',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'cd',
+      _id: uuid(),
       sound: '7',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'ce',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'cf',
+      _id: uuid(),
       sound: '6',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'cg',
+      _id: uuid(),
       sound: '5',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'ch',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'ci',
+      _id: uuid(),
       sound: '2',
       mode: 'c',
       hand: 2,
     },
     {
-      _id: 'cj',
+      _id: uuid(),
       sound: '0',
       mode: 'c',
       hand: 1,
     },
     {
-      _id: 'ck',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
     {
-      _id: 'cl',
+      _id: uuid(),
       sound: '-',
       mode: 'c',
     },
-  ],
+  ];
+
+  const bars = [
+    {
+      _id: uuid(),
+      measure: barBeatsA.map(getId),
+      metre: 's44',
+      repeats: 1,
+      subdivisions: [9, 9, 9, 9],
+    },
+    {
+      _id: uuid(),
+      measure: barBeatsB.map(getId),
+      metre: 's44',
+      repeats: 1,
+      subdivisions: [9, 9, 9, 9],
+    },
+    {
+      _id: uuid(),
+      measure: barBeatsC.map(getId),
+      metre: 's44',
+      repeats: 1,
+      subdivisions: [9, 9, 9, 9],
+    },
+  ];
+
+  return {
+    isOwner: false,
+    songId: null,
+    composer: null,
+    arrangement: bars.map(getId),
+    isPrivate: false,
+    scale: null,
+    info: {
+      bpm: 80,
+      difficulty: 1,
+      metre: 's44',
+      subdivision: 9,
+      title: 'Is this a shuffle',
+    },
+    bars,
+    beats: [...barBeatsA, ...barBeatsB, ...barBeatsC],
+  };
 };

@@ -5,7 +5,6 @@
 ### Bugfixes and minor changes
 
 * MiniDrum (rotate) shows note numbers
-* add safe Ids to default song
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)
 * Songs with deleted scales can still be found in song searches with scale name
@@ -142,7 +141,7 @@
 * Song search results doesn't update if save song changes assigned scale
 * Violation 'click' handler took xxx ms when going to song route (big songs)
 * Printing on mobile prints entire app and not just iframe
-* Scale/song url not found alerts not showing
+* Scale/song url not found doesn't reset url to / and scale msg doesn't reflect that scale isn't found
 * Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 * Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
 

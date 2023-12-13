@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { defaultScale, defaultSong } from '../../../assets/defaultData';
+import { createDefaultSong, defaultScale } from '../../../assets/defaultData';
 import { getScaleById, loadScale } from '../../../redux/scale/scale.actions';
 import {
   getSongById,
@@ -26,13 +26,13 @@ const useDefaultState = () => {
     }
 
     if (route === 'scale' && id) {
-      dispatch(loadSongFromState(defaultSong, true));
+      dispatch(loadSongFromState(createDefaultSong(), true));
       dispatch(getScaleById(id, true));
       return;
     }
 
     dispatch(loadScale(defaultScale, true));
-    dispatch(loadSongFromState(defaultSong, true));
+    dispatch(loadSongFromState(createDefaultSong(), true));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, fetchSessionTried]);

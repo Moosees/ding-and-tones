@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { defaultScale, defaultSong } from '../../assets/defaultData';
+import { defaultScale, createDefaultSong } from '../../assets/defaultData';
 import { compareSubdivisionsLength } from '../../assets/metre';
 import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
@@ -130,7 +130,11 @@ export const getSongById =
             payload: parseScaleData(defaultScale, true),
           });
 
-          const defaultSongParsed = parseFetchedSong(defaultSong, false, true);
+          const defaultSongParsed = parseFetchedSong(
+            createDefaultSong(),
+            false,
+            true
+          );
 
           const autoMoveOrder = createAutoMoveOrder(defaultSongParsed);
 
