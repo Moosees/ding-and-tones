@@ -5,7 +5,6 @@
 ### Bugfixes and minor changes
 
 * MiniDrum (rotate) shows note numbers
-* Validate scales before saving, at least 5 tones?
 * add safe Ids to default song
 * If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 * Songs without users show up without composer name (and not Anonymous either)

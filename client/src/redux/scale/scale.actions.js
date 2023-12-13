@@ -203,23 +203,35 @@ export const saveScale = (scaleName) => (dispatch, getState) => {
 
   const { scale } = getState();
   const { info, notes } = scale;
+
+  if (notes.dings.length + notes.round.length + notes.extra.length < 5) {
+    return dispatch({
+      type: scaleTypes.SAVE_ERROR,
+      payload: { alert: 'Scale needs at least five notes' },
+    });
+  }
+
   const scaleUpdate = {
     info,
     notes,
   };
-  if (scaleName) scaleUpdate.info.name = scaleName;
+
+  if (scaleName) {
+    scaleUpdate.info.name = scaleName;
+  }
 
   axios
     .post('/scale', scaleUpdate)
     .then((res) => {
       if (res.status === 200) {
-        if (res.data.msg)
+        if (res.data.msg) {
           return dispatch({
             type: scaleTypes.SAVE_ERROR,
             payload: {
               alert: res.data.msg,
             },
           });
+        }
 
         dispatch({
           type: scaleTypes.SAVE_SUCCESSFUL,

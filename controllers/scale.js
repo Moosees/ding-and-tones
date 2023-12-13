@@ -105,6 +105,13 @@ exports.getMyScales = async (req, res) => {
 
 exports.saveScale = async (req, res) => {
   const userId = req.userId;
+
+  const { dings, round, extra } = req.body.notes;
+
+  if (dings.length + round.length + extra.length < 5) {
+    return res.status(400).json({ msg: 'Scale needs at least five notes' });
+  }
+
   req.body.author = userId;
   req.body.isNew = true;
   req.body._id = new ObjectId();
