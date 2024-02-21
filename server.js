@@ -11,7 +11,7 @@ const connectRedis = require('connect-redis');
 const mongoSanitize = require('express-mongo-sanitize');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT;
 
 // Session
 const RedisStore = connectRedis(session);
