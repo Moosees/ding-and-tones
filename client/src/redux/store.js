@@ -1,11 +1,24 @@
-import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import rootReducer from './root-reducer';
+import { configureStore } from "@reduxjs/toolkit";
+import alertReducer from './alert/alert.reducer';
+import chordsReducer from './chords/chords.reducer';
+import drumReducer from './drum/drum.reducer';
+import howlsReducer from './howls/howls.reducer';
+import scaleReducer from './scale/scale.reducer';
+import searchReducer from './search/search.reducer';
+import songReducer from './song/song.reducer';
+import uiReducer from './ui/ui.reducer';
+import userReducer from './user/user.reducer';
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
-
-export { store };
+export const store = configureStore({
+	reducer: {
+		alert: alertReducer,
+		chords: chordsReducer,
+		drum: drumReducer,
+		howls: howlsReducer,
+		scale: scaleReducer,
+		search: searchReducer,
+		song: songReducer,
+		ui: uiReducer,
+		user: userReducer,
+	}
+});
