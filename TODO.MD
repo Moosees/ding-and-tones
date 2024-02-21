@@ -1,5 +1,23 @@
 # DING AND TONES TODO LIST
 
+## Redux Update
+
+### Goals
+
+* Redux 5
+* Howl state, don't store functions
+* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
+* memoized selectors (beats and everywhere)
+
+### Other
+
+* Split howls loading status into loaded and error (and error msg)?
+* Middleware driven state reducers?
+* Refactor scale.utils (redux)?
+* Rework and simplify logic for setCurrentlyPlaying
+* Clean up UI state and reduce number of actions (also for other reducers?)
+* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+
 ## Sorted by release
 
 ### Bugfixes and minor changes
@@ -23,22 +41,15 @@
 
 ### Logic and state update
 
-* Redux 5
-* Refactor scale.utils (redux)?
-* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * Abort states for all axios requests
 * SongById try catch?
 * Clean up tonefield logic
 * Clean up getNoteText() and Tonefield in general
 * Merge api status states (isFetching etc.) in client?
-* Middleware driven state reducers?
 * Clean up rootIndex in parseScaleData
 * Why -1 in UPDATE_SCALE for scale label? Instead of false?
-* Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * Scale and song state should mirror models more closely
-* Clean up UI state and reduce number of actions (also for other reducers?)
 * Use separate currentSound for patterns and play with clicks or keys?
-* Rework and simplify logic for setCurrentlyPlaying
 
 ### Layout update
 
@@ -244,7 +255,6 @@
 * Privacy date localization
 * Save song as JSON?
 * Show if owned song is private in search results?
-* Split howls loading status into loaded and error (and error msg)?
 * createFullScaleFromNames handles new createScaleLabel and returns label with scale? Needs updated new scale action. Function used separately when toggling sharps and flats
 
 ### API
