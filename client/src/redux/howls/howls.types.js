@@ -1,5 +1,4 @@
 const howlsTypes = {
-  CREATE_HOWLS: 'howls/createAll',
   SAVE_ERROR: 'howls/saveError',
   SAVE_STARTED: 'howls/saveStarted',
   SAVE_SUCCESSFUL: 'howls/saveSuccessful',

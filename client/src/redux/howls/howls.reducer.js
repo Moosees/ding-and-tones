@@ -17,10 +17,6 @@ const INITIAL_STATE = {
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case howlsTypes.CREATE_HOWLS:
-      // return { ...state, data: payload.howls };
-      return state;
-
     case howlsTypes.SAVE_STARTED:
       return { ...state, isSaving: true };
     case howlsTypes.SAVE_ERROR:
