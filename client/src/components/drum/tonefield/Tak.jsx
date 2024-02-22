@@ -7,7 +7,7 @@ const Tak = ({ hand, handlePlay, note }) => {
     ({ howls, ui }) => ({
       currentHand: ui.currentHand,
       currentSound: ui.currentSound,
-      isReady: howls.data[note]?.status === 'ready',
+      isReady: howls.status[note] === 'ready',
     })
   );
 

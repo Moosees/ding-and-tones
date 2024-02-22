@@ -7,7 +7,7 @@ import howlsTypes from './howls.types';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 
 const INITIAL_STATE = {
-  data: {},
+  status: {},
   info: {
     audioSrc: audioSources[0],
     volume: 0.8,
@@ -30,7 +30,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       console.log(type, payload);
       const newHowls = changeAudioSrc(
-        state.data,
+        state.status, // state.data
         payload.audioSrc.path,
         payload.scale
       );
@@ -53,11 +53,11 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
 
     case howlsTypes.UPDATE_HOWL_LOADING_STATUS: {
-      console.log(type, payload.howl);
-      if (!state.data[payload.howl]) return state;
+      console.log(type, { payload });
+      if (!state.status[payload.howl]) return state; // state.data
 
-      const howl = { ...state.data[payload.howl] };
-      howl.status = payload.status;
+      // const howl = { ...state.status[payload.howl] };
+      // howl.status = payload.status;
 
       // return {
       //   ...state,
@@ -66,7 +66,11 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       //     [payload.howl]: { ...howl },
       //   },
       // };
-      return state;
+
+      const status = state.status;
+      status[payload.howl] = payload.status;
+
+      return { ...state, status };
     }
 
     case scaleTypes.FETCH_SUCCESSFUL:
@@ -74,7 +78,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
     case scaleTypes.UPDATE_SCALE: {
       console.log(type, payload.parsed.pitched);
       const newHowls = updateHowls(
-        state.data,
+        state.status,
         state.info.audioSrc.path,
         payload.parsed.pitched
       );
@@ -88,7 +92,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       console.log(type, payload.song.scale.parsed.pitched);
 
       const newHowls = updateHowls(
-        state.data,
+        state.status,
         state.info.audioSrc.path,
         payload.song.scale.parsed.pitched
       );

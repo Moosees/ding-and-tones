@@ -1,5 +1,3 @@
-const howls = {};
-
 const useHowls = (note) => {
   console.log('howl', note);
 

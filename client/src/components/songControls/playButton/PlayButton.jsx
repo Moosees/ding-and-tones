@@ -8,9 +8,9 @@ import { checkHowlsReadyStatus } from './playButton.utils';
 
 const PlayButton = ({ light }) => {
   const dispatch = useDispatch();
-  const { howls, scale, arrangement, isSongPlaying, mutedBars } = useSelector(
+  const { status, scale, arrangement, isSongPlaying, mutedBars } = useSelector(
     ({ howls, scale, song, ui }) => ({
-      howls: howls.data,
+      status: howls.status,
       scale: scale.parsed.pitched,
       arrangement: song.arrangement,
       isSongPlaying: ui.isSongPlaying,
@@ -19,8 +19,8 @@ const PlayButton = ({ light }) => {
   );
 
   const areHowlsReady = useMemo(
-    () => checkHowlsReadyStatus(scale, howls),
-    [howls, scale]
+    () => checkHowlsReadyStatus(scale, status),
+    [status, scale]
   );
 
   const handlePlayPause = () => {

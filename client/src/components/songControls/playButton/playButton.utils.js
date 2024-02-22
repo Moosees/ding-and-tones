@@ -1,5 +1,5 @@
-export const checkHowlsReadyStatus = (scale, howls) => {
+export const checkHowlsReadyStatus = (scale, status) => {
   const parsedScale = ['t', 'T', ...scale.map(({ note }) => note)];
 
-  return parsedScale.every((note) => howls[note]?.status === 'ready');
+  return parsedScale.every((note) => status[note] === 'ready');
 };

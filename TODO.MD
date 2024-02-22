@@ -5,12 +5,12 @@
 ### Goals
 
 * Redux 5
-* Howl state, don't store functions
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * memoized selectors (beats and everywhere)
 
 ### Other
 
+* hook for using howls?
 * Split howls loading status into loaded and error (and error msg)?
 * Middleware driven state reducers?
 * Refactor scale.utils (redux)?

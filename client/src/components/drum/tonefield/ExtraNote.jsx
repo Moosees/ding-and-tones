@@ -14,7 +14,7 @@ const ExtraNote = ({
 }) => {
   const { isReady, position } = useSelector(({ howls, scale }) => ({
     position: scale.notes.extra[localIndex].pos,
-    isReady: howls.data[note]?.status === 'ready',
+    isReady: howls.status[note] === 'ready',
   }));
 
   return (

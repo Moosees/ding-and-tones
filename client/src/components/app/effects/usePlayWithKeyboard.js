@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
+import { howls } from '../../../assets/sound/howls';
 import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 
 const usePlayWithKeyboard = () => {
   const dispatch = useDispatch();
-  const { howls, scale } = useSelector(({ howls, scale }) => ({
-    howls: howls.data,
-    scale: scale.parsed.pitched,
-  }));
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const status = useSelector(({ howls }) => howls.status);
 
   useEffect(() => {
     const allNotes = [
@@ -21,7 +20,7 @@ const usePlayWithKeyboard = () => {
       const keyCode = beatOptionToKeyCode[option];
 
       acc[keyCode] = () => {
-        if (!howls[note] || howls[note].status !== 'ready') return;
+        if (!howls[note] || status[note] !== 'ready') return;
 
         dispatch(
           setCurrentlyPlaying({
@@ -45,7 +44,7 @@ const usePlayWithKeyboard = () => {
     return () => {
       document.removeEventListener('keydown', keyboardListener);
     };
-  }, [dispatch, howls, scale]);
+  }, [dispatch, status, scale]);
 };
 
 export default usePlayWithKeyboard;

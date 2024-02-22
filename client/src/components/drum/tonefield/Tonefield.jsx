@@ -13,7 +13,7 @@ const Tonefield = ({
 }) => {
   const { isReady, position, scaleRotation } = useSelector(
     ({ howls, scale }) => ({
-      isReady: howls.data[note]?.status === 'ready',
+      isReady: howls.status[note] === 'ready',
       position: scale.parsed.positions[localIndex],
       scaleRotation: scale.info.rotation,
     })
