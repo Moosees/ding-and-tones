@@ -18,7 +18,8 @@ const INITIAL_STATE = {
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case howlsTypes.CREATE_HOWLS:
-      return { ...state, data: payload.howls };
+      // return { ...state, data: payload.howls };
+      return state;
 
     case howlsTypes.SAVE_STARTED:
       return { ...state, isSaving: true };
@@ -37,9 +38,13 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
         payload.scale
       );
 
+      // return {
+      //   ...state,
+      //   data: newHowls,
+      //   info: { ...state.info, audioSrc: payload.audioSrc },
+      // };
       return {
         ...state,
-        data: newHowls,
         info: { ...state.info, audioSrc: payload.audioSrc },
       };
     }
@@ -56,13 +61,14 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       const howl = { ...state.data[payload.howl] };
       howl.status = payload.status;
 
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [payload.howl]: { ...howl },
-        },
-      };
+      // return {
+      //   ...state,
+      //   data: {
+      //     ...state.data,
+      //     [payload.howl]: { ...howl },
+      //   },
+      // };
+      return state;
     }
 
     case scaleTypes.FETCH_SUCCESSFUL:
@@ -74,7 +80,8 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
         payload.parsed.pitched
       );
 
-      return { ...state, data: newHowls };
+      // return { ...state, data: newHowls };
+      return state;
     }
 
     case songTypes.FETCH_SUCCESSFUL: {
@@ -86,11 +93,13 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
         payload.song.scale.parsed.pitched
       );
 
-      return { ...state, data: newHowls };
+      // return { ...state, data: newHowls };
+      return state;
     }
 
     case userTypes.SIGN_IN: {
-      return { ...state, ...payload.howls };
+      // return { ...state, ...payload.howls };
+      return state;
     }
 
     default:
