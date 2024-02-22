@@ -86,6 +86,7 @@ const parseScaleForUpdateHowls = (scale) => {
 };
 
 export const updateHowls = (howls, audioSrc, scale) => {
+  console.log('updateHowls', howls, audioSrc, scale);
   const sounds = parseScaleForUpdateHowls(scale);
 
   cleanupHowls(
@@ -103,6 +104,7 @@ export const updateHowls = (howls, audioSrc, scale) => {
 };
 
 export const changeAudioSrc = (howls, audioSrc, scale) => {
+  console.log('changeAudioSrc', howls, audioSrc, scale);
   cleanupHowls(howls, []);
 
   const sounds = parseScaleForUpdateHowls(scale);
