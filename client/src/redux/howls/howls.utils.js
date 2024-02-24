@@ -121,8 +121,8 @@ export const updateHowls = (status, audioSrc, scale) => {
     createHowl(note, fileName, audioSrc);
   }
 
-  console.log({ howls });
-  const statusToKeep = filterState(status, notesToKeep);
+  const statusToKeep = filterState(status, notesToKeep, false);
+	console.log({statusToKeep, howls})
 
   return soundsToAdd.reduce((acc, { note }) => {
     acc[note] = 'loading';

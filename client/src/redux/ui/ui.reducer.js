@@ -131,7 +131,7 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
-        mutedBars: filterState(state.mutedBars, payload.song.barToDelete),
+        mutedBars: filterState(state.mutedBars, payload.song.barToDelete, true),
       };
 
     case songTypes.FETCH_SUCCESSFUL:
