@@ -54,20 +54,9 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case howlsTypes.UPDATE_HOWL_LOADING_STATUS: {
       console.log(type, { payload });
-      if (!state.status[payload.howl]) return state; // state.data
+      if (!state.status[payload.howl]) return state;
 
-      // const howl = { ...state.status[payload.howl] };
-      // howl.status = payload.status;
-
-      // return {
-      //   ...state,
-      //   data: {
-      //     ...state.data,
-      //     [payload.howl]: { ...howl },
-      //   },
-      // };
-
-      const status = state.status;
+      const status = { ...state.status };
       status[payload.howl] = payload.status;
 
       return { ...state, status };
@@ -77,28 +66,28 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
     case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE: {
       console.log(type, payload.parsed.pitched);
-      const newHowls = updateHowls(
+      const status = updateHowls(
         state.status,
         state.info.audioSrc.path,
         payload.parsed.pitched
       );
+      console.log({ status });
 
-      // return { ...state, data: newHowls };
-      return state;
+      return { ...state, status };
     }
 
     case songTypes.FETCH_SUCCESSFUL: {
       if (!payload.song.getScale) return state;
       console.log(type, payload.song.scale.parsed.pitched);
 
-      const newHowls = updateHowls(
+      const status = updateHowls(
         state.status,
         state.info.audioSrc.path,
         payload.song.scale.parsed.pitched
       );
+      console.log({ status });
 
-      // return { ...state, data: newHowls };
-      return state;
+      return { ...state, status };
     }
 
     case userTypes.SIGN_IN: {

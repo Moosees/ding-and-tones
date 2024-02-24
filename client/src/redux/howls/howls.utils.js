@@ -2,6 +2,7 @@ import { Howl, Howler } from 'howler';
 import { howls } from '../../assets/sound/howls';
 import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
+import { filterState } from '../store.utils';
 
 export const prepareHowlForRemoval = (howl) => {
   howl?.howl?.off();
@@ -80,6 +81,7 @@ export const playHowl = (howl) => {
 
 export const createHowl = (note, fileName, audioSrc) => {
   console.log('adding howl:', { note, fileName });
+
   const howl = new Howl({ src: `${audioSrc}/${fileName}` });
 
   howl.once('loaderror', (_id, error) => onHowlError(note, howl, error));
@@ -88,7 +90,7 @@ export const createHowl = (note, fileName, audioSrc) => {
 
   const play = () => playHowl(howl);
 
-  return { play, howl, status: 'loading' };
+  howls[note] = { play, howl };
 };
 
 const parseScaleForUpdateHowls = (scale) => {
@@ -118,6 +120,14 @@ export const updateHowls = (status, audioSrc, scale) => {
   for (const { note, fileName } of soundsToAdd) {
     createHowl(note, fileName, audioSrc);
   }
+
+  console.log({ howls });
+  const statusToKeep = filterState(status, notesToKeep);
+
+  return soundsToAdd.reduce((acc, { note }) => {
+    acc[note] = 'loading';
+    return acc;
+  }, statusToKeep);
 };
 
 export const changeAudioSrc = (howls, audioSrc, scale) => {
