@@ -12,20 +12,35 @@ export const prepareHowlForRemoval = (howl) => {
   howl.howl.unload();
 };
 
-export const cleanupHowls = (sounds) => {
+export const cleanupHowls = (howlsToRemove) => {
   Howler.stop();
 
-  const howlsToRemove = [];
-
-  for (const howl in howls) {
-    if (howls.hasOwnProperty(howl) && !sounds.includes(howl)) {
-      console.log('remove', howl);
-      prepareHowlForRemoval(howls[howl]);
-      howlsToRemove.add(howl);
-    }
+  for (const howl of howlsToRemove) {
+    prepareHowlForRemoval(howl);
   }
 
   return howlsToRemove;
+};
+
+const sortHowls = (sounds) => {
+  const howlsToAddSet = new Set(sounds.map(({ note }) => note));
+  const howlsToRemove = [];
+  const howlsToKeep = [];
+
+  for (const sound in howls) {
+    if (howls[sound] && !sounds.has(sound)) {
+      console.log('remove', sound);
+      howlsToRemove.add(sound);
+    } else if (howls[sound] && howlsToAddSet.has(sound)) {
+      console.log('keep', sound);
+      howlsToKeep.push(sound);
+      howlsToAddSet.delete(sound);
+    } else {
+      console.log('add', sound);
+    }
+  }
+
+  return { howlsToAdd: [...howlsToAddSet], howlsToRemove, howlsToKeep };
 };
 
 export const onHowlError = (note, howl, error) => {
@@ -96,22 +111,23 @@ export const updateHowls = (status, audioSrc, scale) => {
   console.log('updateHowls', audioSrc, scale);
   const sounds = parseScaleForUpdateHowls(scale);
 
-  const howlsToRemove = cleanupHowls(sounds.map(({ note }) => note));
-  console.log({ howlsToRemove });
+  const { howlsToAdd, howlsToRemove, howlsToKeep } = sortHowls(sounds);
+  console.log({ howlsToAdd, howlsToRemove, howlsToKeep });
 
-  const newHowls = sounds.reduce(
-    (acc, { note, fileName }) => {
-      acc[note] = howls[note]
-        ? { ...howls[note] }
-        : createHowl(note, fileName, audioSrc);
+  cleanupHowls(howlsToRemove);
 
-      return acc;
-    },
-    { status: {}, howls: {} }
-  );
-  console.log({ newHowls });
+  // const newHowls = sounds.reduce(
+  //   (acc, { note, fileName }) => {
+  //     acc[note] = howls[note]
+  //       ? { ...howls[note] }
+  //       : createHowl(note, fileName, audioSrc);
 
-  return newHowls;
+  //     return acc;
+  //   },
+  //   { status: {}, howls: {} }
+  // );
+
+  // return newHowls;
 };
 
 export const changeAudioSrc = (howls, audioSrc, scale) => {
