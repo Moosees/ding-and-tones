@@ -4,43 +4,40 @@ import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
 
 export const prepareHowlForRemoval = (howl) => {
-  if (!howl) {
-    return;
-  }
-
-  howl.howl.off();
-  howl.howl.unload();
+  howl?.howl?.off();
+  howl?.howl?.unload();
 };
 
 export const cleanupHowls = (howlsToRemove) => {
   Howler.stop();
 
   for (const howl of howlsToRemove) {
-    prepareHowlForRemoval(howl);
+    prepareHowlForRemoval(howls[howl]);
+    howls[howl] = null;
   }
 
   return howlsToRemove;
 };
 
-const sortHowls = (sounds) => {
-  const howlsToAddSet = new Set(sounds.map(({ note }) => note));
-  const howlsToRemove = [];
-  const howlsToKeep = [];
+const sortHowlsForUpdate = (sounds) => {
+  const addSet = new Set(sounds.map(({ note }) => note));
+  const soundsToRemove = [];
+  const soundsToKeep = [];
 
   for (const sound in howls) {
-    if (howls[sound] && !sounds.has(sound)) {
+    if (howls[sound] && !addSet.has(sound)) {
       console.log('remove', sound);
-      howlsToRemove.add(sound);
-    } else if (howls[sound] && howlsToAddSet.has(sound)) {
+      soundsToRemove.add(sound);
+    } else if (howls[sound] && addSet.has(sound)) {
       console.log('keep', sound);
-      howlsToKeep.push(sound);
-      howlsToAddSet.delete(sound);
+      soundsToKeep.push(sound);
+      addSet.delete(sound);
     } else {
       console.log('add', sound);
     }
   }
 
-  return { howlsToAdd: [...howlsToAddSet], howlsToRemove, howlsToKeep };
+  return { soundsToAdd: [...addSet], soundsToRemove, soundsToKeep };
 };
 
 export const onHowlError = (note, howl, error) => {
@@ -111,10 +108,10 @@ export const updateHowls = (status, audioSrc, scale) => {
   console.log('updateHowls', audioSrc, scale);
   const sounds = parseScaleForUpdateHowls(scale);
 
-  const { howlsToAdd, howlsToRemove, howlsToKeep } = sortHowls(sounds);
-  console.log({ howlsToAdd, howlsToRemove, howlsToKeep });
+  const { soundsToAdd, soundsToRemove, soundsToKeep } = sortHowlsForUpdate(sounds);
+  console.log({ soundsToAdd, soundsToRemove, soundsToKeep });
 
-  cleanupHowls(howlsToRemove);
+  cleanupHowls(soundsToRemove);
 
   // const newHowls = sounds.reduce(
   //   (acc, { note, fileName }) => {

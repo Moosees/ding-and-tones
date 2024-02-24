@@ -5,11 +5,15 @@
 ### Goals
 
 * Redux 5
-* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * memoized selectors (beats and everywhere)
+* change sound src works
+* change scale works
+* load scale works
+* new scale works
 
 ### Other
 
+* Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * hook for using howls?
 * Split howls loading status into loaded and error (and error msg)?
 * Middleware driven state reducers?
