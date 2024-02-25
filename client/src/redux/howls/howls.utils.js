@@ -4,12 +4,12 @@ import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
 import { filterState } from '../store.utils';
 
-export const prepareHowlForRemoval = (howl) => {
+const prepareHowlForRemoval = (howl) => {
   howl?.howl?.off();
   howl?.howl?.unload();
 };
 
-export const cleanupHowls = (notesToRemove) => {
+const cleanupHowls = (notesToRemove) => {
   Howler.stop();
 
   for (const note of notesToRemove) {
@@ -41,21 +41,21 @@ const sortHowlsForUpdate = (sounds) => {
   return { soundsToAdd, notesToRemove, notesToKeep };
 };
 
-export const onHowlError = (note, howl, error) => {
+const onHowlError = (note, howl, error) => {
   howl.off('load');
   store.dispatch(updateHowlLoadingStatus(note, 'loaderror'));
 };
 
-export const onHowlLoad = (note, howl) => {
+const onHowlLoad = (note, howl) => {
   howl.off('loaderror');
   store.dispatch(updateHowlLoadingStatus(note, 'ready'));
 };
 
-export const onHowlPlayError = (note) => {
+const onHowlPlayError = (note) => {
   store.dispatch(updateHowlLoadingStatus(note, 'playerror'));
 };
 
-export const playHowl = (howl) => {
+const playHowl = (howl) => {
   const newId = howl.play();
 
   const fadeEvent = (id) => {
@@ -79,7 +79,7 @@ export const playHowl = (howl) => {
   howl.on('play', fadeEvent);
 };
 
-export const createHowl = (note, fileName, audioSrc) => {
+const createHowl = (note, fileName, audioSrc) => {
   console.log('adding howl:', { note, fileName });
 
   const howl = new Howl({ src: `${audioSrc}/${fileName}` });
