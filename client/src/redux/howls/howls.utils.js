@@ -107,6 +107,19 @@ const parseScaleForUpdateHowls = (scale) => {
   return [...percussiveHits, ...parsedScale];
 };
 
+const createHowls = (soundsToAdd, audioSrc) => {
+  for (const { note, fileName } of soundsToAdd) {
+    createHowl(note, fileName, audioSrc);
+  }
+};
+
+const createStatus = (soundsToAdd, statusToKeep = {}) => {
+  return soundsToAdd.reduce((acc, { note }) => {
+    acc[note] = 'loading';
+    return acc;
+  }, statusToKeep);
+};
+
 export const updateHowls = (status, audioSrc, scale) => {
   console.log('updateHowls', audioSrc, scale);
   const sounds = parseScaleForUpdateHowls(scale);
@@ -117,28 +130,21 @@ export const updateHowls = (status, audioSrc, scale) => {
 
   cleanupHowls(notesToRemove);
 
-  for (const { note, fileName } of soundsToAdd) {
-    createHowl(note, fileName, audioSrc);
-  }
+  createHowls(soundsToAdd, audioSrc);
 
   const statusToKeep = filterState(status, notesToKeep, false);
-	console.log({statusToKeep, howls})
+  console.log({ statusToKeep, howls });
 
-  return soundsToAdd.reduce((acc, { note }) => {
-    acc[note] = 'loading';
-    return acc;
-  }, statusToKeep);
+  return createStatus(soundsToAdd, statusToKeep);
 };
 
-export const changeAudioSrc = (howls, audioSrc, scale) => {
-  console.log('changeAudioSrc', howls, audioSrc, scale);
-  cleanupHowls(howls, []);
-
+export const changeAudioSrc = (audioSrc, scale) => {
+  console.log('changeAudioSrc', audioSrc, scale);
   const sounds = parseScaleForUpdateHowls(scale);
 
-  return sounds.reduce((acc, { note, fileName }) => {
-    acc[note] = createHowl(note, fileName, audioSrc);
+  cleanupHowls(sounds.map(({ note }) => note));
 
-    return acc;
-  }, {});
+  createHowls(sounds, audioSrc);
+
+  return createStatus(sounds);
 };

@@ -29,19 +29,12 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       }
 
       console.log(type, payload);
-      const newHowls = changeAudioSrc(
-        state.status, // state.data
-        payload.audioSrc.path,
-        payload.scale
-      );
+      const status = changeAudioSrc(payload.audioSrc.path, payload.scale);
+      console.log({ status });
 
-      // return {
-      //   ...state,
-      //   data: newHowls,
-      //   info: { ...state.info, audioSrc: payload.audioSrc },
-      // };
       return {
         ...state,
+        status,
         info: { ...state.info, audioSrc: payload.audioSrc },
       };
     }

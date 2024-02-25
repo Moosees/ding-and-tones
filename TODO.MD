@@ -6,7 +6,7 @@
 
 * Redux 5
 * memoized selectors (beats and everywhere)
-* change sound src works
+* change sound src works - done
 * change scale works
 * load scale works
 * new scale works
@@ -21,6 +21,7 @@
 * Rework and simplify logic for setCurrentlyPlaying
 * Clean up UI state and reduce number of actions (also for other reducers?)
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+* move howls logic to assets?
 
 ## Sorted by release
 
