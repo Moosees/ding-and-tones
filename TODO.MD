@@ -9,7 +9,7 @@
 * change sound src works - done
 * change scale works - done
 * load scale works - done
-* new scale works
+* new scale works - done
 * login works
 
 ### Other
@@ -23,7 +23,7 @@
 * Clean up UI state and reduce number of actions (also for other reducers?)
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * move howls logic to assets?
-* fix minor bug with howl player not being reactive and getting stuck in unloaded state
+* fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only?
 
 ## Sorted by release
 
@@ -222,6 +222,7 @@
 * Stop extra notes from updating positions when adding extra notes?
 * Rewrite parsed scale and position map
 * New scale wizard, select notes, select rotation, select layout/position etc.
+* new scale values are spread across the reducers, consolidate
 
 ### Chords
 

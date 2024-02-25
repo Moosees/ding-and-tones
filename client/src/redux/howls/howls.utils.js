@@ -24,6 +24,7 @@ const sortHowlsForUpdate = (sounds) => {
   const notesToKeep = [];
 
   for (const sound in howls) {
+    console.log({ howls, sounds, addSet });
     if (howls[sound] && !addSet.has(sound)) {
       console.log('remove', sound);
       notesToRemove.push(sound);
@@ -32,7 +33,7 @@ const sortHowlsForUpdate = (sounds) => {
       notesToKeep.push(sound);
       addSet.delete(sound);
     } else {
-      console.log('add', sound);
+      console.log('add', sound); // shows some false adds
     }
   }
 

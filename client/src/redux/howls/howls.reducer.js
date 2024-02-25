@@ -55,6 +55,16 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, status };
     }
 
+    case scaleTypes.NEW_SCALE: {
+      console.log(type);
+      const status = updateHowls(state.status, state.info.audioSrc.path, [
+        { note: 'A3' },
+      ]);
+      console.log({ status });
+
+      return { ...state, status };
+    }
+
     case scaleTypes.FETCH_SUCCESSFUL:
     case scaleTypes.LOAD_SCALE:
     case scaleTypes.UPDATE_SCALE: {
