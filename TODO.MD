@@ -23,6 +23,7 @@
 * Clean up UI state and reduce number of actions (also for other reducers?)
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * move howls logic to assets?
+* fix minor bug with howl player not being reactive and getting stuck in unloaded state
 
 ## Sorted by release
 

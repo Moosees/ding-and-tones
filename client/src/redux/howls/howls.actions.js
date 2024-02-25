@@ -48,10 +48,10 @@ export const setVolume = (newVolume) => ({
   payload: { newVolume },
 });
 
-export const updateHowlLoadingStatus = (howl, status) => (dispatch) => {
-  console.log('updateHowlLoadingStatus', howl, status);
+export const updateHowlLoadingStatus = (note, status) => (dispatch) => {
+  console.log('updateHowlLoadingStatus', note, status);
   dispatch({
     type: howlsTypes.UPDATE_HOWL_LOADING_STATUS,
-    payload: { howl, status },
+    payload: { note, status },
   });
 };
