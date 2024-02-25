@@ -7,9 +7,10 @@
 * Redux 5
 * memoized selectors (beats and everywhere)
 * change sound src works - done
-* change scale works
-* load scale works
+* change scale works - done
+* load scale works - done
 * new scale works
+* login works
 
 ### Other
 

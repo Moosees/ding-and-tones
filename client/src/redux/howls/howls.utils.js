@@ -26,7 +26,7 @@ const sortHowlsForUpdate = (sounds) => {
   for (const sound in howls) {
     if (howls[sound] && !addSet.has(sound)) {
       console.log('remove', sound);
-      notesToRemove.add(sound);
+      notesToRemove.push(sound);
     } else if (howls[sound] && addSet.has(sound)) {
       console.log('keep', sound);
       notesToKeep.push(sound);
@@ -132,8 +132,9 @@ export const updateHowls = (status, audioSrc, scale) => {
 
   createHowls(soundsToAdd, audioSrc);
 
+  console.log({ status, notesToKeep });
   const statusToKeep = filterState(status, notesToKeep, false);
-  console.log({ statusToKeep, howls });
+  console.log({ ...statusToKeep });
 
   return createStatus(soundsToAdd, statusToKeep);
 };
