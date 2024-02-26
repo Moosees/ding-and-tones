@@ -2,7 +2,6 @@ import { Howler } from 'howler';
 import { audioSources } from '../../assets/sound/audioOptions';
 import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
-import userTypes from '../user/user.types';
 import howlsTypes from './howls.types';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 
@@ -91,12 +90,6 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       console.log({ status });
 
       return { ...state, status };
-    }
-
-    case userTypes.SIGN_IN: {
-      console.log(type, payload.howls);
-      // return { ...state, ...payload.howls };
-      return state;
     }
 
     default:

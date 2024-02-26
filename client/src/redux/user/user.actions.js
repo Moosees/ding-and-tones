@@ -13,6 +13,8 @@ export const checkSession = (urlId) => (dispatch, getState) => {
   dispatch({ type: userTypes.SESSION_STARTED });
 
   const {
+    howls,
+    scale,
     song: {
       ui: { songId },
     },
@@ -20,7 +22,10 @@ export const checkSession = (urlId) => (dispatch, getState) => {
 
   axios.post('/session', { songId: urlId || songId || null }).then((res) => {
     if (res.status === 200 && res.data.user) {
+			console.log(res.data.user)
       const { sound, name, anonymous, isOwner } = res.data.user;
+
+			const audioSrc = getAudioSrc(sound.audioOption);
 
       Howler.volume(sound.volume);
 
@@ -43,6 +48,23 @@ export const checkSession = (urlId) => (dispatch, getState) => {
           },
         },
       });
+
+      if (howls.info.volume !== sound.volume) {
+        dispatch({
+          type: howlsTypes.SET_VOLUME,
+          payload: { newVolume: sound.volume },
+        });
+      }
+
+      if (getAudioOption(howls.info.audioSrc) !== sound.audioOption) {
+        dispatch({
+          type: howlsTypes.SELECT_AUDIO,
+          payload: {
+            audioSrc,
+            scale: scale.parsed.pitched,
+          },
+        });
+      }
     }
 
     dispatch({ type: userTypes.SESSION_SUCCESSFUL });
@@ -102,6 +124,7 @@ export const signIn = (songId, persistSession) => (dispatch, getState) => {
     })
     .then((res) => {
       if (res.status === 200) {
+				console.log(res.data)
         const { sound, name, anonymous, newUser, isOwner } = res.data;
 
         const audioSrc = getAudioSrc(sound.audioOption);

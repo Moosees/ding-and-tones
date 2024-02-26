@@ -10,7 +10,8 @@
 * change scale works - done
 * load scale works - done
 * new scale works - done
-* login works
+* login works - done
+* logout works
 
 ### Other
 
