@@ -1,6 +1,5 @@
-const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
-const { getClient, getAuthUrl } = require('../utils/auth');
+const { getClient } = require('../utils/auth');
 const crypto = require('crypto');
 const { defaultErrorMsg } = require('../utils/assets');
 
@@ -146,13 +145,17 @@ exports.signInWithGoogle = async (req, res) => {
 };
 
 exports.signOut = (req, res) => {
-  req.session.user &&
-    req.session.destroy((error) => {
-      if (error) {
-        res.status(200).json({ msg: 'Sign out failed' });
-      }
-      res.clearCookie('connect.sid').status(200).json({ msg: 'Signed out' });
-    });
+  if (!req.session.user) {
+    return res.status(400).json({ msg: 'Sign out failed' });
+  }
+
+  req.session.destroy((error) => {
+    if (error) {
+      return res.status(400).json({ msg: 'Sign out failed' });
+    }
+
+    res.clearCookie('connect.sid').status(200).json({ msg: 'Signed out' });
+  });
 };
 
 exports.getGoogleURL = (req, res) => {

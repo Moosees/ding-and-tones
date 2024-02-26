@@ -8,6 +8,7 @@ import {
   getGoogleError,
   handleGooglePostMsg,
 } from './user.utils';
+import alertTypes from '../alert/alert.types';
 
 export const checkSession = (urlId) => (dispatch, getState) => {
   dispatch({ type: userTypes.SESSION_STARTED });
@@ -22,10 +23,10 @@ export const checkSession = (urlId) => (dispatch, getState) => {
 
   axios.post('/session', { songId: urlId || songId || null }).then((res) => {
     if (res.status === 200 && res.data.user) {
-			console.log(res.data.user)
+      console.log(res.data.user);
       const { sound, name, anonymous, isOwner } = res.data.user;
 
-			const audioSrc = getAudioSrc(sound.audioOption);
+      const audioSrc = getAudioSrc(sound.audioOption);
 
       Howler.volume(sound.volume);
 
@@ -124,7 +125,7 @@ export const signIn = (songId, persistSession) => (dispatch, getState) => {
     })
     .then((res) => {
       if (res.status === 200) {
-				console.log(res.data)
+        console.log(res.data);
         const { sound, name, anonymous, newUser, isOwner } = res.data;
 
         const audioSrc = getAudioSrc(sound.audioOption);
@@ -173,14 +174,24 @@ export const signOut = () => (dispatch) => {
   axios
     .post('/signOut')
     .then((res) => {
-      if (res.status === 200 && !res.data.msg) {
-        dispatch({
+      if (res.status === 200) {
+        return dispatch({
           type: userTypes.SIGN_OUT,
           payload: { alert: 'Signed out successfully!' },
         });
       }
+			
+      dispatch({
+        type: alertTypes.CREATE_ALERT,
+        payload: { alert: 'Sign out failed' },
+      });
     })
-    .catch((error) => {});
+    .catch((error) => {
+      dispatch({
+        type: alertTypes.CREATE_ALERT,
+        payload: { alert: 'Sign out failed' },
+      });
+    });
 };
 
 export const toggleAccount = () => ({
