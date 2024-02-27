@@ -9,10 +9,8 @@ import { SearchContainer } from './search.styles';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const { isSearching, isSignedIn } = useSelector(({ search, user }) => ({
-    isSearching: search.isSearching,
-    isSignedIn: user.isSignedIn,
-  }));
+  const isSearching = useSelector(({ search }) => search.isSearching);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
 
   const [value, setValue] = useState('');
 

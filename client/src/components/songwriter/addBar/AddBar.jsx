@@ -9,11 +9,9 @@ import { createNewBar, songToBarSubdivision } from './addBar.utils';
 
 const AddBar = () => {
   const dispatch = useDispatch();
-  const { metre, subdivision, isSongPlaying } = useSelector(({ song, ui }) => ({
-    metre: song.info.metre,
-    subdivision: song.info.subdivision,
-    isSongPlaying: ui.isSongPlaying,
-  }));
+  const metre = useSelector(({ song }) => song.info.metre);
+  const subdivision = useSelector(({ song }) => song.info.subdivision);
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
 
   const [newBarOpen, setNewBarOpen] = useState(false);
   const { nameShort } = metreList[metre];

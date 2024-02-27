@@ -4,9 +4,7 @@ import { setCurrentDropdown } from '../../../redux/ui/ui.actions';
 
 const useSongIsPlaying = () => {
   const dispatch = useDispatch();
-  const { isSongPlaying } = useSelector(({ ui }) => ({
-    isSongPlaying: ui.isSongPlaying,
-  }));
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
 
   useEffect(() => {
     if (!isSongPlaying) return;

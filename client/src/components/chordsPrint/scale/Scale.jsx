@@ -11,10 +11,8 @@ import {
 } from './scale.styles';
 
 const Scale = () => {
-  const { info, scale } = useSelector(({ scale }) => ({
-    info: scale.info,
-    scale: scale.parsed.pitched,
-  }));
+  const info = useSelector(({ scale }) => scale.info);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
   let prevSemitones = scale[info.rootIndex].intervalMap[0].semitones;
 

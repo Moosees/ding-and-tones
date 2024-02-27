@@ -35,10 +35,8 @@ const CheckBoxes = styled.div`
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const { chordList, scale } = useSelector(({ chords, scale }) => ({
-    chordList: chords.chordList,
-    scale: scale.parsed.pitched,
-  }));
+  const chordList = useSelector(({ chords }) => chords.chordList);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
   useEffect(() => {
     dispatch(toggleChordIsSelected(null, scale));

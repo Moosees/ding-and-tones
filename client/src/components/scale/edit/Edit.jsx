@@ -12,13 +12,9 @@ import { EditContainer, EditContent, TextLabel } from './edit.styles';
 
 const Edit = () => {
   const dispatch = useDispatch();
-  const { extra, isAddingExtraNotes, isEditingExtraPos } = useSelector(
-    ({ scale, ui }) => ({
-      extra: scale.notes.extra,
-      isAddingExtraNotes: ui.isAddingExtraNotes,
-      isEditingExtraPos: ui.isEditingExtraPos,
-    })
-  );
+  const extra = useSelector(({ scale }) => scale.notes.extra);
+  const isAddingExtraNotes = useSelector(({ ui }) => ui.isAddingExtraNotes);
+  const isEditingExtraPos = useSelector(({ ui }) => ui.isEditingExtraPos);
 
   return (
     <EditContainer>

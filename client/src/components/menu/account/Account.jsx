@@ -6,10 +6,8 @@ import PopupAccount from './PopupAccount';
 
 const Account = () => {
   const dispatch = useDispatch();
-  const { accountOpen, isSignedIn } = useSelector(({ user }) => ({
-    accountOpen: user.accountOpen,
-    isSignedIn: user.isSignedIn,
-  }));
+  const accountOpen = useSelector(({ user }) => user.accountOpen);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
 
   return (
     <>

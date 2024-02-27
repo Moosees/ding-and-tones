@@ -4,10 +4,8 @@ import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
 
 const useResetCurrentBeat = () => {
   const dispatch = useDispatch();
-  const { currentBeat, currentSound } = useSelector(({ ui }) => ({
-    currentBeat: ui.currentBeat,
-    currentSound: ui.currentSound,
-  }));
+  const currentBeat = useSelector(({ ui }) => ui.currentBeat);
+  const currentSound = useSelector(({ ui }) => ui.currentSound);
 
   useEffect(() => {
     const timeout = setTimeout(() => {

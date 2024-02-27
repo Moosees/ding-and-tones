@@ -26,14 +26,10 @@ const ControlsContainer = styled.div`
 
 const SongViewControls = () => {
   const dispatch = useDispatch();
-  const { countOpen, handsOpen, headersOpen, isSongPlaying } = useSelector(
-    ({ ui }) => ({
-      countOpen: ui.countOpen,
-      handsOpen: ui.handsOpen,
-      headersOpen: ui.headersOpen,
-      isSongPlaying: ui.isSongPlaying,
-    })
-  );
+  const countOpen = useSelector(({ ui }) => ui.countOpen);
+  const handsOpen = useSelector(({ ui }) => ui.handsOpen);
+  const headersOpen = useSelector(({ ui }) => ui.headersOpen);
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
 
   return (
     <ControlsContainer>

@@ -7,10 +7,8 @@ import Popup from '../../shared/popup/Popup';
 import { songToBarSubdivision } from './addBar.utils';
 
 const PopupNewBar = ({ handleNewBar, onClose }) => {
-  const { songSubdivision, songMetre } = useSelector(({ song }) => ({
-    songSubdivision: song.info.subdivision,
-    songMetre: song.info.metre,
-  }));
+  const songSubdivision = useSelector(({ song }) => song.info.subdivision);
+  const songMetre = useSelector(({ song }) => song.info.metre);
 
   const [metre, setMetre] = useState(songMetre);
   const [subdivision, setSubdivision] = useState(

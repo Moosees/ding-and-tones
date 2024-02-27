@@ -12,10 +12,8 @@ import { ItemContainer } from './list.styles';
 
 const ListItem = ({ chord, isDisplayed }) => {
   const dispatch = useDispatch();
-  const { printList, sharpNotes } = useSelector(({ chords, scale }) => ({
-    printList: chords.printList,
-    sharpNotes: scale.info.sharpNotes,
-  }));
+  const printList = useSelector(({ chords }) => chords.printList);
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
 
   const { isMobile } = useDimensions();
 

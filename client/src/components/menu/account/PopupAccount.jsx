@@ -10,10 +10,8 @@ import Popup from '../../shared/popup/Popup';
 
 const PopupAccount = ({ clearNewUser }) => {
   const dispatch = useDispatch();
-  const { isAnonymous, name } = useSelector(({ user }) => ({
-    isAnonymous: user.isAnonymous,
-    name: user.name,
-  }));
+  const isAnonymous = useSelector(({ user }) => user.isAnonymous);
+  const name = useSelector(({ user }) => user.name);
 
   const [anon, setAnon] = useState(isAnonymous);
 

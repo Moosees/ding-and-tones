@@ -10,11 +10,9 @@ import Popup from '../../shared/popup/Popup';
 
 const PopupSongMetre = ({ onClose }) => {
   const dispatch = useDispatch();
-  const { bpm, metre, subdivision } = useSelector(({ song }) => ({
-    bpm: song.info.bpm,
-    metre: song.info.metre,
-    subdivision: song.info.subdivision,
-  }));
+  const bpm = useSelector(({ song }) => song.info.bpm);
+  const metre = useSelector(({ song }) => song.info.metre);
+  const subdivision = useSelector(({ song }) => song.info.subdivision);
 
   const [newMetre, setNewMetre] = useState(metre);
   const [newSubdivision, setNewSubdivision] = useState(subdivision);

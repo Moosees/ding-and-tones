@@ -4,10 +4,8 @@ import ScrollBox from '../../shared/scrollBox/ScrollBox';
 import ListItem from './ListItem';
 
 const List = () => {
-  const { displayedChord, foundChords } = useSelector(({ chords, drum }) => ({
-    displayedChord: drum.displayedChord,
-    foundChords: chords.foundChords,
-  }));
+  const displayedChord = useSelector(({ drum }) => drum.displayedChord);
+  const foundChords = useSelector(({ chords }) => chords.foundChords);
 
   return (
     <ScrollBox>

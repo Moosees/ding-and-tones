@@ -6,10 +6,8 @@ import PopupSound from './PopupSound';
 
 const Sound = () => {
   const dispatch = useDispatch();
-  const { audioSrc, volume } = useSelector(({ howls }) => ({
-    audioSrc: howls.info.audioSrc,
-    volume: howls.info.volume,
-  }));
+  const audioSrc = useSelector(({ howls }) => howls.info.audioSrc);
+  const volume = useSelector(({ howls }) => howls.info.volume);
 
   const [soundOpen, setSoundOpen] = useState(false);
   const [oldSound, setOldSound] = useState({ audioOption: null, volume: null });

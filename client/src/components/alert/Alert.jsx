@@ -7,10 +7,8 @@ import { AlertContainer, AlertText } from './alert.styles';
 
 export const Alert = () => {
   const dispatch = useDispatch();
-  const { msg, privacyOpen } = useSelector(({ alert, ui }) => ({
-    msg: alert.msg,
-    privacyOpen: ui.privacyOpen,
-  }));
+  const msg = useSelector(({ alert }) => alert.msg);
+  const privacyOpen = useSelector(({ ui }) => ui.privacyOpen);
 
   useEffect(() => {
     if (msg) {
