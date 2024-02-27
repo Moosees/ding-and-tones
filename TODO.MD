@@ -11,7 +11,7 @@
 * load scale works - done
 * new scale works - done
 * login works - done
-* logout works
+* logout works - done
 
 ### Other
 
@@ -278,6 +278,7 @@
 * Store sharp notes in scale state?
 * Clean up all sharp note functions
 * mongoose sanitizeFilter instead of current sanitizer?
+* clear cookie when no session is found?
 
 ### Future plans
 
