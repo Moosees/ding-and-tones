@@ -61,6 +61,7 @@ exports.updateUserSound = async (req, res) => {
 };
 
 exports.updateUserInfo = async (req, res) => {
+  console.log(req.body, req.userId);
   const userId = req.userId;
   const { anonymous, name } = req.body;
   const updated = Date.now();
@@ -148,7 +149,7 @@ exports.signOut = async (req, res) => {
   if (!req.session.user) {
     return res.status(400).json({ msg: 'Sign out failed' });
   }
-	
+
   try {
     await req.session.destroy();
 

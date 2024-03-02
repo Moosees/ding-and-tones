@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
-import { saveUserInfo, toggleAccount } from '../../../redux/user/user.actions';
+import { toggleAccount } from '../../../redux/user/user.actions';
+import { useSaveUserInfoMutation } from '../../../redux/user/userSlice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 
-const PopupAccount = ({ clearNewUser }) => {
+const PopupAccount = () => {
   const dispatch = useDispatch();
   const isAnonymous = useSelector(({ user }) => user.isAnonymous);
   const name = useSelector(({ user }) => user.name);
+  const [saveUserInfo] = useSaveUserInfoMutation();
 
   const [anon, setAnon] = useState(isAnonymous);
 
@@ -20,8 +22,26 @@ const PopupAccount = ({ clearNewUser }) => {
     name
   );
 
-  const handleSave = () => {
-    if (usernameValid) dispatch(saveUserInfo(username, anon));
+  // const handleSave = () => {
+  //   // if (usernameValid) dispatch(saveUserInfo(username, anon));
+  // };
+
+  const handleSave = async () => {
+    if (!usernameValid) return;
+    if (username === name && anon === isAnonymous) {
+      dispatch(toggleAccount());
+      return;
+    }
+
+    try {
+      const res = await saveUserInfo({
+        name: username,
+        anonymous: anon,
+      }).unwrap();
+      console.log({ res });
+      // update state with new user info
+      dispatch(toggleAccount());
+    } catch (error) {}
   };
 
   const handleToggleAccount = () => {
