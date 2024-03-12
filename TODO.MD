@@ -13,6 +13,13 @@
 * login works - done
 * logout works - done
 
+### Account info
+
+* Get data on login/session
+* Use new slice data in popup
+* (default) Data when not logged in
+* Errors
+
 ### Other
 
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra

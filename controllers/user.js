@@ -82,16 +82,22 @@ exports.updateUserInfo = async (req, res) => {
       .exec();
 
     if (!user) {
-      return res.status(400).json({ msg: 'Could not update user info' });
+      return res.status(400).json({ alert: 'Could not update user info' });
     }
 
-    res.status(200).json({ isAnonymous: user.anonymous, name: user.name });
+    res
+      .status(200)
+      .json({
+        alert: 'Account info updated',
+        isAnonymous: user.anonymous,
+        name: user.name,
+      });
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(200).json({ msg: 'Name is already in use' });
+      return res.status(200).json({ alert: 'Name is already in use' });
     }
 
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ alert: defaultErrorMsg });
   }
 };
 

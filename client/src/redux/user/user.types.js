@@ -1,7 +1,5 @@
 const userTypes = {
   GOOGLE_ERROR: 'user/googleError',
-  SAVE_ERROR: 'user/saveError',
-  SAVE_STARTED: 'user/saveStarted',
   SAVE_SUCCESSFUL: 'user/saveSuccessful',
   SESSION_STARTED: 'user/sessionStarted',
   SESSION_SUCCESSFUL: 'user/sessionSuccessful',

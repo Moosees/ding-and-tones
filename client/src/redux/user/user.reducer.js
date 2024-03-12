@@ -6,20 +6,14 @@ const INITIAL_STATE = {
   fetchSessionTried: false,
   name: '',
   isAnonymous: true,
-  isSaving: false,
   isSignedIn: false,
 };
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case userTypes.SAVE_ERROR:
-      return { ...state, isSaving: false };
-    case userTypes.SAVE_STARTED:
-      return { ...state, isSaving: true };
     case userTypes.SAVE_SUCCESSFUL:
       return {
         ...state,
-        isSaving: false,
         accountOpen: false,
         isAnonymous: payload.isAnonymous,
         name: payload.name,

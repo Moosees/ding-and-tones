@@ -8,6 +8,7 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
+import userTypes from '../../../redux/user/user.types';
 
 const PopupAccount = () => {
   const dispatch = useDispatch();
@@ -22,10 +23,6 @@ const PopupAccount = () => {
     name
   );
 
-  // const handleSave = () => {
-  //   // if (usernameValid) dispatch(saveUserInfo(username, anon));
-  // };
-
   const handleSave = async () => {
     if (!usernameValid) return;
     if (username === name && anon === isAnonymous) {
@@ -38,9 +35,8 @@ const PopupAccount = () => {
         name: username,
         anonymous: anon,
       }).unwrap();
-      console.log({ res });
-      // update state with new user info
-      dispatch(toggleAccount());
+
+      dispatch({ type: userTypes.SAVE_SUCCESSFUL, payload: res });
     } catch (error) {}
   };
 

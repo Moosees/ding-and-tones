@@ -72,47 +72,6 @@ export const checkSession = (urlId) => (dispatch, getState) => {
   });
 };
 
-export const saveUserInfo = (newName, newAnon) => (dispatch, getState) => {
-  dispatch({ type: userTypes.SAVE_STARTED });
-
-  const {
-    user: { name, isAnonymous },
-  } = getState();
-
-  if (name === newName && isAnonymous === newAnon)
-    return dispatch({ type: userTypes.TOGGLE_ACCOUNT });
-
-  axios
-    .post('/user/info', { name: newName, anonymous: newAnon })
-    .then((res) => {
-      if (res.status === 200) {
-        if (res.data.msg)
-          return dispatch({
-            type: userTypes.SAVE_ERROR,
-            payload: { alert: res.data.msg },
-          });
-
-        dispatch({
-          type: userTypes.SAVE_SUCCESSFUL,
-          payload: {
-            ...res.data,
-            alert: 'Account updated successfully',
-          },
-        });
-      }
-    })
-    .catch((error) =>
-      dispatch({
-        type: userTypes.SAVE_ERROR,
-        payload: {
-          alert: error.response
-            ? error.response.data.msg
-            : 'Account could not be updated',
-        },
-      })
-    );
-};
-
 export const signIn = (songId, persistSession) => (dispatch, getState) => {
   const { howls, scale } = getState();
 
