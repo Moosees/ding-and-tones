@@ -48,15 +48,16 @@ exports.updateUserSound = async (req, res) => {
       .exec();
 
     if (!user) {
-      return res.status(400).json({ msg: 'Could not update user settings' });
+      return res.status(400).json({ alert: 'Could not update user settings' });
     }
 
     res.status(200).json({
+			alert: 'Sound setup saved',
       audioOption: user.sound.audioOption,
       volume: user.sound.volume,
     });
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ alert: defaultErrorMsg });
   }
 };
 

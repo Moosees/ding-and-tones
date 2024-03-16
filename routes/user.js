@@ -20,6 +20,6 @@ router.post('/signOut', signOut);
 
 // Update user
 router.patch('/user/info', checkAuth, updateUserInfo);
-router.post('/user/sound', checkAuth, updateUserSound);
+router.patch('/user/sound', checkAuth, updateUserSound);
 
 module.exports = router;

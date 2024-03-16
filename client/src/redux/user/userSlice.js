@@ -9,7 +9,14 @@ export const userExtendedApi = api.injectEndpoints({
         body: userInfo, // { name, anonymous }
       }),
     }),
+    saveUserSound: builder.mutation({
+      query: (userSound) => ({
+        url: '/user/sound',
+        method: 'PATCH',
+        body: userSound, // {audioOption, volume}
+      }),
+    }),
   }),
 });
 
-export const { useSaveUserInfoMutation } = userExtendedApi;
+export const { useSaveUserInfoMutation, useSaveUserSoundMutation } = userExtendedApi;
