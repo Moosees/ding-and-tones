@@ -32,6 +32,7 @@
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * move howls logic to assets?
 * fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only?
+* user sound popup - info about saving? prevent opening if saving?
 
 ## Sorted by release
 
