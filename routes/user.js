@@ -19,7 +19,7 @@ router.post('/signIn', signInWithGoogle);
 router.post('/signOut', signOut);
 
 // Update user
-router.post('/user/info', checkAuth, updateUserInfo);
+router.patch('/user/info', checkAuth, updateUserInfo);
 router.post('/user/sound', checkAuth, updateUserSound);
 
 module.exports = router;

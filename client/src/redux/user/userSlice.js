@@ -5,7 +5,7 @@ export const userExtendedApi = api.injectEndpoints({
     saveUserInfo: builder.mutation({
       query: (userInfo) => ({
         url: '/user/info',
-        method: 'POST',
+        method: 'PATCH',
         body: userInfo, // { name, anonymous }
       }),
     }),
