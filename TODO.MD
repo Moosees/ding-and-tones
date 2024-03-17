@@ -13,12 +13,19 @@
 * login works - done
 * logout works - done
 
-### Account info
+### User slice
 
-* Get data on login/session
-* Use new slice data in popup
+* Save user data on getSession
+* Better way to get url state before sending checkSession request?
+* Get data on login
+* Save data on login
+* RTK instead of dispatch in PopupAccount
 * (default) Data when not logged in
-* Errors
+* Error handling PopupAccount
+* Error handling Sound
+* Error handling User
+* update checkSession for mobile view
+* user sound popup - info about saving? prevent opening if saving?
 
 ### Other
 
@@ -32,7 +39,8 @@
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * move howls logic to assets?
 * fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only?
-* user sound popup - info about saving? prevent opening if saving?
+
+* Clean up comments and unused code
 
 ## Sorted by release
 

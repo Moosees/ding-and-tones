@@ -16,7 +16,18 @@ export const userExtendedApi = api.injectEndpoints({
         body: userSound, // {audioOption, volume}
       }),
     }),
+    checkSession: builder.query({
+      query: (songId) => ({
+        url: '/session',
+        method: 'POST',
+        body: songId,
+      }),
+    }),
   }),
 });
 
-export const { useSaveUserInfoMutation, useSaveUserSoundMutation } = userExtendedApi;
+export const {
+  useSaveUserInfoMutation,
+  useSaveUserSoundMutation,
+  useLazyCheckSessionQuery,
+} = userExtendedApi;

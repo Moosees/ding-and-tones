@@ -6,6 +6,7 @@ const { defaultErrorMsg } = require('../utils/assets');
 const day = 1000 * 60 * 60 * 24;
 
 exports.checkSession = async (req, res) => {
+  console.log(req.body);
   if (!req.userId) {
     return res.status(200).json({ user: null });
   }
@@ -17,7 +18,7 @@ exports.checkSession = async (req, res) => {
       .select('anonymous name songs sound')
       .exec();
 
-    const isOwner = songs.includes(req.songId);
+    const isOwner = songs.includes(req.body.songId);
 
     res.status(200).json({
       user: {
@@ -29,7 +30,6 @@ exports.checkSession = async (req, res) => {
     });
   } catch (error) {
     res.status(200).json({ user: null });
-    // res.status(500).json({ user: null });
   }
 };
 
@@ -52,7 +52,7 @@ exports.updateUserSound = async (req, res) => {
     }
 
     res.status(200).json({
-			alert: 'Sound setup saved',
+      alert: 'Sound setup saved',
       audioOption: user.sound.audioOption,
       volume: user.sound.volume,
     });
@@ -86,13 +86,11 @@ exports.updateUserInfo = async (req, res) => {
       return res.status(400).json({ alert: 'Could not update user info' });
     }
 
-    res
-      .status(200)
-      .json({
-        alert: 'Account info updated',
-        isAnonymous: user.anonymous,
-        name: user.name,
-      });
+    res.status(200).json({
+      alert: 'Account info updated',
+      isAnonymous: user.anonymous,
+      name: user.name,
+    });
   } catch (error) {
     if (error.code === 11000) {
       return res.status(200).json({ alert: 'Name is already in use' });
