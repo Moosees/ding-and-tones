@@ -1,24 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { checkSession } from '../../redux/user/user.actions';
+import { useCheckSessionQuery } from '../../redux/user/userSlice';
 import DropdownMobile from './dropdown/DropdownMobile';
 import Logo from './logo/Logo';
 import { LogoContainer, MobileAnchor } from './nav.styles';
 import { getSongIdFromLocation } from './nav.utils';
 
 const NavMobile = () => {
-  const dispatch = useDispatch();
+  const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
+  const songId = useSelector(({ song }) => song.ui.songId);
 
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
-  const location = useLocation();
 
-  useEffect(() => {
-    const songId = getSongIdFromLocation(location);
-    dispatch(checkSession(songId));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  const location = useLocation();
+  const urlSongId = getSongIdFromLocation(location);
+  const checkSessionQueryData = urlSongId || songId || null;
+  console.log({ checkSessionQueryData });
+  useCheckSessionQuery({ checkSessionQueryData }, { skip: fetchSessionTried });
 
   return (
     <MobileAnchor>

@@ -15,7 +15,6 @@
 
 ### User slice
 
-* update checkSession for mobile view
 * checkSession alert messages
 * Get data on login
 * Save data on login

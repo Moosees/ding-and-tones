@@ -9,8 +9,6 @@ import {
 } from './user.utils';
 import alertTypes from '../alert/alert.types';
 
-export const checkSession = (urlId) => (dispatch, getState) => {};
-
 export const signIn = (songId, persistSession) => (dispatch, getState) => {
   const { howls, scale } = getState();
 
