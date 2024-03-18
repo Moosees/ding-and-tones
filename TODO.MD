@@ -15,8 +15,8 @@
 
 ### User slice
 
-* Save user data on getSession
-* Better way to get url state before sending checkSession request?
+* update checkSession for mobile view
+* checkSession alert messages
 * Get data on login
 * Save data on login
 * RTK instead of dispatch in PopupAccount
@@ -24,7 +24,6 @@
 * Error handling PopupAccount
 * Error handling Sound
 * Error handling User
-* update checkSession for mobile view
 * user sound popup - info about saving? prevent opening if saving?
 
 ### Other

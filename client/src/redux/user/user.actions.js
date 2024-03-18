@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Howler } from 'howler';
 import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
 import howlsTypes from '../howls/howls.types';
 import userTypes from './user.types';
@@ -10,67 +9,7 @@ import {
 } from './user.utils';
 import alertTypes from '../alert/alert.types';
 
-export const checkSession = (urlId) => (dispatch, getState) => {
-  dispatch({ type: userTypes.SESSION_STARTED });
-
-  const {
-    howls,
-    scale,
-    song: {
-      ui: { songId },
-    },
-  } = getState();
-
-  axios.post('/session', { songId: urlId || songId || null }).then((res) => {
-    if (res.status === 200 && res.data.user) {
-      console.log(res.data.user);
-      const { sound, name, anonymous, isOwner } = res.data.user;
-
-      const audioSrc = getAudioSrc(sound.audioOption);
-
-      Howler.volume(sound.volume);
-
-      dispatch({
-        type: userTypes.SIGN_IN,
-        payload: {
-          alert: `Welcome back, ${name}`,
-          howls: {
-            info: {
-              audioSrc: getAudioSrc(sound.audioOption),
-              volume: sound.volume,
-            },
-          },
-          song: { isOwner },
-          user: {
-            name,
-            isAnonymous: anonymous,
-            isSignedIn: true,
-            accountOpen: false,
-          },
-        },
-      });
-
-      if (howls.info.volume !== sound.volume) {
-        dispatch({
-          type: howlsTypes.SET_VOLUME,
-          payload: { newVolume: sound.volume },
-        });
-      }
-
-      if (getAudioOption(howls.info.audioSrc) !== sound.audioOption) {
-        dispatch({
-          type: howlsTypes.SELECT_AUDIO,
-          payload: {
-            audioSrc,
-            scale: scale.parsed.pitched,
-          },
-        });
-      }
-    }
-
-    dispatch({ type: userTypes.SESSION_SUCCESSFUL });
-  });
-};
+export const checkSession = (urlId) => (dispatch, getState) => {};
 
 export const signIn = (songId, persistSession) => (dispatch, getState) => {
   const { howls, scale } = getState();
@@ -139,7 +78,7 @@ export const signOut = () => (dispatch) => {
           payload: { alert: 'Signed out successfully!' },
         });
       }
-			
+
       dispatch({
         type: alertTypes.CREATE_ALERT,
         payload: { alert: 'Sign out failed' },
