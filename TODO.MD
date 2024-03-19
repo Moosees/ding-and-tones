@@ -21,6 +21,8 @@
 * (default) Data when not logged in
 * Error handling in userSlice
 * user sound popup - info about saving? prevent opening if saving?
+* PopupAccount only close if mutation is successful?
+* sigIn and checkSession share logic?
 
 ### Other
 

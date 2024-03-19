@@ -4,7 +4,6 @@ const userTypes = {
   SESSION_TRIED: 'user/sessionTried',
   SIGN_IN: 'user/signIn',
   SIGN_OUT: 'user/signOut',
-  TOGGLE_ACCOUNT: 'users/toggleAccount',
 };
 
 export default userTypes;

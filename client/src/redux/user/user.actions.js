@@ -89,7 +89,3 @@ export const signOut = () => (dispatch) => {
       });
     });
 };
-
-export const toggleAccount = () => ({
-  type: userTypes.TOGGLE_ACCOUNT,
-});

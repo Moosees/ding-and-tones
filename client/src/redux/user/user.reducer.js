@@ -1,7 +1,6 @@
 import userTypes from './user.types';
 
 const INITIAL_STATE = {
-  accountOpen: false,
   fetchSessionTried: false,
   name: '',
   isAnonymous: true,
@@ -13,7 +12,6 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
     case userTypes.SAVE_SUCCESSFUL:
       return {
         ...state,
-        accountOpen: false,
         isAnonymous: payload.isAnonymous,
         name: payload.name,
       };
@@ -34,12 +32,6 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         name: '',
         isAnonymous: true,
         isSignedIn: false,
-      };
-
-    case userTypes.TOGGLE_ACCOUNT:
-      return {
-        ...state,
-        accountOpen: !state.accountOpen,
       };
 
     default:

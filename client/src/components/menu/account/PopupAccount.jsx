@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
-import { toggleAccount } from '../../../redux/user/user.actions';
 import { useSaveUserInfoMutation } from '../../../redux/user/userSlice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
@@ -9,8 +8,7 @@ import InfoInput from '../../shared/input/InfoInput';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 
-const PopupAccount = () => {
-  const dispatch = useDispatch();
+const PopupAccount = ({ onClose }) => {
   const isAnonymous = useSelector(({ user }) => user.isAnonymous);
   const name = useSelector(({ user }) => user.name);
   const [saveUserInfo] = useSaveUserInfoMutation();
@@ -22,24 +20,20 @@ const PopupAccount = () => {
     name
   );
 
-  const handleToggleAccount = () => {
-    dispatch(toggleAccount());
-  };
-
   const handleSave = () => {
     if (!usernameValid) return;
-    if (username === name && anon === isAnonymous) {
-      return handleToggleAccount();
+    if (username !== name || anon !== isAnonymous) {
+      saveUserInfo({
+        name: username,
+        anonymous: anon,
+      });
     }
 
-    saveUserInfo({
-      name: username,
-      anonymous: anon,
-    });
+    onClose();
   };
 
   return (
-    <Popup header="Account" onClose={handleToggleAccount}>
+    <Popup header="Account" onClose={onClose}>
       <InfoInput
         autoFocus
         large
@@ -60,7 +54,7 @@ const PopupAccount = () => {
       </InfoBox>
       <Popup.Flex>
         <BtnPrimary label="Save" onClick={handleSave} />
-        <BtnPrimary light label="Cancel" onClick={handleToggleAccount} />
+        <BtnPrimary light label="Cancel" onClick={onClose} />
       </Popup.Flex>
     </Popup>
   );
