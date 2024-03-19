@@ -5,22 +5,19 @@
 ### Goals
 
 * Redux 5
-* memoized selectors (beats and everywhere)
-* change sound src works - done
-* change scale works - done
-* load scale works - done
-* new scale works - done
-* login works - done
-* logout works - done
+* old action logic => rtk slices
+* old thunks => rtk queries
+* api error handling in queries (middleware?)
+* update routes
+* move redux state to local state where possible
 
-### User slice
+### User and userSlice
 
 * checkSession alert messages
-* Get data on login
-* Save data on login
-* (default) Data when not logged in
-* Error handling in userSlice
-* user sound popup - info about saving? prevent opening if saving?
+* sign in query
+* sign out query
+* default data when no session is active
+* user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
 * sigIn and checkSession share logic?
 
@@ -29,12 +26,11 @@
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * hook for using howls?
 * Split howls loading status into loaded and error (and error msg)?
-* Middleware driven state reducers?
 * Refactor scale.utils (redux)?
 * Rework and simplify logic for setCurrentlyPlaying
 * Clean up UI state and reduce number of actions (also for other reducers?)
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-* move howls logic to assets?
+* move howls logic to assets? future app structure refactor (features? views?)
 * fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only?
 
 * Clean up comments and unused code
@@ -145,6 +141,7 @@
 * Allow saving scale with song save
 * Discord
 * slider.handleStyle deprecated
+* handleGooglePostMsg developer origin should be derived from auth.js?
 
 ### Major updates
 
