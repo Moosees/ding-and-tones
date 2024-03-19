@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useCheckSessionQuery } from '../../../redux/user/userSlice';
+import { useCheckSessionQuery } from '../../../redux/user/user.api';
 import BtnNav from '../../shared/button/BtnNav';
 import Dropdown from '../dropdown/Dropdown';
 import { MenuAnchor } from '../nav.styles';

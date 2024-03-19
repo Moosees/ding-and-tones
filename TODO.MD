@@ -10,6 +10,7 @@
 * api error handling in queries (middleware?)
 * update routes
 * move redux state to local state where possible
+* consistent response data format from backend
 
 ### User and userSlice
 
@@ -20,6 +21,8 @@
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
 * sigIn and checkSession share logic?
+* consistent code, user is an object and anonymous instead of isAnonymous in front and back end
+* isSignedIn derived from username?
 
 ### Other
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
-import { useSaveUserInfoMutation } from '../../../redux/user/userSlice';
+import { useSaveUserInfoMutation } from '../../../redux/user/user.api';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';

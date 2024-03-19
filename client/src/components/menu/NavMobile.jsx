@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useCheckSessionQuery } from '../../redux/user/userSlice';
+import { useCheckSessionQuery } from '../../redux/user/user.api';
 import DropdownMobile from './dropdown/DropdownMobile';
 import Logo from './logo/Logo';
 import { LogoContainer, MobileAnchor } from './nav.styles';
