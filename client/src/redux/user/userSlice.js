@@ -12,6 +12,12 @@ export const userExtendedApi = api.injectEndpoints({
         method: 'PATCH',
         body: userInfo, // { name, anonymous }
       }),
+      async onQueryStarted(_userInfo, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch({ type: userTypes.SAVE_SUCCESSFUL, payload: data });
+        } catch (error) {}
+      },
     }),
     saveUserSound: builder.mutation({
       query: (userSound) => ({
