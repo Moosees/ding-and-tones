@@ -152,15 +152,18 @@ exports.signInWithGoogle = async (req, res) => {
 
 exports.signOut = async (req, res) => {
   if (!req.session.user) {
-    return res.status(400).json({ msg: 'Sign out failed' });
+    return res.status(400).json({ alert: 'Sign out failed' });
   }
 
   try {
     await req.session.destroy();
 
-    res.clearCookie('connect.sid').status(200).json({ msg: 'Signed out' });
+    res
+      .clearCookie('connect.sid')
+      .status(200)
+      .json({ alert: 'Signed out successfully' });
   } catch (error) {
-    res.status(400).json({ msg: 'Sign out failed' });
+    res.status(400).json({ alert: 'Sign out failed' });
   }
 };
 

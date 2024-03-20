@@ -1,5 +1,6 @@
 import { Howler } from 'howler';
 import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
+import alertTypes from '../alert/alert.types';
 import { api } from '../api/apiSlice';
 import howlsTypes from '../howls/howls.types';
 import userTypes from './user.types';
@@ -85,6 +86,21 @@ export const userExtendedApi = api.injectEndpoints({
         } catch (error) {}
       },
     }),
+    signOut: builder.mutation({
+      query: () => ({
+        url: '/signOut',
+        method: 'POST',
+      }),
+      async onQueryStarted(_res, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch({ type: userTypes.SIGN_OUT });
+          console.log('Sign out', { data });
+        } catch ({ error }) {
+          dispatch({ type: alertTypes.CREATE_ALERT, payload: error.data });
+        }
+      },
+    }),
   }),
 });
 
@@ -92,4 +108,5 @@ export const {
   useSaveUserInfoMutation,
   useSaveUserSoundMutation,
   useCheckSessionQuery,
+  useSignOutMutation,
 } = userExtendedApi;

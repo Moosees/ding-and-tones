@@ -3,11 +3,10 @@ import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
 import howlsTypes from '../howls/howls.types';
 import userTypes from './user.types';
 import {
-  getGoogleCode,
-  getGoogleError,
-  handleGooglePostMsg,
+	getGoogleCode,
+	getGoogleError,
+	handleGooglePostMsg,
 } from './user.utils';
-import alertTypes from '../alert/alert.types';
 
 export const signIn = (songId, persistSession) => (dispatch, getState) => {
   const { howls, scale } = getState();
@@ -62,30 +61,6 @@ export const signIn = (songId, persistSession) => (dispatch, getState) => {
       return dispatch({
         type: userTypes.GOOGLE_ERROR,
         payload: { alert: getGoogleError(error) },
-      });
-    });
-};
-
-export const signOut = () => (dispatch) => {
-  axios
-    .post('/signOut')
-    .then((res) => {
-      if (res.status === 200) {
-        return dispatch({
-          type: userTypes.SIGN_OUT,
-          payload: { alert: 'Signed out successfully!' },
-        });
-      }
-
-      dispatch({
-        type: alertTypes.CREATE_ALERT,
-        payload: { alert: 'Sign out failed' },
-      });
-    })
-    .catch((error) => {
-      dispatch({
-        type: alertTypes.CREATE_ALERT,
-        payload: { alert: 'Sign out failed' },
       });
     });
 };

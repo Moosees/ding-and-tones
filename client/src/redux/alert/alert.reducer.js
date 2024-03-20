@@ -13,6 +13,7 @@ const alertReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
 
     default:
+      payload?.alert && console.log('ALERT:', { type, payload });
       return payload?.alert ? { ...state, msg: payload.alert } : state;
   }
 };
