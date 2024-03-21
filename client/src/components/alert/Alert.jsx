@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ALERT_TIMEOUT } from '../../assets/constants';
-import { clearAlert } from '../../redux/alert/alert.actions';
+import { clearAlert } from '../../redux/alert/alert.slice';
 import BtnPrimary from '../shared/button/BtnPrimary';
 import { AlertContainer, AlertText } from './alert.styles';
 

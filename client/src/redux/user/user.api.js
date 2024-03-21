@@ -1,6 +1,5 @@
 import { Howler } from 'howler';
 import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
-import alertTypes from '../alert/alert.types';
 import { api } from '../api/apiSlice';
 import howlsTypes from '../howls/howls.types';
 import userTypes from './user.types';
@@ -14,10 +13,14 @@ export const userExtendedApi = api.injectEndpoints({
         body: userInfo, // { name, anonymous }
       }),
       async onQueryStarted(_userInfo, { dispatch, queryFulfilled }) {
+        console.log('SAVE USER INFO onQueryStarted', { _userInfo });
         try {
           const { data } = await queryFulfilled;
+          console.log('SAVE USER INFO DATA', { data });
           dispatch({ type: userTypes.SAVE_SUCCESSFUL, payload: data });
-        } catch (error) {}
+        } catch (error) {
+          console.log('SAVE USER INFO ERROR', { error });
+        }
       },
     }),
     saveUserSound: builder.mutation({
@@ -38,6 +41,7 @@ export const userExtendedApi = api.injectEndpoints({
 
         try {
           const { data } = await queryFulfilled;
+          console.log('CHECK SESSION DATA', { data });
           if (!data.user) return;
 
           const { howls, scale } = getState();
@@ -94,11 +98,9 @@ export const userExtendedApi = api.injectEndpoints({
       async onQueryStarted(_res, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
+          console.log('SIGN OUT DATA', { data });
           dispatch({ type: userTypes.SIGN_OUT });
-          console.log('Sign out', { data });
-        } catch ({ error }) {
-          dispatch({ type: alertTypes.CREATE_ALERT, payload: error.data });
-        }
+        } catch (error) {}
       },
     }),
   }),

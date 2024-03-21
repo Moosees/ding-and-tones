@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import alertReducer from './alert/alert.reducer';
+import alertSlice from './alert/alert.slice';
 import { api } from './api/apiSlice';
 import chordsReducer from './chords/chords.reducer';
 import drumReducer from './drum/drum.reducer';
@@ -9,12 +9,12 @@ import searchReducer from './search/search.reducer';
 import songReducer from './song/song.reducer';
 import uiReducer from './ui/ui.reducer';
 import userReducer from './user/user.reducer';
-import userSlice from './user/user.slice';
+// import userSlice from './user/user.slice';
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    alert: alertReducer,
+    alert: alertSlice,
     chords: chordsReducer,
     drum: drumReducer,
     howls: howlsReducer,
@@ -23,7 +23,7 @@ export const store = configureStore({
     song: songReducer,
     ui: uiReducer,
     user: userReducer,
-    userSlice: userSlice,
+    // userSlice: userSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

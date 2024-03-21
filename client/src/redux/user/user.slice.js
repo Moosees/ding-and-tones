@@ -13,12 +13,12 @@ const INITIAL_STATE = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: 'userSlice',
   initialState: INITIAL_STATE,
   reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(isUpdateUserAction, (state, action) => {
-      console.log('MATCH', { action });
+      console.log('USER MATCH', { action });
       state.name = action.payload.user.name;
       state.isAnonymous = action.payload.user.anonymous;
     });

@@ -62,7 +62,7 @@ exports.updateUserSound = async (req, res) => {
 };
 
 exports.updateUserInfo = async (req, res) => {
-  console.log(req.body, req.userId);
+  // console.log(req.body, req.userId);
   const userId = req.userId;
   const { anonymous, name } = req.body;
   const updated = Date.now();
@@ -86,12 +86,14 @@ exports.updateUserInfo = async (req, res) => {
       return res.status(400).json({ alert: 'Could not update user info' });
     }
 
+    console.log('Save user info success', { user });
     res.status(200).json({
       alert: 'Account info updated',
       isAnonymous: user.anonymous,
       name: user.name,
     });
   } catch (error) {
+    console.log('Save user info error', { error });
     if (error.code === 11000) {
       return res.status(200).json({ alert: 'Name is already in use' });
     }

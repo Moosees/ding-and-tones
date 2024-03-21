@@ -10,13 +10,14 @@
 * api error handling in queries (middleware?)
 * update routes
 * move redux state to local state where possible
-* consistent response data format from backend
+* consistent response data format from backend (alert and other data separate)
+* keep wonky alert payload matcher or use createAlert action instead?
 
 ### User and userSlice
 
 * checkSession alert messages
+* userSlice prevents queries from fulfilling?
 * sign in query
-* sign out query
 * default data when no session is active
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
