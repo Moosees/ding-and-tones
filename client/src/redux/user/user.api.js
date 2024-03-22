@@ -103,6 +103,62 @@ export const userExtendedApi = api.injectEndpoints({
         } catch (error) {}
       },
     }),
+    getGoogleUrl: builder.query({
+      query: () => ({
+        url: '/googleURL',
+        method: 'GET',
+      }),
+    }),
+    signIn: builder.mutation({
+      query: (signInData) => ({
+        url: '/signIn',
+        method: 'POST',
+        body: signInData, // { code, songId, persistSession }
+      }),
+      async onQueryStarted(
+        _signInData,
+        { dispatch, queryFulfilled, getState }
+      ) {
+        try {
+          const { data } = await queryFulfilled;
+          const { sound, name, anonymous, newUser, isOwner } = data;
+          const { howls, scale } = getState();
+
+          const audioSrc = getAudioSrc(sound.audioOption);
+
+          dispatch({
+            type: userTypes.SIGN_IN,
+            payload: {
+              alert: 'Signed in successfully!',
+              song: { isOwner },
+              user: {
+                name,
+                isAnonymous: anonymous,
+                isSignedIn: true,
+                accountOpen: newUser,
+              },
+            },
+          });
+
+          if (howls.info.volume !== sound.volume) {
+            dispatch({
+              type: howlsTypes.SET_VOLUME,
+              payload: { newVolume: sound.volume },
+            });
+          }
+
+          if (getAudioOption(howls.info.audioSrc) !== sound.audioOption) {
+            dispatch({
+              type: howlsTypes.SELECT_AUDIO,
+              payload: {
+                audioSrc,
+                scale: scale.parsed.pitched,
+              },
+            });
+          }
+        } catch (error) {}
+      },
+    }),
   }),
 });
 
@@ -111,4 +167,6 @@ export const {
   useSaveUserSoundMutation,
   useCheckSessionQuery,
   useSignOutMutation,
+  useLazyGetGoogleUrlQuery,
+  useSignInMutation,
 } = userExtendedApi;

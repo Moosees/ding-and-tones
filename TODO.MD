@@ -15,9 +15,12 @@
 
 ### User and userSlice
 
+* sign in error handling
+* sign in cross origin warning?
+* delete old sign in functions
+
 * checkSession alert messages
 * userSlice prevents queries from fulfilling?
-* sign in query
 * default data when no session is active
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?

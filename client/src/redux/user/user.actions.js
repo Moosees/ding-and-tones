@@ -8,7 +8,7 @@ import {
 	handleGooglePostMsg,
 } from './user.utils';
 
-export const signIn = (songId, persistSession) => (dispatch, getState) => {
+const signIn = (songId, persistSession) => (dispatch, getState) => {
   const { howls, scale } = getState();
 
   axios
