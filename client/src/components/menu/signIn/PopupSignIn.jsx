@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   useLazyGetGoogleUrlQuery,
   useSignInMutation,
@@ -9,9 +9,15 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
 import GoogleIcon from './GoogleIcon.jsx';
 import { GoogleBtn, SignInContainer, TermsLink } from './signIn.styles';
-import { getGoogleCode, handleGooglePostMsg } from './signIn.utils.js';
+import {
+  getGoogleCode,
+  getGoogleError,
+  handleGooglePostMsg,
+} from './signIn.utils.js';
+import { createAlert } from '../../../redux/alert/alert.slice.js';
 
 const SignIn = ({ onClose }) => {
+  const dispatch = useDispatch();
   const songId = useSelector(({ song }) => song.ui.songId);
   const [getGoogleUrl] = useLazyGetGoogleUrlQuery();
   const [signIn] = useSignInMutation();
@@ -22,10 +28,17 @@ const SignIn = ({ onClose }) => {
   const handleSignIn = async () => {
     const url = await getGoogleUrl().unwrap();
     console.log({ url });
-    const msg = await handleGooglePostMsg(url);
-    const code = getGoogleCode(msg);
-    console.log({ code, msg });
-    await signIn({ code, songId, persistSession });
+
+    handleGooglePostMsg(url)
+      .then((msg) => {
+        const code = getGoogleCode(msg);
+        console.log({ code, msg });
+        signIn({ code, songId, persistSession });
+      })
+      .catch((error) => {
+        const alert = getGoogleError(error);
+        dispatch(createAlert({ alert }));
+      });
   };
 
   return (

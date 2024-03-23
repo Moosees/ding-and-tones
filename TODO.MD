@@ -15,10 +15,7 @@
 
 ### User and userSlice
 
-* sign in error handling
 * sign in cross origin warning?
-* delete old sign in functions
-
 * checkSession alert messages
 * userSlice prevents queries from fulfilling?
 * default data when no session is active

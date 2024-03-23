@@ -71,3 +71,16 @@ export const getGoogleCode = (msg) => {
   const code = (msg.match(/code=([^&]+)/) || [])[1];
   return state === 'google' ? code : '';
 };
+
+export const getGoogleError = (error) => {
+  switch (error) {
+    case 'popup_closed_by_user':
+      return 'Sign in failed - popup closed';
+
+    case 'popup_disabled':
+      return 'Sign in failed - popup blocked';
+
+    default:
+      return 'Sign in failed - please try again';
+  }
+};
