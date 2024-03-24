@@ -35,17 +35,12 @@ const alertSlice = createSlice({
           if (payload?.data?.alert) state.msg = payload.data.alert;
         }
       )
-      .addMatcher(
-        ({ payload }) =>
-          payload &&
-          typeof payload === 'object' &&
-          !Array.isArray(payload) &&
-          Object.hasOwn(payload, 'alert'),
-        (state, { payload }) => {
-          console.log('ALERT PAYLOAD MATCHER', { state: state.msg, payload });
+      .addDefaultCase((state, { payload }) => {
+        if (payload?.alert) {
+          console.log('ALERT DEFAULT', { payload });
           state.msg = payload.alert;
         }
-      );
+      });
   },
 });
 
