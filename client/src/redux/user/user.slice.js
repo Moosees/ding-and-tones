@@ -15,7 +15,11 @@ const INITIAL_STATE = {
 const userSlice = createSlice({
   name: 'userSlice',
   initialState: INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    setSessionTried(state) {
+      state.fetchSessionTried = true;
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(isUpdateUserAction, (state, action) => {
       console.log('USER MATCH', { action });
@@ -24,5 +28,7 @@ const userSlice = createSlice({
     });
   },
 });
+
+export const { setSessionTried } = userSlice.actions;
 
 export default userSlice.reducer;
