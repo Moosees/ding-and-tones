@@ -17,7 +17,7 @@ export const userExtendedApi = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           console.log('SAVE USER INFO DATA', { data });
-          dispatch({ type: userTypes.SAVE_SUCCESSFUL, payload: data });
+          dispatch({ type: userTypes.SAVE_SUCCESSFUL, payload: data.user }); // remove
         } catch (error) {
           console.log('SAVE USER INFO ERROR', { error });
         }
@@ -37,7 +37,7 @@ export const userExtendedApi = api.injectEndpoints({
         body: songId,
       }),
       async onQueryStarted(_songId, { dispatch, getState, queryFulfilled }) {
-        dispatch({ type: userTypes.SESSION_TRIED });
+        dispatch({ type: userTypes.SESSION_TRIED }); // remove
 
         try {
           const { data } = await queryFulfilled;

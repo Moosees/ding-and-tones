@@ -89,8 +89,10 @@ exports.updateUserInfo = async (req, res) => {
     console.log('Save user info success', { user });
     res.status(200).json({
       alert: 'Account info updated',
-      isAnonymous: user.anonymous,
-      name: user.name,
+      user: {
+        isAnonymous: user.anonymous,
+        name: user.name,
+      },
     });
   } catch (error) {
     console.log('Save user info error', { error });
