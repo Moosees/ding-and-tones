@@ -16,7 +16,6 @@
 ### User and userSlice
 
 * sign in cross origin warning?
-* checkSession alert messages
 * userSlice prevents queries from fulfilling?
 * default data when no session is active
 * user sound popup - info about saving settings to account?
@@ -28,7 +27,7 @@
 ### Other
 
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
-* hook for using howls?
+* hook for using howls? (or delete useHowls.js)
 * Split howls loading status into loaded and error (and error msg)?
 * Refactor scale.utils (redux)?
 * Rework and simplify logic for setCurrentlyPlaying

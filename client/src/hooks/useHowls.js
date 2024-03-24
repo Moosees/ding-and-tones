@@ -1,5 +1,5 @@
 const useHowls = (note) => {
-  console.log('howl', note);
+  // console.log('howl', note);
 
   return { status: '', play: () => {} };
 };

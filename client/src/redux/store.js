@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import alertSlice from './alert/alert.slice';
-import { api } from './api/apiSlice';
+import { api } from './api/api.slice';
 import chordsReducer from './chords/chords.reducer';
 import drumReducer from './drum/drum.reducer';
 import howlsReducer from './howls/howls.reducer';
