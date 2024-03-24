@@ -48,7 +48,7 @@ exports.updateUserSound = async (req, res) => {
       .exec();
 
     if (!user) {
-      return res.status(400).json({ alert: 'Could not update user settings' });
+      return res.status(400).json({ error: 'Could not update user settings' });
     }
 
     res.status(200).json({
@@ -57,7 +57,7 @@ exports.updateUserSound = async (req, res) => {
       volume: user.sound.volume,
     });
   } catch (error) {
-    res.status(400).json({ alert: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -83,7 +83,7 @@ exports.updateUserInfo = async (req, res) => {
       .exec();
 
     if (!user) {
-      return res.status(400).json({ alert: 'Could not update user info' });
+      return res.status(400).json({ error: 'Could not update user info' });
     }
 
     console.log('Save user info success', { user });
@@ -100,7 +100,7 @@ exports.updateUserInfo = async (req, res) => {
       return res.status(200).json({ alert: 'Name is already in use' });
     }
 
-    res.status(400).json({ alert: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -150,13 +150,13 @@ exports.signInWithGoogle = async (req, res) => {
       sound: user.sound,
     });
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
 exports.signOut = async (req, res) => {
   if (!req.session.user) {
-    return res.status(400).json({ alert: 'Sign out failed' });
+    return res.status(400).json({ error: 'Sign out failed' });
   }
 
   try {
@@ -167,7 +167,7 @@ exports.signOut = async (req, res) => {
       .status(200)
       .json({ alert: 'Signed out successfully' });
   } catch (error) {
-    res.status(400).json({ alert: 'Sign out failed' });
+    res.status(400).json({ error: 'Sign out failed' });
   }
 };
 

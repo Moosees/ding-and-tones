@@ -13,7 +13,7 @@ exports.deleteScale = async (req, res) => {
   const userId = req.userId;
 
   if (!isValidObjectId(scaleId)) {
-    return res.status(400).json({ msg: 'Scale not found' });
+    return res.status(400).json({ error: 'Scale not found' });
   }
 
   try {
@@ -22,7 +22,7 @@ exports.deleteScale = async (req, res) => {
       .exec();
 
     if (!scale) {
-      return res.status(400).json({ msg: 'Scale not found' });
+      return res.status(400).json({ error: 'Scale not found' });
     }
 
     await User.findByIdAndUpdate(userId, {
@@ -33,7 +33,7 @@ exports.deleteScale = async (req, res) => {
 
     res.status(200).json(scale);
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -42,19 +42,19 @@ exports.getScaleById = async (req, res) => {
   const userId = req.userId;
 
   if (!isValidObjectId(scaleId)) {
-    return res.status(404).json({ msg: 'Scale not found' });
+    return res.status(404).json({ error: 'Scale not found' });
   }
 
   try {
     const scale = await Scale.findById(scaleId).select(scaleSelect).exec();
 
     if (!scale) {
-      return res.status(404).json({ msg: 'Scale not found' });
+      return res.status(404).json({ error: 'Scale not found' });
     }
 
     res.status(200).json(parseScaleResponse(scale, userId));
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -75,7 +75,7 @@ exports.getScales = async (req, res) => {
     const data = scales.map((scale) => parseScaleResponse(scale, userId));
     res.status(200).json({ scales: data });
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -99,7 +99,7 @@ exports.getMyScales = async (req, res) => {
     const data = user.scales.map((scale) => parseScaleResponse(scale, userId));
     res.status(200).json({ scales: data });
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -109,7 +109,7 @@ exports.saveScale = async (req, res) => {
   const { dings, round, extra } = req.body.notes;
 
   if (dings.length + round.length + extra.length < 5) {
-    return res.status(400).json({ msg: 'Scale needs at least five notes' });
+    return res.status(400).json({ error: 'Scale needs at least five notes' });
   }
 
   req.body.author = userId;
@@ -125,7 +125,7 @@ exports.saveScale = async (req, res) => {
   try {
     const scale = await new Scale(req.body).save();
 
-    if (!scale) return res.status(400).json({ msg: 'Could not save scale' });
+    if (!scale) return res.status(400).json({ error: 'Could not save scale' });
 
     await User.findByIdAndUpdate(userId, {
       $push: { scales: scale._id },
@@ -136,7 +136,7 @@ exports.saveScale = async (req, res) => {
     const data = parseScaleResponse(scale, userId);
     res.status(200).json(data);
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -158,6 +158,6 @@ exports.scaleSearch = async (req, res) => {
     const data = scales.map((scale) => parseScaleResponse(scale, userId));
     res.status(200).json({ scales: data });
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };

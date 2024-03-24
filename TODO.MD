@@ -7,7 +7,6 @@
 * Redux 5
 * old action logic => rtk slices
 * old thunks => rtk queries
-* api error handling in queries (middleware?)
 * update routes
 * move redux state to local state where possible
 * consistent response data format from backend (alert and other data separate)

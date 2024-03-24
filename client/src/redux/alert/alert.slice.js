@@ -32,7 +32,7 @@ const alertSlice = createSlice({
             state: state.msg,
             payload,
           });
-          if (payload?.data?.alert) state.msg = payload.data.alert;
+          if (payload?.data?.error) state.msg = payload.data.error;
         }
       )
       .addDefaultCase((state, { payload }) => {

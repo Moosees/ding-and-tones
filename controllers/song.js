@@ -100,7 +100,7 @@ exports.songSearch = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -138,7 +138,7 @@ exports.getMySongs = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -179,7 +179,7 @@ exports.getNewSongs = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -193,13 +193,13 @@ exports.saveSong = async (req, res) => {
     let newSong = false;
 
     if (songUpdate.arrangement.length > 100) {
-      return res.status(400).json({ msg: 'Song is too long' });
+      return res.status(400).json({ error: 'Song is too long' });
     }
     if (songUpdate.arrangement.length < 1) {
-      return res.status(400).json({ msg: 'Song needs at least one bar' });
+      return res.status(400).json({ error: 'Song needs at least one bar' });
     }
     if (songId && !isValidObjectId(songId)) {
-      return res.status(404).json({ msg: 'Could not save song' });
+      return res.status(404).json({ error: 'Could not save song' });
     }
 
     if (!songId) {
@@ -229,7 +229,7 @@ exports.saveSong = async (req, res) => {
       .exec();
 
     if (!song) {
-      return res.status(404).json({ msg: 'Song not found, could not save' });
+      return res.status(400).json({ error: 'Song not found, could not save' });
     }
 
     newSong &&
@@ -253,7 +253,7 @@ exports.saveSong = async (req, res) => {
 
     res.status(200).json({ song: resData });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -262,7 +262,7 @@ exports.getSongById = async (req, res) => {
   const userId = req.userId;
 
   if (!isValidObjectId(songId)) {
-    return res.status(404).json({ msg: 'Song not found' });
+    return res.status(404).json({ error: 'Song not found' });
   }
 
   try {
@@ -273,7 +273,7 @@ exports.getSongById = async (req, res) => {
       .exec();
 
     if (!song) {
-      return res.status(404).json({ msg: 'Song not found' });
+      return res.status(404).json({ error: 'Song not found' });
     }
 
     const data = parseGetResponse(song, userId);
@@ -281,15 +281,15 @@ exports.getSongById = async (req, res) => {
     if (data.isPrivate && !userId) {
       return res
         .status(401)
-        .json({ msg: 'Song is private, please sign in and try again' });
+        .json({ error: 'Song is private, please sign in and try again' });
     }
     if (data.isPrivate && !data.isOwner) {
-      return res.status(403).json({ msg: 'Song is private' });
+      return res.status(403).json({ error: 'Song is private' });
     }
 
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -298,7 +298,7 @@ exports.deleteSong = async (req, res) => {
   const userId = req.userId;
 
   if (!isValidObjectId(songId)) {
-    return res.status(404).json({ msg: 'Delete failed, song not found' });
+    return res.status(404).json({ error: 'Delete failed, song not found' });
   }
 
   try {
@@ -307,7 +307,7 @@ exports.deleteSong = async (req, res) => {
       .exec();
 
     if (!song) {
-      return res.status(404).json({ msg: 'Delete failed, song not found' });
+      return res.status(404).json({ error: 'Delete failed, song not found' });
     }
 
     await User.findByIdAndUpdate(userId, {
@@ -318,6 +318,6 @@ exports.deleteSong = async (req, res) => {
 
     res.status(200).json(song);
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
