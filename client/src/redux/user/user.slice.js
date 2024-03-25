@@ -1,16 +1,5 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { userExtendedApi } from './user.api';
-
-const isUpdateUserAction = isAnyOf(
-  userExtendedApi.endpoints.checkSession.matchFulfilled,
-  userExtendedApi.endpoints.signIn.matchFulfilled,
-  userExtendedApi.endpoints.saveUserInfo.matchFulfilled
-);
-
-const isSignInAction = isAnyOf(
-  userExtendedApi.endpoints.checkSession.matchFulfilled,
-  userExtendedApi.endpoints.signIn.matchFulfilled
-);
+import { createSlice } from '@reduxjs/toolkit';
+import { isSignInAction, isUpdateUserAction } from '../api/api.matchers';
 
 const INITIAL_STATE = {
   fetchSessionTried: false,
@@ -51,6 +40,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setSessionTried, signIn, signOut } = userSlice.actions;
+export const { setSessionTried, signOut } = userSlice.actions;
 
 export default userSlice.reducer;

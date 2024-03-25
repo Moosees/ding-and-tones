@@ -2,7 +2,7 @@ import { Howler } from 'howler';
 import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
 import { api } from '../api/api.slice';
 import howlsTypes from '../howls/howls.types';
-import { setSessionTried, signIn, signOut } from './user.slice';
+import { setSessionTried, signOut } from './user.slice';
 
 export const userExtendedApi = api.injectEndpoints({
   endpoints: (builder) => ({
