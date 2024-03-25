@@ -1,4 +1,3 @@
-import userTypes from '../../user/user.types';
 import { uiState } from '../song.initialState';
 import songTypes from '../song.types';
 
@@ -45,11 +44,11 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.TOGGLE_PRIVATE_SONG:
       return { ...state, isPrivate: !state.isPrivate };
 
-    case userTypes.SIGN_IN:
-      return { ...state, isOwner: payload.song.isOwner };
+    // case userTypes.SIGN_IN:
+    //   return { ...state, isOwner: payload.song.isOwner };
 
-    case userTypes.SIGN_OUT:
-      return { ...state, isOwner: false };
+    // case userTypes.SIGN_OUT:
+    //   return { ...state, isOwner: false };
 
     default:
       return state;

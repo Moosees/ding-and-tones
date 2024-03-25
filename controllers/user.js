@@ -90,7 +90,7 @@ exports.updateUserInfo = async (req, res) => {
     res.status(200).json({
       alert: 'Account info updated',
       user: {
-        isAnonymous: user.anonymous,
+        anonymous: user.anonymous,
         name: user.name,
       },
     });

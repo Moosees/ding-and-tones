@@ -1,5 +1,4 @@
 import songTypes from '../../song/song.types';
-import userTypes from '../../user/user.types';
 import { uiState } from '../scale.initialState';
 import scaleTypes from '../scale.types';
 
@@ -83,8 +82,8 @@ const uiReducer = (state = uiState, { type, payload }) => {
       };
     }
 
-    case userTypes.SIGN_OUT:
-      return { ...state, isOwner: false };
+    // case userTypes.SIGN_OUT:
+    //   return { ...state, isOwner: false };
 
     default:
       return state;

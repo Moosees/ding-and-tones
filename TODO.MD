@@ -7,20 +7,23 @@
 * Redux 5
 * old action logic => rtk slices
 * old thunks => rtk queries
-* update routes
 * move redux state to local state where possible
 * consistent response data format from backend (alert and other data separate)
-* keep wonky alert payload matcher or use createAlert action instead?
+* update backend routes where needed
 
 ### User and userSlice
 
+* handle checkSession when there is no session
+* handle updateSound when signing in or checking session
+* consistent code, data is sorted front and back end (signInWithGoogle, updateUserSound)
+* userSlice prevents queries from fulfilling? working?
+
+* set isOwner for scale and song to false when signing out
+* set isOwner for song (and scale?) to true when needed when signing in
 * sign in cross origin warning?
-* userSlice prevents queries from fulfilling?
-* default data when no session is active
+* default data when no session is active - working?
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
-* sigIn and checkSession share logic?
-* consistent code, user is an object and anonymous instead of isAnonymous in front and back end
 * isSignedIn derived from username?
 
 ### Other

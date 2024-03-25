@@ -2,7 +2,7 @@ import { Howler } from 'howler';
 import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
 import { api } from '../api/api.slice';
 import howlsTypes from '../howls/howls.types';
-import userTypes from './user.types';
+import { setSessionTried, signIn, signOut } from './user.slice';
 
 export const userExtendedApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -12,16 +12,6 @@ export const userExtendedApi = api.injectEndpoints({
         method: 'PATCH',
         body: userInfo, // { name, anonymous }
       }),
-      async onQueryStarted(_userInfo, { dispatch, queryFulfilled }) {
-        console.log('SAVE USER INFO onQueryStarted', { _userInfo });
-        try {
-          const { data } = await queryFulfilled;
-          console.log('SAVE USER INFO DATA', { data });
-          dispatch({ type: userTypes.SAVE_SUCCESSFUL, payload: data.user }); // remove
-        } catch (error) {
-          console.log('SAVE USER INFO ERROR', { error });
-        }
-      },
     }),
     saveUserSound: builder.mutation({
       query: (userSound) => ({
@@ -37,7 +27,7 @@ export const userExtendedApi = api.injectEndpoints({
         body: songId,
       }),
       async onQueryStarted(_songId, { dispatch, getState, queryFulfilled }) {
-        dispatch({ type: userTypes.SESSION_TRIED }); // remove
+        dispatch(setSessionTried());
 
         try {
           const { data } = await queryFulfilled;
@@ -51,25 +41,24 @@ export const userExtendedApi = api.injectEndpoints({
 
           Howler.volume(sound.volume);
 
-          dispatch({
-            type: userTypes.SIGN_IN,
-            payload: {
-              alert: `Welcome back, ${name}`,
-              howls: {
-                info: {
-                  audioSrc: getAudioSrc(sound.audioOption),
-                  volume: sound.volume,
-                },
-              },
-              song: { isOwner },
-              user: {
-                name,
-                isAnonymous: anonymous,
-                isSignedIn: true,
-                accountOpen: false,
-              },
-            },
-          });
+          // dispatch(
+          //   signIn({
+          //     alert: `Welcome back, ${name}`,
+          //     howls: {
+          //       info: {
+          //         audioSrc: getAudioSrc(sound.audioOption),
+          //         volume: sound.volume,
+          //       },
+          //     },
+          //     song: { isOwner },
+          //     user: {
+          //       name,
+          //       anonymous: anonymous,
+          //       isSignedIn: true,
+          //       accountOpen: false,
+          //     },
+          //   })
+          // );
 
           if (howls.info.volume !== sound.volume) {
             dispatch({
@@ -99,7 +88,7 @@ export const userExtendedApi = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           console.log('SIGN OUT DATA', { data });
-          dispatch({ type: userTypes.SIGN_OUT });
+          dispatch(signOut());
         } catch (error) {}
       },
     }),
@@ -126,19 +115,18 @@ export const userExtendedApi = api.injectEndpoints({
 
           const audioSrc = getAudioSrc(sound.audioOption);
 
-          dispatch({
-            type: userTypes.SIGN_IN,
-            payload: {
-              alert: 'Signed in successfully!',
-              song: { isOwner },
-              user: {
-                name,
-                isAnonymous: anonymous,
-                isSignedIn: true,
-                accountOpen: newUser,
-              },
-            },
-          });
+          // dispatch(
+          //   signIn({
+          //     alert: 'Signed in successfully!',
+          //     song: { isOwner },
+          //     user: {
+          //       name,
+          //       anonymous: anonymous,
+          //       isSignedIn: true,
+          //       accountOpen: newUser,
+          //     },
+          //   })
+          // );
 
           if (howls.info.volume !== sound.volume) {
             dispatch({

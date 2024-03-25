@@ -9,11 +9,11 @@ import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 
 const PopupAccount = ({ onClose }) => {
-  const isAnonymous = useSelector(({ user }) => user.isAnonymous);
+  const anonymous = useSelector(({ user }) => user.anonymous);
   const name = useSelector(({ user }) => user.name);
   const [saveUserInfo] = useSaveUserInfoMutation();
 
-  const [anon, setAnon] = useState(isAnonymous);
+  const [anon, setAnon] = useState(anonymous);
 
   const [username, setUsername, usernameErrors, usernameValid] = useValidate(
     'username',
@@ -22,7 +22,7 @@ const PopupAccount = ({ onClose }) => {
 
   const handleSave = () => {
     if (!usernameValid) return;
-    if (username !== name || anon !== isAnonymous) {
+    if (username !== name || anon !== anonymous) {
       console.log('handleSaveUSERINFO');
       saveUserInfo({
 				name: username,

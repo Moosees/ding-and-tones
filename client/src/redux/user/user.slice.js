@@ -3,13 +3,20 @@ import { userExtendedApi } from './user.api';
 
 const isUpdateUserAction = isAnyOf(
   userExtendedApi.endpoints.checkSession.matchFulfilled,
+  userExtendedApi.endpoints.signIn.matchFulfilled,
   userExtendedApi.endpoints.saveUserInfo.matchFulfilled
+);
+
+const isSignInAction = isAnyOf(
+  userExtendedApi.endpoints.checkSession.matchFulfilled,
+  userExtendedApi.endpoints.signIn.matchFulfilled
 );
 
 const INITIAL_STATE = {
   fetchSessionTried: false,
   name: '',
-  isAnonymous: true,
+  anonymous: true,
+  isSignedIn: false,
 };
 
 const userSlice = createSlice({
@@ -19,16 +26,31 @@ const userSlice = createSlice({
     setSessionTried(state) {
       state.fetchSessionTried = true;
     },
+    // signIn(state, { payload }) {
+    //   console.log('SIGN IN', { payload });
+    //   state.name = payload.user.name;
+    //   state.anonymous = payload.user.anonymous;
+    //   state.isSignedIn = true;
+    // },
+    signOut(state) {
+      state.name = '';
+      state.anonymous = true;
+      state.isSignedIn = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(isUpdateUserAction, (state, action) => {
       console.log('USER MATCH', { action });
       state.name = action.payload.user.name;
-      state.isAnonymous = action.payload.user.anonymous;
+      state.anonymous = action.payload.user.anonymous;
+    });
+    builder.addMatcher(isSignInAction, (state, action) => {
+      console.log('SIGN IN MATCH');
+      state.isSignedIn = true;
     });
   },
 });
 
-export const { setSessionTried } = userSlice.actions;
+export const { setSessionTried, signIn, signOut } = userSlice.actions;
 
 export default userSlice.reducer;

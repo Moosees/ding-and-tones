@@ -8,8 +8,7 @@ import scaleReducer from './scale/scale.reducer';
 import searchReducer from './search/search.reducer';
 import songReducer from './song/song.reducer';
 import uiReducer from './ui/ui.reducer';
-import userReducer from './user/user.reducer';
-// import userSlice from './user/user.slice';
+import userSlice from './user/user.slice';
 
 export const store = configureStore({
   reducer: {
@@ -22,8 +21,7 @@ export const store = configureStore({
     search: searchReducer,
     song: songReducer,
     ui: uiReducer,
-    user: userReducer,
-    // userSlice: userSlice,
+    user: userSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
