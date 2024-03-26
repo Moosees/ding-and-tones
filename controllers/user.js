@@ -100,7 +100,7 @@ exports.updateUserInfo = async (req, res) => {
   } catch (error) {
     console.log('Save user info error', { error });
     if (error.code === 11000) {
-      return res.status(200).json({ alert: 'Name is already in use' });
+      return res.status(400).json({ error: 'Name is already in use' });
     }
 
     res.status(400).json({ error: defaultErrorMsg });
