@@ -29,11 +29,15 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(isUpdateUserAction, (state, action) => {
+      if (!action.payload.user) return;
       console.log('USER MATCH', { action });
+
       state.name = action.payload.user.name;
       state.anonymous = action.payload.user.anonymous;
     });
     builder.addMatcher(isSignInAction, (state, action) => {
+			if(!action.payload.user) return
+			
       console.log('SIGN IN MATCH');
       state.isSignedIn = true;
     });

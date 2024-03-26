@@ -31,8 +31,8 @@ export const userExtendedApi = api.injectEndpoints({
 
         try {
           const { data } = await queryFulfilled;
-          console.log('CHECK SESSION DATA', { data });
           if (!data.user) return;
+          console.log('CHECK SESSION DATA', { data });
 
           const { howls, scale } = getState();
           const { sound, name, anonymous, isOwner } = data.user;

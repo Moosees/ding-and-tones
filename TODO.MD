@@ -13,14 +13,12 @@
 
 ### User and userSlice
 
-* handle checkSession when there is no session
 * handle updateSound when signing in or checking session
 * consistent code, data is sorted front and back end (signInWithGoogle, updateUserSound)
-* userSlice prevents queries from fulfilling? working?
 
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in
-* sign in cross origin warning?
+* sign in cross origin warning? (cause: unsupported browser fix?)
 * default data when no session is active - working?
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
@@ -28,6 +26,7 @@
 
 ### Other
 
+* userSlice prevents queries from fulfilling? working? might come back?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * hook for using howls? (or delete useHowls.js)
 * Split howls loading status into loaded and error (and error msg)?
