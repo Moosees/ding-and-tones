@@ -14,15 +14,14 @@
 ### User and userSlice
 
 * handle updateSound when signing in or checking session
-* consistent code, data is sorted front and back end (signInWithGoogle, updateUserSound)
-
+* set accountOpen if new user is created
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in
 * sign in cross origin warning? (cause: unsupported browser fix?)
 * default data when no session is active - working?
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
-* isSignedIn derived from username?
+* isSignedIn derived from username instead of extra key in redux?
 
 ### Other
 

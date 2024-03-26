@@ -21,11 +21,12 @@ exports.checkSession = async (req, res) => {
     const isOwner = songs.includes(req.body.songId);
 
     res.status(200).json({
+      sound,
+      song: { isOwner },
       user: {
         anonymous,
         isOwner,
         name,
-        sound,
       },
     });
   } catch (error) {
@@ -53,8 +54,10 @@ exports.updateUserSound = async (req, res) => {
 
     res.status(200).json({
       alert: 'Sound setup saved',
-      audioOption: user.sound.audioOption,
-      volume: user.sound.volume,
+      // sound: {
+      //   audioOption: user.sound.audioOption,
+      //   volume: user.sound.volume,
+      // },
     });
   } catch (error) {
     res.status(400).json({ error: defaultErrorMsg });
@@ -89,10 +92,10 @@ exports.updateUserInfo = async (req, res) => {
     console.log('Save user info success', { user });
     res.status(200).json({
       alert: 'Account info updated',
-      user: {
-        anonymous: user.anonymous,
-        name: user.name,
-      },
+      // user: {
+      //   anonymous: user.anonymous,
+      //   name: user.name,
+      // },
     });
   } catch (error) {
     console.log('Save user info error', { error });
@@ -143,11 +146,15 @@ exports.signInWithGoogle = async (req, res) => {
     req.session.cookie.maxAge = sessionTtl;
 
     res.status(200).json({
-      anonymous: user.anonymous,
-      isOwner,
-      name: user.name,
       newUser,
       sound: user.sound,
+      song: {
+        isOwner,
+      },
+      user: {
+        anonymous: user.anonymous,
+        name: user.name,
+      },
     });
   } catch (error) {
     res.status(400).json({ error: defaultErrorMsg });

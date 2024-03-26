@@ -31,11 +31,11 @@ export const userExtendedApi = api.injectEndpoints({
 
         try {
           const { data } = await queryFulfilled;
-          if (!data.user) return;
+          if (!data.user || !data.sound || !data.song) return;
           console.log('CHECK SESSION DATA', { data });
 
           const { howls, scale } = getState();
-          const { sound, name, anonymous, isOwner } = data.user;
+          const { sound, user, song } = data.user;
 
           const audioSrc = getAudioSrc(sound.audioOption);
 
@@ -44,19 +44,15 @@ export const userExtendedApi = api.injectEndpoints({
           // dispatch(
           //   signIn({
           //     alert: `Welcome back, ${name}`,
+          //       accountOpen: false,
           //     howls: {
           //       info: {
           //         audioSrc: getAudioSrc(sound.audioOption),
           //         volume: sound.volume,
           //       },
           //     },
-          //     song: { isOwner },
-          //     user: {
-          //       name,
-          //       anonymous: anonymous,
-          //       isSignedIn: true,
-          //       accountOpen: false,
-          //     },
+          //     song: { isOwner: song.isOwner },
+          //     user
           //   })
           // );
 
@@ -110,7 +106,7 @@ export const userExtendedApi = api.injectEndpoints({
       ) {
         try {
           const { data } = await queryFulfilled;
-          const { sound, name, anonymous, newUser, isOwner } = data;
+          const { sound, newUser, user, song } = data;
           const { howls, scale } = getState();
 
           const audioSrc = getAudioSrc(sound.audioOption);
@@ -118,13 +114,9 @@ export const userExtendedApi = api.injectEndpoints({
           // dispatch(
           //   signIn({
           //     alert: 'Signed in successfully!',
-          //     song: { isOwner },
-          //     user: {
-          //       name,
-          //       anonymous: anonymous,
-          //       isSignedIn: true,
-          //       accountOpen: newUser,
-          //     },
+          //     song: { isOwner: song.isOwner },
+          //     accountOpen: newUser,
+          //     user
           //   })
           // );
 
