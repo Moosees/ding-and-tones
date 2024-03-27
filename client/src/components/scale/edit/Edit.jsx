@@ -1,9 +1,5 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  toggleExtraNotes,
-  toggleExtraPosEdit,
-} from '../../../redux/ui/ui.actions';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Move from '../move/Move';
@@ -11,21 +7,27 @@ import Notes from '../notes/Notes';
 import { EditContainer, EditContent, TextLabel } from './edit.styles';
 
 const Edit = () => {
-  const dispatch = useDispatch();
   const extra = useSelector(({ scale }) => scale.notes.extra);
-  const isAddingExtraNotes = useSelector(({ ui }) => ui.isAddingExtraNotes);
-  const isEditingExtraPos = useSelector(({ ui }) => ui.isEditingExtraPos);
+
+  const [isAddingExtraNotes, setIsAddingExtraNotes] = useState(false);
+  const [isEditingExtraPos, setIsEditingExtraPos] = useState(false);
 
   return (
     <EditContainer>
-      <EditContent>{isEditingExtraPos ? <Move /> : <Notes />}</EditContent>
+      <EditContent>
+        {isEditingExtraPos ? (
+          <Move />
+        ) : (
+          <Notes isAddingExtraNotes={isAddingExtraNotes} />
+        )}
+      </EditContent>
       <Buttons>
         <Checkbox
           asBtn
           light
           label="Add"
           checked={isAddingExtraNotes}
-          onChange={() => dispatch(toggleExtraNotes())}
+          onChange={() => setIsAddingExtraNotes((isAdding) => !isAdding)}
         />
         <Checkbox
           asBtn
@@ -33,7 +35,7 @@ const Edit = () => {
           label="Move"
           disabled={!extra.length}
           checked={isEditingExtraPos}
-          onChange={() => dispatch(toggleExtraPosEdit())}
+          onChange={() => setIsEditingExtraPos((isEditing) => !isEditing)}
         />
       </Buttons>
       <TextLabel>Extra/Bottom Notes</TextLabel>

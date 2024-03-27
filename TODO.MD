@@ -11,7 +11,7 @@
 * consistent response data format from backend (alert and other data separate)
 * update backend routes where needed
 
-### User and userSlice
+### user api and slice
 
 * handle updateSound when signing in or checking session
 * set accountOpen if new user is created
@@ -22,6 +22,10 @@
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
 * isSignedIn derived from username instead of extra key in redux?
+
+### ui slice
+
+* turn off isAddingExtraNotes and isEditingExtraPos when creating new scale, loading scale or song (setState) or fetching scale or song
 
 ### Other
 

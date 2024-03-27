@@ -15,8 +15,6 @@ const INITIAL_STATE = {
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
-  isAddingExtraNotes: false,
-  isEditingExtraPos: false,
   isEditingSong: true,
   isSongPlaying: false,
   multiSelect: false,
@@ -68,18 +66,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         mutedBars: {},
       };
 
-    case uiTypes.TOGGLE_EXTRA_POS_EDIT:
-      return {
-        ...state,
-        isEditingExtraPos: !state.isEditingExtraPos,
-      };
-
-    case uiTypes.TOGGLE_EXTRA_NOTES:
-      return {
-        ...state,
-        isAddingExtraNotes: !state.isAddingExtraNotes,
-      };
-
     case uiTypes.TOGGLE_HEADERS_OPEN:
       return {
         ...state,
@@ -112,8 +98,8 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case scaleTypes.NEW_SCALE:
       return {
         ...state,
-        isAddingExtraNotes: false,
-        isEditingExtraPos: false,
+        // isAddingExtraNotes: false,
+        // isEditingExtraPos: false,
       };
 
     case songTypes.ADD_NEW_BAR:
@@ -139,8 +125,8 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
-        isAddingExtraNotes: false,
-        isEditingExtraPos: false,
+        // isAddingExtraNotes: false,
+        // isEditingExtraPos: false,
         isEditingSong: false,
         mutedBars: {},
       };
@@ -150,8 +136,8 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
-        isAddingExtraNotes: false,
-        isEditingExtraPos: false,
+        // isAddingExtraNotes: false,
+        // isEditingExtraPos: false,
         isEditingSong: true,
         mutedBars: {},
       };

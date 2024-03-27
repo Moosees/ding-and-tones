@@ -12,64 +12,67 @@ import {
   transposeNotesToDestination,
 } from './scale.utils';
 
-export const addNoteToScale = (newNote) => (dispatch, getState) => {
-  const {
-    scale: { info, notes },
-    ui: { isAddingExtraNotes },
-  } = getState();
+export const addNoteToScale =
+  (newNote, isAddingExtraNotes) => (dispatch, getState) => {
+    const {
+      scale: { info, notes },
+    } = getState();
 
-  const payload = {
-    notes: {},
-    parsed: {},
-    info: {},
+    const payload = {
+      notes: {},
+      parsed: {},
+      info: {},
+    };
+
+    if (isAddingExtraNotes) {
+      const newExtraSorted = sortScaleByFreq([
+        ...notes.extra.map(({ note }) => note),
+        newNote,
+      ]);
+
+      const newExtraWithPos = addExtraNotesPos(newExtraSorted);
+
+      payload.notes.extra = newExtraWithPos;
+    }
+
+    if (!isAddingExtraNotes) {
+      const newInnerSorted = sortScaleByFreq([
+        ...notes.dings,
+        ...notes.round,
+        newNote,
+      ]);
+
+      const newPositions = createPositionMap(
+        info.layout,
+        newInnerSorted.length
+      );
+
+      payload.notes.dings = [newInnerSorted[0]];
+      payload.notes.round = newInnerSorted.slice(1);
+      payload.parsed.positions = newPositions;
+    }
+
+    const tempNotes = {
+      dings: payload.notes.dings || notes.dings,
+      round: payload.notes.round || notes.round,
+      extra: payload.notes.extra || notes.extra,
+    };
+
+    const { rootInfo, pitched } = createFullScaleFromNames(
+      tempNotes,
+      info.sharpNotes
+    );
+
+    payload.info = rootInfo;
+    payload.parsed.pitched = pitched;
+
+    payload.info.label = createScaleLabel(tempNotes, info.sharpNotes);
+
+    dispatch({
+      type: scaleTypes.UPDATE_SCALE,
+      payload,
+    });
   };
-
-  if (isAddingExtraNotes) {
-    const newExtraSorted = sortScaleByFreq([
-      ...notes.extra.map(({ note }) => note),
-      newNote,
-    ]);
-
-    const newExtraWithPos = addExtraNotesPos(newExtraSorted);
-
-    payload.notes.extra = newExtraWithPos;
-  }
-
-  if (!isAddingExtraNotes) {
-    const newInnerSorted = sortScaleByFreq([
-      ...notes.dings,
-      ...notes.round,
-      newNote,
-    ]);
-
-    const newPositions = createPositionMap(info.layout, newInnerSorted.length);
-
-    payload.notes.dings = [newInnerSorted[0]];
-    payload.notes.round = newInnerSorted.slice(1);
-    payload.parsed.positions = newPositions;
-  }
-
-  const tempNotes = {
-    dings: payload.notes.dings || notes.dings,
-    round: payload.notes.round || notes.round,
-    extra: payload.notes.extra || notes.extra,
-  };
-
-  const { rootInfo, pitched } = createFullScaleFromNames(
-    tempNotes,
-    info.sharpNotes
-  );
-
-  payload.info = rootInfo;
-  payload.parsed.pitched = pitched;
-
-  payload.info.label = createScaleLabel(tempNotes, info.sharpNotes);
-
-  dispatch({
-    type: scaleTypes.UPDATE_SCALE,
-    payload,
-  });
-};
 
 export const deleteScaleById = (scaleId) => (dispatch) => {
   dispatch({ type: scaleTypes.DELETE_STARTED });

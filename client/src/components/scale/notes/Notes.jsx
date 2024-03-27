@@ -16,22 +16,22 @@ import Buttons from '../../shared/button/Buttons';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { Note, NotesList, TextLabel } from './notes.styles';
 
-const Notes = () => {
+const Notes = ({ isAddingExtraNotes }) => {
   const dispatch = useDispatch();
-  const { sharpNotes, extra, round, scale, isAddingExtraNotes, isSongPlaying } =
-    useSelector(({ scale, ui }) => ({
+  const { sharpNotes, extra, round, scale, isSongPlaying } = useSelector(
+    ({ scale, ui }) => ({
       sharpNotes: scale.info.sharpNotes,
       extra: scale.notes.extra,
       round: scale.notes.round,
       scale: scale.parsed.pitched,
-      isAddingExtraNotes: ui.isAddingExtraNotes,
       isSongPlaying: ui.isSongPlaying,
-    }));
+    })
+  );
 
   const handleAdd = (note) => {
     if (isSongPlaying) return;
 
-    dispatch(addNoteToScale(note));
+    dispatch(addNoteToScale(note, isAddingExtraNotes));
   };
 
   const handleRemove = (note) => {

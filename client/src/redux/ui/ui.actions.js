@@ -44,14 +44,6 @@ export const toggleMultiSelect = () => ({
   type: uiTypes.TOGGLE_MULTI_SELECT,
 });
 
-export const toggleExtraNotes = () => ({
-  type: uiTypes.TOGGLE_EXTRA_NOTES,
-});
-
-export const toggleExtraPosEdit = () => ({
-  type: uiTypes.TOGGLE_EXTRA_POS_EDIT,
-});
-
 export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
   const {
     song: { arrangement },
