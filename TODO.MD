@@ -25,8 +25,6 @@
 
 ### ui slice
 
-* turn off isAddingExtraNotes and isEditingExtraPos when creating new scale, loading scale or song (setState) or fetching scale or song
-
 ### Other
 
 * userSlice prevents queries from fulfilling? working? might come back?
@@ -39,6 +37,7 @@
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * move howls logic to assets? future app structure refactor (features? views?)
 * fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only?
+* disable move notes when there's no extra notes? (if so: reset when loading a new scale)
 
 * Clean up comments and unused code
 

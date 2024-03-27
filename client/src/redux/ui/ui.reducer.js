@@ -1,5 +1,4 @@
 import howlsTypes from '../howls/howls.types';
-import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
@@ -93,15 +92,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case howlsTypes.SELECT_AUDIO:
       return { ...state, isSongPlaying: false };
 
-    case scaleTypes.FETCH_SUCCESSFUL:
-    case scaleTypes.LOAD_SCALE:
-    case scaleTypes.NEW_SCALE:
-      return {
-        ...state,
-        // isAddingExtraNotes: false,
-        // isEditingExtraPos: false,
-      };
-
     case songTypes.ADD_NEW_BAR:
     case songTypes.DUPLICATE_BAR:
     case songTypes.MOVE_BAR:
@@ -125,8 +115,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
-        // isAddingExtraNotes: false,
-        // isEditingExtraPos: false,
         isEditingSong: false,
         mutedBars: {},
       };
@@ -136,8 +124,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
-        // isAddingExtraNotes: false,
-        // isEditingExtraPos: false,
         isEditingSong: true,
         mutedBars: {},
       };
