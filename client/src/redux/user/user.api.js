@@ -35,24 +35,14 @@ export const userExtendedApi = api.injectEndpoints({
           console.log('CHECK SESSION DATA', { data });
 
           const { howls, scale } = getState();
-          const { sound, user, song } = data.user;
-
-          const audioSrc = getAudioSrc(sound.audioOption);
+          const { sound } = data;
 
           Howler.volume(sound.volume);
 
           // dispatch(
           //   signIn({
-          //     alert: `Welcome back, ${name}`,
           //       accountOpen: false,
-          //     howls: {
-          //       info: {
-          //         audioSrc: getAudioSrc(sound.audioOption),
-          //         volume: sound.volume,
-          //       },
-          //     },
-          //     song: { isOwner: song.isOwner },
-          //     user
+          //     song: { isOwner: song.isOwner }
           //   })
           // );
 
@@ -67,7 +57,7 @@ export const userExtendedApi = api.injectEndpoints({
             dispatch({
               type: howlsTypes.SELECT_AUDIO,
               payload: {
-                audioSrc,
+                audioSrc: getAudioSrc(sound.audioOption),
                 scale: scale.parsed.pitched,
               },
             });

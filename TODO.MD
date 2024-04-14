@@ -13,8 +13,8 @@
 
 ### user api and slice
 
-* handle updateSound when signing in or checking session
-* set accountOpen if new user is created
+* handle sound and volume when signing in
+* set accountOpen if new user is created, false if not
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in
 * sign in cross origin warning? (cause: unsupported browser fix?)

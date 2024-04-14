@@ -21,6 +21,7 @@ exports.checkSession = async (req, res) => {
     const isOwner = songs.includes(req.body.songId);
 
     res.status(200).json({
+      alert: `Welcome back, ${name}`,
       sound,
       song: { isOwner },
       user: {
