@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 };
 
 const userSlice = createSlice({
-  name: 'userSlice',
+  name: 'user',
   initialState: INITIAL_STATE,
   reducers: {
     setSessionTried(state) {
