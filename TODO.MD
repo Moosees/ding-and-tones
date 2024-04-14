@@ -13,13 +13,14 @@
 
 ### user api and slice
 
-* handle sound and volume when signing in
-* set accountOpen if new user is created, false if not
+* store audioOption in howls state (instead of audioSrc?) and use when signing in or checking session
+* set accountOpen if new user is created, false if not - use status code to determine
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in
 * sign in cross origin warning? (cause: unsupported browser fix?)
 * default data when no session is active - working?
 * user sound popup - info about saving settings to account?
+* user sound popup - only reload howls when closing popup?
 * PopupAccount only close if mutation is successful?
 * isSignedIn derived from username instead of extra key in redux?
 

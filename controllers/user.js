@@ -146,8 +146,8 @@ exports.signInWithGoogle = async (req, res) => {
     const sessionTtl = persistSession ? day * 30 : day;
     req.session.cookie.maxAge = sessionTtl;
 
-    res.status(200).json({
-      newUser,
+    res.status(newUser ? 201 : 200).json({
+      alert: 'Signed in successfully!',
       sound: user.sound,
       song: {
         isOwner,

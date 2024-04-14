@@ -95,18 +95,16 @@ export const userExtendedApi = api.injectEndpoints({
         { dispatch, queryFulfilled, getState }
       ) {
         try {
-          const { data } = await queryFulfilled;
-          const { sound, newUser, user, song } = data;
+          const { data, meta } = await queryFulfilled;
+          const { status } = meta.response;
+          const { sound } = data;
           const { howls, scale } = getState();
-
-          const audioSrc = getAudioSrc(sound.audioOption);
+          console.log('SIGN IN', { status, data });
 
           // dispatch(
           //   signIn({
-          //     alert: 'Signed in successfully!',
           //     song: { isOwner: song.isOwner },
-          //     accountOpen: newUser,
-          //     user
+          //     accountOpen: code === 201,
           //   })
           // );
 
@@ -117,11 +115,12 @@ export const userExtendedApi = api.injectEndpoints({
             });
           }
 
+          console.log(howls.info.audioSrc, sound.audioOption);
           if (getAudioOption(howls.info.audioSrc) !== sound.audioOption) {
             dispatch({
               type: howlsTypes.SELECT_AUDIO,
               payload: {
-                audioSrc,
+                audioSrc: getAudioSrc(sound.audioOption),
                 scale: scale.parsed.pitched,
               },
             });
