@@ -1,17 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { audioSources } from '../../../assets/sound/audioOptions';
-import { selectAudioSrc } from '../../../redux/howls/howls.actions';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 import VolumeSlider from './VolumeSlider';
 import { AudioOption, Credits } from './sound.styles';
 
-const PopupSound = ({ onClose }) => {
-  const dispatch = useDispatch();
-  const audioOption = useSelector(({ howls }) => howls.audioSrc.option);
-
+const PopupSound = ({ onClose, newOption, setNewOption }) => {
   return (
     <Popup header="Sound" onClose={onClose}>
       <Popup.SubHeading>Volume</Popup.SubHeading>
@@ -22,8 +17,8 @@ const PopupSound = ({ onClose }) => {
       {audioSources.map(({ option, label }) => (
         <AudioOption
           key={option}
-          onClick={() => dispatch(selectAudioSrc(option))}
-          $isSelected={option === audioOption}
+          onClick={() => setNewOption(option)}
+          $isSelected={option === newOption}
         >
           {label}
         </AudioOption>

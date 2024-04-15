@@ -19,7 +19,6 @@
 * sign in cross origin warning? (cause: unsupported browser fix?)
 * default data when no session is active - working?
 * user sound popup - info about saving settings to account?
-* user sound popup - only reload howls when closing popup?
 * PopupAccount only close if mutation is successful?
 * isSignedIn derived from username instead of extra key in redux?
 
