@@ -13,7 +13,6 @@
 
 ### user api and slice
 
-* store audioOption in howls state (instead of audioSrc?) and use when signing in or checking session
 * set accountOpen if new user is created, false if not - use status code to determine
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in

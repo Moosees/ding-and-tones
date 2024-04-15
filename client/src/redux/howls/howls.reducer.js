@@ -6,18 +6,15 @@ import howlsTypes from './howls.types';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 
 const INITIAL_STATE = {
-  status: {},
-  info: {
-    audioSrc: audioSources[0],
-  },
-  audioOption: 0,
+  audioSrc: audioSources[0],
   isSaving: false,
+  status: {},
 };
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case howlsTypes.SELECT_AUDIO: {
-      if (state.info.audioSrc.path === payload.audioSrc.path) {
+      if (state.audioSrc.option === payload.audioSrc.option) {
         return state;
       }
 
@@ -28,7 +25,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         status,
-        info: { ...state.info, audioSrc: payload.audioSrc },
+        audioSrc: payload.audioSrc,
       };
     }
 
@@ -50,7 +47,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
     case scaleTypes.NEW_SCALE: {
       console.log(type);
-      const status = updateHowls(state.status, state.info.audioSrc.path, [
+      const status = updateHowls(state.status, state.audioSrc.path, [
         { note: 'A3' },
       ]);
       console.log({ status });
@@ -64,7 +61,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       console.log(type, payload.parsed.pitched);
       const status = updateHowls(
         state.status,
-        state.info.audioSrc.path,
+        state.audioSrc.path,
         payload.parsed.pitched
       );
       console.log({ status });
@@ -78,7 +75,7 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       const status = updateHowls(
         state.status,
-        state.info.audioSrc.path,
+        state.audioSrc.path,
         payload.song.scale.parsed.pitched
       );
       console.log({ status });

@@ -1,5 +1,5 @@
 import { Howler } from 'howler';
-import { getAudioOption, getAudioSrc } from '../../assets/sound/audioOptions';
+import { getAudioSrc } from '../../assets/sound/audioOptions';
 import { api } from '../api/api.slice';
 import howlsTypes from '../howls/howls.types';
 import { setSessionTried, signOut } from './user.slice';
@@ -53,7 +53,8 @@ export const userExtendedApi = api.injectEndpoints({
             });
           }
 
-          if (getAudioOption(howls.info.audioSrc) !== sound.audioOption) {
+          console.log(howls.audioSrc.option, sound.audioOption);
+          if (howls.audioSrc.option !== sound.audioOption) {
             dispatch({
               type: howlsTypes.SELECT_AUDIO,
               payload: {
@@ -115,8 +116,8 @@ export const userExtendedApi = api.injectEndpoints({
             });
           }
 
-          console.log(howls.info.audioSrc, sound.audioOption);
-          if (getAudioOption(howls.info.audioSrc) !== sound.audioOption) {
+          console.log(howls.audioSrc.option, sound.audioOption);
+          if (howls.audioSrc.option !== sound.audioOption) {
             dispatch({
               type: howlsTypes.SELECT_AUDIO,
               payload: {

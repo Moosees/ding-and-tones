@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getAudioOption } from '../../../assets/sound/audioOptions';
 import { useSaveUserSoundMutation } from '../../../redux/user/user.api';
 import BtnMenu from '../../shared/button/BtnMenu';
 import PopupSound from './PopupSound';
 
 const Sound = () => {
-  const audioSrc = useSelector(({ howls }) => howls.info.audioSrc);
+  const audioOption = useSelector(({ howls }) => howls.audioSrc.option);
   const volume = useSelector(({ howls }) => howls.volume);
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const [saveUserSound] = useSaveUserSoundMutation();
 
   const [soundOpen, setSoundOpen] = useState(false);
-  const [oldSound, setOldSound] = useState({ audioSrc: null, volume: null });
+  const [oldSound, setOldSound] = useState({ audioOption: null, volume: null });
 
   const handleOpen = () => {
-    setOldSound({ audioSrc, volume });
+    setOldSound({ audioOption, volume });
     setSoundOpen(true);
   };
 
@@ -24,12 +23,12 @@ const Sound = () => {
 
     if (
       !isSignedIn ||
-      (oldSound.volume === volume && oldSound.audioSrc === audioSrc)
+      (oldSound.volume === volume && oldSound.audioOption === audioOption)
     ) {
       return;
     }
 
-    saveUserSound({ audioOption: getAudioOption(audioSrc), volume });
+    saveUserSound({ audioOption, volume });
   };
 
   return (
