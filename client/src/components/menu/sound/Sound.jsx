@@ -7,7 +7,7 @@ import PopupSound from './PopupSound';
 
 const Sound = () => {
   const audioSrc = useSelector(({ howls }) => howls.info.audioSrc);
-  const volume = useSelector(({ howls }) => howls.info.volume);
+  const volume = useSelector(({ howls }) => howls.volume);
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const [saveUserSound] = useSaveUserSoundMutation();
 

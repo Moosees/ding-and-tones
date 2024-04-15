@@ -46,7 +46,7 @@ export const userExtendedApi = api.injectEndpoints({
           //   })
           // );
 
-          if (howls.info.volume !== sound.volume) {
+          if (howls.volume !== sound.volume) {
             dispatch({
               type: howlsTypes.SET_VOLUME,
               payload: { newVolume: sound.volume },
@@ -108,7 +108,7 @@ export const userExtendedApi = api.injectEndpoints({
           //   })
           // );
 
-          if (howls.info.volume !== sound.volume) {
+          if (howls.volume !== sound.volume) {
             dispatch({
               type: howlsTypes.SET_VOLUME,
               payload: { newVolume: sound.volume },
