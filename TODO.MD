@@ -11,9 +11,21 @@
 * consistent response data format from backend (alert and other data separate)
 * update backend routes where needed
 
-### user api and slice
+### ui slice
 
-* set accountOpen if new user is created, false if not - use status code to determine
+* add autoMoveOrder extra reducer
+* add currentDropdown extra reducer
+* add mutedBars extra reducer
+* add isEditingSong extra reducer
+* add handsOpen extra reducer
+* add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
+* switch from old reducer to slice and update all action dispatches
+* Rework and simplify logic for setCurrentlyPlaying?
+* Clean up UI state and reduce number of actions (also for other reducers?)
+* set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
+
+### user slice
+
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in
 * sign in cross origin warning? (cause: unsupported browser fix?)
@@ -22,20 +34,15 @@
 * PopupAccount only close if mutation is successful?
 * isSignedIn derived from username instead of extra key in redux?
 
-### ui slice
-
 ### Other
 
-* userSlice prevents queries from fulfilling? working? might come back?
 * Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 * hook for using howls? (or delete useHowls.js)
 * Split howls loading status into loaded and error (and error msg)?
 * Refactor scale.utils (redux)?
-* Rework and simplify logic for setCurrentlyPlaying
-* Clean up UI state and reduce number of actions (also for other reducers?)
 * Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 * move howls logic to assets? future app structure refactor (features? views?)
-* fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only?
+* fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
 * disable move notes when there's no extra notes? (if so: reset when loading a new scale)
 
 * Clean up comments and unused code
