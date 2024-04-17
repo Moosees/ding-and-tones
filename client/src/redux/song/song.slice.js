@@ -11,15 +11,21 @@ const INITIAL_STATE = {
     subdivision: 8,
     title: '',
   },
-  ui: {
+  refs: {
     composer: null,
-    isDeleting: false,
-    isFetching: false,
-    isSaving: false,
-    isOwner: false,
     isPrivate: false,
     songId: null,
     scaleId: null,
+  },
+  ui: {
+    autoMove: false,
+    autoMoveOrder: {},
+    currentDropdown: null,
+    isEditingSong: true,
+    isSongPlaying: false,
+    isOwner: false,
+    multiSelect: false,
+    mutedBars: {},
     scaleName: '',
     scaleLabel: '',
   },
@@ -29,6 +35,11 @@ const songSlice = createSlice({
   name: 'song',
   initialState: INITIAL_STATE,
   reducers: {
+    startSongPlayback(state) {},
+    stopSongPlayback(state) {},
+    setCurrentDropdown(state, { payload }) {
+      state.ui.currentDropdown = payload.beatId;
+    },
     addNewBar(state, { payload }) {},
     deleteBar(state, { payload }) {},
     duplicateBar(state, { payload }) {},
@@ -43,9 +54,10 @@ const songSlice = createSlice({
     updateHand(state, { payload }) {},
     updateSongInfo(state, { payload }) {},
     updateSongUi(state, { payload }) {},
-    togglePrivateSong(state, { payload }) {
-      // matcher for endpoint fulfilled instead?
-    },
+    toggleAutoMove(state) {}, // updateSongUi?
+    toggleEditSong(state) {}, // updateSongUi?
+    toggleMultiSelect(state) {}, // updateSongUi?
+    togglePrivateSong(state) {}, // matcher for endpoint fulfilled instead?
   },
 });
 

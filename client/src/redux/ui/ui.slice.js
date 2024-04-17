@@ -1,31 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
-  autoMove: false,
-  autoMoveOrder: {},
   currentBar: null,
   currentBeat: null,
-  currentDropdown: null,
   currentHand: 1,
   currentSound: [],
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
-  isEditingSong: true,
-  isSongPlaying: false,
-  multiSelect: false,
-  mutedBars: {},
   privacyOpen: false,
 };
 
 const validKeys = [
-  'autoMove',
   'countOpen',
   'handsOpen',
   'headersOpen',
-  'isEditingSong',
-  'isSongPlaying',
-  'multiSelect',
   'privacyOpen',
 ];
 
@@ -33,9 +22,6 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState: INITIAL_STATE,
   reducers: {
-    setCurrentDropdown(state, { payload }) {
-      state.currentDropdown = payload.beatId;
-    },
     setCurrentlyPlaying(state, { payload }) {
       console.log('setCurrentlyPlaying', payload);
       const { currentBar, currentBeat, currentHand, currentSound } = payload;

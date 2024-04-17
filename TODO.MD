@@ -11,17 +11,19 @@
 * consistent response data format from backend (alert and other data separate)
 * update backend routes where needed
 
+### song slice
+
+* switch from old reducer to slice and update all action dispatches
+* transfer logic from ui reducer - autoMove(order), currentDropdown, mutedBars, isEditingSong, isSongPlaying, multiSelect
+* Rework and simplify logic for setCurrentlyPlaying?
+* add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
+
 ### ui slice
 
-* add autoMoveOrder extra reducer
-* add currentDropdown extra reducer
-* add mutedBars extra reducer
-* add isEditingSong extra reducer
-* add handsOpen extra reducer
-* add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * switch from old reducer to slice and update all action dispatches
-* Rework and simplify logic for setCurrentlyPlaying?
-* Clean up UI state and reduce number of actions (also for other reducers?)
+* move actions to other reducers where possible - done?
+* add handsOpen extra reducer (turn on hands when adding hands to a beat)
+* Clean up UI state and reduce number of actions (also for other reducers?) - better solution than validKeys?
 * set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
 
 ### user slice
