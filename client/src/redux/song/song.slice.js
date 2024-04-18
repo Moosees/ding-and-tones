@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { createAutoMoveOrder } from './song.utils';
 
 const INITIAL_STATE = {
   arrangement: [],
+  autoMoveOrder: {},
   bars: {},
   beats: {},
   info: {
@@ -11,6 +13,7 @@ const INITIAL_STATE = {
     subdivision: 8,
     title: '',
   },
+  mutedBars: {},
   refs: {
     composer: null,
     isPrivate: false,
@@ -19,13 +22,11 @@ const INITIAL_STATE = {
   },
   ui: {
     autoMove: false,
-    autoMoveOrder: {},
     currentDropdown: null,
     isEditingSong: true,
     isSongPlaying: false,
     isOwner: false,
     multiSelect: false,
-    mutedBars: {},
     scaleName: '',
     scaleLabel: '',
   },
@@ -38,9 +39,17 @@ const songSlice = createSlice({
     startSongPlayback(state) {},
     stopSongPlayback(state) {},
     setCurrentDropdown(state, { payload }) {
+      // logic for closing dropdown?
       state.ui.currentDropdown = payload.beatId;
     },
-    addNewBar(state, { payload }) {},
+    addNewBar(state, { payload }) {
+      console.log('addNewBarReducer', { payload });
+      const { bar, beats } = payload;
+      state.arrangement.push(bar.barId);
+      state.bars[bar.barId] = bar;
+      Object.assign(state.beats, beats);
+      // state.autoMoveOrder = createAutoMoveOrder() // needs fixing
+    },
     deleteBar(state, { payload }) {},
     duplicateBar(state, { payload }) {},
     moveBar(state, { payload }) {},
