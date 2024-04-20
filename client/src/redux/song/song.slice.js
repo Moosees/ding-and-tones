@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAutoMoveOrder } from './song.utils';
+import { filterState } from '../store.utils';
 
 const INITIAL_STATE = {
   arrangement: [],
@@ -50,7 +51,19 @@ const songSlice = createSlice({
       Object.assign(state.beats, beats);
       // state.autoMoveOrder = createAutoMoveOrder() // needs fixing
     },
-    deleteBar(state, { payload }) {},
+    deleteBar(state, { payload }) {
+      const beatsToDelete = [...state.bars[payload.barId].measure];
+      state.arrangement = state.arrangement.filter(
+        (barId) => barId !== payload.barId
+      );
+      delete state.bars[payload.barId];
+      state.beats = filterState(state.beats, beatsToDelete, true);
+      state.autoMoveOrder = createAutoMoveOrder(
+        { arrangement: state.arrangement, bars: state.bars },
+        null,
+        payload.barId
+      ); // needs fixing
+    },
     duplicateBar(state, { payload }) {},
     moveBar(state, { payload }) {},
     loadSong(state, { payload }) {
