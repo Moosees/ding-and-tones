@@ -40,24 +40,31 @@ const songSlice = createSlice({
     startSongPlayback(state) {},
     stopSongPlayback(state) {},
     setCurrentDropdown(state, { payload }) {
-      // logic for closing dropdown?
-      state.ui.currentDropdown = payload.beatId;
+      state.ui.currentDropdown =
+        state.ui.currentDropdown === payload.beatId ? null : payload.beatId;
     },
     addNewBar(state, { payload }) {
       console.log('addNewBarReducer', { payload });
       const { bar, beats } = payload;
+
       state.arrangement.push(bar.barId);
       state.bars[bar.barId] = bar;
       Object.assign(state.beats, beats);
-      // state.autoMoveOrder = createAutoMoveOrder() // needs fixing
+
+      state.autoMoveOrder = createAutoMoveOrder(
+        { arrangement: state.arrangement, bars: state.bars },
+        bar.measure
+      );
     },
     deleteBar(state, { payload }) {
       const beatsToDelete = [...state.bars[payload.barId].measure];
+
       state.arrangement = state.arrangement.filter(
         (barId) => barId !== payload.barId
       );
       delete state.bars[payload.barId];
       state.beats = filterState(state.beats, beatsToDelete, true);
+			
       state.autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
         null,

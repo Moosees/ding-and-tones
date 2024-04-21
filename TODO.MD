@@ -17,6 +17,7 @@
 * transfer logic from ui reducer - autoMove(order), currentDropdown, mutedBars, isEditingSong, isSongPlaying, multiSelect
 * Rework and simplify logic for setCurrentlyPlaying?
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
+* remove close dropdown logic from components where needed
 
 ### ui slice
 
