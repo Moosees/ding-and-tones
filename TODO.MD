@@ -19,6 +19,12 @@
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * remove close dropdown logic from components where needed
 
+### song api
+
+* remove isOwner and songId when removing song
+* remove song from search results if needed when deleting song
+* update alert when deleting song
+
 ### ui slice
 
 * switch from old reducer to slice and update all action dispatches
