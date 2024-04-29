@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { difficultyByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
-import { deleteSongById, getSongById } from '../../../redux/song/song.actions';
+import { deleteSongById } from '../../../redux/song/song.actions';
+import { useLazyGetSongByIdQuery } from '../../../redux/song/song.api';
 import BtnIcon from '../../shared/button/BtnIcon';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/BtnPrimary';
+import Buttons from '../../shared/button/Buttons';
 import Confirmation from '../../shared/popup/Confirmation';
 import ReactTable from './ReactTable';
 import { DeleteContainer } from './results.styles';
@@ -55,12 +56,12 @@ const Results = () => {
 
   const data = useMemo(() => [...songs], [songs]);
 
+  const [getSongById] = useLazyGetSongByIdQuery();
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
-      const fetchSongFromServer = (songId, getScale) => {
-        dispatch(getSongById(songId, getScale)).then((res) => {
-          if (res) navigate('/song');
-        });
+      const fetchSongFromServer = async (songId, getScale) => {
+        const { isSuccess } = await getSongById({ songId, getScale });
+        if (isSuccess) navigate('/song');
       };
 
       return (
@@ -102,7 +103,7 @@ const Results = () => {
         </>
       );
     },
-    [dispatch, isDeleting, isSearching, isSignedIn, navigate]
+    [dispatch, isDeleting, isSearching, isSignedIn, navigate, getSongById]
   );
 
   const handleFetchMore = useCallback(

@@ -24,6 +24,11 @@
 * remove isOwner and songId when removing song
 * remove song from search results if needed when deleting song
 * update alert when deleting song
+* update function calls/actions to delete song
+* load default song when no valid id on first load - firstLoad arg not needed?
+* change handling of songId in url?
+* update alert when fetching song
+* add alert if scale fails to load with song?
 
 ### ui slice
 
