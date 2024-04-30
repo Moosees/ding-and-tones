@@ -41,7 +41,23 @@ export const songExtendedApi = api.injectEndpoints({
         } catch (error) {}
       },
     }),
+    saveSong: builder.mutation({
+      query: ({ song }) => ({
+        url: '/song',
+        method: 'POST',
+        body: song,
+      }),
+      async onQueryStarted(_song, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch({
+            type: songTypes.SAVE_SUCCESSFUL,
+            payload: { song: data.song },
+          });
+        } catch (error) {}
+      },
+    }),
   }),
 });
 
-export const { useLazyGetSongByIdQuery } = songExtendedApi;
+export const { useLazyGetSongByIdQuery, useSaveSongMutation } = songExtendedApi;

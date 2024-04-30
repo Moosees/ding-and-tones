@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
+import { updateSongInfo } from '../../../redux/song/song.actions';
+import { useSaveSongMutation } from '../../../redux/song/song.api';
+import { parseSongForSaving } from '../../../redux/song/song.utils';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import InfoText from '../../shared/input/InfoText';
@@ -14,23 +16,14 @@ import { ControlsContainer } from './controls.styles';
 
 const ControlsLeft = () => {
   const dispatch = useDispatch();
-  const {
-    songScaleId,
-    arrangement,
-    songInfo,
-    isOwner,
-    isSaving,
-    isSongPlaying,
-    isSignedIn,
-  } = useSelector(({ scale, song, ui, user }) => ({
-    songScaleId: song.ui.scaleId,
-    arrangement: song.arrangement,
-    songInfo: song.info,
-    isOwner: song.ui.isOwner,
-    isSaving: song.ui.isSaving,
-    isSongPlaying: ui.isSongPlaying,
-    isSignedIn: user.isSignedIn,
-  }));
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const song = useSelector(({ song }) => song);
+  const [saveSong, { isLoading: isSaving }] = useSaveSongMutation();
+
+  const songInfo = song.info;
+  const arrangement = song.arrangement;
+  const { songScaleId, isOwner } = song.ui;
 
   const [newSongOpen, setNewSongOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);
@@ -48,11 +41,14 @@ const ControlsLeft = () => {
     !isTitleValid ||
     !isArrangementValid;
 
-  const saveSongCb = (scaleId, saveAs) => {
-    dispatch(saveSong({ saveAs, title, scaleId })).then((res) => {
-      setSaveSongOpen(false);
-      if (res) navigate(res, { replace: true });
-    });
+  const saveSongCb = async (scaleId, saveAs) => {
+    const parsedSong = parseSongForSaving(song, saveAs, title, scaleId);
+    const res = await saveSong({ song: parsedSong }).unwrap();
+		
+    if (!res.song?.songId) return;
+
+    setSaveSongOpen(false);
+    navigate(res.song.songId, { replace: true });
   };
 
   return (
