@@ -1,10 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { difficultyByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
-import { deleteSongById } from '../../../redux/song/song.actions';
-import { useLazyGetSongByIdQuery } from '../../../redux/song/song.api';
+import {
+  useDeleteSongByIdMutation,
+  useLazyGetSongByIdQuery,
+} from '../../../redux/song/song.api';
 import BtnIcon from '../../shared/button/BtnIcon';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
@@ -13,15 +15,12 @@ import ReactTable from './ReactTable';
 import { DeleteContainer } from './results.styles';
 
 const Results = () => {
-  const dispatch = useDispatch();
-  const { songs, isSearching, isDeleting, isSignedIn } = useSelector(
-    ({ search, song, user }) => ({
-      songs: search.songs,
-      isSearching: search.isSearching,
-      isDeleting: song.ui.isDeleting,
-      isSignedIn: user.isSignedIn,
-    })
-  );
+  const songs = useSelector(({ search }) => search.songs);
+  const isSearching = useSelector(({ search }) => search.isSearching);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const [deleteSongById, { isLoading: isDeleting }] =
+    useDeleteSongByIdMutation();
+
   const navigate = useNavigate();
 
   const columns = useMemo(
@@ -86,7 +85,7 @@ const Results = () => {
             {isOwner && isSignedIn ? (
               <DeleteContainer>
                 <Confirmation
-                  onConfirm={() => dispatch(deleteSongById(songId))}
+                  onConfirm={() => deleteSongById({ songId })}
                   label={`Are you sure you want to delete "${title}"`}
                 >
                   <BtnIcon
@@ -103,7 +102,7 @@ const Results = () => {
         </>
       );
     },
-    [dispatch, isDeleting, isSearching, isSignedIn, navigate, getSongById]
+    [isDeleting, isSearching, isSignedIn, navigate, getSongById, deleteSongById]
   );
 
   const handleFetchMore = useCallback(

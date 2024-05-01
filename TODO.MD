@@ -11,6 +11,10 @@
 * consistent response data format from backend (alert and other data separate)
 * update backend routes where needed
 
+### search api
+
+* remove song from search results when deleting song
+
 ### song slice
 
 * switch from old reducer to slice and update all action dispatches
@@ -19,16 +23,11 @@
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * remove close dropdown logic from components where needed
 
-### search api
-
-* remove song from search results if needed when deleting song
-
 ### song api
 
 * change handling of songId in url when saving or deleting?
 * remove isOwner and songId when deleting song
-* update function calls/actions to delete song
-* load default song when no valid id on first load - firstLoad arg not needed?
+* load default song when no valid id on first load - firstLoad arg not needed? editSong = false only when loading from search?
 * add alert if scale fails to load with song?
 
 ### ui slice

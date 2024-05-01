@@ -8,7 +8,7 @@ import { createAutoMoveOrder, parseFetchedSong } from './song.utils';
 export const songExtendedApi = api.injectEndpoints({
   endpoints: (builder) => ({
     deleteSongById: builder.mutation({
-      query: (songId) => ({
+      query: ({ songId }) => ({
         url: `/song/id/${songId}`,
         method: 'DELETE',
       }),
@@ -60,4 +60,8 @@ export const songExtendedApi = api.injectEndpoints({
   }),
 });
 
-export const { useLazyGetSongByIdQuery, useSaveSongMutation } = songExtendedApi;
+export const {
+  useDeleteSongByIdMutation,
+  useLazyGetSongByIdQuery,
+  useSaveSongMutation,
+} = songExtendedApi;
