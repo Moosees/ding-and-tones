@@ -199,7 +199,7 @@ exports.saveSong = async (req, res) => {
       return res.status(400).json({ error: 'Song needs at least one bar' });
     }
     if (songId && !isValidObjectId(songId)) {
-      return res.status(404).json({ error: 'Could not save song' });
+      return res.status(400).json({ error: 'Could not save song' });
     }
 
     if (!songId) {
@@ -251,7 +251,7 @@ exports.saveSong = async (req, res) => {
       scaleLabel: scale ? scale.info.label : '',
     };
 
-    res.status(200).json({ song: resData });
+    res.status(200).json({ song: resData, alert: `"${song.info.title}" saved` });
   } catch (error) {
     res.status(500).json({ error: defaultErrorMsg });
   }
@@ -276,18 +276,20 @@ exports.getSongById = async (req, res) => {
       return res.status(404).json({ error: 'Song not found' });
     }
 
-    const data = parseGetResponse(song, userId);
+    const parsedSong = parseGetResponse(song, userId);
 
-    if (data.isPrivate && !userId) {
+    if (parsedSong.isPrivate && !userId) {
       return res
         .status(401)
         .json({ error: 'Song is private, please sign in and try again' });
     }
-    if (data.isPrivate && !data.isOwner) {
+    if (parsedSong.isPrivate && !parsedSong.isOwner) {
       return res.status(403).json({ error: 'Song is private' });
     }
 
-    res.status(200).json(data);
+    res
+      .status(200)
+      .json({ song: parsedSong, alert: `"${parsedSong.info.title}" loaded` });
   } catch (error) {
     res.status(500).json({ error: defaultErrorMsg });
   }
@@ -316,7 +318,7 @@ exports.deleteSong = async (req, res) => {
       .setOptions({ new: true })
       .exec();
 
-    res.status(200).json(song);
+    res.status(200).json({ song, alert: `"${song.info.title}" deleted` });
   } catch (error) {
     res.status(500).json({ error: defaultErrorMsg });
   }

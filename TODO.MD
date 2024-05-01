@@ -19,18 +19,18 @@
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * remove close dropdown logic from components where needed
 
+### search api
+
+* remove song from search results if needed when deleting song
+
 ### song api
 
 * change handling of songId in url when saving or deleting?
 * remove isOwner and songId when deleting song
-* remove song from search results if needed when deleting song
-* update alert when deleting song
 * update function calls/actions to delete song
 * load default song when no valid id on first load - firstLoad arg not needed?
-* update alert when fetching song
 * add alert if scale fails to load with song?
 * move parseSongForSaving
-* update alert when saving song
 
 ### ui slice
 

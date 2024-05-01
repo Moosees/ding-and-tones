@@ -44,11 +44,11 @@ const ControlsLeft = () => {
   const saveSongCb = async (scaleId, saveAs) => {
     const parsedSong = parseSongForSaving(song, saveAs, title, scaleId);
     const res = await saveSong({ song: parsedSong }).unwrap();
-		
+
     if (!res.song?.songId) return;
 
     setSaveSongOpen(false);
-    navigate(res.song.songId, { replace: true });
+    navigate(`/song/${res.song.songId}`, { replace: true });
   };
 
   return (

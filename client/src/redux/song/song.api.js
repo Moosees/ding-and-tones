@@ -25,10 +25,10 @@ export const songExtendedApi = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           console.log('GET SONG BY ID DATA', { data });
-          const fetchedSong = parseFetchedSong(data, getScale);
-          const autoMoveOrder = createAutoMoveOrder(fetchedSong);
+          const parsedSong = parseFetchedSong(data.song, getScale);
+          const autoMoveOrder = createAutoMoveOrder(parsedSong);
 
-          if (firstLoad && !fetchedSong.getScale)
+          if (firstLoad && !parsedSong.getScale)
             dispatch({
               type: scaleTypes.LOAD_SCALE,
               payload: parseScaleData(defaultScale, true),
@@ -36,7 +36,7 @@ export const songExtendedApi = api.injectEndpoints({
 
           dispatch({
             type: songTypes.FETCH_SUCCESSFUL,
-            payload: { song: fetchedSong, ui: { autoMoveOrder } },
+            payload: { song: parsedSong, ui: { autoMoveOrder } },
           });
         } catch (error) {}
       },

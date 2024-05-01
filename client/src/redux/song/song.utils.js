@@ -69,14 +69,15 @@ export const parseSongForSaving = (song, saveAs, title, scaleId) => {
     info,
     ui: { isOwner, isPrivate, songId },
   } = song;
+  console.log({ song, title });
   const parsedBars = parseBarsForSaving(arrangement, bars, beats);
   const parsedBeats = parseBeatsForSaving(arrangement, bars, beats);
   const songUpdate = {
-    arrangement,
+    arrangement: [...arrangement],
     bars: parsedBars,
     beats: parsedBeats,
     scale: scaleId,
-    info,
+    info: { ...info },
     isPrivate,
   };
   if (title) songUpdate.info.title = title;
