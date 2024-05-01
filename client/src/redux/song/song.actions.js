@@ -8,7 +8,6 @@ import {
   createAutoMoveOrder,
   moveBar,
   parseFetchedSong,
-  parseSongForSaving,
   updateMeasureAndBeats,
 } from './song.utils';
 
@@ -187,10 +186,10 @@ export const saveSong =
     dispatch({ type: songTypes.SAVE_STARTED });
 
     const { song } = getState();
-    const body = parseSongForSaving(song, saveAs, title, scaleId);
+    // const body = parseSongForSaving(song, saveAs, title, scaleId);
 
     return axios
-      .post('/song', body)
+      .post('/song', song)
       .then((res) => {
         if (res.status === 200) {
           if (res.data.msg) {

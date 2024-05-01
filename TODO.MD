@@ -30,7 +30,6 @@
 * update function calls/actions to delete song
 * load default song when no valid id on first load - firstLoad arg not needed?
 * add alert if scale fails to load with song?
-* move parseSongForSaving
 
 ### ui slice
 

@@ -5,7 +5,6 @@ import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
 import { updateSongInfo } from '../../../redux/song/song.actions';
 import { useSaveSongMutation } from '../../../redux/song/song.api';
-import { parseSongForSaving } from '../../../redux/song/song.utils';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import InfoText from '../../shared/input/InfoText';
@@ -13,6 +12,7 @@ import Select from '../../shared/select/Select';
 import PopupNewSong from '../popups/PopupNewSong';
 import PopupSaveSong from '../popups/PopupSaveSong';
 import { ControlsContainer } from './controls.styles';
+import { parseSongForSaving } from './controls.utils';
 
 const ControlsLeft = () => {
   const dispatch = useDispatch();
