@@ -15,6 +15,10 @@
 
 * remove song from search results when deleting song
 
+#### scale slice
+
+* have default scale but delay loading howls until after checking url? firstLoad not needed?
+
 ### song slice
 
 * switch from old reducer to slice and update all action dispatches
@@ -22,13 +26,14 @@
 * Rework and simplify logic for setCurrentlyPlaying?
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * remove close dropdown logic from components where needed
+* editSong = false only when loading from search?
 
 ### song api
 
 * change handling of songId in url when saving or deleting?
 * remove isOwner and songId when deleting song
-* load default song when no valid id on first load - firstLoad arg not needed? editSong = false only when loading from search?
-* add alert if scale fails to load with song?
+* firstLoad arg not needed for getSongById?
+* add alert if scale fails to load with song? split song and scale fetches?
 
 ### ui slice
 

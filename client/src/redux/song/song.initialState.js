@@ -1,16 +1,16 @@
-export const arrangementState = [];
+import { createDefaultSong } from '../../assets/defaultData';
 
-export const barsState = {};
+const defaultSong = createDefaultSong();
 
-export const beatsState = {};
+export const autoMoveOrderState = defaultSong.autoMoveOrder;
 
-export const infoState = {
-  bpm: 80,
-  difficulty: 1,
-  metre: 's44',
-  subdivision: 8,
-  title: '',
-};
+export const arrangementState = defaultSong.arrangement;
+
+export const barsState = defaultSong.bars;
+
+export const beatsState = defaultSong.beats;
+
+export const infoState = defaultSong.info;
 
 export const uiState = {
   composer: null,

@@ -1,11 +1,12 @@
 import howlsTypes from '../howls/howls.types';
+import { autoMoveOrderState } from '../song/song.initialState';
 import songTypes from '../song/song.types';
 import { filterState } from '../store.utils';
 import uiTypes from './ui.types';
 
 const INITIAL_STATE = {
   autoMove: false,
-  autoMoveOrder: {},
+  autoMoveOrder: autoMoveOrderState,
   currentBar: null,
   currentBeat: null,
   currentDropdown: null,
