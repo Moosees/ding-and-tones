@@ -40,6 +40,7 @@ const songSlice = createSlice({
   reducers: {
     startSongPlayback(state) {
       state.ui.isSongPlaying = true;
+      state.ui.currentDropdown = null;
     },
     stopSongPlayback(state) {
       state.ui.currentBar = null;
@@ -63,7 +64,8 @@ const songSlice = createSlice({
       state.autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
         bar.measure
-      );
+      ); // needs fixing?
+      state.ui.currentDropdown = null;
     },
     deleteBar(state, { payload }) {
       const beatsToDelete = [...state.bars[payload.barId].measure];
@@ -79,6 +81,7 @@ const songSlice = createSlice({
         null,
         payload.barId
       ); // needs fixing
+      state.ui.currentDropdown = null;
     },
     duplicateBar(state, { payload }) {
       const { newBar, newBarId, newBeats } = payload;
@@ -92,6 +95,7 @@ const songSlice = createSlice({
       state.arrangement.push(newBarId);
       state.bars[newBarId] = newBar;
       Object.assign(state.beats, newBeats);
+      state.ui.currentDropdown = null;
     },
     moveBarToIndex(state, { payload }) {
       const { barIndex, targetIndex } = payload;
@@ -105,6 +109,7 @@ const songSlice = createSlice({
 
       state.autoMoveOrder = autoMoveOrder;
       state.arrangement = arrangement;
+      state.ui.currentDropdown = null;
     },
     loadSong(state, { payload }) {
       // merged FETCH_SUCCESSFUL and SET_STATE
