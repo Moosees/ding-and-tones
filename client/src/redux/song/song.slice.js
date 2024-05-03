@@ -1,19 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAutoMoveOrder } from './song.utils';
 import { filterState } from '../store.utils';
+import { createDefaultSong } from '../../assets/defaultData';
+
+const defaultSong = createDefaultSong();
 
 const INITIAL_STATE = {
-  arrangement: [],
-  autoMoveOrder: {},
-  bars: {},
-  beats: {},
-  info: {
-    bpm: 80,
-    difficulty: 1,
-    metre: 's44',
-    subdivision: 8,
-    title: '',
-  },
+  arrangement: defaultSong.arrangement,
+  autoMoveOrder: defaultSong.autoMoveOrder,
+  bars: defaultSong.bars,
+  beats: defaultSong.beats,
+  info: defaultSong.info,
   mutedBars: {},
   refs: {
     composer: null,
@@ -64,7 +61,7 @@ const songSlice = createSlice({
       );
       delete state.bars[payload.barId];
       state.beats = filterState(state.beats, beatsToDelete, true);
-			
+
       state.autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
         null,
