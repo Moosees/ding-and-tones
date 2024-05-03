@@ -80,7 +80,19 @@ const songSlice = createSlice({
         payload.barId
       ); // needs fixing
     },
-    duplicateBar(state, { payload }) {},
+    duplicateBar(state, { payload }) {
+      const { newBar, newBarId, newBeats } = payload;
+
+      const autoMoveOrder = createAutoMoveOrder(
+        { arrangement: state.arrangement, bars: state.bars },
+        newBar.measure
+      );
+
+      state.autoMoveOrder = autoMoveOrder;
+      state.arrangement.push(newBarId);
+      state.bars[newBarId] = newBar;
+      Object.assign(state.beats, newBeats);
+    },
     moveBar(state, { payload }) {},
     loadSong(state, { payload }) {
       // merged FETCH_SUCCESSFUL and SET_STATE
