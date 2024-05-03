@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createAutoMoveOrder } from './song.utils';
+import { createAutoMoveOrder, moveBar } from './song.utils';
 import { filterState } from '../store.utils';
 import { createDefaultSong } from '../../assets/defaultData';
 
@@ -93,7 +93,19 @@ const songSlice = createSlice({
       state.bars[newBarId] = newBar;
       Object.assign(state.beats, newBeats);
     },
-    moveBar(state, { payload }) {},
+    moveBarToIndex(state, { payload }) {
+      const { barIndex, targetIndex } = payload;
+
+      const arrangement = moveBar(state.arrangement, barIndex, targetIndex);
+
+      const autoMoveOrder = createAutoMoveOrder({
+        arrangement: arrangement,
+        bars: state.bars,
+      });
+
+      state.autoMoveOrder = autoMoveOrder;
+      state.arrangement = arrangement;
+    },
     loadSong(state, { payload }) {
       // merged FETCH_SUCCESSFUL and SET_STATE
     },
