@@ -20,6 +20,10 @@ const INITIAL_STATE = {
   },
   ui: {
     autoMove: false,
+    currentBar: null,
+    currentBeat: null,
+    currentHand: 1,
+    currentSound: [],
     currentDropdown: null,
     isEditingSong: true,
     isSongPlaying: false,
@@ -34,8 +38,16 @@ const songSlice = createSlice({
   name: 'song',
   initialState: INITIAL_STATE,
   reducers: {
-    startSongPlayback(state) {},
-    stopSongPlayback(state) {},
+    startSongPlayback(state) {
+      state.isSongPlaying = true;
+    },
+    stopSongPlayback(state) {
+      state.currentBar = null;
+      state.currentBeat = null;
+      state.currentHand = 1; // not needed?
+      state.currentSound = []; // not needed?
+      state.isSongPlaying = false;
+    },
     setCurrentDropdown(state, { payload }) {
       state.ui.currentDropdown =
         state.ui.currentDropdown === payload.beatId ? null : payload.beatId;

@@ -22,11 +22,12 @@
 ### song slice
 
 * switch from old reducer to slice and update all action dispatches
-* transfer logic from ui reducer - autoMove(order), currentDropdown, mutedBars, isEditingSong, isSongPlaying, multiSelect
+* transfer logic from ui reducer - autoMove(order), currentDropdown, mutedBars, isEditingSong, isSongPlaying, multiSelect, currentBar, currentBeat, currentHand?, currentSound
 * Rework and simplify logic for setCurrentlyPlaying?
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * remove close dropdown logic from components where needed
 * editSong = false only when loading from search?
+* remove resetUiState in patternPlayer.js and add reset for song state after song finish playing
 
 ### song api
 
