@@ -1,4 +1,4 @@
-import { filterState } from '../../store.utils';
+import { filterObjectByKeyArray } from '../../store.utils';
 import { barsState } from '../song.initialState';
 import songTypes from '../song.types';
 
@@ -8,7 +8,7 @@ const barsReducer = (state = barsState, { type, payload }) => {
       return { ...state, [payload.song.barId]: payload.song.bar };
 
     case songTypes.DELETE_BAR:
-      return filterState(state, [payload.song.barToDelete], true);
+      return filterObjectByKeyArray(state, [payload.song.barToDelete], true);
 
     case songTypes.DUPLICATE_BAR:
       return {

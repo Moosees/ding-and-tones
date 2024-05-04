@@ -1,4 +1,4 @@
-import { filterState } from '../../store.utils';
+import { filterObjectByKeyArray } from '../../store.utils';
 import { beatsState } from '../song.initialState';
 import songTypes from '../song.types';
 import { addSoundToBeat, removeSoundFromBeat } from '../song.utils';
@@ -15,7 +15,7 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
       };
 
     case songTypes.DELETE_BAR:
-      return filterState(state, payload.song.beatsToDelete, true);
+      return filterObjectByKeyArray(state, payload.song.beatsToDelete, true);
 
     case songTypes.DUPLICATE_BAR:
       return { ...state, ...payload.song.newBeats };
@@ -49,7 +49,11 @@ const beatsReducer = (state = beatsState, { type, payload }) => {
       };
 
     case songTypes.UPDATE_MEASURE_AND_BEATS: {
-      const newState = filterState(state, payload.song.deleteBeats, true);
+      const newState = filterObjectByKeyArray(
+        state,
+        payload.song.deleteBeats,
+        true
+      );
 
       return { ...newState, ...payload.song.addBeats };
     }

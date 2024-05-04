@@ -2,7 +2,7 @@ import { Howl, Howler } from 'howler';
 import { howls } from '../../assets/sound/howls';
 import { store } from '../store';
 import { updateHowlLoadingStatus } from './howls.actions';
-import { filterState } from '../store.utils';
+import { filterObjectByKeyArray } from '../store.utils';
 
 const prepareHowlForRemoval = (howl) => {
   howl?.howl?.off();
@@ -132,7 +132,7 @@ export const updateHowls = (status, audioSrc, scale) => {
   createHowls(soundsToAdd, audioSrc);
 
   console.log({ status, notesToKeep });
-  const statusToKeep = filterState(status, notesToKeep, false);
+  const statusToKeep = filterObjectByKeyArray(status, notesToKeep, false);
   console.log({ ...statusToKeep });
 
   return createStatus(soundsToAdd, statusToKeep);

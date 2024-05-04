@@ -1,7 +1,7 @@
 import howlsTypes from '../howls/howls.types';
 import { autoMoveOrderState } from '../song/song.initialState';
 import songTypes from '../song/song.types';
-import { filterState } from '../store.utils';
+import { filterObjectByKeyArray } from '../store.utils';
 import uiTypes from './ui.types';
 
 const INITIAL_STATE = {
@@ -108,7 +108,11 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         autoMoveOrder: payload.ui.autoMoveOrder,
         currentDropdown: null,
-        mutedBars: filterState(state.mutedBars, payload.song.barToDelete, true),
+        mutedBars: filterObjectByKeyArray(
+          state.mutedBars,
+          [payload.song.barToDelete],
+          true
+        ),
       };
 
     case songTypes.FETCH_SUCCESSFUL:

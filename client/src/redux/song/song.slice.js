@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAutoMoveOrder, moveBar } from './song.utils';
-import { filterState } from '../store.utils';
+import { filterObjectByKeyArray } from '../store.utils';
 import { createDefaultSong } from '../../assets/defaultData';
 
 const defaultSong = createDefaultSong();
@@ -57,30 +57,33 @@ const songSlice = createSlice({
       console.log('addNewBarReducer', { payload });
       const { bar, beats } = payload;
 
+      const autoMoveOrder = createAutoMoveOrder(
+        { arrangement: state.arrangement, bars: state.bars },
+        bar.measure
+      );
+
+      state.autoMoveOrder = autoMoveOrder;
       state.arrangement.push(bar.barId);
       state.bars[bar.barId] = bar;
       Object.assign(state.beats, beats);
-
-      state.autoMoveOrder = createAutoMoveOrder(
-        { arrangement: state.arrangement, bars: state.bars },
-        bar.measure
-      ); // needs fixing?
       state.ui.currentDropdown = null;
     },
     deleteBar(state, { payload }) {
-      const beatsToDelete = [...state.bars[payload.barId].measure];
+      const { barId } = payload;
 
+      const beatsToDelete = [...state.bars[barId].measure];
+      const autoMoveOrder = createAutoMoveOrder(
+        { arrangement: state.arrangement, bars: state.bars },
+        null,
+        barId
+      );
+
+      state.autoMoveOrder = autoMoveOrder;
       state.arrangement = state.arrangement.filter(
         (barId) => barId !== payload.barId
       );
       delete state.bars[payload.barId];
-      state.beats = filterState(state.beats, beatsToDelete, true);
-
-      state.autoMoveOrder = createAutoMoveOrder(
-        { arrangement: state.arrangement, bars: state.bars },
-        null,
-        payload.barId
-      ); // needs fixing
+      state.beats = filterObjectByKeyArray(state.beats, beatsToDelete, true);
       state.ui.currentDropdown = null;
     },
     duplicateBar(state, { payload }) {
