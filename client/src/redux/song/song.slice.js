@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createAutoMoveOrder, moveBar } from './song.utils';
+import { createAutoMoveOrder, moveBar, parseFetchedSong } from './song.utils';
 import { filterObjectByKeyArray } from '../store.utils';
 import { createDefaultSong } from '../../assets/defaultData';
 
@@ -115,7 +115,19 @@ const songSlice = createSlice({
       state.ui.currentDropdown = null;
     },
     loadSong(state, { payload }) {
-      // merged FETCH_SUCCESSFUL and SET_STATE
+      // merged FETCH_SUCCESSFUL, SET_STATE, (createNewSong)
+      const { song, getScale, suppressAlert } = payload;
+
+      const parsedSong = parseFetchedSong(song, getScale, suppressAlert); // suppressAlert not needed?
+      const autoMoveOrder = createAutoMoveOrder(parsedSong);
+
+      state.autoMoveOrder = autoMoveOrder;
+      state.arrangement = parsedSong.arrangement;
+      state.bars = parsedSong.bars;
+      state.beats = parsedSong.beats;
+      state.info = parsedSong.info;
+      state.ui.isEditingSong = false; // needs logic
+      state.ui.isOwner = false; // needs logic
     },
     updateBarSubdivision(state, { payload }) {},
     updateMeasureAndBeats(state, { payload }) {},

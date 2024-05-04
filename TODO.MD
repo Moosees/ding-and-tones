@@ -11,12 +11,27 @@
 * consistent response data format from backend (alert and other data separate)
 * update backend routes where needed
 
+### drum reducer
+
+* reset displayedChord and displayedNote when fetching a scale (or song with scale)
+* merge drum reducer into other reducers?
+
+### chords slice
+
+* reset chords when fetching or loading a scale (or song with scale)
+
+### howls slice
+
+* reload howls when fetching or loading a scale (or song with scale)
+
 ### search api
 
 * remove song from search results when deleting song
+* add song to my songs when saving a new song
 
 #### scale slice
 
+* load scale when loading a song with scale
 * have default scale but delay loading howls until after checking url? firstLoad not needed?
 
 ### song slice
@@ -27,6 +42,7 @@
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * remove close dropdown logic from components where needed
 * editSong = false only when loading from search?
+* isOwner when fetching or loading song
 * remove resetUiState in patternPlayer.js and add reset for song state after song finish playing
 
 ### song api

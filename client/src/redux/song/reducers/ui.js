@@ -20,6 +20,7 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.FETCH_STARTED:
       return { ...state, isFetching: true };
     case songTypes.FETCH_SUCCESSFUL:
+      console.log(payload.song.ui);
       return { ...state, ...payload.song.ui, isFetching: false };
 
     case songTypes.SAVE_ERROR:
