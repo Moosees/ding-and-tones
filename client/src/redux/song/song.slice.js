@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createAutoMoveOrder, moveBar, parseFetchedSong } from './song.utils';
+import {
+  createAutoMoveOrder,
+  moveBar,
+  parseFetchedSong,
+  updateMeasureAndBeats,
+} from './song.utils';
 import { filterObjectByKeyArray } from '../store.utils';
 import { createDefaultSong } from '../../assets/defaultData';
+import { compareSubdivisionsLength } from '../../assets/metre';
 
 const defaultSong = createDefaultSong();
 
@@ -129,7 +135,42 @@ const songSlice = createSlice({
       state.ui.isEditingSong = false; // needs logic
       state.ui.isOwner = false; // needs logic
     },
-    updateBarSubdivision(state, { payload }) {},
+    updateBarSubdivisions(state, { payload }) {
+      const { barId, newSubdivisions } = payload;
+      const { metre, subdivisions } = state.bars[barId];
+
+      const lengthDifference = compareSubdivisionsLength(
+        subdivisions,
+        newSubdivisions,
+        metre
+      );
+
+      if (lengthDifference !== 0) {
+        const { addBeats, deleteBeats, newMeasure } = updateMeasureAndBeats(
+          state.bars[barId],
+          newSubdivisions
+        ); // rename and refactor?
+
+        const barsForAutoMoveOrder = { ...state.bars };
+        barsForAutoMoveOrder[barId].measure = newMeasure;
+
+        const autoMoveOrder = createAutoMoveOrder({
+          arrangement: state.arrangement,
+          bars: barsForAutoMoveOrder,
+        });
+
+        state.autoMoveOrder = autoMoveOrder;
+        state.bars[barId].measure = newMeasure;
+        Object.assign(state.beats, addBeats);
+        for (const beatId of deleteBeats) {
+          console.log('delete beat', beatId);
+          delete state.beats[beatId];
+        }
+      }
+
+      state.bars[barId].subdivisions = newSubdivisions;
+      state.ui.currentDropdown = null;
+    },
     updateMeasureAndBeats(state, { payload }) {},
     clearBeat(state, { payload }) {},
     updateBeat(state, { payload }) {},
