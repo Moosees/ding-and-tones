@@ -171,8 +171,9 @@ const songSlice = createSlice({
       state.bars[barId].subdivisions = newSubdivisions;
       state.ui.currentDropdown = null;
     },
-    updateMeasureAndBeats(state, { payload }) {},
-    clearBeat(state, { payload }) {},
+    clearBeat(state, { payload }) {
+      state.beats[payload.beatId].sound = ['-'];
+    },
     updateBeat(state, { payload }) {},
     updateHand(state, { payload }) {},
     updateSongInfo(state, { payload }) {},
