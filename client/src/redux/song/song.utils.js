@@ -127,6 +127,19 @@ export const removeSoundFromBeat = (newSound, soundArray) => {
   return soundArray.filter((sound) => sound !== newSound);
 };
 
+export const createUpdatedSound = (sound, update, multiSelect) => {
+  const isSelected = sound.includes(update);
+
+  if (isSelected && sound.length <= 1) return ['-'];
+  if (isSelected) return sound.filter((hit) => hit !== update);
+  if (!multiSelect) return [update];
+  if (sound.length >= MAX_NOTES_IN_BEAT) return sound;
+
+	return [...sound, update]
+    .filter((hit) => hit !== '-')
+    .sort((a, b) => a - b);
+};
+
 const createBeatPool = (measure, template) => {
   const pool = {};
 

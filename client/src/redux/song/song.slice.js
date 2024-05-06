@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   createAutoMoveOrder,
+  createUpdatedSound,
   moveBar,
   parseFetchedSong,
   updateMeasureAndBeats,
@@ -174,8 +175,17 @@ const songSlice = createSlice({
     clearBeat(state, { payload }) {
       state.beats[payload.beatId].sound = ['-'];
     },
-    updateBeat(state, { payload }) {},
-    updateHand(state, { payload }) {},
+    updateSoundForBeat(state, { payload }) {
+      const { beatId, update } = payload;
+      const sound = createUpdatedSound(
+        state.beats[beatId].sound,
+        update,
+        state.ui.multiSelect
+      );
+
+      state.beats[beatId].sound = sound;
+    },
+    updateHandForBeat(state, { payload }) {},
     updateSongInfo(state, { payload }) {},
     updateSongUi(state, { payload }) {},
     toggleAutoMove(state) {}, // updateSongUi?
