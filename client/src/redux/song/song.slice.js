@@ -32,6 +32,9 @@ const INITIAL_STATE = {
     currentHand: 1,
     currentSound: [],
     currentDropdown: null,
+    countOpen: false,
+    handsOpen: false,
+    headersOpen: true,
     isEditingSong: true,
     isSongPlaying: false,
     isOwner: false,
@@ -185,7 +188,17 @@ const songSlice = createSlice({
 
       state.beats[beatId].sound = sound;
     },
-    updateHandForBeat(state, { payload }) {},
+    updateHandForBeat(state, { payload }) {
+      const { beatId, newHand } = payload;
+      const isSelected = state.beats[beatId].hand === newHand;
+
+      if (isSelected) {
+        delete state.beats[beatId].hand;
+      } else {
+        state.beats[beatId].hand = newHand;
+      }
+      state.ui.handsOpen = true;
+    },
     updateSongInfo(state, { payload }) {},
     updateSongUi(state, { payload }) {},
     toggleAutoMove(state) {}, // updateSongUi?
