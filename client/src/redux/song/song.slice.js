@@ -215,4 +215,22 @@ const songSlice = createSlice({
   },
 });
 
+export const {
+  startSongPlayback,
+  stopSongPlayback,
+  setCurrentDropdown,
+  addNewBar,
+  deleteBar,
+  duplicateBar,
+  moveBarToIndex,
+  loadSong,
+  updateBarSubdivisions,
+  clearBeat,
+  updateSoundForBeat,
+  updateHandForBeat,
+  updateSongInfo,
+  updateSongUi,
+  togglePrivateSong,
+} = songSlice.actions;
+
 export default songSlice.reducer;
