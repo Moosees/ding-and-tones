@@ -5,12 +5,6 @@ import { addSoundToBeat, removeSoundFromBeat } from '../song.utils';
 
 const beatsReducer = (state = beatsState, { type, payload }) => {
   switch (type) {
-    case songTypes.CLEAR_BEAT:
-      return {
-        ...state,
-        [payload.beatId]: { sound: ['-'], mode: state[payload.beatId].mode },
-      };
-
     case songTypes.DELETE_BAR:
       return filterObjectByKeyArray(state, payload.song.beatsToDelete, true);
 

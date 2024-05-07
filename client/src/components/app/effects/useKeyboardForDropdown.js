@@ -4,14 +4,14 @@ import { AUTO_MOVE_DELAY, hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import {
-  clearBeat,
-  updateHandForBeat,
-  updateSoundForBeat,
+	updateHandForBeat,
+	updateSoundForBeat,
 } from '../../../redux/song/song.actions';
+import { clearBeat } from '../../../redux/song/song.slice';
 import {
-  setCurrentDropdown,
-  toggleAutoMove,
-  toggleMultiSelect,
+	setCurrentDropdown,
+	toggleAutoMove,
+	toggleMultiSelect,
 } from '../../../redux/ui/ui.actions';
 
 const useKeyboardForDropdown = () => {
@@ -68,7 +68,7 @@ const useKeyboardForDropdown = () => {
       [beatOptionToKeyCode['skip']]: () =>
         dispatch(setCurrentDropdown(nextBeatId || currentDropdown)),
       [beatOptionToKeyCode['clear']]: () =>
-        dispatch(clearBeat(currentDropdown)),
+        dispatch(clearBeat({ beatId: currentDropdown })),
     };
 
     const keyboardCbs = {

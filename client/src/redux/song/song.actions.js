@@ -11,10 +11,6 @@ import {
   updateMeasureAndBeats,
 } from './song.utils';
 
-export const clearBeat = (beatId) => (dispatch) => {
-  dispatch({ type: songTypes.CLEAR_BEAT, payload: { beatId } });
-};
-
 export const deleteBar = (barId) => (dispatch, getState) => {
   const { song } = getState();
   const { bars } = song;
