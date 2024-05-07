@@ -1,5 +1,4 @@
 const songTypes = {
-  ADD_NEW_BAR: 'song/addNewBar',
   CLEAR_BEAT: 'song/clearBeat',
   DELETE_BAR: 'song/deleteBar',
   DELETE_ERROR: 'song/deleteError',

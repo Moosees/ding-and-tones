@@ -11,19 +11,6 @@ import {
   updateMeasureAndBeats,
 } from './song.utils';
 
-export const addNewBar = (barWithBeatsAndId) => (dispatch, getState) => {
-  const { song } = getState();
-  const autoMoveOrder = createAutoMoveOrder(
-    song,
-    barWithBeatsAndId.bar.measure
-  );
-
-  dispatch({
-    type: songTypes.ADD_NEW_BAR,
-    payload: { song: barWithBeatsAndId, ui: { autoMoveOrder } },
-  });
-};
-
 export const clearBeat = (beatId) => (dispatch) => {
   dispatch({ type: songTypes.CLEAR_BEAT, payload: { beatId } });
 };

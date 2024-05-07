@@ -93,7 +93,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
     case howlsTypes.SELECT_AUDIO:
       return { ...state, isSongPlaying: false };
 
-    case songTypes.ADD_NEW_BAR:
     case songTypes.DUPLICATE_BAR:
     case songTypes.MOVE_BAR:
     case songTypes.UPDATE_MEASURE_AND_BEATS:

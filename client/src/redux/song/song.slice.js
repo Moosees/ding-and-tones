@@ -65,7 +65,7 @@ const songSlice = createSlice({
     },
     addNewBar(state, { payload }) {
       console.log('addNewBarReducer', { payload });
-      const { bar, beats } = payload;
+      const { barId, bar, beats } = payload;
 
       const autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
@@ -73,8 +73,8 @@ const songSlice = createSlice({
       );
 
       state.autoMoveOrder = autoMoveOrder;
-      state.arrangement.push(bar.barId);
-      state.bars[bar.barId] = bar;
+      state.arrangement.push(barId);
+      state.bars[barId] = bar;
       Object.assign(state.beats, beats);
       state.ui.currentDropdown = null;
     },

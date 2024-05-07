@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { metreList } from '../../../assets/metre';
-import { addNewBar } from '../../../redux/song/song.actions';
+import { addNewBar } from '../../../redux/song/song.slice';
 import Buttons from '../../shared/button/Buttons';
 import PopupNewBar from './PopupNewBar';
 import { AddBarBtn, AddBarContainer } from './addBar.styles';
@@ -18,7 +18,8 @@ const AddBar = () => {
 
   const handleNewBar = (metre, subdivisionsString) => {
     const subdivisions = subdivisionsString.map((s) => parseInt(s));
-    dispatch(addNewBar(createNewBar(metre, subdivisions)));
+    const newBar = createNewBar(metre, subdivisions);
+    dispatch(addNewBar(newBar));
   };
 
   return (

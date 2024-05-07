@@ -4,9 +4,6 @@ import songTypes from '../song.types';
 
 const barsReducer = (state = barsState, { type, payload }) => {
   switch (type) {
-    case songTypes.ADD_NEW_BAR:
-      return { ...state, [payload.song.barId]: payload.song.bar };
-
     case songTypes.DELETE_BAR:
       return filterObjectByKeyArray(state, [payload.song.barToDelete], true);
 
