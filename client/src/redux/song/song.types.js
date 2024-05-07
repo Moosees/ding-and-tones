@@ -1,5 +1,4 @@
 const songTypes = {
-  DELETE_BAR: 'song/deleteBar',
   DELETE_ERROR: 'song/deleteError',
   DELETE_STARTED: 'song/deleteStarted',
   DELETE_SUCCESSFUL: 'song/deleteSuccessful',

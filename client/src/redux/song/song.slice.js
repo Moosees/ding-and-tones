@@ -79,13 +79,11 @@ const songSlice = createSlice({
       state.ui.currentDropdown = null;
     },
     deleteBar(state, { payload }) {
-      const { barId } = payload;
-
-      const beatsToDelete = [...state.bars[barId].measure];
+      const beatsToDelete = [...state.bars[payload.barId].measure];
       const autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
         null,
-        barId
+        payload.barId
       );
 
       state.autoMoveOrder = autoMoveOrder;
@@ -95,6 +93,7 @@ const songSlice = createSlice({
       delete state.bars[payload.barId];
       state.beats = filterObjectByKeyArray(state.beats, beatsToDelete, true);
       state.ui.currentDropdown = null;
+      delete state.ui.mutedBars[state.barId];
     },
     duplicateBar(state, { payload }) {
       const { newBar, newBarId, newBeats } = payload;

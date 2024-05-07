@@ -11,22 +11,6 @@ import {
   updateMeasureAndBeats,
 } from './song.utils';
 
-export const deleteBar = (barId) => (dispatch, getState) => {
-  const { song } = getState();
-  const { bars } = song;
-
-  const beatsToDelete = [...bars[barId].measure];
-  const autoMoveOrder = createAutoMoveOrder(song, null, barId);
-
-  dispatch({
-    type: songTypes.DELETE_BAR,
-    payload: {
-      song: { barToDelete: barId, beatsToDelete },
-      ui: { autoMoveOrder },
-    },
-  });
-};
-
 export const deleteSongById = (songId) => (dispatch) => {
   dispatch({ type: songTypes.DELETE_STARTED });
 

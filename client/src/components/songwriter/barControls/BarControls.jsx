@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  deleteBar,
-  duplicateBar,
-  updateBarSubdivisions,
+	duplicateBar,
+	updateBarSubdivisions,
 } from '../../../redux/song/song.actions';
+import { deleteBar } from '../../../redux/song/song.slice';
 import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Subdivision from '../../shared/metreControls/Subdivision';
@@ -36,7 +36,7 @@ const BarControls = ({ barId, toggleEditSubdivisions }) => {
       <BtnIcon
         title="Delete bar"
         icon="delete_outline"
-        onClick={() => dispatch(deleteBar(barId))}
+        onClick={() => dispatch(deleteBar({ barId }))}
       />
       <BtnIcon
         title={isMuted ? 'Unmute bar' : 'Mute bar'}
