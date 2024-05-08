@@ -149,19 +149,6 @@ const saveSong =
       });
   };
 
-export const updateHandForBeat = (beatId, newHand) => (dispatch, getState) => {
-  const {
-    song: { beats },
-  } = getState();
-
-  const selected = beats[beatId].hand === newHand;
-
-  dispatch({
-    type: songTypes.UPDATE_HAND,
-    payload: { beatId, newHand, selected },
-  });
-};
-
 export const updateSoundForBeat =
   (beatId, newSound) => (dispatch, getState) => {
     const {

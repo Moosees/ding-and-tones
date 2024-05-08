@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AUTO_MOVE_DELAY, hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
-import {
-	updateHandForBeat,
-	updateSoundForBeat,
-} from '../../../redux/song/song.actions';
-import { clearBeat } from '../../../redux/song/song.slice';
+import { updateSoundForBeat } from '../../../redux/song/song.actions';
+import { clearBeat, updateHandForBeat } from '../../../redux/song/song.slice';
 import {
 	setCurrentDropdown,
 	toggleAutoMove,
@@ -41,7 +38,10 @@ const useKeyboardForDropdown = () => {
       const key = beatOptionToKeyCode[short];
       return {
         ...acc,
-        [key]: () => dispatch(updateHandForBeat(currentDropdown, value)),
+        [key]: () =>
+          dispatch(
+            updateHandForBeat({ beatId: currentDropdown, newHand: value })
+          ),
       };
     }, {});
 

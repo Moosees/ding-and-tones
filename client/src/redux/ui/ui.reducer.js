@@ -117,12 +117,6 @@ const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
         mutedBars: {},
       };
 
-    case songTypes.UPDATE_HAND:
-      return {
-        ...state,
-        handsOpen: true,
-      };
-
     default:
       return state;
   }
