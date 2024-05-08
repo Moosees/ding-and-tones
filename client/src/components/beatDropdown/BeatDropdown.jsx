@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTO_MOVE_DELAY } from '../../assets/constants';
-import { beatOptionToKeyCode } from '../../assets/keyCodes.js';
-import { updateSoundForBeat } from '../../redux/song/song.slice.js';
+import { beatOptionToKeyCode } from '../../assets/keyCodes';
+import { updateSoundForBeat } from '../../redux/song/song.slice';
 import { setCurrentDropdown } from '../../redux/ui/ui.actions';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import {
@@ -11,7 +11,7 @@ import {
   DropdownColumn,
   DropdownContent,
 } from './beatDropdown.styles';
-import { createSoundLists } from './beatDropdown.utils.js.js';
+import { createSoundLists } from './beatDropdown.utils';
 import DropdownControls from './controls/DropdownControls';
 import DropdownMove from './controls/DropdownMove';
 import { DropdownContext } from './handler/DropdownHandler';

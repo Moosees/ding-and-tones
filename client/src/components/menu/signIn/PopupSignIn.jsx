@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createAlert } from '../../../redux/alert/alert.slice';
 import {
   useLazyGetGoogleUrlQuery,
   useSignInMutation,
-} from '../../../redux/user/user.api.js';
+} from '../../../redux/user/user.api';
 import PrivacyText from '../../privacy/PrivacyText';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
-import GoogleIcon from './GoogleIcon.jsx';
+import GoogleIcon from './GoogleIcon';
 import { GoogleBtn, SignInContainer, TermsLink } from './signIn.styles';
 import {
   getGoogleCode,
   getGoogleError,
   handleGooglePostMsg,
-} from './signIn.utils.js';
-import { createAlert } from '../../../redux/alert/alert.slice.js';
+} from './signIn.utils';
 
 const SignIn = ({ onClose }) => {
   const dispatch = useDispatch();
