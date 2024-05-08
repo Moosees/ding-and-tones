@@ -149,21 +149,6 @@ const saveSong =
       });
   };
 
-export const updateSoundForBeat =
-  (beatId, newSound) => (dispatch, getState) => {
-    const {
-      song: { beats },
-      ui: { multiSelect },
-    } = getState();
-
-    const selected = beats[beatId].sound.includes(newSound);
-
-    dispatch({
-      type: songTypes.UPDATE_BEAT,
-      payload: { beatId, newSound, selected, multiSelect },
-    });
-  };
-
 export const updateSongInfo = (songInfo) => ({
   type: songTypes.UPDATE_SONG_INFO,
   payload: songInfo,

@@ -111,22 +111,6 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
   return parsedSongData;
 };
 
-export const addSoundToBeat = (newSound, soundArray, multiSelect) => {
-  if (!multiSelect) return [newSound];
-
-  if (soundArray.length >= MAX_NOTES_IN_BEAT) return soundArray;
-
-  return [...soundArray, newSound]
-    .filter((sound) => sound !== '-')
-    .sort((a, b) => a - b);
-};
-
-export const removeSoundFromBeat = (newSound, soundArray) => {
-  if (soundArray.length <= 1) return ['-'];
-
-  return soundArray.filter((sound) => sound !== newSound);
-};
-
 export const createUpdatedSound = (sound, update, multiSelect) => {
   const isSelected = sound.includes(update);
 

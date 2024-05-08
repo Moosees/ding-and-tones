@@ -49,7 +49,6 @@
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?)
 * remove close dropdown logic from components where needed
 * remove resetUiState in patternPlayer.js and add reset for song state after song finish playing
-* remove addSoundToBeat, removeSoundFromBeat and other obsolete helper functions
 
 ### song api
 

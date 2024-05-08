@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AUTO_MOVE_DELAY, hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
-import { updateSoundForBeat } from '../../../redux/song/song.actions';
-import { clearBeat, updateHandForBeat } from '../../../redux/song/song.slice';
 import {
-	setCurrentDropdown,
-	toggleAutoMove,
-	toggleMultiSelect,
+  clearBeat,
+  updateHandForBeat,
+  updateSoundForBeat,
+} from '../../../redux/song/song.slice';
+import {
+  setCurrentDropdown,
+  toggleAutoMove,
+  toggleMultiSelect,
 } from '../../../redux/ui/ui.actions';
 
 const useKeyboardForDropdown = () => {
@@ -29,9 +32,9 @@ const useKeyboardForDropdown = () => {
 
     const percussionCbs = {
       [beatOptionToKeyCode['t']]: () =>
-        dispatch(updateSoundForBeat(currentDropdown, 't')),
+        dispatch(updateSoundForBeat({ beatId: currentDropdown, update: 't' })),
       [beatOptionToKeyCode['T']]: () =>
-        dispatch(updateSoundForBeat(currentDropdown, 'T')),
+        dispatch(updateSoundForBeat({ beatId: currentDropdown, update: 'T' })),
     };
 
     const handCbs = hands.reduce((acc, { short, value }) => {
@@ -49,7 +52,10 @@ const useKeyboardForDropdown = () => {
       const key = beatOptionToKeyCode[option];
       return {
         ...acc,
-        [key]: () => dispatch(updateSoundForBeat(currentDropdown, option)),
+        [key]: () =>
+          dispatch(
+            updateSoundForBeat({ beatId: currentDropdown, update: option })
+          ),
       };
     }, {});
 
