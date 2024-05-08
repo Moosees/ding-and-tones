@@ -5,7 +5,6 @@ const songTypes = {
   FETCH_ERROR: 'song/fetchError',
   FETCH_STARTED: 'song/fetchStarted',
   FETCH_SUCCESSFUL: 'song/fetchSuccessful',
-  MOVE_BAR: 'song/moveBar',
   SAVE_ERROR: 'song/saveError',
   SAVE_STARTED: 'song/saveStarted',
   SAVE_SUCCESSFUL: 'song/saveSuccessful',

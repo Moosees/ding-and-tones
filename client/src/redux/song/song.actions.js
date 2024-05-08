@@ -1,14 +1,11 @@
 import axios from 'axios';
-import { defaultScale, createDefaultSong } from '../../assets/defaultData';
-import { compareSubdivisionsLength } from '../../assets/metre';
+import { createDefaultSong, defaultScale } from '../../assets/defaultData';
 import scaleTypes from '../scale/scale.types';
 import { parseScaleData } from '../scale/scale.utils';
 import songTypes from './song.types';
 import {
-  createAutoMoveOrder,
-  moveBar,
-  parseFetchedSong,
-  updateMeasureAndBeats,
+	createAutoMoveOrder,
+	parseFetchedSong
 } from './song.utils';
 
 const deleteSongById = (songId) => (dispatch) => {
@@ -107,23 +104,6 @@ const getSongById =
         });
         return Promise.resolve(false);
       });
-  };
-
-export const moveBarInArrangement =
-  (barIndex, targetIndex) => (dispatch, getState) => {
-    const { song } = getState();
-
-    const newArrangement = moveBar(song.arrangement, barIndex, targetIndex);
-
-    const autoMoveOrder = createAutoMoveOrder({
-      arrangement: newArrangement,
-      bars: song.bars,
-    });
-
-    dispatch({
-      type: songTypes.MOVE_BAR,
-      payload: { song: { newArrangement }, ui: { autoMoveOrder } },
-    });
   };
 
 const saveSong =

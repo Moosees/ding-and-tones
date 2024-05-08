@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { metreList } from '../../../assets/metre';
-import { moveBarInArrangement } from '../../../redux/song/song.actions';
+import { moveBarToIndex } from '../../../redux/song/song.slice';
 import BtnIcon from '../../shared/button/BtnIcon';
 import { BarInfoContainer, DragGradient } from './barInfo.styles';
 
@@ -17,7 +17,9 @@ const BarInfo = ({ barId, barIndex }) => {
       <BtnIcon
         icon="navigate_before"
         disabled={barIndex === 0}
-        onClick={() => dispatch(moveBarInArrangement(barIndex, barIndex - 1))}
+        onClick={() =>
+          dispatch(moveBarToIndex({ barIndex, targetIndex: barIndex - 1 }))
+        }
       />
       <DragGradient>
         Metre: {metreList[metre].nameShort} - Bar: {barIndex + 1}/
@@ -26,7 +28,9 @@ const BarInfo = ({ barId, barIndex }) => {
       <BtnIcon
         icon="navigate_next"
         disabled={barIndex === arrangement.length - 1}
-        onClick={() => dispatch(moveBarInArrangement(barIndex, barIndex + 1))}
+        onClick={() =>
+          dispatch(moveBarToIndex({ barIndex, targetIndex: barIndex + 1 }))
+        }
       />
     </BarInfoContainer>
   );
