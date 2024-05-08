@@ -169,10 +169,6 @@ const saveSong =
       });
   };
 
-export const togglePrivateSong = () => ({
-  type: songTypes.TOGGLE_PRIVATE_SONG,
-});
-
 export const updateBarSubdivisions =
   (barId, newSubdivisions) => (dispatch, getState) => {
     const { song } = getState();

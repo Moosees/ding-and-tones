@@ -212,7 +212,6 @@ const songSlice = createSlice({
       state.ui = { ...state.ui, ...payload.songUi };
     },
     togglePrivateSong(state) {
-      // matcher for endpoint fulfilled instead?
       state.refs.isPrivate = !state.refs.isPrivate;
     },
     toggleAutoMove(state) {}, // updateSongUi?
