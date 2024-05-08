@@ -11,7 +11,7 @@ import {
   updateMeasureAndBeats,
 } from './song.utils';
 
-export const deleteSongById = (songId) => (dispatch) => {
+const deleteSongById = (songId) => (dispatch) => {
   dispatch({ type: songTypes.DELETE_STARTED });
 
   axios
@@ -36,7 +36,7 @@ export const deleteSongById = (songId) => (dispatch) => {
     });
 };
 
-export const getSongById =
+const getSongById =
   (songId, getScale = true, firstLoad) =>
   (dispatch) => {
     dispatch({ type: songTypes.FETCH_STARTED });
@@ -109,16 +109,6 @@ export const getSongById =
       });
   };
 
-export const loadSongFromState = (song, suppressAlert) => (dispatch) => {
-  const parsedSong = parseFetchedSong(song, false, suppressAlert);
-  const autoMoveOrder = createAutoMoveOrder(parsedSong);
-
-  dispatch({
-    type: songTypes.SET_STATE,
-    payload: { song: parsedSong, ui: { autoMoveOrder } },
-  });
-};
-
 export const moveBarInArrangement =
   (barIndex, targetIndex) => (dispatch, getState) => {
     const { song } = getState();
@@ -136,7 +126,7 @@ export const moveBarInArrangement =
     });
   };
 
-export const saveSong =
+const saveSong =
   ({ saveAs, title, scaleId }) =>
   (dispatch, getState) => {
     dispatch({ type: songTypes.SAVE_STARTED });
