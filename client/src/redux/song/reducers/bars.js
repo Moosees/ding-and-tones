@@ -7,15 +7,6 @@ const barsReducer = (state = barsState, { type, payload }) => {
     case songTypes.SET_STATE:
       return payload.song.bars || state;
 
-    case songTypes.UPDATE_BAR_SUBDIVISIONS:
-      return {
-        ...state,
-        [payload.barId]: {
-          ...state[payload.barId],
-          subdivisions: payload.newSubdivisions,
-        },
-      };
-
     case songTypes.UPDATE_MEASURE_AND_BEATS:
       return {
         ...state,

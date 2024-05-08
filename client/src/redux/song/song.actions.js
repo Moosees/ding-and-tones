@@ -169,52 +169,6 @@ const saveSong =
       });
   };
 
-export const updateBarSubdivisions =
-  (barId, newSubdivisions) => (dispatch, getState) => {
-    const { song } = getState();
-
-    const { metre, subdivisions } = song.bars[barId];
-
-    const lengthDifference = compareSubdivisionsLength(
-      subdivisions,
-      newSubdivisions,
-      metre
-    );
-
-    if (lengthDifference !== 0) {
-      const { addBeats, deleteBeats, newMeasure } = updateMeasureAndBeats(
-        song.bars[barId],
-        newSubdivisions
-      );
-
-      const barsForAutoMoveOrder = { ...song.bars };
-      barsForAutoMoveOrder[barId].measure = newMeasure;
-
-      const autoMoveOrder = createAutoMoveOrder({
-        arrangement: song.arrangement,
-        bars: barsForAutoMoveOrder,
-      });
-
-      dispatch({
-        type: songTypes.UPDATE_MEASURE_AND_BEATS,
-        payload: {
-          song: {
-            barId,
-            addBeats,
-            deleteBeats,
-            newMeasure,
-          },
-          ui: { autoMoveOrder },
-        },
-      });
-    }
-
-    dispatch({
-      type: songTypes.UPDATE_BAR_SUBDIVISIONS,
-      payload: { barId, newSubdivisions },
-    });
-  };
-
 export const updateHandForBeat = (beatId, newHand) => (dispatch, getState) => {
   const {
     song: { beats },

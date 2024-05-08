@@ -42,9 +42,6 @@ const uiReducer = (state = uiState, { type, payload }) => {
     case songTypes.SET_STATE:
       return { ...state, ...payload.song.ui };
 
-    case songTypes.TOGGLE_PRIVATE_SONG:
-      return { ...state, isPrivate: !state.isPrivate };
-
     // case userTypes.SIGN_IN:
     //   return { ...state, isOwner: payload.song.isOwner };
 

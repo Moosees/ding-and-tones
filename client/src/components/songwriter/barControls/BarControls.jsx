@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateBarSubdivisions } from '../../../redux/song/song.actions';
-import { deleteBar, duplicateBar } from '../../../redux/song/song.slice';
+import {
+  deleteBar,
+  duplicateBar,
+  updateBarSubdivisions,
+} from '../../../redux/song/song.slice';
 import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Subdivision from '../../shared/metreControls/Subdivision';
@@ -18,8 +21,10 @@ const BarControls = ({ barId, toggleEditSubdivisions }) => {
   const { metre, subdivisions } = bar;
 
   const handleSetSubdivision = (subdivisionString) => {
-    const subdivisions = subdivisionString.split('-').map((s) => parseInt(s));
-    dispatch(updateBarSubdivisions(barId, subdivisions));
+    const newSubdivisions = subdivisionString
+      .split('-')
+      .map((s) => parseInt(s));
+    dispatch(updateBarSubdivisions({ barId, newSubdivisions }));
   };
 
   return (

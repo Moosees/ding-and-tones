@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateBarSubdivisions } from '../../../redux/song/song.actions';
+import { updateBarSubdivisions } from '../../../redux/song/song.slice';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import { EditSubdivisionsContainer } from './editSubdivisions.styles';
 
@@ -15,7 +15,7 @@ const EditSubdivisions = ({ barId }) => {
     const newSubdivisions = [...subdivisions];
     newSubdivisions[beatIndex] = parseInt(value);
 
-    dispatch(updateBarSubdivisions(barId, newSubdivisions));
+    dispatch(updateBarSubdivisions({ barId, newSubdivisions }));
   };
 
   return (
