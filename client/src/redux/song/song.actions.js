@@ -169,11 +169,6 @@ const saveSong =
       });
   };
 
-export const createNewSong = (song) => ({
-  type: songTypes.SET_STATE,
-  payload: { song, ui: { autoMoveOrder: {} } },
-});
-
 export const togglePrivateSong = () => ({
   type: songTypes.TOGGLE_PRIVATE_SONG,
 });

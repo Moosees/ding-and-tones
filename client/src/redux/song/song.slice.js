@@ -135,8 +135,15 @@ const songSlice = createSlice({
       state.bars = parsedSong.bars;
       state.beats = parsedSong.beats;
       state.info = parsedSong.info;
+      state.refs.composer = parsedSong.ui.composer;
+      state.refs.isPrivate = parsedSong.ui.isPrivate;
+      state.refs.songId = parsedSong.ui.songId;
+      state.refs.scaleId = parsedSong.ui.scaleId;
       state.ui.isEditingSong = false; // needs logic
       state.ui.isOwner = false; // needs logic
+      state.ui.currentDropdown = null;
+      state.ui.scaleName = parsedSong.ui.scaleName; // not needed
+      state.ui.scaleLabel = parsedSong.ui.scaleLabel; // not needed
     },
     updateBarSubdivisions(state, { payload }) {
       const { barId, newSubdivisions } = payload;
