@@ -3,12 +3,6 @@ import songTypes from '../song.types';
 
 const barsReducer = (state = barsState, { type, payload }) => {
   switch (type) {
-    case songTypes.DUPLICATE_BAR:
-      return {
-        ...state,
-        [payload.song.newBarId]: payload.song.newBar,
-      };
-
     case songTypes.FETCH_SUCCESSFUL:
     case songTypes.SET_STATE:
       return payload.song.bars || state;

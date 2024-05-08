@@ -36,17 +36,6 @@ export const deleteSongById = (songId) => (dispatch) => {
     });
 };
 
-export const duplicateBar = (bar) => (dispatch, getState) => {
-  const { song } = getState();
-
-  const autoMoveOrder = createAutoMoveOrder(song, bar.newBar.measure);
-
-  dispatch({
-    type: songTypes.DUPLICATE_BAR,
-    payload: { song: bar, ui: { autoMoveOrder } },
-  });
-};
-
 export const getSongById =
   (songId, getScale = true, firstLoad) =>
   (dispatch) => {

@@ -1,10 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	duplicateBar,
-	updateBarSubdivisions,
-} from '../../../redux/song/song.actions';
-import { deleteBar } from '../../../redux/song/song.slice';
+import { updateBarSubdivisions } from '../../../redux/song/song.actions';
+import { deleteBar, duplicateBar } from '../../../redux/song/song.slice';
 import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Subdivision from '../../shared/metreControls/Subdivision';
