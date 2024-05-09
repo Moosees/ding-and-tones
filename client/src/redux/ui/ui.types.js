@@ -1,5 +1,4 @@
 const uiTypes = {
-  SET_CURRENT_DROPDOWN: 'ui/dropdown',
   SET_CURRENTLY_PLAYING: 'ui/playing',
   SET_MUTED_BARS: 'ui/setMuted',
   SET_IS_SONG_PLAYING: 'ui/setIsSongPlaying',

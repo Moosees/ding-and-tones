@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { setCurrentDropdown } from '../../redux/ui/ui.actions';
+import { setCurrentDropdown } from '../../redux/song/song.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import ScrollBox from '../shared/scrollBox/ScrollBox';
@@ -40,10 +40,10 @@ const Song = ({ notes }) => {
   useEffect(() => {
     // close dropdown when navigating away from song route or showing tablature
     if (!isEditingSong) {
-      dispatch(setCurrentDropdown(null));
+      dispatch(setCurrentDropdown({ beatId: null }));
     }
 
-    return () => dispatch(setCurrentDropdown(null));
+    return () => dispatch(setCurrentDropdown({ beatId: null }));
   }, [dispatch, isEditingSong]);
 
   return (

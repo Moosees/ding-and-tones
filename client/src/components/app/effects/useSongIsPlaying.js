@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentDropdown } from '../../../redux/ui/ui.actions';
+import { setCurrentDropdown } from '../../../redux/song/song.slice';
 
 const useSongIsPlaying = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const useSongIsPlaying = () => {
   useEffect(() => {
     if (!isSongPlaying) return;
 
-    dispatch(setCurrentDropdown(null));
+    dispatch(setCurrentDropdown({ beatId: null }));
   }, [dispatch, isSongPlaying]);
 };
 

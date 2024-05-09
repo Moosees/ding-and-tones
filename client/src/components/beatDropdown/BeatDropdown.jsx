@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTO_MOVE_DELAY } from '../../assets/constants';
 import { beatOptionToKeyCode } from '../../assets/keyCodes';
-import { updateSoundForBeat } from '../../redux/song/song.slice';
-import { setCurrentDropdown } from '../../redux/ui/ui.actions';
+import {
+  setCurrentDropdown,
+  updateSoundForBeat,
+} from '../../redux/song/song.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import {
   Arrow,
@@ -48,13 +50,13 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     if (!autoMove || !nextBeatId) return;
 
     if (!multiSelect) {
-      dispatch(setCurrentDropdown(nextBeatId));
+      dispatch(setCurrentDropdown({ beatId: nextBeatId }));
       return;
     }
 
     setTimeoutRef(
       setTimeout(() => {
-        dispatch(setCurrentDropdown(nextBeatId));
+        dispatch(setCurrentDropdown({ beatId: nextBeatId }));
       }, AUTO_MOVE_DELAY * 2)
     );
   };

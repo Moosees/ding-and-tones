@@ -1,13 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { helpTopics } from '../../../assets/help';
-import {
-  setCurrentDropdown,
-  toggleMultiSelect,
-} from '../../../redux/ui/ui.actions';
+import { setCurrentDropdown } from '../../../redux/song/song.slice';
+import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
 import BtnHelp from '../../shared/button/BtnHelp';
-import Buttons from '../../shared/button/Buttons';
 import BtnIcon from '../../shared/button/BtnIcon';
+import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownControls = ({ beatId }) => {
@@ -18,7 +16,7 @@ const DropdownControls = ({ beatId }) => {
     <Buttons position="space-between">
       <BtnIcon
         icon="highlight_off_outlined"
-        onClick={() => dispatch(setCurrentDropdown(null))}
+        onClick={() => dispatch(setCurrentDropdown({ beatId: null }))}
       />
       <Checkbox
         small

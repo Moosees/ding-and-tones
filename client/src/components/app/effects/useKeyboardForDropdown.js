@@ -5,11 +5,11 @@ import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import {
   clearBeat,
+  setCurrentDropdown,
   updateHandForBeat,
   updateSoundForBeat,
 } from '../../../redux/song/song.slice';
 import {
-  setCurrentDropdown,
   toggleAutoMove,
   toggleMultiSelect,
 } from '../../../redux/ui/ui.actions';
@@ -25,7 +25,7 @@ const useKeyboardForDropdown = () => {
       scale: scale.parsed.pitched,
     }));
 
-  useCloseOnEsc(() => dispatch(setCurrentDropdown(null)));
+  useCloseOnEsc(() => dispatch(setCurrentDropdown({ beatId: null })));
 
   useEffect(() => {
     if (currentDropdown === null) return;
@@ -64,15 +64,15 @@ const useKeyboardForDropdown = () => {
       [beatOptionToKeyCode['chord']]: () => dispatch(toggleMultiSelect()),
       [beatOptionToKeyCode['auto']]: () => dispatch(toggleAutoMove()),
       [beatOptionToKeyCode['nextBeat']]: () =>
-        dispatch(setCurrentDropdown(nextBeatId || currentDropdown)),
+        dispatch(setCurrentDropdown({ beatId: nextBeatId || currentDropdown })),
       [beatOptionToKeyCode['prevBeat']]: () =>
-        dispatch(setCurrentDropdown(prevBeatId || currentDropdown)),
+        dispatch(setCurrentDropdown({ beatId: prevBeatId || currentDropdown })),
       [beatOptionToKeyCode['nextBeatAlt']]: () =>
-        dispatch(setCurrentDropdown(nextBeatId || currentDropdown)),
+        dispatch(setCurrentDropdown({ beatId: nextBeatId || currentDropdown })),
       [beatOptionToKeyCode['prevBeatAlt']]: () =>
-        dispatch(setCurrentDropdown(prevBeatId || currentDropdown)),
+        dispatch(setCurrentDropdown({ beatId: prevBeatId || currentDropdown })),
       [beatOptionToKeyCode['skip']]: () =>
-        dispatch(setCurrentDropdown(nextBeatId || currentDropdown)),
+        dispatch(setCurrentDropdown({ beatId: nextBeatId || currentDropdown })),
       [beatOptionToKeyCode['clear']]: () =>
         dispatch(clearBeat({ beatId: currentDropdown })),
     };
@@ -95,12 +95,12 @@ const useKeyboardForDropdown = () => {
       if (!autoMove || !(percussionCbs[e.code] || soundCbs[e.code])) return;
 
       if (!multiSelect) {
-        dispatch(setCurrentDropdown(nextBeatId || currentDropdown));
+        dispatch(setCurrentDropdown({ beatId: nextBeatId || currentDropdown }));
         return;
       }
 
       timeout = setTimeout(() => {
-        dispatch(setCurrentDropdown(nextBeatId || currentDropdown));
+        dispatch(setCurrentDropdown({ beatId: nextBeatId || currentDropdown }));
       }, AUTO_MOVE_DELAY);
     };
 

@@ -2,7 +2,7 @@ import React, { useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
-import { setCurrentDropdown } from '../../../redux/ui/ui.actions';
+import { setCurrentDropdown } from '../../../redux/song/song.slice';
 import BeatDropdown from '../../beatDropdown/BeatDropdown';
 import BeatText from './BeatText';
 import {
@@ -47,11 +47,11 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
     if (isSongPlaying) return;
 
     if (isOpen) {
-      dispatch(setCurrentDropdown(null));
+      dispatch(setCurrentDropdown({ beatId: null }));
       return;
     }
 
-    dispatch(setCurrentDropdown(beatId));
+    dispatch(setCurrentDropdown({ beatId: beatId }));
   };
 
   const handleKeyDown = (e) => {

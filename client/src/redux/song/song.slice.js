@@ -60,8 +60,9 @@ const songSlice = createSlice({
       state.ui.isSongPlaying = false;
     },
     setCurrentDropdown(state, { payload }) {
-      state.ui.currentDropdown =
-        state.ui.currentDropdown === payload.beatId ? null : payload.beatId;
+      const isNewDropdown =
+        payload.beatId && payload.beatId !== state.ui.currentDropdown;
+      state.ui.currentDropdown = isNewDropdown ? payload.beatId : null;
     },
     addNewBar(state, { payload }) {
       console.log('addNewBarReducer', { payload });
