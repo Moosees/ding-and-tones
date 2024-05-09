@@ -15,7 +15,7 @@
 
 * switch from old reducer to slice and update all action dispatches
 * reset displayedChord and displayedNote when fetching a scale (or song with scale)
-* merge drum reducer into other reducers?
+* merge drum reducer into other reducers? or move currentSound and currentHand to drum slice?
 
 ### chords slice
 
@@ -45,11 +45,10 @@
 * editSong = false only when loading from search?
 * isOwner when fetching or loading song - move to refs?
 * transfer logic from ui reducer - autoMove(order), currentDropdown, mutedBars, isEditingSong, isSongPlaying, multiSelect, currentBar, currentBeat, currentHand?, currentSound, hands/headers/countOpen
-* Rework and simplify logic for setCurrentlyPlaying?
 * add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?) remove useSongIsPlaying?
-* remove close dropdown logic from components where needed
-* remove resetUiState in patternPlayer.js and add reset for song state after song finish playing
 * setCurrentDropdown closing logic is in both state and components - remove from components
+* refactor pattern and beats updating songUi in patternPlayer.js?
+* reset currentBar in useResetCurrentBeat?
 
 ### song api
 

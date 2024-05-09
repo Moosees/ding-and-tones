@@ -6,10 +6,6 @@ import uiTypes from './ui.types';
 const INITIAL_STATE = {
   autoMove: false,
   autoMoveOrder: autoMoveOrderState,
-  currentBar: null,
-  currentBeat: null,
-  currentHand: 1,
-  currentSound: [],
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
@@ -22,14 +18,6 @@ const INITIAL_STATE = {
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case uiTypes.SET_CURRENTLY_PLAYING:
-      const currentHand = payload.currentHand || 1;
-      return {
-        ...state,
-        ...payload,
-        currentHand,
-      };
-
     case uiTypes.SET_IS_SONG_PLAYING:
       return {
         ...state,

@@ -54,7 +54,7 @@ export const buildPatternFromBar = (barId, howls) => {
     };
 
     return {
-      uiUpdates: {
+      songPlayerUpdate: {
         currentBar: barId,
         currentBeat: beatId,
         currentHand: hand || getDefaultHandForSound(sound),

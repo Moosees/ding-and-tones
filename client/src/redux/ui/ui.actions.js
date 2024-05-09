@@ -1,10 +1,5 @@
 import uiTypes from './ui.types';
 
-export const setCurrentlyPlaying = (currentlyPlaying) => ({
-  type: uiTypes.SET_CURRENTLY_PLAYING,
-  payload: currentlyPlaying, // { currentBeat, currentBar, currentSound, currentHand }
-});
-
 export const setIsSongPlaying = (isSongPlaying) => ({
   type: uiTypes.SET_IS_SONG_PLAYING,
   payload: isSongPlaying,

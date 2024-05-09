@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { createDefaultSong } from '../../assets/defaultData';
+import { compareSubdivisionsLength } from '../../assets/metre';
+import { filterObjectByKeyArray } from '../store.utils';
 import {
   createAutoMoveOrder,
   createUpdatedSound,
@@ -6,9 +9,6 @@ import {
   parseFetchedSong,
   updateMeasureAndBeats,
 } from './song.utils';
-import { filterObjectByKeyArray } from '../store.utils';
-import { createDefaultSong } from '../../assets/defaultData';
-import { compareSubdivisionsLength } from '../../assets/metre';
 
 const defaultSong = createDefaultSong();
 
@@ -25,18 +25,20 @@ const INITIAL_STATE = {
     songId: null,
     scaleId: null,
   },
-  ui: {
-    autoMove: false,
+  songPlayer: {
     currentBar: null,
     currentBeat: null,
     currentHand: 1,
     currentSound: [],
+    isSongPlaying: false,
+  },
+  ui: {
+    autoMove: false,
     currentDropdown: null,
     countOpen: false,
     handsOpen: false,
     headersOpen: true,
     isEditingSong: true,
-    isSongPlaying: false,
     isOwner: false,
     multiSelect: false,
     scaleName: '',
@@ -49,15 +51,22 @@ const songSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     startSongPlayback(state) {
-      state.ui.isSongPlaying = true;
+      state.songPlayer.isSongPlaying = true;
       state.ui.currentDropdown = null;
     },
     stopSongPlayback(state) {
-      state.ui.currentBar = null;
-      state.ui.currentBeat = null;
-      state.ui.currentHand = 1; // not needed?
-      state.ui.currentSound = []; // not needed?
-      state.ui.isSongPlaying = false;
+      state.songPlayer.currentBar = null;
+      state.songPlayer.currentBeat = null;
+      state.songPlayer.currentHand = 1; // not needed?
+      state.songPlayer.currentSound = []; // not needed?
+      state.songPlayer.isSongPlaying = false;
+    },
+    updateSongPlayer(state, { payload }) {
+      const { currentBar, currentBeat, currentHand, currentSound } = payload;
+      if (currentBar) state.songPlayer.currentBar = currentBar;
+      if (currentBeat) state.songPlayer.currentBeat = currentBeat;
+      state.songPlayer.currentHand = currentHand || 1;
+      state.songPlayer.currentSound = currentSound || [];
     },
     setCurrentDropdown(state, { payload }) {
       const isNewDropdown =
@@ -224,6 +233,7 @@ const songSlice = createSlice({
 export const {
   startSongPlayback,
   stopSongPlayback,
+  updateSongPlayer,
   setCurrentDropdown,
   addNewBar,
   deleteBar,

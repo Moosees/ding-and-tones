@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
-  currentBar: null,
-  currentBeat: null,
-  currentHand: 1,
-  currentSound: [],
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
@@ -22,14 +18,6 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState: INITIAL_STATE,
   reducers: {
-    setCurrentlyPlaying(state, { payload }) {
-      console.log('setCurrentlyPlaying', payload);
-      const { currentBar, currentBeat, currentHand, currentSound } = payload;
-      state.currentBar = currentBar;
-      state.currentBeat = currentBeat;
-      state.currentHand = currentHand || 1;
-      state.currentSound = currentSound;
-    },
     setUiState(state, { payload }) {
       const { key, val } = payload;
       if (!validKeys.includes(key)) return;

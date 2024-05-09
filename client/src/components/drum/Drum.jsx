@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { howls } from '../../assets/sound/howls';
-import { setCurrentlyPlaying } from '../../redux/ui/ui.actions';
+import { updateSongPlayer } from '../../redux/song/song.slice';
 import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
 import { getChordColor, getNoteColor, getNoteText } from './drum.utils';
 import ExtraNote from './tonefield/ExtraNote';
@@ -31,7 +31,7 @@ const Drum = ({ style }) => {
   const handlePlay = (note, option, currentHand = 1) => {
     if (!howls[note] || status[note] !== 'ready') return;
 
-    dispatch(setCurrentlyPlaying({ currentHand, currentSound: [option] }));
+    dispatch(updateSongPlayer({ currentHand, currentSound: [option] }));
 
     howls[note].play();
   };

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { howls } from '../../../assets/sound/howls';
-import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
+import { updateSongPlayer } from '../../../redux/song/song.slice';
 
 const usePlayWithKeyboard = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const usePlayWithKeyboard = () => {
         if (!howls[note] || status[note] !== 'ready') return;
 
         dispatch(
-          setCurrentlyPlaying({
+          updateSongPlayer({
             currentHand: option === 't' ? 2 : 1,
             currentSound: [option],
           })
