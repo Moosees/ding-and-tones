@@ -10,7 +10,6 @@ const songTypes = {
   SAVE_SUCCESSFUL: 'song/saveSuccessful',
   SET_STATE: 'song/setState',
   UPDATE_MEASURE_AND_BEATS: 'song/measureAndBeats',
-  UPDATE_SONG_INFO: 'song/updateInfo',
 };
 
 export default songTypes;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
-import { updateSongInfo } from '../../../redux/song/song.actions';
+import { updateSongInfo } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoInput from '../../shared/input/InfoInput';
 import Metre from '../../shared/metreControls/Metre';
@@ -28,9 +28,11 @@ const PopupSongMetre = ({ onClose }) => {
     if (isNewBpmValid) {
       dispatch(
         updateSongInfo({
-          bpm: newBpm,
-          metre: newMetre,
-          subdivision: newSubdivision,
+          songInfo: {
+            bpm: newBpm,
+            metre: newMetre,
+            subdivision: newSubdivision,
+          },
         })
       );
       onClose();

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import { updateSongInfo } from '../../../redux/song/song.actions';
 import { useSaveSongMutation } from '../../../redux/song/song.api';
+import { updateSongInfo } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import InfoText from '../../shared/input/InfoText';
@@ -57,7 +57,7 @@ const ControlsLeft = () => {
         <InfoText
           handleChange={handleTitleChange}
           handleClose={resetTitle}
-          handleSave={() => dispatch(updateSongInfo({ title }))}
+          handleSave={() => dispatch(updateSongInfo({ songInfo: { title } }))}
           isValid={isTitleValid}
           label={titleErrors.length ? titleErrors[0] : 'Song title:'}
           value={title}
@@ -67,7 +67,7 @@ const ControlsLeft = () => {
         <Select
           value={songInfo.difficulty}
           handleChange={(value) =>
-            dispatch(updateSongInfo({ difficulty: value }))
+            dispatch(updateSongInfo({ songInfo: { difficulty: value } }))
           }
           options={optionsDifficulty}
           label="Difficulty: "

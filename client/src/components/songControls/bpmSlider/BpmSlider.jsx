@@ -3,7 +3,7 @@ import 'rc-slider/assets/index.css';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { updateSongInfo } from '../../../redux/song/song.actions';
+import { updateSongInfo } from '../../../redux/song/song.slice';
 import './slider-override.css';
 
 const Mark = styled.span`
@@ -36,7 +36,9 @@ const BpmSlider = () => {
       marks={marks}
       included={false}
       disabled={isSongPlaying}
-      onChange={(value) => dispatch(updateSongInfo({ bpm: value }))}
+      onChange={(value) =>
+        dispatch(updateSongInfo({ songInfo: { bpm: value } }))
+      }
       handleStyle={{
         backgroundColor: '#888',
         border: '1px solid #444',

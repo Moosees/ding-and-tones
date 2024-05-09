@@ -148,8 +148,3 @@ const saveSong =
         return Promise.resolve('');
       });
   };
-
-export const updateSongInfo = (songInfo) => ({
-  type: songTypes.UPDATE_SONG_INFO,
-  payload: songInfo,
-});
