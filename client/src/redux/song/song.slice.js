@@ -57,8 +57,8 @@ const songSlice = createSlice({
     stopSongPlayback(state) {
       state.songPlayer.currentBar = null;
       state.songPlayer.currentBeat = null;
-      state.songPlayer.currentHand = 1; // not needed?
-      state.songPlayer.currentSound = []; // not needed?
+      state.songPlayer.currentHand = 1;
+      state.songPlayer.currentSound = [];
       state.songPlayer.isSongPlaying = false;
     },
     updateSongPlayer(state, { payload }) {

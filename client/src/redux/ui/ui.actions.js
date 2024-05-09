@@ -1,10 +1,5 @@
 import uiTypes from './ui.types';
 
-export const setIsSongPlaying = (isSongPlaying) => ({
-  type: uiTypes.SET_IS_SONG_PLAYING,
-  payload: isSongPlaying,
-});
-
 export const setPrivacyOpen = (privacyOpen) => ({
   type: uiTypes.SET_PRIVACY_OPEN,
   payload: privacyOpen,

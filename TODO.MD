@@ -45,10 +45,10 @@
 * editSong = false only when loading from search?
 * isOwner when fetching or loading song - move to refs?
 * transfer logic from ui reducer - autoMove(order), currentDropdown, mutedBars, isEditingSong, isSongPlaying, multiSelect, currentBar, currentBeat, currentHand?, currentSound, hands/headers/countOpen
-* add stop song playback extra reducer (changing audioSrc, replace all setIsSongPlaying false?) remove useSongIsPlaying?
 * setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
+* figure out what should be disabled when song is playing
 
 ### song api
 

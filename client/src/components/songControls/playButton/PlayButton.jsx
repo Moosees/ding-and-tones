@@ -2,7 +2,10 @@ import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
-import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
+import {
+  startSongPlayback,
+  stopSongPlayback,
+} from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import { checkHowlsReadyStatus } from './playButton.utils';
 
@@ -25,11 +28,11 @@ const PlayButton = ({ light }) => {
 
   const handlePlayPause = () => {
     if (isSongPlaying) {
-      dispatch(setIsSongPlaying(false));
+      dispatch(stopSongPlayback());
       return;
     }
 
-    dispatch(setIsSongPlaying(true));
+    dispatch(startSongPlayback());
     const songPattern = buildPatternFromSong();
 
     playPattern(songPattern);

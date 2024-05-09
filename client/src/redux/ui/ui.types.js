@@ -1,6 +1,5 @@
 const uiTypes = {
   SET_MUTED_BARS: 'ui/setMuted',
-  SET_IS_SONG_PLAYING: 'ui/setIsSongPlaying',
   SET_PRIVACY_OPEN: 'ui/setPrivacyOpen',
   TOGGLE_AUTO_MOVE: 'ui/toggleAuto',
   TOGGLE_COUNT_OPEN: 'ui/toggleCount',
