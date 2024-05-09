@@ -216,17 +216,17 @@ const songSlice = createSlice({
       state.ui.handsOpen = true;
     },
     updateSongInfo(state, { payload }) {
-      state.info = { ...state.info, ...payload.songInfo };
+			Object.assign(state.info, payload.songInfo)
     },
     updateSongUi(state, { payload }) {
-      state.ui = { ...state.ui, ...payload.songUi };
+			Object.assign(state.ui, payload.songUi)
     },
     togglePrivateSong(state) {
       state.refs.isPrivate = !state.refs.isPrivate;
     },
-    toggleAutoMove(state) {}, // updateSongUi?
-    toggleEditSong(state) {}, // updateSongUi?
-    toggleMultiSelect(state) {}, // updateSongUi?
+    // toggleAutoMove(state) {}, // updateSongUi?
+    // toggleEditSong(state) {}, // updateSongUi?
+    // toggleMultiSelect(state) {}, // updateSongUi?
   },
 });
 
