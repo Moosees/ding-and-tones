@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { helpTopics } from '../../../assets/help';
-import { setCurrentDropdown } from '../../../redux/song/song.slice';
-import { toggleMultiSelect } from '../../../redux/ui/ui.actions';
+import {
+  setCurrentDropdown,
+  toggleMultiSelect,
+} from '../../../redux/song/song.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Buttons from '../../shared/button/Buttons';

@@ -216,17 +216,33 @@ const songSlice = createSlice({
       state.ui.handsOpen = true;
     },
     updateSongInfo(state, { payload }) {
-			Object.assign(state.info, payload.songInfo)
+      Object.assign(state.info, payload.songInfo);
     },
     updateSongUi(state, { payload }) {
-			Object.assign(state.ui, payload.songUi)
+      Object.assign(state.ui, payload.songUi);
     },
     togglePrivateSong(state) {
       state.refs.isPrivate = !state.refs.isPrivate;
     },
-    // toggleAutoMove(state) {}, // updateSongUi?
-    // toggleEditSong(state) {}, // updateSongUi?
-    // toggleMultiSelect(state) {}, // updateSongUi?
+    toggleAutoMove(state) {
+      state.ui.autoMove = !state.ui.autoMove;
+    },
+    toggleEditSong(state) {
+      state.ui.isEditingSong = !state.ui.isEditingSong;
+      state.mutedBars = {};
+    },
+    toggleMultiSelect(state) {
+      state.ui.multiSelect = !state.ui.multiSelect;
+    },
+    toggleCount(state) {
+      state.ui.countOpen = !state.ui.countOpen;
+    },
+    toggleHeaders(state) {
+      state.ui.headersOpen = !state.ui.headersOpen;
+    },
+    toggleHands(state) {
+      state.ui.handsOpen = !state.ui.handsOpen;
+    },
   },
 });
 
@@ -247,6 +263,12 @@ export const {
   updateSongInfo,
   updateSongUi,
   togglePrivateSong,
+  toggleAutoMove,
+  toggleEditSong,
+  toggleMultiSelect,
+  toggleCount,
+  toggleHands,
+  toggleHeaders,
 } = songSlice.actions;
 
 export default songSlice.reducer;

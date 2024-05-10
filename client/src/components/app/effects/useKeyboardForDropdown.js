@@ -6,13 +6,11 @@ import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import {
   clearBeat,
   setCurrentDropdown,
+  toggleAutoMove,
+  toggleMultiSelect,
   updateHandForBeat,
   updateSoundForBeat,
 } from '../../../redux/song/song.slice';
-import {
-  toggleAutoMove,
-  toggleMultiSelect,
-} from '../../../redux/ui/ui.actions';
 
 const useKeyboardForDropdown = () => {
   const dispatch = useDispatch();

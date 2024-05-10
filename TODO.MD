@@ -44,11 +44,11 @@
 * standardize loadSong inputs and helper functions
 * editSong = false only when loading from search?
 * isOwner when fetching or loading song - move to refs?
-* transfer logic from ui reducer - autoMove(order), currentDropdown, mutedBars, isEditingSong, isSongPlaying, multiSelect, currentBar, currentBeat, currentHand?, currentSound, hands/headers/countOpen
+* transfer logic from ui reducer - autoMove(order), mutedBars
 * setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
-* figure out what should be disabled when song is playing
+* figure out what should be disabled when song is playing (or stop playback when changing audio src)
 
 ### song api
 
@@ -59,10 +59,7 @@
 
 ### ui slice
 
-* switch from old reducer to slice and update all action dispatches
-* move actions to other reducers where possible
-* Clean up UI state and reduce number of actions (also for other reducers?) - better solution than validKeys?
-* set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
+* figure out what to do with privacyOpen
 
 ### user slice
 
@@ -73,7 +70,8 @@
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
 * isSignedIn derived from username instead of extra key in redux?
-* move privacyOpen from ui to user?
+* move privacyOpen from ui to user
+* set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
 
 ### Other
 

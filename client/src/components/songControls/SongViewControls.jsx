@@ -2,10 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import {
-  toggleCountOpen,
-  toggleHandsOpen,
-  toggleHeadersOpen,
-} from '../../redux/ui/ui.actions';
+  toggleCount,
+  toggleHands,
+  toggleHeaders,
+} from '../../redux/song/song.slice';
 import Buttons from '../shared/button/Buttons';
 import Checkbox from '../shared/checkbox/Checkbox';
 import EditButton from './editButton/EditButton';
@@ -45,7 +45,7 @@ const SongViewControls = () => {
           checked={handsOpen}
           label="Hands"
           disabled={isSongPlaying}
-          onChange={() => dispatch(toggleHandsOpen())}
+          onChange={() => dispatch(toggleHands())}
         />
         <Checkbox
           asBtn
@@ -53,7 +53,7 @@ const SongViewControls = () => {
           checked={countOpen}
           label="Count"
           disabled={isSongPlaying}
-          onChange={() => dispatch(toggleCountOpen())}
+          onChange={() => dispatch(toggleCount())}
         />
         <Checkbox
           asBtn
@@ -61,7 +61,7 @@ const SongViewControls = () => {
           checked={headersOpen}
           label="Headers"
           disabled={isSongPlaying}
-          onChange={() => dispatch(toggleHeadersOpen())}
+          onChange={() => dispatch(toggleHeaders())}
         />
       </Buttons>
     </ControlsContainer>

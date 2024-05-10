@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { metreList } from '../../../assets/metre';
-import { toggleCountOpen, toggleHandsOpen } from '../../../redux/ui/ui.actions';
+import { toggleCount, toggleHands } from '../../../redux/song/song.slice';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoBox from '../../shared/layout/InfoBox';
@@ -42,14 +42,14 @@ const ControlsRight = () => {
             checked={handsOpen}
             label="Hands"
             disabled={isSongPlaying}
-            onChange={() => dispatch(toggleHandsOpen())}
+            onChange={() => dispatch(toggleHands())}
           />
           <Checkbox
             asBtn
             checked={countOpen}
             label="Count"
             disabled={isSongPlaying}
-            onChange={() => dispatch(toggleCountOpen())}
+            onChange={() => dispatch(toggleCount())}
           />
           <EditButton />
         </Buttons>

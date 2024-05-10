@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleEditSong } from '../../../redux/ui/ui.actions';
+import { toggleEditSong } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 
 const EditButton = ({ light }) => {

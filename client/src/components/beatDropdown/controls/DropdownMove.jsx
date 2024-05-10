@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentDropdown } from '../../../redux/song/song.slice';
-import { toggleAutoMove } from '../../../redux/ui/ui.actions';
+import {
+  setCurrentDropdown,
+  toggleAutoMove,
+} from '../../../redux/song/song.slice';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
