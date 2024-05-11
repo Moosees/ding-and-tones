@@ -44,7 +44,7 @@
 * standardize loadSong inputs and helper functions
 * editSong = false only when loading from search?
 * isOwner when fetching or loading song - move to refs?
-* transfer logic from ui reducer - autoMove(order), mutedBars
+* transfer logic from ui reducer - mutedBars
 * setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
@@ -61,6 +61,7 @@
 
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in
+* split isOwner for scale and song and move to user slice?
 * sign in cross origin warning? (cause: unsupported browser fix?)
 * default data when no session is active - working?
 * user sound popup - info about saving settings to account?
