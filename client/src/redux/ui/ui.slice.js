@@ -4,14 +4,12 @@ const INITIAL_STATE = {
   countOpen: false,
   handsOpen: false,
   headersOpen: true,
-  privacyOpen: false,
 };
 
 const validKeys = [
   'countOpen',
   'handsOpen',
   'headersOpen',
-  'privacyOpen',
 ];
 
 const uiSlice = createSlice({

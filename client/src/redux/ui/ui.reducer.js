@@ -13,17 +13,10 @@ const INITIAL_STATE = {
   isSongPlaying: false,
   multiSelect: false,
   mutedBars: {},
-  privacyOpen: false,
 };
 
 const uiReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case uiTypes.SET_PRIVACY_OPEN:
-      return {
-        ...state,
-        privacyOpen: payload,
-      };
-
     case uiTypes.SET_MUTED_BARS:
       return {
         ...state,

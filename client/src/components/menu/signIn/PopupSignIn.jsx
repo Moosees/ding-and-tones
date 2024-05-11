@@ -22,7 +22,7 @@ const SignIn = ({ onClose }) => {
   const [getGoogleUrl] = useLazyGetGoogleUrlQuery();
   const [signIn] = useSignInMutation();
 
-  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [privacyEmbedOpen, setPrivacyEmbedOpen] = useState(false);
   const [persistSession, setPersistSession] = useState(false);
 
   const handleSignIn = async () => {
@@ -57,12 +57,12 @@ const SignIn = ({ onClose }) => {
         </GoogleBtn>
         By using this website you agree to our{' '}
         <TermsLink
-          onClick={() => setPrivacyOpen(true)}
-          $privacyOpen={privacyOpen}
+          onClick={() => setPrivacyEmbedOpen(true)}
+          $privacyEmbedOpen={privacyEmbedOpen}
         >
           terms and privacy policy.
         </TermsLink>
-        {privacyOpen && <PrivacyText />}
+        {privacyEmbedOpen && <PrivacyText />}
       </SignInContainer>
     </Popup>
   );

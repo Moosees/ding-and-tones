@@ -1,10 +1,5 @@
 import uiTypes from './ui.types';
 
-export const setPrivacyOpen = (privacyOpen) => ({
-  type: uiTypes.SET_PRIVACY_OPEN,
-  payload: privacyOpen,
-});
-
 export const toggleMuteBar = (barId, solo) => (dispatch, getState) => {
   const {
     song: { arrangement },

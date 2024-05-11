@@ -57,10 +57,6 @@
 * firstLoad arg not needed for getSongById?
 * add alert if scale fails to load with song? split song and scale fetches?
 
-### ui slice
-
-* figure out what to do with privacyOpen
-
 ### user slice
 
 * set isOwner for scale and song to false when signing out
@@ -70,7 +66,6 @@
 * user sound popup - info about saving settings to account?
 * PopupAccount only close if mutation is successful?
 * isSignedIn derived from username instead of extra key in redux?
-* move privacyOpen from ui to user
 * set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
 
 ### Other
