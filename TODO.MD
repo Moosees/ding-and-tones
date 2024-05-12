@@ -37,6 +37,7 @@
 * switch from old reducer to slice and update all action dispatches
 * load scale when loading a song with scale
 * have default scale but delay loading howls until after checking url? firstLoad not needed?
+* PopupSaveSong newScaleName selector
 
 ### song slice
 
@@ -49,6 +50,9 @@
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
 * figure out what should be disabled when song is playing (or stop playback when changing audio src)
+* scaleName and scaleLabel should be in refs?
+* songwriter Bar selector rerendering problems? (shallowEqual on selector needed?)
+* songPlayer state selectors (and currentDropdown isOpen for beats)
 
 ### song api
 
@@ -56,6 +60,8 @@
 * remove isOwner and songId when deleting song
 * firstLoad arg not needed for getSongById?
 * add alert if scale fails to load with song? split song and scale fetches?
+* Song split and handle url ids better
+* ControlsLeft saveSongCb move logic to action?
 
 ### user slice
 

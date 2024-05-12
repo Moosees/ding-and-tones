@@ -7,21 +7,14 @@ import Popup from '../../shared/popup/Popup';
 
 const PopupSaveSong = ({ onClose, onSave, title }) => {
   const dispatch = useDispatch();
-  const {
-    newScaleId,
-    newScaleName,
-    isOwner,
-    isPrivate,
-    oldScaleId,
-    oldScaleName,
-  } = useSelector(({ scale, song }) => ({
-    newScaleId: scale.ui.scaleId,
-    newScaleName: `${scale.info.rootName} ${scale.info.name}`,
-    isOwner: song.ui.isOwner,
-    isPrivate: song.ui.isPrivate,
-    oldScaleId: song.ui.scaleId,
-    oldScaleName: song.ui.scaleName,
-  }));
+  const newScaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const newScaleName = useSelector(
+    ({ scale }) => `${scale.info.rootName} ${scale.info.name}`
+  );
+  const isOwner = useSelector(({ song }) => song.ui.isOwner);
+  const isPrivate = useSelector(({ song }) => song.refs.isPrivate);
+  const oldScaleId = useSelector(({ song }) => song.refs.scaleId);
+  const oldScaleName = useSelector(({ song }) => song.ui.scaleName);
 
   const [selectedScale, setSelectedScale] = useState(
     !isOwner && !oldScaleId ? newScaleId : oldScaleId

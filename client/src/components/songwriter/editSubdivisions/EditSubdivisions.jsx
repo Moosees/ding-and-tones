@@ -6,10 +6,8 @@ import { EditSubdivisionsContainer } from './editSubdivisions.styles';
 
 const EditSubdivisions = ({ barId }) => {
   const dispatch = useDispatch();
-  const { metre, subdivisions } = useSelector(({ song }) => ({
-    metre: song.bars[barId].metre,
-    subdivisions: song.bars[barId].subdivisions,
-  }));
+  const metre = useSelector(({ song }) => song.bars[barId]);
+  const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
 
   const handleSetSubdivision = (value, beatIndex) => {
     const newSubdivisions = [...subdivisions];

@@ -11,15 +11,13 @@ import { checkHowlsReadyStatus } from './playButton.utils';
 
 const PlayButton = ({ light }) => {
   const dispatch = useDispatch();
-  const { status, scale, arrangement, isSongPlaying, mutedBars } = useSelector(
-    ({ howls, scale, song, ui }) => ({
-      status: howls.status,
-      scale: scale.parsed.pitched,
-      arrangement: song.arrangement,
-      isSongPlaying: ui.isSongPlaying,
-      mutedBars: ui.mutedBars,
-    })
+  const status = useSelector(({ howls }) => howls.status);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const arrangement = useSelector(({ song }) => song.arrangement);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
   );
+  const mutedBars = useSelector(({ song }) => song.mutedBars);
 
   const areHowlsReady = useMemo(
     () => checkHowlsReadyStatus(scale, status),

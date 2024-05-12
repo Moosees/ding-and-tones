@@ -17,7 +17,7 @@ import { parseSongForSaving } from './controls.utils';
 const ControlsLeft = () => {
   const dispatch = useDispatch();
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isSongPlaying = useSelector(({ song }) => song.songPlayer.isSongPlaying);
   const song = useSelector(({ song }) => song);
   const [saveSong, { isLoading: isSaving }] = useSaveSongMutation();
 

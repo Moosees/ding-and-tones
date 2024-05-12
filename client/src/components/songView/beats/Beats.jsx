@@ -10,14 +10,10 @@ import {
 } from './beats.styles';
 
 const Beats = ({ group }) => {
-  const { beats, countOpen, currentBeat, handsOpen } = useSelector(
-    ({ song, ui }) => ({
-      beats: song.beats,
-      countOpen: ui.countOpen,
-      currentBeat: ui.currentBeat,
-      handsOpen: ui.handsOpen,
-    })
-  );
+  const beats = useSelector(({ song }) => song.beats);
+  const currentBeat = useSelector(({ song }) => song.songPlayer.currentBeat);
+  const countOpen = useSelector(({ song }) => song.ui.countOpen);
+  const handsOpen = useSelector(({ song }) => song.ui.handsOpen);
 
   return (
     <>

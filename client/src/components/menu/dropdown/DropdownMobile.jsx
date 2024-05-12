@@ -13,7 +13,7 @@ import { DropdownContainer } from './dropdown.styles';
 const DropdownMobile = ({ btnRef, isOpenCb }) => {
   const dispatch = useDispatch();
   const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
-  const songId = useSelector(({ song }) => song.ui.songId);
+  const songId = useSelector(({ song }) => song.refs.songId);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();

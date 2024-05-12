@@ -11,7 +11,7 @@ const AddBar = () => {
   const dispatch = useDispatch();
   const metre = useSelector(({ song }) => song.info.metre);
   const subdivision = useSelector(({ song }) => song.info.subdivision);
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isSongPlaying = useSelector(({ song }) => song.songPlayer.isSongPlaying);
 
   const [newBarOpen, setNewBarOpen] = useState(false);
   const { nameShort } = metreList[metre];

@@ -13,12 +13,11 @@ import { copyBar } from './barControls.utils';
 
 const BarControls = ({ barId, toggleEditSubdivisions }) => {
   const dispatch = useDispatch();
-  const { bar, isMuted } = useSelector(({ song, ui }) => ({
-    bar: song.bars[barId],
-    isMuted: ui.mutedBars[barId],
-  }));
+  const bar = useSelector(({ song }) => song.bars[barId]);
+  const mutedBars = useSelector(({ song }) => song.mutedBars);
 
   const { metre, subdivisions } = bar;
+  const isMuted = mutedBars[barId] && mutedBars[barId] === true;
 
   const handleSetSubdivision = (subdivisionString) => {
     const newSubdivisions = subdivisionString

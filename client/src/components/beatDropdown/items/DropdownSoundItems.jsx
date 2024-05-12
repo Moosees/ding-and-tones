@@ -16,11 +16,9 @@ const DropdownSoundItems = ({
   soundList,
 }) => {
   const dispatch = useDispatch();
-  const { status, sound, multiSelect } = useSelector(({ howls, song, ui }) => ({
-    status: howls.status,
-    sound: song.beats[beatId].sound,
-    multiSelect: ui.multiSelect,
-  }));
+  const status = useSelector(({ howls }) => howls.status);
+  const sound = useSelector(({ song }) => song.beats[beatId].sound);
+  const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
 
   const soundItems = soundList.map(({ howl, label, option }) => {
     const selected = sound.includes(option);

@@ -9,7 +9,7 @@ import { getSongIdFromLocation } from './nav.utils';
 
 const NavMobile = () => {
   const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
-  const songId = useSelector(({ song }) => song.ui.songId);
+  const songId = useSelector(({ song }) => song.refs.songId);
 
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);

@@ -5,14 +5,10 @@ import Beats from '../beats/Beats';
 import { BarMetre, BeatGroup } from './bar.styles';
 
 const Bar = ({ barId, prevBar }) => {
-  const { metre, subdivisions, measure, previousBar } = useSelector(
-    ({ song }) => ({
-      metre: song.bars[barId].metre,
-      subdivisions: song.bars[barId].subdivisions,
-      measure: song.bars[barId].measure,
-      previousBar: song.bars[prevBar],
-    })
-  );
+  const metre = useSelector(({ song }) => song.bars[barId].metre);
+  const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
+  const measure = useSelector(({ song }) => song.bars[barId].measure);
+  const previousBar = useSelector(({ song }) => song.bars[prevBar]);
 
   const prevBarMetre = previousBar?.metre;
   const { nameShort } = metreList[metre];

@@ -13,15 +13,11 @@ import { ControlsContainer } from './controls.styles';
 
 const ControlsRight = () => {
   const dispatch = useDispatch();
-  const { bpm, metre, countOpen, handsOpen, isSongPlaying } = useSelector(
-    ({ song, ui }) => ({
-      bpm: song.info.bpm,
-      metre: song.info.metre,
-      countOpen: ui.countOpen,
-      handsOpen: ui.handsOpen,
-      isSongPlaying: ui.isSongPlaying,
-    })
-  );
+  const bpm = useSelector(({ song }) => song.info.bpm);
+  const metre = useSelector(({ song }) => song.info.metre);
+  const countOpen = useSelector(({ song }) => song.ui.countOpen);
+  const handsOpen = useSelector(({ song }) => song.ui.handsOpen);
+  const isSongPlaying = useSelector(({song}) => song.songPlayer.isSongPlaying);
 
   const [metreOpen, setMetreOpen] = useState(false);
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;

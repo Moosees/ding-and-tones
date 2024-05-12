@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { createBarTemplate } from '../../../assets/metre';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
@@ -8,16 +8,14 @@ import EditSubdivisions from '../editSubdivisions/EditSubdivisions';
 import { BarContainer, Beats } from './bar.styles';
 
 const Bar = ({ barId, barIndex }) => {
-  const { metre, measure, subdivisions, isPlaying, isMuted } = useSelector(
-    ({ song, ui }) => ({
-      metre: song.bars[barId].metre,
-      measure: song.bars[barId].measure,
-      subdivisions: song.bars[barId].subdivisions,
-      isPlaying: ui.currentBar === barId,
-      isMuted: ui.mutedBars[barId] && ui.mutedBars[barId] === true,
-    }),
-    shallowEqual
-  );
+  const metre = useSelector(({ song }) => song.bars[barId].metre);
+  const measure = useSelector(({ song }) => song.bars[barId].measure);
+  const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
+  const currentBar = useSelector(({ song }) => song.songPlayer.currentBar);
+  const mutedBars = useSelector(({ song }) => song.mutedBars);
+
+  const isPlaying = currentBar === barId;
+  const isMuted = mutedBars[barId] && mutedBars[barId] === true;
 
   const [editSubdivisionsOpen, setEditSubdivisionsOpen] = useState(false);
 

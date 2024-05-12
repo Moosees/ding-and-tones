@@ -18,7 +18,8 @@ import {
 
 const SignIn = ({ onClose }) => {
   const dispatch = useDispatch();
-  const songId = useSelector(({ song }) => song.ui.songId);
+  const songId = useSelector(({ song }) => song.refs.songId);
+	
   const [getGoogleUrl] = useLazyGetGoogleUrlQuery();
   const [signIn] = useSignInMutation();
 

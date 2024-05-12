@@ -7,10 +7,8 @@ import { BarInfoContainer, DragGradient } from './barInfo.styles';
 
 const BarInfo = ({ barId, barIndex }) => {
   const dispatch = useDispatch();
-  const { arrangement, metre } = useSelector(({ song }) => ({
-    arrangement: song.arrangement,
-    metre: song.bars[barId].metre,
-  }));
+  const arrangement = useSelector(({ song }) => song.arrangement);
+  const metre = useSelector(({ song }) => song.bars[barId].metre);
 
   return (
     <BarInfoContainer>
