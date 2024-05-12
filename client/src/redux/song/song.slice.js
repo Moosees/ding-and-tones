@@ -216,6 +216,30 @@ const songSlice = createSlice({
       }
       state.ui.handsOpen = true;
     },
+    toggleMuteBar(state, { payload }) {
+      const { solo, barId } = payload;
+
+      if (!solo) {
+        state.mutedBars[barId] = !state.mutedBars[barId];
+      } else {
+        const mutedBarsAry = Object.keys(state.mutedBars).filter(
+          (bar) => state.mutedBars[bar]
+        );
+        const clearSolo =
+          mutedBarsAry.length &&
+          mutedBarsAry.length === state.arrangement.length - 1 &&
+          !mutedBarsAry.includes(barId);
+
+        const mutedBars = clearSolo
+          ? {}
+          : state.arrangement.reduce((acc, bar) => {
+              if (barId !== bar) acc[bar] = true;
+              return acc;
+            }, {});
+
+        state.mutedBars = mutedBars;
+      }
+    },
     updateSongInfo(state, { payload }) {
       Object.assign(state.info, payload.songInfo);
     },
@@ -261,6 +285,7 @@ export const {
   clearBeat,
   updateSoundForBeat,
   updateHandForBeat,
+  toggleMuteBar,
   updateSongInfo,
   updateSongUi,
   togglePrivateSong,

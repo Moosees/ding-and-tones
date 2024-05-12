@@ -7,7 +7,6 @@ import howlsReducer from './howls/howls.reducer';
 import scaleReducer from './scale/scale.reducer';
 import searchReducer from './search/search.reducer';
 import songSlice from './song/song.slice';
-import uiReducer from './ui/ui.reducer';
 import userSlice from './user/user.slice';
 
 export const store = configureStore({
@@ -20,7 +19,6 @@ export const store = configureStore({
     scale: scaleReducer,
     search: searchReducer,
     song: songSlice,
-    ui: uiReducer,
     user: userSlice,
   },
   middleware: (getDefaultMiddleware) =>

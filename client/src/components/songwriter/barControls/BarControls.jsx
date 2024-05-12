@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteBar,
   duplicateBar,
+  toggleMuteBar,
   updateBarSubdivisions,
 } from '../../../redux/song/song.slice';
-import { toggleMuteBar } from '../../../redux/ui/ui.actions';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import { ControlsContainer } from './barControls.styles';
@@ -43,12 +43,12 @@ const BarControls = ({ barId, toggleEditSubdivisions }) => {
       <BtnIcon
         title={isMuted ? 'Unmute bar' : 'Mute bar'}
         icon={isMuted ? 'music_off' : 'music_note'}
-        onClick={() => dispatch(toggleMuteBar(barId, false))}
+        onClick={() => dispatch(toggleMuteBar({ barId, solo: false }))}
       />
       <BtnIcon
         title="Solo bar"
         icon="priority_high"
-        onClick={() => dispatch(toggleMuteBar(barId, true))}
+        onClick={() => dispatch(toggleMuteBar({ barId, solo: true }))}
       />
       <BtnIcon
         title="Edit subdivisions"
