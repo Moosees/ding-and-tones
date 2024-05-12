@@ -3,14 +3,11 @@ import { useSelector } from 'react-redux';
 import { TRANSLATE_TAK } from '../../../assets/constants';
 
 const Tak = ({ hand, handlePlay, note }) => {
-  const { currentHand, currentSound, isReady } = useSelector(
-    ({ howls, ui }) => ({
-      currentHand: ui.currentHand,
-      currentSound: ui.currentSound,
-      isReady: howls.status[note] === 'ready',
-    })
-  );
+  const currentHand = useSelector(({ song }) => song.songPlayer.currentHand);
+  const currentSound = useSelector(({ song }) => song.songPlayer.currentSound);
+  const status = useSelector(({ howls }) => howls.status);
 
+  const isReady = status[note] === 'ready';
   const isPlaying =
     [hand, 3].includes(currentHand) &&
     (currentSound.includes('t') || currentSound.includes('T'));

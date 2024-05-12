@@ -22,15 +22,13 @@ import DropdownSoundItems from './items/DropdownSoundItems';
 
 const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
   const dispatch = useDispatch();
-  const { autoMove, multiSelect, nextBeatId, sharpNotes, scale } = useSelector(
-    ({ ui, scale }) => ({
-      autoMove: ui.autoMove,
-      multiSelect: ui.multiSelect,
-      nextBeatId: ui.autoMoveOrder[beatId].nextBeatId,
-      sharpNotes: scale.info.sharpNotes,
-      scale: scale.parsed.pitched,
-    })
+  const autoMove = useSelector(({ song }) => song.ui.autoMove);
+  const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
+  const nextBeatId = useSelector(
+    ({ song }) => song.autoMoveOrder[beatId].nextBeatId
   );
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
   const [timeoutRef, setTimeoutRef] = useState(null);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);

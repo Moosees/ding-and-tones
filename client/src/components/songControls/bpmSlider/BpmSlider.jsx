@@ -25,7 +25,9 @@ const marks = {
 const BpmSlider = () => {
   const dispatch = useDispatch();
   const bpm = useSelector(({ song }) => song.info.bpm);
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
+  );
 
   return (
     <Slider

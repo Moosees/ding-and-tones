@@ -20,8 +20,8 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
   const hand = useSelector(({ song }) => song.beats[beatId].hand);
   const countOpen = useSelector(({ song }) => song.ui.countOpen);
   const handsOpen = useSelector(({ song }) => song.ui.handsOpen);
-  const currentBeat = useSelector(({ song }) => song.songPlayer.currentBeat);
   const currentDropdown = useSelector(({ song }) => song.ui.currentDropdown);
+  const currentBeat = useSelector(({ song }) => song.songPlayer.currentBeat);
   const isSongPlaying = useSelector(
     ({ song }) => song.songPlayer.isSongPlaying
   );

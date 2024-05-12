@@ -24,7 +24,7 @@ const Info = () => {
     isSaving,
     scaleInfo,
     isSignedIn,
-  } = useSelector(({ scale, search, ui, user }) => ({
+  } = useSelector(({ scale, user }) => ({
     hasChanges: scale.ui.hasChanges,
     isDeleting: scale.ui.isDeleting,
     isFetching: scale.ui.isFetching,

@@ -18,14 +18,12 @@ import { Note, NotesList, TextLabel } from './notes.styles';
 
 const Notes = ({ isAddingExtraNotes }) => {
   const dispatch = useDispatch();
-  const { sharpNotes, extra, round, scale, isSongPlaying } = useSelector(
-    ({ scale, ui }) => ({
-      sharpNotes: scale.info.sharpNotes,
-      extra: scale.notes.extra,
-      round: scale.notes.round,
-      scale: scale.parsed.pitched,
-      isSongPlaying: ui.isSongPlaying,
-    })
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const extra = useSelector(({ scale }) => scale.notes.extra);
+  const round = useSelector(({ scale }) => scale.notes.round);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
   );
 
   const handleAdd = (note) => {

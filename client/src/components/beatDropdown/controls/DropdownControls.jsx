@@ -10,9 +10,9 @@ import BtnIcon from '../../shared/button/BtnIcon';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 
-const DropdownControls = ({ beatId }) => {
+const DropdownControls = () => {
   const dispatch = useDispatch();
-  const multiSelect = useSelector(({ ui }) => ui.multiSelect);
+  const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
 
   return (
     <Buttons position="space-between">

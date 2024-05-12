@@ -4,8 +4,8 @@ import { updateSongPlayer } from '../../../redux/song/song.slice';
 
 const useResetCurrentBeat = () => {
   const dispatch = useDispatch();
-  const currentBeat = useSelector(({ ui }) => ui.currentBeat);
-  const currentSound = useSelector(({ ui }) => ui.currentSound);
+  const currentBeat = useSelector(({ song }) => song.songPlayer.currentBeat);
+  const currentSound = useSelector(({ song }) => song.songPlayer.currentSound);
 
   useEffect(() => {
     const timeout = setTimeout(() => {

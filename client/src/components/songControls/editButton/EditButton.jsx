@@ -5,8 +5,10 @@ import BtnPrimary from '../../shared/button/BtnPrimary';
 
 const EditButton = ({ light }) => {
   const dispatch = useDispatch();
-  const isEditingSong = useSelector(({ ui }) => ui.isEditingSong);
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isEditingSong = useSelector(({ song }) => song.ui.isEditingSong);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
+  );
 
   return (
     <BtnPrimary

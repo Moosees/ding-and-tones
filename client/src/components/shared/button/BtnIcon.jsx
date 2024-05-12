@@ -12,7 +12,9 @@ const BtnIcon = ({
   small,
   title,
 }) => {
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
+  );
 
   return (
     <IconButton

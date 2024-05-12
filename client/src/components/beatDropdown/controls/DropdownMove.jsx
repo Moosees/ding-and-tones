@@ -10,8 +10,8 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownMove = ({ beatId }) => {
   const dispatch = useDispatch();
-  const autoMove = useSelector(({ ui }) => ui.autoMove);
-  const autoMoveOrder = useSelector(({ ui }) => ui.autoMoveOrder);
+  const autoMoveOrder = useSelector(({ song }) => song.autoMoveOrder);
+  const autoMove = useSelector(({ song }) => song.ui.autoMove);
 
   return (
     <Buttons position="space-between">

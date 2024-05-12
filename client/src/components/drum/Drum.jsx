@@ -10,23 +10,13 @@ import Tonefield from './tonefield/Tonefield';
 
 const Drum = ({ style }) => {
   const dispatch = useDispatch();
-  const {
-    displayedChord,
-    displayedNote,
-    drumMode,
-    status,
-    sharpNotes,
-    scale,
-    currentSound,
-  } = useSelector(({ drum, howls, scale, ui }) => ({
-    displayedChord: drum.displayedChord,
-    displayedNote: drum.displayedNote,
-    drumMode: drum.drumMode,
-    status: howls.status,
-    sharpNotes: scale.info.sharpNotes,
-    scale: scale.parsed.pitched,
-    currentSound: ui.currentSound,
-  }));
+  const displayedChord = useSelector(({ drum }) => drum.displayedChord);
+  const displayedNote = useSelector(({ drum }) => drum.displayedNote);
+  const drumMode = useSelector(({ drum }) => drum.drumMode);
+  const status = useSelector(({ howls }) => howls.status);
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const currentSound = useSelector(({ song }) => song.songPlayer.currentSound);
 
   const handlePlay = (note, option, currentHand = 1) => {
     if (!howls[note] || status[note] !== 'ready') return;

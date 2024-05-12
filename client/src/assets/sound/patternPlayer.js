@@ -14,7 +14,7 @@ const playBeat = ({ songPlayerUpdate, duration, mode, play }) =>
 
 export const playPattern = async (pattern) => {
   for (let beat of pattern) {
-    if (!store.getState().ui.isSongPlaying) break;
+    if (!store.getState().song.songPlayer.isSongPlaying) break;
     await playBeat(beat);
   }
 

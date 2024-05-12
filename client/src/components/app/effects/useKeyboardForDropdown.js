@@ -14,14 +14,11 @@ import {
 
 const useKeyboardForDropdown = () => {
   const dispatch = useDispatch();
-  const { autoMove, autoMoveOrder, currentDropdown, multiSelect, scale } =
-    useSelector(({ ui, scale }) => ({
-      autoMove: ui.autoMove,
-      autoMoveOrder: ui.autoMoveOrder,
-      currentDropdown: ui.currentDropdown,
-      multiSelect: ui.multiSelect,
-      scale: scale.parsed.pitched,
-    }));
+  const autoMoveOrder = useSelector(({ song }) => song.autoMoveOrder);
+  const autoMove = useSelector(({ song }) => song.ui.autoMove);
+  const currentDropdown = useSelector(({ song }) => song.ui.currentDropdown);
+  const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
   useCloseOnEsc(() => dispatch(setCurrentDropdown({ beatId: null })));
 
