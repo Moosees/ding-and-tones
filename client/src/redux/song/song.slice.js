@@ -135,9 +135,10 @@ const songSlice = createSlice({
     },
     loadSong(state, { payload }) {
       // merged FETCH_SUCCESSFUL, SET_STATE, (createNewSong)
-      const { song, getScale, suppressAlert } = payload;
+      const { song, getScale } = payload;
+			// load scale if needed
 
-      const parsedSong = parseFetchedSong(song, getScale, suppressAlert); // suppressAlert not needed?
+      const parsedSong = parseFetchedSong(song, getScale);
       const autoMoveOrder = createAutoMoveOrder(parsedSong);
 
       state.autoMoveOrder = autoMoveOrder;

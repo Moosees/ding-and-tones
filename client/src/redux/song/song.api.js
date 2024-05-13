@@ -1,9 +1,6 @@
-import { defaultScale } from '../../assets/defaultData';
 import { api } from '../api/api.slice';
-import scaleTypes from '../scale/scale.types';
-import { parseScaleData } from '../scale/scale.utils';
+import { loadSong } from './song.slice';
 import songTypes from './song.types';
-import { createAutoMoveOrder, parseFetchedSong } from './song.utils';
 
 export const songExtendedApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,26 +15,11 @@ export const songExtendedApi = api.injectEndpoints({
         url: `/song/id/${songId}`,
         method: 'GET',
       }),
-      async onQueryStarted(
-        { firstLoad, getScale },
-        { dispatch, queryFulfilled }
-      ) {
+      async onQueryStarted({ getScale }, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
           console.log('GET SONG BY ID DATA', { data });
-          const parsedSong = parseFetchedSong(data.song, getScale);
-          const autoMoveOrder = createAutoMoveOrder(parsedSong);
-
-          if (firstLoad && !parsedSong.getScale)
-            dispatch({
-              type: scaleTypes.LOAD_SCALE,
-              payload: parseScaleData(defaultScale, true),
-            });
-
-          dispatch({
-            type: songTypes.FETCH_SUCCESSFUL,
-            payload: { song: parsedSong, ui: { autoMoveOrder } },
-          });
+          dispatch(loadSong({ song: data.song, getScale }));
         } catch (error) {}
       },
     }),

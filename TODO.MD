@@ -41,7 +41,7 @@
 
 ### song slice
 
-* standardize loadSong inputs and helper functions
+* fix new song action
 * editSong = false only when loading from search?
 * isOwner when fetching or loading song - move to refs?
 * setCurrentDropdown closing logic is in both state and components - remove from components
@@ -51,12 +51,12 @@
 * scaleName and scaleLabel should be in refs?
 * songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 * songPlayer state selectors (and currentDropdown isOpen for beats)
+* scaleName and scaleLabel not needed?
 
 ### song api
 
 * change handling of songId in url when saving or deleting?
 * remove isOwner and songId when deleting song
-* firstLoad arg not needed for getSongById?
 * add alert if scale fails to load with song? split song and scale fetches?
 * Song split and handle url ids better
 * ControlsLeft saveSongCb move logic to action?

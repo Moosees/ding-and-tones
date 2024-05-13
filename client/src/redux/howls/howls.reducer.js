@@ -4,11 +4,18 @@ import scaleTypes from '../scale/scale.types';
 import songTypes from '../song/song.types';
 import howlsTypes from './howls.types';
 import { changeAudioSrc, updateHowls } from './howls.utils';
+import { parsedDefaultScale } from '../scale/scale.initialState';
+
+const defaultHowlsStatus = updateHowls(
+  {},
+  audioSources[0].path,
+  parsedDefaultScale.parsed.pitched
+);
 
 const INITIAL_STATE = {
   audioSrc: audioSources[0],
   isSaving: false,
-  status: {},
+  status: defaultHowlsStatus,
 };
 
 const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {

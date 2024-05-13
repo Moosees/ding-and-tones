@@ -69,7 +69,7 @@ const parseBeatsForLoadSong = (beats) => {
   return parseArrayToObject(parsedBeats);
 };
 
-export const parseFetchedSong = (song, getScale, suppressAlert) => {
+export const parseFetchedSong = (song, getScale) => {
   const {
     arrangement,
     bars,
@@ -94,7 +94,7 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
         }
       : { scaleId: null, scaleName: '', scaleLabel: '' };
 
-  const parsedSongData = {
+  return {
     arrangement,
     bars: parsedBars,
     beats: parsedBeats,
@@ -103,12 +103,6 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
     scale: parsedScale,
     ui: { composer, isOwner, songId, isPrivate, ...savedScale },
   };
-
-  if (!suppressAlert) {
-    parsedSongData.alert = `"${song.info.title}" by ${song.composer} loaded`;
-  }
-
-  return parsedSongData;
 };
 
 export const createUpdatedSound = (sound, update, multiSelect) => {

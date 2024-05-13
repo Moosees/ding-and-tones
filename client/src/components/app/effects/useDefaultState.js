@@ -19,8 +19,7 @@ const useDefaultState = () => {
     const [, route, id] = location.pathname.split('/');
 
     if (route === 'song' && id) {
-      // dispatch(getSongById(id, true, true));
-      getSongById({ songId: id, firstLoad: true, getScale: true });
+      getSongById({ songId: id, getScale: true });
       return;
     }
 
