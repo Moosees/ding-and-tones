@@ -70,7 +70,7 @@ export const buildPatternFromBar = (barId, howls) => {
 export const buildPatternFromSong = () => {
   const {
     song: { arrangement },
-    ui: { mutedBars },
+    song: { mutedBars },
   } = store.getState();
 
   const howls = getHowlsForScale();

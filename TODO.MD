@@ -41,17 +41,15 @@
 
 ### song slice
 
-* switch from old reducer to slice and update all action dispatches
 * standardize loadSong inputs and helper functions
 * editSong = false only when loading from search?
 * isOwner when fetching or loading song - move to refs?
-* transfer logic from ui reducer - mutedBars
 * setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
 * figure out what should be disabled when song is playing (or stop playback when changing audio src)
 * scaleName and scaleLabel should be in refs?
-* songwriter Bar selector rerendering problems? (shallowEqual on selector needed?)
+* songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 * songPlayer state selectors (and currentDropdown isOpen for beats)
 
 ### song api
