@@ -33,7 +33,7 @@ const PopupNewSong = ({ onClose }) => {
         subdivision,
         title,
       };
-			
+
       const song = {
         composer: 'Anonymous',
         isOwner: false,
@@ -44,7 +44,7 @@ const PopupNewSong = ({ onClose }) => {
         arrangement: [],
       };
 
-      dispatch(loadSong({ song, loadScale: false }));
+      dispatch(loadSong({ song, loadScale: false, editSong: true }));
       navigate('/song');
       onClose();
     }

@@ -59,7 +59,11 @@ const Results = () => {
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
       const fetchSongFromServer = async (songId, getScale) => {
-        const { isSuccess } = await getSongById({ songId, getScale });
+        const { isSuccess } = await getSongById({
+          songId,
+          getScale,
+          editSong: false,
+        });
         if (isSuccess) navigate('/song');
       };
 

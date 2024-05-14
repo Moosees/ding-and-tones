@@ -15,11 +15,14 @@ export const songExtendedApi = api.injectEndpoints({
         url: `/song/id/${songId}`,
         method: 'GET',
       }),
-      async onQueryStarted({ getScale }, { dispatch, queryFulfilled }) {
+      async onQueryStarted(
+        { getScale, editSong },
+        { dispatch, queryFulfilled }
+      ) {
         try {
           const { data } = await queryFulfilled;
           console.log('GET SONG BY ID DATA', { data });
-          dispatch(loadSong({ song: data.song, getScale }));
+          dispatch(loadSong({ song: data.song, getScale, editSong }));
         } catch (error) {}
       },
     }),

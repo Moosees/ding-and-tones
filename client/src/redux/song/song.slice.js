@@ -134,7 +134,7 @@ const songSlice = createSlice({
       state.ui.currentDropdown = null;
     },
     loadSong(state, { payload }) {
-      const { song, getScale } = payload;
+      const { song, getScale, editSong } = payload;
       // load scale if needed
 
       const parsedSong = parseFetchedSong(song, getScale);
@@ -150,7 +150,7 @@ const songSlice = createSlice({
       state.refs.isPrivate = parsedSong.ui.isPrivate;
       state.refs.songId = parsedSong.ui.songId;
       state.refs.scaleId = parsedSong.ui.scaleId;
-      state.ui.isEditingSong = false; // needs logic
+      state.ui.isEditingSong = editSong; // needs logic
       state.ui.isOwner = false; // needs logic
       state.ui.currentDropdown = null;
       state.ui.scaleName = parsedSong.ui.scaleName; // not needed?

@@ -19,7 +19,7 @@ const useDefaultState = () => {
     const [, route, id] = location.pathname.split('/');
 
     if (route === 'song' && id) {
-      getSongById({ songId: id, getScale: true });
+      getSongById({ songId: id, getScale: true, editSong: false });
       return;
     }
 
