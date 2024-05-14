@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useLazyGetSongByIdQuery } from '../../redux/song/song.api';
 import { setCurrentDropdown } from '../../redux/song/song.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
-import Loading from '../shared/loading/Loading';
 import ScrollBox from '../shared/scrollBox/ScrollBox';
 import SongControls from '../songControls/SongControls';
 import SongView from '../songView/SongView';
@@ -19,7 +17,6 @@ const Song = () => {
   const dispatch = useDispatch();
   const localSongId = useSelector(({ song }) => song.refs.songId);
   const isEditingSong = useSelector(({ song }) => song.ui.isEditingSong);
-  const [_trigger, { isFetching }] = useLazyGetSongByIdQuery();
   // const { localSongId, isDeleting, isFetching, isSaving, isEditingSong } =
   //   useSelector(({ song, ui }) => ({
   //     localSongId: song.ui.songId,
@@ -37,11 +34,11 @@ const Song = () => {
     // const isWorking = isDeleting || isFetching || isSaving;
 
     // if (!songId && localSongId && !isWorking) {
-    if (!songId && localSongId && !isFetching) {
+    if (!songId && localSongId) {
       navigate(`/song/${localSongId}`, { replace: true });
     }
     // }, [isDeleting, isFetching, isSaving, navigate, songId, localSongId]);
-  }, [isFetching, navigate, songId, localSongId]);
+  }, [navigate, songId, localSongId]);
 
   useEffect(() => {
     // close dropdown when navigating away from song route or showing tablature
@@ -54,9 +51,7 @@ const Song = () => {
 
   return (
     <>
-      {isFetching ? (
-        <Loading />
-      ) : isEditingSong ? (
+      {isEditingSong ? (
         <SongContainer>
           <SongControls />
           <DividerLine small />
