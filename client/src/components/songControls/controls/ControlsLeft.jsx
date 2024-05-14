@@ -17,13 +17,15 @@ import { parseSongForSaving } from './controls.utils';
 const ControlsLeft = () => {
   const dispatch = useDispatch();
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
-  const isSongPlaying = useSelector(({ song }) => song.songPlayer.isSongPlaying);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
+  );
   const song = useSelector(({ song }) => song);
   const [saveSong, { isLoading: isSaving }] = useSaveSongMutation();
 
   const songInfo = song.info;
   const arrangement = song.arrangement;
-  const { songScaleId, isOwner } = song.ui;
+  const { scaleId: songScaleId, isOwner } = song.refs;
 
   const [newSongOpen, setNewSongOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);

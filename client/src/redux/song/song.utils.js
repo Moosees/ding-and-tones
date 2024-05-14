@@ -98,10 +98,11 @@ export const parseFetchedSong = (song, getScale) => {
     arrangement,
     bars: parsedBars,
     beats: parsedBeats,
-    getScale: (scale && getScale) || false,
+    getScale: (scale && getScale) || false, // not needed?
     info,
+    refs: { composer, isOwner, songId, isPrivate, scaleId: savedScale.scaleId },
     scale: parsedScale,
-    ui: { composer, isOwner, songId, isPrivate, ...savedScale },
+    ui: { scaleName: savedScale.scaleName, scaleLabel: savedScale.scaleLabel }, // not needed?
   };
 };
 
@@ -113,9 +114,7 @@ export const createUpdatedSound = (sound, update, multiSelect) => {
   if (!multiSelect) return [update];
   if (sound.length >= MAX_NOTES_IN_BEAT) return sound;
 
-	return [...sound, update]
-    .filter((hit) => hit !== '-')
-    .sort((a, b) => a - b);
+  return [...sound, update].filter((hit) => hit !== '-').sort((a, b) => a - b);
 };
 
 const createBeatPool = (measure, template) => {

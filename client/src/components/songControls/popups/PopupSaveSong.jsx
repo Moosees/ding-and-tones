@@ -11,7 +11,7 @@ const PopupSaveSong = ({ onClose, onSave, title }) => {
   const newScaleName = useSelector(
     ({ scale }) => `${scale.info.rootName} ${scale.info.name}`
   );
-  const isOwner = useSelector(({ song }) => song.ui.isOwner);
+  const isOwner = useSelector(({ song }) => song.refs.isOwner);
   const isPrivate = useSelector(({ song }) => song.refs.isPrivate);
   const oldScaleId = useSelector(({ song }) => song.refs.scaleId);
   const oldScaleName = useSelector(({ song }) => song.ui.scaleName);

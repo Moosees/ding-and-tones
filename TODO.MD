@@ -41,18 +41,18 @@
 
 ### song slice
 
-* isOwner when fetching or loading song - move to refs?
 * setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
 * figure out what should be disabled when song is playing (or stop playback when changing audio src)
-* scaleName and scaleLabel should be in refs?
+* scaleName and scaleLabel should be in refs? or deleted?
 * songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 * songPlayer state selectors (and currentDropdown isOpen for beats)
 * scaleName and scaleLabel not needed?
 
 ### song api
 
+* fix parseSongForSaving
 * change handling of songId in url when saving or deleting?
 * remove isOwner and songId when deleting song
 * add alert if scale fails to load with song? split song and scale fetches?
@@ -63,7 +63,6 @@
 
 * set isOwner for scale and song to false when signing out
 * set isOwner for song (and scale?) to true when needed when signing in
-* split isOwner for scale and song and move to user slice?
 * sign in cross origin warning? (cause: unsupported browser fix?)
 * default data when no session is active - working?
 * user sound popup - info about saving settings to account?

@@ -1,4 +1,4 @@
-const parseBarsForSaving = (arrangement, bars, beats) => {
+const parseBarsForSaving = (arrangement, bars) => {
   return arrangement.map((bar) => ({
     ...bars[bar],
     _id: bar,

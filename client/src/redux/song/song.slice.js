@@ -24,6 +24,7 @@ const INITIAL_STATE = {
     isPrivate: false,
     songId: null,
     scaleId: null,
+    isOwner: false,
   },
   songPlayer: {
     currentBar: null,
@@ -39,7 +40,6 @@ const INITIAL_STATE = {
     handsOpen: false,
     headersOpen: true,
     isEditingSong: true,
-    isOwner: false,
     multiSelect: false,
     scaleName: '',
     scaleLabel: '',
@@ -139,6 +139,7 @@ const songSlice = createSlice({
 
       const parsedSong = parseFetchedSong(song, getScale);
       const autoMoveOrder = createAutoMoveOrder(parsedSong);
+      console.log({ parsedSong });
 
       state.autoMoveOrder = autoMoveOrder;
       state.arrangement = parsedSong.arrangement;
@@ -146,12 +147,12 @@ const songSlice = createSlice({
       state.beats = parsedSong.beats;
       state.info = parsedSong.info;
       state.mutedBars = {};
-      state.refs.composer = parsedSong.ui.composer;
-      state.refs.isPrivate = parsedSong.ui.isPrivate;
-      state.refs.songId = parsedSong.ui.songId;
-      state.refs.scaleId = parsedSong.ui.scaleId;
-      state.ui.isEditingSong = editSong; // needs logic
-      state.ui.isOwner = false; // needs logic
+      state.refs.composer = parsedSong.refs.composer;
+      state.refs.isPrivate = parsedSong.refs.isPrivate;
+      state.refs.songId = parsedSong.refs.songId;
+      state.refs.scaleId = parsedSong.refs.scaleId;
+      state.refs.isOwner = parsedSong.refs.isOwner;
+      state.ui.isEditingSong = editSong;
       state.ui.currentDropdown = null;
       state.ui.scaleName = parsedSong.ui.scaleName; // not needed?
       state.ui.scaleLabel = parsedSong.ui.scaleLabel; // not needed?
