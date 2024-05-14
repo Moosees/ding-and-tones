@@ -41,7 +41,6 @@
 
 ### song slice
 
-* fix new song action
 * editSong = false only when loading from search?
 * isOwner when fetching or loading song - move to refs?
 * setCurrentDropdown closing logic is in both state and components - remove from components

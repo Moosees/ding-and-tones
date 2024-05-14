@@ -134,9 +134,8 @@ const songSlice = createSlice({
       state.ui.currentDropdown = null;
     },
     loadSong(state, { payload }) {
-      // merged FETCH_SUCCESSFUL, SET_STATE, (createNewSong)
       const { song, getScale } = payload;
-			// load scale if needed
+      // load scale if needed
 
       const parsedSong = parseFetchedSong(song, getScale);
       const autoMoveOrder = createAutoMoveOrder(parsedSong);

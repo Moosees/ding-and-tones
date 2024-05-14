@@ -39,8 +39,8 @@ const PopupNewSong = ({ onClose }) => {
         isOwner: false,
         songId: null,
         info,
-        bars: {},
-        beats: {},
+        bars: [],
+        beats: [],
         arrangement: [],
       };
 
