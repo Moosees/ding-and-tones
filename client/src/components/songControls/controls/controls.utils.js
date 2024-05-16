@@ -1,3 +1,5 @@
+import { store } from '../../../redux/store';
+
 const parseBarsForSaving = (arrangement, bars) => {
   return arrangement.map((bar) => ({
     ...bars[bar],
@@ -22,16 +24,20 @@ const parseBeatsForSaving = (arrangement, bars, beats) => {
   });
 };
 
-export const parseSongForSaving = (song, saveAs, title, scaleId) => {
+export const parseSongForSaving = (saveAs, title, scaleId) => {
   const {
-    arrangement,
-    bars,
-    beats,
-    info,
-    ui: { isOwner, isPrivate, songId },
-  } = song;
+    song: {
+      arrangement,
+      bars,
+      beats,
+      info,
+      refs: { isOwner, isPrivate, songId },
+    },
+  } = store.getState();
+
   const parsedBars = parseBarsForSaving(arrangement, bars, beats);
   const parsedBeats = parseBeatsForSaving(arrangement, bars, beats);
+
   const songUpdate = {
     arrangement: [...arrangement],
     bars: parsedBars,

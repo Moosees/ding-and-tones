@@ -48,16 +48,13 @@
 * scaleName and scaleLabel should be in refs? or deleted?
 * songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 * songPlayer state selectors (and currentDropdown isOpen for beats)
-* scaleName and scaleLabel not needed?
 
 ### song api
 
-* fix parseSongForSaving
 * change handling of songId in url when saving or deleting?
 * remove isOwner and songId when deleting song
 * add alert if scale fails to load with song? split song and scale fetches?
 * Song split and handle url ids better
-* ControlsLeft saveSongCb move logic to action?
 
 ### user slice
 

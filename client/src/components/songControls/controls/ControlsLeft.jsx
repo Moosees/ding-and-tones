@@ -20,19 +20,20 @@ const ControlsLeft = () => {
   const isSongPlaying = useSelector(
     ({ song }) => song.songPlayer.isSongPlaying
   );
-  const song = useSelector(({ song }) => song);
-  const [saveSong, { isLoading: isSaving }] = useSaveSongMutation();
+  const arrangement = useSelector(({ song }) => song.arrangement);
+  const savedTitle = useSelector(({ song }) => song.info.title);
+  const difficulty = useSelector(({ song }) => song.info.difficulty);
+  const savedScaleId = useSelector(({ song }) => song.refs.scaleId);
+  const isOwner = useSelector(({ song }) => song.refs.isOwner);
 
-  const songInfo = song.info;
-  const arrangement = song.arrangement;
-  const { scaleId: songScaleId, isOwner } = song.refs;
+  const [saveSong, { isLoading: isSaving }] = useSaveSongMutation();
 
   const [newSongOpen, setNewSongOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);
   const navigate = useNavigate();
 
   const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
-    useValidate('songTitle', songInfo.title);
+    useValidate('songTitle', savedTitle);
 
   const isArrangementValid =
     arrangement.length >= 1 && arrangement.length <= 100;
@@ -44,7 +45,7 @@ const ControlsLeft = () => {
     !isArrangementValid;
 
   const saveSongCb = async (scaleId, saveAs) => {
-    const parsedSong = parseSongForSaving(song, saveAs, title, scaleId);
+    const parsedSong = parseSongForSaving(saveAs, title, scaleId);
     const res = await saveSong({ song: parsedSong }).unwrap();
 
     if (!res.song?.songId) return;
@@ -64,10 +65,10 @@ const ControlsLeft = () => {
           label={titleErrors.length ? titleErrors[0] : 'Song title:'}
           value={title}
         >
-          {songInfo.title}
+          {savedTitle}
         </InfoText>
         <Select
-          value={songInfo.difficulty}
+          value={difficulty}
           handleChange={(value) =>
             dispatch(updateSongInfo({ songInfo: { difficulty: value } }))
           }
@@ -83,7 +84,7 @@ const ControlsLeft = () => {
           <BtnPrimary
             disabled={!isOwner || disableSaveSong}
             label="Save"
-            onClick={() => saveSongCb(songScaleId, false)}
+            onClick={() => saveSongCb(savedScaleId, false)}
           />
           <BtnPrimary
             disabled={isSongPlaying || isSaving || !isTitleValid}
