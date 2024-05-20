@@ -1,6 +1,5 @@
 import { api } from '../api/api.slice';
 import { loadSong } from './song.slice';
-import songTypes from './song.types';
 
 export const songExtendedApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -32,15 +31,6 @@ export const songExtendedApi = api.injectEndpoints({
         method: 'POST',
         body: song,
       }),
-      async onQueryStarted(_song, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch({
-            type: songTypes.SAVE_SUCCESSFUL,
-            payload: { song: data.song },
-          });
-        } catch (error) {}
-      },
     }),
   }),
 });

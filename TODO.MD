@@ -41,6 +41,7 @@
 
 ### song slice
 
+* same api body structure for all endpoints
 * setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createDefaultSong } from '../../assets/defaultData';
 import { compareSubdivisionsLength } from '../../assets/metre';
+import { isSongApiAction } from '../api/api.matchers';
 import { filterObjectByKeyArray } from '../store.utils';
 import {
   createAutoMoveOrder,
@@ -269,6 +270,32 @@ const songSlice = createSlice({
     toggleHands(state) {
       state.ui.handsOpen = !state.ui.handsOpen;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(isSongApiAction, (state, action) => {
+      console.log('IS SONG API ACTION', { action });
+      const song = action.payload.song;
+      if (!song) return;
+
+      if ('isOwner' in song) {
+        console.log('isOwner', song.isOwner);
+        state.refs.isOwner = song.isOwner;
+      }
+      if ('composer' in song) {
+        console.log('composer', song.composer);
+        state.refs.composer = song.composer;
+      }
+      if ('songId' in song) {
+        console.log('songId', song.songId);
+        state.refs.composer = song.composer;
+      }
+      if (song.scale) {
+        console.log('scale', song.scale);
+        state.refs.scaleId = song.scale.scaleId;
+        state.ui.scaleName = `${song.scale.info.rootName} ${song.scale.info.name}`;
+        state.ui.scaleLabel = song.scale.info.label;
+      }
+    });
   },
 });
 
