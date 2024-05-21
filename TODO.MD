@@ -41,21 +41,17 @@
 
 ### song slice
 
-* same api body structure for all endpoints
 * setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
 * figure out what should be disabled when song is playing (or stop playback when changing audio src)
-* scaleName and scaleLabel should be in refs? or deleted?
 * songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 * songPlayer state selectors (and currentDropdown isOpen for beats)
 
 ### song api
 
-* change handling of songId in url when saving or deleting?
-* remove isOwner and songId when deleting song
+* change handling of songId in url when fetching, saving or deleting?
 * add alert if scale fails to load with song? split song and scale fetches?
-* Song split and handle url ids better
 
 ### user slice
 

@@ -282,7 +282,6 @@ exports.getSongById = async (req, res) => {
     }
 
     const parsedSong = parseGetResponse(song, userId);
-console.log(parsedSong)
     if (parsedSong.song.isPrivate && !userId) {
       return res
         .status(401)
@@ -322,7 +321,12 @@ exports.deleteSong = async (req, res) => {
       .setOptions({ new: true })
       .exec();
 
-    res.status(200).json({ song, alert: `"${song.info.title}" deleted` });
+    res
+      .status(200)
+      .json({
+        song: { songId: song._id },
+        alert: `"${song.info.title}" deleted`,
+      });
   } catch (error) {
     res.status(500).json({ error: defaultErrorMsg });
   }

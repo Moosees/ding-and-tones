@@ -286,6 +286,19 @@ const songSlice = createSlice({
         state.ui.scaleLabel = scale.scaleLabel;
       }
     );
+    builder.addMatcher(
+      songExtendedApi.endpoints.deleteSongById.matchFulfilled,
+      (state, action) => {
+        if (action.payload.song.songId !== state.refs.songId) return;
+
+        state.refs.isOwner = false;
+        state.refs.composer = '';
+        state.refs.songId = null;
+        state.refs.scaleId = null;
+        state.ui.scaleName = '';
+        state.ui.scaleLabel = '';
+      }
+    );
   },
 });
 
