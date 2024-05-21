@@ -69,7 +69,7 @@ const parseBeatsForLoadSong = (beats) => {
   return parseArrayToObject(parsedBeats);
 };
 
-export const parseFetchedSong = (song, getScale) => {
+export const parseFetchedSong = (song, scale, getScale) => {
   const {
     arrangement,
     bars,
@@ -78,7 +78,6 @@ export const parseFetchedSong = (song, getScale) => {
     info,
     isOwner,
     isPrivate,
-    scale,
     songId,
   } = song;
 

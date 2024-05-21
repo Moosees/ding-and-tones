@@ -21,7 +21,9 @@ export const songExtendedApi = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           console.log('GET SONG BY ID DATA', { data });
-          dispatch(loadSong({ song: data.song, getScale, editSong }));
+          dispatch(
+            loadSong({ song: data.song, scale: data.scale, getScale, editSong })
+          );
         } catch (error) {}
       },
     }),

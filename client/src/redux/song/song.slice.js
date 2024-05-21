@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createDefaultSong } from '../../assets/defaultData';
 import { compareSubdivisionsLength } from '../../assets/metre';
-import { isSongApiAction } from '../api/api.matchers';
 import { filterObjectByKeyArray } from '../store.utils';
+import { songExtendedApi } from './song.api';
 import {
   createAutoMoveOrder,
   createUpdatedSound,
@@ -135,10 +135,11 @@ const songSlice = createSlice({
       state.ui.currentDropdown = null;
     },
     loadSong(state, { payload }) {
-      const { song, getScale, editSong } = payload;
+      console.log({ payload });
+      const { song, scale, getScale, editSong } = payload;
       // load scale if needed
 
-      const parsedSong = parseFetchedSong(song, getScale);
+      const parsedSong = parseFetchedSong(song, scale, getScale);
       const autoMoveOrder = createAutoMoveOrder(parsedSong);
       console.log({ parsedSong });
 
@@ -155,8 +156,8 @@ const songSlice = createSlice({
       state.refs.isOwner = parsedSong.refs.isOwner;
       state.ui.isEditingSong = editSong;
       state.ui.currentDropdown = null;
-      state.ui.scaleName = parsedSong.ui.scaleName; // not needed?
-      state.ui.scaleLabel = parsedSong.ui.scaleLabel; // not needed?
+      state.ui.scaleName = parsedSong.ui.scaleName;
+      state.ui.scaleLabel = parsedSong.ui.scaleLabel; // not used but could be added to save song popup
     },
     updateBarSubdivisions(state, { payload }) {
       const { barId, newSubdivisions } = payload;
@@ -272,30 +273,19 @@ const songSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(isSongApiAction, (state, action) => {
-      console.log('IS SONG API ACTION', { action });
-      const song = action.payload.song;
-      if (!song) return;
+    builder.addMatcher(
+      songExtendedApi.endpoints.saveSong.matchFulfilled,
+      (state, action) => {
+        const { song, scale } = action.payload;
 
-      if ('isOwner' in song) {
-        console.log('isOwner', song.isOwner);
         state.refs.isOwner = song.isOwner;
-      }
-      if ('composer' in song) {
-        console.log('composer', song.composer);
         state.refs.composer = song.composer;
+        state.refs.songId = song.songId;
+        state.refs.scaleId = scale.scaleId;
+        state.ui.scaleName = scale.scaleName;
+        state.ui.scaleLabel = scale.scaleLabel;
       }
-      if ('songId' in song) {
-        console.log('songId', song.songId);
-        state.refs.composer = song.composer;
-      }
-      if (song.scale) {
-        console.log('scale', song.scale);
-        state.refs.scaleId = song.scale.scaleId;
-        state.ui.scaleName = `${song.scale.info.rootName} ${song.scale.info.name}`;
-        state.ui.scaleLabel = song.scale.info.label;
-      }
-    });
+    );
   },
 });
 

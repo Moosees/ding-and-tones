@@ -1,5 +1,5 @@
 const parseScaleForSongFetch = (scale, userId) => {
-  const { _id, author, info, notes } = scale;
+  const { _id, author, info, notes, scaleName } = scale;
   const { dings = [], round = [], extra = [] } = notes;
 
   const extraParsed = extra.map(({ note, pos }) => ({ note, pos }));
@@ -11,6 +11,8 @@ const parseScaleForSongFetch = (scale, userId) => {
     notes: { dings, round, extra: extraParsed },
     scaleId: _id,
     isOwner,
+    scaleName,
+    scaleLabel: info.label,
   };
 };
 
@@ -28,15 +30,18 @@ exports.parseGetResponse = (songObject, userId) => {
   const anonymousComposer = !composer || composer.anonymous || !composer.name;
 
   return {
-    isOwner: determineIsOwner(userId, composer),
-    songId: _id,
-    composer: anonymousComposer ? 'Anonymous' : composer.name,
-    arrangement,
-    bars,
-    beats,
-    info,
-    isPrivate,
-    scale: scale ? parseScaleForSongFetch(scale, userId) : false,
+    alert: `"${info.title}" loaded`,
+    song: {
+      isOwner: determineIsOwner(userId, composer),
+      songId: _id,
+      composer: anonymousComposer ? 'Anonymous' : composer.name,
+      arrangement,
+      bars,
+      beats,
+      info,
+      isPrivate,
+    },
+    scale: scale ? parseScaleForSongFetch(scale, userId) : null,
   };
 };
 

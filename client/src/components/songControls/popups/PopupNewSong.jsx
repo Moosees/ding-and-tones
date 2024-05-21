@@ -44,7 +44,7 @@ const PopupNewSong = ({ onClose }) => {
         arrangement: [],
       };
 
-      dispatch(loadSong({ song, loadScale: false, editSong: true }));
+      dispatch(loadSong({ song, scale: null, loadScale: false, editSong: true }));
       navigate('/song');
       onClose();
     }

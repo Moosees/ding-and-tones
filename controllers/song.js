@@ -240,18 +240,23 @@ exports.saveSong = async (req, res) => {
         .exec());
 
     const resData = {
-      songId: song._id,
-      scaleId: scale ? scale._id : null,
-      composer: 'You',
-      isOwner: true,
-      title: song.info.title,
-      difficulty: song.info.difficulty,
-      metre: song.info.metre,
-      scaleName: scale ? `${scale.info.rootName} ${scale.info.name}` : 'N/A',
-      scaleLabel: scale ? scale.info.label : '',
+      alert: `"${song.info.title}" saved`,
+      song: {
+        songId: song._id,
+        composer: 'You',
+        isOwner: true,
+        title: song.info.title,
+        difficulty: song.info.difficulty,
+        metre: song.info.metre,
+      },
+      scale: {
+        scaleId: scale ? scale._id : null,
+        scaleName: scale ? scale.scaleName : 'N/A',
+        scaleLabel: scale ? scale.info.label : '',
+      },
     };
 
-    res.status(200).json({ song: resData, alert: `"${song.info.title}" saved` });
+    res.status(200).json(resData);
   } catch (error) {
     res.status(500).json({ error: defaultErrorMsg });
   }
@@ -277,20 +282,19 @@ exports.getSongById = async (req, res) => {
     }
 
     const parsedSong = parseGetResponse(song, userId);
-
-    if (parsedSong.isPrivate && !userId) {
+console.log(parsedSong)
+    if (parsedSong.song.isPrivate && !userId) {
       return res
         .status(401)
         .json({ error: 'Song is private, please sign in and try again' });
     }
-    if (parsedSong.isPrivate && !parsedSong.isOwner) {
+    if (parsedSong.song.isPrivate && !parsedSong.song.isOwner) {
       return res.status(403).json({ error: 'Song is private' });
     }
 
-    res
-      .status(200)
-      .json({ song: parsedSong, alert: `"${parsedSong.info.title}" loaded` });
+    res.status(200).json(parsedSong);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: defaultErrorMsg });
   }
 };
