@@ -41,7 +41,6 @@
 
 ### song slice
 
-* setCurrentDropdown closing logic is in both state and components - remove from components
 * refactor pattern and beats updating songUi in patternPlayer.js?
 * reset currentBar in useResetCurrentBeat?
 * figure out what should be disabled when song is playing (or stop playback when changing audio src)

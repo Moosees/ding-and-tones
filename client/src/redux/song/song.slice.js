@@ -257,6 +257,7 @@ const songSlice = createSlice({
     },
     toggleEditSong(state) {
       state.ui.isEditingSong = !state.ui.isEditingSong;
+      state.ui.currentDropdown = null;
       state.mutedBars = {};
     },
     toggleMultiSelect(state) {

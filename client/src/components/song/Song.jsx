@@ -41,13 +41,9 @@ const Song = () => {
   }, [navigate, songId, localSongId]);
 
   useEffect(() => {
-    // close dropdown when navigating away from song route or showing tablature
-    if (!isEditingSong) {
-      dispatch(setCurrentDropdown({ beatId: null }));
-    }
-
+    // close dropdown when navigating away from song route
     return () => dispatch(setCurrentDropdown({ beatId: null }));
-  }, [dispatch, isEditingSong]);
+  }, [dispatch]);
 
   return (
     <>
