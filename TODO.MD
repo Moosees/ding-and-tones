@@ -38,6 +38,8 @@
 * load scale when loading a song with scale
 * have default scale but delay loading howls until after checking url? firstLoad not needed?
 * PopupSaveSong newScaleName selector
+* createFullScaleFromNames early return type?
+* move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 
 ### song slice
 

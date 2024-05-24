@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { defaultScale } from '../../assets/defaultData';
-import { parseScaleData } from './scale.utils';
+import {
+  addExtraNotesPos,
+  createFullScaleFromNames,
+  createPositionMap,
+  createScaleLabel,
+  parseScaleData,
+  sortScaleByFreq,
+} from './scale.utils';
 
 export const { info, notes, parsed } = parseScaleData(defaultScale, true);
 
@@ -38,7 +44,63 @@ const INITIAL_STATE = {
 const scaleSlice = createSlice({
   name: 'scale',
   initialState: INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    addNoteToScale(state, { payload }) {
+      const { newNote, isAddingExtraNotes } = payload;
+      const update = {};
+
+      if (isAddingExtraNotes) {
+        const newExtraSorted = sortScaleByFreq([
+          ...state.notes.extra.map(({ note }) => note),
+          newNote,
+        ]);
+
+        update.extra = addExtraNotesPos(newExtraSorted);
+      } else {
+        const newInnerSorted = sortScaleByFreq([
+          ...state.notes.dings,
+          ...state.notes.round,
+          newNote,
+        ]);
+
+        const newPositions = createPositionMap(
+          state.info.layout,
+          newInnerSorted.length
+        );
+
+        update.dings = [newInnerSorted[0]];
+        update.round = newInnerSorted.slice(1);
+        update.positions = newPositions;
+      }
+
+      const tempNotes = {
+        dings: update.dings || state.notes.dings,
+        round: update.round || state.notes.round,
+        extra: update.extra || state.notes.extra,
+      };
+
+      const { rootInfo, pitched } = createFullScaleFromNames(
+        tempNotes,
+        state.info.sharpNotes
+      );
+
+      if (isAddingExtraNotes) {
+        state.notes.extra = update.extra;
+      } else {
+        state.notes.dings = update.dings;
+        state.notes.round = update.round;
+        state.parsed.positions = update.positions;
+      }
+      state.parsed.pitched = pitched;
+      state.info.label = createScaleLabel(tempNotes, state.info.sharpNotes);
+      state.info.rootName = rootInfo.rootName;
+      state.info.rootValue = rootInfo.rootValue;
+      state.info.rootIndex = rootInfo.rootIndex;
+      state.ui.hasChanges = true;
+      state.ui.isOwner = false;
+      state.ui.scaleId = null;
+    },
+  },
 });
 
 export default scaleSlice.reducer;
