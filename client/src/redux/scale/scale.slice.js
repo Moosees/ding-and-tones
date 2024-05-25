@@ -122,6 +122,57 @@ const scaleSlice = createSlice({
 
       state.notes.extra = extra;
     },
+    removeNoteFromScale(state, action) {
+      const { noteToRemove } = action.payload;
+
+      const { type } = state.parsed.pitched.find(
+        (note) => note.note === noteToRemove
+      );
+
+      const update = {};
+
+      if (['extra', 'round'].includes(type)) {
+        update[type] = state.notes[type].filter(
+          (note) => (note.note || note) !== noteToRemove
+        );
+      } else if (state.notes.dings.length + state.notes.round.length === 1) {
+        return;
+      } else {
+        update.dings = [state.notes.round[0]];
+        update.round = state.notes.round.slice(1);
+      }
+
+      const tempNotes = {
+        dings: update.dings || state.notes.dings,
+        round: update.round || state.notes.round,
+        extra: update.extra || state.notes.extra,
+      };
+
+      const { rootInfo, pitched } = createFullScaleFromNames(
+        tempNotes,
+        state.info.sharpNotes
+      );
+
+      if (type === 'extra') {
+        state.notes.extra = tempNotes.extra;
+      } else {
+        state.notes.dings = tempNotes.dings; // Should always exist in update?
+        state.notes.round = tempNotes.round; // Should always exist in update?
+        state.parsed.positions = createPositionMap(
+          state.info.layout,
+          tempNotes.dings.length + tempNotes.round.length
+        );
+      }
+			
+      state.parsed.pitched = pitched;
+      state.info.label = createScaleLabel(tempNotes, state.info.sharpNotes);
+      state.info.rootName = rootInfo.rootName;
+      state.info.rootValue = rootInfo.rootValue;
+      state.info.rootIndex = rootInfo.rootIndex;
+      state.ui.hasChanges = true;
+      state.ui.isOwner = false;
+      state.ui.scaleId = null;
+    },
   },
 });
 

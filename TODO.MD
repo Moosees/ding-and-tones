@@ -40,6 +40,8 @@
 * PopupSaveSong newScaleName selector
 * createFullScaleFromNames early return type?
 * move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
+* use loadScale when creating new scale
+* get type as arg when removing note from scale (and clean up reducer)?
 
 ### song slice
 
