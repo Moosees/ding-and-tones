@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { defaultScale } from '../../assets/defaultData';
 import {
-	addExtraNotesPos,
-	createFullScaleFromNames,
-	createPositionMap,
-	createScaleLabel,
-	parseScaleData,
-	sortScaleByFreq,
+  addExtraNotesPos,
+  createFullScaleFromNames,
+  createPositionMap,
+  createScaleLabel,
+  parseScaleData,
+  sortScaleByFreq,
 } from './scale.utils';
 
 export const { info, notes, parsed } = parseScaleData(defaultScale, true);
@@ -110,6 +110,17 @@ const scaleSlice = createSlice({
       state.ui.isOwner = isOwner;
       state.ui.scaleId = scaleId;
       state.ui.hasChanges = false;
+    },
+    moveExtraNotes(state, { payload }) {
+      const { oldPos, newPos, swap } = payload;
+
+      const extra = state.extra.map(({ note, pos }) => {
+        if (swap && pos === newPos) return { note, pos: oldPos };
+        if (pos === oldPos) return { note, pos: newPos };
+        return { note, pos };
+      });
+
+      state.notes.extra = extra;
     },
   },
 });
