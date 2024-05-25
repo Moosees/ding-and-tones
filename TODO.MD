@@ -20,12 +20,12 @@
 ### chords slice
 
 * switch from old reducer to slice and update all action dispatches
-* reset chords when fetching or loading a scale (or song with scale)
+* reset chords when fetching, loading or updating a scale (or song with scale)
 
 ### howls slice
 
 * switch from old reducer to slice and update all action dispatches
-* reload howls when fetching or loading a scale (or song with scale)
+* reload howls when fetching, loading or updating a scale (or song with scale)
 
 ### search api
 
