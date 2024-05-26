@@ -176,6 +176,9 @@ const scaleSlice = createSlice({
     rotateDrumToAngle(state, { payload }) {
       state.info.rotation = payload.angle;
     },
+    setScaleName(state, { payload }) {
+      state.info.name = payload.name;
+    },
   },
 });
 
