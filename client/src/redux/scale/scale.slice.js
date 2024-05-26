@@ -16,7 +16,7 @@ const INITIAL_STATE = {
     label: info.label,
     layout: info.layout,
     name: info.name,
-    rotation: 180,
+    rotation: info.rotation,
     rootName: info.rootName,
     rootValue: info.rootValue,
     rootIndex: info.rootIndex,
