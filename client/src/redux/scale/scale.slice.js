@@ -163,7 +163,7 @@ const scaleSlice = createSlice({
           tempNotes.dings.length + tempNotes.round.length
         );
       }
-			
+
       state.parsed.pitched = pitched;
       state.info.label = createScaleLabel(tempNotes, state.info.sharpNotes);
       state.info.rootName = rootInfo.rootName;
@@ -172,6 +172,9 @@ const scaleSlice = createSlice({
       state.ui.hasChanges = true;
       state.ui.isOwner = false;
       state.ui.scaleId = null;
+    },
+    rotateDrumToAngle(state, { payload }) {
+      state.info.rotation = payload.angle;
     },
   },
 });
