@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
-import { isChangeScaleAction } from '../api/api.matchers';
+import { isChangeScaleAction } from '../store.matchers';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,

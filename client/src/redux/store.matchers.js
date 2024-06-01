@@ -1,7 +1,7 @@
 import { isAnyOf } from '@reduxjs/toolkit';
 // import { songExtendedApi } from '../song/song.api';
-import { userExtendedApi } from '../user/user.api';
-import scaleSlice from '../scale/scale.slice';
+import { userExtendedApi } from './user/user.api';
+import scaleSlice from './scale/scale.slice';
 
 export const isUpdateUserAction = isAnyOf(
   userExtendedApi.endpoints.checkSession.matchFulfilled,
