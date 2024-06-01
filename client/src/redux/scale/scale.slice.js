@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { defaultScale } from '../../assets/defaultData';
+import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
+import { isChangeScaleAction } from '../api/api.matchers';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,
@@ -8,7 +10,6 @@ import {
   parseScaleData,
   sortScaleByFreq,
 } from './scale.utils';
-import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 
 export const { info, notes, parsed } = parseScaleData(defaultScale, true);
 
@@ -94,9 +95,6 @@ const scaleSlice = createSlice({
       state.info.rootName = rootInfo.rootName;
       state.info.rootValue = rootInfo.rootValue;
       state.info.rootIndex = rootInfo.rootIndex;
-      state.ui.hasChanges = true;
-      state.ui.isOwner = false;
-      state.ui.scaleId = null;
     },
     loadScale(state, { payload }) {
       const { scale, suppressAlert } = payload;
@@ -170,21 +168,12 @@ const scaleSlice = createSlice({
       state.info.rootName = rootInfo.rootName;
       state.info.rootValue = rootInfo.rootValue;
       state.info.rootIndex = rootInfo.rootIndex;
-      state.ui.hasChanges = true;
-      state.ui.isOwner = false;
-      state.ui.scaleId = null;
     },
     rotateDrumToAngle(state, { payload }) {
       state.info.rotation = payload.angle;
-      state.ui.hasChanges = true;
-      state.ui.isOwner = false;
-      state.ui.scaleId = null;
     },
     setScaleName(state, { payload }) {
       state.info.name = payload.name;
-      state.ui.hasChanges = true;
-      state.ui.isOwner = false;
-      state.ui.scaleId = null;
     },
     toggleSharps(state) {
       state.info.rootName = getNoteLabelFromName(
@@ -193,11 +182,15 @@ const scaleSlice = createSlice({
       ).slice(0, -1);
       state.info.label = createScaleLabel(state.notes, !state.info.sharpNotes);
       state.info.sharpNotes = !state.info.sharpNotes;
-      state.ui.hasChanges = true;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(isChangeScaleAction, (state) => {
       state.ui.isOwner = false;
       state.ui.scaleId = null;
-    },
+      state.ui.hasChanges = true;
+    });
   },
 });
 
-export default scaleSlice.reducer;
+export default scaleSlice;
