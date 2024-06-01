@@ -12,14 +12,14 @@ import userSlice from './user/user.slice';
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    alert: alertSlice,
+    alert: alertSlice.reducer,
     chords: chordsReducer,
     drum: drumReducer,
     howls: howlsReducer,
     scale: scaleReducer,
     search: searchReducer,
-    song: songSlice,
-    user: userSlice,
+    song: songSlice.reducer,
+    user: userSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

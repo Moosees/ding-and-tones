@@ -329,4 +329,4 @@ export const {
   toggleHeaders,
 } = songSlice.actions;
 
-export default songSlice.reducer;
+export default songSlice;

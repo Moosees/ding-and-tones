@@ -50,4 +50,4 @@ const userSlice = createSlice({
 
 export const { setSessionTried, signOut, setPrivacyOpen } = userSlice.actions;
 
-export default userSlice.reducer;
+export default userSlice;

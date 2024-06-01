@@ -45,4 +45,4 @@ const alertSlice = createSlice({
 });
 
 export const { clearAlert, createAlert } = alertSlice.actions;
-export default alertSlice.reducer;
+export default alertSlice;
