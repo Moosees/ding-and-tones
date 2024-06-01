@@ -8,6 +8,7 @@ import {
   parseScaleData,
   sortScaleByFreq,
 } from './scale.utils';
+import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 
 export const { info, notes, parsed } = parseScaleData(defaultScale, true);
 
@@ -181,6 +182,17 @@ const scaleSlice = createSlice({
     },
     setScaleName(state, { payload }) {
       state.info.name = payload.name;
+      state.ui.hasChanges = true;
+      state.ui.isOwner = false;
+      state.ui.scaleId = null;
+    },
+    toggleSharps(state) {
+      state.info.rootName = getNoteLabelFromName(
+        noteValueToName[state.info.rootValue],
+        !state.info.sharpNotes
+      ).slice(0, -1);
+      state.info.label = createScaleLabel(state.notes, !state.info.sharpNotes);
+      state.info.sharpNotes = !state.info.sharpNotes;
       state.ui.hasChanges = true;
       state.ui.isOwner = false;
       state.ui.scaleId = null;
