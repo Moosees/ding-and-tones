@@ -31,7 +31,10 @@ exports.deleteScale = async (req, res) => {
       .setOptions({ new: true })
       .exec();
 
-    res.status(200).json(scale);
+    res.status(200).json({
+      scale: { scaleId: scale._id },
+      alert: `"${scale.info.rootName} ${scale.info.name}" deleted`,
+    });
   } catch (error) {
     res.status(400).json({ error: defaultErrorMsg });
   }

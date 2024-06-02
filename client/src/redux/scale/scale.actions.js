@@ -74,7 +74,7 @@ export const addNoteToScale =
     });
   };
 
-export const deleteScaleById = (scaleId) => (dispatch) => {
+const deleteScaleById = (scaleId) => (dispatch) => {
   dispatch({ type: scaleTypes.DELETE_STARTED });
 
   axios

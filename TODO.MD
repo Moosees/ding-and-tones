@@ -30,6 +30,7 @@
 ### search api
 
 * remove song from search results when deleting song
+* remove scale from search results when deleting scale
 * add song to my songs when saving a new song
 
 #### scale slice
@@ -42,6 +43,7 @@
 * move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 * use loadScale when creating new scale
 * get type as arg when removing note from scale (and clean up reducer)?
+* update url when deleting current scale
 
 ### song slice
 

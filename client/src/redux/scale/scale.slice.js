@@ -11,6 +11,7 @@ import {
   sortScaleByFreq,
   transposeNotesToDestination,
 } from './scale.utils';
+import { scaleExtendedApi } from './scale.api';
 
 export const { info, notes, parsed } = parseScaleData(defaultScale, true);
 
@@ -222,6 +223,16 @@ const scaleSlice = createSlice({
       state.ui.scaleId = null;
       state.ui.hasChanges = true;
     });
+    builder.addMatcher(
+      scaleExtendedApi.endpoints.deleteScaleById.matchFulfilled,
+      (state, action) => {
+        if (action.payload.scale.scaleId !== state.ui.scaleId) return;
+
+        state.ui.isOwner = false;
+        state.ui.scaleId = null;
+        state.ui.hasChanges = true;
+      }
+    );
   },
 });
 
