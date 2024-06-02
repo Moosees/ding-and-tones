@@ -9,6 +9,7 @@ import {
   createScaleLabel,
   parseScaleData,
   sortScaleByFreq,
+  transposeNotesToDestination,
 } from './scale.utils';
 
 export const { info, notes, parsed } = parseScaleData(defaultScale, true);
@@ -182,6 +183,37 @@ const scaleSlice = createSlice({
       ).slice(0, -1);
       state.info.label = createScaleLabel(state.notes, !state.info.sharpNotes);
       state.info.sharpNotes = !state.info.sharpNotes;
+    },
+    transposeScale(state, { payload }) {
+      const { destination } = payload;
+
+      const update = transposeNotesToDestination(
+        { ...state.notes },
+        destination
+      );
+
+      if (!update.dings[0]) return;
+
+      const { rootInfo, pitched } = createFullScaleFromNames(
+        update,
+        state.info.sharpNotes
+      );
+
+      const oldLength = state.notes.round.length + state.notes.dings.length;
+      const newLength = update.round.length + update.dings.length;
+
+      if (oldLength !== newLength) {
+        state.parsed.positions = createPositionMap(
+          state.info.layout,
+          newLength
+        );
+      }
+
+      state.parsed.pitched = pitched;
+      state.info.label = createScaleLabel(update, state.info.sharpNotes);
+      state.info.rootName = rootInfo.rootName;
+      state.info.rootValue = rootInfo.rootValue;
+      state.info.rootIndex = rootInfo.rootIndex;
     },
   },
   extraReducers: (builder) => {

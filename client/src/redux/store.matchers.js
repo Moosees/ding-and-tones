@@ -23,7 +23,8 @@ export const isSignInAction = isAnyOf(
 export const isChangeScaleAction = isAnyOf(
   scaleSlice.actions.addNoteToScale,
   scaleSlice.actions.removeNoteFromScale,
-	scaleSlice.actions.rotateDrumToAngle,
+  scaleSlice.actions.rotateDrumToAngle,
   scaleSlice.actions.setScaleName,
-  scaleSlice.actions.toggleSharps
+  scaleSlice.actions.toggleSharps,
+  scaleSlice.actions.transposeScale
 );
