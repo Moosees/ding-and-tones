@@ -44,7 +44,7 @@ export const addNoteToScale =
 
       const newPositions = createPositionMap(
         info.layout,
-        newInnerSorted.length
+        newInnerSorted.length,
       );
 
       payload.notes.dings = [newInnerSorted[0]];
@@ -60,7 +60,7 @@ export const addNoteToScale =
 
     const { rootInfo, pitched } = createFullScaleFromNames(
       tempNotes,
-      info.sharpNotes
+      info.sharpNotes,
     );
 
     payload.info = rootInfo;
@@ -108,7 +108,7 @@ export const getScaleById = (scaleId, firstLoad) => (dispatch) => {
       if (res.status === 200) {
         dispatch({
           type: scaleTypes.FETCH_SUCCESSFUL,
-          payload: parseScaleData(res.data),
+          payload: parseScaleData(res.data.scale),
         });
       }
     })
@@ -177,12 +177,12 @@ export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
       ? parsed.positions
       : createPositionMap(
           info.layout,
-          payload.notes.dings.length + payload.notes.round.length
+          payload.notes.dings.length + payload.notes.round.length,
         );
 
   const { rootInfo, pitched } = createFullScaleFromNames(
     payload.notes,
-    info.sharpNotes
+    info.sharpNotes,
   );
 
   payload.info = rootInfo;
@@ -273,7 +273,7 @@ export const toggleSharps = () => (dispatch, getState) => {
 
   const rootName = getNoteLabelFromName(
     noteValueToName[rootValue],
-    !sharpNotes
+    !sharpNotes,
   ).slice(0, -1);
 
   dispatch({
@@ -307,7 +307,7 @@ export const transposeScale = (destination) => (dispatch, getState) => {
 
   const { rootInfo, pitched } = createFullScaleFromNames(
     payload.notes,
-    info.sharpNotes
+    info.sharpNotes,
   );
 
   payload.info = rootInfo;

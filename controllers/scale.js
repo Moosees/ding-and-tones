@@ -55,7 +55,12 @@ exports.getScaleById = async (req, res) => {
       return res.status(404).json({ error: 'Scale not found' });
     }
 
-    res.status(200).json(parseScaleResponse(scale, userId));
+    res
+      .status(200)
+      .json({
+        scale: parseScaleResponse(scale, userId),
+        alert: `"${scale.scaleName}" loaded`,
+      });
   } catch (error) {
     res.status(400).json({ error: defaultErrorMsg });
   }

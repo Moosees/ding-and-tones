@@ -236,4 +236,6 @@ const scaleSlice = createSlice({
   },
 });
 
+export const { loadScale } = scaleSlice.actions
+
 export default scaleSlice;
