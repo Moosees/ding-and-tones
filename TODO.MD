@@ -45,6 +45,8 @@
 * get type as arg when removing note from scale (and clean up reducer)?
 * update url when deleting current scale
 * parseScaleData and suppressAlert not needed?
+* handle alert when trying to save a scale with too few notes
+* handle alert when saving scale and return only scaleId?
 
 ### song slice
 

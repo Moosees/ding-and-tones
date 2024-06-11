@@ -24,7 +24,15 @@ export const scaleExtendedApi = api.injectEndpoints({
         }
       },
     }),
+    saveScale: builder.mutation({
+      query: ({ scaleUpdate }) => ({
+        url: '/scale/',
+        method: 'POST',
+        body: scaleUpdate,
+      }),
+    }),
   }),
 });
 
-export const { useDeleteScaleByIdMutation } = scaleExtendedApi;
+export const { useDeleteScaleByIdMutation, useSaveScaleMutation } =
+  scaleExtendedApi;
