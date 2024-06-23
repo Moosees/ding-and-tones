@@ -14,6 +14,7 @@ import InfoText from '../../shared/input/InfoText';
 import Rotation from '../rotation/Rotation';
 import { ScaleInfoContainer, ScaleNotes } from './info.styles';
 import { useSaveScaleMutation } from '../../../redux/scale/scale.api';
+import { createAlert } from '../../../redux/alert/alert.slice';
 
 const Info = () => {
   const dispatch = useDispatch();
@@ -42,10 +43,7 @@ const Info = () => {
 
   const handleScaleSave = async () => {
     if (notes.dings.length + notes.round.length + notes.extra.length < 5) {
-      // return dispatch({
-      //   type: scaleTypes.SAVE_ERROR,
-      //   payload: { alert: 'Scale needs at least five notes' },
-      // });
+      return dispatch(createAlert({ alert: 'Scale needs at least five notes' }))
     }
 
     const scaleUpdate = {
