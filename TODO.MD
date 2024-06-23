@@ -44,8 +44,8 @@
 * use loadScale when creating new scale
 * get type as arg when removing note from scale (and clean up reducer)?
 * update url when deleting current scale
+* update url when saving scale or navigating to scale route
 * parseScaleData and suppressAlert not needed?
-* handle alert when saving scale and return only scaleId?
 
 ### song slice
 

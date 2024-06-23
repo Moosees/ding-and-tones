@@ -55,10 +55,9 @@ const Info = () => {
       scaleUpdate.info.name = name;
     }
     const res = await saveScale({ scaleUpdate }).unwrap()
-
     if (!res.scale?.scaleId) return
 
-    navigate('/scale', { replace: true });
+    navigate(`/scale/${res.scale.scaleId}`, { replace: true });
   };
 
   const handleNameSave = () => {

@@ -55,12 +55,10 @@ exports.getScaleById = async (req, res) => {
       return res.status(404).json({ error: 'Scale not found' });
     }
 
-    res
-      .status(200)
-      .json({
-        scale: parseScaleResponse(scale, userId),
-        alert: `"${scale.scaleName}" loaded`,
-      });
+    res.status(200).json({
+      scale: parseScaleResponse(scale, userId),
+      alert: `"${scale.scaleName}" loaded`,
+    });
   } catch (error) {
     res.status(400).json({ error: defaultErrorMsg });
   }
@@ -141,8 +139,10 @@ exports.saveScale = async (req, res) => {
       .setOptions({ new: true })
       .exec();
 
-    const data = parseScaleResponse(scale, userId);
-    res.status(200).json(data);
+    res.status(200).json({
+      alert: `"${scale.scaleName}" saved`,
+      scale: { scaleId: scale._id },
+    });
   } catch (error) {
     res.status(400).json({ error: defaultErrorMsg });
   }
