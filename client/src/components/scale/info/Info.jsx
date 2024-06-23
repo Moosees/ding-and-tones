@@ -52,7 +52,7 @@ const Info = () => {
     };
 
     if (isNameValid && name) {
-      scaleUpdate.info.name = scaleName;
+      scaleUpdate.info.name = name;
     }
     const res = await saveScale({ scaleUpdate }).unwrap()
 
