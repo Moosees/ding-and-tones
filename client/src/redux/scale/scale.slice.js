@@ -66,7 +66,7 @@ const scaleSlice = createSlice({
 
         const newPositions = createPositionMap(
           state.info.layout,
-          newInnerSorted.length
+          newInnerSorted.length,
         );
 
         update.dings = [newInnerSorted[0]];
@@ -82,7 +82,7 @@ const scaleSlice = createSlice({
 
       const { rootInfo, pitched } = createFullScaleFromNames(
         tempNotes,
-        state.info.sharpNotes
+        state.info.sharpNotes,
       );
 
       if (isAddingExtraNotes) {
@@ -102,7 +102,7 @@ const scaleSlice = createSlice({
       const { scale, suppressAlert } = payload;
       const { notes, parsed, info, isOwner, scaleId } = parseScaleData(
         scale,
-        suppressAlert
+        suppressAlert,
       );
 
       state.notes = notes;
@@ -127,14 +127,14 @@ const scaleSlice = createSlice({
       const { noteToRemove } = action.payload;
 
       const { type } = state.parsed.pitched.find(
-        (note) => note.note === noteToRemove
+        (note) => note.note === noteToRemove,
       );
 
       const update = {};
 
       if (['extra', 'round'].includes(type)) {
         update[type] = state.notes[type].filter(
-          (note) => (note.note || note) !== noteToRemove
+          (note) => (note.note || note) !== noteToRemove,
         );
       } else if (state.notes.dings.length + state.notes.round.length === 1) {
         return;
@@ -151,7 +151,7 @@ const scaleSlice = createSlice({
 
       const { rootInfo, pitched } = createFullScaleFromNames(
         tempNotes,
-        state.info.sharpNotes
+        state.info.sharpNotes,
       );
 
       if (type === 'extra') {
@@ -161,7 +161,7 @@ const scaleSlice = createSlice({
         state.notes.round = tempNotes.round; // Should always exist in update?
         state.parsed.positions = createPositionMap(
           state.info.layout,
-          tempNotes.dings.length + tempNotes.round.length
+          tempNotes.dings.length + tempNotes.round.length,
         );
       }
 
@@ -180,7 +180,7 @@ const scaleSlice = createSlice({
     toggleSharps(state) {
       state.info.rootName = getNoteLabelFromName(
         noteValueToName[state.info.rootValue],
-        !state.info.sharpNotes
+        !state.info.sharpNotes,
       ).slice(0, -1);
       state.info.label = createScaleLabel(state.notes, !state.info.sharpNotes);
       state.info.sharpNotes = !state.info.sharpNotes;
@@ -190,14 +190,14 @@ const scaleSlice = createSlice({
 
       const update = transposeNotesToDestination(
         { ...state.notes },
-        destination
+        destination,
       );
 
       if (!update.dings[0]) return;
 
       const { rootInfo, pitched } = createFullScaleFromNames(
         update,
-        state.info.sharpNotes
+        state.info.sharpNotes,
       );
 
       const oldLength = state.notes.round.length + state.notes.dings.length;
@@ -206,7 +206,7 @@ const scaleSlice = createSlice({
       if (oldLength !== newLength) {
         state.parsed.positions = createPositionMap(
           state.info.layout,
-          newLength
+          newLength,
         );
       }
 
@@ -231,11 +231,20 @@ const scaleSlice = createSlice({
         state.ui.isOwner = false;
         state.ui.scaleId = null;
         state.ui.hasChanges = true;
-      }
+      },
     );
   },
 });
 
-export const { loadScale } = scaleSlice.actions
+export const {
+  addNoteToScale,
+  loadScale,
+  moveExtraNotes,
+  removeNoteFromScale,
+  rotateDrumToAngle,
+  setScaleName,
+  toggleSharps,
+  transposeScale,
+} = scaleSlice.actions;
 
 export default scaleSlice;
