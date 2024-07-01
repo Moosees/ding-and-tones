@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { defaultScale } from '../../../assets/defaultData';
-import { getScaleById, loadScale } from '../../../redux/scale/scale.actions';
+import { getScaleById } from '../../../redux/scale/scale.actions';
 import { useLazyGetSongByIdQuery } from '../../../redux/song/song.api';
 
 const useDefaultState = () => {
@@ -27,8 +26,6 @@ const useDefaultState = () => {
       dispatch(getScaleById(id, true));
       return;
     }
-
-    dispatch(loadScale(defaultScale, true));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, fetchSessionTried]);

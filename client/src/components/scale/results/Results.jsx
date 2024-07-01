@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
-import { loadScale } from '../../../redux/scale/scale.actions';
 import { useDeleteScaleByIdMutation } from '../../../redux/scale/scale.api';
+import { loadScale } from '../../../redux/scale/scale.slice';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Confirmation from '../../shared/popup/Confirmation';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
@@ -22,7 +22,7 @@ const Results = () => {
       scales: search.scales,
       isSearching: search.isSearching,
       isSignedIn: user.isSignedIn,
-    })
+    }),
   );
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Results = () => {
       } = scale;
 
       const handleLoadScale = () => {
-        dispatch(loadScale(scale));
+        dispatch(loadScale({ scale }));
         navigate('/scale');
       };
 
