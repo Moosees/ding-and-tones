@@ -6,11 +6,11 @@ import {
   noteValueToName,
 } from '../../../assets/intervals';
 import {
-  addNoteToScale,
   removeNoteFromScale,
   toggleSharps,
   transposeScale,
 } from '../../../redux/scale/scale.actions';
+import { addNoteToScale } from '../../../redux/scale/scale.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import DividerLine from '../../shared/dividerLine/DividerLine';
@@ -23,13 +23,13 @@ const Notes = ({ isAddingExtraNotes }) => {
   const round = useSelector(({ scale }) => scale.notes.round);
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
   const isSongPlaying = useSelector(
-    ({ song }) => song.songPlayer.isSongPlaying
+    ({ song }) => song.songPlayer.isSongPlaying,
   );
 
-  const handleAdd = (note) => {
+  const handleAdd = (newNote) => {
     if (isSongPlaying) return;
 
-    dispatch(addNoteToScale(note, isAddingExtraNotes));
+    dispatch(addNoteToScale({ newNote, isAddingExtraNotes }));
   };
 
   const handleRemove = (note) => {
@@ -41,7 +41,7 @@ const Notes = ({ isAddingExtraNotes }) => {
   const getNotes = () => {
     const noteValues = scale.reduce(
       (acc, { noteValue, type }) => ({ ...acc, [noteValue]: type }),
-      {}
+      {},
     );
     const noteSelectors = [];
 
@@ -62,7 +62,7 @@ const Notes = ({ isAddingExtraNotes }) => {
       noteSelectors.push(
         <Note disabled={disabled} key={i} onClick={handleClick} $type={type}>
           <span>{getNoteLabelFromName(noteName, sharpNotes)}</span>
-        </Note>
+        </Note>,
       );
     }
     return noteSelectors;
