@@ -64,7 +64,7 @@ const getScaleById = (scaleId, firstLoad) => (dispatch) => {
     });
 };
 
-export const loadScale = (scale, suppressAlert) => {
+const loadScale = (scale, suppressAlert) => {
   return {
     type: scaleTypes.LOAD_SCALE,
     payload: parseScaleData(scale, suppressAlert),

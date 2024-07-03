@@ -85,7 +85,7 @@ const addRootAndPosition = (scale, sharpNotes) => {
       rootValue = noteValue;
       rootName = getNoteLabelFromName(
         noteValueToName[noteValue],
-        sharpNotes
+        sharpNotes,
       ).slice(0, -1);
     }
 
@@ -102,7 +102,7 @@ const addRootAndPosition = (scale, sharpNotes) => {
 
 export const createFullScaleFromNames = (
   { dings, round = [], extra = [] },
-  sharpNotes
+  sharpNotes,
 ) => {
   if (!dings || !dings.length) return [];
 
@@ -112,7 +112,7 @@ export const createFullScaleFromNames = (
       localIndex: i,
       option: `${i}`,
       type: 'dings',
-    }))
+    })),
   );
 
   const roundWithValues = addNoteValueFromName(
@@ -121,7 +121,7 @@ export const createFullScaleFromNames = (
       localIndex: i + dings.length,
       option: `${i + dings.length}`,
       type: 'round',
-    }))
+    })),
   );
 
   const extraWithValues = addNoteValueFromName(
@@ -130,7 +130,7 @@ export const createFullScaleFromNames = (
       localIndex: i,
       option: `b${i + 1}`,
       type: 'extra',
-    }))
+    })),
   );
 
   const sortedScale = sortScaleByNoteValue([
@@ -141,7 +141,7 @@ export const createFullScaleFromNames = (
 
   const { rootInfo, scaleWithPos } = addRootAndPosition(
     sortedScale,
-    sharpNotes
+    sharpNotes,
   );
 
   const pitched = addIntervalMap(scaleWithPos);
@@ -149,7 +149,7 @@ export const createFullScaleFromNames = (
   return { rootInfo, pitched };
 };
 
-export const parseScaleData = (scale, suppressAlert) => {
+export const parseScaleData = (scale) => {
   const { info, isOwner, scaleId, notes } = scale;
 
   const numInnerNotes = notes.dings.length + notes.round.length;
@@ -157,31 +157,26 @@ export const parseScaleData = (scale, suppressAlert) => {
   const positions = createPositionMap(info.layout, numInnerNotes);
   const { pitched, rootInfo } = createFullScaleFromNames(
     notes,
-    info.sharpNotes
+    info.sharpNotes,
   );
 
-  const parsedScaleData = {
+  return {
     notes,
     parsed: { positions, pitched },
     info: { ...info, ...rootInfo },
     isOwner,
     scaleId,
   };
-
-  if (!suppressAlert)
-    parsedScaleData.alert = `"${scale.info.rootName} ${scale.info.name}" loaded`;
-
-  return parsedScaleData;
 };
 
 export const createScaleLabel = (
   { dings, round = [], extra = [] },
-  sharpNotes
+  sharpNotes,
 ) => {
   if (!dings || !dings.length) return '';
 
   const extraLabels = extra.map(({ note }) =>
-    getNoteLabelFromName(note, sharpNotes)
+    getNoteLabelFromName(note, sharpNotes),
   );
 
   const dingLabels = dings.map((note, i) => {
@@ -191,7 +186,7 @@ export const createScaleLabel = (
   });
 
   const roundLabels = round.map((note) =>
-    getNoteLabelFromName(note, sharpNotes)
+    getNoteLabelFromName(note, sharpNotes),
   );
 
   return [...extraLabels, ...dingLabels, ...roundLabels].join(' ');
@@ -221,7 +216,7 @@ export const transposeExtraNotesToDestination = (notes, destination = 0) => {
 
 export const transposeNotesToDestination = (
   { round = [], dings = [], extra = [] },
-  destination
+  destination,
 ) => {
   const notes = {
     round: transposeInnerNotesToDestination(round, destination),

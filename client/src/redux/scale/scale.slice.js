@@ -13,7 +13,7 @@ import {
 } from './scale.utils';
 import { scaleExtendedApi } from './scale.api';
 
-export const { info, notes, parsed } = parseScaleData(defaultScale, true);
+const { info, notes, parsed } = parseScaleData(defaultScale);
 
 const INITIAL_STATE = {
   info: {
@@ -99,11 +99,8 @@ const scaleSlice = createSlice({
       state.info.rootIndex = rootInfo.rootIndex;
     },
     loadScale(state, { payload }) {
-      const { scale, suppressAlert } = payload;
-      const { notes, parsed, info, isOwner, scaleId } = parseScaleData(
-        scale,
-        suppressAlert,
-      );
+      const { scale } = payload;
+      const { notes, parsed, info, isOwner, scaleId } = parseScaleData(scale);
 
       state.notes = notes;
       state.parsed = parsed;

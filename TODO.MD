@@ -46,7 +46,6 @@
 * update url when deleting current scale
 * update url when saving scale or navigating to scale route
 * parseScaleData not needed?
-* remove suppressAlert from loadScale
 
 ### song slice
 

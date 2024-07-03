@@ -83,7 +83,7 @@ export const parseFetchedSong = (song, scale, getScale) => {
 
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
-  const parsedScale = getScale && scale ? parseScaleData(scale, true) : {};
+  const parsedScale = getScale && scale ? parseScaleData(scale) : {};
   const savedScale =
     scale && scale.info
       ? {
@@ -183,13 +183,13 @@ export const updateMeasureAndBeats = (bar, newSubdivisions) => {
     const newTemplate = metreTemplates[i][newSubdivisions[i]].values;
     const subMeasure = measure.slice(
       measureIndex,
-      measureIndex + template.length
+      measureIndex + template.length,
     );
 
     const { newMeasureData, beatsToDelete } = calculateMeasureAndBeatChanges(
       subMeasure,
       template,
-      newTemplate
+      newTemplate,
     );
 
     fullMeasureData.push(...newMeasureData);
