@@ -71,7 +71,7 @@ const loadScale = (scale, suppressAlert) => {
   };
 };
 
-export const moveExtraNotes = (oldPos, newPos, swap = false) => ({
+const moveExtraNotes = (oldPos, newPos, swap = false) => ({
   type: scaleTypes.MOVE_EXTRA_NOTES,
   payload: { oldPos, newPos, swap },
 });

@@ -45,7 +45,7 @@
 * get type as arg when removing note from scale (and clean up reducer)?
 * update url when deleting current scale
 * update url when saving scale or navigating to scale route
-* parseScaleData not needed?
+* parseScaleData not needed (on server?)?
 
 ### song slice
 

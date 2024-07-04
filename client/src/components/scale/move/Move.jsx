@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { moveExtraNotes } from '../../../redux/scale/scale.actions';
+import { moveExtraNotes } from '../../../redux/scale/scale.slice';
 import { TextLabel } from '../edit/edit.styles';
 import { MoveContainer, Note, PositionWrapper } from './move.styles';
 
@@ -19,7 +19,7 @@ const Move = () => {
 
   const handleMove = (note, pos) => {
     if (pos !== grabbed) {
-      dispatch(moveExtraNotes(grabbed, pos, !!note));
+      dispatch(moveExtraNotes({ oldPos: grabbed, newPos: pos, swap: !!note }));
     }
 
     setGrabbed(null);
