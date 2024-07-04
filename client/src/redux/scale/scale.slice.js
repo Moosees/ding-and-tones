@@ -120,6 +120,26 @@ const scaleSlice = createSlice({
 
       state.notes.extra = extra;
     },
+    newScale(state) {
+      const notes = { dings: ['A3'], round: [], extra: [] };
+      const { rootInfo, pitched } = createFullScaleFromNames(
+        notes,
+        state.info.sharpNotes,
+      );
+
+      state.notes = notes;
+      state.parsed.pitched = pitched;
+      state.positions = [{ rotate: 0, translate: 0 }];
+      state.info.label = createScaleLabel(notes, state.info.sharpNotes);
+      state.info.layout = 1;
+      state.info.name = 'New Scale';
+      state.info.rootName = rootInfo.rootName;
+      state.info.rootValue = rootInfo.rootValue;
+      state.info.rootIndex = rootInfo.rootIndex;
+      state.ui.isOwner = false;
+      state.ui.scaleId = null;
+      state.ui.hasChanges = false;
+    },
     removeNoteFromScale(state, action) {
       const { noteToRemove } = action.payload;
 
@@ -236,6 +256,7 @@ const scaleSlice = createSlice({
 export const {
   addNoteToScale,
   loadScale,
+  newScale,
   moveExtraNotes,
   removeNoteFromScale,
   rotateDrumToAngle,

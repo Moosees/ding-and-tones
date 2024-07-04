@@ -3,38 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
-import {
-  newScale,
-  setScaleName,
-} from '../../../redux/scale/scale.actions';
+import { createAlert } from '../../../redux/alert/alert.slice';
+import { setScaleName } from '../../../redux/scale/scale.actions';
+import { useSaveScaleMutation } from '../../../redux/scale/scale.api';
+import { newScale } from '../../../redux/scale/scale.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/BtnPrimary';
+import Buttons from '../../shared/button/Buttons';
 import InfoText from '../../shared/input/InfoText';
 import Rotation from '../rotation/Rotation';
 import { ScaleInfoContainer, ScaleNotes } from './info.styles';
-import { useSaveScaleMutation } from '../../../redux/scale/scale.api';
-import { createAlert } from '../../../redux/alert/alert.slice';
 
 const Info = () => {
   const dispatch = useDispatch();
-  const notes = useSelector(({ scale }) => scale.notes)
-  const info = useSelector(({ scale }) => scale.info)
-  const {
-    hasChanges,
-    isDeleting,
-    isFetching,
-    scaleInfo,
-    isSignedIn,
-  } = useSelector(({ scale, user }) => ({
-    hasChanges: scale.ui.hasChanges,
-    isDeleting: scale.ui.isDeleting,
-    isFetching: scale.ui.isFetching,
-    scaleInfo: scale.info,
-    isSignedIn: user.isSignedIn,
-  }));
+  const notes = useSelector(({ scale }) => scale.notes);
+  const info = useSelector(({ scale }) => scale.info);
+  const { hasChanges, isDeleting, isFetching, scaleInfo, isSignedIn } =
+    useSelector(({ scale, user }) => ({
+      hasChanges: scale.ui.hasChanges,
+      isDeleting: scale.ui.isDeleting,
+      isFetching: scale.ui.isFetching,
+      scaleInfo: scale.info,
+      isSignedIn: user.isSignedIn,
+    }));
 
-  const [saveScale, { isLoading: isSaving }] = useSaveScaleMutation()
+  const [saveScale, { isLoading: isSaving }] = useSaveScaleMutation();
 
   const navigate = useNavigate();
 
@@ -43,7 +36,9 @@ const Info = () => {
 
   const handleScaleSave = async () => {
     if (notes.dings.length + notes.round.length + notes.extra.length < 5) {
-      return dispatch(createAlert({ alert: 'Scale needs at least five notes' }))
+      return dispatch(
+        createAlert({ alert: 'Scale needs at least five notes' }),
+      );
     }
 
     const scaleUpdate = {
@@ -54,8 +49,8 @@ const Info = () => {
     if (isNameValid && name) {
       scaleUpdate.info.name = name;
     }
-    const res = await saveScale({ scaleUpdate }).unwrap()
-    if (!res.scale?.scaleId) return
+    const res = await saveScale({ scaleUpdate }).unwrap();
+    if (!res.scale?.scaleId) return;
 
     navigate(`/scale/${res.scale.scaleId}`, { replace: true });
   };

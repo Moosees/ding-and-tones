@@ -76,7 +76,7 @@ const moveExtraNotes = (oldPos, newPos, swap = false) => ({
   payload: { oldPos, newPos, swap },
 });
 
-export const newScale = () => ({ type: scaleTypes.NEW_SCALE });
+const newScale = () => ({ type: scaleTypes.NEW_SCALE });
 
 export const removeNoteFromScale = (noteToRemove) => (dispatch, getState) => {
   const {
