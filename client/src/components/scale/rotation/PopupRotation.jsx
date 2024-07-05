@@ -3,7 +3,7 @@ import 'rc-slider/assets/index.css';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { rotateDrum } from '../../../redux/scale/scale.actions';
+import { rotateDrumToAngle } from '../../../redux/scale/scale.slice';
 import MiniDrum from '../../drum/MiniDrum';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoBox from '../../shared/layout/InfoBox';
@@ -43,7 +43,7 @@ const PopupRotation = ({ onClose }) => {
           max={360}
           marks={marks}
           included={false}
-          onChange={(angle) => dispatch(rotateDrum(angle))}
+          onChange={(angle) => dispatch(rotateDrumToAngle({ angle }))}
           handleStyle={{
             backgroundColor: '#888',
             border: '1px solid #444',
