@@ -136,9 +136,6 @@ const scaleSlice = createSlice({
       state.info.rootName = rootInfo.rootName;
       state.info.rootValue = rootInfo.rootValue;
       state.info.rootIndex = rootInfo.rootIndex;
-      state.ui.isOwner = false;
-      state.ui.scaleId = null;
-      state.ui.hasChanges = false;
     },
     removeNoteFromScale(state, action) {
       const { noteToRemove } = action.payload;

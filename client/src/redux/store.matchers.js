@@ -6,12 +6,12 @@ import scaleSlice from './scale/scale.slice';
 export const isUpdateUserAction = isAnyOf(
   userExtendedApi.endpoints.checkSession.matchFulfilled,
   userExtendedApi.endpoints.signIn.matchFulfilled,
-  userExtendedApi.endpoints.saveUserInfo.matchFulfilled
+  userExtendedApi.endpoints.saveUserInfo.matchFulfilled,
 );
 
 export const isSignInAction = isAnyOf(
   userExtendedApi.endpoints.checkSession.matchFulfilled,
-  userExtendedApi.endpoints.signIn.matchFulfilled
+  userExtendedApi.endpoints.signIn.matchFulfilled,
 );
 
 // export const isSongApiAction = isAnyOf(
@@ -22,9 +22,10 @@ export const isSignInAction = isAnyOf(
 
 export const isChangeScaleAction = isAnyOf(
   scaleSlice.actions.addNoteToScale,
+  scaleSlice.actions.newScale,
   scaleSlice.actions.removeNoteFromScale,
   scaleSlice.actions.rotateDrumToAngle,
   scaleSlice.actions.setScaleName,
   scaleSlice.actions.toggleSharps,
-  scaleSlice.actions.transposeScale
+  scaleSlice.actions.transposeScale,
 );
