@@ -192,7 +192,7 @@ export const saveScale = (scaleName) => (dispatch, getState) => {
     });
 };
 
-export const setScaleName = (name) => ({
+const setScaleName = (name) => ({
   type: scaleTypes.SET_NAME,
   payload: name,
 });

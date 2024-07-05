@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
 import { createAlert } from '../../../redux/alert/alert.slice';
-import { setScaleName } from '../../../redux/scale/scale.actions';
 import { useSaveScaleMutation } from '../../../redux/scale/scale.api';
-import { newScale } from '../../../redux/scale/scale.slice';
+import { newScale, setScaleName } from '../../../redux/scale/scale.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
@@ -56,7 +55,7 @@ const Info = () => {
   };
 
   const handleNameSave = () => {
-    if (isNameValid) dispatch(setScaleName(name));
+    if (isNameValid) dispatch(setScaleName({ name }));
   };
 
   const handleNewScale = () => {
