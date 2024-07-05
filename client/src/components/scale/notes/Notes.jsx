@@ -5,13 +5,11 @@ import {
   getNoteLabelFromName,
   noteValueToName,
 } from '../../../assets/intervals';
-import {
-  toggleSharps,
-  transposeScale,
-} from '../../../redux/scale/scale.actions';
+import { transposeScale } from '../../../redux/scale/scale.actions';
 import {
   addNoteToScale,
   removeNoteFromScale,
+  toggleSharps,
 } from '../../../redux/scale/scale.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';

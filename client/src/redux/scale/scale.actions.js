@@ -197,7 +197,7 @@ const setScaleName = (name) => ({
   payload: name,
 });
 
-export const toggleSharps = () => (dispatch, getState) => {
+const toggleSharps = () => (dispatch, getState) => {
   const {
     scale: {
       info: { rootValue, sharpNotes },
