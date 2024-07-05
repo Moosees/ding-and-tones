@@ -218,7 +218,7 @@ const toggleSharps = () => (dispatch, getState) => {
   });
 };
 
-export const transposeScale = (destination) => (dispatch, getState) => {
+const transposeScale = (destination) => (dispatch, getState) => {
   const {
     scale: { notes, parsed, info },
   } = getState();

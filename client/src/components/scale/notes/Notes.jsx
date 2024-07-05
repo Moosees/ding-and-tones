@@ -5,11 +5,11 @@ import {
   getNoteLabelFromName,
   noteValueToName,
 } from '../../../assets/intervals';
-import { transposeScale } from '../../../redux/scale/scale.actions';
 import {
   addNoteToScale,
   removeNoteFromScale,
   toggleSharps,
+  transposeScale,
 } from '../../../redux/scale/scale.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
@@ -69,7 +69,7 @@ const Notes = ({ isAddingExtraNotes }) => {
   };
 
   const handleTransposeScale = (destination) => {
-    dispatch(transposeScale(destination));
+    dispatch(transposeScale({ destination }));
   };
 
   return (
