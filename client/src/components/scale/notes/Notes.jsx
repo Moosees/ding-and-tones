@@ -6,11 +6,13 @@ import {
   noteValueToName,
 } from '../../../assets/intervals';
 import {
-  removeNoteFromScale,
   toggleSharps,
   transposeScale,
 } from '../../../redux/scale/scale.actions';
-import { addNoteToScale } from '../../../redux/scale/scale.slice';
+import {
+  addNoteToScale,
+  removeNoteFromScale,
+} from '../../../redux/scale/scale.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import DividerLine from '../../shared/dividerLine/DividerLine';
@@ -35,7 +37,7 @@ const Notes = ({ isAddingExtraNotes }) => {
   const handleRemove = (note) => {
     if (isSongPlaying) return;
 
-    dispatch(removeNoteFromScale(note));
+    dispatch(removeNoteFromScale({ noteToRemove: note }));
   };
 
   const getNotes = () => {
