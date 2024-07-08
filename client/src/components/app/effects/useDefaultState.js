@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { getScaleById } from '../../../redux/scale/scale.actions';
+import { useLazyGetScaleByIdQuery } from '../../../redux/scale/scale.api';
 import { useLazyGetSongByIdQuery } from '../../../redux/song/song.api';
 
 const useDefaultState = () => {
-  const dispatch = useDispatch();
   const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const location = useLocation();
   const [getSongById] = useLazyGetSongByIdQuery();
+  const [getScaleById] = useLazyGetScaleByIdQuery();
 
   useEffect(() => {
     if (!fetchSessionTried) {
@@ -23,12 +23,12 @@ const useDefaultState = () => {
     }
 
     if (route === 'scale' && id) {
-      dispatch(getScaleById(id, true));
+      getScaleById({ scaleId: id });
       return;
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, fetchSessionTried]);
+  }, [fetchSessionTried]);
 };
 
 export default useDefaultState;

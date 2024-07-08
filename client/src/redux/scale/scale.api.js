@@ -34,5 +34,8 @@ export const scaleExtendedApi = api.injectEndpoints({
   }),
 });
 
-export const { useDeleteScaleByIdMutation, useSaveScaleMutation } =
-  scaleExtendedApi;
+export const {
+  useDeleteScaleByIdMutation,
+  useLazyGetScaleByIdQuery,
+  useSaveScaleMutation,
+} = scaleExtendedApi;
