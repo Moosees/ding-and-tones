@@ -35,7 +35,6 @@
 
 #### scale slice
 
-* switch from old reducer to slice and update all action dispatches
 * load scale when loading a song with scale
 * have default scale but delay loading howls until after checking url? firstLoad not needed?
 * PopupSaveSong newScaleName selector
@@ -46,6 +45,7 @@
 * update url when deleting current scale
 * update url when saving scale or navigating to scale route
 * parseScaleData not needed (on server?)?
+* scale matcher in matchers file without error?
 
 ### song slice
 

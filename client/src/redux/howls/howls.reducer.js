@@ -1,15 +1,16 @@
 import { Howler } from 'howler';
+import { defaultScale } from '../../assets/defaultData';
 import { audioSources } from '../../assets/sound/audioOptions';
-import scaleTypes from '../scale/scale.types';
-import songTypes from '../song/song.types';
+import { parseScaleData } from '../scale/scale.utils';
 import howlsTypes from './howls.types';
 import { changeAudioSrc, updateHowls } from './howls.utils';
-import { parsedDefaultScale } from '../scale/scale.initialState';
+
+const { parsed } = parseScaleData(defaultScale);
 
 const defaultHowlsStatus = updateHowls(
   {},
   audioSources[0].path,
-  parsedDefaultScale.parsed.pitched
+  parsed.pitched,
 );
 
 const INITIAL_STATE = {
@@ -52,43 +53,43 @@ const howlsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, status };
     }
 
-    case scaleTypes.NEW_SCALE: {
-      console.log(type);
-      const status = updateHowls(state.status, state.audioSrc.path, [
-        { note: 'A3' },
-      ]);
-      console.log({ status });
-
-      return { ...state, status };
-    }
-
-    case scaleTypes.FETCH_SUCCESSFUL:
-    case scaleTypes.LOAD_SCALE:
-    case scaleTypes.UPDATE_SCALE: {
-      console.log(type, payload.parsed.pitched);
-      const status = updateHowls(
-        state.status,
-        state.audioSrc.path,
-        payload.parsed.pitched
-      );
-      console.log({ status });
-
-      return { ...state, status };
-    }
-
-    case songTypes.FETCH_SUCCESSFUL: {
-      if (!payload.song.getScale) return state;
-      console.log(type, payload.song.scale.parsed.pitched);
-
-      const status = updateHowls(
-        state.status,
-        state.audioSrc.path,
-        payload.song.scale.parsed.pitched
-      );
-      console.log({ status });
-
-      return { ...state, status };
-    }
+    // case scaleTypes.NEW_SCALE: {
+    //   console.log(type);
+    //   const status = updateHowls(state.status, state.audioSrc.path, [
+    //     { note: 'A3' },
+    //   ]);
+    //   console.log({ status });
+    //
+    //   return { ...state, status };
+    // }
+    //
+    // case scaleTypes.FETCH_SUCCESSFUL:
+    // case scaleTypes.LOAD_SCALE:
+    // case scaleTypes.UPDATE_SCALE: {
+    //   console.log(type, payload.parsed.pitched);
+    //   const status = updateHowls(
+    //     state.status,
+    //     state.audioSrc.path,
+    //     payload.parsed.pitched
+    //   );
+    //   console.log({ status });
+    //
+    //   return { ...state, status };
+    // }
+    //
+    // case songTypes.FETCH_SUCCESSFUL: {
+    //   if (!payload.song.getScale) return state;
+    //   console.log(type, payload.song.scale.parsed.pitched);
+    //
+    //   const status = updateHowls(
+    //     state.status,
+    //     state.audioSrc.path,
+    //     payload.song.scale.parsed.pitched
+    //   );
+    //   console.log({ status });
+    //
+    //   return { ...state, status };
+    // }
 
     default:
       return state;

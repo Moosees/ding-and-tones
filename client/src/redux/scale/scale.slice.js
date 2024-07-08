@@ -1,7 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
-import { isChangeScaleAction } from '../store.matchers';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,
@@ -100,6 +99,7 @@ const scaleSlice = createSlice({
     },
     loadScale(state, { payload }) {
       const { scale } = payload;
+      console.log({ scale });
       const { notes, parsed, info, isOwner, scaleId } = parseScaleData(scale);
 
       state.notes = notes;
@@ -249,6 +249,16 @@ const scaleSlice = createSlice({
     );
   },
 });
+
+export const isChangeScaleAction = isAnyOf(
+  scaleSlice.actions.addNoteToScale,
+  scaleSlice.actions.newScale,
+  scaleSlice.actions.removeNoteFromScale,
+  scaleSlice.actions.rotateDrumToAngle,
+  scaleSlice.actions.setScaleName,
+  scaleSlice.actions.toggleSharps,
+  scaleSlice.actions.transposeScale,
+);
 
 export const {
   addNoteToScale,
