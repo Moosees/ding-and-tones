@@ -12,10 +12,8 @@ const ExtraNote = ({
   showNote,
   text,
 }) => {
-  const { isReady, position } = useSelector(({ howls, scale }) => ({
-    position: scale.notes.extra[localIndex].pos,
-    isReady: howls.status[note] === 'ready',
-  }));
+  const isReady = useSelector(({ scale }) => scale.howls.status[note] === 'ready')
+  const position = useSelector(({ scale }) => scale.notes.extra[localIndex].pos)
 
   return (
     <ExtraContainer

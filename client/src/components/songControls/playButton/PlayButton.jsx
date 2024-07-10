@@ -11,7 +11,7 @@ import { checkHowlsReadyStatus } from './playButton.utils';
 
 const PlayButton = ({ light }) => {
   const dispatch = useDispatch();
-  const status = useSelector(({ howls }) => howls.status);
+  const status = useSelector(({ scale }) => scale.howls.status);
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
   const arrangement = useSelector(({ song }) => song.arrangement);
   const isSongPlaying = useSelector(

@@ -7,7 +7,7 @@ import { updateSongPlayer } from '../../../redux/song/song.slice';
 const usePlayWithKeyboard = () => {
   const dispatch = useDispatch();
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
-  const status = useSelector(({ howls }) => howls.status);
+  const status = useSelector(({ scale }) => scale.howls.status);
 
   useEffect(() => {
     const allNotes = [
@@ -26,7 +26,7 @@ const usePlayWithKeyboard = () => {
           updateSongPlayer({
             currentHand: option === 't' ? 2 : 1,
             currentSound: [option],
-          })
+          }),
         );
         howls[note].play();
       };

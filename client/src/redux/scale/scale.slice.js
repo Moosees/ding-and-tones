@@ -1,6 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
+import { audioSources } from '../../assets/sound/audioOptions';
+import { updateHowls } from './howls.utils';
+import { scaleExtendedApi } from './scale.api';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,
@@ -10,11 +13,21 @@ import {
   sortScaleByFreq,
   transposeNotesToDestination,
 } from './scale.utils';
-import { scaleExtendedApi } from './scale.api';
 
 const { info, notes, parsed } = parseScaleData(defaultScale);
 
+const defaultHowlsStatus = updateHowls(
+  {},
+  audioSources[0].path,
+  parsed.pitched,
+);
+
 const INITIAL_STATE = {
+  howls: {
+    audioSrc: audioSources[0],
+    status: defaultHowlsStatus,
+    volume: 0.8,
+  },
   info: {
     label: info.label,
     layout: info.layout,

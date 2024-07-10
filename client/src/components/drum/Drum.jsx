@@ -13,7 +13,7 @@ const Drum = ({ style }) => {
   const displayedChord = useSelector(({ drum }) => drum.displayedChord);
   const displayedNote = useSelector(({ drum }) => drum.displayedNote);
   const drumMode = useSelector(({ drum }) => drum.drumMode);
-  const status = useSelector(({ howls }) => howls.status);
+  const status = useSelector(({ scale }) => scale.howls.status);
   const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
   const currentSound = useSelector(({ song }) => song.songPlayer.currentSound);
@@ -37,14 +37,14 @@ const Drum = ({ style }) => {
 
       const text = showNote
         ? getNoteText(
-            note.note,
-            i,
-            scale[displayedNote].intervalMap,
-            drumMode,
-            displayedChord,
-            note.option,
-            sharpNotes
-          )
+          note.note,
+          i,
+          scale[displayedNote].intervalMap,
+          drumMode,
+          displayedChord,
+          note.option,
+          sharpNotes
+        )
         : '';
 
       const color = showNote

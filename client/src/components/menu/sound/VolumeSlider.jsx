@@ -24,7 +24,7 @@ const marks = {
 
 const VolumeSlider = () => {
   const dispatch = useDispatch();
-  const volume = useSelector(({ howls }) => howls.volume);
+  const volume = useSelector(({ scale }) => scale.howls.volume);
 
   return (
     <Slider
