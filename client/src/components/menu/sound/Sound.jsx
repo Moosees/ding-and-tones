@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAudioSrc } from '../../../redux/howls/howls.actions';
+import { selectAudioSrc } from '../../../redux/scale/scale.slice';
 import { useSaveUserSoundMutation } from '../../../redux/user/user.api';
 import BtnMenu from '../../shared/button/BtnMenu';
 import PopupSound from './PopupSound';
@@ -26,7 +26,7 @@ const Sound = () => {
     setSoundOpen(false);
 
     if (newOption !== audioOption) {
-      dispatch(selectAudioSrc(newOption));
+      dispatch(selectAudioSrc({ audioOption: newOption }));
     }
 
     if (

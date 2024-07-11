@@ -1,7 +1,7 @@
 import { getAudioSrc } from '../../assets/sound/audioOptions';
 import howlsTypes from './howls.types';
 
-export const selectAudioSrc = (audioOption) => (dispatch, getState) => {
+const selectAudioSrc = (audioOption) => (dispatch, getState) => {
   const { scale } = getState();
 
   dispatch({

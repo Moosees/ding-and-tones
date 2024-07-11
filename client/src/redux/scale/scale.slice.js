@@ -2,8 +2,8 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { Howler } from 'howler';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
-import { audioSources } from '../../assets/sound/audioOptions';
-import { updateHowls } from './howls.utils';
+import { audioSources, getAudioSrc } from '../../assets/sound/audioOptions';
+import { changeAudioSrc, updateHowls } from './howls.utils';
 import { scaleExtendedApi } from './scale.api';
 import {
   addExtraNotesPos,
@@ -256,6 +256,15 @@ const scaleSlice = createSlice({
 
       state.howls.status[note] = status;
     },
+    selectAudioSrc(state, { payload }) {
+      if (state.howls.audioSrc.option === payload.audioOption) return;
+
+      const audioSrc = getAudioSrc(payload.audioOption);
+      const status = changeAudioSrc(audioSrc.path, state.parsed.pitched);
+
+      state.howls.audioSrc = audioSrc;
+      state.howls.status = status;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(isChangeScaleAction, (state) => {
@@ -298,6 +307,7 @@ export const {
   transposeScale,
   setVolume,
   updateHowlLoadingStatus,
+  selectAudioSrc,
 } = scaleSlice.actions;
 
 export default scaleSlice;
