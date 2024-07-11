@@ -13,12 +13,12 @@ export const selectAudioSrc = (audioOption) => (dispatch, getState) => {
   });
 };
 
-export const setVolume = (newVolume) => ({
+const setVolume = (newVolume) => ({
   type: howlsTypes.SET_VOLUME,
   payload: { newVolume },
 });
 
-export const updateHowlLoadingStatus = (note, status) => (dispatch) => {
+const updateHowlLoadingStatus = (note, status) => (dispatch) => {
   // console.log('updateHowlLoadingStatus', note, status);
   dispatch({
     type: howlsTypes.UPDATE_HOWL_LOADING_STATUS,

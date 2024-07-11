@@ -243,6 +243,9 @@ const scaleSlice = createSlice({
       state.info.rootValue = rootInfo.rootValue;
       state.info.rootIndex = rootInfo.rootIndex;
     },
+    setVolume(state, { payload }) {
+      state.howls.volume = payload.volume;
+    },
     updateHowlLoadingStatus(state, { payload }) {
       const { note, status } = payload;
 
@@ -290,6 +293,7 @@ export const {
   setScaleName,
   toggleSharps,
   transposeScale,
+  setVolume,
   updateHowlLoadingStatus,
 } = scaleSlice.actions;
 
