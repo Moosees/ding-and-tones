@@ -243,6 +243,13 @@ const scaleSlice = createSlice({
       state.info.rootValue = rootInfo.rootValue;
       state.info.rootIndex = rootInfo.rootIndex;
     },
+    updateHowlLoadingStatus(state, { payload }) {
+      const { note, status } = payload;
+
+      if (!state.howls.status[note]) return;
+
+      state.howls.status[note] = status;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(isChangeScaleAction, (state) => {
@@ -283,6 +290,7 @@ export const {
   setScaleName,
   toggleSharps,
   transposeScale,
+  updateHowlLoadingStatus,
 } = scaleSlice.actions;
 
 export default scaleSlice;

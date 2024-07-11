@@ -1,8 +1,8 @@
 import { Howl, Howler } from 'howler';
 import { howls } from '../../assets/sound/howls';
 import { store } from '../store';
-import { updateHowlLoadingStatus } from './howls.actions';
 import { filterObjectByKeyArray } from '../store.utils';
+import { updateHowlLoadingStatus } from './scale.slice';
 
 const prepareHowlForRemoval = (howl) => {
   howl?.howl?.off();
@@ -44,16 +44,16 @@ const sortHowlsForUpdate = (sounds) => {
 
 const onHowlError = (note, howl, error) => {
   howl.off('load');
-  store.dispatch(updateHowlLoadingStatus(note, 'loaderror'));
+  store.dispatch(updateHowlLoadingStatus({ note, status: 'loaderror' }));
 };
 
 const onHowlLoad = (note, howl) => {
   howl.off('loaderror');
-  store.dispatch(updateHowlLoadingStatus(note, 'ready'));
+  store.dispatch(updateHowlLoadingStatus({ note, status: 'ready' }));
 };
 
 const onHowlPlayError = (note) => {
-  store.dispatch(updateHowlLoadingStatus(note, 'playerror'));
+  store.dispatch(updateHowlLoadingStatus({ note, status: 'playerror' }));
 };
 
 const playHowl = (howl) => {
