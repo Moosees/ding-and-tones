@@ -12,8 +12,8 @@ const Tonefield = ({
   text,
 }) => {
   const { isReady, position, scaleRotation } = useSelector(
-    ({ howls, scale }) => ({
-      isReady: howls.status[note] === 'ready',
+    ({ scale }) => ({
+      isReady: scale.howls.status[note] === 'ready',
       position: scale.parsed.positions[localIndex],
       scaleRotation: scale.info.rotation,
     })
@@ -28,9 +28,8 @@ const Tonefield = ({
       cx="0"
       cy="0"
       opacity={isReady ? 1 : 0.5}
-      transform={`rotate(${
-        rotate + scaleRotation + 270
-      }) translate(${translate})`}
+      transform={`rotate(${rotate + scaleRotation + 270
+        }) translate(${translate})`}
       style={{
         fontSize: isDing ? '2.3px' : '1.5px',
         cursor: showNote ? 'pointer' : 'default',

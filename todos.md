@@ -67,6 +67,7 @@
 - PopupAccount only close if mutation is successful?
 - isSignedIn derived from username instead of extra key in redux?
 - set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
+- use scale slice instead of howls reducer for user api
 
 ### Other
 

@@ -249,7 +249,7 @@ const scaleSlice = createSlice({
     updateHowlLoadingStatus(state, { payload }) {
       const { note, status } = payload;
 
-      if (!state.howls.status[note]) return;
+      if (!state.howls.status[note]) return; // TODO: check if needed
 
       state.howls.status[note] = status;
     },
