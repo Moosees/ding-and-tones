@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { Howler } from 'howler';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import { audioSources } from '../../assets/sound/audioOptions';
@@ -244,6 +245,8 @@ const scaleSlice = createSlice({
       state.info.rootIndex = rootInfo.rootIndex;
     },
     setVolume(state, { payload }) {
+      Howler.volume(payload.volume);
+
       state.howls.volume = payload.volume;
     },
     updateHowlLoadingStatus(state, { payload }) {
