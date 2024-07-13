@@ -14,7 +14,7 @@ const cleanupHowls = (notesToRemove) => {
 
   for (const note of notesToRemove) {
     prepareHowlForRemoval(howls[note]);
-    howls[note] = null;
+    delete howls[note];
   }
 };
 
@@ -24,16 +24,15 @@ const sortHowlsForUpdate = (sounds) => {
   const notesToKeep = [];
 
   for (const sound in howls) {
-    console.log({ howls, sounds, addSet });
     if (howls[sound] && !addSet.has(sound)) {
+      console.log({ howls, sounds, addSet });
       console.log('remove', sound);
       notesToRemove.push(sound);
     } else if (howls[sound] && addSet.has(sound)) {
+      console.log({ howls, sounds, addSet });
       console.log('keep', sound);
       notesToKeep.push(sound);
       addSet.delete(sound);
-    } else {
-      console.log('add', sound); // shows some false adds
     }
   }
 
@@ -122,6 +121,7 @@ const createStatus = (soundsToAdd, statusToKeep = {}) => {
 export const updateHowls = (status, audioSrc, scale) => {
   console.log('updateHowls');
   const sounds = parseScaleForUpdateHowls(scale);
+  console.log({ scaleToChangeTo: sounds });
 
   const { soundsToAdd, notesToRemove, notesToKeep } =
     sortHowlsForUpdate(sounds);
@@ -131,7 +131,7 @@ export const updateHowls = (status, audioSrc, scale) => {
 
   createHowls(soundsToAdd, audioSrc);
 
-  console.log({ status, notesToKeep });
+  console.log({ notesToKeep, howls });
   const statusToKeep = filterObjectByKeyArray(status, notesToKeep, false);
   console.log({ ...statusToKeep });
 

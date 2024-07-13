@@ -279,6 +279,7 @@ const scaleSlice = createSlice({
         state.parsed.pitched,
       );
 
+      console.log({ newStatus: status });
       state.howls.status = status;
     });
     builder.addMatcher(
