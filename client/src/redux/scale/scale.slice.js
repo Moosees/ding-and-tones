@@ -267,10 +267,19 @@ const scaleSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(isChangeScaleAction, (state) => {
+    builder.addMatcher(isChangeScaleAction, (state, action) => {
       state.ui.isOwner = false;
       state.ui.scaleId = null;
       state.ui.hasChanges = true;
+    });
+    builder.addMatcher(isChangeNotesAction, (state) => {
+      const status = updateHowls(
+        state.howls.status,
+        state.howls.audioSrc.path,
+        state.parsed.pitched,
+      );
+
+      state.howls.status = status;
     });
     builder.addMatcher(
       scaleExtendedApi.endpoints.deleteScaleById.matchFulfilled,
@@ -288,10 +297,19 @@ const scaleSlice = createSlice({
 export const isChangeScaleAction = isAnyOf(
   scaleSlice.actions.addNoteToScale,
   scaleSlice.actions.newScale,
+  scaleSlice.actions.moveExtraNotes,
   scaleSlice.actions.removeNoteFromScale,
   scaleSlice.actions.rotateDrumToAngle,
   scaleSlice.actions.setScaleName,
   scaleSlice.actions.toggleSharps,
+  scaleSlice.actions.transposeScale,
+);
+
+export const isChangeNotesAction = isAnyOf(
+  scaleSlice.actions.addNoteToScale,
+  scaleSlice.actions.loadScale,
+  scaleSlice.actions.newScale,
+  scaleSlice.actions.removeNoteFromScale,
   scaleSlice.actions.transposeScale,
 );
 

@@ -120,7 +120,7 @@ const createStatus = (soundsToAdd, statusToKeep = {}) => {
 };
 
 export const updateHowls = (status, audioSrc, scale) => {
-  console.log('updateHowls', audioSrc, scale);
+  console.log('updateHowls');
   const sounds = parseScaleForUpdateHowls(scale);
 
   const { soundsToAdd, notesToRemove, notesToKeep } =
