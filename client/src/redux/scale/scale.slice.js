@@ -126,9 +126,10 @@ const scaleSlice = createSlice({
     moveExtraNotes(state, { payload }) {
       const { oldPos, newPos, swap } = payload;
 
-      const extra = state.extra.map(({ note, pos }) => {
+      const extra = state.notes.extra.map(({ note, pos }) => {
         if (swap && pos === newPos) return { note, pos: oldPos };
         if (pos === oldPos) return { note, pos: newPos };
+
         return { note, pos };
       });
 
