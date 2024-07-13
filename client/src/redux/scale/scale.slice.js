@@ -46,7 +46,7 @@ const INITIAL_STATE = {
   },
   parsed: {
     pitched: parsed.pitched,
-    positions: parsed.pitched,
+    positions: parsed.positions,
   },
   ui: {
     hasChanges: false,
