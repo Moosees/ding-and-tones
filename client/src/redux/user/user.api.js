@@ -1,7 +1,5 @@
-import { Howler } from 'howler';
-import { getAudioSrc } from '../../assets/sound/audioOptions';
 import { api } from '../api/api.slice';
-import howlsTypes from '../howls/howls.types';
+import { selectAudioSrc, setVolume } from '../scale/scale.slice';
 import { setSessionTried, signOut } from './user.slice';
 
 export const userExtendedApi = api.injectEndpoints({
@@ -26,18 +24,14 @@ export const userExtendedApi = api.injectEndpoints({
         method: 'POST',
         body: songId,
       }),
-      async onQueryStarted(_songId, { dispatch, getState, queryFulfilled }) {
+      async onQueryStarted(_songId, { dispatch, queryFulfilled }) {
         dispatch(setSessionTried());
 
         try {
           const { data } = await queryFulfilled;
           if (!data.user || !data.sound || !data.song) return;
           console.log('CHECK SESSION DATA', { data });
-
-          const { howls, scale } = getState();
           const { sound } = data;
-
-          Howler.volume(sound.volume);
 
           // dispatch(
           //   signIn({
@@ -46,23 +40,8 @@ export const userExtendedApi = api.injectEndpoints({
           //   })
           // );
 
-          if (howls.volume !== sound.volume) {
-            dispatch({
-              type: howlsTypes.SET_VOLUME,
-              payload: { newVolume: sound.volume },
-            });
-          }
-
-          console.log(howls.audioSrc.option, sound.audioOption);
-          if (howls.audioSrc.option !== sound.audioOption) {
-            dispatch({
-              type: howlsTypes.SELECT_AUDIO,
-              payload: {
-                audioSrc: getAudioSrc(sound.audioOption),
-                scale: scale.parsed.pitched,
-              },
-            });
-          }
+          dispatch(setVolume({ volume: sound.volume }));
+          dispatch(selectAudioSrc({ audioOption: sound.audioOption }));
         } catch (error) {}
       },
     }),
@@ -91,15 +70,11 @@ export const userExtendedApi = api.injectEndpoints({
         method: 'POST',
         body: signInData, // { code, songId, persistSession }
       }),
-      async onQueryStarted(
-        _signInData,
-        { dispatch, queryFulfilled, getState }
-      ) {
+      async onQueryStarted(_signInData, { dispatch, queryFulfilled }) {
         try {
           const { data, meta } = await queryFulfilled;
           const { status } = meta.response;
           const { sound } = data;
-          const { howls, scale } = getState();
           console.log('SIGN IN', { status, data });
 
           // dispatch(
@@ -109,23 +84,8 @@ export const userExtendedApi = api.injectEndpoints({
           //   })
           // );
 
-          if (howls.volume !== sound.volume) {
-            dispatch({
-              type: howlsTypes.SET_VOLUME,
-              payload: { newVolume: sound.volume },
-            });
-          }
-
-          console.log(howls.audioSrc.option, sound.audioOption);
-          if (howls.audioSrc.option !== sound.audioOption) {
-            dispatch({
-              type: howlsTypes.SELECT_AUDIO,
-              payload: {
-                audioSrc: getAudioSrc(sound.audioOption),
-                scale: scale.parsed.pitched,
-              },
-            });
-          }
+          dispatch(setVolume({ volume: sound.volume }));
+          dispatch(selectAudioSrc({ audioOption: sound.audioOption }));
         } catch (error) {}
       },
     }),

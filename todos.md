@@ -30,19 +30,16 @@
 
 #### scale slice
 
-- load scale when loading a song with scale
+- load scale when loading a song with scale (and reload howls as needed)
 - have default scale but delay loading howls until after checking url? firstLoad not needed?
 - PopupSaveSong newScaleName selector
 - createFullScaleFromNames early return type?
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-- use loadScale when creating new scale
 - get type as arg when removing note from scale (and clean up reducer)?
 - update url when deleting current scale
 - update url when saving scale or navigating to scale route
 - parseScaleData not needed (on server?)?
-- scale matcher in matchers file without error?
-- switch from old howls reducer to scale slice and update all action dispatches
-- reload howls when fetching, loading or updating a scale, including new scale, (or song with scale)
+- scale matcher in matchers file without error? export matchers from central file? keep matchers separate?
 
 ### song slice
 
@@ -67,7 +64,6 @@
 - PopupAccount only close if mutation is successful?
 - isSignedIn derived from username instead of extra key in redux?
 - set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
-- use scale slice instead of howls reducer for user api
 
 ### Other
 
