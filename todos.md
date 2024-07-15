@@ -28,18 +28,14 @@
 - remove scale from search results when deleting scale
 - add song to my songs when saving a new song
 
-#### scale slice
+### scale slice
 
 - load scale when loading a song with scale (and reload howls as needed)
 - have default scale but delay loading howls until after checking url? firstLoad not needed?
 - PopupSaveSong newScaleName selector
-- createFullScaleFromNames early return type?
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-- get type as arg when removing note from scale (and clean up reducer)?
 - update url when deleting current scale
 - update url when saving scale or navigating to scale route
-- parseScaleData not needed (on server?)?
-- scale matcher in matchers file without error? export matchers from central file? keep matchers separate?
 
 ### song slice
 
@@ -107,8 +103,6 @@
 - Clean up tonefield logic
 - Clean up getNoteText() and Tonefield in general
 - Merge api status states (isFetching etc.) in client?
-- Clean up rootIndex in parseScaleData
-- Why -1 in UPDATE_SCALE for scale label? Instead of false?
 - Scale and song state should mirror models more closely
 - Use separate currentSound for patterns and play with clicks or keys?
 

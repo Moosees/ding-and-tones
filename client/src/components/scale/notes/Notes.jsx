@@ -32,10 +32,10 @@ const Notes = ({ isAddingExtraNotes }) => {
     dispatch(addNoteToScale({ newNote, isAddingExtraNotes }));
   };
 
-  const handleRemove = (note) => {
+  const handleRemove = (note, type) => {
     if (isSongPlaying) return;
 
-    dispatch(removeNoteFromScale({ noteToRemove: note }));
+    dispatch(removeNoteFromScale({ noteToRemove: note, type }));
   };
 
   const getNotes = () => {
@@ -56,7 +56,7 @@ const Notes = ({ isAddingExtraNotes }) => {
         (!inScale && !isAddingExtraNotes && round.length >= 13);
 
       const handleClick = inScale
-        ? () => handleRemove(noteName)
+        ? () => handleRemove(noteName, type)
         : () => handleAdd(noteName);
 
       noteSelectors.push(

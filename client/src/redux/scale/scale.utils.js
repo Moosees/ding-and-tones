@@ -104,8 +104,6 @@ export const createFullScaleFromNames = (
   { dings, round = [], extra = [] },
   sharpNotes,
 ) => {
-  if (!dings || !dings.length) return [];
-
   const dingsWithValues = addNoteValueFromName(
     dings.map((note, i) => ({
       note,

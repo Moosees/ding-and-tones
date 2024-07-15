@@ -153,12 +153,9 @@ const scaleSlice = createSlice({
       state.info.rootIndex = rootInfo.rootIndex;
     },
     removeNoteFromScale(state, action) {
-      const { noteToRemove } = action.payload;
+      const { noteToRemove, type } = action.payload;
 
-      const { type } = state.parsed.pitched.find(
-        (note) => note.note === noteToRemove,
-      );
-
+      console.log(type);
       const update = {};
 
       if (['extra', 'round'].includes(type)) {
