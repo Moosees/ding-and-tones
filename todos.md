@@ -47,7 +47,6 @@
 ### song api
 
 - change handling of songId in url when fetching, saving or deleting?
-- add alert if scale fails to load with song? split song and scale fetches?
 
 ### user slice
 

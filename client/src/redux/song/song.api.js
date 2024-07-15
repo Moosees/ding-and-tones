@@ -1,3 +1,4 @@
+import { createAlert } from '../alert/alert.slice';
 import { api } from '../api/api.slice';
 import { loadScale } from '../scale/scale.slice';
 import { loadSong } from './song.slice';
@@ -30,6 +31,11 @@ export const songExtendedApi = api.injectEndpoints({
               editSong,
             }),
           );
+          if (getScale && !data.scale) {
+            dispatch(
+              createAlert({ alert: 'Song loaded, scale failed to load' }),
+            );
+          }
           if (getScale && data.scale) {
             dispatch(loadScale({ scale: data.scale }));
           }
