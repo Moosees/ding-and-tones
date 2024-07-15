@@ -115,6 +115,7 @@ const scaleSlice = createSlice({
       const { scale } = payload;
       console.log({ scale });
       const { notes, parsed, info, isOwner, scaleId } = parseScaleData(scale);
+      console.log({ notes, parsed, info, isOwner, scaleId });
 
       state.notes = notes;
       state.parsed = parsed;
@@ -265,7 +266,7 @@ const scaleSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(isChangeScaleAction, (state, action) => {
+    builder.addMatcher(isChangeScaleAction, (state) => {
       state.ui.isOwner = false;
       state.ui.scaleId = null;
       state.ui.hasChanges = true;

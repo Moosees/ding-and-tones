@@ -30,7 +30,6 @@
 
 ### scale slice
 
-- load scale when loading a song with scale (and reload howls as needed)
 - have default scale but delay loading howls until after checking url? firstLoad not needed?
 - PopupSaveSong newScaleName selector
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)

@@ -80,7 +80,7 @@ const songSlice = createSlice({
 
       const autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
-        bar.measure
+        bar.measure,
       );
 
       state.autoMoveOrder = autoMoveOrder;
@@ -94,12 +94,12 @@ const songSlice = createSlice({
       const autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
         null,
-        payload.barId
+        payload.barId,
       );
 
       state.autoMoveOrder = autoMoveOrder;
       state.arrangement = state.arrangement.filter(
-        (barId) => barId !== payload.barId
+        (barId) => barId !== payload.barId,
       );
       delete state.bars[payload.barId];
       state.beats = filterObjectByKeyArray(state.beats, beatsToDelete, true);
@@ -111,7 +111,7 @@ const songSlice = createSlice({
 
       const autoMoveOrder = createAutoMoveOrder(
         { arrangement: state.arrangement, bars: state.bars },
-        newBar.measure
+        newBar.measure,
       );
 
       state.autoMoveOrder = autoMoveOrder;
@@ -137,11 +137,9 @@ const songSlice = createSlice({
     loadSong(state, { payload }) {
       console.log({ payload });
       const { song, scale, getScale, editSong } = payload;
-      // load scale if needed
 
       const parsedSong = parseFetchedSong(song, scale, getScale);
       const autoMoveOrder = createAutoMoveOrder(parsedSong);
-      console.log({ parsedSong });
 
       state.autoMoveOrder = autoMoveOrder;
       state.arrangement = parsedSong.arrangement;
@@ -157,7 +155,7 @@ const songSlice = createSlice({
       state.ui.isEditingSong = editSong;
       state.ui.currentDropdown = null;
       state.ui.scaleName = parsedSong.ui.scaleName;
-      state.ui.scaleLabel = parsedSong.ui.scaleLabel; // not used but could be added to save song popup
+      state.ui.scaleLabel = parsedSong.ui.scaleLabel; // NOTE: not used but could be added to save song popup
     },
     updateBarSubdivisions(state, { payload }) {
       const { barId, newSubdivisions } = payload;
@@ -166,13 +164,13 @@ const songSlice = createSlice({
       const lengthDifference = compareSubdivisionsLength(
         subdivisions,
         newSubdivisions,
-        metre
+        metre,
       );
 
       if (lengthDifference !== 0) {
         const { addBeats, deleteBeats, newMeasure } = updateMeasureAndBeats(
           state.bars[barId],
-          newSubdivisions
+          newSubdivisions,
         ); // rename and refactor?
 
         const barsForAutoMoveOrder = { ...state.bars };
@@ -203,7 +201,7 @@ const songSlice = createSlice({
       const sound = createUpdatedSound(
         state.beats[beatId].sound,
         update,
-        state.ui.multiSelect
+        state.ui.multiSelect,
       );
 
       state.beats[beatId].sound = sound;
@@ -226,7 +224,7 @@ const songSlice = createSlice({
         state.mutedBars[barId] = !state.mutedBars[barId];
       } else {
         const mutedBarsAry = Object.keys(state.mutedBars).filter(
-          (bar) => state.mutedBars[bar]
+          (bar) => state.mutedBars[bar],
         );
         const clearSolo =
           mutedBarsAry.length &&
@@ -285,7 +283,7 @@ const songSlice = createSlice({
         state.refs.scaleId = scale.scaleId;
         state.ui.scaleName = scale.scaleName;
         state.ui.scaleLabel = scale.scaleLabel;
-      }
+      },
     );
     builder.addMatcher(
       songExtendedApi.endpoints.deleteSongById.matchFulfilled,
@@ -298,7 +296,7 @@ const songSlice = createSlice({
         state.refs.scaleId = null;
         state.ui.scaleName = '';
         state.ui.scaleLabel = '';
-      }
+      },
     );
   },
 });

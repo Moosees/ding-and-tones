@@ -1,4 +1,5 @@
 import { api } from '../api/api.slice';
+import { loadScale } from '../scale/scale.slice';
 import { loadSong } from './song.slice';
 
 export const songExtendedApi = api.injectEndpoints({
@@ -16,14 +17,22 @@ export const songExtendedApi = api.injectEndpoints({
       }),
       async onQueryStarted(
         { getScale, editSong },
-        { dispatch, queryFulfilled }
+        { dispatch, queryFulfilled },
       ) {
         try {
           const { data } = await queryFulfilled;
           console.log('GET SONG BY ID DATA', { data });
           dispatch(
-            loadSong({ song: data.song, scale: data.scale, getScale, editSong })
+            loadSong({
+              song: data.song,
+              scale: data.scale,
+              getScale,
+              editSong,
+            }),
           );
+          if (getScale && data.scale) {
+            dispatch(loadScale({ scale: data.scale }));
+          }
         } catch (error) {}
       },
     }),

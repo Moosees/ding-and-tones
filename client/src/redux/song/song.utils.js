@@ -83,7 +83,6 @@ export const parseFetchedSong = (song, scale, getScale) => {
 
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
-  const parsedScale = getScale && scale ? parseScaleData(scale) : {};
   const savedScale =
     scale && scale.info
       ? {
@@ -100,7 +99,6 @@ export const parseFetchedSong = (song, scale, getScale) => {
     getScale: (scale && getScale) || false, // not needed?
     info,
     refs: { composer, isOwner, songId, isPrivate, scaleId: savedScale.scaleId },
-    scale: parsedScale,
     ui: { scaleName: savedScale.scaleName, scaleLabel: savedScale.scaleLabel }, // not needed?
   };
 };
