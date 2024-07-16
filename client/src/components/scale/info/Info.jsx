@@ -41,7 +41,7 @@ const Info = () => {
     }
 
     const scaleUpdate = {
-      info,
+      info: { ...info },
       notes,
     };
 
