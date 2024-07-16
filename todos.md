@@ -33,8 +33,6 @@
 - have default scale but delay loading howls until after checking url? firstLoad not needed?
 - PopupSaveSong newScaleName selector
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-- update url when deleting current scale
-- update url when saving scale or navigating to scale route
 
 ### song slice
 

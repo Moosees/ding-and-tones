@@ -292,6 +292,14 @@ const scaleSlice = createSlice({
         state.ui.hasChanges = true;
       },
     );
+    builder.addMatcher(
+      scaleExtendedApi.endpoints.saveScale.matchFulfilled,
+      (state, action) => {
+        state.ui.isOwner = true;
+        state.ui.scaleId = action.payload.scale.scaleId;
+        state.ui.hasChanges = false;
+      },
+    );
   },
 });
 
