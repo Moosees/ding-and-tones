@@ -237,6 +237,7 @@ const scaleSlice = createSlice({
         );
       }
 
+      state.notes = update;
       state.parsed.pitched = pitched;
       state.info.label = createScaleLabel(update, state.info.sharpNotes);
       state.info.rootName = rootInfo.rootName;
