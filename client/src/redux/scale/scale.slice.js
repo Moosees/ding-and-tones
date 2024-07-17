@@ -3,6 +3,7 @@ import { Howler } from 'howler';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import { audioSources, getAudioSrc } from '../../assets/sound/audioOptions';
+import { userExtendedApi } from '../user/user.api';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 import { scaleExtendedApi } from './scale.api';
 import {
@@ -298,6 +299,12 @@ const scaleSlice = createSlice({
         state.ui.isOwner = true;
         state.ui.scaleId = action.payload.scale.scaleId;
         state.ui.hasChanges = false;
+      },
+    );
+    builder.addMatcher(
+      userExtendedApi.endpoints.signOut.matchFulfilled,
+      (state) => {
+        state.ui.isOwner = false;
       },
     );
   },

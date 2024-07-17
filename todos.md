@@ -48,7 +48,6 @@
 
 ### user slice
 
-- set isOwner for scale and song to false when signing out
 - set isOwner for song (and scale?) to true when needed when signing in
 - sign in cross origin warning? (cause: unsupported browser fix?)
 - default data when no session is active - working?

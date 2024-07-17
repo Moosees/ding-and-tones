@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { createDefaultSong } from '../../assets/defaultData';
 import { compareSubdivisionsLength } from '../../assets/metre';
 import { filterObjectByKeyArray } from '../store.utils';
+import { userExtendedApi } from '../user/user.api';
 import { songExtendedApi } from './song.api';
 import {
   createAutoMoveOrder,
@@ -296,6 +297,12 @@ const songSlice = createSlice({
         state.refs.scaleId = null;
         state.ui.scaleName = '';
         state.ui.scaleLabel = '';
+      },
+    );
+    builder.addMatcher(
+      userExtendedApi.endpoints.signOut.matchFulfilled,
+      (state) => {
+        state.refs.isOwner = false;
       },
     );
   },
