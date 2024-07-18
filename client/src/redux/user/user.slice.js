@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { isSignInAction, isUpdateUserAction } from '../store.matchers';
+import { isSignInAction, isUpdateUserAction } from './user.api';
 
 const INITIAL_STATE = {
   fetchSessionTried: false,

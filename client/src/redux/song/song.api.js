@@ -52,6 +52,12 @@ export const songExtendedApi = api.injectEndpoints({
   }),
 });
 
+// export const isSongApiAction = isAnyOf(
+//   songExtendedApi.endpoints.saveSong.matchFulfilled,
+//   songExtendedApi.endpoints.deleteSongById.matchFulfilled,
+//   songExtendedApi.endpoints.getSongById.matchFulfilled
+// );
+
 export const {
   useDeleteSongByIdMutation,
   useLazyGetSongByIdQuery,

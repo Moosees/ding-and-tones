@@ -1,3 +1,4 @@
+import { isAnyOf } from '@reduxjs/toolkit';
 import { api } from '../api/api.slice';
 import { selectAudioSrc, setVolume } from '../scale/scale.slice';
 import { setSessionTried, signOut } from './user.slice';
@@ -91,6 +92,17 @@ export const userExtendedApi = api.injectEndpoints({
     }),
   }),
 });
+
+export const isUpdateUserAction = isAnyOf(
+  userExtendedApi.endpoints.checkSession.matchFulfilled,
+  userExtendedApi.endpoints.signIn.matchFulfilled,
+  userExtendedApi.endpoints.saveUserInfo.matchFulfilled,
+);
+
+export const isSignInAction = isAnyOf(
+  userExtendedApi.endpoints.checkSession.matchFulfilled,
+  userExtendedApi.endpoints.signIn.matchFulfilled,
+);
 
 export const {
   useSaveUserInfoMutation,
