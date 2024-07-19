@@ -1,7 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
 import { getMetreTemplates, metreList } from '../../assets/metre';
-import { parseScaleData } from '../scale/scale.utils';
 
 export const createAutoMoveOrder = (song, beatsToAdd, barToSkip) => {
   const { arrangement, bars } = song;
