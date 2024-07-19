@@ -2,12 +2,14 @@ import { api } from '../api/api.slice';
 import { loadScale } from './scale.slice';
 
 export const scaleExtendedApi = api.injectEndpoints({
+  addTagTypes: ['MyScales'],
   endpoints: (builder) => ({
     deleteScaleById: builder.mutation({
       query: ({ scaleId }) => ({
         url: `/scale/id/${scaleId}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['MyScales'],
     }),
     getScaleById: builder.query({
       query: ({ scaleId }) => ({
@@ -26,9 +28,29 @@ export const scaleExtendedApi = api.injectEndpoints({
     }),
     saveScale: builder.mutation({
       query: ({ scaleUpdate }) => ({
-        url: '/scale/',
+        url: '/scale',
         method: 'POST',
         body: scaleUpdate,
+      }),
+      invalidatesTags: ['MyScales'],
+    }),
+    searchMyScales: builder.query({
+      query: () => ({
+        url: '/scale/me',
+        method: 'GET',
+      }),
+      providesTags: ['MyScales'],
+    }),
+    searchNewScales: builder.query({
+      query: () => ({
+        url: '/scale',
+        method: 'GET',
+      }),
+    }),
+    searchScales: builder.query({
+      query: ({ searchTerm }) => ({
+        url: `/scale/a/${searchTerm}`,
+        method: 'GET',
       }),
     }),
   }),
