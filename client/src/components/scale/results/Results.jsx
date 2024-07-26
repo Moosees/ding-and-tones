@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { useDeleteScaleByIdMutation } from '../../../redux/scale/scale.api';
@@ -12,19 +12,14 @@ import {
   ScaleLabel,
   ScaleList,
   ScaleNotes,
-  TextContainer,
+  TextContainer
 } from './results.styles';
 
-const Results = () => {
+const Results = ({ scales }) => {
   const dispatch = useDispatch();
-  const { scales, isSearching, isSignedIn } = useSelector(
-    ({ search, user }) => ({
-      scales: search.scales,
-      isSearching: search.isSearching,
-      isSignedIn: user.isSignedIn,
-    }),
-  );
+  const isSignedIn = useDispatch(user => user.isSignedIn)
 
+  console.log('Scale results: ', scales)
   const navigate = useNavigate();
   const [deleteScaleById, { isLoading: isDeleting }] =
     useDeleteScaleByIdMutation();
@@ -60,7 +55,7 @@ const Results = () => {
               label={`Are you sure you want to delete "${rootName} ${name}"`}
             >
               <BtnIcon
-                disabled={isDeleting || isSearching}
+                disabled={isDeleting}
                 icon="delete"
                 title={`Delete "${rootName} ${name}"`}
                 position="right"

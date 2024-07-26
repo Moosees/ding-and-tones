@@ -8,7 +8,6 @@ import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import Edit from './edit/Edit';
 import Info from './info/Info';
-import Results from './results/Results';
 import { ScaleContainer, Section } from './scale.styles';
 import Search from './search/Search';
 
@@ -76,10 +75,7 @@ const Scale = () => {
         {!scalesFetchTried ? (
           <Loading />
         ) : (
-          <>
-            <Search />
-            <Results />
-          </>
+          <Search />
         )}
       </Section>
     </ScaleContainer>

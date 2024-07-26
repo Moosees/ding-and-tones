@@ -60,4 +60,7 @@ export const {
   useDeleteScaleByIdMutation,
   useLazyGetScaleByIdQuery,
   useSaveScaleMutation,
+  useSearchMyScalesQuery,
+  useSearchNewScalesQuery,
+  useSearchScalesQuery,
 } = scaleExtendedApi;

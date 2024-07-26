@@ -33,6 +33,8 @@
 - have default scale but delay loading howls until after checking url? firstLoad not needed?
 - PopupSaveSong newScaleName selector
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
+- loading state for search scales
+- scale alpha serach
 
 ### song slice
 
