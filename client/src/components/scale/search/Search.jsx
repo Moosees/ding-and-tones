@@ -11,15 +11,23 @@ import { SearchContainer } from './search.styles';
 const Search = () => {
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const { data: myScales } = useSearchMyScalesQuery()
-  // const { data: newScales } = useSearchNewScalesQuery()
+  const { data: newScales } = useSearchNewScalesQuery()
 
   const [value, setValue] = useState('');
+  const [searchMode, setSearchMode] = useState(1)
+
+  const searchResults = {
+    1: newScales,
+    2: myScales
+  }
 
   const handleNewScalesClick = () => {
+    setSearchMode(1)
     setValue('');
   };
 
   const handleMyScalesClick = () => {
+    setSearchMode(2)
     setValue('');
   };
 
@@ -45,7 +53,7 @@ const Search = () => {
           />
         </Buttons>
       </SearchContainer>
-      <Results scales={myScales?.scales} />
+      <Results scales={searchResults[searchMode]?.scales} />
     </>
   );
 };
