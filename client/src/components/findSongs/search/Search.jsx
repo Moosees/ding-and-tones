@@ -30,12 +30,12 @@ const Search = () => {
         label="New Songs"
         onClick={handleNewSongsClick}
       />
-      <InfoSearch
+      { /*<InfoSearch
         value={value}
         setValue={setValue}
         placeholder="Search songs"
         searchOption={searchOptions.songs.alphabetical}
-      />
+      /> */}
       <BtnPrimary
         disabled={!isSignedIn || isSearching}
         label="My Songs"

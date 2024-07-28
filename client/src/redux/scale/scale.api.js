@@ -62,5 +62,5 @@ export const {
   useSaveScaleMutation,
   useSearchMyScalesQuery,
   useSearchNewScalesQuery,
-  useSearchScalesQuery,
+  useLazySearchScalesQuery,
 } = scaleExtendedApi;

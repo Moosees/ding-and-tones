@@ -34,7 +34,7 @@
 - PopupSaveSong newScaleName selector
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 - loading state for search scales
-- scale alpha serach
+- feedback to user when no scales are found
 
 ### song slice
 
@@ -47,6 +47,11 @@
 ### song api
 
 - change handling of songId in url when fetching, saving or deleting?
+
+### search
+
+- remove old reducer
+- remove serachOptions
 
 ### user slice
 

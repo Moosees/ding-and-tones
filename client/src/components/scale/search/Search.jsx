@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useSearchMyScalesQuery, useSearchNewScalesQuery } from '../../../redux/scale/scale.api';
-import searchOptions from '../../../redux/search/search.options';
+import {
+  useLazySearchScalesQuery,
+  useSearchMyScalesQuery,
+  useSearchNewScalesQuery,
+} from '../../../redux/scale/scale.api';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import InfoSearch from '../../shared/input/InfoSearch';
@@ -10,24 +13,34 @@ import { SearchContainer } from './search.styles';
 
 const Search = () => {
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
-  const { data: myScales } = useSearchMyScalesQuery()
-  const { data: newScales } = useSearchNewScalesQuery()
+  const { data: myScales } = useSearchMyScalesQuery();
+  const { data: newScales } = useSearchNewScalesQuery();
+  const [searchScales, { data: foundScales, isFetching }] =
+    useLazySearchScalesQuery();
 
   const [value, setValue] = useState('');
-  const [searchMode, setSearchMode] = useState(1)
+  const [searchMode, setSearchMode] = useState(1);
 
   const searchResults = {
     1: newScales,
-    2: myScales
-  }
+    2: myScales,
+    3: foundScales,
+  };
+
+  const handleSearch = useCallback(() => {
+    if (value.length < 3) return;
+
+    searchScales({ searchTerm: value });
+    setSearchMode(3);
+  }, [value, searchScales]);
 
   const handleNewScalesClick = () => {
-    setSearchMode(1)
+    setSearchMode(1);
     setValue('');
   };
 
   const handleMyScalesClick = () => {
-    setSearchMode(2)
+    setSearchMode(2);
     setValue('');
   };
 
@@ -38,7 +51,8 @@ const Search = () => {
           value={value}
           setValue={setValue}
           placeholder="Search scales"
-          searchOption={searchOptions.scales.alphabetical}
+          onSearch={handleSearch}
+          isSearching={isFetching}
         />
         <Buttons>
           <BtnPrimary
