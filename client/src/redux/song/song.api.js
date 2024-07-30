@@ -10,6 +10,7 @@ export const songExtendedApi = api.injectEndpoints({
         url: `/song/id/${songId}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['MySongs'],
     }),
     getSongById: builder.query({
       query: ({ songId }) => ({
@@ -48,6 +49,26 @@ export const songExtendedApi = api.injectEndpoints({
         method: 'POST',
         body: song,
       }),
+      invalidatesTags: ['MySongs'],
+    }),
+    searchNewSongs: builder.query({
+      query: () => ({
+        url: '/song',
+        method: 'GET',
+      }),
+    }),
+    searchMySongs: builder.query({
+      query: () => ({
+        url: '/song/me',
+        method: 'GET',
+      }),
+      providesTags: ['MySongs'],
+    }),
+    searchSongs: builder.query({
+      query: ({ searchTerm }) => ({
+        url: `/song/a/${searchTerm}`,
+        method: 'GET',
+      }),
     }),
   }),
 });
@@ -62,4 +83,7 @@ export const {
   useDeleteSongByIdMutation,
   useLazyGetSongByIdQuery,
   useSaveSongMutation,
+  useSearchNewSongsQuery,
+  useSearchMySongsQuery,
+  useLazySearchSongsQuery,
 } = songExtendedApi;
