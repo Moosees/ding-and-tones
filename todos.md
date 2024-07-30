@@ -22,19 +22,11 @@
 - switch from old reducer to slice and update all action dispatches
 - reset chords when fetching, loading or updating a scale, including new scale (or song with scale)
 
-### search api
-
-- remove song from search results when deleting song
-- remove scale from search results when deleting scale
-- add song to my songs when saving a new song
-
 ### scale slice
 
 - have default scale but delay loading howls until after checking url? firstLoad not needed?
 - PopupSaveSong newScaleName selector
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-- loading state for search scales
-- feedback to user when no scales are found
 
 ### song slice
 
@@ -50,6 +42,9 @@
 
 ### search
 
+- remove song or scale from results when deleting - fixed cause your songs don't show in alpha search?
+- loading state for search scales and songs
+- feedback to user when no scales or songs are found
 - remove old reducer
 - remove serachOptions
 

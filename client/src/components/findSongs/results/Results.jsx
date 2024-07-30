@@ -14,9 +14,8 @@ import Confirmation from '../../shared/popup/Confirmation';
 import ReactTable from './ReactTable';
 import { DeleteContainer } from './results.styles';
 
-const Results = () => {
-  const songs = useSelector(({ search }) => search.songs);
-  const isSearching = useSelector(({ search }) => search.isSearching);
+const Results = ({ songs }) => {
+  console.log({ songs });
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const [deleteSongById, { isLoading: isDeleting }] =
     useDeleteSongByIdMutation();
@@ -50,10 +49,10 @@ const Results = () => {
         style: { width: '0.001%' },
       },
     ],
-    []
+    [],
   );
 
-  const data = useMemo(() => [...songs], [songs]);
+  const data = useMemo(() => (songs ? [...songs] : []), [songs]);
 
   const [getSongById] = useLazyGetSongByIdQuery();
   const renderRowExpanded = useCallback(
@@ -95,7 +94,7 @@ const Results = () => {
                   <BtnIcon
                     title={`Delete "${title}"`}
                     icon="delete"
-                    disabled={isSearching || isDeleting}
+                    disabled={isDeleting}
                     position="right"
                   />
                 </Confirmation>
@@ -106,12 +105,12 @@ const Results = () => {
         </>
       );
     },
-    [isDeleting, isSearching, isSignedIn, navigate, getSongById, deleteSongById]
+    [isDeleting, isSignedIn, navigate, getSongById, deleteSongById],
   );
 
   const handleFetchMore = useCallback(
     () => console.log('fetch more songs'),
-    []
+    [],
   );
 
   return (
