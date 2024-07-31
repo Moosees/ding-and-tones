@@ -10,21 +10,14 @@ import { ScaleContainer, Section } from './scale.styles';
 import Search from './search/Search';
 
 const Scale = () => {
-  const {
-    scaleIdLocal,
-    hasChanges,
-    isDeleting,
-    isFetching,
-    isSaving,
-    scalesFetchTried,
-  } = useSelector(({ scale, search }) => ({
-    scaleIdLocal: scale.ui.scaleId,
-    hasChanges: scale.ui.hasChanges,
-    isDeleting: scale.ui.isDeleting,
-    isFetching: scale.ui.isFetching,
-    isSaving: scale.ui.isSaving,
-    scalesFetchTried: search.scalesFetchTried,
-  }));
+  const { scaleIdLocal, hasChanges, isDeleting, isFetching, isSaving } =
+    useSelector(({ scale }) => ({
+      scaleIdLocal: scale.ui.scaleId,
+      hasChanges: scale.ui.hasChanges,
+      isDeleting: scale.ui.isDeleting,
+      isFetching: scale.ui.isFetching,
+      isSaving: scale.ui.isSaving,
+    }));
 
   const { scaleId } = useParams();
   const navigate = useNavigate();
@@ -60,7 +53,9 @@ const Scale = () => {
         )}
       </Section>
       {!isMobile && <DividerLine vertical />}
-      <Section>{!scalesFetchTried ? <Loading /> : <Search />}</Section>
+      <Section>
+        <Search />
+      </Section>
     </ScaleContainer>
   );
 };

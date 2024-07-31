@@ -4,7 +4,6 @@ import { api } from './api/api.slice';
 import chordsReducer from './chords/chords.reducer';
 import drumReducer from './drum/drum.reducer';
 import scaleSlice from './scale/scale.slice';
-import searchReducer from './search/search.reducer';
 import songSlice from './song/song.slice';
 import userSlice from './user/user.slice';
 
@@ -15,7 +14,6 @@ export const store = configureStore({
     chords: chordsReducer,
     drum: drumReducer,
     scale: scaleSlice.reducer,
-    search: searchReducer,
     song: songSlice.reducer,
     user: userSlice.reducer,
   },
