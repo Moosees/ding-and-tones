@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useDimensions from '../../hooks/useDimensions';
-import { startSearch } from '../../redux/search/search.actions';
-import searchOptions from '../../redux/search/search.options';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import Edit from './edit/Edit';
@@ -12,14 +10,12 @@ import { ScaleContainer, Section } from './scale.styles';
 import Search from './search/Search';
 
 const Scale = () => {
-  const dispatch = useDispatch();
   const {
     scaleIdLocal,
     hasChanges,
     isDeleting,
     isFetching,
     isSaving,
-    isSearching,
     scalesFetchTried,
   } = useSelector(({ scale, search }) => ({
     scaleIdLocal: scale.ui.scaleId,
@@ -27,7 +23,6 @@ const Scale = () => {
     isDeleting: scale.ui.isDeleting,
     isFetching: scale.ui.isFetching,
     isSaving: scale.ui.isSaving,
-    isSearching: search.isSearching,
     scalesFetchTried: search.scalesFetchTried,
   }));
 
@@ -51,12 +46,6 @@ const Scale = () => {
     }
   }, [hasChanges, isWorking, navigate, scaleId, scaleIdLocal]);
 
-  useEffect(() => {
-    if (scalesFetchTried || isSearching || isWorking) return;
-
-    dispatch(startSearch(searchOptions.scales.latest));
-  }, [dispatch, isSearching, isWorking, scalesFetchTried]);
-
   return (
     <ScaleContainer>
       <Section>
@@ -71,13 +60,7 @@ const Scale = () => {
         )}
       </Section>
       {!isMobile && <DividerLine vertical />}
-      <Section>
-        {!scalesFetchTried ? (
-          <Loading />
-        ) : (
-          <Search />
-        )}
-      </Section>
+      <Section>{!scalesFetchTried ? <Loading /> : <Search />}</Section>
     </ScaleContainer>
   );
 };
