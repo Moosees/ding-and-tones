@@ -56,12 +56,12 @@ const Search = () => {
         />
         <Buttons>
           <BtnPrimary
-            disabled={false}
+            disabled={searchMode === 1}
             label="New Scales"
             onClick={handleNewScalesClick}
           />
           <BtnPrimary
-            disabled={!isSignedIn || false}
+            disabled={!isSignedIn || searchMode === 2}
             label="My Scales"
             onClick={handleMyScalesClick}
           />

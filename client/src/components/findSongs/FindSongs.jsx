@@ -47,7 +47,7 @@ const FindSongs = () => {
     <FindSongsContainer>
       <SearchContainer>
         <BtnPrimary
-          disabled={isFetching}
+          disabled={searchMode === 1}
           label="New Songs"
           onClick={handleNewSongsClick}
         />
@@ -59,7 +59,7 @@ const FindSongs = () => {
           isSearching={isFetching}
         />
         <BtnPrimary
-          disabled={!isSignedIn || isFetching}
+          disabled={!isSignedIn || searchMode === 2}
           label="My Songs"
           onClick={handleMySongsClick}
         />

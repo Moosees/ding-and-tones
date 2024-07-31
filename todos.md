@@ -42,8 +42,7 @@
 
 ### search
 
-- remove song or scale from results when deleting - fixed cause your songs don't show in alpha search?
-- loading state for search scales and songs
+- remove song or scale from results when deleting - tags?
 - feedback to user when no scales or songs are found
 - remove old reducer
 - remove serachOptions
@@ -304,13 +303,13 @@
 
 ### State and search
 
-- DRY up search logic - reset search with button or empty search field (cache initial search?)
 - Infinite scroll on songs (and scales?) - show "load more" if more songs match query? pages?
 - Sorting search results in table
 - Privacy date localization
 - Save song as JSON?
 - Show if owned song is private in search results?
 - createFullScaleFromNames handles new createScaleLabel and returns label with scale? Needs updated new scale action. Function used separately when toggling sharps and flats
+- allow # char in scale search
 
 ### API
 
@@ -351,4 +350,3 @@
 - Replace setInterval in login popup
 - Set howl pool to match size of scale?
 - Four note chords
-- allow # char in scale search
