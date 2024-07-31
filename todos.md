@@ -351,3 +351,4 @@
 - Replace setInterval in login popup
 - Set howl pool to match size of scale?
 - Four note chords
+- allow # char in scale search

@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
+  useLazySearchSongsQuery,
   useSearchMySongsQuery,
   useSearchNewSongsQuery,
 } from '../../redux/song/song.api';
@@ -13,6 +14,8 @@ const FindSongs = () => {
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const { data: newSongs } = useSearchNewSongsQuery();
   const { data: mySongs } = useSearchMySongsQuery();
+  const [searchSongs, { data: foundSongs, isFetching }] =
+    useLazySearchSongsQuery();
 
   const [value, setValue] = useState('');
   const [searchMode, setSearchMode] = useState(1);
@@ -20,14 +23,15 @@ const FindSongs = () => {
   const searchResults = {
     1: newSongs,
     2: mySongs,
-    3: null,
+    3: foundSongs,
   };
 
   const handleSearch = useCallback(() => {
     if (value.length < 3) return;
 
+    searchSongs({ searchTerm: value });
     setSearchMode(3);
-  }, [value]);
+  }, [value, searchSongs]);
 
   const handleNewSongsClick = () => {
     setSearchMode(1);
@@ -43,7 +47,7 @@ const FindSongs = () => {
     <FindSongsContainer>
       <SearchContainer>
         <BtnPrimary
-          disabled={false}
+          disabled={isFetching}
           label="New Songs"
           onClick={handleNewSongsClick}
         />
@@ -52,10 +56,10 @@ const FindSongs = () => {
           setValue={setValue}
           placeholder="Search songs"
           onSearch={handleSearch}
-          isSearching={false}
+          isSearching={isFetching}
         />
         <BtnPrimary
-          disabled={!isSignedIn || false}
+          disabled={!isSignedIn || isFetching}
           label="My Songs"
           onClick={handleMySongsClick}
         />
