@@ -1,7 +1,7 @@
 const Song = require('../models/song');
 const User = require('../models/user');
 const Scale = require('../models/scale');
-const { parseGetResponse, parseSearchResponse } = require('../utils/song');
+const { parseGetResponse } = require('../utils/song');
 const { isValidObjectId } = require('mongoose');
 const { defaultErrorMsg } = require('../utils/assets');
 const ObjectId = require('mongoose').Types.ObjectId;
@@ -15,7 +15,7 @@ const getScalesForSongSearches = async (songs) => {
           acc[song.scale.toString()] = song.scale;
         }
         return acc;
-      }, {})
+      }, {}),
     );
 
     const scales = await Scale.find({ _id: { $in: scaleIds } })
@@ -30,7 +30,7 @@ const getScalesForSongSearches = async (songs) => {
         };
         return acc;
       },
-      { noScale: { scaleLabel: '', scaleName: 'N/A' } }
+      { noScale: { scaleLabel: '', scaleName: 'N/A' } },
     );
   } catch (error) {
     throw error;
@@ -45,7 +45,7 @@ const getComposersForSongSearches = async (songs) => {
           acc[song.composer.toString()] = song.composer;
         }
         return acc;
-      }, {})
+      }, {}),
     );
 
     const composers = await User.find({ _id: { $in: userIds } })
@@ -75,7 +75,7 @@ exports.songSearch = async (req, res) => {
       .exec();
 
     if (!songs.length) {
-      return res.status(204).json({ msg: 'No songs found' });
+      return res.status(200).json({ alert: 'No songs found', songs: null });
     }
 
     const scales = await getScalesForSongSearches(songs);
@@ -111,7 +111,9 @@ exports.getMySongs = async (req, res) => {
     const user = await User.findById(userId).select('_id name songs').exec();
 
     if (!user.songs.length) {
-      return res.status(204).json({ msg: 'No saved songs found' });
+      return res
+        .status(200)
+        .json({ alert: 'No saved songs found', songs: null });
     }
 
     const songs = await Song.find({ _id: { $in: user.songs } })
@@ -155,14 +157,14 @@ exports.getNewSongs = async (req, res) => {
       .exec();
 
     if (!songs.length) {
-      return res.status(204).json({ msg: 'No songs found' });
+      return res.status(200).json({ alert: 'No songs found', songs: null });
     }
 
     const scales = await getScalesForSongSearches(songs);
 
     const composers = await getComposersForSongSearches(songs);
 
-    const resData = songs.map(({ info, _id, composer, scale }, i) => {
+    const resData = songs.map(({ info, _id, composer, scale }) => {
       const hasScale = !!scales[scale];
 
       return {
@@ -217,7 +219,7 @@ exports.saveSong = async (req, res) => {
 
     const song = await Song.findByIdAndUpdate(
       songId || new ObjectId(),
-      songUpdate
+      songUpdate,
     )
       .setOptions({
         new: true,
@@ -321,12 +323,10 @@ exports.deleteSong = async (req, res) => {
       .setOptions({ new: true })
       .exec();
 
-    res
-      .status(200)
-      .json({
-        song: { songId: song._id },
-        alert: `"${song.info.title}" deleted`,
-      });
+    res.status(200).json({
+      song: { songId: song._id },
+      alert: `"${song.info.title}" deleted`,
+    });
   } catch (error) {
     res.status(500).json({ error: defaultErrorMsg });
   }

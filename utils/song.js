@@ -45,31 +45,31 @@ exports.parseGetResponse = (songObject, userId) => {
   };
 };
 
-exports.parseSearchResponse = (songObject, userId, scaleName, scaleLabel) => {
-  const {
-    _id,
-    composer,
-    scale,
-    info: { title, metre, difficulty },
-  } = songObject;
-
-  const isOwner = userId && composer ? userId.equals(composer._id) : false;
-
-  return {
-    isOwner,
-    scaleId: scale,
-    songId: _id,
-    scaleLabel: scale ? scaleLabel : '',
-    scaleName: scale ? scaleName : 'N/A',
-    composer:
-      isOwner || (composer && !composer.anonymous)
-        ? composer.name
-        : 'Anonymous',
-    title,
-    metre,
-    difficulty,
-  };
-};
+// exports.parseSearchResponse = (songObject, userId, scaleName, scaleLabel) => {
+//   const {
+//     _id,
+//     composer,
+//     scale,
+//     info: { title, metre, difficulty },
+//   } = songObject;
+//
+//   const isOwner = userId && composer ? userId.equals(composer._id) : false;
+//
+//   return {
+//     isOwner,
+//     scaleId: scale,
+//     songId: _id,
+//     scaleLabel: scale ? scaleLabel : '',
+//     scaleName: scale ? scaleName : 'N/A',
+//     composer:
+//       isOwner || (composer && !composer.anonymous)
+//         ? composer.name
+//         : 'Anonymous',
+//     title,
+//     metre,
+//     difficulty,
+//   };
+// };
 
 // exports.parseSaveResponse = (songObject, userId) => {
 //   const { _id, composer, info } = songObject;

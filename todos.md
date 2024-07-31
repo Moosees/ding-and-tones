@@ -43,7 +43,6 @@
 ### search
 
 - remove song or scale from results when deleting - tags?
-- feedback to user when no scales or songs are found
 
 ### user slice
 

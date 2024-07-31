@@ -75,7 +75,7 @@ exports.getScales = async (req, res) => {
       .exec();
 
     if (!scales.length) {
-      return res.status(204).json({ msg: 'No scales found' });
+      return res.status(200).json({ alert: 'No scales found', scales: null });
     }
 
     const data = scales.map((scale) => parseScaleResponse(scale, userId));
@@ -99,7 +99,9 @@ exports.getMyScales = async (req, res) => {
       .exec();
 
     if (!user.scales.length) {
-      return res.status(204).json({ msg: 'No saved scales found' });
+      return res
+        .status(200)
+        .json({ alert: 'No saved scales found', scales: null });
     }
 
     const data = user.scales.map((scale) => parseScaleResponse(scale, userId));
@@ -160,7 +162,7 @@ exports.scaleSearch = async (req, res) => {
       .exec();
 
     if (!scales.length) {
-      return res.status(204).json({ msg: 'No scales found' });
+      return res.status(200).json({ alert: 'No scales found', scales: null });
     }
 
     const data = scales.map((scale) => parseScaleResponse(scale, userId));
