@@ -10,5 +10,6 @@ export const api = createApi({
     },
     credentials: 'include',
   }),
+  tagTypes: ['MySongs', 'MyScales'],
   endpoints: () => ({}),
 });

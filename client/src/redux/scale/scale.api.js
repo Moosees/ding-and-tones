@@ -2,7 +2,6 @@ import { api } from '../api/api.slice';
 import { loadScale } from './scale.slice';
 
 export const scaleExtendedApi = api.injectEndpoints({
-  addTagTypes: ['MyScales'],
   endpoints: (builder) => ({
     deleteScaleById: builder.mutation({
       query: ({ scaleId }) => ({
