@@ -40,10 +40,6 @@
 
 - change handling of songId in url when fetching, saving or deleting?
 
-### search
-
-- remove song or scale from results when deleting - tags?
-
 ### user slice
 
 - set isOwner for song (and scale?) to true when needed when signing in

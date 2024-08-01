@@ -8,7 +8,11 @@ export const scaleExtendedApi = api.injectEndpoints({
         url: `/scale/id/${scaleId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['MyScales'],
+      invalidatesTags: ({ scale }) => {
+        if (!scale?.scaleId) return ['MyScales'];
+
+        return [{ type: 'Scale', id: scale.scaleId }, 'MyScales'];
+      },
     }),
     getScaleById: builder.query({
       query: ({ scaleId }) => ({
@@ -51,6 +55,11 @@ export const scaleExtendedApi = api.injectEndpoints({
         url: `/scale/a/${searchTerm}`,
         method: 'GET',
       }),
+      providesTags: ({ scales }) => {
+        if (!scales) return [];
+
+        return scales.map(({ scaleId }) => ({ type: 'Scale', id: scaleId }));
+      },
     }),
   }),
 });

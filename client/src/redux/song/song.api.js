@@ -10,7 +10,11 @@ export const songExtendedApi = api.injectEndpoints({
         url: `/song/id/${songId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['MySongs'],
+      invalidatesTags: ({ song }) => {
+        if (!song?.songId) return ['MySongs'];
+
+        return [{ type: 'Song', id: song.songId }, 'MySongs'];
+      },
     }),
     getSongById: builder.query({
       query: ({ songId }) => ({
@@ -69,6 +73,11 @@ export const songExtendedApi = api.injectEndpoints({
         url: `/song/a/${searchTerm}`,
         method: 'GET',
       }),
+      providesTags: ({ songs }) => {
+        if (!songs) return [];
+
+        return songs.map(({ songId }) => ({ type: 'Song', id: songId }));
+      },
     }),
   }),
 });
