@@ -8,7 +8,7 @@ const useDefaultState = () => {
   const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const location = useLocation();
   // const [getSongById] = useLazyGetSongByIdQuery();
-  const [getScaleById] = useLazyGetScaleByIdQuery();
+  // const [getScaleById] = useLazyGetScaleByIdQuery();
 
   useEffect(() => {
     if (!fetchSessionTried) {
@@ -22,10 +22,10 @@ const useDefaultState = () => {
     //   return;
     // }
 
-    if (route === 'scale' && id) {
-      getScaleById({ scaleId: id });
-      return;
-    }
+    // if (route === 'scale' && id) {
+    //   getScaleById({ scaleId: id });
+    //   return;
+    // }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchSessionTried]);

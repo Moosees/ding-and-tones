@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useDimensions from '../../hooks/useDimensions';
+import { useLazyGetScaleByIdQuery } from '../../redux/scale/scale.api';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import Edit from './edit/Edit';
@@ -10,39 +11,41 @@ import { ScaleContainer, Section } from './scale.styles';
 import Search from './search/Search';
 
 const Scale = () => {
-  const { scaleIdLocal, hasChanges, isDeleting, isFetching, isSaving } =
-    useSelector(({ scale }) => ({
-      scaleIdLocal: scale.ui.scaleId,
-      hasChanges: scale.ui.hasChanges,
-      isDeleting: scale.ui.isDeleting,
-      isFetching: scale.ui.isFetching,
-      isSaving: scale.ui.isSaving,
-    }));
+  const localScaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const hasChanges = useSelector(({ scale }) => scale.ui.hasChanges);
+  const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
 
   const { scaleId } = useParams();
   const navigate = useNavigate();
   const { isMobile } = useDimensions();
 
-  const isWorking = isDeleting || isFetching || isSaving;
+  const [getScaleById, { isLoading }] = useLazyGetScaleByIdQuery();
 
   useEffect(() => {
-    if (isWorking || !hasChanges) return;
-
-    navigate('/scale', { replace: true });
-  }, [hasChanges, isWorking, navigate]);
-
-  useEffect(() => {
-    if (isWorking || hasChanges) return;
-
-    if (!scaleId && scaleIdLocal) {
-      navigate(`/scale/${scaleIdLocal}`, { replace: true });
+    if (scaleId && !localScaleId && !isLoading && !fetchSessionTried) {
+      console.log('FIRST SCALE FETCH');
+      getScaleById({ scaleId });
+    } else if (!isLoading && scaleId && hasChanges) {
+      console.log('CLEARING SCALE URL');
+      navigate('/scale', { replace: true });
+    } else if (!hasChanges && localScaleId && localScaleId !== scaleId) {
+      console.log('UPDATING SCALE URL', { localScaleId, scaleId });
+      navigate(`/scale/${localScaleId}`, { replace: true });
     }
-  }, [hasChanges, isWorking, navigate, scaleId, scaleIdLocal]);
+  }, [
+    fetchSessionTried,
+    getScaleById,
+    hasChanges,
+    isLoading,
+    localScaleId,
+    navigate,
+    scaleId,
+  ]);
 
   return (
     <ScaleContainer>
       <Section>
-        {isFetching ? (
+        {isLoading ? (
           <Loading />
         ) : (
           <>
