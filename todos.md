@@ -35,10 +35,7 @@
 - figure out what should be disabled when song is playing (or stop playback when changing audio src)
 - songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 - songPlayer state selectors (and currentDropdown isOpen for beats)
-
-### song api
-
-- change handling of songId in url when fetching, saving or deleting?
+- when fetching song without linked scale by url, alert shows that scale failed to load - wanted behaviour?
 
 ### user slice
 

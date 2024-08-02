@@ -7,7 +7,7 @@ import { useLazyGetSongByIdQuery } from '../../../redux/song/song.api';
 const useDefaultState = () => {
   const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const location = useLocation();
-  const [getSongById] = useLazyGetSongByIdQuery();
+  // const [getSongById] = useLazyGetSongByIdQuery();
   const [getScaleById] = useLazyGetScaleByIdQuery();
 
   useEffect(() => {
@@ -17,10 +17,10 @@ const useDefaultState = () => {
 
     const [, route, id] = location.pathname.split('/');
 
-    if (route === 'song' && id) {
-      getSongById({ songId: id, getScale: true, editSong: false });
-      return;
-    }
+    // if (route === 'song' && id) {
+    //   getSongById({ songId: id, getScale: true, editSong: false });
+    //   return;
+    // }
 
     if (route === 'scale' && id) {
       getScaleById({ scaleId: id });
