@@ -8,30 +8,40 @@ const day = 1000 * 60 * 60 * 24;
 exports.checkSession = async (req, res) => {
   console.log(req.body);
   if (!req.userId) {
-    return res.status(200).json({ user: null });
+    return res.status(200).json({
+      song: { isOwner: false },
+      scale: { isOwner: false },
+      user: null,
+    });
   }
 
   try {
-    const { anonymous, name, songs, sound } = await User.findOne({
+    const { anonymous, name, songs, scales, sound } = await User.findOne({
       _id: req.userId,
     })
-      .select('anonymous name songs sound')
+      .select('anonymous name songs scales sound')
       .exec();
 
-    const isOwner = songs.includes(req.body.songId);
+    const isSongOwner = songs.includes(req.body.songId);
+    const isScaleOwner = scales.includes(req.body.scaleId);
 
     res.status(200).json({
       alert: `Welcome back, ${name}`,
       sound,
-      song: { isOwner },
+      song: { isOwner: isSongOwner },
+      scale: { isOwner: isScaleOwner },
       user: {
         anonymous,
-        isOwner,
+        isSongOwner,
         name,
       },
     });
   } catch (error) {
-    res.status(200).json({ user: null });
+    res.status(200).json({
+      song: { isOwner: false },
+      scale: { isOwner: false },
+      user: null,
+    });
   }
 };
 
@@ -110,7 +120,7 @@ exports.updateUserInfo = async (req, res) => {
 
 exports.signInWithGoogle = async (req, res) => {
   try {
-    const { code, songId, persistSession } = req.body;
+    const { code, songId, scaleId, persistSession } = req.body;
     const client = getClient();
 
     const {
@@ -125,7 +135,7 @@ exports.signInWithGoogle = async (req, res) => {
     const { sub } = ticket.getPayload();
 
     let user = await User.findOne({ sub })
-      .select('_id anonymous name songs sound')
+      .select('_id anonymous name songs scales sound')
       .exec();
 
     const newUser = !user;
@@ -137,9 +147,11 @@ exports.signInWithGoogle = async (req, res) => {
       }).save();
     }
 
-    let isOwner = false;
+    let isSongOwner = false;
+    let isScaleOwner = false;
     if (!newUser) {
-      isOwner = user.songs.includes(songId);
+      isSongOwner = user.songs.includes(songId);
+      isScaleOwner = user.scales.includes(scaleId);
     }
 
     req.session.user = user._id;
@@ -150,7 +162,10 @@ exports.signInWithGoogle = async (req, res) => {
       alert: 'Signed in successfully!',
       sound: user.sound,
       song: {
-        isOwner,
+        isOwner: isSongOwner,
+      },
+      scale: {
+        isOwner: isScaleOwner,
       },
       user: {
         anonymous: user.anonymous,
@@ -179,7 +194,7 @@ exports.signOut = async (req, res) => {
   }
 };
 
-exports.getGoogleURL = (req, res) => {
+exports.getGoogleURL = (_req, res) => {
   const authUrl = getClient().generateAuthUrl({
     access_type: 'offline',
     prompt: 'consent',

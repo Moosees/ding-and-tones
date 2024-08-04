@@ -39,7 +39,6 @@
 
 ### user slice
 
-- set isOwner for song (and scale?) to true when needed when signing in
 - sign in cross origin warning? (cause: unsupported browser fix?)
 - default data when no session is active - working?
 - user sound popup - info about saving settings to account?
@@ -198,6 +197,7 @@
 - Scale/song url not found doesn't reset url to / and scale msg doesn't reflect that scale isn't found
 - Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 - Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
+- checkSession when on song id url sends null as scaleId, could cause problems if song loading occurs before checkSession for some reason
 
 ### Design
 

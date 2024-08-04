@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { createDefaultSong } from '../../assets/defaultData';
 import { compareSubdivisionsLength } from '../../assets/metre';
 import { filterObjectByKeyArray } from '../store.utils';
-import { userExtendedApi } from '../user/user.api';
+import { isSignInAction, userExtendedApi } from '../user/user.api';
 import { songExtendedApi } from './song.api';
 import {
   createAutoMoveOrder,
@@ -305,6 +305,9 @@ const songSlice = createSlice({
         state.refs.isOwner = false;
       },
     );
+    builder.addMatcher(isSignInAction, (state, action) => {
+      state.refs.isOwner = action.payload.song.isOwner;
+    });
   },
 });
 

@@ -20,10 +20,10 @@ export const userExtendedApi = api.injectEndpoints({
       }),
     }),
     checkSession: builder.query({
-      query: (songId) => ({
+      query: (sessionData) => ({
         url: '/session',
         method: 'POST',
-        body: songId,
+        body: sessionData, // {songId, scaleId}
       }),
       async onQueryStarted(_songId, { dispatch, queryFulfilled }) {
         dispatch(setSessionTried());
@@ -69,7 +69,7 @@ export const userExtendedApi = api.injectEndpoints({
       query: (signInData) => ({
         url: '/signIn',
         method: 'POST',
-        body: signInData, // { code, songId, persistSession }
+        body: signInData, // { code, songId, scaleId, persistSession }
       }),
       async onQueryStarted(_signInData, { dispatch, queryFulfilled }) {
         try {

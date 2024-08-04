@@ -3,7 +3,7 @@ import { Howler } from 'howler';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import { audioSources, getAudioSrc } from '../../assets/sound/audioOptions';
-import { userExtendedApi } from '../user/user.api';
+import { isSignInAction, userExtendedApi } from '../user/user.api';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 import { scaleExtendedApi } from './scale.api';
 import {
@@ -307,6 +307,9 @@ const scaleSlice = createSlice({
         state.ui.isOwner = false;
       },
     );
+    builder.addMatcher(isSignInAction, (state, action) => {
+      state.ui.isOwner = action.payload.scale.isOwner;
+    });
   },
 });
 

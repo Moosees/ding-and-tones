@@ -19,7 +19,8 @@ import {
 const SignIn = ({ onClose }) => {
   const dispatch = useDispatch();
   const songId = useSelector(({ song }) => song.refs.songId);
-	
+  const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
+
   const [getGoogleUrl] = useLazyGetGoogleUrlQuery();
   const [signIn] = useSignInMutation();
 
@@ -34,7 +35,7 @@ const SignIn = ({ onClose }) => {
       .then((msg) => {
         const code = getGoogleCode(msg);
         console.log({ code, msg });
-        signIn({ code, songId, persistSession });
+        signIn({ code, songId, scaleId, persistSession });
       })
       .catch((error) => {
         const alert = getGoogleError(error);

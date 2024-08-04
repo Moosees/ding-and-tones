@@ -5,20 +5,24 @@ import { useCheckSessionQuery } from '../../../redux/user/user.api';
 import BtnNav from '../../shared/button/BtnNav';
 import Dropdown from '../dropdown/Dropdown';
 import { MenuAnchor } from '../nav.styles';
-import { getSongIdFromLocation } from '../nav.utils';
+import { getIdFromLocation } from '../nav.utils';
 
 const User = () => {
   const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const songId = useSelector(({ song }) => song.refs.songId);
+  const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
 
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
 
   const location = useLocation();
-  const urlSongId = getSongIdFromLocation(location);
-  const checkSessionQueryData = urlSongId || songId || null;
-  console.log({ checkSessionQueryData });
-  useCheckSessionQuery({ checkSessionQueryData }, { skip: fetchSessionTried });
+  const { urlSongId, urlScaleId } = getIdFromLocation(location);
+  const checkSessionQueryData = {
+    songId: urlSongId || songId || null,
+    scaleId: urlScaleId || scaleId || null,
+  };
+  console.log({ checkSessionQueryData, fetchSessionTried });
+  useCheckSessionQuery(checkSessionQueryData, { skip: fetchSessionTried });
 
   return (
     <div>
