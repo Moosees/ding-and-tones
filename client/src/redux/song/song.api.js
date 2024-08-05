@@ -36,14 +36,16 @@ export const songExtendedApi = api.injectEndpoints({
               editSong,
             }),
           );
-          if (getScale && !data.scale) {
-            dispatch(
-              createAlert({ alert: 'Song loaded, scale failed to load' }),
-            );
-          }
+
           if (getScale && data.scale) {
             dispatch(loadScale({ scale: data.scale }));
           }
+
+          dispatch(
+            createAlert({
+              alert: getScale ? data.alerts.scale : data.alerts.skip,
+            }),
+          );
         } catch (error) {}
       },
     }),

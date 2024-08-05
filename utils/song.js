@@ -29,8 +29,17 @@ exports.parseGetResponse = (songObject, userId) => {
     songObject;
   const anonymousComposer = !composer || composer.anonymous || !composer.name;
 
+  const scaleParsed = scale ? parseScaleForSongFetch(scale, userId) : null;
+
+  const alerts = {
+    skip: `"${info.title}" loaded without scale`,
+    scale: scaleParsed
+      ? `"${info.title}" loaded with scale: "${scaleParsed.scaleName}"`
+      : `"${info.title}" loaded, no linked scale found`,
+  };
+
   return {
-    alert: `"${info.title}" loaded`,
+    alerts,
     song: {
       isOwner: determineIsOwner(userId, composer),
       songId: _id,
@@ -41,7 +50,7 @@ exports.parseGetResponse = (songObject, userId) => {
       info,
       isPrivate,
     },
-    scale: scale ? parseScaleForSongFetch(scale, userId) : null,
+    scale: scaleParsed,
   };
 };
 
