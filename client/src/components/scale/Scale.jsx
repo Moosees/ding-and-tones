@@ -13,30 +13,41 @@ import Search from './search/Search';
 const Scale = () => {
   const localScaleId = useSelector(({ scale }) => scale.ui.scaleId);
   const hasChanges = useSelector(({ scale }) => scale.ui.hasChanges);
-  const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
 
   const { scaleId } = useParams();
   const navigate = useNavigate();
   const { isMobile } = useDimensions();
 
-  const [getScaleById, { isLoading }] = useLazyGetScaleByIdQuery();
+  const [getScaleById, { isLoading, isFetching, isUninitialized, isError }] =
+    useLazyGetScaleByIdQuery();
 
   useEffect(() => {
-    if (scaleId && !localScaleId && !isLoading && !fetchSessionTried) {
+    console.log('SCALE EFFECT', {
+      isLoading,
+      isFetching,
+      isUninitialized,
+      isError,
+    });
+    if (isLoading || isFetching) return;
+    if (localScaleId && scaleId && localScaleId === scaleId) return;
+
+    if (isUninitialized && scaleId && !localScaleId) {
       console.log('FIRST SCALE FETCH');
       getScaleById({ scaleId });
-    } else if (!isLoading && scaleId && hasChanges) {
+    } else if (scaleId && (hasChanges || isError)) {
       console.log('CLEARING SCALE URL');
       navigate('/scale', { replace: true });
-    } else if (!hasChanges && localScaleId && localScaleId !== scaleId) {
+    } else if (localScaleId && !hasChanges) {
       console.log('UPDATING SCALE URL', { localScaleId, scaleId });
       navigate(`/scale/${localScaleId}`, { replace: true });
     }
   }, [
-    fetchSessionTried,
     getScaleById,
     hasChanges,
+    isError,
+    isFetching,
     isLoading,
+    isUninitialized,
     localScaleId,
     navigate,
     scaleId,

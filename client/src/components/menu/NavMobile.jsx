@@ -1,14 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useCheckSessionQuery } from '../../redux/user/user.api';
+import { useLazyCheckSessionQuery } from '../../redux/user/user.api';
 import DropdownMobile from './dropdown/DropdownMobile';
 import Logo from './logo/Logo';
 import { LogoContainer, MobileAnchor } from './nav.styles';
 import { getIdFromLocation } from './nav.utils';
 
 const NavMobile = () => {
-  const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const songId = useSelector(({ song }) => song.refs.songId);
   const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
 
@@ -16,13 +15,20 @@ const NavMobile = () => {
   const btnRef = useRef(null);
 
   const location = useLocation();
-  const { urlSongId, urlScaleId } = getIdFromLocation(location);
-  const checkSessionQueryData = {
-    songId: urlSongId || songId || null,
-    scaleId: urlScaleId || scaleId || null,
-  };
-  console.log({ checkSessionQueryData });
-  useCheckSessionQuery(checkSessionQueryData, { skip: fetchSessionTried });
+  const [checkSession, { isUninitialized }] = useLazyCheckSessionQuery();
+
+  useEffect(() => {
+    if (isUninitialized) {
+      const { urlSongId, urlScaleId } = getIdFromLocation(location);
+      const checkSessionQueryData = {
+        songId: urlSongId || songId || null,
+        scaleId: urlScaleId || scaleId || null,
+      };
+
+      console.log('CHECK SESSION', { checkSessionQueryData });
+      checkSession(checkSessionQueryData);
+    }
+  }, [checkSession, isUninitialized, location, scaleId, songId]);
 
   return (
     <MobileAnchor>

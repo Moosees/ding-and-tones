@@ -115,7 +115,7 @@ export const isFirstLoadAction = isAnyOf(
 export const {
   useSaveUserInfoMutation,
   useSaveUserSoundMutation,
-  useCheckSessionQuery,
+  useLazyCheckSessionQuery,
   useSignOutMutation,
   useLazyGetGoogleUrlQuery,
   useSignInMutation,
