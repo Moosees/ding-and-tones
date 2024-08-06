@@ -10,7 +10,7 @@ const alertSlice = createSlice({
     },
     createAlert(state, { payload }) {
       console.log('CREATE ALERT', { payload });
-      state.msg = payload.alert;
+      state.msg = state.msg ? state.msg + '\n' + payload.alert : payload.alert;
     },
   },
   extraReducers: (builder) => {
@@ -22,8 +22,11 @@ const alertSlice = createSlice({
             state: state.msg,
             payload,
           });
-          if (payload?.alert) state.msg = payload.alert;
-        }
+          if (payload?.alert)
+            state.msg = state.msg
+              ? state.msg + '\n' + payload.alert
+              : payload.alert;
+        },
       )
       .addMatcher(
         (action) => action.type.endsWith('/rejected'),
@@ -32,13 +35,18 @@ const alertSlice = createSlice({
             state: state.msg,
             payload,
           });
-          if (payload?.data?.error) state.msg = payload.data.error;
-        }
+          if (payload?.data?.error)
+            state.msg = state.msg
+              ? state.msg + '\n' + payload.data.error
+              : payload.data.error;
+        },
       )
       .addDefaultCase((state, { payload }) => {
         if (payload?.alert) {
           console.log('ALERT DEFAULT', { payload });
-          state.msg = payload.alert;
+          state.msg = state.msg
+            ? state.msg + '\n' + payload.alert
+            : payload.alert;
         }
       });
   },

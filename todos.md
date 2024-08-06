@@ -34,6 +34,7 @@
 - refactor pattern and beats updating songUi in patternPlayer.js?
 - reset currentBar in useResetCurrentBeat?
 - figure out what should be disabled when song is playing (or stop playback when changing audio src)
+- It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
 - songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 - songPlayer state selectors (and currentDropdown isOpen for beats)
 
@@ -56,7 +57,7 @@
 - fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
 - disable move notes when there's no extra notes? (if so: reset when loading a new scale)
 - refactor moveBar in song.utils to be readable
-- Deletr old types files
+- Delete old types files
 - Clean up comments and unused code
 
 ## Sorted by release
@@ -64,12 +65,10 @@
 ### Bugfixes and minor changes
 
 - MiniDrum (rotate) shows note numbers
-- If scale is deleted when loading song with scale null is sent back as scale just as if song was loaded without scale. Attach a message to client when this happens.
 - Songs without users show up without composer name (and not Anonymous either)
 - Songs with deleted scales can still be found in song searches with scale name
 - Song query strings and (changed) scale broken?
-- Deleting scale (and song?) blocks ability to save scale
-- It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
+- Deleting scale (and song?) blocks ability to save scale - fixed?
 - Failing to save song (inside popup) gives no feedback to user
 
 ### Home page and nav update
@@ -193,10 +192,8 @@
 - Song search results doesn't update if save song changes assigned scale
 - Violation 'click' handler took xxx ms when going to song route (big songs)
 - Printing on mobile prints entire app and not just iframe
-- Scale/song url not found doesn't reset url to / and scale msg doesn't reflect that scale isn't found
 - Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 - Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
-- checkSession when on song id url sends null as scaleId, could cause problems if song loading occurs before checkSession for some reason
 
 ### Design
 
@@ -326,7 +323,7 @@
 - Custom count for metres, more count styles - konnakol?
 - Multiple drums for chords, songs etc. Two track songwriter?
 - More drum alternatives? Add synth/piano alternative?
-- Multiple alerts on screen? or just reset timeout and show newest? Timeout scales with length of alert?
+- Multiple alerts better implementation. Timeout scales with length of alert?
 - Alert mouse over or tap inside stops timer?
 - Automate created and updates posts for db documents, timestamps
 - Increase max save limits for older accounts
