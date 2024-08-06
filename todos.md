@@ -24,9 +24,10 @@
 
 ### scale slice
 
-- have default scale but delay loading howls until after checking url? firstLoad not needed?
 - PopupSaveSong newScaleName selector
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
+- load howls for default scale when song is loaded without scale and scale has not had any changes done
+- clear url when failing to load a scale from url
 
 ### song slice
 
@@ -39,7 +40,6 @@
 ### user slice
 
 - sign in cross origin warning? (cause: unsupported browser fix?)
-- default data when no session is active - working?
 - user sound popup - info about saving settings to account?
 - PopupAccount only close if mutation is successful?
 - isSignedIn derived from username instead of extra key in redux?

@@ -2,6 +2,8 @@ import { isAnyOf } from '@reduxjs/toolkit';
 import { api } from '../api/api.slice';
 import { selectAudioSrc, setVolume } from '../scale/scale.slice';
 import { setSessionTried, signOut } from './user.slice';
+import { songExtendedApi } from '../song/song.api';
+import { scaleExtendedApi } from '../scale/scale.api';
 
 export const userExtendedApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -102,6 +104,12 @@ export const isUpdateUserAction = isAnyOf(
 export const isSignInAction = isAnyOf(
   userExtendedApi.endpoints.checkSession.matchFulfilled,
   userExtendedApi.endpoints.signIn.matchFulfilled,
+);
+
+export const isFirstLoadAction = isAnyOf(
+  userExtendedApi.endpoints.checkSession.matchFulfilled,
+  songExtendedApi.endpoints.getSongById.matchRejected,
+  scaleExtendedApi.endpoints.getScaleById.matchRejected,
 );
 
 export const {

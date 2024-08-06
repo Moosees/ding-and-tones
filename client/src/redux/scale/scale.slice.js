@@ -3,7 +3,11 @@ import { Howler } from 'howler';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import { audioSources, getAudioSrc } from '../../assets/sound/audioOptions';
-import { isSignInAction, userExtendedApi } from '../user/user.api';
+import {
+  isFirstLoadAction,
+  isSignInAction,
+  userExtendedApi,
+} from '../user/user.api';
 import { changeAudioSrc, updateHowls } from './howls.utils';
 import { scaleExtendedApi } from './scale.api';
 import {
@@ -18,16 +22,10 @@ import {
 
 const { info, notes, parsed } = parseScaleData(defaultScale);
 
-const defaultHowlsStatus = updateHowls(
-  {},
-  audioSources[0].path,
-  parsed.pitched,
-);
-
 const INITIAL_STATE = {
   howls: {
     audioSrc: audioSources[0],
-    status: defaultHowlsStatus,
+    status: {},
     volume: 0.8,
   },
   info: {
@@ -309,6 +307,38 @@ const scaleSlice = createSlice({
     );
     builder.addMatcher(isSignInAction, (state, action) => {
       state.ui.isOwner = action.payload.scale.isOwner;
+    });
+    builder.addMatcher(isFirstLoadAction, (state, action) => {
+      const { endpointName, originalArgs } = action.meta.arg;
+      console.log('isFirstLoadAction', { endpointName, originalArgs });
+
+      let loadScale = false;
+
+      if (
+        endpointName === 'checkSession' &&
+        !originalArgs.scaleId &&
+        !originalArgs.songId
+      )
+        loadScale = true;
+
+      if (
+        ['getSongById', 'getScaleById'].includes(endpointName) &&
+        Object.keys(state.howls.status).length === 0
+      )
+        loadScale = true;
+
+      if (loadScale) {
+        console.log('isFirstLoadAction LOAD SCALE');
+        const firstHowlStatus = updateHowls(
+          {},
+          audioSources[0].path,
+          parsed.pitched,
+        );
+
+        state.howls.status = firstHowlStatus;
+      } else {
+        console.log('isFirstLoadAction SKIP');
+      }
     });
   },
 });
