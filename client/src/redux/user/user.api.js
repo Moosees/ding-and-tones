@@ -1,9 +1,9 @@
 import { isAnyOf } from '@reduxjs/toolkit';
 import { api } from '../api/api.slice';
-import { selectAudioSrc, setVolume } from '../scale/scale.slice';
-import { setSessionTried, signOut } from './user.slice';
-import { songExtendedApi } from '../song/song.api';
 import { scaleExtendedApi } from '../scale/scale.api';
+import { selectAudioSrc, setVolume } from '../scale/scale.slice';
+import { songExtendedApi } from '../song/song.api';
+import { signOut } from './user.slice';
 
 export const userExtendedApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -28,8 +28,6 @@ export const userExtendedApi = api.injectEndpoints({
         body: sessionData, // {songId, scaleId}
       }),
       async onQueryStarted(_songId, { dispatch, queryFulfilled }) {
-        dispatch(setSessionTried());
-
         try {
           const { data } = await queryFulfilled;
           if (!data.user || !data.sound || !data.song) return;

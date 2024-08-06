@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { isSignInAction, isUpdateUserAction } from './user.api';
 
 const INITIAL_STATE = {
-  fetchSessionTried: false,
   name: '',
   anonymous: true,
   isSignedIn: false,
@@ -13,9 +12,6 @@ const userSlice = createSlice({
   name: 'user',
   initialState: INITIAL_STATE,
   reducers: {
-    setSessionTried(state) {
-      state.fetchSessionTried = true;
-    },
     // signIn(state, { payload }) {
     //   console.log('SIGN IN', { payload });
     //   state.name = payload.user.name;
@@ -48,6 +44,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setSessionTried, signOut, setPrivacyOpen } = userSlice.actions;
+export const { signOut, setPrivacyOpen } = userSlice.actions;
 
 export default userSlice;

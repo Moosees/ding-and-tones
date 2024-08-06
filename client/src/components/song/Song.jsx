@@ -16,7 +16,6 @@ import {
 
 const Song = () => {
   const dispatch = useDispatch();
-  const fetchSessionTried = useSelector(({ user }) => user.fetchSessionTried);
   const localSongId = useSelector(({ song }) => song.refs.songId);
   const isEditingSong = useSelector(({ song }) => song.ui.isEditingSong);
 
@@ -24,20 +23,31 @@ const Song = () => {
   const { songId } = useParams();
   const navigate = useNavigate();
 
-  const [getSongById, { isLoading }] = useLazyGetSongByIdQuery();
+  const [getSongById, { isLoading, isFetching, isUninitialized }] =
+    useLazyGetSongByIdQuery();
 
   useEffect(() => {
-    if (songId && !localSongId && !isLoading && !fetchSessionTried) {
+    console.log('SONG EFFECT', {
+      isLoading,
+      isFetching,
+      isUninitialized,
+      localSongId,
+      songId,
+    });
+    if (isLoading || isFetching) return;
+    if (localSongId && songId && localSongId === songId) return;
+
+    if (isUninitialized && songId && !localSongId) {
       console.log('FIRST SONG FETCH');
       getSongById({ songId, getScale: true, editSong: false });
-    } else if (localSongId !== songId) {
-      // NOTE: workaround to handle empty param returning the string 'null'
+    } else {
       console.log('UPDATING SONG URL', {
         localSongId,
         songId,
         localType: typeof localSongId,
         urlType: typeof songId,
       });
+      // NOTE: workaround to handle empty param returning the string 'null'
       navigate(`/song${localSongId ? '/' + localSongId : ''}`, {
         replace: true,
       });
@@ -47,8 +57,9 @@ const Song = () => {
     songId,
     localSongId,
     isLoading,
-    fetchSessionTried,
     getSongById,
+    isFetching,
+    isUninitialized,
   ]);
 
   useEffect(() => {
