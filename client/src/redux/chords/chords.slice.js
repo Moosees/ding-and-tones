@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { chordList } from '../../assets/chords';
+import { isChangeNotesAction } from '../scale/scale.slice';
 import {
   findAllChords,
   setAllIsSelected,
@@ -50,6 +51,12 @@ const chordsSlice = createSlice({
       state.chordList = chordList;
       state.foundChords = foundChords;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(isChangeNotesAction, (state) => {
+      state.foundChords = [];
+      state.printList = [];
+    });
   },
 });
 
