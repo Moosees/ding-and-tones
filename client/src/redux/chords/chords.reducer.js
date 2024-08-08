@@ -23,7 +23,7 @@ const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         printList: state.printList.filter(
-          ({ nameShort }) => nameShort !== payload.nameShort
+          ({ nameShort }) => nameShort !== payload.nameShort,
         ),
       };
 
@@ -33,7 +33,7 @@ const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       const updatedFoundChords = findAllChords(
         scale,
-        updatedChordList.filter((chord) => chord.isSelected)
+        updatedChordList.filter((chord) => chord.isSelected),
       );
 
       return {
@@ -48,7 +48,7 @@ const chordsReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       const newFoundChords = findAllChords(
         currentScale,
-        newChordList.filter((chord) => chord.isSelected)
+        newChordList.filter((chord) => chord.isSelected),
       );
 
       return {
