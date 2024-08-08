@@ -16,11 +16,11 @@
 - switch from old reducer to slice and update all action dispatches
 - reset displayedChord and displayedNote when fetching, loading or updating a scale, including new scale (or song with scale)
 - merge drum reducer into other reducers? or move currentSound and currentHand to drum slice?
+- setCurrentChord to chords slice?
 
 ### chords slice
 
-- switch from old reducer to slice and update all action dispatches
-- reset chords when fetching, loading or updating a scale, including new scale (or song with scale)
+- fix chords.utils to work with chords.slice
 
 ### scale slice
 

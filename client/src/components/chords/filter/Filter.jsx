@@ -5,11 +5,11 @@ import { helpTopics } from '../../../assets/help';
 import {
   setAllChordFiltersTo,
   toggleChordIsSelected,
-} from '../../../redux/chords/chords.actions';
+} from '../../../redux/chords/chords.slice';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 import BtnHelp from '../../shared/button/BtnHelp';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/BtnPrimary';
+import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
@@ -39,11 +39,11 @@ const Filter = () => {
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
   useEffect(() => {
-    dispatch(toggleChordIsSelected(null, scale));
+    dispatch(toggleChordIsSelected({ id: null, scale }));
   }, [dispatch, scale]);
 
   const handleClear = () => {
-    dispatch(setAllChordFiltersTo(false, scale));
+    dispatch(setAllChordFiltersTo({ value: false, scale }));
     dispatch(setDisplayedChord(null));
   };
 

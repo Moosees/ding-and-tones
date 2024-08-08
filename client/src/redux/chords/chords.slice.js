@@ -39,9 +39,9 @@ const chordsSlice = createSlice({
       state.foundChords = foundChords;
     },
     setAllChordFiltersTo(state, { payload }) {
-      const { allSelected, currentScale } = payload;
+      const { value, currentScale } = payload;
 
-      const chordList = setAllIsSelected(state.chordList, allSelected);
+      const chordList = setAllIsSelected(state.chordList, value);
 
       const foundChords = findAllChords(
         currentScale,

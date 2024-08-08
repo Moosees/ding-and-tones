@@ -5,7 +5,7 @@ import useDimensions from '../../../hooks/useDimensions';
 import {
   addChordToPrintList,
   removeChordFromPrintList,
-} from '../../../redux/chords/chords.actions';
+} from '../../../redux/chords/chords.slice';
 import { setDisplayedChord } from '../../../redux/drum/drum.actions';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import { ItemContainer } from './list.styles';
@@ -18,13 +18,13 @@ const ListItem = ({ chord, isDisplayed }) => {
   const { isMobile } = useDimensions();
 
   const chordIsInPrintList = !printList.every(
-    ({ nameShort }) => nameShort !== chord.nameShort
+    ({ nameShort }) => nameShort !== chord.nameShort,
   );
 
   const handleChordClick = () => {
     chordIsInPrintList
-      ? dispatch(removeChordFromPrintList(chord))
-      : dispatch(addChordToPrintList(chord));
+      ? dispatch(removeChordFromPrintList({ chord }))
+      : dispatch(addChordToPrintList({ chord }));
   };
 
   const chordName = sharpNotes ? chord.nameSharp : chord.name;
