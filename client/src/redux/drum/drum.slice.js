@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { drumModeList, drumModes } from '../../assets/intervals';
+import { isChangeNotesAction } from '../scale/scale.slice';
 
 const INITIAL_STATE = {
   displayedChord: null,
@@ -33,6 +34,13 @@ const drumSlice = createSlice({
 
       state.displayedNote = state.displayedNote === note ? rootIndex : note;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(isChangeNotesAction, (state, { payload }) => {
+      console.log('DRUM CHANGE NOTES MATCHER', { payload });
+      state.displayedChord = null;
+      state.displayedNote = payload.scale?.info?.rootIndex || 0;
+    });
   },
 });
 
