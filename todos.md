@@ -18,10 +18,6 @@
 - merge drum reducer into other reducers? or move currentSound and currentHand to drum slice?
 - setCurrentChord to chords slice?
 
-### chords slice
-
-- fix chords.utils to work with chords.slice
-
 ### scale slice
 
 - PopupSaveSong newScaleName selector
@@ -130,6 +126,7 @@
 - Stopping and isPlaying for scales and chords? Needed for scales at least - use status state instead of bool (for pattern player to understand what is playing)?
 - Key to stop any playing song/scale/chord/sound? Space (reserve for song recorder skips)? Esc?
 - Dynamic volume when more than one note played at the same time?
+- Hide empty chord types
 
 ### Compare scales update
 

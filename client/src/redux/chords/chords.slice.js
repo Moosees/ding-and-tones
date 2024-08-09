@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import { chordList } from '../../assets/chords';
 import { isChangeNotesAction } from '../scale/scale.slice';
 import {
@@ -39,12 +39,12 @@ const chordsSlice = createSlice({
       state.foundChords = foundChords;
     },
     setAllChordFiltersTo(state, { payload }) {
-      const { value, currentScale } = payload;
+      const { value, scale } = payload;
 
       const chordList = setAllIsSelected(state.chordList, value);
 
       const foundChords = findAllChords(
-        currentScale,
+        scale,
         chordList.filter((chord) => chord.isSelected),
       );
 

@@ -52,7 +52,7 @@ const Filter = () => {
       key={chord.id}
       label={chord.name}
       checked={chord.isSelected}
-      onChange={() => dispatch(toggleChordIsSelected(chord.id, scale))}
+      onChange={() => dispatch(toggleChordIsSelected({ id: chord.id, scale }))}
     />
   ));
 
@@ -71,7 +71,7 @@ const Filter = () => {
         <BtnPrimary
           label="All"
           light
-          onClick={() => dispatch(setAllChordFiltersTo(true, scale))}
+          onClick={() => dispatch(setAllChordFiltersTo({ value: true, scale }))}
         />
         <BtnPrimary label="None" light onClick={handleClear} />
       </Buttons>
