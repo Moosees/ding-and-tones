@@ -2,6 +2,7 @@ import { drumModeList } from '../../assets/intervals';
 import drumTypes from './drum.types';
 
 export const changeDrumMode = (direction = 1, currentDrumMode) => {
+  console.log({ direction, currentDrumMode });
   const drumModeLength = drumModeList.length;
   const currentIndex = drumModeList.indexOf(currentDrumMode);
 

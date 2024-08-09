@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { chordList } from '../../assets/chords';
 import { isChangeNotesAction } from '../scale/scale.slice';
 import {
