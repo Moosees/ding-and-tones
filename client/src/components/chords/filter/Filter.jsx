@@ -6,7 +6,7 @@ import {
   setAllChordFiltersTo,
   toggleChordIsSelected,
 } from '../../../redux/chords/chords.slice';
-import { setDisplayedChord } from '../../../redux/drum/drum.actions';
+import { setDisplayedChord } from '../../../redux/drum/drum.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
@@ -37,6 +37,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   const chordList = useSelector(({ chords }) => chords.chordList);
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const rootIndex = useSelector(({ scale }) => scale.info.rootIndex);
 
   useEffect(() => {
     dispatch(toggleChordIsSelected({ id: null, scale }));
@@ -44,7 +45,7 @@ const Filter = () => {
 
   const handleClear = () => {
     dispatch(setAllChordFiltersTo({ value: false, scale }));
-    dispatch(setDisplayedChord(null));
+    dispatch(setDisplayedChord({ chord: null, rootIndex }));
   };
 
   const allChords = chordList.map((chord) => (

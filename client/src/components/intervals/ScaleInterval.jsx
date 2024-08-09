@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getNoteLabelFromName, intervals } from '../../assets/intervals';
-import { setDisplayedNote } from '../../redux/drum/drum.actions';
+import { setDisplayedNote } from '../../redux/drum/drum.slice';
 import {
   IntervalBreakBox,
   IntervalColor,
@@ -29,12 +29,13 @@ const getIntervalProps = (interval) => {
 
 const ScaleInterval = ({ interval, option, scaleIndex, sharpNotes }) => {
   const dispatch = useDispatch();
+  const rootIndex = useSelector(({ scale }) => scale.info.rootIndex);
 
   const { color, modifier, name, nameShort, note, semitones } =
     getIntervalProps(interval);
 
   const handleIntervalClick = () => {
-    dispatch(setDisplayedNote(scaleIndex));
+    dispatch(setDisplayedNote({ note: scaleIndex, rootIndex }));
   };
 
   return (

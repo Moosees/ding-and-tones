@@ -11,13 +11,6 @@
 - consistent response data format from backend (alert and other data separate)
 - update backend routes where needed
 
-### drum slice
-
-- switch from old reducer to slice and update all action dispatches
-- reset displayedChord and displayedNote when fetching, loading or updating a scale, including new scale (or song with scale)
-- merge drum reducer into other reducers? or move currentSound and currentHand to drum slice?
-- setCurrentChord to chords slice?
-
 ### scale slice
 
 - PopupSaveSong newScaleName selector
@@ -127,6 +120,7 @@
 - Key to stop any playing song/scale/chord/sound? Space (reserve for song recorder skips)? Esc?
 - Dynamic volume when more than one note played at the same time?
 - Hide empty chord types
+- drum slice remembers rootIndex so it doesn't need to get sent around as argument?
 
 ### Compare scales update
 
