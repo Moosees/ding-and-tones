@@ -3,6 +3,7 @@ import { Howler } from 'howler';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import { audioSources, getAudioSrc } from '../../assets/sound/audioOptions';
+import { api } from '../api/api.slice';
 import {
   isFirstLoadAction,
   isSignInAction,
@@ -324,8 +325,10 @@ const scaleSlice = createSlice({
       if (
         ['getSongById', 'getScaleById'].includes(endpointName) &&
         Object.keys(state.howls.status).length === 0
-      )
+      ) {
+        // NOTE: Fallback if getSomethingById is REJECTED
         loadScale = true;
+      }
 
       if (loadScale) {
         console.log('isFirstLoadAction LOAD SCALE');
@@ -340,6 +343,24 @@ const scaleSlice = createSlice({
         console.log('isFirstLoadAction SKIP');
       }
     });
+    builder.addMatcher(
+      api.endpoints.getSongById.matchFulfilled,
+      (state, action) => {
+        const getScale = action.meta.arg.originalArgs.getScale;
+
+        if (getScale && action.payload.scale) return;
+        if (Object.keys(state.howls.status).length > 0) return;
+
+        console.log('LOADING SCALES AS SCALE NOT FOUND WITH SONG', { action });
+        const firstHowlStatus = updateHowls(
+          {},
+          audioSources[0].path,
+          parsed.pitched,
+        );
+
+        state.howls.status = firstHowlStatus;
+      },
+    );
   },
 });
 

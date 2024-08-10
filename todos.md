@@ -13,9 +13,7 @@
 
 ### scale slice
 
-- PopupSaveSong newScaleName selector
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-- load howls for default scale when song is loaded without scale and scale has not had any changes done
 
 ### song slice
 
