@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
-import { useSaveUserInfoMutation } from '../../../redux/user/user.api';
+import { useSaveUserInfoMutation } from '../../../redux/api/api.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';
@@ -17,7 +17,7 @@ const PopupAccount = ({ onClose }) => {
 
   const [username, setUsername, usernameErrors, usernameValid] = useValidate(
     'username',
-    name
+    name,
   );
 
   const handleSave = () => {
@@ -25,12 +25,12 @@ const PopupAccount = ({ onClose }) => {
     if (username !== name || anon !== anonymous) {
       console.log('handleSaveUSERINFO');
       saveUserInfo({
-				name: username,
+        name: username,
         anonymous: anon,
       });
     }
-		
-		console.log('handleSaveUSERINFO closing popup');
+
+    console.log('handleSaveUSERINFO closing popup');
     onClose();
   };
 

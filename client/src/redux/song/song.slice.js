@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createDefaultSong } from '../../assets/defaultData';
 import { compareSubdivisionsLength } from '../../assets/metre';
+import { api, isSignInAction } from '../api/api.slice';
 import { filterObjectByKeyArray } from '../store.utils';
-import { isSignInAction, userExtendedApi } from '../user/user.api';
-import { songExtendedApi } from './song.api';
 import {
   createAutoMoveOrder,
   createUpdatedSound,
@@ -274,7 +273,7 @@ const songSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      songExtendedApi.endpoints.saveSong.matchFulfilled,
+      api.endpoints.saveSong.matchFulfilled,
       (state, action) => {
         const { song, scale } = action.payload;
 
@@ -287,7 +286,7 @@ const songSlice = createSlice({
       },
     );
     builder.addMatcher(
-      songExtendedApi.endpoints.deleteSongById.matchFulfilled,
+      api.endpoints.deleteSongById.matchFulfilled,
       (state, action) => {
         if (action.payload.song.songId !== state.refs.songId) return;
 
@@ -299,12 +298,9 @@ const songSlice = createSlice({
         state.ui.scaleLabel = '';
       },
     );
-    builder.addMatcher(
-      userExtendedApi.endpoints.signOut.matchFulfilled,
-      (state) => {
-        state.refs.isOwner = false;
-      },
-    );
+    builder.addMatcher(api.endpoints.signOut.matchFulfilled, (state) => {
+      state.refs.isOwner = false;
+    });
     builder.addMatcher(isSignInAction, (state, action) => {
       state.refs.isOwner = action.payload.song.isOwner;
     });

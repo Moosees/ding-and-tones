@@ -4,7 +4,7 @@ import {
   useLazySearchScalesQuery,
   useSearchMyScalesQuery,
   useSearchNewScalesQuery,
-} from '../../../redux/scale/scale.api';
+} from '../../../redux/api/api.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import InfoSearch from '../../shared/input/InfoSearch';

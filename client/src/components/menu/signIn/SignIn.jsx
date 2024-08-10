@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useSignOutMutation } from '../../../redux/user/user.api';
+import { useSignOutMutation } from '../../../redux/api/api.slice';
 import BtnMenu from '../../shared/button/BtnMenu';
 import PopupSignIn from './PopupSignIn';
 

@@ -6,7 +6,7 @@ import { metreList } from '../../../assets/metre';
 import {
   useDeleteSongByIdMutation,
   useLazyGetSongByIdQuery,
-} from '../../../redux/song/song.api';
+} from '../../../redux/api/api.slice';
 import BtnIcon from '../../shared/button/BtnIcon';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';

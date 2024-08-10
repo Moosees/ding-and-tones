@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
 import { createAlert } from '../../../redux/alert/alert.slice';
-import { useSaveScaleMutation } from '../../../redux/scale/scale.api';
+import { useSaveScaleMutation } from '../../../redux/api/api.slice';
 import { newScale, setScaleName } from '../../../redux/scale/scale.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
 import BtnPrimary from '../../shared/button/BtnPrimary';

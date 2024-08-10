@@ -4,7 +4,7 @@ import { createAlert } from '../../../redux/alert/alert.slice';
 import {
   useLazyGetGoogleUrlQuery,
   useSignInMutation,
-} from '../../../redux/user/user.api';
+} from '../../../redux/api/api.slice';
 import PrivacyText from '../../privacy/PrivacyText';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';

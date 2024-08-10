@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import { useSaveSongMutation } from '../../../redux/song/song.api';
+import { useSaveSongMutation } from '../../../redux/api/api.slice';
 import { updateSongInfo } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
@@ -18,7 +18,7 @@ const ControlsLeft = () => {
   const dispatch = useDispatch();
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const isSongPlaying = useSelector(
-    ({ song }) => song.songPlayer.isSongPlaying
+    ({ song }) => song.songPlayer.isSongPlaying,
   );
   const arrangement = useSelector(({ song }) => song.arrangement);
   const savedTitle = useSelector(({ song }) => song.info.title);

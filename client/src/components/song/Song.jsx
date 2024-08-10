@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useLazyGetSongByIdQuery } from '../../redux/song/song.api';
+import { useLazyGetSongByIdQuery } from '../../redux/api/api.slice';
 import { setCurrentDropdown } from '../../redux/song/song.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import ScrollBox from '../shared/scrollBox/ScrollBox';

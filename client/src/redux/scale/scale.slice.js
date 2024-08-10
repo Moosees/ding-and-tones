@@ -3,14 +3,8 @@ import { Howler } from 'howler';
 import { defaultScale } from '../../assets/defaultData';
 import { getNoteLabelFromName, noteValueToName } from '../../assets/intervals';
 import { audioSources, getAudioSrc } from '../../assets/sound/audioOptions';
-import { api } from '../api/api.slice';
-import {
-  isFirstLoadAction,
-  isSignInAction,
-  userExtendedApi,
-} from '../user/user.api';
+import { api, isFirstLoadAction, isSignInAction } from '../api/api.slice';
 import { changeAudioSrc, updateHowls } from './howls.utils';
-import { scaleExtendedApi } from './scale.api';
 import {
   addExtraNotesPos,
   createFullScaleFromNames,
@@ -283,7 +277,7 @@ const scaleSlice = createSlice({
       state.howls.status = status;
     });
     builder.addMatcher(
-      scaleExtendedApi.endpoints.deleteScaleById.matchFulfilled,
+      api.endpoints.deleteScaleById.matchFulfilled,
       (state, action) => {
         if (action.payload.scale.scaleId !== state.ui.scaleId) return;
 
@@ -293,19 +287,16 @@ const scaleSlice = createSlice({
       },
     );
     builder.addMatcher(
-      scaleExtendedApi.endpoints.saveScale.matchFulfilled,
+      api.endpoints.saveScale.matchFulfilled,
       (state, action) => {
         state.ui.isOwner = true;
         state.ui.scaleId = action.payload.scale.scaleId;
         state.ui.hasChanges = false;
       },
     );
-    builder.addMatcher(
-      userExtendedApi.endpoints.signOut.matchFulfilled,
-      (state) => {
-        state.ui.isOwner = false;
-      },
-    );
+    builder.addMatcher(api.endpoints.signOut.matchFulfilled, (state) => {
+      state.ui.isOwner = false;
+    });
     builder.addMatcher(isSignInAction, (state, action) => {
       state.ui.isOwner = action.payload.scale.isOwner;
     });

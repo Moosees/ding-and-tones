@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { isSignInAction, isUpdateUserAction } from './user.api';
+import { isSignInAction, isUpdateUserAction } from '../api/api.slice';
 
 const INITIAL_STATE = {
   name: '',

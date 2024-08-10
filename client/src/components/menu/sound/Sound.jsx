@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSaveUserSoundMutation } from '../../../redux/api/api.slice';
 import { selectAudioSrc } from '../../../redux/scale/scale.slice';
-import { useSaveUserSoundMutation } from '../../../redux/user/user.api';
 import BtnMenu from '../../shared/button/BtnMenu';
 import PopupSound from './PopupSound';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
-import { useDeleteScaleByIdMutation } from '../../../redux/scale/scale.api';
+import { useDeleteScaleByIdMutation } from '../../../redux/api/api.slice';
 import { loadScale } from '../../../redux/scale/scale.slice';
 import BtnIcon from '../../shared/button/BtnIcon';
 import Confirmation from '../../shared/popup/Confirmation';
@@ -12,14 +12,14 @@ import {
   ScaleLabel,
   ScaleList,
   ScaleNotes,
-  TextContainer
+  TextContainer,
 } from './results.styles';
 
 const Results = ({ scales }) => {
   const dispatch = useDispatch();
-  const isSignedIn = useDispatch(user => user.isSignedIn)
+  const isSignedIn = useDispatch((user) => user.isSignedIn);
 
-  console.log('Scale results: ', scales)
+  console.log('Scale results: ', scales);
   const navigate = useNavigate();
   const [deleteScaleById, { isLoading: isDeleting }] =
     useDeleteScaleByIdMutation();

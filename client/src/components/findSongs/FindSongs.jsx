@@ -4,7 +4,7 @@ import {
   useLazySearchSongsQuery,
   useSearchMySongsQuery,
   useSearchNewSongsQuery,
-} from '../../redux/song/song.api';
+} from '../../redux/api/api.slice';
 import BtnPrimary from '../shared/button/BtnPrimary';
 import InfoSearch from '../shared/input/InfoSearch';
 import { FindSongsContainer, SearchContainer } from './findSongs.styles';

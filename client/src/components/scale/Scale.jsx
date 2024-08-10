@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useDimensions from '../../hooks/useDimensions';
-import { useLazyGetScaleByIdQuery } from '../../redux/scale/scale.api';
+import { useLazyGetScaleByIdQuery } from '../../redux/api/api.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import Edit from './edit/Edit';
