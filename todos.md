@@ -11,10 +11,6 @@
 - consistent response data format from backend (alert and other data separate)
 - update backend routes where needed
 
-### scale slice
-
-- move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-
 ### song slice
 
 - refactor pattern and beats updating songUi in patternPlayer.js?
@@ -22,6 +18,7 @@
 - figure out what should be disabled when song is playing (or stop playback when changing audio src)
 - It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
 - songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
+- songwriter Beat custom selector?
 - songPlayer state selectors (and currentDropdown isOpen for beats)
 
 ### user slice
@@ -34,6 +31,9 @@
 
 ### Other
 
+- move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
+- (scale)Info.jsx handleScaleSave move/refactor logic
+- howl.utils cannot read volume (line 66)
 - Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 - hook for using howls? (or delete useHowls.js)
 - Split howls loading status into loaded and error (and error msg)?

@@ -9,18 +9,14 @@ import ScrollBox from '../shared/scrollBox/ScrollBox';
 import PlayButton from '../songControls/playButton/PlayButton';
 import ChordInterval from './ChordInterval';
 import DrumMode from './DrumMode';
-import ScaleInterval from './ScaleInterval';
 import { IntervalList } from './intervals.styles';
+import ScaleInterval from './ScaleInterval';
 
 const Intervals = () => {
-  const { displayedChord, displayedNote, sharpNotes, scale } = useSelector(
-    ({ scale, drum }) => ({
-      displayedChord: drum.displayedChord,
-      displayedNote: drum.displayedNote,
-      sharpNotes: scale.info.sharpNotes,
-      scale: scale.parsed.pitched,
-    })
-  );
+  const displayedChord = useSelector(({ drum }) => drum.displayedChord);
+  const displayedNote = useSelector(({ drum }) => drum.displayedNote);
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
   const { isMobile } = useDimensions();
 

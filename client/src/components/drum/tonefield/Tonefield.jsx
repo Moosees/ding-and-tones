@@ -11,15 +11,17 @@ const Tonefield = ({
   showNote,
   text,
 }) => {
-  const { isReady, position, scaleRotation } = useSelector(
-    ({ scale }) => ({
-      isReady: scale.howls.status[note] === 'ready',
-      position: scale.parsed.positions[localIndex],
-      scaleRotation: scale.info.rotation,
-    })
+  const isReady = useSelector(
+    ({ scale }) => scale.howls.status[note] === 'ready',
   );
+  const rotate = useSelector(
+    ({ scale }) => scale.parsed.positions[localIndex].rotate,
+  );
+  const translate = useSelector(
+    ({ scale }) => scale.parsed.positions[localIndex].translate,
+  );
+  const scaleRotation = useSelector(({ scale }) => scale.info.rotation);
 
-  const { rotate, translate } = position;
   const isDing = localIndex === 0;
 
   return (
@@ -28,8 +30,9 @@ const Tonefield = ({
       cx="0"
       cy="0"
       opacity={isReady ? 1 : 0.5}
-      transform={`rotate(${rotate + scaleRotation + 270
-        }) translate(${translate})`}
+      transform={`rotate(${
+        rotate + scaleRotation + 270
+      }) translate(${translate})`}
       style={{
         fontSize: isDing ? '2.3px' : '1.5px',
         cursor: showNote ? 'pointer' : 'default',

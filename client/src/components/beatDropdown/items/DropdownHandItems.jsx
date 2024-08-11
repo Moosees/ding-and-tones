@@ -7,9 +7,7 @@ import { DropdownItem, HandIcon } from './dropdownItems.styles';
 
 const DropdownHandItems = ({ beatId, stopTimeout }) => {
   const dispatch = useDispatch();
-  const { hand } = useSelector(({ song }) => ({
-    hand: song.beats[beatId].hand,
-  }));
+  const hand = useSelector(({ song }) => song.beats[beatId].hand);
 
   const handItems = hands.map(({ name, value }) => {
     const handleClick = () => {

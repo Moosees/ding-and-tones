@@ -17,21 +17,20 @@ const Info = () => {
   const dispatch = useDispatch();
   const notes = useSelector(({ scale }) => scale.notes);
   const info = useSelector(({ scale }) => scale.info);
-  const { hasChanges, isDeleting, isFetching, scaleInfo, isSignedIn } =
-    useSelector(({ scale, user }) => ({
-      hasChanges: scale.ui.hasChanges,
-      isDeleting: scale.ui.isDeleting,
-      isFetching: scale.ui.isFetching,
-      scaleInfo: scale.info,
-      isSignedIn: user.isSignedIn,
-    }));
+  const scaleLabel = useSelector(({ scale }) => scale.info.label);
+  const scaleNameShort = useSelector(({ scale }) => scale.info.name);
+  const scaleName = useSelector(
+    ({ scale }) => `${scale.info.rootName} ${scale.info.name}`,
+  );
+  const hasChanges = useSelector(({ scale }) => scale.ui.hasChanges);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
 
   const [saveScale, { isLoading: isSaving }] = useSaveScaleMutation();
 
   const navigate = useNavigate();
 
   const [name, handleNameChange, nameErrors, isNameValid, resetName] =
-    useValidate('scaleName', scaleInfo.name);
+    useValidate('scaleName', scaleNameShort);
 
   const handleScaleSave = async () => {
     if (notes.dings.length + notes.round.length + notes.extra.length < 5) {
@@ -68,20 +67,13 @@ const Info = () => {
       <Buttons>
         <Rotation />
         <BtnPrimary
-          disabled={isDeleting || isFetching || isSaving}
+          disabled={isSaving}
           label="New Scale"
           onClick={handleNewScale}
           light
         />
         <BtnPrimary
-          disabled={
-            !isSignedIn ||
-            isDeleting ||
-            isFetching ||
-            isSaving ||
-            !isNameValid ||
-            !hasChanges
-          }
+          disabled={!isSignedIn || isSaving || !isNameValid || !hasChanges}
           label="Save Scale"
           onClick={handleScaleSave}
         />
@@ -95,11 +87,11 @@ const Info = () => {
         label={nameErrors.length ? nameErrors[0] : 'Scale name:'}
         value={name}
       >
-        {`${scaleInfo.rootName} ${scaleInfo.name}`}
+        {scaleName}
       </InfoText>
       <ScaleNotes>
         <span>Notes:</span>
-        {scaleInfo.label}
+        {scaleLabel}
       </ScaleNotes>
     </ScaleInfoContainer>
   );
