@@ -4,9 +4,6 @@
 
 ### Goals
 
-- Redux 5
-- old action logic => rtk slices
-- old thunks => rtk queries
 - move redux state to local state where possible
 - consistent response data format from backend (alert and other data separate)
 - update backend routes where needed
@@ -31,6 +28,7 @@
 
 ### Other
 
+- fix react table error
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 - (scale)Info.jsx handleScaleSave move/refactor logic
 - Memoize (scale)Notes to prevent rerender when changing between add round and add extra
@@ -66,7 +64,6 @@
 
 ### Logic and state update
 
-- Abort states for all axios requests
 - SongById try catch?
 - Clean up tonefield logic
 - Clean up getNoteText() and Tonefield in general
