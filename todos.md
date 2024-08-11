@@ -33,7 +33,6 @@
 
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 - (scale)Info.jsx handleScaleSave move/refactor logic
-- howl.utils cannot read volume (line 66)
 - Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 - hook for using howls? (or delete useHowls.js)
 - Split howls loading status into loaded and error (and error msg)?

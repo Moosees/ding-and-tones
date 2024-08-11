@@ -63,7 +63,9 @@ const playHowl = (howl) => {
 
     const timeout = 100;
     const {
-      howls: { volume },
+      scale: {
+        howls: { volume },
+      },
     } = store.getState();
 
     howl.fade(volume, 0, timeout, newId);
