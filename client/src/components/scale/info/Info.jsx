@@ -5,6 +5,7 @@ import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
 import { createAlert } from '../../../redux/alert/alert.slice';
 import { useSaveScaleMutation } from '../../../redux/api/api.slice';
+import { selectScaleName } from '../../../redux/scale/scale.selectors';
 import { newScale, setScaleName } from '../../../redux/scale/scale.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
 import BtnPrimary from '../../shared/button/BtnPrimary';
@@ -19,9 +20,7 @@ const Info = () => {
   const info = useSelector(({ scale }) => scale.info);
   const scaleLabel = useSelector(({ scale }) => scale.info.label);
   const scaleNameShort = useSelector(({ scale }) => scale.info.name);
-  const scaleName = useSelector(
-    ({ scale }) => `${scale.info.rootName} ${scale.info.name}`,
-  );
+  const scaleName = useSelector(selectScaleName);
   const hasChanges = useSelector(({ scale }) => scale.ui.hasChanges);
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
 

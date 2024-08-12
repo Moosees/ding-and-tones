@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectScaleName } from '../../../redux/scale/scale.selectors';
 import { togglePrivateSong } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
@@ -8,16 +9,14 @@ import Popup from '../../shared/popup/Popup';
 const PopupSaveSong = ({ onClose, onSave, title }) => {
   const dispatch = useDispatch();
   const newScaleId = useSelector(({ scale }) => scale.ui.scaleId);
-  const newScaleName = useSelector(
-    ({ scale }) => `${scale.info.rootName} ${scale.info.name}`
-  );
+  const newScaleName = useSelector(selectScaleName);
   const isOwner = useSelector(({ song }) => song.refs.isOwner);
   const isPrivate = useSelector(({ song }) => song.refs.isPrivate);
   const oldScaleId = useSelector(({ song }) => song.refs.scaleId);
   const oldScaleName = useSelector(({ song }) => song.ui.scaleName);
 
   const [selectedScale, setSelectedScale] = useState(
-    !isOwner && !oldScaleId ? newScaleId : oldScaleId
+    !isOwner && !oldScaleId ? newScaleId : oldScaleId,
   );
   const hasNewScale = newScaleId !== oldScaleId;
 
