@@ -17,7 +17,7 @@ const Scale = () => {
   let prevSemitones = scale[info.rootIndex].intervalMap[0].semitones;
 
   const lists = scale[info.rootIndex].intervalMap.reduce(
-    (lists, { compound, note, octaves, semitones }, i) => {
+    (lists, { compound, note, semitones }, i) => {
       const relativeSteps = semitones - prevSemitones;
       const isOctave = semitones % 12 === 0 && semitones !== 0;
       const { name } = intervals[isOctave ? 12 : compound];
@@ -35,7 +35,7 @@ const Scale = () => {
       notes: [],
       scaleIntervals: [],
       relativeSteps: [],
-    }
+    },
   );
 
   return (

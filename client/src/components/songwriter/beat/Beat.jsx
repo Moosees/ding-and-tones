@@ -23,7 +23,7 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
   const currentDropdown = useSelector(({ song }) => song.ui.currentDropdown);
   const currentBeat = useSelector(({ song }) => song.songPlayer.currentBeat);
   const isSongPlaying = useSelector(
-    ({ song }) => song.songPlayer.isSongPlaying
+    ({ song }) => song.songPlayer.isSongPlaying,
   );
 
   const isBeatPlaying = currentBeat === beatId;
@@ -33,7 +33,7 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
 
   const nonScaleNotes = useMemo(
     () => getNonScaleNotes(sound, scale),
-    [sound, scale]
+    [sound, scale],
   );
 
   const handleOpen = () => {
@@ -71,7 +71,7 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
           $value={value}
           $tripletStatus={tripletStatus}
         >
-          <BeatText isBeatPlaying={isBeatPlaying} sound={sound} value={value} />
+          <BeatText sound={sound} value={value} />
         </BeatCircle>
         {isOpen && (
           <BeatDropdown

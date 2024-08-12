@@ -30,7 +30,7 @@ export const getMetreOptions = () => {
         group: 'Complex metre',
         options: [],
       },
-    ]
+    ],
   );
 };
 
@@ -44,7 +44,7 @@ const getSubdivisionOptionsForBar = (metre) => {
     hidden: true,
   };
 
-  const barOptions = subdivisionOptions[group].map((option, i) => {
+  const barOptions = subdivisionOptions[group].map((option) => {
     const value = beatLengths
       .map((length) => option.subdivisionByLength[length])
       .join('-');
@@ -65,7 +65,7 @@ const getSubdivisionOptionsForBeat = (metre, beatIndex) => {
         ...acc,
         { value: parseInt(key), label: currentTemplates[key].label },
       ],
-      []
+      [],
     )
     .sort((a, b) => a.value - b.value);
 };
@@ -134,7 +134,7 @@ export const createBarTemplate = (metre, subdivisions) => {
     const { currentGroup, parsedBeats } = parseBeatTemplates(
       beatTemplates,
       i,
-      lastGroup
+      lastGroup,
     );
 
     lastGroup = currentGroup;

@@ -11,7 +11,7 @@ import {
   TableRow,
 } from './results.styles';
 
-const ReactTable = ({ columns, data, handleFetchMore, renderRowExpanded }) => {
+const ReactTable = ({ columns, data, renderRowExpanded }) => {
   const {
     getTableProps,
     getTableBodyProps,

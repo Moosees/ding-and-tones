@@ -6,7 +6,7 @@ import useDimensions from '../../../hooks/useDimensions';
 import BtnIcon from '../button/BtnIcon';
 import { Arrow, PopupContainer } from './tooltip.styles';
 
-const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
+const TooltipPopup = ({ anchorRef, children, isOpenCb }) => {
   useCloseOnEsc(() => isOpenCb(false));
   const { insideRef } = useCloseOutside(isOpenCb, anchorRef);
   const { width } = useDimensions();
@@ -17,7 +17,7 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
     : document.body.clientWidth - rect.left + 20;
   const top = rect.top + rect.height / 2;
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     isOpenCb(false);
   };
 
@@ -32,7 +32,7 @@ const TooltipPopup = ({ anchorRef, children, dropdownPosRef, isOpenCb }) => {
       {children}
       <BtnIcon icon="close" onClick={handleClick} />
     </PopupContainer>,
-    document.getElementById('overlay')
+    document.getElementById('overlay'),
   );
 };
 
