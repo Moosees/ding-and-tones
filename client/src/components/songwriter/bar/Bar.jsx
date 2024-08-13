@@ -1,7 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { createBarTemplate } from '../../../assets/metre';
-import { selectIsBarPlaying } from '../../../redux/song/song.selectors';
+import {
+  selectIsBarMuted,
+  selectIsBarPlaying,
+} from '../../../redux/song/song.selectors';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
@@ -12,10 +15,8 @@ const Bar = ({ barId, barIndex }) => {
   const metre = useSelector(({ song }) => song.bars[barId].metre);
   const measure = useSelector(({ song }) => song.bars[barId].measure);
   const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
-  const mutedBars = useSelector(({ song }) => song.mutedBars);
   const isPlaying = useSelector((state) => selectIsBarPlaying(state, barId));
-
-  const isMuted = mutedBars[barId] && mutedBars[barId] === true;
+  const isMuted = useSelector((state) => selectIsBarMuted(state, barId));
 
   const [editSubdivisionsOpen, setEditSubdivisionsOpen] = useState(false);
 
