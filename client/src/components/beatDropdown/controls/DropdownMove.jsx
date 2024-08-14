@@ -1,6 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  selectNextBeatInMoveOrder,
+  selectPrevBeatInMoveOrder,
+} from '../../../redux/song/song.selectors';
+import {
   setCurrentDropdown,
   toggleAutoMove,
 } from '../../../redux/song/song.slice';
@@ -8,14 +12,10 @@ import BtnIcon from '../../shared/button/BtnIcon';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 
-const DropdownMove = ({ beatId }) => {
+const DropdownMove = () => {
   const dispatch = useDispatch();
-  const prevBeatId = useSelector(
-    ({ song }) => song.autoMoveOrder[beatId].prevBeatId,
-  );
-  const nextBeatId = useSelector(
-    ({ song }) => song.autoMoveOrder[beatId].nextBeatId,
-  );
+  const prevBeatId = useSelector(selectPrevBeatInMoveOrder);
+  const nextBeatId = useSelector(selectNextBeatInMoveOrder);
   const autoMove = useSelector(({ song }) => song.ui.autoMove);
 
   return (

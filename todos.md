@@ -28,6 +28,7 @@
 
 ### Other
 
+- scale.parsed.pitched better equality check?
 - fix react table error
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 - (scale)Info.jsx handleScaleSave move/refactor logic

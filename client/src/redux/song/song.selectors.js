@@ -16,3 +16,21 @@ export const selectArrangementLength = createSelector(
   (state) => state.song.arrangement,
   (arrangement) => arrangement.length,
 );
+
+export const selectNextBeatInMoveOrder = createSelector(
+  [
+    (state) => state.song.autoMoveOrder,
+    (state) => state.song.ui.currentDropdown,
+  ],
+  (autoMoveOrder, currentDropdown) =>
+    autoMoveOrder[currentDropdown]?.nextBeatId,
+);
+
+export const selectPrevBeatInMoveOrder = createSelector(
+  [
+    (state) => state.song.autoMoveOrder,
+    (state) => state.song.ui.currentDropdown,
+  ],
+  (autoMoveOrder, currentDropdown) =>
+    autoMoveOrder[currentDropdown]?.prevBeatId,
+);

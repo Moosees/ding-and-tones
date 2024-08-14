@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTO_MOVE_DELAY } from '../../assets/constants';
 import { beatOptionToKeyCode } from '../../assets/keyCodes';
+import { selectNextBeatInMoveOrder } from '../../redux/song/song.selectors';
 import {
   setCurrentDropdown,
   updateSoundForBeat,
@@ -24,9 +25,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
   const dispatch = useDispatch();
   const autoMove = useSelector(({ song }) => song.ui.autoMove);
   const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
-  const nextBeatId = useSelector(
-    ({ song }) => song.autoMoveOrder[beatId].nextBeatId
-  );
+  const nextBeatId = useSelector(selectNextBeatInMoveOrder);
   const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
@@ -39,7 +38,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
 
   const { round, extra, dings, percussive } = useMemo(
     () => createSoundLists(scale, sharpNotes),
-    [scale, sharpNotes]
+    [scale, sharpNotes],
   );
 
   const handleAutoMove = () => {
@@ -55,7 +54,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     setTimeoutRef(
       setTimeout(() => {
         dispatch(setCurrentDropdown({ beatId: nextBeatId }));
-      }, AUTO_MOVE_DELAY * 2)
+      }, AUTO_MOVE_DELAY * 2),
     );
   };
 
@@ -87,7 +86,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     () => () => {
       clearTimeout(timeoutRef);
     },
-    [timeoutRef]
+    [timeoutRef],
   );
 
   return (
@@ -143,7 +142,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
           </DropdownColumn>
         </DropdownContent>
         <DividerLine small />
-        <DropdownMove beatId={beatId} />
+        <DropdownMove />
       </Dropdown>
     </>
   );

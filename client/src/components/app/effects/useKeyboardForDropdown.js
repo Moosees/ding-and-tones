@@ -4,6 +4,10 @@ import { AUTO_MOVE_DELAY, hands } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import {
+  selectNextBeatInMoveOrder,
+  selectPrevBeatInMoveOrder,
+} from '../../../redux/song/song.selectors';
+import {
   clearBeat,
   setCurrentDropdown,
   toggleAutoMove,
@@ -14,7 +18,8 @@ import {
 
 const useKeyboardForDropdown = () => {
   const dispatch = useDispatch();
-  const autoMoveOrder = useSelector(({ song }) => song.autoMoveOrder);
+  const nextBeatId = useSelector(selectNextBeatInMoveOrder);
+  const prevBeatId = useSelector(selectPrevBeatInMoveOrder);
   const autoMove = useSelector(({ song }) => song.ui.autoMove);
   const currentDropdown = useSelector(({ song }) => song.ui.currentDropdown);
   const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
@@ -38,7 +43,7 @@ const useKeyboardForDropdown = () => {
         ...acc,
         [key]: () =>
           dispatch(
-            updateHandForBeat({ beatId: currentDropdown, newHand: value })
+            updateHandForBeat({ beatId: currentDropdown, newHand: value }),
           ),
       };
     }, {});
@@ -49,12 +54,11 @@ const useKeyboardForDropdown = () => {
         ...acc,
         [key]: () =>
           dispatch(
-            updateSoundForBeat({ beatId: currentDropdown, update: option })
+            updateSoundForBeat({ beatId: currentDropdown, update: option }),
           ),
       };
     }, {});
 
-    const { prevBeatId, nextBeatId } = autoMoveOrder[currentDropdown];
     const otherCbs = {
       [beatOptionToKeyCode['chord']]: () => dispatch(toggleMultiSelect()),
       [beatOptionToKeyCode['auto']]: () => dispatch(toggleAutoMove()),
@@ -105,7 +109,7 @@ const useKeyboardForDropdown = () => {
       clearTimeout(timeout);
       document.removeEventListener('keydown', keyboardListener);
     };
-  }, [dispatch, autoMove, currentDropdown, multiSelect, scale, autoMoveOrder]);
+  }, [dispatch, autoMove, currentDropdown, multiSelect, scale]);
 };
 
 export default useKeyboardForDropdown;
