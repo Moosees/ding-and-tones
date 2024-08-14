@@ -10,19 +10,20 @@ import Checkbox from '../../shared/checkbox/Checkbox';
 
 const DropdownMove = ({ beatId }) => {
   const dispatch = useDispatch();
-  const autoMoveOrder = useSelector(({ song }) => song.autoMoveOrder);
+  const prevBeatId = useSelector(
+    ({ song }) => song.autoMoveOrder[beatId].prevBeatId,
+  );
+  const nextBeatId = useSelector(
+    ({ song }) => song.autoMoveOrder[beatId].nextBeatId,
+  );
   const autoMove = useSelector(({ song }) => song.ui.autoMove);
 
   return (
     <Buttons position="space-between">
       <BtnIcon
         icon="navigate_before"
-        disabled={autoMoveOrder[beatId].prevBeatId === null}
-        onClick={() =>
-          dispatch(
-            setCurrentDropdown({ beatId: autoMoveOrder[beatId].prevBeatId })
-          )
-        }
+        disabled={prevBeatId === null}
+        onClick={() => dispatch(setCurrentDropdown({ beatId: prevBeatId }))}
       />
       <Checkbox
         small
@@ -32,12 +33,8 @@ const DropdownMove = ({ beatId }) => {
       />
       <BtnIcon
         icon="navigate_next"
-        disabled={autoMoveOrder[beatId].nextBeatId === null}
-        onClick={() =>
-          dispatch(
-            setCurrentDropdown({ beatId: autoMoveOrder[beatId].nextBeatId })
-          )
-        }
+        disabled={nextBeatId === null}
+        onClick={() => dispatch(setCurrentDropdown({ beatId: nextBeatId }))}
       />
     </Buttons>
   );
