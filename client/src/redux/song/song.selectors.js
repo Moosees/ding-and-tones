@@ -11,3 +11,8 @@ export const selectIsBarMuted = createSelector(
     return mutedBars[barId] ? mutedBars[barId] : false;
   },
 );
+
+export const selectArrangementLength = createSelector(
+  (state) => state.song.arrangement,
+  (arrangement) => arrangement.length,
+);
