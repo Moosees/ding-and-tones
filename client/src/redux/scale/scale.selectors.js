@@ -5,6 +5,11 @@ export const selectScaleName = createSelector(
   (rootName, name) => `${rootName} ${name}`,
 );
 
+export const selectIsHowlReady = createSelector(
+  [(state) => state.scale.howls.status, (_state, note) => note],
+  (status, note) => status[note] === 'ready',
+);
+
 export const selectAreHowlsReady = createSelector(
   [(state) => state.scale.howls.status, (state) => state.scale.parsed.pitched],
   (status, scale) => {
