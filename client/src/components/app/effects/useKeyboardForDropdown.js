@@ -109,7 +109,15 @@ const useKeyboardForDropdown = () => {
       clearTimeout(timeout);
       document.removeEventListener('keydown', keyboardListener);
     };
-  }, [dispatch, autoMove, currentDropdown, multiSelect, scale]);
+  }, [
+    dispatch,
+    autoMove,
+    currentDropdown,
+    multiSelect,
+    scale,
+    nextBeatId,
+    prevBeatId,
+  ]);
 };
 
 export default useKeyboardForDropdown;
