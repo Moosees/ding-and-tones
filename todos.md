@@ -17,6 +17,7 @@
 - songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 - songwriter Beat custom selector?
 - songPlayer state selectors (and currentDropdown isOpen for beats)
+- BarControls copy bar should get state only on clicking button
 
 ### user slice
 

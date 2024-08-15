@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectIsBarMuted } from '../../../redux/song/song.selectors';
 import {
   deleteBar,
   duplicateBar,
@@ -14,10 +15,9 @@ import { copyBar } from './barControls.utils';
 const BarControls = ({ barId, toggleEditSubdivisions }) => {
   const dispatch = useDispatch();
   const bar = useSelector(({ song }) => song.bars[barId]);
-  const mutedBars = useSelector(({ song }) => song.mutedBars);
-
-  const { metre, subdivisions } = bar;
-  const isMuted = mutedBars[barId] && mutedBars[barId] === true;
+  const metre = useSelector(({ song }) => song.bars[barId].metre);
+  const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
+  const isMuted = useSelector((state) => selectIsBarMuted(state, barId));
 
   const handleSetSubdivision = (subdivisionString) => {
     const newSubdivisions = subdivisionString
