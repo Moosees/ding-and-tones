@@ -5,7 +5,10 @@ import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
 import { createAlert } from '../../../redux/alert/alert.slice';
 import { useSaveScaleMutation } from '../../../redux/api/api.slice';
-import { selectScaleName } from '../../../redux/scale/scale.selectors';
+import {
+  selectScaleLength,
+  selectScaleName,
+} from '../../../redux/scale/scale.selectors';
 import { newScale, setScaleName } from '../../../redux/scale/scale.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
 import BtnPrimary from '../../shared/button/BtnPrimary';
@@ -17,6 +20,7 @@ import { ScaleInfoContainer, ScaleNotes } from './info.styles';
 const Info = () => {
   const dispatch = useDispatch();
   const notes = useSelector(({ scale }) => scale.notes);
+  const scaleLength = useSelector(selectScaleLength);
   const info = useSelector(({ scale }) => scale.info);
   const scaleLabel = useSelector(({ scale }) => scale.info.label);
   const scaleNameShort = useSelector(({ scale }) => scale.info.name);
@@ -32,7 +36,7 @@ const Info = () => {
     useValidate('scaleName', scaleNameShort);
 
   const handleScaleSave = async () => {
-    if (notes.dings.length + notes.round.length + notes.extra.length < 5) {
+    if (scaleLength < 5) {
       return dispatch(
         createAlert({ alert: 'Scale needs at least five notes' }),
       );

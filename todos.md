@@ -8,44 +8,39 @@
 - consistent response data format from backend (alert and other data separate)
 - update backend routes where needed
 
-### song slice
+### Other
 
-- refactor pattern and beats updating songUi in patternPlayer.js?
-- reset currentBar in useResetCurrentBeat?
-- figure out what should be disabled when song is playing (or stop playback when changing audio src)
-- It's possible to load scale or song while song is playing (no crash but leads to silence while song continues playing)
+- songPlayer state selectors (and currentDropdown isOpen for beats)
+- check positions useSelector if it can be more specific
+- scale.parsed.pitched better equality check? same with currentSound
 - songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 - songwriter Beat custom selector?
-- songPlayer state selectors (and currentDropdown isOpen for beats)
-- BarControls copy bar should get state only on clicking button
-
-### user slice
-
 - sign in cross origin warning? (cause: unsupported browser fix?)
 - user sound popup - info about saving settings to account?
 - PopupAccount only close if mutation is successful?
 - isSignedIn derived from username instead of extra key in redux?
+- refactor pattern and beats updating songUi in patternPlayer.js?
+- Refactor scale.utils (redux)?
+- refactor moveBar in song.utils to be readable
+- Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
+- move howls logic to assets? future app structure refactor (features? views?)
+- reset currentBar in useResetCurrentBeat?
 - set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
-
-### Other
-
-- check positions useSelector if it can be more specific
-- scale.parsed.pitched better equality check? same with currentSound
 - chordsList does not need to be kept in redux store, only user added chords?
-- fix react table error
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-- (scale)Info.jsx handleScaleSave move/refactor logic
 - Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 - hook for using howls? (or delete useHowls.js)
 - Split howls loading status into loaded and error (and error msg)?
-- Refactor scale.utils (redux)?
-- Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-- move howls logic to assets? future app structure refactor (features? views?)
+
+### Tasks
+
+- figure out what should be disabled when song is playing (or stop playback when changing audio src) (load scale or song, more?)
+- fix react table error
+- (scale)Info.jsx handleScaleSave move/refactor logic
+- BarControls copy bar should get state only on clicking button
 - fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
 - disable move notes when there's no extra notes? (if so: reset when loading a new scale)
-- refactor moveBar in song.utils to be readable
-- Delete old types files
-- Clean up comments and unused code
+- Clean up comments and unused code and old reducers, types, actions
 
 ## Sorted by release
 

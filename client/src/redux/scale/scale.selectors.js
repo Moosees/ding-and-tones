@@ -5,6 +5,15 @@ export const selectScaleName = createSelector(
   (rootName, name) => `${rootName} ${name}`,
 );
 
+export const selectScaleLength = createSelector(
+  [
+    (state) => state.scale.notes.dings,
+    (state) => state.scale.notes.round,
+    (state) => state.scale.notes.extra,
+  ],
+  (dings, round, extra) => dings.length + round.length + extra.length,
+);
+
 export const selectIsHowlReady = createSelector(
   [(state) => state.scale.howls.status, (_state, note) => note],
   (status, note) => status[note] === 'ready',
