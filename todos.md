@@ -29,7 +29,9 @@
 
 ### Other
 
-- scale.parsed.pitched better equality check?
+- check positions useSelector if it can be more specific
+- scale.parsed.pitched better equality check? same with currentSound
+- chordsList does not need to be kept in redux store, only user added chords?
 - fix react table error
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 - (scale)Info.jsx handleScaleSave move/refactor logic

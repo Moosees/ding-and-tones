@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectIsHowlReady } from '../../../redux/scale/scale.selectors';
 
 const Tonefield = ({
   color,
@@ -11,9 +12,7 @@ const Tonefield = ({
   showNote,
   text,
 }) => {
-  const isReady = useSelector(
-    ({ scale }) => scale.howls.status[note] === 'ready',
-  );
+  const isReady = useSelector((state) => selectIsHowlReady(state, note));
   const rotate = useSelector(
     ({ scale }) => scale.parsed.positions[localIndex].rotate,
   );

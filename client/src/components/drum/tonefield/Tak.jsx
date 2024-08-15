@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { TRANSLATE_TAK } from '../../../assets/constants';
+import { selectIsHowlReady } from '../../../redux/scale/scale.selectors';
 
 const Tak = ({ hand, handlePlay, note }) => {
   const currentHand = useSelector(({ song }) => song.songPlayer.currentHand);
   const currentSound = useSelector(({ song }) => song.songPlayer.currentSound);
-  const status = useSelector(({ scale }) => scale.howls.status);
+  const isReady = useSelector((state) => selectIsHowlReady(state, note));
 
-  const isReady = status[note] === 'ready';
   const isPlaying =
     [hand, 3].includes(currentHand) &&
     (currentSound.includes('t') || currentSound.includes('T'));
@@ -16,8 +16,9 @@ const Tak = ({ hand, handlePlay, note }) => {
     <g
       cx="0"
       cy="0"
-      transform={`translate(${hand === 1 ? TRANSLATE_TAK : TRANSLATE_TAK * -1
-        })`}
+      transform={`translate(${
+        hand === 1 ? TRANSLATE_TAK : TRANSLATE_TAK * -1
+      })`}
       onClick={isReady ? handlePlay : null}
       opacity={isReady ? 1 : 0.1}
       style={{ cursor: 'pointer' }}
