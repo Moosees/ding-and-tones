@@ -31,6 +31,8 @@
 - Memoize (scale)Notes to prevent rerender when changing between add round and add extra
 - hook for using howls? (or delete useHowls.js)
 - Split howls loading status into loaded and error (and error msg)?
+- Move logic for playing tonefield from Drum to Tonefield
+- (chordsPrint) Scale selector refactor not needed (component should not change after mount)?
 
 ### Tasks
 
@@ -40,7 +42,7 @@
 - BarControls copy bar should get state only on clicking button
 - fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
 - disable move notes when there's no extra notes? (if so: reset when loading a new scale)
-- Clean up comments and unused code and old reducers, types, actions
+- Clean up comments and unused code
 
 ## Sorted by release
 
