@@ -14,7 +14,6 @@ import { copyBar } from './barControls.utils';
 
 const BarControls = ({ barId, toggleEditSubdivisions }) => {
   const dispatch = useDispatch();
-  const bar = useSelector(({ song }) => song.bars[barId]);
   const metre = useSelector(({ song }) => song.bars[barId].metre);
   const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
   const isMuted = useSelector((state) => selectIsBarMuted(state, barId));
@@ -26,13 +25,17 @@ const BarControls = ({ barId, toggleEditSubdivisions }) => {
     dispatch(updateBarSubdivisions({ barId, newSubdivisions }));
   };
 
+  const handleCopy = () => {
+    dispatch(duplicateBar(copyBar(barId)));
+  };
+
   return (
     <ControlsContainer>
       <BtnIcon
         small
         title="Duplicate bar"
         icon="content_copy"
-        onClick={() => dispatch(duplicateBar(copyBar(bar)))}
+        onClick={handleCopy}
       />
       <BtnIcon
         title="Delete bar"
