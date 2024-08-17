@@ -24,15 +24,26 @@ const ReactTable = ({ columns, data, renderRowExpanded }) => {
     <ScrollBox>
       <Table {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((col) => (
-                <TableHeader {...col.getHeaderProps([{ style: col.style }])}>
-                  {col.render('Header')}
-                </TableHeader>
-              ))}
-            </tr>
-          ))}
+          {headerGroups.map((headerGroup) => {
+            const { key, ...headerGroupProps } =
+              headerGroup.getHeaderGroupProps();
+
+            return (
+              <tr key={key} {...headerGroupProps}>
+                {headerGroup.headers.map((col) => {
+                  const { key, ...headerProps } = col.getHeaderProps([
+                    { style: col.style },
+                  ]);
+
+                  return (
+                    <TableHeader key={key} {...headerProps}>
+                      {col.render('Header')}
+                    </TableHeader>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </thead>
         <tbody {...getTableBodyProps()}>
           {rows.map((row) => {
@@ -57,13 +68,17 @@ const ReactTable = ({ columns, data, renderRowExpanded }) => {
                   onKeyDown={handleKeyDown}
                   onClick={() => row.toggleRowExpanded(!row.isExpanded)}
                 >
-                  {row.cells.map((cell) => (
-                    <TableCell
-                      {...cell.getCellProps([{ style: cell.column.style }])}
-                    >
-                      {cell.render('Cell')}
-                    </TableCell>
-                  ))}
+                  {row.cells.map((cell) => {
+                    const { key, ...cellProps } = cell.getCellProps([
+                      { style: cell.column.style },
+                    ]);
+
+                    return (
+                      <TableCell key={key} {...cellProps}>
+                        {cell.render('Cell')}
+                      </TableCell>
+                    );
+                  })}
                 </TableRow>
                 {row.isExpanded && (
                   <>

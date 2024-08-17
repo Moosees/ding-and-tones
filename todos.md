@@ -37,7 +37,6 @@
 ### Tasks
 
 - figure out what should be disabled when song is playing (or stop playback when changing audio src) (load scale or song, more?)
-- fix react table error
 - (scale)Info.jsx handleScaleSave move/refactor logic
 - BarControls copy bar should get state only on clicking button
 - fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
