@@ -10,12 +10,16 @@ import { getIdFromLocation } from '../nav.utils';
 const User = () => {
   const songId = useSelector(({ song }) => song.refs.songId);
   const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
 
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
 
   const location = useLocation();
-  const [checkSession, { isUninitialized }] = useLazyCheckSessionQuery();
+  const [checkSession, { isUninitialized, isLoading }] =
+    useLazyCheckSessionQuery();
 
   useEffect(() => {
     if (isUninitialized) {
@@ -30,11 +34,17 @@ const User = () => {
     }
   }, [checkSession, isUninitialized, location, scaleId, songId]);
 
+  useEffect(() => {
+    if (!isOpen || !isSongPlaying) return;
+
+    setIsOpen(false);
+  }, [isOpen, isSongPlaying]);
+
   return (
     <div>
       <BtnNav
         ariaLabel={'User'}
-        disabled={false}
+        disabled={isSongPlaying || isLoading}
         isActive={isOpen}
         onClick={() => setIsOpen((isOpen) => !isOpen)}
         ref={btnRef}

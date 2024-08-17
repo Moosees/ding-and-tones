@@ -26,6 +26,9 @@ const Info = () => {
   const scaleName = useSelector(selectScaleName);
   const hasChanges = useSelector(({ scale }) => scale.ui.hasChanges);
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
 
   const [saveScale, { isLoading: isSaving }] = useSaveScaleMutation();
 
@@ -71,13 +74,19 @@ const Info = () => {
       <Buttons>
         <Rotation />
         <BtnPrimary
-          disabled={isSaving}
+          disabled={isSaving || isSongPlaying}
           label="New Scale"
           onClick={handleNewScale}
           light
         />
         <BtnPrimary
-          disabled={!isSignedIn || isSaving || !isNameValid || !hasChanges}
+          disabled={
+            !isSignedIn ||
+            isSaving ||
+            !isNameValid ||
+            !hasChanges ||
+            isSongPlaying
+          }
           label="Save Scale"
           onClick={handleScaleSave}
         />

@@ -17,8 +17,12 @@ import { DeleteContainer } from './results.styles';
 const Results = ({ songs }) => {
   console.log({ songs });
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
   const [deleteSongById, { isLoading: isDeleting }] =
     useDeleteSongByIdMutation();
+  const [getSongById] = useLazyGetSongByIdQuery();
 
   const navigate = useNavigate();
 
@@ -54,10 +58,11 @@ const Results = ({ songs }) => {
 
   const data = useMemo(() => (songs ? [...songs] : []), [songs]);
 
-  const [getSongById] = useLazyGetSongByIdQuery();
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
       const fetchSongFromServer = async (songId, getScale) => {
+        if (isSongPlaying) return;
+
         const { isSuccess } = await getSongById({
           songId,
           getScale,
@@ -71,12 +76,14 @@ const Results = ({ songs }) => {
           <td colSpan={2}>
             <Buttons position="flex-start">
               <BtnPrimary
+                disabled={isSongPlaying}
                 light
                 label="Load w/o scale"
                 onClick={() => fetchSongFromServer(songId, false)}
               />
               {scaleId && (
                 <BtnPrimary
+                  disabled={isSongPlaying}
                   light
                   label="Load with scale"
                   onClick={() => fetchSongFromServer(songId, true)}
@@ -94,7 +101,7 @@ const Results = ({ songs }) => {
                   <BtnIcon
                     title={`Delete "${title}"`}
                     icon="delete"
-                    disabled={isDeleting}
+                    disabled={isDeleting || isSongPlaying}
                     position="right"
                   />
                 </Confirmation>
@@ -105,7 +112,14 @@ const Results = ({ songs }) => {
         </>
       );
     },
-    [isDeleting, isSignedIn, navigate, getSongById, deleteSongById],
+    [
+      isSongPlaying,
+      isSignedIn,
+      isDeleting,
+      getSongById,
+      navigate,
+      deleteSongById,
+    ],
   );
 
   const handleFetchMore = useCallback(

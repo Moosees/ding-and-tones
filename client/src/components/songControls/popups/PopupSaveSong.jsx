@@ -14,6 +14,9 @@ const PopupSaveSong = ({ onClose, onSave, title }) => {
   const isPrivate = useSelector(({ song }) => song.refs.isPrivate);
   const oldScaleId = useSelector(({ song }) => song.refs.scaleId);
   const oldScaleName = useSelector(({ song }) => song.ui.scaleName);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
 
   const [selectedScale, setSelectedScale] = useState(
     !isOwner && !oldScaleId ? newScaleId : oldScaleId,
@@ -58,12 +61,13 @@ const PopupSaveSong = ({ onClose, onSave, title }) => {
       </Popup.Section>
       <Popup.Flex>
         <BtnPrimary
+          disabled={isSongPlaying}
           label="Save New"
           onClick={() => onSave(selectedScale, true)}
         />
         <BtnPrimary
           label="Save"
-          disabled={!isOwner}
+          disabled={!isOwner || isSongPlaying}
           onClick={() => onSave(selectedScale, false)}
         />
         <BtnPrimary light label="Cancel" onClick={onClose} />

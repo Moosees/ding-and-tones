@@ -36,7 +36,6 @@
 
 ### Tasks
 
-- figure out what should be disabled when song is playing (or stop playback when changing audio src) (load scale or song, more?)
 - fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
 - disable move notes when there's no extra notes? (if so: reset when loading a new scale)
 - Clean up comments and unused code

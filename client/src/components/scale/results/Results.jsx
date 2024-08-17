@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
 import { useDeleteScaleByIdMutation } from '../../../redux/api/api.slice';
@@ -17,9 +17,11 @@ import {
 
 const Results = ({ scales }) => {
   const dispatch = useDispatch();
-  const isSignedIn = useDispatch((user) => user.isSignedIn);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
 
-  console.log('Scale results: ', scales);
   const navigate = useNavigate();
   const [deleteScaleById, { isLoading: isDeleting }] =
     useDeleteScaleByIdMutation();
@@ -33,6 +35,8 @@ const Results = ({ scales }) => {
       } = scale;
 
       const handleLoadScale = () => {
+        if (isSongPlaying) return;
+
         dispatch(loadScale({ scale }));
         navigate('/scale');
       };
@@ -55,7 +59,7 @@ const Results = ({ scales }) => {
               label={`Are you sure you want to delete "${rootName} ${name}"`}
             >
               <BtnIcon
-                disabled={isDeleting}
+                disabled={isDeleting || isSongPlaying}
                 icon="delete"
                 title={`Delete "${rootName} ${name}"`}
                 position="right"
@@ -63,6 +67,7 @@ const Results = ({ scales }) => {
             </Confirmation>
           )}
           <TextContainer
+            $disabled={isSongPlaying}
             tabIndex={0}
             onClick={handleLoadScale}
             onKeyDown={handleKeyDown}

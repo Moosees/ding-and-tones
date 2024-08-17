@@ -44,6 +44,7 @@ export const ScaleNotes = styled.span`
 
 export const TextContainer = styled.div`
   align-items: center;
+  cursor: ${({ $disabled }) => ($disabled ? 'default' : 'pointer')};
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
@@ -52,6 +53,7 @@ export const TextContainer = styled.div`
   &:hover,
   &:focus {
     outline: 0;
-    color: ${({ theme }) => theme.colorBtnConfirm};
+    color: ${({ theme, $disabled }) =>
+      $disabled ? 'revert' : theme.colorBtnConfirm};
   }
 `;
