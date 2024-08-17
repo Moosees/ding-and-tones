@@ -10,6 +10,7 @@ import {
   selectScaleName,
 } from '../../../redux/scale/scale.selectors';
 import { newScale, setScaleName } from '../../../redux/scale/scale.slice';
+import { store } from '../../../redux/store';
 import BtnHelp from '../../shared/button/BtnHelp';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
@@ -19,9 +20,7 @@ import { ScaleInfoContainer, ScaleNotes } from './info.styles';
 
 const Info = () => {
   const dispatch = useDispatch();
-  const notes = useSelector(({ scale }) => scale.notes);
   const scaleLength = useSelector(selectScaleLength);
-  const info = useSelector(({ scale }) => scale.info);
   const scaleLabel = useSelector(({ scale }) => scale.info.label);
   const scaleNameShort = useSelector(({ scale }) => scale.info.name);
   const scaleName = useSelector(selectScaleName);
@@ -41,6 +40,8 @@ const Info = () => {
         createAlert({ alert: 'Scale needs at least five notes' }),
       );
     }
+
+    const { notes, info } = store.getState().scale;
 
     const scaleUpdate = {
       info: { ...info },
