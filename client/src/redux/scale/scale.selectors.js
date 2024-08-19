@@ -14,10 +14,14 @@ export const selectScaleLength = createSelector(
   (dings, round, extra) => dings.length + round.length + extra.length,
 );
 
-export const selectIsHowlReady = createSelector(
-  [(state) => state.scale.howls.status, (_state, note) => note],
-  (status, note) => status[note] === 'ready',
-);
+export const makeSelectIsHowlReady = () => {
+  const selectIsHowlReady = createSelector(
+    [(state) => state.scale.howls.status, (_state, note) => note],
+    (status, note) => status[note] && status[note] === 'ready',
+  );
+
+  return selectIsHowlReady;
+};
 
 export const selectAreHowlsReady = createSelector(
   [(state) => state.scale.howls.status, (state) => state.scale.parsed.pitched],
