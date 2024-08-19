@@ -22,23 +22,14 @@ const Scale = () => {
     useLazyGetScaleByIdQuery();
 
   useEffect(() => {
-    console.log('SCALE EFFECT', {
-      isLoading,
-      isFetching,
-      isUninitialized,
-      isError,
-    });
     if (isLoading || isFetching) return;
     if (localScaleId && scaleId && localScaleId === scaleId) return;
 
     if (isUninitialized && scaleId && !localScaleId) {
-      console.log('FIRST SCALE FETCH');
       getScaleById({ scaleId });
     } else if (scaleId && (hasChanges || isError)) {
-      console.log('CLEARING SCALE URL');
       navigate('/scale', { replace: true });
     } else if (localScaleId && !hasChanges) {
-      console.log('UPDATING SCALE URL', { localScaleId, scaleId });
       navigate(`/scale/${localScaleId}`, { replace: true });
     }
   }, [

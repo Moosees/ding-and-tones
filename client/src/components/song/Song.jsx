@@ -27,26 +27,12 @@ const Song = () => {
     useLazyGetSongByIdQuery();
 
   useEffect(() => {
-    console.log('SONG EFFECT', {
-      isLoading,
-      isFetching,
-      isUninitialized,
-      localSongId,
-      songId,
-    });
     if (isLoading || isFetching) return;
     if (localSongId && songId && localSongId === songId) return;
 
     if (isUninitialized && songId && !localSongId) {
-      console.log('FIRST SONG FETCH');
       getSongById({ songId, getScale: true, editSong: false });
     } else {
-      console.log('UPDATING SONG URL', {
-        localSongId,
-        songId,
-        localType: typeof localSongId,
-        urlType: typeof songId,
-      });
       // NOTE: workaround to handle empty param returning the string 'null'
       navigate(`/song${localSongId ? '/' + localSongId : ''}`, {
         replace: true,

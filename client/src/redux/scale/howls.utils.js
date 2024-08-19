@@ -25,12 +25,8 @@ const sortHowlsForUpdate = (sounds) => {
 
   for (const sound in howls) {
     if (howls[sound] && !addSet.has(sound)) {
-      console.log({ howls, sounds, addSet });
-      console.log('remove', sound);
       notesToRemove.push(sound);
     } else if (howls[sound] && addSet.has(sound)) {
-      console.log({ howls, sounds, addSet });
-      console.log('keep', sound);
       notesToKeep.push(sound);
       addSet.delete(sound);
     }
@@ -80,8 +76,6 @@ const playHowl = (howl) => {
 };
 
 const createHowl = (note, fileName, audioSrc) => {
-  console.log('adding howl:', { note, fileName });
-
   const howl = new Howl({ src: `${audioSrc}/${fileName}` });
 
   howl.once('loaderror', (_id, error) => onHowlError(note, howl, error));
@@ -121,27 +115,21 @@ const createStatus = (soundsToAdd, statusToKeep = {}) => {
 };
 
 export const updateHowls = (status, audioSrc, scale) => {
-  console.log('updateHowls');
   const sounds = parseScaleForUpdateHowls(scale);
-  console.log({ scaleToChangeTo: sounds });
 
   const { soundsToAdd, notesToRemove, notesToKeep } =
     sortHowlsForUpdate(sounds);
-  console.log({ soundsToAdd, notesToRemove, notesToKeep });
 
   cleanupHowls(notesToRemove);
 
   createHowls(soundsToAdd, audioSrc);
 
-  console.log({ notesToKeep, howls });
   const statusToKeep = filterObjectByKeyArray(status, notesToKeep, false);
-  console.log({ ...statusToKeep });
 
   return createStatus(soundsToAdd, statusToKeep);
 };
 
 export const changeAudioSrc = (audioSrc, scale) => {
-  console.log('changeAudioSrc', audioSrc, scale);
   const sounds = parseScaleForUpdateHowls(scale);
 
   cleanupHowls(sounds.map(({ note }) => note));

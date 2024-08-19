@@ -29,7 +29,6 @@ const User = () => {
         scaleId: urlScaleId || scaleId || null,
       };
 
-      console.log('CHECK SESSION', { checkSessionQueryData });
       checkSession(checkSessionQueryData);
     }
   }, [checkSession, isUninitialized, location, scaleId, songId]);

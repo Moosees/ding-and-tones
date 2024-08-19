@@ -6,7 +6,6 @@ const { defaultErrorMsg } = require('../utils/assets');
 const day = 1000 * 60 * 60 * 24;
 
 exports.checkSession = async (req, res) => {
-  console.log(req.body);
   if (!req.userId) {
     return res.status(200).json({
       song: { isOwner: false },
@@ -72,7 +71,6 @@ exports.updateUserSound = async (req, res) => {
 };
 
 exports.updateUserInfo = async (req, res) => {
-  // console.log(req.body, req.userId);
   const userId = req.userId;
   const { anonymous, name } = req.body;
   const updated = Date.now();
@@ -96,7 +94,6 @@ exports.updateUserInfo = async (req, res) => {
       return res.status(400).json({ error: 'Could not update user info' });
     }
 
-    console.log('Save user info success', { user });
     res.status(200).json({
       alert: 'Account info updated',
       user: {
@@ -105,7 +102,6 @@ exports.updateUserInfo = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log('Save user info error', { error });
     if (error.code === 11000) {
       return res.status(400).json({ error: 'Name is already in use' });
     }

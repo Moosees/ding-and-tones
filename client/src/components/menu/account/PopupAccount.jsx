@@ -23,14 +23,12 @@ const PopupAccount = ({ onClose }) => {
   const handleSave = () => {
     if (!usernameValid) return;
     if (username !== name || anon !== anonymous) {
-      console.log('handleSaveUSERINFO');
       saveUserInfo({
         name: username,
         anonymous: anon,
       });
     }
 
-    console.log('handleSaveUSERINFO closing popup');
     onClose();
   };
 

@@ -29,12 +29,10 @@ const SignIn = ({ onClose }) => {
 
   const handleSignIn = async () => {
     const url = await getGoogleUrl().unwrap();
-    console.log({ url });
 
     handleGooglePostMsg(url)
       .then((msg) => {
         const code = getGoogleCode(msg);
-        console.log({ code, msg });
         signIn({ code, songId, scaleId, persistSession });
       })
       .catch((error) => {

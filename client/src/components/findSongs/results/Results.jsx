@@ -15,7 +15,6 @@ import ReactTable from './ReactTable';
 import { DeleteContainer } from './results.styles';
 
 const Results = ({ songs }) => {
-  console.log({ songs });
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const isSongPlaying = useSelector(
     ({ song }) => song.songPlayer.isSongPlaying,

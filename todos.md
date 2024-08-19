@@ -1,26 +1,5 @@
 # DING AND TONES TODO LIST
 
-## Redux Update
-
-### Goals
-
-- move redux state to local state where possible
-- consistent response data format from backend (alert and other data separate)
-- update backend routes where needed
-
-### Other
-
-- chordsList does not need to be kept in redux store, only user added chords?
-- move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
-- Memoize (scale)Notes to prevent rerender when changing between add round and add extra
-- hook for using howls? (or delete useHowls.js)
-- Split howls loading status into loaded and error (and error msg)?
-- Move logic for playing tonefield from Drum to Tonefield
-
-### Tasks
-
-- Clean up comments and unused code
-
 ## Sorted by release
 
 ### Bugfixes and minor changes
@@ -54,6 +33,9 @@
 - Use separate currentSound for patterns and play with clicks or keys?
 - move howls logic to assets? future app structure refactor (features? views?)
 - useResetCurrentBeat should live with Drum since it only affects manual playing?
+- chordsList does not need to be kept in redux store, only user added chords?
+- Split howls loading status into loaded and error (and error msg)?
+- Move logic for playing tonefield from Drum to Tonefield
 
 ### Layout update
 
@@ -77,7 +59,7 @@
 - Dark mode
 - user sound popup - info about saving settings to account? only close popup after request is handled?
 - user account only close after request is handled?
-- refactor Notes notelist buttons to own component and simplify adding and removing notes?
+- refactor Notes notelist buttons to own component and simplify adding and removing notes? less rerenders
 
 ### Song patchwork update
 

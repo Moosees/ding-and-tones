@@ -5,11 +5,9 @@ const alertSlice = createSlice({
   initialState: { msg: '' },
   reducers: {
     clearAlert(state) {
-      console.log('CLEAR ALERT');
       state.msg = '';
     },
     createAlert(state, { payload }) {
-      console.log('CREATE ALERT', { payload });
       state.msg = state.msg ? state.msg + '\n' + payload.alert : payload.alert;
     },
   },
@@ -18,10 +16,6 @@ const alertSlice = createSlice({
       .addMatcher(
         (action) => action.type.endsWith('/fulfilled'),
         (state, { payload }) => {
-          console.log('ALERT ACTION FULFILLED MATCHER', {
-            state: state.msg,
-            payload,
-          });
           if (payload?.alert)
             state.msg = state.msg
               ? state.msg + '\n' + payload.alert
@@ -31,10 +25,6 @@ const alertSlice = createSlice({
       .addMatcher(
         (action) => action.type.endsWith('/rejected'),
         (state, { payload }) => {
-          console.log('ALERT ACTION REJECTED MATCHER', {
-            state: state.msg,
-            payload,
-          });
           if (payload?.data?.error)
             state.msg = state.msg
               ? state.msg + '\n' + payload.data.error
@@ -43,7 +33,6 @@ const alertSlice = createSlice({
       )
       .addDefaultCase((state, { payload }) => {
         if (payload?.alert) {
-          console.log('ALERT DEFAULT', { payload });
           state.msg = state.msg
             ? state.msg + '\n' + payload.alert
             : payload.alert;

@@ -75,7 +75,6 @@ const songSlice = createSlice({
       state.ui.currentDropdown = isNewDropdown ? payload.beatId : null;
     },
     addNewBar(state, { payload }) {
-      console.log('addNewBarReducer', { payload });
       const { barId, bar, beats } = payload;
 
       const autoMoveOrder = createAutoMoveOrder(
@@ -135,7 +134,6 @@ const songSlice = createSlice({
       state.ui.currentDropdown = null;
     },
     loadSong(state, { payload }) {
-      console.log({ payload });
       const { song, scale, getScale, editSong } = payload;
 
       const parsedSong = parseFetchedSong(song, scale, getScale);
@@ -185,7 +183,6 @@ const songSlice = createSlice({
         state.bars[barId].measure = newMeasure;
         Object.assign(state.beats, addBeats);
         for (const beatId of deleteBeats) {
-          console.log('delete beat', beatId);
           delete state.beats[beatId];
         }
       }

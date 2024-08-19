@@ -12,12 +12,6 @@ const userSlice = createSlice({
   name: 'user',
   initialState: INITIAL_STATE,
   reducers: {
-    // signIn(state, { payload }) {
-    //   console.log('SIGN IN', { payload });
-    //   state.name = payload.user.name;
-    //   state.anonymous = payload.user.anonymous;
-    //   state.isSignedIn = true;
-    // },
     signOut(state) {
       state.name = '';
       state.anonymous = true;
@@ -30,7 +24,6 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(isUpdateUserAction, (state, action) => {
       if (!action.payload.user) return;
-      console.log('USER MATCH', { action });
 
       state.name = action.payload.user.name;
       state.anonymous = action.payload.user.anonymous;
@@ -38,7 +31,6 @@ const userSlice = createSlice({
     builder.addMatcher(isSignInAction, (state, action) => {
       if (!action.payload.user) return;
 
-      console.log('SIGN IN MATCH');
       state.isSignedIn = true;
     });
   },

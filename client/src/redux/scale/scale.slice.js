@@ -107,9 +107,7 @@ const scaleSlice = createSlice({
     },
     loadScale(state, { payload }) {
       const { scale } = payload;
-      console.log({ scale });
       const { notes, parsed, info, isOwner, scaleId } = parseScaleData(scale);
-      console.log({ notes, parsed, info, isOwner, scaleId });
 
       state.notes = notes;
       state.parsed = parsed;
@@ -150,7 +148,6 @@ const scaleSlice = createSlice({
     removeNoteFromScale(state, action) {
       const { noteToRemove, type } = action.payload;
 
-      console.log(type);
       const update = {};
 
       if (['extra', 'round'].includes(type)) {
@@ -271,7 +268,6 @@ const scaleSlice = createSlice({
         state.parsed.pitched,
       );
 
-      console.log({ newStatus: status });
       state.howls.status = status;
     });
     builder.addMatcher(
@@ -300,7 +296,6 @@ const scaleSlice = createSlice({
     });
     builder.addMatcher(isFirstLoadAction, (state, action) => {
       const { endpointName, originalArgs } = action.meta.arg;
-      console.log('isFirstLoadAction', { endpointName, originalArgs });
 
       let loadScale = false;
 
@@ -320,7 +315,6 @@ const scaleSlice = createSlice({
       }
 
       if (loadScale) {
-        console.log('isFirstLoadAction LOAD SCALE');
         const firstHowlStatus = updateHowls(
           {},
           audioSources[0].path,
@@ -328,8 +322,6 @@ const scaleSlice = createSlice({
         );
 
         state.howls.status = firstHowlStatus;
-      } else {
-        console.log('isFirstLoadAction SKIP');
       }
     });
     builder.addMatcher(
@@ -340,7 +332,6 @@ const scaleSlice = createSlice({
         if (getScale && action.payload.scale) return;
         if (Object.keys(state.howls.status).length > 0) return;
 
-        console.log('LOADING SCALES AS SCALE NOT FOUND WITH SONG', { action });
         const firstHowlStatus = updateHowls(
           {},
           audioSources[0].path,

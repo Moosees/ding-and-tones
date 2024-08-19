@@ -42,15 +42,7 @@ export const api = createApi({
         try {
           const { data } = await queryFulfilled;
           if (!data.user || !data.sound || !data.song) return;
-          console.log('CHECK SESSION DATA', { data });
           const { sound } = data;
-
-          // dispatch(
-          //   signIn({
-          //       accountOpen: false,
-          //     song: { isOwner: song.isOwner }
-          //   })
-          // );
 
           dispatch(setVolume({ volume: sound.volume }));
           dispatch(selectAudioSrc({ audioOption: sound.audioOption }));
@@ -64,8 +56,7 @@ export const api = createApi({
       }),
       async onQueryStarted(_res, { dispatch, queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled;
-          console.log('SIGN OUT DATA', { data });
+          await queryFulfilled;
           dispatch(signOut());
         } catch (error) {}
       },
@@ -84,17 +75,8 @@ export const api = createApi({
       }),
       async onQueryStarted(_signInData, { dispatch, queryFulfilled }) {
         try {
-          const { data, meta } = await queryFulfilled;
-          const { status } = meta.response;
+          const { data } = await queryFulfilled;
           const { sound } = data;
-          console.log('SIGN IN', { status, data });
-
-          // dispatch(
-          //   signIn({
-          //     song: { isOwner: song.isOwner },
-          //     accountOpen: code === 201,
-          //   })
-          // );
 
           dispatch(setVolume({ volume: sound.volume }));
           dispatch(selectAudioSrc({ audioOption: sound.audioOption }));
@@ -121,11 +103,8 @@ export const api = createApi({
       async onQueryStarted(_args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log('GET SCALE BY ID DATA', { data });
           dispatch(loadScale({ scale: data.scale }));
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (_error) {}
       },
     }),
     saveScale: builder.mutation({
@@ -183,7 +162,6 @@ export const api = createApi({
       ) {
         try {
           const { data } = await queryFulfilled;
-          console.log('GET SONG BY ID DATA', { data });
           dispatch(
             loadSong({
               song: data.song,

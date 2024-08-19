@@ -294,8 +294,7 @@ exports.getSongById = async (req, res) => {
     }
 
     res.status(200).json(parsedSong);
-  } catch (error) {
-    console.log(error);
+  } catch (_error) {
     res.status(500).json({ error: defaultErrorMsg });
   }
 };

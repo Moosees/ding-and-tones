@@ -37,7 +37,6 @@ const drumSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(isChangeNotesAction, (state, { payload }) => {
-      console.log('DRUM CHANGE NOTES MATCHER', { payload });
       state.displayedChord = null;
       state.displayedNote = payload.scale?.info?.rootIndex || 0;
     });
