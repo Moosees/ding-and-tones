@@ -10,11 +10,6 @@
 
 ### Other
 
-- check positions useSelector if it can be more specific
-- scale.parsed.pitched better equality check? same with currentSound
-- sign in cross origin warning? (cause: unsupported browser fix?)
-- user sound popup - info about saving settings to account?
-- PopupAccount only close if mutation is successful?
 - isSignedIn derived from username instead of extra key in redux?
 - refactor pattern and beats updating songUi in patternPlayer.js?
 - Refactor scale.utils (redux)?
@@ -46,6 +41,8 @@
 - Failing to save song (inside popup) gives no feedback to user
 - fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
 - SongView Bars performance fixes (split and select better)?
+- sign in cross origin warning? (cause: unsupported browser fix?)
+- scale.parsed.pitched selectors can be memoized in some cases?
 
 ### Home page and nav update
 
@@ -84,6 +81,8 @@
 - Close on outside click for dropdown?
 - Allow to skip from last to first beat and opposite
 - Dark mode
+- user sound popup - info about saving settings to account? only close popup after request is handled?
+- user account only close after request is handled?
 
 ### Song patchwork update
 
