@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsBarMuted } from '../../../redux/song/song.selectors';
+import { makeSelectIsBarMuted } from '../../../redux/song/song.selectors';
 import {
   deleteBar,
   duplicateBar,
@@ -13,10 +13,12 @@ import { ControlsContainer } from './barControls.styles';
 import { copyBar } from './barControls.utils';
 
 const BarControls = ({ barId, toggleEditSubdivisions }) => {
+  const selectIsBarMuted = useMemo(makeSelectIsBarMuted, []);
+
   const dispatch = useDispatch();
   const metre = useSelector(({ song }) => song.bars[barId].metre);
   const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
-  const isMuted = useSelector((state) => selectIsBarMuted(state, barId));
+  const isBarMuted = useSelector((state) => selectIsBarMuted(state, barId));
 
   const handleSetSubdivision = (subdivisionString) => {
     const newSubdivisions = subdivisionString
@@ -43,8 +45,8 @@ const BarControls = ({ barId, toggleEditSubdivisions }) => {
         onClick={() => dispatch(deleteBar({ barId }))}
       />
       <BtnIcon
-        title={isMuted ? 'Unmute bar' : 'Mute bar'}
-        icon={isMuted ? 'music_off' : 'music_note'}
+        title={isBarMuted ? 'Unmute bar' : 'Mute bar'}
+        icon={isBarMuted ? 'music_off' : 'music_note'}
         onClick={() => dispatch(toggleMuteBar({ barId, solo: false }))}
       />
       <BtnIcon

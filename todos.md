@@ -10,10 +10,8 @@
 
 ### Other
 
-- songPlayer state selectors?
 - check positions useSelector if it can be more specific
 - scale.parsed.pitched better equality check? same with currentSound
-- songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
 - sign in cross origin warning? (cause: unsupported browser fix?)
 - user sound popup - info about saving settings to account?
 - PopupAccount only close if mutation is successful?
@@ -47,6 +45,7 @@
 - Deleting scale (and song?) blocks ability to save scale - fixed?
 - Failing to save song (inside popup) gives no feedback to user
 - fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
+- SongView Bars performance fixes (split and select better)?
 
 ### Home page and nav update
 
