@@ -1,37 +1,39 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import useValidate from '../../../hooks/useValidate';
-import { saveUserInfo, toggleAccount } from '../../../redux/user/user.actions';
+import { useSaveUserInfoMutation } from '../../../redux/api/api.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoInput from '../../shared/input/InfoInput';
 import InfoBox from '../../shared/layout/InfoBox';
 import Popup from '../../shared/popup/Popup';
 
-const PopupAccount = ({ clearNewUser }) => {
-  const dispatch = useDispatch();
-  const { isAnonymous, name } = useSelector(({ user }) => ({
-    isAnonymous: user.isAnonymous,
-    name: user.name,
-  }));
+const PopupAccount = ({ onClose }) => {
+  const anonymous = useSelector(({ user }) => user.anonymous);
+  const name = useSelector(({ user }) => user.name);
+  const [saveUserInfo] = useSaveUserInfoMutation();
 
-  const [anon, setAnon] = useState(isAnonymous);
+  const [anon, setAnon] = useState(anonymous);
 
   const [username, setUsername, usernameErrors, usernameValid] = useValidate(
     'username',
-    name
+    name,
   );
 
   const handleSave = () => {
-    if (usernameValid) dispatch(saveUserInfo(username, anon));
-  };
+    if (!usernameValid) return;
+    if (username !== name || anon !== anonymous) {
+      saveUserInfo({
+        name: username,
+        anonymous: anon,
+      });
+    }
 
-  const handleToggleAccount = () => {
-    dispatch(toggleAccount());
+    onClose();
   };
 
   return (
-    <Popup header="Account" onClose={handleToggleAccount}>
+    <Popup header="Account" onClose={onClose}>
       <InfoInput
         autoFocus
         large
@@ -52,7 +54,7 @@ const PopupAccount = ({ clearNewUser }) => {
       </InfoBox>
       <Popup.Flex>
         <BtnPrimary label="Save" onClick={handleSave} />
-        <BtnPrimary light label="Cancel" onClick={handleToggleAccount} />
+        <BtnPrimary light label="Cancel" onClick={onClose} />
       </Popup.Flex>
     </Popup>
   );

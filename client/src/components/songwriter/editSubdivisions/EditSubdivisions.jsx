@@ -1,21 +1,19 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateBarSubdivisions } from '../../../redux/song/song.actions';
+import { updateBarSubdivisions } from '../../../redux/song/song.slice';
 import Subdivision from '../../shared/metreControls/Subdivision';
 import { EditSubdivisionsContainer } from './editSubdivisions.styles';
 
 const EditSubdivisions = ({ barId }) => {
   const dispatch = useDispatch();
-  const { metre, subdivisions } = useSelector(({ song }) => ({
-    metre: song.bars[barId].metre,
-    subdivisions: song.bars[barId].subdivisions,
-  }));
+  const metre = useSelector(({ song }) => song.bars[barId].metre);
+  const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
 
   const handleSetSubdivision = (value, beatIndex) => {
     const newSubdivisions = [...subdivisions];
     newSubdivisions[beatIndex] = parseInt(value);
 
-    dispatch(updateBarSubdivisions(barId, newSubdivisions));
+    dispatch(updateBarSubdivisions({ barId, newSubdivisions }));
   };
 
   return (

@@ -61,7 +61,8 @@ export const IconButton = styled.button`
 
   &:hover:not([disabled]) i,
   &:focus:not([disabled]) i {
-    ${({ $editOnly, theme }) => !$editOnly && `color: ${theme.colorBtnConfirm};`}
+    ${({ $editOnly, theme }) =>
+      !$editOnly && `color: ${theme.colorBtnConfirm};`}
   }
 
   &:focus:not([disabled]) {
@@ -85,7 +86,7 @@ export const NavButton = styled.button`
     $isActive ? theme.colorBox : theme.colorNavBorder};
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   font-size: ${({ theme }) => theme.fzLarger};
   margin: -3px 2px 0;
   min-width: 6rem;
@@ -98,7 +99,8 @@ export const NavButton = styled.button`
 
   &:hover, &:focus {
     outline: 0;
-    ${({ $isActive }) => !$isActive && 'transform: translateY(-2%) scale(1.04);'}
+    ${({ $isActive, disabled }) =>
+      !$isActive && !disabled && 'transform: translateY(-2%) scale(1.04);'}
   }
 `;
 

@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -53,7 +53,6 @@ app.use(session(sess));
 const scaleRoutes = require('./routes/scale');
 const songRoutes = require('./routes/song');
 const userRoutes = require('./routes/user');
-const { getUserId } = require('./middleware/auth');
 
 app.use('/api/', scaleRoutes);
 app.use('/api/', songRoutes);

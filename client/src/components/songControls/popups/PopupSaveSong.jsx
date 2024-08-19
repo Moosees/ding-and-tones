@@ -1,30 +1,25 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { togglePrivateSong } from '../../../redux/song/song.actions';
+import { selectScaleName } from '../../../redux/scale/scale.selectors';
+import { togglePrivateSong } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Popup from '../../shared/popup/Popup';
 
 const PopupSaveSong = ({ onClose, onSave, title }) => {
   const dispatch = useDispatch();
-  const {
-    newScaleId,
-    newScaleName,
-    isOwner,
-    isPrivate,
-    oldScaleId,
-    oldScaleName,
-  } = useSelector(({ scale, song }) => ({
-    newScaleId: scale.ui.scaleId,
-    newScaleName: `${scale.info.rootName} ${scale.info.name}`,
-    isOwner: song.ui.isOwner,
-    isPrivate: song.ui.isPrivate,
-    oldScaleId: song.ui.scaleId,
-    oldScaleName: song.ui.scaleName,
-  }));
+  const newScaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const newScaleName = useSelector(selectScaleName);
+  const isOwner = useSelector(({ song }) => song.refs.isOwner);
+  const isPrivate = useSelector(({ song }) => song.refs.isPrivate);
+  const oldScaleId = useSelector(({ song }) => song.refs.scaleId);
+  const oldScaleName = useSelector(({ song }) => song.ui.scaleName);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
 
   const [selectedScale, setSelectedScale] = useState(
-    !isOwner && !oldScaleId ? newScaleId : oldScaleId
+    !isOwner && !oldScaleId ? newScaleId : oldScaleId,
   );
   const hasNewScale = newScaleId !== oldScaleId;
 
@@ -66,12 +61,13 @@ const PopupSaveSong = ({ onClose, onSave, title }) => {
       </Popup.Section>
       <Popup.Flex>
         <BtnPrimary
+          disabled={isSongPlaying}
           label="Save New"
           onClick={() => onSave(selectedScale, true)}
         />
         <BtnPrimary
           label="Save"
-          disabled={!isOwner}
+          disabled={!isOwner || isSongPlaying}
           onClick={() => onSave(selectedScale, false)}
         />
         <BtnPrimary light label="Cancel" onClick={onClose} />

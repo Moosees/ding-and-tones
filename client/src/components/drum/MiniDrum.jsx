@@ -5,29 +5,25 @@ import MiniExtra from './tonefield/MiniExtra';
 import MiniTonefield from './tonefield/MiniTonefield';
 
 const MiniDrum = ({ noExtraTones, showNoteList }) => {
-  const { sharpNotes, dings, round, extra, positionMap } = useSelector(
-    ({ scale }) => ({
-      sharpNotes: scale.info.sharpNotes,
-      dings: scale.notes.dings,
-      round: scale.notes.round,
-      extra: scale.notes.extra,
-      positionMap: scale.parsed.positions,
-    })
-  );
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const dings = useSelector(({ scale }) => scale.notes.dings);
+  const round = useSelector(({ scale }) => scale.notes.round);
+  const extra = useSelector(({ scale }) => scale.notes.extra);
+  const positions = useSelector(({ scale }) => scale.parsed.positions);
 
   const dingRound = [...dings, ...round];
 
-  const roundTonefields = positionMap.map((tonefield, i) => {
+  const roundTonefields = positions.map((position, i) => {
     return (
       <MiniTonefield
-        key={i}
+        key={dingRound[i]}
         note={dingRound[i]}
-        position={positionMap[i]}
+        position={position}
         isDing={i === 0}
         showNote={
           !showNoteList ||
           showNoteList.includes(
-            dingRound[i].substring(0, dingRound[i].length - 1)
+            dingRound[i].substring(0, dingRound[i].length - 1),
           )
         }
         sharpNotes={sharpNotes}

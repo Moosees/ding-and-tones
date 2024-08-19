@@ -13,15 +13,11 @@ import {
 } from './songView.styles';
 
 const SongView = () => {
-  const { arrangement, bpm, composer, title, headersOpen } = useSelector(
-    ({ song, ui }) => ({
-      arrangement: song.arrangement,
-      bpm: song.info.bpm,
-      composer: song.ui.composer,
-      title: song.info.title,
-      headersOpen: ui.headersOpen,
-    })
-  );
+  const arrangement = useSelector(({ song }) => song.arrangement);
+  const bpm = useSelector(({ song }) => song.info.bpm);
+  const composer = useSelector(({ song }) => song.refs.composer);
+  const title = useSelector(({ song }) => song.info.title);
+  const headersOpen = useSelector(({ song }) => song.ui.headersOpen);
 
   const bars = arrangement.map((bar, i) => {
     return <Bar key={bar} barId={bar} prevBar={arrangement[i - 1] || null} />;

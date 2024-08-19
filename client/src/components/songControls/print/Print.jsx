@@ -8,7 +8,9 @@ const ReactToPrint = lazy(() =>
 );
 
 const Print = () => {
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
+  );
 
   const [showPrint, setShowPrint] = useState(false);
 

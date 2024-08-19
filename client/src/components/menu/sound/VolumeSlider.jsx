@@ -3,7 +3,7 @@ import 'rc-slider/assets/index.css';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { setVolume } from '../../../redux/howls/howls.actions';
+import { setVolume } from '../../../redux/scale/scale.slice';
 import './slider-override.css';
 
 const Mark = styled.span`
@@ -24,7 +24,7 @@ const marks = {
 
 const VolumeSlider = () => {
   const dispatch = useDispatch();
-  const volume = useSelector(({ howls }) => howls.info.volume);
+  const volume = useSelector(({ scale }) => scale.howls.volume);
 
   return (
     <Slider
@@ -34,7 +34,7 @@ const VolumeSlider = () => {
       max={1.0}
       marks={marks}
       included={false}
-      onChange={(value) => dispatch(setVolume(value))}
+      onChange={(value) => dispatch(setVolume({ volume: value }))}
       handleStyle={{
         backgroundColor: '#888',
         border: '1px solid #444',

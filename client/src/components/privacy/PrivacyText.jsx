@@ -1,7 +1,11 @@
 import React from 'react';
-import { PrivacyHeader, PrivacyParagraph, TermsContainer } from './privacy.styles';
+import {
+  PrivacyHeader,
+  PrivacyParagraph,
+  TermsContainer,
+} from './privacy.styles';
 
-const PrivacyText = ({ privacyOpen, setPrivacyOpen }) => (
+const PrivacyText = () => (
   <TermsContainer>
     <PrivacyHeader>Ding and Tones vision</PrivacyHeader>
     <PrivacyParagraph>

@@ -1,6 +1,10 @@
 import React, { useMemo, useState } from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { createBarTemplate } from '../../../assets/metre';
+import {
+  makeSelectIsBarMuted,
+  makeSelectIsBarPlaying,
+} from '../../../redux/song/song.selectors';
 import BarControls from '../barControls/BarControls';
 import BarInfo from '../barInfo/BarInfo';
 import Beat from '../beat/Beat';
@@ -8,16 +12,14 @@ import EditSubdivisions from '../editSubdivisions/EditSubdivisions';
 import { BarContainer, Beats } from './bar.styles';
 
 const Bar = ({ barId, barIndex }) => {
-  const { metre, measure, subdivisions, isPlaying, isMuted } = useSelector(
-    ({ song, ui }) => ({
-      metre: song.bars[barId].metre,
-      measure: song.bars[barId].measure,
-      subdivisions: song.bars[barId].subdivisions,
-      isPlaying: ui.currentBar === barId,
-      isMuted: ui.mutedBars[barId] && ui.mutedBars[barId] === true,
-    }),
-    shallowEqual
-  );
+  const selectIsBarPlaying = useMemo(makeSelectIsBarPlaying, []);
+  const selectIsBarMuted = useMemo(makeSelectIsBarMuted, []);
+
+  const metre = useSelector(({ song }) => song.bars[barId].metre);
+  const measure = useSelector(({ song }) => song.bars[barId].measure);
+  const subdivisions = useSelector(({ song }) => song.bars[barId].subdivisions);
+  const isBarPlaying = useSelector((state) => selectIsBarPlaying(state, barId));
+  const isBarMuted = useSelector((state) => selectIsBarMuted(state, barId));
 
   const [editSubdivisionsOpen, setEditSubdivisionsOpen] = useState(false);
 
@@ -28,11 +30,11 @@ const Bar = ({ barId, barIndex }) => {
   return (
     <BarContainer>
       <BarInfo barId={barId} barIndex={barIndex} />
-      <Beats $isPlaying={isPlaying}>
+      <Beats $isPlaying={isBarPlaying}>
         {measure.map((beatId, i) => (
           <Beat
             key={beatId}
-            isMuted={isMuted}
+            isMuted={isBarMuted}
             beatId={beatId}
             template={barTemplate[i]}
             editSubdivisionsOpen={editSubdivisionsOpen}
@@ -44,7 +46,7 @@ const Bar = ({ barId, barIndex }) => {
         barId={barId}
         toggleEditSubdivisions={() =>
           setEditSubdivisionsOpen(
-            (editSubdivisionsOpen) => !editSubdivisionsOpen
+            (editSubdivisionsOpen) => !editSubdivisionsOpen,
           )
         }
       />

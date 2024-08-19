@@ -1,5 +1,5 @@
 const parseScaleForSongFetch = (scale, userId) => {
-  const { _id, author, info, notes } = scale;
+  const { _id, author, info, notes, scaleName } = scale;
   const { dings = [], round = [], extra = [] } = notes;
 
   const extraParsed = extra.map(({ note, pos }) => ({ note, pos }));
@@ -11,6 +11,8 @@ const parseScaleForSongFetch = (scale, userId) => {
     notes: { dings, round, extra: extraParsed },
     scaleId: _id,
     isOwner,
+    scaleName,
+    scaleLabel: info.label,
   };
 };
 
@@ -27,44 +29,56 @@ exports.parseGetResponse = (songObject, userId) => {
     songObject;
   const anonymousComposer = !composer || composer.anonymous || !composer.name;
 
+  const scaleParsed = scale ? parseScaleForSongFetch(scale, userId) : null;
+
+  const alerts = {
+    skip: `"${info.title}" loaded without scale`,
+    scale: scaleParsed
+      ? `"${info.title}" loaded with scale: "${scaleParsed.scaleName}"`
+      : `"${info.title}" loaded, no linked scale found`,
+  };
+
   return {
-    isOwner: determineIsOwner(userId, composer),
-    songId: _id,
-    composer: anonymousComposer ? 'Anonymous' : composer.name,
-    arrangement,
-    bars,
-    beats,
-    info,
-    isPrivate,
-    scale: scale ? parseScaleForSongFetch(scale, userId) : false,
+    alerts,
+    song: {
+      isOwner: determineIsOwner(userId, composer),
+      songId: _id,
+      composer: anonymousComposer ? 'Anonymous' : composer.name,
+      arrangement,
+      bars,
+      beats,
+      info,
+      isPrivate,
+    },
+    scale: scaleParsed,
   };
 };
 
-exports.parseSearchResponse = (songObject, userId, scaleName, scaleLabel) => {
-  const {
-    _id,
-    composer,
-    scale,
-    info: { title, metre, difficulty },
-  } = songObject;
-
-  const isOwner = userId && composer ? userId.equals(composer._id) : false;
-
-  return {
-    isOwner,
-    scaleId: scale,
-    songId: _id,
-    scaleLabel: scale ? scaleLabel : '',
-    scaleName: scale ? scaleName : 'N/A',
-    composer:
-      isOwner || (composer && !composer.anonymous)
-        ? composer.name
-        : 'Anonymous',
-    title,
-    metre,
-    difficulty,
-  };
-};
+// exports.parseSearchResponse = (songObject, userId, scaleName, scaleLabel) => {
+//   const {
+//     _id,
+//     composer,
+//     scale,
+//     info: { title, metre, difficulty },
+//   } = songObject;
+//
+//   const isOwner = userId && composer ? userId.equals(composer._id) : false;
+//
+//   return {
+//     isOwner,
+//     scaleId: scale,
+//     songId: _id,
+//     scaleLabel: scale ? scaleLabel : '',
+//     scaleName: scale ? scaleName : 'N/A',
+//     composer:
+//       isOwner || (composer && !composer.anonymous)
+//         ? composer.name
+//         : 'Anonymous',
+//     title,
+//     metre,
+//     difficulty,
+//   };
+// };
 
 // exports.parseSaveResponse = (songObject, userId) => {
 //   const { _id, composer, info } = songObject;

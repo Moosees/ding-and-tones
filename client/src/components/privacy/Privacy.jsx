@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import useDimensions from '../../hooks/useDimensions';
-import { setPrivacyOpen } from '../../redux/ui/ui.actions';
+import { setPrivacyOpen } from '../../redux/user/user.slice';
 import PrivacyPopup from './PrivacyPopup';
 import { Copyright, MobileCopyright, PrivacyLink } from './privacy.styles';
 
@@ -16,7 +16,9 @@ const Privacy = () => {
       ) : (
         <Copyright>
           Copyright &copy; 2023 Linus Almgren -{' '}
-          <PrivacyLink onClick={() => dispatch(setPrivacyOpen(true))}>
+          <PrivacyLink
+            onClick={() => dispatch(setPrivacyOpen({ privacyOpen: true }))}
+          >
             Terms and privacy
           </PrivacyLink>
         </Copyright>

@@ -5,11 +5,11 @@ import { helpTopics } from '../../../assets/help';
 import {
   setAllChordFiltersTo,
   toggleChordIsSelected,
-} from '../../../redux/chords/chords.actions';
-import { setDisplayedChord } from '../../../redux/drum/drum.actions';
+} from '../../../redux/chords/chords.slice';
+import { setDisplayedChord } from '../../../redux/drum/drum.slice';
 import BtnHelp from '../../shared/button/BtnHelp';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/BtnPrimary';
+import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import ScrollBox from '../../shared/scrollBox/ScrollBox';
@@ -35,18 +35,17 @@ const CheckBoxes = styled.div`
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const { chordList, scale } = useSelector(({ chords, scale }) => ({
-    chordList: chords.chordList,
-    scale: scale.parsed.pitched,
-  }));
+  const chordList = useSelector(({ chords }) => chords.chordList);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const rootIndex = useSelector(({ scale }) => scale.info.rootIndex);
 
   useEffect(() => {
-    dispatch(toggleChordIsSelected(null, scale));
+    dispatch(toggleChordIsSelected({ id: null, scale }));
   }, [dispatch, scale]);
 
   const handleClear = () => {
-    dispatch(setAllChordFiltersTo(false, scale));
-    dispatch(setDisplayedChord(null));
+    dispatch(setAllChordFiltersTo({ value: false, scale }));
+    dispatch(setDisplayedChord({ chord: null, rootIndex }));
   };
 
   const allChords = chordList.map((chord) => (
@@ -54,7 +53,7 @@ const Filter = () => {
       key={chord.id}
       label={chord.name}
       checked={chord.isSelected}
-      onChange={() => dispatch(toggleChordIsSelected(chord.id, scale))}
+      onChange={() => dispatch(toggleChordIsSelected({ id: chord.id, scale }))}
     />
   ));
 
@@ -73,7 +72,7 @@ const Filter = () => {
         <BtnPrimary
           label="All"
           light
-          onClick={() => dispatch(setAllChordFiltersTo(true, scale))}
+          onClick={() => dispatch(setAllChordFiltersTo({ value: true, scale }))}
         />
         <BtnPrimary label="None" light onClick={handleClear} />
       </Buttons>

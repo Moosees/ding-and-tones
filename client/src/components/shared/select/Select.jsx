@@ -4,7 +4,9 @@ import { SelectDropdown, SelectLabel } from './select.styles';
 import { parseOptions } from './select.utils';
 
 const Select = ({ label, large, handleChange, options, value }) => {
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
+  );
 
   return (
     <SelectLabel as="label" disabled={isSongPlaying} $large={large}>

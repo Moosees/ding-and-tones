@@ -10,7 +10,8 @@ export const SignInContainer = styled.div`
 `;
 
 export const TermsLink = styled.a`
-  cursor: ${({ $privacyOpen }) => ($privacyOpen ? 'default' : 'pointer')};
+  cursor: ${({ $privacyEmbedOpen }) =>
+    $privacyEmbedOpen ? 'default' : 'pointer'};
   text-decoration: underline;
   padding-bottom: 1rem;
 `;

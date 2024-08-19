@@ -8,10 +8,13 @@ export const AlertContainer = styled.div`
   bottom: 15%;
   box-shadow: ${({ theme }) => theme.shadowHeavy};
   display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
   left: 50%;
+  min-width: 15%;
   opacity: 0.95;
   transform: translateX(-50%);
-  padding: 1rem;
+  padding: 1.5rem;
   position: absolute;
   z-index: 2000;
 
@@ -28,5 +31,7 @@ export const AlertContainer = styled.div`
 `;
 
 export const AlertText = styled.span`
-  margin: 0 1rem;
+  line-height: 1.4;
+  text-align: center;
+  white-space: pre;
 `;

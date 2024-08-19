@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import { saveSong, updateSongInfo } from '../../../redux/song/song.actions';
+import { useSaveSongMutation } from '../../../redux/api/api.slice';
+import { updateSongInfo } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import InfoText from '../../shared/input/InfoText';
@@ -11,33 +12,28 @@ import Select from '../../shared/select/Select';
 import PopupNewSong from '../popups/PopupNewSong';
 import PopupSaveSong from '../popups/PopupSaveSong';
 import { ControlsContainer } from './controls.styles';
+import { parseSongForSaving } from './controls.utils';
 
 const ControlsLeft = () => {
   const dispatch = useDispatch();
-  const {
-    songScaleId,
-    arrangement,
-    songInfo,
-    isOwner,
-    isSaving,
-    isSongPlaying,
-    isSignedIn,
-  } = useSelector(({ scale, song, ui, user }) => ({
-    songScaleId: song.ui.scaleId,
-    arrangement: song.arrangement,
-    songInfo: song.info,
-    isOwner: song.ui.isOwner,
-    isSaving: song.ui.isSaving,
-    isSongPlaying: ui.isSongPlaying,
-    isSignedIn: user.isSignedIn,
-  }));
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
+  const arrangement = useSelector(({ song }) => song.arrangement);
+  const savedTitle = useSelector(({ song }) => song.info.title);
+  const difficulty = useSelector(({ song }) => song.info.difficulty);
+  const savedScaleId = useSelector(({ song }) => song.refs.scaleId);
+  const isOwner = useSelector(({ song }) => song.refs.isOwner);
+
+  const [saveSong, { isLoading: isSaving }] = useSaveSongMutation();
 
   const [newSongOpen, setNewSongOpen] = useState(false);
   const [saveSongOpen, setSaveSongOpen] = useState(false);
   const navigate = useNavigate();
 
   const [title, handleTitleChange, titleErrors, isTitleValid, resetTitle] =
-    useValidate('songTitle', songInfo.title);
+    useValidate('songTitle', savedTitle);
 
   const isArrangementValid =
     arrangement.length >= 1 && arrangement.length <= 100;
@@ -48,11 +44,14 @@ const ControlsLeft = () => {
     !isTitleValid ||
     !isArrangementValid;
 
-  const saveSongCb = (scaleId, saveAs) => {
-    dispatch(saveSong({ saveAs, title, scaleId })).then((res) => {
-      setSaveSongOpen(false);
-      if (res) navigate(res, { replace: true });
-    });
+  const saveSongCb = async (scaleId, saveAs) => {
+    const parsedSong = parseSongForSaving(saveAs, title, scaleId);
+    const res = await saveSong({ song: parsedSong }).unwrap();
+
+    if (!res.song?.songId) return;
+
+    setSaveSongOpen(false);
+    navigate(`/song/${res.song.songId}`, { replace: true });
   };
 
   return (
@@ -61,17 +60,17 @@ const ControlsLeft = () => {
         <InfoText
           handleChange={handleTitleChange}
           handleClose={resetTitle}
-          handleSave={() => dispatch(updateSongInfo({ title }))}
+          handleSave={() => dispatch(updateSongInfo({ songInfo: { title } }))}
           isValid={isTitleValid}
           label={titleErrors.length ? titleErrors[0] : 'Song title:'}
           value={title}
         >
-          {songInfo.title}
+          {savedTitle}
         </InfoText>
         <Select
-          value={songInfo.difficulty}
+          value={difficulty}
           handleChange={(value) =>
-            dispatch(updateSongInfo({ difficulty: value }))
+            dispatch(updateSongInfo({ songInfo: { difficulty: value } }))
           }
           options={optionsDifficulty}
           label="Difficulty: "
@@ -85,7 +84,7 @@ const ControlsLeft = () => {
           <BtnPrimary
             disabled={!isOwner || disableSaveSong}
             label="Save"
-            onClick={() => saveSongCb(songScaleId, false)}
+            onClick={() => saveSongCb(savedScaleId, false)}
           />
           <BtnPrimary
             disabled={isSongPlaying || isSaving || !isTitleValid}

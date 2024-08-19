@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCloseOutside from '../../../hooks/useCloseOutside';
-import { setPrivacyOpen } from '../../../redux/ui/ui.actions';
+import { setPrivacyOpen } from '../../../redux/user/user.slice';
 import BtnMenu from '../../shared/button/BtnMenu';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import Account from '../account/Account';
@@ -12,10 +12,8 @@ import { DropdownContainer } from './dropdown.styles';
 
 const DropdownMobile = ({ btnRef, isOpenCb }) => {
   const dispatch = useDispatch();
-  const { scaleId, songId } = useSelector(({ scale, song }) => ({
-    scaleId: scale.ui.scaleId,
-    songId: song.ui.songId,
-  }));
+  const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const songId = useSelector(({ song }) => song.refs.songId);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -54,7 +52,10 @@ const DropdownMobile = ({ btnRef, isOpenCb }) => {
       {/* <BtnMenu label="Help" icon="help_outline" /> */}
       <Account />
       <SignIn />
-      <BtnMenu label="Privacy" onClick={() => dispatch(setPrivacyOpen(true))} />
+      <BtnMenu
+        label="Privacy"
+        onClick={() => dispatch(setPrivacyOpen({ privacyOpen: true }))}
+      />
     </DropdownContainer>
   );
 };

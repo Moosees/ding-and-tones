@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentlyPlaying } from '../../redux/ui/ui.actions';
+import { howls } from '../../assets/sound/howls';
+import { updateSongPlayer } from '../../redux/song/song.slice';
 import { DrumContainer, DrumSvg, DrumWrapper } from './drum.styles';
 import { getChordColor, getNoteColor, getNoteText } from './drum.utils';
 import ExtraNote from './tonefield/ExtraNote';
@@ -9,29 +10,19 @@ import Tonefield from './tonefield/Tonefield';
 
 const Drum = ({ style }) => {
   const dispatch = useDispatch();
-  const {
-    displayedChord,
-    displayedNote,
-    drumMode,
-    howls,
-    sharpNotes,
-    scale,
-    currentSound,
-  } = useSelector(({ drum, howls, scale, ui }) => ({
-    displayedChord: drum.displayedChord,
-    displayedNote: drum.displayedNote,
-    drumMode: drum.drumMode,
-    howls: howls.data,
-    sharpNotes: scale.info.sharpNotes,
-    scale: scale.parsed.pitched,
-    currentSound: ui.currentSound,
-  }));
+  const displayedChord = useSelector(({ drum }) => drum.displayedChord);
+  const displayedNote = useSelector(({ drum }) => drum.displayedNote);
+  const drumMode = useSelector(({ drum }) => drum.drumMode);
+  const status = useSelector(({ scale }) => scale.howls.status);
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const currentSound = useSelector(({ song }) => song.songPlayer.currentSound);
 
   const handlePlay = (note, option, currentHand = 1) => {
-    if (!howls[note] || howls[note].status !== 'ready') return;
+    if (!howls[note] || status[note] !== 'ready') return;
 
-    dispatch(setCurrentlyPlaying({ currentHand, currentSound: [option] }));
-    
+    dispatch(updateSongPlayer({ currentHand, currentSound: [option] }));
+
     howls[note].play();
   };
 
@@ -46,14 +37,14 @@ const Drum = ({ style }) => {
 
       const text = showNote
         ? getNoteText(
-            note.note,
-            i,
-            scale[displayedNote].intervalMap,
-            drumMode,
-            displayedChord,
-            note.option,
-            sharpNotes
-          )
+          note.note,
+          i,
+          scale[displayedNote].intervalMap,
+          drumMode,
+          displayedChord,
+          note.option,
+          sharpNotes
+        )
         : '';
 
       const color = showNote

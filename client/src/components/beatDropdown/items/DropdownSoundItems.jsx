@@ -2,8 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MAX_NOTES_IN_BEAT } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
-import { updateSoundForBeat } from '../../../redux/song/song.actions';
-import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
+import { howls } from '../../../assets/sound/howls';
+import {
+  updateSongPlayer,
+  updateSoundForBeat,
+} from '../../../redux/song/song.slice';
 import { DropdownItem } from './dropdownItems.styles';
 
 const DropdownSoundItems = ({
@@ -13,11 +16,9 @@ const DropdownSoundItems = ({
   soundList,
 }) => {
   const dispatch = useDispatch();
-  const { howls, sound, multiSelect } = useSelector(({ howls, song, ui }) => ({
-    howls: howls.data,
-    sound: song.beats[beatId].sound,
-    multiSelect: ui.multiSelect,
-  }));
+  const status = useSelector(({ scale }) => scale.howls.status);
+  const sound = useSelector(({ song }) => song.beats[beatId].sound);
+  const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
 
   const soundItems = soundList.map(({ howl, label, option }) => {
     const selected = sound.includes(option);
@@ -26,13 +27,11 @@ const DropdownSoundItems = ({
       multiSelect && sound.length >= MAX_NOTES_IN_BEAT && !selected;
 
     const handleClick = () => {
-      dispatch(updateSoundForBeat(beatId, option));
+      dispatch(updateSoundForBeat({ beatId, update: option }));
 
-      if (howls[howl] && howls[howl].status === 'ready') {
+      if (howls[howl] && status[howl] === 'ready') {
         dispatch(
-          setCurrentlyPlaying({
-            currentBeat: null,
-            currentBar: null,
+          updateSongPlayer({
             currentSound: [option],
           })
         );

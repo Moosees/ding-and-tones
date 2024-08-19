@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { optionsDifficulty } from '../../../assets/constants';
 import useValidate from '../../../hooks/useValidate';
-import { createNewSong } from '../../../redux/song/song.actions';
+import { loadSong } from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import InfoInput from '../../shared/input/InfoInput';
 import Metre from '../../shared/metreControls/Metre';
@@ -33,15 +33,18 @@ const PopupNewSong = ({ onClose }) => {
         subdivision,
         title,
       };
-      const ui = {
+
+      const song = {
         composer: 'Anonymous',
         isOwner: false,
         songId: null,
+        info,
+        bars: [],
+        beats: [],
+        arrangement: [],
       };
 
-      dispatch(
-        createNewSong({ info, ui, bars: {}, beats: {}, arrangement: [] })
-      );
+      dispatch(loadSong({ song, scale: null, loadScale: false, editSong: true }));
       navigate('/song');
       onClose();
     }

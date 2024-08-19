@@ -1,5 +1,6 @@
 import { store } from '../../redux/store';
 import { createBarTemplate } from '../metre';
+import { howls } from './howls';
 
 const getDefaultHandForSound = (sound) => {
   if (sound.length === 1) {
@@ -11,19 +12,18 @@ const getDefaultHandForSound = (sound) => {
 
 const getHowlsForScale = () => {
   const {
-    howls,
     scale: {
       parsed: { pitched },
     },
   } = store.getState();
 
   const initialNotes = {
-    t: howls.data['t'],
-    T: howls.data['T'],
+    t: howls['t'],
+    T: howls['T'],
   };
 
   return pitched.reduce((acc, { note, option }) => {
-    acc[option] = howls.data[note];
+    acc[option] = howls[note];
 
     return acc;
   }, initialNotes);
@@ -54,7 +54,7 @@ export const buildPatternFromBar = (barId, howls) => {
     };
 
     return {
-      uiUpdates: {
+      songPlayerUpdate: {
         currentBar: barId,
         currentBeat: beatId,
         currentHand: hand || getDefaultHandForSound(sound),
@@ -70,7 +70,7 @@ export const buildPatternFromBar = (barId, howls) => {
 export const buildPatternFromSong = () => {
   const {
     song: { arrangement },
-    ui: { mutedBars },
+    song: { mutedBars },
   } = store.getState();
 
   const howls = getHowlsForScale();

@@ -1,15 +1,11 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleAccount } from '../../../redux/user/user.actions';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import BtnMenu from '../../shared/button/BtnMenu';
 import PopupAccount from './PopupAccount';
 
 const Account = () => {
-  const dispatch = useDispatch();
-  const { accountOpen, isSignedIn } = useSelector(({ user }) => ({
-    accountOpen: user.accountOpen,
-    isSignedIn: user.isSignedIn,
-  }));
+  const [accountOpen, setAccountOpen] = useState(false);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
 
   return (
     <>
@@ -17,10 +13,10 @@ const Account = () => {
         <BtnMenu
           label="Account"
           icon="person_outline"
-          onClick={() => dispatch(toggleAccount())}
+          onClick={() => setAccountOpen(true)}
         />
       )}
-      {accountOpen && <PopupAccount />}
+      {accountOpen && <PopupAccount onClose={() => setAccountOpen(false)} />}
     </>
   );
 };

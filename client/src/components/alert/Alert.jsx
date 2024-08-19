@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ALERT_TIMEOUT } from '../../assets/constants';
-import { clearAlert } from '../../redux/alert/alert.actions';
+import { clearAlert } from '../../redux/alert/alert.slice';
 import BtnPrimary from '../shared/button/BtnPrimary';
 import { AlertContainer, AlertText } from './alert.styles';
 
 export const Alert = () => {
   const dispatch = useDispatch();
-  const { msg, privacyOpen } = useSelector(({ alert, ui }) => ({
-    msg: alert.msg,
-    privacyOpen: ui.privacyOpen,
-  }));
+  const msg = useSelector(({ alert }) => alert.msg);
+  const privacyOpen = useSelector(({ user }) => user.privacyOpen);
 
   useEffect(() => {
     if (msg) {

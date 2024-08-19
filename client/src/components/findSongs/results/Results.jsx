@@ -1,26 +1,28 @@
 import React, { useCallback, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { difficultyByValue } from '../../../assets/constants';
 import { metreList } from '../../../assets/metre';
-import { deleteSongById, getSongById } from '../../../redux/song/song.actions';
+import {
+  useDeleteSongByIdMutation,
+  useLazyGetSongByIdQuery,
+} from '../../../redux/api/api.slice';
 import BtnIcon from '../../shared/button/BtnIcon';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/BtnPrimary';
+import Buttons from '../../shared/button/Buttons';
 import Confirmation from '../../shared/popup/Confirmation';
 import ReactTable from './ReactTable';
 import { DeleteContainer } from './results.styles';
 
-const Results = () => {
-  const dispatch = useDispatch();
-  const { songs, isSearching, isDeleting, isSignedIn } = useSelector(
-    ({ search, song, user }) => ({
-      songs: search.songs,
-      isSearching: search.isSearching,
-      isDeleting: song.ui.isDeleting,
-      isSignedIn: user.isSignedIn,
-    })
+const Results = ({ songs }) => {
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
   );
+  const [deleteSongById, { isLoading: isDeleting }] =
+    useDeleteSongByIdMutation();
+  const [getSongById] = useLazyGetSongByIdQuery();
+
   const navigate = useNavigate();
 
   const columns = useMemo(
@@ -50,17 +52,22 @@ const Results = () => {
         style: { width: '0.001%' },
       },
     ],
-    []
+    [],
   );
 
-  const data = useMemo(() => [...songs], [songs]);
+  const data = useMemo(() => (songs ? [...songs] : []), [songs]);
 
   const renderRowExpanded = useCallback(
     ({ isOwner, scaleLabel, songId, title, scaleId }) => {
-      const fetchSongFromServer = (songId, getScale) => {
-        dispatch(getSongById(songId, getScale)).then((res) => {
-          if (res) navigate('/song');
+      const fetchSongFromServer = async (songId, getScale) => {
+        if (isSongPlaying) return;
+
+        const { isSuccess } = await getSongById({
+          songId,
+          getScale,
+          editSong: false,
         });
+        if (isSuccess) navigate('/song');
       };
 
       return (
@@ -68,12 +75,14 @@ const Results = () => {
           <td colSpan={2}>
             <Buttons position="flex-start">
               <BtnPrimary
+                disabled={isSongPlaying}
                 light
                 label="Load w/o scale"
                 onClick={() => fetchSongFromServer(songId, false)}
               />
               {scaleId && (
                 <BtnPrimary
+                  disabled={isSongPlaying}
                   light
                   label="Load with scale"
                   onClick={() => fetchSongFromServer(songId, true)}
@@ -85,13 +94,13 @@ const Results = () => {
             {isOwner && isSignedIn ? (
               <DeleteContainer>
                 <Confirmation
-                  onConfirm={() => dispatch(deleteSongById(songId))}
+                  onConfirm={() => deleteSongById({ songId })}
                   label={`Are you sure you want to delete "${title}"`}
                 >
                   <BtnIcon
                     title={`Delete "${title}"`}
                     icon="delete"
-                    disabled={isSearching || isDeleting}
+                    disabled={isDeleting || isSongPlaying}
                     position="right"
                   />
                 </Confirmation>
@@ -102,12 +111,19 @@ const Results = () => {
         </>
       );
     },
-    [dispatch, isDeleting, isSearching, isSignedIn, navigate]
+    [
+      isSongPlaying,
+      isSignedIn,
+      isDeleting,
+      getSongById,
+      navigate,
+      deleteSongById,
+    ],
   );
 
   const handleFetchMore = useCallback(
     () => console.log('fetch more songs'),
-    []
+    [],
   );
 
   return (

@@ -1,7 +1,7 @@
 const Song = require('../models/song');
 const User = require('../models/user');
 const Scale = require('../models/scale');
-const { parseGetResponse, parseSearchResponse } = require('../utils/song');
+const { parseGetResponse } = require('../utils/song');
 const { isValidObjectId } = require('mongoose');
 const { defaultErrorMsg } = require('../utils/assets');
 const ObjectId = require('mongoose').Types.ObjectId;
@@ -15,7 +15,7 @@ const getScalesForSongSearches = async (songs) => {
           acc[song.scale.toString()] = song.scale;
         }
         return acc;
-      }, {})
+      }, {}),
     );
 
     const scales = await Scale.find({ _id: { $in: scaleIds } })
@@ -30,7 +30,7 @@ const getScalesForSongSearches = async (songs) => {
         };
         return acc;
       },
-      { noScale: { scaleLabel: '', scaleName: 'N/A' } }
+      { noScale: { scaleLabel: '', scaleName: 'N/A' } },
     );
   } catch (error) {
     throw error;
@@ -45,7 +45,7 @@ const getComposersForSongSearches = async (songs) => {
           acc[song.composer.toString()] = song.composer;
         }
         return acc;
-      }, {})
+      }, {}),
     );
 
     const composers = await User.find({ _id: { $in: userIds } })
@@ -75,7 +75,7 @@ exports.songSearch = async (req, res) => {
       .exec();
 
     if (!songs.length) {
-      return res.status(204).json({ msg: 'No songs found' });
+      return res.status(200).json({ alert: 'No songs found', songs: null });
     }
 
     const scales = await getScalesForSongSearches(songs);
@@ -100,7 +100,7 @@ exports.songSearch = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -111,7 +111,9 @@ exports.getMySongs = async (req, res) => {
     const user = await User.findById(userId).select('_id name songs').exec();
 
     if (!user.songs.length) {
-      return res.status(204).json({ msg: 'No saved songs found' });
+      return res
+        .status(200)
+        .json({ alert: 'No saved songs found', songs: null });
     }
 
     const songs = await Song.find({ _id: { $in: user.songs } })
@@ -138,7 +140,7 @@ exports.getMySongs = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -155,14 +157,14 @@ exports.getNewSongs = async (req, res) => {
       .exec();
 
     if (!songs.length) {
-      return res.status(204).json({ msg: 'No songs found' });
+      return res.status(200).json({ alert: 'No songs found', songs: null });
     }
 
     const scales = await getScalesForSongSearches(songs);
 
     const composers = await getComposersForSongSearches(songs);
 
-    const resData = songs.map(({ info, _id, composer, scale }, i) => {
+    const resData = songs.map(({ info, _id, composer, scale }) => {
       const hasScale = !!scales[scale];
 
       return {
@@ -179,7 +181,7 @@ exports.getNewSongs = async (req, res) => {
 
     res.status(200).json({ songs: resData });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -193,13 +195,13 @@ exports.saveSong = async (req, res) => {
     let newSong = false;
 
     if (songUpdate.arrangement.length > 100) {
-      return res.status(400).json({ msg: 'Song is too long' });
+      return res.status(400).json({ error: 'Song is too long' });
     }
     if (songUpdate.arrangement.length < 1) {
-      return res.status(400).json({ msg: 'Song needs at least one bar' });
+      return res.status(400).json({ error: 'Song needs at least one bar' });
     }
     if (songId && !isValidObjectId(songId)) {
-      return res.status(404).json({ msg: 'Could not save song' });
+      return res.status(400).json({ error: 'Could not save song' });
     }
 
     if (!songId) {
@@ -217,7 +219,7 @@ exports.saveSong = async (req, res) => {
 
     const song = await Song.findByIdAndUpdate(
       songId || new ObjectId(),
-      songUpdate
+      songUpdate,
     )
       .setOptions({
         new: true,
@@ -229,7 +231,7 @@ exports.saveSong = async (req, res) => {
       .exec();
 
     if (!song) {
-      return res.status(404).json({ msg: 'Song not found, could not save' });
+      return res.status(400).json({ error: 'Song not found, could not save' });
     }
 
     newSong &&
@@ -240,20 +242,25 @@ exports.saveSong = async (req, res) => {
         .exec());
 
     const resData = {
-      songId: song._id,
-      scaleId: scale ? scale._id : null,
-      composer: 'You',
-      isOwner: true,
-      title: song.info.title,
-      difficulty: song.info.difficulty,
-      metre: song.info.metre,
-      scaleName: scale ? `${scale.info.rootName} ${scale.info.name}` : 'N/A',
-      scaleLabel: scale ? scale.info.label : '',
+      alert: `"${song.info.title}" saved`,
+      song: {
+        songId: song._id,
+        composer: 'You',
+        isOwner: true,
+        title: song.info.title,
+        difficulty: song.info.difficulty,
+        metre: song.info.metre,
+      },
+      scale: {
+        scaleId: scale ? scale._id : null,
+        scaleName: scale ? scale.scaleName : 'N/A',
+        scaleLabel: scale ? scale.info.label : '',
+      },
     };
 
-    res.status(200).json({ song: resData });
+    res.status(200).json(resData);
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -262,7 +269,7 @@ exports.getSongById = async (req, res) => {
   const userId = req.userId;
 
   if (!isValidObjectId(songId)) {
-    return res.status(404).json({ msg: 'Song not found' });
+    return res.status(404).json({ error: 'Song not found' });
   }
 
   try {
@@ -273,23 +280,22 @@ exports.getSongById = async (req, res) => {
       .exec();
 
     if (!song) {
-      return res.status(404).json({ msg: 'Song not found' });
+      return res.status(404).json({ error: 'Song not found' });
     }
 
-    const data = parseGetResponse(song, userId);
-
-    if (data.isPrivate && !userId) {
+    const parsedSong = parseGetResponse(song, userId);
+    if (parsedSong.song.isPrivate && !userId) {
       return res
         .status(401)
-        .json({ msg: 'Song is private, please sign in and try again' });
+        .json({ error: 'Song is private, please sign in and try again' });
     }
-    if (data.isPrivate && !data.isOwner) {
-      return res.status(403).json({ msg: 'Song is private' });
+    if (parsedSong.song.isPrivate && !parsedSong.song.isOwner) {
+      return res.status(403).json({ error: 'Song is private' });
     }
 
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(200).json(parsedSong);
+  } catch (_error) {
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };
 
@@ -298,7 +304,7 @@ exports.deleteSong = async (req, res) => {
   const userId = req.userId;
 
   if (!isValidObjectId(songId)) {
-    return res.status(404).json({ msg: 'Delete failed, song not found' });
+    return res.status(404).json({ error: 'Delete failed, song not found' });
   }
 
   try {
@@ -307,7 +313,7 @@ exports.deleteSong = async (req, res) => {
       .exec();
 
     if (!song) {
-      return res.status(404).json({ msg: 'Delete failed, song not found' });
+      return res.status(404).json({ error: 'Delete failed, song not found' });
     }
 
     await User.findByIdAndUpdate(userId, {
@@ -316,8 +322,11 @@ exports.deleteSong = async (req, res) => {
       .setOptions({ new: true })
       .exec();
 
-    res.status(200).json(song);
+    res.status(200).json({
+      song: { songId: song._id },
+      alert: `"${song.info.title}" deleted`,
+    });
   } catch (error) {
-    res.status(500).json({ msg: defaultErrorMsg });
+    res.status(500).json({ error: defaultErrorMsg });
   }
 };

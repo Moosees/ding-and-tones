@@ -1,10 +1,15 @@
 import { v4 as uuid } from 'uuid';
+import {
+  createAutoMoveOrder,
+  parseFetchedSong,
+} from '../redux/song/song.utils';
 
 export const defaultScale = {
   info: {
     label: '(A2) C3 D3 E3 G3 A3 C4 D4 E4',
     layout: 1,
     name: 'minor pentatonic',
+    rotation: 180,
     rootName: 'A',
     rootValue: 33,
     rootIndex: 0,
@@ -258,7 +263,7 @@ export const createDefaultSong = () => {
     },
   ];
 
-  return {
+  const defaultSongData = {
     isOwner: false,
     songId: null,
     composer: null,
@@ -275,4 +280,9 @@ export const createDefaultSong = () => {
     bars,
     beats: [...barBeatsA, ...barBeatsB, ...barBeatsC],
   };
+
+  const parsedSong = parseFetchedSong(defaultSongData, false, true);
+  const autoMoveOrder = createAutoMoveOrder(parsedSong);
+
+  return { ...parsedSong, autoMoveOrder };
 };

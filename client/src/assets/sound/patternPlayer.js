@@ -1,23 +1,12 @@
-import { store } from '../../redux/store';
 import {
-  setCurrentlyPlaying,
-  setIsSongPlaying,
-} from '../../redux/ui/ui.actions';
+  stopSongPlayback,
+  updateSongPlayer,
+} from '../../redux/song/song.slice';
+import { store } from '../../redux/store';
 
-const resetSongUiState = () => {
-  store.dispatch(
-    setCurrentlyPlaying({
-      currentBeat: null,
-      currentBar: null,
-      currentSound: [],
-    })
-  );
-  store.dispatch(setIsSongPlaying(false));
-};
-
-const playBeat = ({ uiUpdates, duration, mode, play }) =>
+const playBeat = ({ songPlayerUpdate, duration, mode, play }) =>
   new Promise((resolve) => {
-    store.dispatch(setCurrentlyPlaying(uiUpdates));
+    store.dispatch(updateSongPlayer(songPlayerUpdate));
     if (!mode || mode === 'c') play();
 
     setTimeout(() => resolve(), duration);
@@ -25,9 +14,9 @@ const playBeat = ({ uiUpdates, duration, mode, play }) =>
 
 export const playPattern = async (pattern) => {
   for (let beat of pattern) {
-    if (!store.getState().ui.isSongPlaying) break;
+    if (!store.getState().song.songPlayer.isSongPlaying) break;
     await playBeat(beat);
   }
 
-  resetSongUiState();
+  store.dispatch(stopSongPlayback());
 };

@@ -4,7 +4,9 @@ import { SelectDropdown, SelectLabelSmall } from './select.styles';
 import { parseOptions } from './select.utils';
 
 const SelectSmall = ({ handleChange, options, value }) => {
-  const isSongPlaying = useSelector(({ ui }) => ui.isSongPlaying);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
+  );
 
   return (
     <SelectLabelSmall disabled={isSongPlaying}>

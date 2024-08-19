@@ -1,67 +1,53 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useDimensions from '../../hooks/useDimensions';
-import { startSearch } from '../../redux/search/search.actions';
-import searchOptions from '../../redux/search/search.options';
+import { useLazyGetScaleByIdQuery } from '../../redux/api/api.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import Loading from '../shared/loading/Loading';
 import Edit from './edit/Edit';
 import Info from './info/Info';
-import Results from './results/Results';
 import { ScaleContainer, Section } from './scale.styles';
 import Search from './search/Search';
 
 const Scale = () => {
-  const dispatch = useDispatch();
-  const {
-    scaleIdLocal,
-    hasChanges,
-    isDeleting,
-    isFetching,
-    isSaving,
-    isSearching,
-    scalesFetchTried,
-  } = useSelector(({ scale, search }) => ({
-    scaleIdLocal: scale.ui.scaleId,
-    hasChanges: scale.ui.hasChanges,
-    isDeleting: scale.ui.isDeleting,
-    isFetching: scale.ui.isFetching,
-    isSaving: scale.ui.isSaving,
-    isSearching: search.isSearching,
-    scalesFetchTried: search.scalesFetchTried,
-  }));
+  const localScaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const hasChanges = useSelector(({ scale }) => scale.ui.hasChanges);
 
   const { scaleId } = useParams();
   const navigate = useNavigate();
   const { isMobile } = useDimensions();
 
-  const isWorking = isDeleting || isFetching || isSaving;
+  const [getScaleById, { isLoading, isFetching, isUninitialized, isError }] =
+    useLazyGetScaleByIdQuery();
 
   useEffect(() => {
-    if (isWorking || !hasChanges) return;
+    if (isLoading || isFetching) return;
+    if (localScaleId && scaleId && localScaleId === scaleId) return;
 
-    navigate('/scale', { replace: true });
-  }, [hasChanges, isWorking, navigate]);
-
-  useEffect(() => {
-    if (isWorking || hasChanges) return;
-
-    if (!scaleId && scaleIdLocal) {
-      navigate(`/scale/${scaleIdLocal}`, { replace: true });
+    if (isUninitialized && scaleId && !localScaleId) {
+      getScaleById({ scaleId });
+    } else if (scaleId && (hasChanges || isError)) {
+      navigate('/scale', { replace: true });
+    } else if (localScaleId && !hasChanges) {
+      navigate(`/scale/${localScaleId}`, { replace: true });
     }
-  }, [hasChanges, isWorking, navigate, scaleId, scaleIdLocal]);
-
-  useEffect(() => {
-    if (scalesFetchTried || isSearching || isWorking) return;
-
-    dispatch(startSearch(searchOptions.scales.latest));
-  }, [dispatch, isSearching, isWorking, scalesFetchTried]);
+  }, [
+    getScaleById,
+    hasChanges,
+    isError,
+    isFetching,
+    isLoading,
+    isUninitialized,
+    localScaleId,
+    navigate,
+    scaleId,
+  ]);
 
   return (
     <ScaleContainer>
       <Section>
-        {isFetching ? (
+        {isLoading ? (
           <Loading />
         ) : (
           <>
@@ -73,14 +59,7 @@ const Scale = () => {
       </Section>
       {!isMobile && <DividerLine vertical />}
       <Section>
-        {!scalesFetchTried ? (
-          <Loading />
-        ) : (
-          <>
-            <Search />
-            <Results />
-          </>
-        )}
+        <Search />
       </Section>
     </ScaleContainer>
   );

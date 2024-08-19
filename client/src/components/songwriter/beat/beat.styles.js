@@ -90,12 +90,12 @@ export const BeatCircle = styled.div`
   border-width: ${({ $value }) => ($value === 4 ? '2px' : '1px')};
   border-style: ${({ $value }) => beatStyles.border[$value]};
   border-radius: 100%;
-  border-color: ${({ theme, hasNonScaleNote, isBeatPlaying }) =>
-    isBeatPlaying
+  border-color: ${({ theme, $hasNonScaleNote, $isBeatPlaying }) =>
+    $isBeatPlaying
       ? theme.colorBeatActive
-      : hasNonScaleNote
-      ? theme.colorBtnClear
-      : theme.colorBeat};
+      : $hasNonScaleNote
+        ? theme.colorBtnClear
+        : theme.colorBeat};
   box-shadow: ${({ theme, $isBeatPlaying }) =>
     $isBeatPlaying ? theme.shadowPlaying : theme.shadowBtnHeavy};
   cursor: ${({ $isSongPlaying }) => ($isSongPlaying ? 'default' : 'pointer')};
@@ -103,7 +103,7 @@ export const BeatCircle = styled.div`
   height: ${({ $value }) => beatStyles.heightWidth[$value]}rem;
   justify-content: center;
   margin: 1px;
-  opacity: ${({ isMuted }) => (isMuted ? '0.65' : '1')};
+  opacity: ${({ $isMuted }) => ($isMuted ? '0.5' : '1')};
   transition: color 0.1s ease-in;
   width: ${({ $value }) => beatStyles.heightWidth[$value]}rem;
 

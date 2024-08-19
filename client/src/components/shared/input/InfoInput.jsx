@@ -7,7 +7,7 @@ import { TextInput } from './input.styles';
 const InfoInput = ({
   autoFocus,
   editOnly,
-  errors,
+  // errors,
   handleChange,
   isValid,
   label,

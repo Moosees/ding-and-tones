@@ -1,40 +1,70 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { startSearch } from '../../redux/search/search.actions';
-import searchOptions from '../../redux/search/search.options';
-import Loading from '../shared/loading/Loading';
+import React, { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
+import {
+  useLazySearchSongsQuery,
+  useSearchMySongsQuery,
+  useSearchNewSongsQuery,
+} from '../../redux/api/api.slice';
+import BtnPrimary from '../shared/button/BtnPrimary';
+import InfoSearch from '../shared/input/InfoSearch';
+import { FindSongsContainer, SearchContainer } from './findSongs.styles';
 import Results from './results/Results';
-import Search from './search/Search';
-
-const FindSongsContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: var(--padding);
-`;
 
 const FindSongs = () => {
-  const dispatch = useDispatch();
-  const songsFetchTried = useSelector(({ search }) => search.songsFetchTried);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const { data: newSongs } = useSearchNewSongsQuery();
+  const { data: mySongs } = useSearchMySongsQuery();
+  const [searchSongs, { data: foundSongs, isFetching }] =
+    useLazySearchSongsQuery();
 
-  useEffect(() => {
-    if (!songsFetchTried) {
-      dispatch(startSearch(searchOptions.songs.latest));
-    }
-  }, [dispatch, songsFetchTried]);
+  const [value, setValue] = useState('');
+  const [searchMode, setSearchMode] = useState(1);
+
+  const searchResults = {
+    1: newSongs,
+    2: mySongs,
+    3: foundSongs,
+  };
+
+  const handleSearch = useCallback(() => {
+    if (value.length < 3) return;
+
+    searchSongs({ searchTerm: value });
+    setSearchMode(3);
+  }, [value, searchSongs]);
+
+  const handleNewSongsClick = () => {
+    setSearchMode(1);
+    setValue('');
+  };
+
+  const handleMySongsClick = () => {
+    setSearchMode(2);
+    setValue('');
+  };
 
   return (
     <FindSongsContainer>
-      {!songsFetchTried ? (
-        <Loading />
-      ) : (
-        <>
-          <Search />
-          <Results />
-        </>
-      )}
+      <SearchContainer>
+        <BtnPrimary
+          disabled={searchMode === 1}
+          label="New Songs"
+          onClick={handleNewSongsClick}
+        />
+        <InfoSearch
+          value={value}
+          setValue={setValue}
+          placeholder="Search songs"
+          onSearch={handleSearch}
+          isSearching={isFetching}
+        />
+        <BtnPrimary
+          disabled={!isSignedIn || searchMode === 2}
+          label="My Songs"
+          onClick={handleMySongsClick}
+        />
+      </SearchContainer>
+      <Results songs={searchResults[searchMode]?.songs} />
     </FindSongsContainer>
   );
 };

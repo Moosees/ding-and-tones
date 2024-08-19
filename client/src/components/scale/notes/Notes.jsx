@@ -10,41 +10,42 @@ import {
   removeNoteFromScale,
   toggleSharps,
   transposeScale,
-} from '../../../redux/scale/scale.actions';
+} from '../../../redux/scale/scale.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
 import Buttons from '../../shared/button/Buttons';
 import DividerLine from '../../shared/dividerLine/DividerLine';
 import { Note, NotesList, TextLabel } from './notes.styles';
 
-const Notes = () => {
+const Notes = ({ isAddingExtraNotes }) => {
   const dispatch = useDispatch();
-  const { sharpNotes, extra, round, scale, isAddingExtraNotes, isSongPlaying } =
-    useSelector(({ scale, ui }) => ({
-      sharpNotes: scale.info.sharpNotes,
-      extra: scale.notes.extra,
-      round: scale.notes.round,
-      scale: scale.parsed.pitched,
-      isAddingExtraNotes: ui.isAddingExtraNotes,
-      isSongPlaying: ui.isSongPlaying,
-    }));
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
 
-  const handleAdd = (note) => {
+  const handleAdd = (newNote) => {
     if (isSongPlaying) return;
 
-    dispatch(addNoteToScale(note));
+    dispatch(addNoteToScale({ newNote, isAddingExtraNotes }));
   };
 
-  const handleRemove = (note) => {
+  const handleRemove = (note, type) => {
     if (isSongPlaying) return;
 
-    dispatch(removeNoteFromScale(note));
+    dispatch(removeNoteFromScale({ noteToRemove: note, type }));
   };
 
   const getNotes = () => {
-    const noteValues = scale.reduce(
-      (acc, { noteValue, type }) => ({ ...acc, [noteValue]: type }),
-      {}
-    );
+    const lengths = { inner: 0, extra: 0 };
+    const noteValues = scale.reduce((acc, { noteValue, type }) => {
+      if (type === 'dings') ++lengths.inner;
+      if (type === 'round') ++lengths.inner;
+      if (type === 'extra') ++lengths.extra;
+
+      return { ...acc, [noteValue]: type };
+    }, {});
+
     const noteSelectors = [];
 
     for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
@@ -54,24 +55,25 @@ const Notes = () => {
       const type = inScale ? noteValues[i] : 'outside';
 
       const disabled =
-        (!inScale && isAddingExtraNotes && extra.length >= 8) ||
-        (!inScale && !isAddingExtraNotes && round.length >= 13);
+        (!inScale && isAddingExtraNotes && lengths.extra >= 8) ||
+        (!inScale && !isAddingExtraNotes && lengths.inner >= 13) ||
+        (inScale && !isAddingExtraNotes && lengths.inner === 1);
 
       const handleClick = inScale
-        ? () => handleRemove(noteName)
+        ? () => handleRemove(noteName, type)
         : () => handleAdd(noteName);
 
       noteSelectors.push(
         <Note disabled={disabled} key={i} onClick={handleClick} $type={type}>
           <span>{getNoteLabelFromName(noteName, sharpNotes)}</span>
-        </Note>
+        </Note>,
       );
     }
     return noteSelectors;
   };
 
   const handleTransposeScale = (destination) => {
-    dispatch(transposeScale(destination));
+    dispatch(transposeScale({ destination }));
   };
 
   return (

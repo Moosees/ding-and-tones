@@ -37,12 +37,12 @@ class PrintView extends Component {
   }
 }
 
-const mapStateToProps = ({ song, ui }) => ({
+const mapStateToProps = ({ song }) => ({
   arrangement: song.arrangement,
   bpm: song.info.bpm,
-  composer: song.ui.composer,
+  composer: song.refs.composer,
   title: song.info.title,
-  headersOpen: ui.headersOpen,
+  headersOpen: song.ui.headersOpen,
 });
 
 export default connect(mapStateToProps, null, null, { forwardRef: true })(

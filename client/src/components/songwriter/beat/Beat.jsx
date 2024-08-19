@@ -2,9 +2,12 @@ import React, { useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
-import { setCurrentDropdown } from '../../../redux/ui/ui.actions';
+import {
+  makeSelectIsBeatPlaying,
+  makeSelectIsDropdownOpen,
+} from '../../../redux/song/song.selectors';
+import { setCurrentDropdown } from '../../../redux/song/song.slice';
 import BeatDropdown from '../../beatDropdown/BeatDropdown';
-import BeatText from './BeatText';
 import {
   BeatAnchor,
   BeatCircle,
@@ -12,46 +15,40 @@ import {
   BeatTextHandCount,
 } from './beat.styles';
 import { getNonScaleNotes } from './beat.utils';
+import BeatText from './BeatText';
 
 const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
+  const selectIsBeatPlaying = useMemo(makeSelectIsBeatPlaying, []);
+  const selectIsDropdownOpen = useMemo(makeSelectIsDropdownOpen, []);
+
   const dispatch = useDispatch();
-  const {
-    scale,
-    sound,
-    hand,
-    countOpen,
-    isBeatPlaying,
-    handsOpen,
-    isSongPlaying,
-    isOpen,
-  } = useSelector(({ scale, song, ui }) => ({
-    scale: scale.parsed.pitched,
-    sound: song.beats[beatId].sound,
-    hand: song.beats[beatId].hand,
-    countOpen: ui.countOpen,
-    isBeatPlaying: ui.currentBeat === beatId,
-    handsOpen: ui.handsOpen,
-    isSongPlaying: ui.isSongPlaying,
-    isOpen: ui.currentDropdown === beatId,
-  }));
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
+  const sound = useSelector(({ song }) => song.beats[beatId].sound);
+  const hand = useSelector(({ song }) => song.beats[beatId].hand);
+  const countOpen = useSelector(({ song }) => song.ui.countOpen);
+  const handsOpen = useSelector(({ song }) => song.ui.handsOpen);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
+  const isBeatPlaying = useSelector((state) =>
+    selectIsBeatPlaying(state, beatId),
+  );
+  const isDropdownOpen = useSelector((state) =>
+    selectIsDropdownOpen(state, beatId),
+  );
 
   const dropdownPosRef = useRef(null);
   const { value, count, tripletStatus, beatStart } = template;
 
   const nonScaleNotes = useMemo(
     () => getNonScaleNotes(sound, scale),
-    [sound, scale]
+    [sound, scale],
   );
 
   const handleOpen = () => {
     if (isSongPlaying) return;
 
-    if (isOpen) {
-      dispatch(setCurrentDropdown(null));
-      return;
-    }
-
-    dispatch(setCurrentDropdown(beatId));
+    dispatch(setCurrentDropdown({ beatId: beatId }));
   };
 
   const handleKeyDown = (e) => {
@@ -83,9 +80,9 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
           $value={value}
           $tripletStatus={tripletStatus}
         >
-          <BeatText isBeatPlaying={isBeatPlaying} sound={sound} value={value} />
+          <BeatText sound={sound} value={value} />
         </BeatCircle>
-        {isOpen && (
+        {isDropdownOpen && (
           <BeatDropdown
             dropdownPosRef={dropdownPosRef}
             beatId={beatId}

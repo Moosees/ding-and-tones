@@ -2,10 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import {
-  toggleCountOpen,
-  toggleHandsOpen,
-  toggleHeadersOpen,
-} from '../../redux/ui/ui.actions';
+  toggleCount,
+  toggleHands,
+  toggleHeaders,
+} from '../../redux/song/song.slice';
 import Buttons from '../shared/button/Buttons';
 import Checkbox from '../shared/checkbox/Checkbox';
 import EditButton from './editButton/EditButton';
@@ -26,13 +26,11 @@ const ControlsContainer = styled.div`
 
 const SongViewControls = () => {
   const dispatch = useDispatch();
-  const { countOpen, handsOpen, headersOpen, isSongPlaying } = useSelector(
-    ({ ui }) => ({
-      countOpen: ui.countOpen,
-      handsOpen: ui.handsOpen,
-      headersOpen: ui.headersOpen,
-      isSongPlaying: ui.isSongPlaying,
-    })
+  const countOpen = useSelector(({ song }) => song.ui.countOpen);
+  const handsOpen = useSelector(({ song }) => song.ui.handsOpen);
+  const headersOpen = useSelector(({ song }) => song.ui.headersOpen);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying
   );
 
   return (
@@ -49,7 +47,7 @@ const SongViewControls = () => {
           checked={handsOpen}
           label="Hands"
           disabled={isSongPlaying}
-          onChange={() => dispatch(toggleHandsOpen())}
+          onChange={() => dispatch(toggleHands())}
         />
         <Checkbox
           asBtn
@@ -57,7 +55,7 @@ const SongViewControls = () => {
           checked={countOpen}
           label="Count"
           disabled={isSongPlaying}
-          onChange={() => dispatch(toggleCountOpen())}
+          onChange={() => dispatch(toggleCount())}
         />
         <Checkbox
           asBtn
@@ -65,7 +63,7 @@ const SongViewControls = () => {
           checked={headersOpen}
           label="Headers"
           disabled={isSongPlaying}
-          onChange={() => dispatch(toggleHeadersOpen())}
+          onChange={() => dispatch(toggleHeaders())}
         />
       </Buttons>
     </ControlsContainer>

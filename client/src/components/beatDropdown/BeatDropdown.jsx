@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTO_MOVE_DELAY } from '../../assets/constants';
-import { beatOptionToKeyCode } from '../../assets/keyCodes.js';
-import { updateSoundForBeat } from '../../redux/song/song.actions.js';
-import { setCurrentDropdown } from '../../redux/ui/ui.actions';
+import { beatOptionToKeyCode } from '../../assets/keyCodes';
+import { selectNextBeatInMoveOrder } from '../../redux/song/song.selectors';
+import {
+  setCurrentDropdown,
+  updateSoundForBeat,
+} from '../../redux/song/song.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
 import {
   Arrow,
@@ -11,7 +14,7 @@ import {
   DropdownColumn,
   DropdownContent,
 } from './beatDropdown.styles';
-import { createSoundLists } from './beatDropdown.utils.js.js';
+import { createSoundLists } from './beatDropdown.utils';
 import DropdownControls from './controls/DropdownControls';
 import DropdownMove from './controls/DropdownMove';
 import { DropdownContext } from './handler/DropdownHandler';
@@ -20,15 +23,11 @@ import DropdownSoundItems from './items/DropdownSoundItems';
 
 const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
   const dispatch = useDispatch();
-  const { autoMove, multiSelect, nextBeatId, sharpNotes, scale } = useSelector(
-    ({ ui, scale }) => ({
-      autoMove: ui.autoMove,
-      multiSelect: ui.multiSelect,
-      nextBeatId: ui.autoMoveOrder[beatId].nextBeatId,
-      sharpNotes: scale.info.sharpNotes,
-      scale: scale.parsed.pitched,
-    })
-  );
+  const autoMove = useSelector(({ song }) => song.ui.autoMove);
+  const multiSelect = useSelector(({ song }) => song.ui.multiSelect);
+  const nextBeatId = useSelector(selectNextBeatInMoveOrder);
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const scale = useSelector(({ scale }) => scale.parsed.pitched);
 
   const [timeoutRef, setTimeoutRef] = useState(null);
   const { borderHeight, borderWidth, listScroll } = useContext(DropdownContext);
@@ -39,7 +38,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
 
   const { round, extra, dings, percussive } = useMemo(
     () => createSoundLists(scale, sharpNotes),
-    [scale, sharpNotes]
+    [scale, sharpNotes],
   );
 
   const handleAutoMove = () => {
@@ -48,14 +47,14 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     if (!autoMove || !nextBeatId) return;
 
     if (!multiSelect) {
-      dispatch(setCurrentDropdown(nextBeatId));
+      dispatch(setCurrentDropdown({ beatId: nextBeatId }));
       return;
     }
 
     setTimeoutRef(
       setTimeout(() => {
-        dispatch(setCurrentDropdown(nextBeatId));
-      }, AUTO_MOVE_DELAY * 2)
+        dispatch(setCurrentDropdown({ beatId: nextBeatId }));
+      }, AUTO_MOVE_DELAY * 2),
     );
   };
 
@@ -66,7 +65,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
       return {
         ...acc,
         [beatOptionToKeyCode[note.option]]: () =>
-          dispatch(updateSoundForBeat(beatId, note.option)),
+          dispatch(updateSoundForBeat({ beatId, update: note.option })),
       };
     }, {});
 
@@ -87,7 +86,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
     () => () => {
       clearTimeout(timeoutRef);
     },
-    [timeoutRef]
+    [timeoutRef],
   );
 
   return (
@@ -143,7 +142,7 @@ const BeatDropdown = ({ beatId, dropdownPosRef, nonScaleNotes }) => {
           </DropdownColumn>
         </DropdownContent>
         <DividerLine small />
-        <DropdownMove beatId={beatId} />
+        <DropdownMove />
       </Dropdown>
     </>
   );

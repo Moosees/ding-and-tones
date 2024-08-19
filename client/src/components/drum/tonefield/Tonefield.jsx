@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { makeSelectIsHowlReady } from '../../../redux/scale/scale.selectors';
 
 const Tonefield = ({
   color,
@@ -11,23 +12,25 @@ const Tonefield = ({
   showNote,
   text,
 }) => {
-  const { isReady, position, scaleRotation } = useSelector(
-    ({ howls, scale }) => ({
-      isReady: howls.data[note]?.status === 'ready',
-      position: scale.parsed.positions[localIndex],
-      scaleRotation: scale.info.rotation,
-    })
-  );
+  const selectIsHowlReady = useMemo(makeSelectIsHowlReady, []);
 
-  const { rotate, translate } = position;
+  const isHowlReady = useSelector((state) => selectIsHowlReady(state, note));
+  const rotate = useSelector(
+    ({ scale }) => scale.parsed.positions[localIndex].rotate,
+  );
+  const translate = useSelector(
+    ({ scale }) => scale.parsed.positions[localIndex].translate,
+  );
+  const scaleRotation = useSelector(({ scale }) => scale.info.rotation);
+
   const isDing = localIndex === 0;
 
   return (
     <g
-      onClick={showNote && isReady ? handlePlay : null}
+      onClick={showNote && isHowlReady ? handlePlay : null}
       cx="0"
       cy="0"
-      opacity={isReady ? 1 : 0.5}
+      opacity={isHowlReady ? 1 : 0.5}
       transform={`rotate(${
         rotate + scaleRotation + 270
       }) translate(${translate})`}

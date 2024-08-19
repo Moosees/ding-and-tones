@@ -1,35 +1,30 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buildPatternFromSong } from '../../../assets/sound/patternBuilder';
 import { playPattern } from '../../../assets/sound/patternPlayer';
-import { setIsSongPlaying } from '../../../redux/ui/ui.actions';
+import { selectAreHowlsReady } from '../../../redux/scale/scale.selectors';
+import {
+  startSongPlayback,
+  stopSongPlayback,
+} from '../../../redux/song/song.slice';
 import BtnPrimary from '../../shared/button/BtnPrimary';
-import { checkHowlsReadyStatus } from './playButton.utils';
 
 const PlayButton = ({ light }) => {
   const dispatch = useDispatch();
-  const { howls, scale, arrangement, isSongPlaying, mutedBars } = useSelector(
-    ({ howls, scale, song, ui }) => ({
-      howls: howls.data,
-      scale: scale.parsed.pitched,
-      arrangement: song.arrangement,
-      isSongPlaying: ui.isSongPlaying,
-      mutedBars: ui.mutedBars,
-    })
+  const areHowlsReady = useSelector(selectAreHowlsReady);
+  const arrangement = useSelector(({ song }) => song.arrangement);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
   );
-
-  const areHowlsReady = useMemo(
-    () => checkHowlsReadyStatus(scale, howls),
-    [howls, scale]
-  );
+  const mutedBars = useSelector(({ song }) => song.mutedBars);
 
   const handlePlayPause = () => {
     if (isSongPlaying) {
-      dispatch(setIsSongPlaying(false));
+      dispatch(stopSongPlayback());
       return;
     }
 
-    dispatch(setIsSongPlaying(true));
+    dispatch(startSongPlayback());
     const songPattern = buildPatternFromSong();
 
     playPattern(songPattern);

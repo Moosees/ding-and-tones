@@ -1,7 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { MAX_NOTES_IN_BEAT } from '../../assets/constants';
 import { getMetreTemplates, metreList } from '../../assets/metre';
-import { parseScaleData } from '../scale/scale.utils';
 
 export const createAutoMoveOrder = (song, beatsToAdd, barToSkip) => {
   const { arrangement, bars } = song;
@@ -30,61 +29,16 @@ export const createAutoMoveOrder = (song, beatsToAdd, barToSkip) => {
 };
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
-  const arrCopy = [...arrangement];
+  const newArrangement = [];
+  const moveForward = barIndex < targetIndex;
 
-  arrCopy.splice(targetIndex, 0, arrCopy.splice(barIndex, 1)[0]);
+  for (let i = 0; i < arrangement.length; ++i) {
+    if (moveForward && i !== barIndex) newArrangement.push(arrangement[i]);
+    if (i === targetIndex) newArrangement.push(arrangement[barIndex]);
+    if (!moveForward && i !== barIndex) newArrangement.push(arrangement[i]);
+  }
 
-  return arrCopy;
-};
-
-const parseBarsForSaving = (arrangement, bars, beats) => {
-  return arrangement.map((bar) => ({
-    ...bars[bar],
-    _id: bar,
-  }));
-};
-
-const parseBeatsForSaving = (arrangement, bars, beats) => {
-  const allBeatIds = arrangement.reduce((acc, barId) => {
-    return [...acc, ...bars[barId].measure];
-  }, []);
-
-  return allBeatIds.map((beatId) => {
-    const { sound, mode, hand } = beats[beatId];
-
-    return {
-      sound: sound.join('+'),
-      hand,
-      mode,
-      _id: beatId,
-    };
-  });
-};
-
-export const parseSongForSaving = (song, saveAs, title, scaleId) => {
-  const {
-    arrangement,
-    bars,
-    beats,
-    info,
-    ui: { isOwner, isPrivate, songId },
-  } = song;
-  const parsedBars = parseBarsForSaving(arrangement, bars, beats);
-  const parsedBeats = parseBeatsForSaving(arrangement, bars, beats);
-  const songUpdate = {
-    arrangement,
-    bars: parsedBars,
-    beats: parsedBeats,
-    scale: scaleId,
-    info,
-    isPrivate,
-  };
-  if (title) songUpdate.info.title = title;
-
-  return {
-    songId: isOwner && !saveAs ? songId : null,
-    songUpdate,
-  };
+  return newArrangement;
 };
 
 const parseArrayToObject = (array) => {
@@ -119,7 +73,7 @@ const parseBeatsForLoadSong = (beats) => {
   return parseArrayToObject(parsedBeats);
 };
 
-export const parseFetchedSong = (song, getScale, suppressAlert) => {
+export const parseFetchedSong = (song, scale, getScale) => {
   const {
     arrangement,
     bars,
@@ -128,13 +82,11 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
     info,
     isOwner,
     isPrivate,
-    scale,
     songId,
   } = song;
 
   const parsedBars = parseBarsForLoadSong(bars);
   const parsedBeats = parseBeatsForLoadSong(beats);
-  const parsedScale = getScale && scale ? parseScaleData(scale, true) : {};
   const savedScale =
     scale && scale.info
       ? {
@@ -144,37 +96,26 @@ export const parseFetchedSong = (song, getScale, suppressAlert) => {
         }
       : { scaleId: null, scaleName: '', scaleLabel: '' };
 
-  const parsedSongData = {
+  return {
     arrangement,
     bars: parsedBars,
     beats: parsedBeats,
-    getScale: (scale && getScale) || false,
+    getScale: (scale && getScale) || false, // not needed?
     info,
-    scale: parsedScale,
-    ui: { composer, isOwner, songId, isPrivate, ...savedScale },
+    refs: { composer, isOwner, songId, isPrivate, scaleId: savedScale.scaleId },
+    ui: { scaleName: savedScale.scaleName, scaleLabel: savedScale.scaleLabel }, // not needed?
   };
-
-  if (!suppressAlert) {
-    parsedSongData.alert = `"${song.info.title}" by ${song.composer} loaded`;
-  }
-
-  return parsedSongData;
 };
 
-export const addSoundToBeat = (newSound, soundArray, multiSelect) => {
-  if (!multiSelect) return [newSound];
+export const createUpdatedSound = (sound, update, multiSelect) => {
+  const isSelected = sound.includes(update);
 
-  if (soundArray.length >= MAX_NOTES_IN_BEAT) return soundArray;
+  if (isSelected && sound.length <= 1) return ['-'];
+  if (isSelected) return sound.filter((hit) => hit !== update);
+  if (!multiSelect) return [update];
+  if (sound.length >= MAX_NOTES_IN_BEAT) return sound;
 
-  return [...soundArray, newSound]
-    .filter((sound) => sound !== '-')
-    .sort((a, b) => a - b);
-};
-
-export const removeSoundFromBeat = (newSound, soundArray) => {
-  if (soundArray.length <= 1) return ['-'];
-
-  return soundArray.filter((sound) => sound !== newSound);
+  return [...sound, update].filter((hit) => hit !== '-').sort((a, b) => a - b);
 };
 
 const createBeatPool = (measure, template) => {
@@ -244,13 +185,13 @@ export const updateMeasureAndBeats = (bar, newSubdivisions) => {
     const newTemplate = metreTemplates[i][newSubdivisions[i]].values;
     const subMeasure = measure.slice(
       measureIndex,
-      measureIndex + template.length
+      measureIndex + template.length,
     );
 
     const { newMeasureData, beatsToDelete } = calculateMeasureAndBeatChanges(
       subMeasure,
       template,
-      newTemplate
+      newTemplate,
     );
 
     fullMeasureData.push(...newMeasureData);

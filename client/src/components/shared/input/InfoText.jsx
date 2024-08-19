@@ -5,7 +5,7 @@ import InfoInput from './InfoInput';
 
 const InfoText = ({
   children,
-  errors = [],
+  // errors = [],
   handleChange = () => {},
   handleClose = () => {},
   handleSave = () => {},
@@ -30,7 +30,7 @@ const InfoText = ({
     <>
       {editOpen ? (
         <InfoInput
-          errors={errors}
+          // errors={errors}
           handleChange={handleChange}
           isValid={isValid}
           onClose={onClose}

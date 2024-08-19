@@ -5,28 +5,27 @@ import useDimensions from '../../../hooks/useDimensions';
 import {
   addChordToPrintList,
   removeChordFromPrintList,
-} from '../../../redux/chords/chords.actions';
-import { setDisplayedChord } from '../../../redux/drum/drum.actions';
+} from '../../../redux/chords/chords.slice';
+import { setDisplayedChord } from '../../../redux/drum/drum.slice';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import { ItemContainer } from './list.styles';
 
 const ListItem = ({ chord, isDisplayed }) => {
   const dispatch = useDispatch();
-  const { printList, sharpNotes } = useSelector(({ chords, scale }) => ({
-    printList: chords.printList,
-    sharpNotes: scale.info.sharpNotes,
-  }));
+  const printList = useSelector(({ chords }) => chords.printList);
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
+  const rootIndex = useSelector(({ scale }) => scale.info.rootIndex);
 
   const { isMobile } = useDimensions();
 
   const chordIsInPrintList = !printList.every(
-    ({ nameShort }) => nameShort !== chord.nameShort
+    ({ nameShort }) => nameShort !== chord.nameShort,
   );
 
   const handleChordClick = () => {
     chordIsInPrintList
-      ? dispatch(removeChordFromPrintList(chord))
-      : dispatch(addChordToPrintList(chord));
+      ? dispatch(removeChordFromPrintList({ chord }))
+      : dispatch(addChordToPrintList({ chord }));
   };
 
   const chordName = sharpNotes ? chord.nameSharp : chord.name;
@@ -45,7 +44,12 @@ const ListItem = ({ chord, isDisplayed }) => {
           label="View"
           checked={isDisplayed}
           onChange={() =>
-            dispatch(setDisplayedChord(isDisplayed ? null : chord))
+            dispatch(
+              setDisplayedChord({
+                chord: isDisplayed ? null : chord,
+                rootIndex,
+              }),
+            )
           }
         />
         <Checkbox

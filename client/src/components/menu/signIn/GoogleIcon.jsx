@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GoogleIcon = ({ active }) => (
+const GoogleIcon = () => (
   <svg
     width="18px"
     height="18px"

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { setCurrentDropdown } from '../../redux/ui/ui.actions';
+import { useLazyGetSongByIdQuery } from '../../redux/api/api.slice';
+import { setCurrentDropdown } from '../../redux/song/song.slice';
 import DividerLine from '../shared/dividerLine/DividerLine';
-import Loading from '../shared/loading/Loading';
 import ScrollBox from '../shared/scrollBox/ScrollBox';
 import SongControls from '../songControls/SongControls';
 import SongView from '../songView/SongView';
@@ -14,43 +14,48 @@ import {
   SongViewContainer,
 } from './song.styles';
 
-const Song = ({ notes }) => {
+const Song = () => {
   const dispatch = useDispatch();
-  const { localSongId, isDeleting, isFetching, isSaving, isEditingSong } =
-    useSelector(({ song, ui }) => ({
-      localSongId: song.ui.songId,
-      isDeleting: song.ui.isDeleting,
-      isFetching: song.ui.isFetching,
-      isSaving: song.ui.isSaving,
-      isEditingSong: ui.isEditingSong,
-    }));
+  const localSongId = useSelector(({ song }) => song.refs.songId);
+  const isEditingSong = useSelector(({ song }) => song.ui.isEditingSong);
 
   const borderRef = useRef(null);
   const { songId } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const isWorking = isDeleting || isFetching || isSaving;
-
-    if (!songId && localSongId && !isWorking) {
-      navigate(`/song/${localSongId}`, { replace: true });
-    }
-  }, [isDeleting, isFetching, isSaving, navigate, songId, localSongId]);
+  const [getSongById, { isLoading, isFetching, isUninitialized }] =
+    useLazyGetSongByIdQuery();
 
   useEffect(() => {
-    // close dropdown when navigating away from song route or showing tablature
-    if (!isEditingSong) {
-      dispatch(setCurrentDropdown(null));
-    }
+    if (isLoading || isFetching) return;
+    if (localSongId && songId && localSongId === songId) return;
 
-    return () => dispatch(setCurrentDropdown(null));
-  }, [dispatch, isEditingSong]);
+    if (isUninitialized && songId && !localSongId) {
+      getSongById({ songId, getScale: true, editSong: false });
+    } else {
+      // NOTE: workaround to handle empty param returning the string 'null'
+      navigate(`/song${localSongId ? '/' + localSongId : ''}`, {
+        replace: true,
+      });
+    }
+  }, [
+    navigate,
+    songId,
+    localSongId,
+    isLoading,
+    getSongById,
+    isFetching,
+    isUninitialized,
+  ]);
+
+  useEffect(() => {
+    // close dropdown when navigating away from song route
+    return () => dispatch(setCurrentDropdown({ beatId: null }));
+  }, [dispatch]);
 
   return (
     <>
-      {isFetching ? (
-        <Loading />
-      ) : isEditingSong ? (
+      {isEditingSong ? (
         <SongContainer>
           <SongControls />
           <DividerLine small />

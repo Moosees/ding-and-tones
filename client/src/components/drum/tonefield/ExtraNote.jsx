@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { makeSelectIsHowlReady } from '../../../redux/scale/scale.selectors';
 import { ExtraContainer } from './tonefield.styles';
 
 const ExtraNote = ({
@@ -12,17 +13,19 @@ const ExtraNote = ({
   showNote,
   text,
 }) => {
-  const { isReady, position } = useSelector(({ howls, scale }) => ({
-    position: scale.notes.extra[localIndex].pos,
-    isReady: howls.data[note]?.status === 'ready',
-  }));
+  const selectIsHowlReady = useMemo(makeSelectIsHowlReady, []);
+
+  const isHowlReady = useSelector((state) => selectIsHowlReady(state, note));
+  const position = useSelector(
+    ({ scale }) => scale.notes.extra[localIndex].pos,
+  );
 
   return (
     <ExtraContainer
-      onClick={showNote && isReady ? handlePlay : null}
+      onClick={showNote && isHowlReady ? handlePlay : null}
       $color={color}
       $isPlaying={isPlaying}
-      $isReady={isReady}
+      $isReady={isHowlReady}
       $showNote={showNote}
       $hasFocus={hasFocus}
       $position={position}

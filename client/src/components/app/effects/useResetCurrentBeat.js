@@ -1,18 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentlyPlaying } from '../../../redux/ui/ui.actions';
+import { updateSongPlayer } from '../../../redux/song/song.slice';
 
 const useResetCurrentBeat = () => {
   const dispatch = useDispatch();
-  const { currentBeat, currentSound } = useSelector(({ ui }) => ({
-    currentBeat: ui.currentBeat,
-    currentSound: ui.currentSound,
-  }));
+  const currentBeat = useSelector(({ song }) => song.songPlayer.currentBeat);
+  const currentSound = useSelector(({ song }) => song.songPlayer.currentSound);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (currentSound.length) {
-        dispatch(setCurrentlyPlaying({ currentBeat: null, currentSound: [] }));
+        dispatch(updateSongPlayer({ currentBeat: null, currentSound: [] }));
       }
     }, 750);
 

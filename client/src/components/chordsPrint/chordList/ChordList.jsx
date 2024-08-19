@@ -3,10 +3,8 @@ import { useSelector } from 'react-redux';
 import Chord from './Chord';
 
 const ChordList = () => {
-  const { printList, sharpNotes } = useSelector(({ chords, scale }) => ({
-    printList: chords.printList,
-    sharpNotes: scale.info.sharpNotes,
-  }));
+  const printList = useSelector(({ chords }) => chords.printList);
+  const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
 
   return (
     <>

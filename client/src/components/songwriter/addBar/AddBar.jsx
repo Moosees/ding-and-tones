@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { metreList } from '../../../assets/metre';
-import { addNewBar } from '../../../redux/song/song.actions';
+import { addNewBar } from '../../../redux/song/song.slice';
 import Buttons from '../../shared/button/Buttons';
 import PopupNewBar from './PopupNewBar';
 import { AddBarBtn, AddBarContainer } from './addBar.styles';
@@ -9,18 +9,17 @@ import { createNewBar, songToBarSubdivision } from './addBar.utils';
 
 const AddBar = () => {
   const dispatch = useDispatch();
-  const { metre, subdivision, isSongPlaying } = useSelector(({ song, ui }) => ({
-    metre: song.info.metre,
-    subdivision: song.info.subdivision,
-    isSongPlaying: ui.isSongPlaying,
-  }));
+  const metre = useSelector(({ song }) => song.info.metre);
+  const subdivision = useSelector(({ song }) => song.info.subdivision);
+  const isSongPlaying = useSelector(({ song }) => song.songPlayer.isSongPlaying);
 
   const [newBarOpen, setNewBarOpen] = useState(false);
   const { nameShort } = metreList[metre];
 
   const handleNewBar = (metre, subdivisionsString) => {
     const subdivisions = subdivisionsString.map((s) => parseInt(s));
-    dispatch(addNewBar(createNewBar(metre, subdivisions)));
+    const newBar = createNewBar(metre, subdivisions);
+    dispatch(addNewBar(newBar));
   };
 
   return (

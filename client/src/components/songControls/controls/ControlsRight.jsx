@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { metreList } from '../../../assets/metre';
-import { toggleCountOpen, toggleHandsOpen } from '../../../redux/ui/ui.actions';
+import { toggleCount, toggleHands } from '../../../redux/song/song.slice';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import InfoBox from '../../shared/layout/InfoBox';
@@ -13,15 +13,11 @@ import { ControlsContainer } from './controls.styles';
 
 const ControlsRight = () => {
   const dispatch = useDispatch();
-  const { bpm, metre, countOpen, handsOpen, isSongPlaying } = useSelector(
-    ({ song, ui }) => ({
-      bpm: song.info.bpm,
-      metre: song.info.metre,
-      countOpen: ui.countOpen,
-      handsOpen: ui.handsOpen,
-      isSongPlaying: ui.isSongPlaying,
-    })
-  );
+  const bpm = useSelector(({ song }) => song.info.bpm);
+  const metre = useSelector(({ song }) => song.info.metre);
+  const countOpen = useSelector(({ song }) => song.ui.countOpen);
+  const handsOpen = useSelector(({ song }) => song.ui.handsOpen);
+  const isSongPlaying = useSelector(({song}) => song.songPlayer.isSongPlaying);
 
   const [metreOpen, setMetreOpen] = useState(false);
   const metreAndBpm = `${metreList[metre].name} @ ${bpm} beats per minute`;
@@ -42,14 +38,14 @@ const ControlsRight = () => {
             checked={handsOpen}
             label="Hands"
             disabled={isSongPlaying}
-            onChange={() => dispatch(toggleHandsOpen())}
+            onChange={() => dispatch(toggleHands())}
           />
           <Checkbox
             asBtn
             checked={countOpen}
             label="Count"
             disabled={isSongPlaying}
-            onChange={() => dispatch(toggleCountOpen())}
+            onChange={() => dispatch(toggleCount())}
           />
           <EditButton />
         </Buttons>

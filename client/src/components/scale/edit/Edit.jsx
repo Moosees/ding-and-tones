@@ -1,9 +1,5 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  toggleExtraNotes,
-  toggleExtraPosEdit,
-} from '../../../redux/ui/ui.actions';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Move from '../move/Move';
@@ -11,33 +7,41 @@ import Notes from '../notes/Notes';
 import { EditContainer, EditContent, TextLabel } from './edit.styles';
 
 const Edit = () => {
-  const dispatch = useDispatch();
-  const { extra, isAddingExtraNotes, isEditingExtraPos } = useSelector(
-    ({ scale, ui }) => ({
-      extra: scale.notes.extra,
-      isAddingExtraNotes: ui.isAddingExtraNotes,
-      isEditingExtraPos: ui.isEditingExtraPos,
-    })
-  );
+  const extraLength = useSelector(({ scale }) => scale.notes.extra.length);
+
+  const [isAddingExtraNotes, setIsAddingExtraNotes] = useState(false);
+  const [isEditingExtraPos, setIsEditingExtraPos] = useState(false);
+
+  useEffect(() => {
+    if (!isEditingExtraPos || extraLength > 0) return;
+
+    setIsEditingExtraPos(false);
+  }, [isEditingExtraPos, extraLength]);
 
   return (
     <EditContainer>
-      <EditContent>{isEditingExtraPos ? <Move /> : <Notes />}</EditContent>
+      <EditContent>
+        {isEditingExtraPos ? (
+          <Move />
+        ) : (
+          <Notes isAddingExtraNotes={isAddingExtraNotes} />
+        )}
+      </EditContent>
       <Buttons>
         <Checkbox
           asBtn
           light
           label="Add"
           checked={isAddingExtraNotes}
-          onChange={() => dispatch(toggleExtraNotes())}
+          onChange={() => setIsAddingExtraNotes((isAdding) => !isAdding)}
         />
         <Checkbox
           asBtn
           light
           label="Move"
-          disabled={!extra.length}
+          disabled={extraLength === 0}
           checked={isEditingExtraPos}
-          onChange={() => dispatch(toggleExtraPosEdit())}
+          onChange={() => setIsEditingExtraPos((isEditing) => !isEditing)}
         />
       </Buttons>
       <TextLabel>Extra/Bottom Notes</TextLabel>

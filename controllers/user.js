@@ -1,6 +1,5 @@
-const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
-const { getClient, getAuthUrl } = require('../utils/auth');
+const { getClient } = require('../utils/auth');
 const crypto = require('crypto');
 const { defaultErrorMsg } = require('../utils/assets');
 
@@ -8,29 +7,40 @@ const day = 1000 * 60 * 60 * 24;
 
 exports.checkSession = async (req, res) => {
   if (!req.userId) {
-    return res.status(200).json({ user: null });
+    return res.status(200).json({
+      song: { isOwner: false },
+      scale: { isOwner: false },
+      user: null,
+    });
   }
 
   try {
-    const { anonymous, name, songs, sound } = await User.findOne({
+    const { anonymous, name, songs, scales, sound } = await User.findOne({
       _id: req.userId,
     })
-      .select('anonymous name songs sound')
+      .select('anonymous name songs scales sound')
       .exec();
 
-    const isOwner = songs.includes(req.songId);
+    const isSongOwner = songs.includes(req.body.songId);
+    const isScaleOwner = scales.includes(req.body.scaleId);
 
     res.status(200).json({
+      alert: `Welcome back, ${name}`,
+      sound,
+      song: { isOwner: isSongOwner },
+      scale: { isOwner: isScaleOwner },
       user: {
         anonymous,
-        isOwner,
+        isSongOwner,
         name,
-        sound,
       },
     });
   } catch (error) {
-    res.status(200).json({ user: null });
-    // res.status(500).json({ user: null });
+    res.status(200).json({
+      song: { isOwner: false },
+      scale: { isOwner: false },
+      user: null,
+    });
   }
 };
 
@@ -49,15 +59,14 @@ exports.updateUserSound = async (req, res) => {
       .exec();
 
     if (!user) {
-      return res.status(400).json({ msg: 'Could not update user settings' });
+      return res.status(400).json({ error: 'Could not update user settings' });
     }
 
     res.status(200).json({
-      audioOption: user.sound.audioOption,
-      volume: user.sound.volume,
+      alert: 'Sound setup saved',
     });
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
@@ -82,22 +91,28 @@ exports.updateUserInfo = async (req, res) => {
       .exec();
 
     if (!user) {
-      return res.status(400).json({ msg: 'Could not update user info' });
+      return res.status(400).json({ error: 'Could not update user info' });
     }
 
-    res.status(200).json({ isAnonymous: user.anonymous, name: user.name });
+    res.status(200).json({
+      alert: 'Account info updated',
+      user: {
+        anonymous: user.anonymous,
+        name: user.name,
+      },
+    });
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(200).json({ msg: 'Name is already in use' });
+      return res.status(400).json({ error: 'Name is already in use' });
     }
 
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
 exports.signInWithGoogle = async (req, res) => {
   try {
-    const { code, songId, persistSession } = req.body;
+    const { code, songId, scaleId, persistSession } = req.body;
     const client = getClient();
 
     const {
@@ -112,7 +127,7 @@ exports.signInWithGoogle = async (req, res) => {
     const { sub } = ticket.getPayload();
 
     let user = await User.findOne({ sub })
-      .select('_id anonymous name songs sound')
+      .select('_id anonymous name songs scales sound')
       .exec();
 
     const newUser = !user;
@@ -124,38 +139,58 @@ exports.signInWithGoogle = async (req, res) => {
       }).save();
     }
 
-    let isOwner = false;
+    let isSongOwner = false;
+    let isScaleOwner = false;
     if (!newUser) {
-      isOwner = user.songs.includes(songId);
+      isSongOwner = user.songs.includes(songId);
+      isScaleOwner = user.scales.includes(scaleId);
     }
 
     req.session.user = user._id;
     const sessionTtl = persistSession ? day * 30 : day;
     req.session.cookie.maxAge = sessionTtl;
 
-    res.status(200).json({
-      anonymous: user.anonymous,
-      isOwner,
-      name: user.name,
-      newUser,
+    const alert = newUser
+      ? 'New account created, you can select a name in the menus under the User tab'
+      : 'Signed in successfully!';
+
+    res.status(newUser ? 201 : 200).json({
+      alert,
       sound: user.sound,
+      song: {
+        isOwner: isSongOwner,
+      },
+      scale: {
+        isOwner: isScaleOwner,
+      },
+      user: {
+        anonymous: user.anonymous,
+        name: user.name,
+      },
     });
   } catch (error) {
-    res.status(400).json({ msg: defaultErrorMsg });
+    res.status(400).json({ error: defaultErrorMsg });
   }
 };
 
-exports.signOut = (req, res) => {
-  req.session.user &&
-    req.session.destroy((error) => {
-      if (error) {
-        res.status(200).json({ msg: 'Sign out failed' });
-      }
-      res.clearCookie('connect.sid').status(200).json({ msg: 'Signed out' });
-    });
+exports.signOut = async (req, res) => {
+  if (!req.session.user) {
+    return res.status(400).json({ error: 'Sign out failed' });
+  }
+
+  try {
+    await req.session.destroy();
+
+    res
+      .clearCookie('connect.sid')
+      .status(200)
+      .json({ alert: 'Signed out successfully' });
+  } catch (error) {
+    res.status(400).json({ error: 'Sign out failed' });
+  }
 };
 
-exports.getGoogleURL = (req, res) => {
+exports.getGoogleURL = (_req, res) => {
   const authUrl = getClient().generateAuthUrl({
     access_type: 'offline',
     prompt: 'consent',

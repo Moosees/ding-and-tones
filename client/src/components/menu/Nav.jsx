@@ -14,10 +14,8 @@ const Navbar = styled.nav`
 `;
 
 const Nav = () => {
-  const { scaleId, songId } = useSelector(({ scale, song }) => ({
-    scaleId: scale.ui.scaleId,
-    songId: song.ui.songId,
-  }));
+  const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const songId = useSelector(({ song }) => song.refs.songId);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();

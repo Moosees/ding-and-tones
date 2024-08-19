@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeDrumMode } from '../../redux/drum/drum.actions';
+import { changeDrumMode } from '../../redux/drum/drum.slice';
 import BtnIcon from '../shared/button/BtnIcon';
 import { DrumModeContainer } from './intervals.styles';
 
@@ -9,7 +9,7 @@ const DrumMode = () => {
   const drumMode = useSelector(({ drum }) => drum.drumMode);
 
   const handleChangeDrumMode = (direction) => {
-    dispatch(changeDrumMode(direction, drumMode));
+    dispatch(changeDrumMode({ direction }));
   };
 
   return (

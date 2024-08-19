@@ -3,48 +3,65 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { helpTopics } from '../../../assets/help';
 import useValidate from '../../../hooks/useValidate';
+import { createAlert } from '../../../redux/alert/alert.slice';
+import { useSaveScaleMutation } from '../../../redux/api/api.slice';
 import {
-  newScale,
-  saveScale,
-  setScaleName,
-} from '../../../redux/scale/scale.actions';
+  selectScaleLength,
+  selectScaleName,
+} from '../../../redux/scale/scale.selectors';
+import { newScale, setScaleName } from '../../../redux/scale/scale.slice';
+import { store } from '../../../redux/store';
 import BtnHelp from '../../shared/button/BtnHelp';
-import Buttons from '../../shared/button/Buttons';
 import BtnPrimary from '../../shared/button/BtnPrimary';
+import Buttons from '../../shared/button/Buttons';
 import InfoText from '../../shared/input/InfoText';
 import Rotation from '../rotation/Rotation';
 import { ScaleInfoContainer, ScaleNotes } from './info.styles';
 
 const Info = () => {
   const dispatch = useDispatch();
-  const {
-    hasChanges,
-    isDeleting,
-    isFetching,
-    isSaving,
-    scaleInfo,
-    isSignedIn,
-  } = useSelector(({ scale, search, ui, user }) => ({
-    hasChanges: scale.ui.hasChanges,
-    isDeleting: scale.ui.isDeleting,
-    isFetching: scale.ui.isFetching,
-    isSaving: scale.ui.isSaving,
-    scaleInfo: scale.info,
-    isSignedIn: user.isSignedIn,
-  }));
+  const scaleLength = useSelector(selectScaleLength);
+  const scaleLabel = useSelector(({ scale }) => scale.info.label);
+  const scaleNameShort = useSelector(({ scale }) => scale.info.name);
+  const scaleName = useSelector(selectScaleName);
+  const hasChanges = useSelector(({ scale }) => scale.ui.hasChanges);
+  const isSignedIn = useSelector(({ user }) => user.isSignedIn);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
+
+  const [saveScale, { isLoading: isSaving }] = useSaveScaleMutation();
 
   const navigate = useNavigate();
 
   const [name, handleNameChange, nameErrors, isNameValid, resetName] =
-    useValidate('scaleName', scaleInfo.name);
+    useValidate('scaleName', scaleNameShort);
 
-  const handleScaleSave = () => {
-    dispatch(saveScale(name));
-    navigate('/scale', { replace: true });
+  const handleScaleSave = async () => {
+    if (scaleLength < 5) {
+      return dispatch(
+        createAlert({ alert: 'Scale needs at least five notes' }),
+      );
+    }
+
+    const { notes, info } = store.getState().scale;
+
+    const scaleUpdate = {
+      info: { ...info },
+      notes,
+    };
+
+    if (isNameValid && name) {
+      scaleUpdate.info.name = name;
+    }
+    const res = await saveScale({ scaleUpdate }).unwrap();
+    if (!res.scale?.scaleId) return;
+
+    navigate(`/scale/${res.scale.scaleId}`, { replace: true });
   };
 
   const handleNameSave = () => {
-    if (isNameValid) dispatch(setScaleName(name));
+    if (isNameValid) dispatch(setScaleName({ name }));
   };
 
   const handleNewScale = () => {
@@ -57,7 +74,7 @@ const Info = () => {
       <Buttons>
         <Rotation />
         <BtnPrimary
-          disabled={isDeleting || isFetching || isSaving}
+          disabled={isSaving || isSongPlaying}
           label="New Scale"
           onClick={handleNewScale}
           light
@@ -65,11 +82,10 @@ const Info = () => {
         <BtnPrimary
           disabled={
             !isSignedIn ||
-            isDeleting ||
-            isFetching ||
             isSaving ||
             !isNameValid ||
-            !hasChanges
+            !hasChanges ||
+            isSongPlaying
           }
           label="Save Scale"
           onClick={handleScaleSave}
@@ -84,11 +100,11 @@ const Info = () => {
         label={nameErrors.length ? nameErrors[0] : 'Scale name:'}
         value={name}
       >
-        {`${scaleInfo.rootName} ${scaleInfo.name}`}
+        {scaleName}
       </InfoText>
       <ScaleNotes>
         <span>Notes:</span>
-        {scaleInfo.label}
+        {scaleLabel}
       </ScaleNotes>
     </ScaleInfoContainer>
   );
