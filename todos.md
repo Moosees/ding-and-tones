@@ -10,10 +10,6 @@
 
 ### Other
 
-- isSignedIn derived from username instead of extra key in redux?
-- refactor pattern and beats updating songUi in patternPlayer.js?
-- Refactor scale.utils (redux)?
-- refactor moveBar in song.utils to be readable
 - Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
 - move howls logic to assets? future app structure refactor (features? views?)
 - reset currentBar in useResetCurrentBeat?

@@ -29,11 +29,16 @@ export const createAutoMoveOrder = (song, beatsToAdd, barToSkip) => {
 };
 
 export const moveBar = (arrangement, barIndex, targetIndex) => {
-  const arrCopy = [...arrangement];
+  const newArrangement = [];
+  const moveForward = barIndex < targetIndex;
 
-  arrCopy.splice(targetIndex, 0, arrCopy.splice(barIndex, 1)[0]);
+  for (let i = 0; i < arrangement.length; ++i) {
+    if (moveForward && i !== barIndex) newArrangement.push(arrangement[i]);
+    if (i === targetIndex) newArrangement.push(arrangement[barIndex]);
+    if (!moveForward && i !== barIndex) newArrangement.push(arrangement[i]);
+  }
 
-  return arrCopy;
+  return newArrangement;
 };
 
 const parseArrayToObject = (array) => {
