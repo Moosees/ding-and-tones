@@ -10,12 +10,16 @@ import { getIdFromLocation } from './nav.utils';
 const NavMobile = () => {
   const songId = useSelector(({ song }) => song.refs.songId);
   const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
+  const isSongPlaying = useSelector(
+    ({ song }) => song.songPlayer.isSongPlaying,
+  );
 
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
 
   const location = useLocation();
-  const [checkSession, { isUninitialized }] = useLazyCheckSessionQuery();
+  const [checkSession, { isUninitialized, isLoading }] =
+    useLazyCheckSessionQuery();
 
   useEffect(() => {
     if (isUninitialized) {
@@ -29,11 +33,18 @@ const NavMobile = () => {
     }
   }, [checkSession, isUninitialized, location, scaleId, songId]);
 
+  const handleMenuClick = () => {
+    if (isSongPlaying || isLoading) return;
+
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <MobileAnchor>
       <LogoContainer
         ref={btnRef}
-        onClick={() => setIsOpen((isOpen) => !isOpen)}
+        $disabled={isSongPlaying || isLoading}
+        onClick={handleMenuClick}
       >
         <Logo />
       </LogoContainer>

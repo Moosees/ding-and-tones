@@ -36,6 +36,7 @@ export const LogoContainer = styled.div`
   display: flex;
   height: 5rem;
   justify-content: center;
+  opacity: ${({ $disabled }) => ($disabled ? '0.6' : '1')};
   position: absolute;
   right: -0.5rem;
   top: -0.5rem;
