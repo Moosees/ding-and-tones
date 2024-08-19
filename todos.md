@@ -10,8 +10,6 @@
 
 ### Other
 
-- reset currentBar in useResetCurrentBeat?
-- set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
 - chordsList does not need to be kept in redux store, only user added chords?
 - move createScaleLabel inside createFullScaleFromNames? (move other steps there?)
 - Memoize (scale)Notes to prevent rerender when changing between add round and add extra
@@ -55,6 +53,7 @@
 - Scale and song state should mirror models more closely
 - Use separate currentSound for patterns and play with clicks or keys?
 - move howls logic to assets? future app structure refactor (features? views?)
+- useResetCurrentBeat should live with Drum since it only affects manual playing?
 
 ### Layout update
 

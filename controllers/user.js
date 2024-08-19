@@ -154,8 +154,12 @@ exports.signInWithGoogle = async (req, res) => {
     const sessionTtl = persistSession ? day * 30 : day;
     req.session.cookie.maxAge = sessionTtl;
 
+    const alert = newUser
+      ? 'New account created, you can select a name in the menus under the User tab'
+      : 'Signed in successfully!';
+
     res.status(newUser ? 201 : 200).json({
-      alert: 'Signed in successfully!',
+      alert,
       sound: user.sound,
       song: {
         isOwner: isSongOwner,
