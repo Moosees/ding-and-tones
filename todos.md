@@ -36,8 +36,6 @@
 
 ### Tasks
 
-- fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
-- disable move notes when there's no extra notes? (if so: reset when loading a new scale)
 - Clean up comments and unused code
 
 ## Sorted by release
@@ -50,6 +48,7 @@
 - Song query strings and (changed) scale broken?
 - Deleting scale (and song?) blocks ability to save scale - fixed?
 - Failing to save song (inside popup) gives no feedback to user
+- fix minor bug with howl player not being reactive and getting stuck in unloaded state - status not updating correctly, use new copy of status instead of reference in updateHowls? - cra bug only? reproducible?
 
 ### Home page and nav update
 

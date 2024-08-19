@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Buttons from '../../shared/button/Buttons';
 import Checkbox from '../../shared/checkbox/Checkbox';
 import Move from '../move/Move';
@@ -6,8 +7,16 @@ import Notes from '../notes/Notes';
 import { EditContainer, EditContent, TextLabel } from './edit.styles';
 
 const Edit = () => {
+  const extraLength = useSelector(({ scale }) => scale.notes.extra.length);
+
   const [isAddingExtraNotes, setIsAddingExtraNotes] = useState(false);
   const [isEditingExtraPos, setIsEditingExtraPos] = useState(false);
+
+  useEffect(() => {
+    if (!isEditingExtraPos || extraLength > 0) return;
+
+    setIsEditingExtraPos(false);
+  }, [isEditingExtraPos, extraLength]);
 
   return (
     <EditContainer>
@@ -30,6 +39,7 @@ const Edit = () => {
           asBtn
           light
           label="Move"
+          disabled={extraLength === 0}
           checked={isEditingExtraPos}
           onChange={() => setIsEditingExtraPos((isEditing) => !isEditing)}
         />
