@@ -10,8 +10,6 @@
 
 ### Other
 
-- Rework scale reducer, max note limit on buttons in scale edit, min note limit in reducer, consolidate!
-- move howls logic to assets? future app structure refactor (features? views?)
 - reset currentBar in useResetCurrentBeat?
 - set accountOpen if new user is created, false if not - use status code to determine - ui extra reducer and state?
 - chordsList does not need to be kept in redux store, only user added chords?
@@ -56,6 +54,7 @@
 - Merge api status states (isFetching etc.) in client?
 - Scale and song state should mirror models more closely
 - Use separate currentSound for patterns and play with clicks or keys?
+- move howls logic to assets? future app structure refactor (features? views?)
 
 ### Layout update
 
@@ -79,6 +78,7 @@
 - Dark mode
 - user sound popup - info about saving settings to account? only close popup after request is handled?
 - user account only close after request is handled?
+- refactor Notes notelist buttons to own component and simplify adding and removing notes?
 
 ### Song patchwork update
 
@@ -166,6 +166,7 @@
 - Printing on mobile prints entire app and not just iframe
 - Changing between trip8 and trip16 or asymmetrical subdivisions can move beat around
 - Fix composer name when you are the composer when printing - sometimes shows "you" as composer, cannot reproduce
+- transposing all but on inner note doesn't reset disabled status on full set of extra notes
 
 ### Design
 

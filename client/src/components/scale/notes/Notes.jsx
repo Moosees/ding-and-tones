@@ -19,8 +19,6 @@ import { Note, NotesList, TextLabel } from './notes.styles';
 const Notes = ({ isAddingExtraNotes }) => {
   const dispatch = useDispatch();
   const sharpNotes = useSelector(({ scale }) => scale.info.sharpNotes);
-  const extra = useSelector(({ scale }) => scale.notes.extra);
-  const round = useSelector(({ scale }) => scale.notes.round);
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
   const isSongPlaying = useSelector(
     ({ song }) => song.songPlayer.isSongPlaying,
@@ -39,10 +37,15 @@ const Notes = ({ isAddingExtraNotes }) => {
   };
 
   const getNotes = () => {
-    const noteValues = scale.reduce(
-      (acc, { noteValue, type }) => ({ ...acc, [noteValue]: type }),
-      {},
-    );
+    const lengths = { inner: 0, extra: 0 };
+    const noteValues = scale.reduce((acc, { noteValue, type }) => {
+      if (type === 'dings') ++lengths.inner;
+      if (type === 'round') ++lengths.inner;
+      if (type === 'extra') ++lengths.extra;
+
+      return { ...acc, [noteValue]: type };
+    }, {});
+
     const noteSelectors = [];
 
     for (let i = MIN_NOTE_VALUE; i <= MAX_NOTE_VALUE; ++i) {
@@ -52,8 +55,9 @@ const Notes = ({ isAddingExtraNotes }) => {
       const type = inScale ? noteValues[i] : 'outside';
 
       const disabled =
-        (!inScale && isAddingExtraNotes && extra.length >= 8) ||
-        (!inScale && !isAddingExtraNotes && round.length >= 13);
+        (!inScale && isAddingExtraNotes && lengths.extra >= 8) ||
+        (!inScale && !isAddingExtraNotes && lengths.inner >= 13) ||
+        (inScale && !isAddingExtraNotes && lengths.inner === 1);
 
       const handleClick = inScale
         ? () => handleRemove(noteName, type)

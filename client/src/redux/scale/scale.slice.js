@@ -157,8 +157,6 @@ const scaleSlice = createSlice({
         update[type] = state.notes[type].filter(
           (note) => (note.note || note) !== noteToRemove,
         );
-      } else if (state.notes.dings.length + state.notes.round.length === 1) {
-        return;
       } else {
         update.dings = [state.notes.round[0]];
         update.round = state.notes.round.slice(1);
