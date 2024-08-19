@@ -2,9 +2,12 @@ import React, { useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { handShortByValue } from '../../../assets/constants';
 import { beatOptionToKeyCode } from '../../../assets/keyCodes';
+import {
+  makeSelectIsBeatPlaying,
+  makeSelectIsDropdownOpen,
+} from '../../../redux/song/song.selectors';
 import { setCurrentDropdown } from '../../../redux/song/song.slice';
 import BeatDropdown from '../../beatDropdown/BeatDropdown';
-import BeatText from './BeatText';
 import {
   BeatAnchor,
   BeatCircle,
@@ -12,22 +15,28 @@ import {
   BeatTextHandCount,
 } from './beat.styles';
 import { getNonScaleNotes } from './beat.utils';
+import BeatText from './BeatText';
 
 const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
+  const selectIsBeatPlaying = useMemo(makeSelectIsBeatPlaying, []);
+  const selectIsDropdownOpen = useMemo(makeSelectIsDropdownOpen, []);
+
   const dispatch = useDispatch();
   const scale = useSelector(({ scale }) => scale.parsed.pitched);
   const sound = useSelector(({ song }) => song.beats[beatId].sound);
   const hand = useSelector(({ song }) => song.beats[beatId].hand);
   const countOpen = useSelector(({ song }) => song.ui.countOpen);
   const handsOpen = useSelector(({ song }) => song.ui.handsOpen);
-  const currentDropdown = useSelector(({ song }) => song.ui.currentDropdown);
-  const currentBeat = useSelector(({ song }) => song.songPlayer.currentBeat);
   const isSongPlaying = useSelector(
     ({ song }) => song.songPlayer.isSongPlaying,
   );
+  const isBeatPlaying = useSelector((state) =>
+    selectIsBeatPlaying(state, beatId),
+  );
+  const isDropdownOpen = useSelector((state) =>
+    selectIsDropdownOpen(state, beatId),
+  );
 
-  const isBeatPlaying = currentBeat === beatId;
-  const isOpen = currentDropdown === beatId;
   const dropdownPosRef = useRef(null);
   const { value, count, tripletStatus, beatStart } = template;
 
@@ -73,7 +82,7 @@ const Beat = ({ beatId, editSubdivisionsOpen, isMuted, template }) => {
         >
           <BeatText sound={sound} value={value} />
         </BeatCircle>
-        {isOpen && (
+        {isDropdownOpen && (
           <BeatDropdown
             dropdownPosRef={dropdownPosRef}
             beatId={beatId}

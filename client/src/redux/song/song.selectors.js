@@ -1,5 +1,14 @@
 import { createSelector } from '@reduxjs/toolkit';
 
+export const makeSelectIsBeatPlaying = () => {
+  const selectIsBeatPlaying = createSelector(
+    [(state) => state.song.songPlayer.currentBeat, (_state, beatId) => beatId],
+    (currentBeat, beatId) => currentBeat === beatId,
+  );
+
+  return selectIsBeatPlaying;
+};
+
 export const selectIsBarPlaying = createSelector(
   [(state) => state.song.songPlayer.currentBar, (_state, barId) => barId],
   (currentBar, barId) => currentBar === barId,
@@ -16,6 +25,15 @@ export const selectArrangementLength = createSelector(
   (state) => state.song.arrangement,
   (arrangement) => arrangement.length,
 );
+
+export const makeSelectIsDropdownOpen = () => {
+  const selectIsDropdownOpen = createSelector(
+    [(state) => state.song.ui.currentDropdown, (_state, beatId) => beatId],
+    (currentDropdown, beatId) => currentDropdown === beatId,
+  );
+
+  return selectIsDropdownOpen;
+};
 
 export const selectNextBeatInMoveOrder = createSelector(
   [

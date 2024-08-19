@@ -10,11 +10,10 @@
 
 ### Other
 
-- songPlayer state selectors (and currentDropdown isOpen for beats)
+- songPlayer state selectors?
 - check positions useSelector if it can be more specific
 - scale.parsed.pitched better equality check? same with currentSound
 - songwriter Bar selector rerendering problems? (shallowEqual on selector needed?) - working?
-- songwriter Beat custom selector?
 - sign in cross origin warning? (cause: unsupported browser fix?)
 - user sound popup - info about saving settings to account?
 - PopupAccount only close if mutation is successful?
@@ -32,7 +31,6 @@
 - hook for using howls? (or delete useHowls.js)
 - Split howls loading status into loaded and error (and error msg)?
 - Move logic for playing tonefield from Drum to Tonefield
-- (chordsPrint) Scale selector refactor not needed (component should not change after mount)?
 
 ### Tasks
 
