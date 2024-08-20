@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import useDimensions from '../../../hooks/useDimensions';
 import Loading from '../../shared/loading/Loading';
+import Start from '../../start/Start';
 
 const Scale = lazy(() => import('../../scale/Scale'));
 const Chords = lazy(() => import('../../chords/Chords'));
@@ -28,7 +29,7 @@ const AppRoutes = () => {
           path="/find/:songId"
           element={<Navigate to="/song/:songId" replace />}
         /> */}
-        <Route path="*" element={<Navigate to="/scale" replace />} />
+        <Route path="*" element={<Start />} />
       </Routes>
     </Suspense>
   );
