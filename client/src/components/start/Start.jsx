@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DISCORD } from '../../oauth';
 
 const StartContainer = styled.div`
   align-items: center;
@@ -7,7 +8,17 @@ const StartContainer = styled.div`
 `;
 
 const Start = () => {
-  return <StartContainer>Start</StartContainer>;
+  return (
+    <StartContainer>
+      <a
+        href={`https://discord.gg/${DISCORD}`}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Discord
+      </a>
+    </StartContainer>
+  );
 };
 
 export default Start;
