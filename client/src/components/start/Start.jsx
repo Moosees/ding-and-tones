@@ -25,10 +25,8 @@ const Start = () => {
         <h3>Planned updates:</h3>
         <ul>
           <li>Design and usability improvements</li>
-          <li>
-            Support for tongue drums, mutant drums and custome note layout
-          </li>
-          <li>Rewamped chords page and chords in songwriter</li>
+          <li>Support for tongue drums, mutant drums and custom note layout</li>
+          <li>Revamped chords page and chords in songwriter</li>
         </ul>
       </section>
       <footer>
