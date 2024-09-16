@@ -12,10 +12,10 @@ const Privacy = () => {
   return (
     <>
       {isMobile ? (
-        <MobileCopyright>&copy; 2023 Linus Almgren</MobileCopyright>
+        <MobileCopyright>&copy; Linus Almgren</MobileCopyright>
       ) : (
         <Copyright>
-          Copyright &copy; 2023 Linus Almgren -{' '}
+          Copyright &copy; Linus Almgren -{' '}
           <PrivacyLink
             onClick={() => dispatch(setPrivacyOpen({ privacyOpen: true }))}
           >
