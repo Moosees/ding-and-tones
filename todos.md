@@ -113,7 +113,6 @@
 
 - findSongs/Results.jsx promise in render rows expanded and getSongById, better solution?
 - Allow saving scale with song save
-- Discord
 - slider.handleStyle deprecated
 - handleGooglePostMsg developer origin should be derived from auth.js?
 
