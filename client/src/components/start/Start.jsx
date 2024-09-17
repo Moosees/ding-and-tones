@@ -1,12 +1,5 @@
-import styled from 'styled-components';
 import { DISCORD } from '../../oauth';
-
-const StartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-`;
+import { StartContainer } from './start.styles';
 
 const Start = () => {
   return (
