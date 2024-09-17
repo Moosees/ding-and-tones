@@ -1,8 +1,26 @@
 import styled from 'styled-components';
 
-export const StartContainer = styled.div`
+export const StartContainer = styled.article`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
+
+  & header {
+    padding-block: 1.5rem;
+  }
+`;
+
+export const MainHeading = styled.h1`
+  font-size: 3rem;
+
+  & span {
+    font-size: 1.2em;
+    text-shadow: 0px 2px ${({ theme }) => theme.colorBeat};
+  }
+`;
+
+export const SubHeading = styled.h2`
+  font-size: 1.8rem;
+  text-indent: 0.5rem;
 `;

@@ -1,11 +1,17 @@
 import { DISCORD } from '../../oauth';
-import { StartContainer } from './start.styles';
+import { MainHeading, StartContainer, SubHeading } from './start.styles';
 
 const Start = () => {
   return (
     <StartContainer>
-      <h1>Welcome to Ding and Tones!</h1>
-      <h2>Scales, chords and tabs for handpans and tongue drums</h2>
+      <header>
+        <MainHeading>
+          Welcome to <span>Ding and Tones</span>
+        </MainHeading>
+        <SubHeading>
+          - Scales, chords and tabs for handpans and tongue drums
+        </SubHeading>
+      </header>
       <section>
         <h3>Recent updates:</h3>
         <ul>
