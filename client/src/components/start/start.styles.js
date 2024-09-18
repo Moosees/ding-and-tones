@@ -5,9 +5,14 @@ export const StartContainer = styled.article`
   flex-direction: column;
   gap: 3rem;
   justify-content: center;
+  padding: 2rem;
 
   & header {
     padding-block: 1.5rem;
+  }
+
+  & footer a {
+    white-space: nowrap;
   }
 `;
 
@@ -23,6 +28,7 @@ export const MainHeading = styled.h1`
 export const SubHeading = styled.h2`
   font-size: 1.8rem;
   text-indent: 0.5rem;
+  padding-block: 0.5rem;
 `;
 
 export const List = styled.ul`

@@ -29,7 +29,7 @@ const Start = () => {
         </List>
       </section>
       <footer>
-        If you have any questions, feedback or just want to say hi, please{' '}
+        If you have any questions, feedback or just want to say hi,{' '}
         <a
           href={`https://discord.gg/${DISCORD}`}
           target="_blank"
