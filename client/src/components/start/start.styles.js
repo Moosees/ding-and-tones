@@ -14,6 +14,11 @@ export const StartContainer = styled.article`
   & footer a {
     white-space: nowrap;
   }
+
+  ${({ theme }) => theme.mqW700`
+    justify-content: flex-start;
+    margin-top: 5rem;
+`}
 `;
 
 export const MainHeading = styled.h1`
