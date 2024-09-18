@@ -1,5 +1,5 @@
 import { DISCORD } from '../../oauth';
-import { MainHeading, StartContainer, SubHeading } from './start.styles';
+import { List, MainHeading, StartContainer, SubHeading } from './start.styles';
 
 const Start = () => {
   return (
@@ -14,19 +14,19 @@ const Start = () => {
       </header>
       <section>
         <h3>Recent updates:</h3>
-        <ul>
+        <List>
           <li>New start page, you are seeing it right now. Hi!</li>
           <li>Discord server, see below for link</li>
           <li>Performance updates</li>
-        </ul>
+        </List>
       </section>
       <section>
         <h3>Planned updates:</h3>
-        <ul>
+        <List>
           <li>Design and usability improvements</li>
           <li>Support for tongue drums, mutant drums and custom note layout</li>
           <li>Revamped chords page and chords in songwriter</li>
-        </ul>
+        </List>
       </section>
       <footer>
         If you have any questions, feedback or just want to say hi, please{' '}
