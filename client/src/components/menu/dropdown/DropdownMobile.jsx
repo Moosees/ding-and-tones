@@ -47,9 +47,13 @@ const DropdownMobile = ({ btnRef, isOpenCb }) => {
         onClick={() => goTo('/find')}
       />
       <DividerLine />
+      <BtnMenu
+        label="Home"
+        icon="help_outline"
+        onClick={() => navigate('/')}
+        isActive={pathname === '/'}
+      />
       <Sound />
-      {/* <BtnMenu label="Support me" icon="support" /> */}
-      {/* <BtnMenu label="Help" icon="help_outline" /> */}
       <Account />
       <SignIn />
       <BtnMenu
