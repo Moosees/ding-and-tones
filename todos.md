@@ -17,11 +17,8 @@
 
 ### Home page and nav update
 
-- Add home page with recent changes, user info etc.
 - Active state for nav buttons might not need the full pathname
 - Faulty routes navigate to safe routes, find/:id navigates to song/:id
-- create keyboard layout image? use dynamic key names?
-- Show save limits for scale and song
 
 ### Logic and state update
 
@@ -60,6 +57,8 @@
 - user sound popup - info about saving settings to account? only close popup after request is handled?
 - user account only close after request is handled?
 - refactor Notes notelist buttons to own component and simplify adding and removing notes? less rerenders
+- Show save limits for scale and song
+- create keyboard layout image? use dynamic key names?
 
 ### Song patchwork update
 

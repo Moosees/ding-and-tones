@@ -33,12 +33,12 @@ const DropdownMobile = ({ btnRef, isOpenCb }) => {
       />
       <BtnMenu
         label="Scale"
-        isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
+        isActive={pathname.startsWith('/scale')}
         onClick={() => goTo(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
       <BtnMenu
         label="Song"
-        isActive={`/song${songId ? '/' + songId : ''}` === pathname}
+        isActive={pathname.startsWith('/song')}
         onClick={() => goTo(`/song${songId ? '/' + songId : ''}`)}
       />
       <BtnMenu

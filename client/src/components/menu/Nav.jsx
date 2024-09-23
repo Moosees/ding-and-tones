@@ -24,7 +24,7 @@ const Nav = () => {
     <Navbar>
       <BtnNav
         label="Scale"
-        isActive={`/scale${scaleId ? '/' + scaleId : ''}` === pathname}
+        isActive={pathname.startsWith('/scale')}
         onClick={() => navigate(`/scale${scaleId ? '/' + scaleId : ''}`)}
       />
       <BtnNav
@@ -34,7 +34,7 @@ const Nav = () => {
       />
       <BtnNav
         label="Song"
-        isActive={`/song${songId ? '/' + songId : ''}` === pathname}
+        isActive={pathname.startsWith('/song')}
         onClick={() => navigate(`/song${songId ? '/' + songId : ''}`)}
       />
       <BtnNav
