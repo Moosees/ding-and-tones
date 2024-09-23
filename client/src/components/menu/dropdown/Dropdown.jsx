@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useCloseOnEsc from '../../../hooks/useCloseOnEsc';
 import useCloseOutside from '../../../hooks/useCloseOutside';
 import BtnMenu from '../../shared/button/BtnMenu';
@@ -12,10 +12,16 @@ const Dropdown = ({ btnRef, isOpenCb }) => {
   useCloseOnEsc(() => isOpenCb(false));
   const { insideRef } = useCloseOutside(isOpenCb, btnRef);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   return (
     <DropdownContainer ref={insideRef}>
-      <BtnMenu label="Home" icon="help_outline" onClick={() => navigate('/')} />
+      <BtnMenu
+        label="Home"
+        icon="help_outline"
+        onClick={() => navigate('/')}
+        isActive={pathname === '/'}
+      />
       <Sound />
       <Account />
       <SignIn />
