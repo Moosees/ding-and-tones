@@ -28,7 +28,7 @@ const DropdownMobile = ({ btnRef, isOpenCb }) => {
     <DropdownContainer ref={insideRef}>
       <BtnMenu
         label="Drum"
-        isActive={'/chords' === pathname}
+        isActive={pathname === '/chords'}
         onClick={() => goTo('/chords')}
       />
       <BtnMenu
@@ -43,7 +43,7 @@ const DropdownMobile = ({ btnRef, isOpenCb }) => {
       />
       <BtnMenu
         label="Find Songs"
-        isActive={'/find' === pathname}
+        isActive={pathname === '/find'}
         onClick={() => goTo('/find')}
       />
       <DividerLine />

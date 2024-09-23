@@ -29,7 +29,7 @@ const Nav = () => {
       />
       <BtnNav
         label="Chords"
-        isActive={'/chords' === pathname}
+        isActive={pathname === '/chords'}
         onClick={() => navigate('/chords')}
       />
       <BtnNav
@@ -39,7 +39,7 @@ const Nav = () => {
       />
       <BtnNav
         label="Find Songs"
-        isActive={'/find' === pathname}
+        isActive={pathname === '/find'}
         onClick={() => navigate('/find')}
       />
       <User />

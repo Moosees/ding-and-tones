@@ -17,7 +17,7 @@
 
 ### Home page and nav update
 
-- Active state for nav buttons might not need the full pathname
+- Navigate for nav buttons might not need the full pathname
 - Faulty routes navigate to safe routes, find/:id navigates to song/:id
 
 ### Logic and state update
