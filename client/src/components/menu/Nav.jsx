@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BtnNav from '../shared/button/BtnNav';
@@ -14,9 +13,6 @@ const Navbar = styled.nav`
 `;
 
 const Nav = () => {
-  const scaleId = useSelector(({ scale }) => scale.ui.scaleId);
-  const songId = useSelector(({ song }) => song.refs.songId);
-
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -25,7 +21,7 @@ const Nav = () => {
       <BtnNav
         label="Scale"
         isActive={pathname.startsWith('/scale')}
-        onClick={() => navigate(`/scale${scaleId ? '/' + scaleId : ''}`)}
+        onClick={() => navigate('/scale')}
       />
       <BtnNav
         label="Chords"
@@ -35,7 +31,7 @@ const Nav = () => {
       <BtnNav
         label="Song"
         isActive={pathname.startsWith('/song')}
-        onClick={() => navigate(`/song${songId ? '/' + songId : ''}`)}
+        onClick={() => navigate('/song')}
       />
       <BtnNav
         label="Find Songs"
