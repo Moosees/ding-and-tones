@@ -17,7 +17,7 @@
 
 ### Home page and nav update
 
-- Faulty routes navigate to safe routes, find/:id navigates to song/:id
+- Dont' attempt to fetch my songs and scales if not logged in
 
 ### Logic and state update
 

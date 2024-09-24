@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { DISCORD } from '../../oauth';
 import { List, MainHeading, StartContainer, SubHeading } from './start.styles';
 
 const Start = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  console.log({ pathname });
+
+  useEffect(() => {
+    if (pathname !== '/') {
+      navigate('/', { replace: true });
+    }
+  }, [navigate, pathname]);
+
   return (
     <StartContainer>
       <header>
