@@ -6,7 +6,6 @@ import { List, MainHeading, StartContainer, SubHeading } from './start.styles';
 const Start = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  console.log({ pathname });
 
   useEffect(() => {
     if (pathname !== '/') {
