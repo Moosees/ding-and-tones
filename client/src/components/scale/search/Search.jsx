@@ -13,7 +13,9 @@ import { SearchContainer } from './search.styles';
 
 const Search = () => {
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
-  const { data: myScales } = useSearchMyScalesQuery();
+  const { data: myScales } = useSearchMyScalesQuery(undefined, {
+    skip: !isSignedIn,
+  });
   const { data: newScales } = useSearchNewScalesQuery();
   const [searchScales, { data: foundScales, isFetching }] =
     useLazySearchScalesQuery();
