@@ -15,10 +15,6 @@
 - sign in cross origin warning? (cause: unsupported browser fix?)
 - scale.parsed.pitched selectors can be memoized in some cases?
 
-### Home page and nav update
-
-- Dont' attempt to fetch my songs and scales if not logged in
-
 ### Logic and state update
 
 - SongById try catch?

@@ -13,7 +13,9 @@ import Results from './results/Results';
 const FindSongs = () => {
   const isSignedIn = useSelector(({ user }) => user.isSignedIn);
   const { data: newSongs } = useSearchNewSongsQuery();
-  const { data: mySongs } = useSearchMySongsQuery();
+  const { data: mySongs } = useSearchMySongsQuery(undefined, {
+    skip: !isSignedIn,
+  });
   const [searchSongs, { data: foundSongs, isFetching }] =
     useLazySearchSongsQuery();
 
